@@ -1,5 +1,5 @@
 # We choosed [Javascript Obfuscator](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx) for obfuscation.
-Team consists of
+Team consists of:
 - Pavlo Pyvovar
-- Olga Pashneve
+- Olga Pashneva
 - Vladyslav Zalevskyi
