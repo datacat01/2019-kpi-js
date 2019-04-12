@@ -1,4 +1,5 @@
-# 2019-kpi-js
+# We choosed [InfoApper](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx) as obfuscator.
 
-Group members: Vladyslav Mamontov, Vladyslava Shevchenko;
-Obfuscator: https://www.infoapper.com/javascript-obfuscator/
+Group members: 
+- Vladyslav Mamontov;
+- Vladyslava Shevchenko.
