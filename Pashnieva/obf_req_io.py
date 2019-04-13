@@ -3,71 +3,93 @@ import json
 import codecs
 import os
 
-file_name = 'test_code.txt'
 url = 'https://obfuscator.io/obfuscate'
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(base_dir, file_name)
-file = open(file_path, 'r')
-code = file.readlines()
-sep = '\n'
-code = sep.join(code)
-file.close()
+
+def read_code(dir, file_name):
+
+    file_path = os.path.join(dir, file_name)
+    #print(file_path)
+    file = open(file_path, 'r')
+    code = file.readlines()
+    sep = '\n'
+    code = sep.join(code)
+    file.close()
+
+    return code
 
 
-headers = {
-    'content-type': 'application/json',
-}
+def request(code, file_name_res, path):
 
-payload = {
-    'code':'var a ={}',
-    'options': {
-            'compact': True,
-            'selfDefending':False,
-            'disableConsoleOutput':False,
-            'debugProtection':True,
-            'debugProtectionInterval':False,
-            'stringArray':True,
-            'rotateStringArray':True,
-            'rotateStringArrayEnabled':True,
-            'stringArrayThreshold':0.8,
-            'stringArrayThresholdEnabled':True,
-            'stringArrayEncoding':False,
-            'stringArrayEncodingEnabled':True,
-            'sourceMap':False,
-            'sourceMapMode':'off',
-            'sourceMapBaseUrl':'',
-            'sourceMapFileName':'',
-            'sourceMapSeparate':False,
-            'domainLock':[],
-            'reservedNames':[],
-            'reservedStrings':[],
-            'seed':0,
-            'controlFlowFlatteningThreshold':0.75,
-            'controlFlowFlattening':False,
-            'deadCodeInjectionThreshold':0.4,
-            'deadCodeInjection':False,
-            'unicodeEscapeSequence':False,
-            'renameGlobals':False,
-            'target':'browser',
-            'identifierNamesGenerator':'hexadecimal',
-            'identifiersPrefix':'',
-            'transformObjectKeys':False
-        }
-}
+    headers = {
+        'content-type': 'application/json',
+    }
 
-response = requests.post(
-    url,
-    data = json.dumps(payload),
-    headers = headers,
-)
+    payload = {
+        'code':'var a ={}',
+        'options': {
+                'compact': True,
+                'selfDefending':False,
+                'disableConsoleOutput':False,
+                'debugProtection':True,
+                'debugProtectionInterval':False,
+                'stringArray':True,
+                'rotateStringArray':True,
+                'rotateStringArrayEnabled':True,
+                'stringArrayThreshold':0.8,
+                'stringArrayThresholdEnabled':True,
+                'stringArrayEncoding':False,
+                'stringArrayEncodingEnabled':True,
+                'sourceMap':False,
+                'sourceMapMode':'off',
+                'sourceMapBaseUrl':'',
+                'sourceMapFileName':'',
+                'sourceMapSeparate':False,
+                'domainLock':[],
+                'reservedNames':[],
+                'reservedStrings':[],
+                'seed':0,
+                'controlFlowFlatteningThreshold':0.75,
+                'controlFlowFlattening':False,
+                'deadCodeInjectionThreshold':0.4,
+                'deadCodeInjection':False,
+                'unicodeEscapeSequence':False,
+                'renameGlobals':False,
+                'target':'browser',
+                'identifierNamesGenerator':'hexadecimal',
+                'identifiersPrefix':'',
+                'transformObjectKeys':False
+            }
+    }
 
-if response.status_code != 200:
-    print(response.status_code)
+    response = requests.post(
+        url,
+        data = json.dumps(payload),
+        headers = headers
+    )
 
-res_json = json.loads(response.text)
-#print(res_json)
-file = codecs.open('obfuscated_code_io.txt', 'w', encoding='utf-8')
-file.write(res_json['code'])
-file.close()
+    if response.status_code != 200:
+        raise IndexError(response.status_code)
+
+    res_json = json.loads(response.text)
+    full_path = path + file_name_res
+    file = codecs.open(full_path, 'w', encoding='utf-8')
+    file.write(res_json['code'])
+    file.close()
+
+
+def main():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    path1 = base_dir[:-9] + 'data/clear/'
+    path2 = base_dir[:-9] + 'data/obfuscated/'
+
+    for root, dirs, files in os.walk(path1):
+        for name in files:
+            #print('name is ' + name)
+            code = read_code(path1, name)
+            request(code, name, path2)
+
+
+if __name__ == '__main__':
+    main()
 
