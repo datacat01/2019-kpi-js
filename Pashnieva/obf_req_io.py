@@ -38,7 +38,7 @@ def request(code, file_name_res, path):
                 'rotateStringArrayEnabled':True,
                 'stringArrayThreshold':0.8,
                 'stringArrayThresholdEnabled':True,
-                'stringArrayEncoding':False,
+                'stringArrayEncoding':'base64',
                 'stringArrayEncodingEnabled':True,
                 'sourceMap':False,
                 'sourceMapMode':'off',
