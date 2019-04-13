@@ -79,9 +79,10 @@ def request(code, file_name_res, path):
 
 
 def main():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    path1 = base_dir[:-9] + 'data/clear/'
-    path2 = base_dir[:-9] + 'data/obfuscated/'
+    parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+
+    path1 = os.path.join(parent_dir, 'data/clear/')
+    path2 = os.path.join(parent_dir, 'data/obfuscated/')
 
     for root, dirs, files in os.walk(path1):
         for name in files:
