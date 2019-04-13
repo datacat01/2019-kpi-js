@@ -9,8 +9,6 @@ url = 'https://obfuscator.io/obfuscate'
 def read_code(dir, file_name):
 
     file_path = os.path.join(dir, file_name)
-    #print(file_path)
-    #file = codecs.open(file_path, 'r', encoding='utf-8', errors='replace')
     file = codecs.open(file_path, 'r')
     try:
         code = file.readlines()
@@ -85,13 +83,14 @@ def request(code, file_name_res, path):
 def main():
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
 
-    path1 = os.path.join(parent_dir, 'data/clear1/')
+    path1 = os.path.join(parent_dir, 'data/clear/')
     path2 = os.path.join(parent_dir, 'data/obfuscated/')
 
     for root, dirs, files in os.walk(path1):
         for name in files:
-            #print('name is ' + name)
             code = read_code(path1, name)
+            #if code == -1:
+                #print('name is ' + name)
             if code != -1:
                 request(code, name, path2)
 
