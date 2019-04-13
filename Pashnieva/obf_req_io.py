@@ -28,7 +28,7 @@ def request(code, file_name_res, path):
     }
 
     payload = {
-        'code':'var a ={}',
+        'code':code,
         'options': {
                 'compact': True,
                 'selfDefending':False,
