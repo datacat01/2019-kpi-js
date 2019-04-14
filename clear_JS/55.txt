@@ -1,0 +1,38 @@
+
+$(function(){
+		// More Dropdown
+		$("#morecats").click(function() { var options = {}; 
+			$("#morecats_div").toggle(100);
+			 $(this).text($(this).text() == 'More' ? 'Less' : 'More'); 
+			return false; 
+		});
+
+});
+
+
+
+        		  jQuery(document).ready(function($) {
+
+              var featuredPortfolio = $("#featured-portfolio-owl");
+
+              featuredPortfolio.owlCarousel({
+                  margin: 20,
+                  nav: false,
+                  autoHeight: false,
+                  navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+                  autoplay: true,
+                  autoplayHoverPause: true,
+                  loop:true,
+                  dots: false,
+                  responsive:{
+                      0:{ items:2 },
+                      479:{ items:3 },
+                      768:{ items:5 },
+                      1000:{ items:7 }
+                  }
+              });
+
+          });
+
+
+      			

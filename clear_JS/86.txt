@@ -1,0 +1,109 @@
+
+var __lc = {};
+__lc.license = 8200011;
+
+(function() {
+var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.9f448f8e862044dfbf8fc0df8f970d93');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".joovy.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"532dcdcb69bfb01b196f2de0287d94fe8ca448b2","type":"ANONYMOUS","visit_id":"67941bbe-512b-4849-aee9-36ebf8ff24e5","visitor_id":"4d79c5ef-9fc5-4b80-9874-325905c5762c"},"referer":{"url":""},"request":{"url":"https:\/\/joovy.com\/"}}, '', 1656302, "other", {"customer":{"id":"anonymous"}}, '67941bbe-512b-4849-aee9-36ebf8ff24e5', '4d79c5ef-9fc5-4b80-9874-325905c5762c');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"b00c6853ff0e48be4c6d8f1aeca50219af8a79303c5c7aefbe785f4360ae2e79"};
+
+// <![CDATA[
+		  bvCarousel.display({
+		  // "productId": 'some_product_id', // Change this to a valid product ID with content to see that product's content.
+											// By default this implementation will pull in all content.
+		  "groups" : ["homepage"]
+		  })
+		  // ]]>
+
+        
+			$(window).on('load', function(){
+			  $('.flexslider').flexslider({
+				animation: "slide",
+				start: function(slider){
+				  $('body').removeClass('loading');
+				}
+			  });
+			  
+			  
+			  /* Add custom Url to Toy Bundle */
+			     $(".navPage-subMenu-list li").each(function(){
+			             switch ($(this).children().text())     
+                            {
+                                case "Toy Bundle":
+                                    $(this).children().attr('href','http://joovy.com/toy-bundle');
+                                    break;
+                            
+                                case "Joovy Magazine":
+                                    $(this).children().attr('href','https://magazine.joovy.com/');
+                                    break;
+                            
+                                default:
+                                    console.log("This is default selection");
+                                    break;
+                            
+                            }
+                });
+                
+                
+                 //Ambassadors Details page title move on description 
+                 var ambs = $('.ambassadors-details');
+                 if(ambs.length > 0){
+                 var pageTitle =  $('.ambassadors-details').parents('.page').find('.page-heading').text();
+                    $('.page-heading').css('display','none');
+                    $('.ambassadors-details .row .col-md-6:nth-child(2)').prepend('<h2>'+pageTitle+'</h2>');
+                 }
+                 
+                 //all anchor # attribute replace with javascript:void(0);
+                 $("a[href=#]").attr("href","javascript:void(0)");
+			  
+			});
+			
+			// this function to remove Filter Section from joovy moments page 
+			$(document).ready(function(){
+			    
+			 //   var curentUrl =  $(location).attr("href");
+			 //   var res = curentUrl.match(/joovy-moments/g);
+			 //   var keyWord = res[0];
+			    
+			    var url = $(location).attr('href'),
+                    parts = url.split("/"),
+                    last_part = parts[parts.length-2];
+			    
+			    if( last_part =='joovy-moments' || last_part =='collaborate'){
+			           $('.page').hide();
+			    }
+			    
+			     $('.ambassadors-details .flexslider').flexslider({
+                    animation: "slide",
+                    smoothHeight: true
+                 });
+			    
+			    
+			});
+			
+		
+
+        /* <![CDATA[ */
+        var google_conversion_id = 946821743;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+        
+
+        

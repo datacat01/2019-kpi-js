@@ -1,0 +1,70 @@
+
+(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-5GSC9JT':true});
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-4981470-13', 'bobswatches.com');
+  ga('require', 'GTM-5GSC9JT');
+  ga('send', 'pageview');
+
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q76G');
+
+
+!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/a64a15a21679792f7eb7fe3e3/5ad03751946d043cae2fc2fd2.js");
+
+
+var categoryNameToIdJSONArray = {"rolex datejust":65,"rolex submariner":39,"rolex president":57,"rolex daytona":54,"rolex gmt":62,"rolex skydweller":100,"rolex yachtmaster":63,"rolex explorer":59,"rolex seadweller":61,"rolex cellini":66,"vintage rolex":33,"rolex milgauss":60,"rolex airking":58,"tudor":96,"rolex date":64,"midsize rolex":105,"ladies datejust":15,"ladies president":24,"ladies yachtmaster":22,"ladies pearlmaster":102,"ladies vintage":104,"ladies rolex":14,"mens used rolex":4,"rolex watches":178,"luxury watches":165,"oris":138,"omega":97,"panerai":92,"breitling":95,"cartier":94,"zenith":125,"patek philippe":91,"audemars piguet":116,"iwc":103,"piaget":117,"tag heuer":108,"jaeger-lecoultre":106};
+		var categoryItemJSONArray = {"65":{"lowestprice":"3895","count":"46"},"39":{"lowestprice":"6195","count":"92"},"57":{"lowestprice":"9495","count":"32"},"54":{"lowestprice":"12995","count":"6"},"62":{"lowestprice":"8495","count":"38"},"100":{"lowestprice":"16595","count":"3"},"63":{"lowestprice":"5195","count":"9"},"59":{"lowestprice":"4795","count":"16"},"61":{"lowestprice":"6995","count":"11"},"66":{"lowestprice":"2795","count":"11"},"33":{"lowestprice":"1495","count":"58"},"60":{"lowestprice":"6595","count":"9"},"58":{"lowestprice":"2795","count":"13"},"96":{"lowestprice":"3195","count":"12"},"64":{"lowestprice":"2495","count":"48"},"105":{"lowestprice":"2495","count":"16"},"15":{"lowestprice":"1995","count":"107"},"24":{"lowestprice":"2995","count":"26"},"22":{"lowestprice":"4895","count":"6"},"102":{"lowestprice":"12995","count":"5"},"104":{"lowestprice":"1495","count":"21"},"14":{"lowestprice":"1495","count":"166"},"4":{"lowestprice":"2495","count":"332"},"178":{"lowestprice":"1495","count":"498"},"165":{"lowestprice":"995","count":"616"},"138":{"lowestprice":"995","count":"16"},"97":{"lowestprice":"3495","count":"24"},"92":{"lowestprice":"4695","count":"21"},"95":{"lowestprice":"3595","count":"10"},"94":{"lowestprice":"3195","count":"9"},"125":{"lowestprice":"4995","count":"1"},"91":{"lowestprice":"8195","count":"5"},"116":{"lowestprice":"14095","count":"2"},"103":{"lowestprice":"4995","count":"5"},"117":{"lowestprice":"3995","count":"2"},"108":{"lowestprice":"5295","count":"2"},"106":{"lowestprice":"4995","count":"4"}};
+
+
+var dataLayer = dataLayer || [];
+			    dataLayer.push({
+			        event: 'crto_homepage',
+			        crto: {
+			            email: 'd41d8cd98f00b204e9800998ecf8427e'
+			        }
+			    });
+
+
+   JL.tracking({
+   cid: "497e4f51cf2f25e583a262273c6346a3ed01db46d3dc75affe006f57aab1f3fe",
+   user_id: "undefined"
+   });
+
+ 
+		  var cdJsHost = (("https:" == document.location.protocol) ? "https://" : "http://"); 
+		  document.write(unescape("%3Cscript src='" + cdJsHost + "analytics.clickdimensions.com/ts.js' type='text/javascript'%3E%3C/script%3E")); 
+		
+ 
+		  var cdAnalytics = new clickdimensions.Analytics('analytics.clickdimensions.com'); 
+		  cdAnalytics.setAccountKey('auQuAMXBlikWyBKwHxu8AO'); 
+		  cdAnalytics.setDomain('bobswatches.com'); 
+		  cdAnalytics.trackPage(); 
+		
+
+			var google_tag_params = {
+						ecomm_pagetype: 'home'
+						};
+		
+
+		/* <![CDATA[ */
+		var google_conversion_id = 1064467211;
+		var google_conversion_label = "X1PSCPWT_gMQi_bJ-wM";
+		var google_custom_params = window.google_tag_params;
+		var google_remarketing_only = true;
+		/* ]]> */
+		
+
+		

@@ -1,0 +1,24 @@
+
+			$(document).ready(function () {
+				initDismissibleBanner($("#privacyPolicyAcceptButton"), $(".gdpr"), "WBPrivacyPolicyAccepted");
+			});
+		
+
+    
+		
+    if (typeof (jQuery) === 'undefined' || typeof(jQuery.ajax) === 'undefined') {
+        document.writeln(unescape('%3Cscript type="text/javascript" src="/Cdn/nid5vh5osn/Scripts/jquery.min.js"%3E%3C/script%3E'));
+    }
+	
+
+    // fallback for error from CDN
+    if (typeof ($.fn.validate) === 'undefined') {
+        document.writeln(unescape('%3Cscript type="text/javascript" src="/Cdn/spa53bawvq/Scripts/jquery.validate.min.js"%3E%3C/script%3E'));
+    }
+	
+
+		
+    function resolveRelativeUrl(relativeUrl) {
+        return relativeUrl.replace("~/", "/");
+    }
+	

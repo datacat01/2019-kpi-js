@@ -1,0 +1,39 @@
+
+
+    function OptanonWrapper() { }
+
+    
+
+/* <![CDATA[ */
+var gadwpUAEventsData = {"options":{"event_tracking":"1","event_downloads":"zip|mp3*|mpe*g|pdf|docx*|pptx*|xlsx*|rar*","event_bouncerate":0,"aff_tracking":0,"event_affiliates":"\/out\/","hash_tracking":0,"root_domain":"uppababy.com","event_timeout":100,"event_precision":0,"event_formsubmit":0,"ga_pagescrolldepth_tracking":0,"ga_with_gtag":0}};
+/* ]]> */
+
+
+					
+					jQuery("#rzt-cart").css("position","fixed");
+
+				
+var sb_instagram_js_options = {"sb_instagram_at":"", "font_method":"svg"};
+
+var sbiajaxurl = "https://uppababy.com/wp-admin/admin-ajax.php";
+
+
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/uppababy.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"cached":"1"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/uppababy.com\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/uppababy.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/uppababy.com\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/uppababy.com\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments_35a86a06beccd2eb996de17a018ba956"};
+/* ]]> */
+

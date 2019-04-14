@@ -1,0 +1,296 @@
+
+			jQuery(document).ready(function(){  
+				jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+				
+			});
+		
+
+            var appInsights = window.appInsights || function (config) {
+                function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
+            }({
+                instrumentationKey: "20500bb1-74f0-4962-8da6-5176ce397046"
+            });
+
+            window.appInsights = appInsights;
+            appInsights.trackPageView();
+	    
+
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '678431799197243');
+            fbq('track', 'PageView');
+        
+
+	        window.addEventListener("load", function () {
+		        window.cookieconsent.initialise({
+			        "palette": {
+				        "popup": {
+                            "background": "#093a7f"
+				        },
+				        "button": {
+                            "background": "#f78f20",
+					        "text": "#fff"
+				        },
+				        "highlight": {
+					        "background": "#cccccc",
+					        "text": "#fff"
+				        }
+			        },
+			        "content": {
+				        "dismiss": "Got it!",
+                        "href": "/mvc/public/content/b4a/privacy-policy"
+			        }
+		        })
+	        });
+        
+
+	    //javascript function here
+	    //document is ready and scriptable
+	    var showConfirmationRequiredDialog = false;
+
+	    function getParameterByName(name) {
+	        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	        var regexS = "[\\?&]" + name + "=([^&#]*)";
+	        var regex = new RegExp(regexS);
+	        var results = regex.exec(window.location.search);
+	        if (results == null)
+	            return "";
+	        else
+	            return decodeURIComponent(results[1].replace(/\+/g, " "));
+	    }
+
+	    $(document).ready(function () {
+	        //class="map"
+	        $('.map').maphilight({ fillColor: 'f78f1f', fade: false }); /*set true for fading hover effect*/
+	        //$('map > area').easyTooltip(); /*use for html code version*/
+	        $("area").easyTooltip();	       
+	    });
+	
+   
+    var carouselVar;
+    var autoScrolled = false;
+    var manualScroll = false;
+    var clickOffset = 0;
+    var autoRotateCount = 0; 
+
+        if ((BrowserDetect.browser == 'Exporer') || (BrowserDetect.browser == 'Chrome')) {
+		// clickOffset = 1;
+        }
+
+    function advanceCarousel() {
+        carouselObj = jQuery('#carousel').data('jcarousel');
+        carouselObj.next();    
+    }
+
+    function mycarousel_itemFirstInCallback(carousel, elem, position, state) {
+        if (state == 'next') {
+            clickOffset--; 
+		autoRotateCount++;		
+        } else if (state == 'prev') {
+            clickOffset++;
+        }
+    }
+
+    function mycarousel_initCallback(carousel)
+    {
+        // Disable autoscrolling if the user clicks the prev or next button.
+        carousel.buttonNext.bind('click', function() {
+            carousel.startAuto(0);      
+            // clickOffset--;      
+		manualScroll = true;	
+        });
+ 
+        carousel.buttonPrev.bind('click', function() {
+            carousel.startAuto(0);
+           // clickOffset++;
+		manualScroll = true;
+        });
+ 
+        // Pause autoscrolling if the user moves with the cursor over the clip.
+        carousel.clip.hover(function() {
+            carousel.stopAuto();
+        }, function() {
+           // carousel.startAuto();
+        });
+
+        setTimeout("advanceCarousel()",10);
+    };
+
+    function mycarousel_animationStepCallback(carousel) {
+        autoScrolled = true;
+    }
+
+    function shuffle(sourceArray) {
+        for (var n = 0; n < sourceArray.length - 1; n++) {
+            var k = n + Math.floor(Math.random() * (sourceArray.length - n));
+
+            var temp = sourceArray[k];
+            sourceArray[k] = sourceArray[n];
+            sourceArray[n] = temp;
+        }
+    }
+
+    var hoverIn = false;
+
+    function setHoverTrue() {
+        hoverIn = true;
+    }
+
+    featuredItems = [{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2375/856155.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2375/larger-856155.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2375/856155.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2375/larger-856155.jpg","AltText":"Tuolumne County, CA Tax Sale!  \r\n26 Defaulted Parcels!  \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/856155","PropertyInfo":"Tuolumne County, CA Tax Sale! \u003cbr\u003e\r\n26 Defaulted Parcels! \u003cbr\u003e\r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2374/855510.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2374/larger-855510.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2374/855510.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2374/larger-855510.jpg","AltText":"U.S. MARSHALS SALE: 1969 Piper Aztec PA-23-250 Aircraft  \r\n$5,000 Minimum Bid!  \r\nNo Deposit Required!","LinkUrl":"/mvc/auction/855510","PropertyInfo":"U.S. MARSHALS SALE: 1969 Piper Aztec PA-23-250 Aircraft \u003cbr\u003e\r\n$5,000 Minimum Bid! \u003cbr\u003e\r\nNo Deposit Required!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2373/854113.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2373/larger-854113.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2373/854113.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2373/larger-854113.jpg","AltText":"Tehama County, CA Tax Sale! \r\n78 Tax Defaulted Parcels Available!  \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/854113","PropertyInfo":"Tehama County, CA Tax Sale!\u003cbr\u003e\r\n78 Tax Defaulted Parcels Available! \u003cbr\u003e\r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2365/853113.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2365/larger-853113.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2365/853113.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2365/larger-853113.jpg","AltText":"Lassen County, CA Tax Sale!   36 Defaulted Parcels   \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/853113","PropertyInfo":"Lassen County, CA Tax Sale! \u003cbr\u003e 36 Defaulted Parcels \u003cbr\u003e \r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2363/852038.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2363/larger-852038.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2363/852038.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2363/larger-852038.jpg","AltText":"San Francisco, CA Timeshare Sale!\r\n \r\n225 Tax-Defaulted Timeshare Property Auctions,\r\n \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/852038","PropertyInfo":"San Francisco, CA Timeshare Sale!\r\n\u003cbr\u003e\r\n225 Tax-Defaulted Timeshare Property Auctions,\r\n\u003cbr\u003e\r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2362/852039.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2362/larger-852039.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2362/852039.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2362/larger-852039.jpg","AltText":"San Francisco, CA Tax Sale!\r\n \r\n61 Tax Defaulted Parcels\r\n \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/852039","PropertyInfo":"San Francisco, CA Tax Sale!\r\n\u003cbr\u003e\r\n61 Tax Defaulted Parcels\r\n\u003cbr\u003e\r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2360/852022.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/2360/larger-852022.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2360/852022.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/2360/larger-852022.jpg","AltText":"Humboldt County, Nevada Tax Defaulted Properties Sale!  \r\nDeposit Info Here!","LinkUrl":"/mvc/auction/852022","PropertyInfo":"Humboldt County, Nevada Tax Defaulted Properties Sale! \u003cbr\u003e\r\nDeposit Info Here!"},{"SmallImageUrl":"http://images-s3.bid4assets.com/featured/homepage/1924/631966.jpg","LargeImageUrl":"http://images-s3.bid4assets.com/featured/homepage/1924/larger-631966.jpg","SmallImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/1924/631966.jpg","LargeImageUrlSsl":"https://s3.amazonaws.com/images-s3.bid4assets.com/featured/homepage/1924/larger-631966.jpg","AltText":"Nationwide Apartments, Homes, \u0026 Commercial Property!\r\n \r\nClick to Review Properties!","LinkUrl":"/mvc/auction/631966","PropertyInfo":"Nationwide Apartments, Homes, \u0026 Commercial Property!\r\n\u003cbr\u003e\r\nClick to Review Properties!"}]
+    
+    jQuery(document).ready(function () {
+        shuffle(featuredItems);
+        // loop through json array and output to div
+        divStr = '<ul id="featuredlist">';
+        itemCount = featuredItems.length;
+        for (i = 0; i<itemCount; i++) {
+            divStr += '<li>';            
+            if (document.location.href.indexOf("https://") >= 0) {
+                $.cacheImage(featuredItems[i].LargeImageUrlSsl);
+                $.cacheImage(featuredItems[i].SmallImageUrlSsl);			
+                divStr += '<a href="' + featuredItems[i].LinkUrl + '"><img largesrc="' + featuredItems[i].LargeImageUrlSsl + '" border="0" width="167" height="114" src="' + featuredItems[i].SmallImageUrlSsl + '" alt="' + featuredItems[i].AltText.replace(/"/g, '&quot;')  + '"/>';
+            } else {
+                $.cacheImage(featuredItems[i].LargeImageUrl);
+                $.cacheImage(featuredItems[i].SmallImageUrl);			
+                divStr += '<a href="' + featuredItems[i].LinkUrl + '"><img largesrc="' + featuredItems[i].LargeImageUrl + '" border="0" width="167" height="114" src="' + featuredItems[i].SmallImageUrl + '" alt="' + featuredItems[i].AltText.replace(/"/g, '&quot;') + '"/>';
+            }
+            if (featuredItems[i].PropertyInfo.length > 0) {
+                divStr += '<span>' + featuredItems[i].PropertyInfo + '</span>';
+            }
+            divStr += '</a></li>';
+        }
+        divStr += '</ul>';
+        jQuery("#carousel").html(divStr);       
+
+        $("#featuredlist img").hover(function() {
+                //alert(autoScrolled);
+               // $(this).find('img').stop();
+                setTimeout("setHoverTrue()", 100);            
+                carouselObj = jQuery('#carousel').data('jcarousel');
+                carouselObj.stopAuto();
+
+                largeSrc = $(this).attr("largesrc");
+                linkHref = $(this).parent().attr("href");                
+
+                itemOffset = $(this).parent().parent().offset();
+                itemPosition = $(this).parent().parent().position();
+                itemPositionLeft = itemPosition.left;
+                if (clickOffset > 0)
+                    itemPositionLeft = itemPositionLeft - (177*clickOffset);
+
+                console.log(clickOffset);
+                console.log(itemOffset);
+                console.log(itemPosition);
+                console.log(itemPositionLeft);
+                idx = 1;         
+
+                //$("#output").html(itemPositionLeft);
+                /*
+                for (i = 1; i<= 4; i++) {
+                    if (i != idx) {
+                        $('#largerThumbnail' + i).hide();
+                    }
+                }*/
+
+            //				left = ($(this).offset().left - $("#featured-listings-wrapper").offset().left) + ($(this).width()-20);
+                left = ($("#featured-listings-wrapper").offset().left + itemPositionLeft) - 160;
+                containerPosition = jQuery("#carousel").position();
+                itemWidth = $(this).parent().parent().width();
+                //alert(itemWidth);
+                // alert(containerPosition.top+itemPosition.top);
+
+                $('#largerImage' + idx).attr("src",largeSrc);       
+				
+				jQuery('#largerThumbnail' + idx).css("top", containerPosition.top+itemPosition.top);                
+				jQuery('#largerThumbnail' + idx).css("left", left);
+
+                spanHTML = $(this).next().html();
+                $("#largerSpan" + idx).html(spanHTML);
+                $("#largerLink" + idx).attr("href",linkHref);
+
+              //  jQuery('#largerThumbnail' + idx).show();
+                        
+	        } , function() {
+            
+        });
+
+        wrapType = 'circular';
+        // temp fix for: https://github.com/jsor/jcarousel/issues/188
+        if (BrowserDetect.browser == 'Safari') {
+            wrapType = 'last';
+        }
+
+        jQuery('#carousel').jcarousel({
+            auto: 2,
+            scroll: 1,
+            rtl: false,
+            wrap: wrapType,
+            initCallback: mycarousel_initCallback,
+            animationStepCallback: mycarousel_animationStepCallback,
+            itemFirstInCallback: mycarousel_itemFirstInCallback
+        });
+
+         $("#largerThumbnail1").hover(function() {
+                // in
+            }, function() {
+                $(this).hide();
+                $('#largerImage1').attr("src","http://www.bid4assets.com/images/spacer.gif");
+                carouselObj = jQuery('#carousel').data('jcarousel');
+                carouselObj.startAuto();
+
+            });
+       
+    });
+ 
+
+
+			$(document).ready(function(){
+			   jQuery("path").mousemove(function(e) {
+				  jQuery(".hovertext").text(jQuery(this).attr('title'));
+				  jQuery(".hovertext").css({
+					'top': e.pageY -30,
+					'left': e.pageX
+				  }).fadeIn('slow');
+				});
+
+				jQuery( "path" ).click(function() {
+					jQuery("#county_code").val(jQuery(this).attr('title'));
+					jQuery( "#target_form" ).submit(); 
+				});
+			});	
+		
+
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        
+
+            var pageTracker = _gat._getTracker("UA-68598-9");
+            pageTracker._setDomainName("bid4assets.com");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+        
+
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        
+
+            var pageTracker = _gat._getTracker("UA-5135896-1");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+
+        
+
+            var domainy = location.protocol == "https:" ? "https://static.getclicky.com" : "http://static.getclicky.com";
+            document.write(unescape("%3Cscript src='" + domainy + "/js' type='text/javascript'%3E%3C/script%3E"));
+
+	    
+	    clicky.init(84415);

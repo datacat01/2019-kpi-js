@@ -1,0 +1,33 @@
+ 
+
+        /* footer-gap */
+        function setFooterGap() {
+            $gap = $("#footer-gap");
+            var height = Math.max($("html").height() - $gap.offset().top, 0);
+            $("#footer-gap").height(height);
+        }
+
+        $(document).ready(function () {
+            setFooterGap();
+            $(window).resize(function () {
+                setFooterGap();
+            });
+        });
+    
+
+                                    function googleTranslateElementInit() {
+                                        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                                    }
+                                
+
+        var _baseUrl = '/';
+        var _messLat = 40.14666;
+        var _messLng = -76.56139;
+        var _fromAddress = 'parts@messicks.com';
+        var _infoAddress = 'info@messicks.com';
+        var _partsAdress = 'parts@messicks.com';
+        var _salesAddress= 'sales@messicks.com';
+
+        var countdowntime = 1555351200000;
+        var countdownday = 'MONDAY';
+    

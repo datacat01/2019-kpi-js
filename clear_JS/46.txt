@@ -1,0 +1,12 @@
+
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function () {
+    googletag.pubads().enableSingleRequest()
+    googletag.pubads().disableInitialLoad()
+    googletag.pubads().enableVideoAds()
+    googletag.companionAds().setRefreshUnfilledSlots(false)
+    googletag.enableServices()
+    })
+    
+

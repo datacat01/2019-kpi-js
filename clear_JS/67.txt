@@ -1,0 +1,234 @@
+//console.log((new Date()).toTimeString()+": start of document head\n");
+//console.log((new Date()).toTimeString()+": get home_stylesheet\n");
+
+function removeValue(id) {
+    document.getElementById(id).value = '';
+}
+
+function validateIdSearch(id) {
+    if (document.getElementById(id).value == '') {
+        alert("Please Enter a Company or Listing Id.");
+        return false;
+    } else {
+        document.getElementById('companiesCompanyIdSearchForm').submit();
+    }
+}
+function validateIdSearch2(id) {
+    if (document.getElementById(id).value == '') {
+        alert("Please Enter a Company or Listing Id.");
+        return false;
+    } else {
+        document.getElementById('companiesCompanyIdSearchForm2').submit();
+    }
+}
+function validateAdvanceSearch(){
+    if ( document.getElementById("saleSaleZip").value == '' || document.getElementById("saleSaleZip").value == 'enter your zip code' ) {
+        alert("Please Enter Zip Code.");
+        document.getElementById("saleSaleZip").focus();
+        return false;
+    } else {
+        document.getElementById('salesAdvanceSearchForm').submit();
+    }
+}
+
+
+                    var info_popup_visible = false;
+                    function toggleInfoPopup() {
+                        if ( info_popup_visible ) {
+                            document.getElementById('info-popup').style.visibility = 'hidden';
+                        }
+                        else {
+                            document.getElementById('info-popup').style.visibility = 'visible';
+                        }
+                        info_popup_visible = !info_popup_visible;
+                    }
+                
+
+var overlayVisible = false;
+var otimer;
+function showOverlay( event ) {
+    if ( !overlayVisible ) {
+        pauseRotate(); 
+	document.getElementById('ad-left').style.visibility="visible";
+	document.getElementById('ad-left-arrow').style.visibility="visible";
+	document.getElementById('ad-right').style.visibility="visible";
+	document.getElementById('ad-right-arrow').style.visibility="visible";
+//	document.getElementById('ad-bottom').style.visibility="visible";
+//	document.getElementById('ad-bottom-content').style.visibility="visible";
+//    clearTimeout(otimer);
+//    otimer = null;
+//    otimer = setTimeout("hideOverlay()",4000);
+//    otimer = setTimeout("overlayVisible = true",4000);
+        overlayVisible = true;
+        event.stopImmediatePropagation();
+    }
+}
+function hideOverlay( event ) {
+	if ( overlayVisible ) {
+            clearTimeout(timer);
+            timer = null;
+            timer = setTimeout("showAd()",10000);
+
+    	document.getElementById('ad-left').style.visibility="hidden";
+    	document.getElementById('ad-left-arrow').style.visibility="hidden";
+    	document.getElementById('ad-right').style.visibility="hidden";
+    	document.getElementById('ad-right-arrow').style.visibility="hidden";
+//    	document.getElementById('ad-bottom').style.visibility="hidden";
+//    	document.getElementById('ad-bottom-content').style.visibility="hidden";
+        overlayVisible = false;
+        event.stopImmediatePropagation();
+	}
+}
+
+
+    document.getElementById('featured_ads').addEventListener("mouseover", showOverlay, true);
+    document.getElementById('featured_ads').addEventListener("mouseout", hideOverlay, true);
+//    document.getElementById('ad-left-arrow').addEventListener("mouseover", showOverlay, true);
+//    document.getElementById('left-arrow').addEventListener("mouseover", showOverlay, true);
+//    document.getElementById('ad-left-arrow').addEventListener("mouseover", function( event ) { event.stopImmediatePropagation(); }, true);
+//    document.getElementById('ad-right-arrow').addEventListener("mouseover", function( event ) { event.stopImmediatePropagation(); }, true);
+    document.getElementById('ad-left-arrow').addEventListener("mouseover", showOverlay, true);
+    document.getElementById('ad-right-arrow').addEventListener("mouseover", showOverlay, true);
+    document.getElementById('ad-left-arrow').addEventListener("mouseout", hideOverlay, true);
+    document.getElementById('ad-right-arrow').addEventListener("mouseout", hideOverlay, true);
+    document.getElementById('ad-left-arrow').addEventListener("click", function() { current_ad = prev_ad; showAd(); }, false);
+    document.getElementById('ad-right-arrow').addEventListener("click", function() { showAd(); }, false);
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24843913-1']);
+  _gaq.push(['_trackPageview']); 
+  (function() {
+     var ga = document.createElement('script'); ga.type = 
+'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 
+ 'https://ssl' : 'http://www') +
+ '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0];
+ s.parentNode.insertBefore(ga, s);
+   })();
+ 
+ 
+
+function openMenu() {
+	mnu = document.getElementById("mob-menu");
+//	sw = window.document.viewport.getWidth();
+	sw = window.document.body.clientWidth;
+//	mnu.style.transform='translateX(0px)';
+	mnu.style.transform='translateY(40px)';
+	document.getElementById("menu-open").style.display = "none";
+	document.getElementById("menu-close").style.display = "block";
+}
+function closeMenu() {
+	mnu = document.getElementById("mob-menu");
+	mnu.style.transform='translateY(-100%)';
+	var acc = document.getElementsByClassName("active");
+
+	while ( acc.length > 0 ) {
+		if ( acc[0].children["states-menu"] != undefined ) {
+    	    acc[0].children["states-menu"].style.maxHeight = acc[0].scrollHeight + "px";
+    	    acc[0].children["states-menu"].removeClassName("mob-ul-show");
+		}
+		if ( acc[0].children["major-menu"] != undefined ) {
+    	    acc[0].children["major-menu"].style.maxHeight = acc[0].scrollHeight + "px";
+    	    acc[0].children["major-menu"].removeClassName("mob-ul-show");
+		}
+	    acc[0].children[0].removeClassName("hide-icon");
+	    if ( !acc[0].children[1].hasClassName("hide-icon") )
+    	    acc[0].children[1].addClassName("hide-icon");
+	    acc[0].classList.toggle("active");
+	}
+		
+	document.getElementById("menu-open").style.display = "block";
+	document.getElementById("menu-close").style.display = "none";
+}
+
+
+
+var mobOverlayVisible = false;
+var mobTimer;
+function showMobOverlay() {
+    if ( !mobOverlayVisible ) {
+        pauseMobRotate(); 
+    	document.getElementById('mob-ad-left').style.visibility="visible";
+	    document.getElementById('mob-ad-left-arrow').style.visibility="visible";
+	    document.getElementById('mob-ad-right').style.visibility="visible";
+    	document.getElementById('mob-ad-right-arrow').style.visibility="visible";
+	    document.getElementById('mob-ad-bottom').style.visibility="visible";
+    	document.getElementById('mob-ad-bottom-content').style.visibility="visible";
+    	mobOverlayVisible = true;
+    }
+}
+function hideMobOverlay() {
+	if ( mobOverlayVisible ) {
+        clearTimeout(mobTimer);
+        mobTimer = null;
+        mobTimer = setTimeout("showMobAd()",10000);
+
+    	document.getElementById('mob-ad-left').style.visibility="hidden";
+    	document.getElementById('mob-ad-left-arrow').style.visibility="hidden";
+    	document.getElementById('mob-ad-right').style.visibility="hidden";
+    	document.getElementById('mob-ad-right-arrow').style.visibility="hidden";
+    	document.getElementById('mob-ad-bottom').style.visibility="hidden";
+    	document.getElementById('mob-ad-bottom-content').style.visibility="hidden";
+    	mobOverlayVisible = false;
+	}
+}
+
+
+//    document.getElementById('mob_featured_ads').addEventListener("mouseover", showMobOverlay, true);
+//    document.getElementById('mob_featured_ads').addEventListener("mouseout", hideMobOverlay, true);
+//    document.getElementById('mob-ad-left-arrow').addEventListener("mouseover", showMobOverlay, true);
+//    document.getElementById('mob-ad-right-arrow').addEventListener("mouseover", showMobOverlay, true);
+//    document.getElementById('mob-ad-left-arrow').addEventListener("mouseout", hideMobOverlay, true);
+//    document.getElementById('mob-ad-right-arrow').addEventListener("mouseout", hideMobOverlay, true);
+
+
+document.onreadystatechange=function(){
+	if ( document.readyState = "complete" ) {
+        document.getElementById("upBtn").style.display = "none";
+	}
+};
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+	bw = window.document.body.clientWidth;
+	if ( bw > 768 ) {
+        document.getElementById("upBtn").style.display = "none";
+		return;
+	}
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("upBtn").style.display = "block";
+    } else {
+        document.getElementById("upBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+}
+
+
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=567168649';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+
+
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1441054463';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+
+var pageLocation = "home";
+window.onload=init("home", "0");

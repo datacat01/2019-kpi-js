@@ -1,0 +1,12 @@
+
+  $(window).load(function() {
+    $('.flexslider').flexslider();
+  });
+
+
+if (are_cookies_enabled())
+{ }
+else
+{document.write("Cookies are disabled. Enable cookies using your browsers settings to effectively utlize Sportlots. ");
+ document.write('Learn More'.link('/help/cookies.tpl'));}
+

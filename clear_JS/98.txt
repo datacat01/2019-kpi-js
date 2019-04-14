@@ -1,0 +1,742 @@
+
+//<![CDATA[
+var infortisTheme = {}; infortisTheme.responsive = true; infortisTheme.maxBreak = 960;
+//]]>
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.bambibaby.com';
+//]]>
+
+
+window._bl = { partner: 'https://www.bambibaby.com/' };
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-1169839-1']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+//<![CDATA[
+    var AWACP_CONFIG = {
+        mageVersion: '1.9.1.1',
+        useProgress : 1,
+        addProductConfirmationEnabled : 1,
+        removeProductConfirmationEnabled : 1,
+        dialogsVAlign: 'center',
+        cartAnimation: 'none',
+        addProductCounterBeginFrom : 0,
+        removeProductCounterBeginFrom : 0,
+
+                
+        hasFileOption : false    };
+
+    Event.observe(document, 'dom:loaded', function(){
+        AW_AjaxCartPro.init(AWACP_CONFIG);
+    });
+
+//]]>
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/IFXhNnc7OUas8OZpuZ1BcskFP91yb0ZjvQVBgXFD/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+(function() {
+window.__insp = window.__insp || [];
+__insp.push(['wid', 1520371060]);
+var ldinsp = function(){ if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1520371060&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 0);
+})();
+
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Enter search keyword');
+        searchForm.initAutocomplete('https://www.bambibaby.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+        //<![CDATA[
+
+                        
+                                        var activateMobileMenu = function()
+                    {
+                        if (jQuery(window).width() < 960)
+                        {
+                            jQuery('#mobnav').show();
+                            jQuery('.vertnav-top').addClass('mobile');
+                            jQuery('#nav').addClass('mobile');
+                        }
+                        else
+                        {
+                            jQuery('#nav').removeClass('mobile');
+                            jQuery('.vertnav-top').removeClass('mobile');
+                            jQuery('#mobnav').hide();
+                        }
+                    }
+                    activateMobileMenu();
+                    jQuery(window).resize(activateMobileMenu);
+        
+                
+                                jQuery('#mobnav-trigger').toggle(function() {
+                    jQuery('.vertnav-top').addClass('show');
+                    jQuery(this).addClass('active');
+                }, function() {
+                    jQuery('.vertnav-top').removeClass('show');
+                    jQuery(this).removeClass('active');
+                });
+                
+        //]]>
+        
+
+        //<![CDATA[
+
+                    jQuery(function($) {
+                $("#nav > li").hover(function() {
+                    var el = $(this).find(".level0-wrapper");
+                    el.hide();
+                    el.css("left", "0");
+                    el.stop(true, true).delay(150).fadeIn(300, "easeOutCubic");
+                }, function() {
+                    $(this).find(".level0-wrapper").stop(true, true).delay(300).fadeOut(300, "easeInCubic");
+                });
+            });
+        
+            var isTouchDevice = ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0);
+            jQuery(window).on("load", function() {
+
+                if (isTouchDevice)
+                {
+                    jQuery('#nav a.level-top').click(function(e) {
+                        $t = jQuery(this);
+                        $parent = $t.parent();
+                        if ($parent.hasClass('parent'))
+                        {
+                            if ( !$t.hasClass('menu-ready'))
+                            {                    
+                                jQuery('#nav a.level-top').removeClass('menu-ready');
+                                $t.addClass('menu-ready');
+                                return false;
+                            }
+                            else
+                            {
+                                $t.removeClass('menu-ready');
+                            }
+                        }
+                    });
+                }
+
+            }); //end: on load
+
+        //]]>
+        
+
+//<![CDATA[
+    jQuery(function($) {
+        
+        var owl = $('#slideshow-8bbbda549b14b39d36a2d54f0a1c4b9d');
+        owl.owlCarousel({
+
+            singleItem: true,
+
+                    slideSpeed: 200,
+        
+                    paginationSpeed: 300,
+        
+                    autoPlay: 8000,
+        
+                    stopOnHover: true,
+        
+                    rewindNav: true,
+            rewindSpeed: 600,
+        
+                    autoHeight: true,
+        
+                    transitionStyle: 'fade',
+        
+            navigation: true
+
+        }); //end: owl
+
+    });
+//]]>
+
+
+        //<![CDATA[
+            document.observe("dom:loaded", Catalog.Map.bindProductForm);
+        //]]>
+        
+
+//<![CDATA[
+var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+new Varien.searchForm('newsletter-validate-detail', 'newsletter', 'Your Email Address');
+//]]>
+
+
+        /* <![CDATA[ */
+        var google_conversion_id = 1061997117;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+        
+
+        
+
+	//<![CDATA[
+
+			var gridItemsEqualHeightApplied = false;
+	function setGridItemsEqualHeight($)
+	{
+		var $list = $('.category-products-grid');
+		var $listItems = $list.children();
+
+		var centered = $list.hasClass('centered');
+		var gridItemMaxHeight = 0;
+		$listItems.each(function() {
+			
+			$(this).css("height", "auto"); 			var $object = $(this).find('.actions');
+
+						if (centered)
+			{
+				var objectWidth = $object.width();
+				var availableWidth = $(this).width();
+				var space = availableWidth - objectWidth;
+				var leftOffset = space / 2;
+				$object.css("padding-left", leftOffset + "px"); 			}
+
+						var bottomOffset = parseInt($(this).css("padding-top"));
+			if (centered) bottomOffset += 10;
+			$object.css("bottom", bottomOffset + "px");
+
+						if ($object.is(":visible"))
+			{
+								var objectHeight = $object.height();
+				$(this).css("padding-bottom", (objectHeight + bottomOffset) + "px");
+			}
+
+						
+			gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
+		});
+
+		//Apply max height
+		$listItems.css("height", gridItemMaxHeight + "px");
+		gridItemsEqualHeightApplied = true;
+
+	}
+	
+
+
+	jQuery(function($) {
+
+				$('.collapsible').each(function(index) {
+			$(this).prepend('<span class="opener">&nbsp;</span>');
+			if ($(this).hasClass('active'))
+			{
+				$(this).children('.block-content').css('display', 'block');
+			}
+			else
+			{
+				$(this).children('.block-content').css('display', 'none');
+			}			
+		});
+				$('.collapsible .opener').click(function() {
+			
+			var parent = $(this).parent();
+			if (parent.hasClass('active'))
+			{
+				$(this).siblings('.block-content').stop(true).slideUp(300, "easeOutCubic");
+				parent.removeClass('active');
+			}
+			else
+			{
+				$(this).siblings('.block-content').stop(true).slideDown(300, "easeOutCubic");
+				parent.addClass('active');
+			}
+			
+		});
+		
+		
+				var ddOpenTimeout;
+		var dMenuPosTimeout;
+		var DD_DELAY_IN = 200;
+		var DD_DELAY_OUT = 0;
+		var DD_ANIMATION_IN = 0;
+		var DD_ANIMATION_OUT = 0;
+		$(".clickable-dropdown > .dropdown-toggle").click(function() {
+			$(this).parent().addClass('open');
+			$(this).parent().trigger('mouseenter');
+		});
+		$(".dropdown").hover(function() {
+			
+			
+			var ddToggle = $(this).children('.dropdown-toggle');
+			var ddMenu = $(this).children('.dropdown-menu');
+			var ddWrapper = ddMenu.parent(); 			
+						ddMenu.css("left", "");
+			ddMenu.css("right", "");
+			
+						if ($(this).hasClass('clickable-dropdown'))
+			{
+								if ($(this).hasClass('open'))
+				{
+					$(this).children('.dropdown-menu').stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+				}
+			}
+			else
+			{
+								clearTimeout(ddOpenTimeout);
+				ddOpenTimeout = setTimeout(function() {
+					
+					ddWrapper.addClass('open');
+					
+				}, DD_DELAY_IN);
+				
+				//$(this).addClass('open');
+				$(this).children('.dropdown-menu').stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+			}
+			
+						clearTimeout(dMenuPosTimeout);
+			dMenuPosTimeout = setTimeout(function() {
+
+				if (ddMenu.offset().left < 0)
+				{
+					var space = ddWrapper.offset().left; 					ddMenu.css("left", (-1)*space);
+					ddMenu.css("right", "auto");
+				}
+			
+			}, DD_DELAY_IN);
+			
+		}, function() {
+			var ddMenu = $(this).children('.dropdown-menu');
+			clearTimeout(ddOpenTimeout); 			ddMenu.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+			if (ddMenu.is(":hidden"))
+			{
+				ddMenu.hide();
+			}
+			$(this).removeClass('open');
+		});
+		
+		
+		
+							$(".main").addClass("show-bg");
+				
+		
+		
+				var windowScroll_t;
+		$(window).scroll(function(){
+			
+			clearTimeout(windowScroll_t);
+			windowScroll_t = setTimeout(function() {
+										
+				if ($(this).scrollTop() > 100)
+				{
+					$('#scroll-to-top').fadeIn();
+				}
+				else
+				{
+					$('#scroll-to-top').fadeOut();
+				}
+			
+			}, 500);
+			
+		});
+		
+		$('#scroll-to-top').click(function(){
+			$("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+			return false;
+		});
+		
+		
+		
+				
+			var startHeight;
+			var bpad;
+			$('.category-products-grid').on('mouseenter', '.item', function() {
+
+														if ($(window).width() >= 320)
+					{
+				
+											if (gridItemsEqualHeightApplied === false)
+						{
+							return false;
+						}
+					
+					startHeight = $(this).height();
+					$(this).css("height", "auto"); //Release height
+					$(this).find(".display-onhover").fadeIn(400, "easeOutCubic"); //Show elements visible on hover
+					var h2 = $(this).height();
+					
+										////////////////////////////////////////////////////////////////
+					var addtocartHeight = 0;
+					var addtolinksHeight = 0;
+					
+											//addtocartHeight = $(this).find('.btn-cart').height(); //obsolete
+						var buttonOrStock = $(this).find('.btn-cart');
+						if (buttonOrStock.length == 0) buttonOrStock = $(this).find('.availability');
+						addtocartHeight = buttonOrStock.height();
+						
+										
+											var addtolinksEl = $(this).find('.add-to-links');
+						if (addtolinksEl.hasClass("addto-onimage") == false)
+							addtolinksHeight = addtolinksEl.innerHeight(); //.height();
+										
+											var h3 = h2 + addtocartHeight + addtolinksHeight;
+						var diff = 0;
+						if (h3 < startHeight)
+						{
+							$(this).height(startHeight);
+						}
+						else
+						{
+							$(this).height(h3); 							diff = h3 - startHeight;
+						}
+										////////////////////////////////////////////////////////////////
+
+					$(this).css("margin-bottom", "-" + diff + "px"); 
+									} 								
+			}).on('mouseleave', '.item', function() {
+
+													if ($(window).width() >= 320)
+					{
+				
+					//Clean up
+					$(this).find(".display-onhover").stop(true).hide();
+					$(this).css("margin-bottom", "");
+
+																$(this).height(startHeight);
+					
+									} 								
+			});
+		
+		
+
+
+				$('.products-grid, .products-list').on('mouseenter', '.item', function() {
+			$(this).find(".alt-img").fadeIn(400, "easeOutCubic");
+		}).on('mouseleave', '.item', function() {
+			$(this).find(".alt-img").stop(true).fadeOut(400, "easeOutCubic");
+		});
+
+
+
+				$('.fade-on-hover').on('mouseenter', function() {
+			$(this).animate({opacity: 0.75}, 300, 'easeInOutCubic');
+		}).on('mouseleave', function() {
+			$(this).stop(true).animate({opacity: 1}, 300, 'easeInOutCubic');
+		});
+
+
+
+						var winWidth = $(window).width();
+		var winHeight = $(window).height();
+		$(window).resize(
+			$.debounce(50, onEventResize)
+		); //end: resize
+
+				function onEventResize() {
+
+						var winNewWidth = $(window).width();
+			var winNewHeight = $(window).height();
+			if (winWidth != winNewWidth || winHeight != winNewHeight)
+			{
+				afterResize(); 			}
+			//Update window size variables
+			winWidth = winNewWidth;
+			winHeight = winNewHeight;
+
+		} //end: onEventResize
+
+				function afterResize() {
+
+						$(document).trigger("themeResize");
+
+										setGridItemsEqualHeight($);
+									
+						$('.itemslider').each(function(index) {
+				var flex = $(this).data('flexslider');
+				if (flex != null)
+				{
+					flex.flexAnimate(0);
+					flex.resize();
+				}
+			});
+							
+						var slideshow = $('.the-slideshow').data('flexslider');
+			if (slideshow != null)
+			{
+				slideshow.resize();
+			}
+
+		} //end: afterResize
+
+
+
+	}); /* end: jQuery(){...} */
+	
+	
+
+	jQuery(window).load(function(){
+		
+							setGridItemsEqualHeight(jQuery);
+		
+	}); /* end: jQuery(window).load(){...} */
+
+	//]]>
+
+
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+        var checkedForms = [];
+        var hasFormsChanged = false;
+
+        var onSubmit = function (token) {
+            if (currentValidationForm && currentValidationForm.validator
+                && currentValidationForm.validator.validate()
+            ) {
+                currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+                if (typeof(recaptchaObject) !== 'undefined'
+                    && 'post' !== currentForm.method
+                ) {
+                    recaptchaObject.submit();
+                } else {
+                    currentForm.submit();
+                }
+            } else {
+                grecaptcha.reset();
+            }
+        };
+
+        function checkForms() {
+            formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"newsletter\/subscriber\/new\"]","form[action*=\"customer\/account\/loginPost\"]","form[action*=\"review\/product\/post\"]","form[action*=\"contacts\/index\/post\"]"];
+            formsToProtect.forEach(function (item) {
+                var continueWorking = true;
+                formsSearchedBySelector = $$(item);
+                checkedForms.forEach(function(element) {
+                    if (element[0] == formsSearchedBySelector[0]) {
+                        continueWorking = false;
+                        return;
+                    }
+                })
+                if (formsSearchedBySelector.length != 0 && continueWorking) {
+                    checkedForms.push(formsSearchedBySelector);
+                    formsSearchedBySelector.forEach(function (formToProtect) {
+                        formsToProtectOnPage.push(formToProtect);
+                        hasFormsChanged = true;
+                    });
+                }
+            });
+            if (hasFormsChanged) {
+                for (var index in formsToProtectOnPage) {
+                    if (formsToProtectOnPage.hasOwnProperty(index)) {
+                        var formToProtectOnPage = formsToProtectOnPage[index];
+                        if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                            formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                            if (0 < formToProtectOnPage.length) {
+                                formToProtectOnPage = formToProtectOnPage[0];
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        if (1 > formToProtectOnPage.getElementsByClassName('amasty_recaptcha').length) {
+                            var recaptchaBlock = document.createElement('div');
+                            recaptchaBlock.className = 'amasty_recaptcha';
+                            formToProtectOnPage.appendChild(recaptchaBlock);
+                        }
+
+                        if (1 > formToProtectOnPage.getInputs(formToProtectOnPage, 'hidden', 'amasty_invisible_token').length) {
+                            var tokenInput = document.createElement('input');
+                            tokenInput.type = 'hidden';
+                            tokenInput.name = 'amasty_invisible_token';
+                            tokenInput.value = '';
+                            formToProtectOnPage.appendChild(tokenInput);
+                        }
+
+                        formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                            currentForm = event.target;
+                            currentValidationForm = new VarienForm(currentForm.id, false);
+                            recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                            if ('' == recaptchaBlock.innerHTML) {
+                                recaptcha = grecaptcha.render(recaptchaBlock, {
+                                    'sitekey': '6Le_u1cUAAAAADSd4DuS7ekcKKeRO9Uhecw4waXH',
+                                    'callback': onSubmit,
+                                    'size': 'invisible',
+                                    'theme': 'light',
+                                    'badge': 'bottomright'
+                                });
+                            }
+                            grecaptcha.reset(recaptcha);
+                            grecaptcha.execute(recaptcha);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        document.observe("dom:loaded", function() {
+            var formsCount = 0;
+            setInterval(function () {
+                var formLength = $$('form').length;
+                if (formsCount != formLength) {
+                    formsCount = formLength;
+                    checkForms();
+                }
+            }, 1000);
+        });
+    
+
+	var klevu_sessionId = 'qp1nai0hmfbjkgsehbh1ecnl97';
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.2.5';
+    		(function () {
+			// Remove Magento event observers from the search box
+			// Redirect to klevu js page
+			for( i = 0, len = allInputs.length; i < len; i++ ){
+				if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+					if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+						var search_input = allInputs[i];
+						search_input.stopObserving('click');
+						search_input.stopObserving('keydown');
+						search_input.form.action='https://www.bambibaby.com/search/' ;//?q="+search_input.value;
+						search_input.form.observe('submit', function (e) {
+							//if(search_input.value.length!= 0){
+								//Event.stop(e);
+								//return false;
+							//}
+						});
+					}
+				}
+			}
+			
+		})();
+		 var klevu_storeLandingPageUrl = 'https://www.bambibaby.com/search/';
+		 var klevu_showQuickSearchOnEnter=false;
+    		// call store js
+		var klevu_apiKey = 'klevu-14737767897314265',
+			searchTextBoxName = 'search',
+			klevu_lang = 'en',
+			klevu_result_top_margin = '',
+			klevu_result_left_margin = '';
+		(function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+
+
+    var klevu_cms_module_enabled=true;
+
+
+// Enable cms for klevu template
+        var klevu_cmsSearchEnabled = false;
+          
+
+
+    Listrak_Remarketing = new function() {
+        this.updateCart = function() {
+            new Ajax.Request('https://www.bambibaby.com/remarketing/ajax/cart/');        };
+
+        this.track = function() {
+            new Ajax.Request('https://www.bambibaby.com/remarketing/ajax/track/');        };
+    };
+
+
+    (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+    else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+    if (e.propertyName == 'ltkAsyncProperty' && typeof _ltk !== 'undefined'){d();}});}})(function() {
+        _ltk.SCA.CaptureEmail('billing:email');
+        _ltk.SCA.CaptureEmail('mcem-EMAIL');
+        _ltk.SCA.CaptureEmail('newsletter');
+        _ltk.SCA.CaptureEmail('ltkmodal-email');
+        _ltk.SCA.CaptureEmail('email_address');
+        _ltk.Activity.AddPageBrowse(location.href);
+        _ltk.Activity.Submit();
+        Listrak_Remarketing.track();
+    });
+
+
+    (function (d, s, id, url) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'https://cdn.listrakbi.com/scripts/script.js?m=lnNGIzUtZXhg&v=1');
+
+
+    //<![CDATA[
+    Mage.Cookies.set(
+        'PAGECACHE_ENV',
+        '',
+        new Date(1970, 1, 1, 0, 0, 0)
+        );
+    //]]>
+
+
+    (function() {
+        var referrer, search_term, klevu_search_product_tracking;
+        referrer = document.referrer;
+        search_term = referrer.toQueryParams().q;
+        if (referrer.indexOf('content/index') > -1 && search_term) {
+            klevu_search_product_tracking = {"klevu_apiKey":"klevu-14737767897314265","klevu_term":"","klevu_type":"clicked","klevu_productId":"70","klevu_productName":"Baby Furniture Store, Baby Bedding, Strollers & Car Seats | BambiBaby.com","klevu_productUrl":"home","Klevu_typeOfRecord":"KLEVU_CMS"};
+            klevu_search_product_tracking.klevu_term = search_term;
+
+            // Send the ajax request
+            new Ajax.Request('//stats.klevu.com/analytics/productTracking', {
+                method: "GET",
+                parameters: klevu_search_product_tracking,
+
+                // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                }
+            });
+        }
+    })();
+
+
+    var google_tag_params = {ecomm_prodid: '', ecomm_pagetype: 'homepage', ecomm_totalvalue: ''};
+
+
+adroll_adv_id = "IMX5UP3MERCVDHKSE62IOZ";
+adroll_pix_id = "U4XWQPZKT5BW5KNNROIP4X";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+

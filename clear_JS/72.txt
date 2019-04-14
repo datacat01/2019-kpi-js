@@ -1,0 +1,38 @@
+
+        <!--
+        function OpenPageInNewWindow(PageName, Height, Width, PrintToolBar)
+        {
+	        window.open(PageName, '_blank', 'width='+Width+', height='+Height+', status=no,toolbar='+PrintToolBar+',menubar=no,location=no,scrollbars=yes');
+        }
+        //-->
+        
+
+		imgViewPixOn = new Image();
+		imgViewPixOff = new Image();
+		imgBidInfoOn = new Image();
+		imgBidInfoOff = new Image();
+		imgViewPixOn.src="/Images/buttons/viewpicutures_hover.gif";
+		imgViewPixOff.src="/Images/buttons/viewpicutures.gif";
+		imgBidInfoOn.src="/Images/buttons/bidnow_hover.gif";
+		imgBidInfoOff.src="/Images/buttons/bidnow.gif";
+	
+
+
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-9298900-1', 'auto');
+          ga('send', 'pageview');
+
+    
+
+        (function () {
+            var tagjs = document.createElement("script");
+            var s = document.getElementsByTagName("script")[0];
+            tagjs.async = true;
+            tagjs.src = "//s.btstatic.com/tag.js#site=6EeDEhH";
+            s.parentNode.insertBefore(tagjs, s);
+        }());
+    

@@ -1,0 +1,99 @@
+dataLayer = [];
+dataLayer=[{'ecomm_pagetype' : 'home'}];
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({ 'gtm.start':
+    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-ZG9F');
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+//<![CDATA[
+function WebForm_OnSubmit() {
+null;
+return true;
+}
+//]]>
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ToolkitScriptManager', 'aspnetForm', ['tctl00$PageTop$UpdatePanel_ViewCart_Mobile','','tctl00$PageTop$UpdatePanel_ViewCart',''], [], [], 90, 'ctl00');
+//]]>
+var menubar = new Menubar(document.getElementById('menubar1'));
+      menubar.init();
+function TrackCartAdd(page, sku, name, category, price, quantity) {
+        dataLayer.push({ 'sku' : sku, 'pagetype' : page });
+        dataLayer.push({
+            'event': 'CartAdd',
+            'ecommerce': {
+                'currencyCode' : 'USD',
+                'add': {
+                    'products': [{
+                        'name': name,
+                        'id': sku,
+                        'price': price,
+                        'brand': 'Carousel Designs',
+                        'category': category,
+                        'quantity': quantity
+                    }]
+                }
+            }
+        });
+    }
+    function TrackCartRemove(sku, name, category, price, quantity) {
+        dataLayer.push({
+            'event' : 'CartRemove',
+            'ecommerce' : {
+                'remove' : {
+                    'products' : [{
+                        'name': name,
+                        'id' : sku,
+                        'price' : price,
+                        'brand' : 'Carousel Designs',
+                        'category' : category,
+                        'quantity' : quantity
+                    }]
+                }
+            }
+        });
+        dataLayer.push({ 'sku' : sku });
+    }
+
+    function TrackRegistryAdd(){
+        dataLayer.push({'event' : 'RegistryAdd'});
+    }
+
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TextBoxWatermarkBehavior, {"ClientStateFieldID":"ctl00_PageTop_TextBoxWatermarkExtender_Search_Medium_ClientState","WatermarkCssClass":"dream-search","WatermarkText":"Search","id":"ctl00_PageTop_TextBoxWatermarkExtender_Search_Medium"}, null, null, $get("ctl00_PageTop_TextBox_Search"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TextBoxWatermarkBehavior, {"ClientStateFieldID":"ctl00_PageBottom_TBWE2_Mobile_ClientState","WatermarkCssClass":"watermarked","WatermarkText":"Join our Email List","id":"ctl00_PageBottom_TBWE2_Mobile"}, null, null, $get("ctl00_PageBottom_TextBox_Email_Mobile"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":15,"ValidChars":"-+_.@","id":"ctl00_PageBottom_Extender_Email_Mobile"}, null, null, $get("ctl00_PageBottom_TextBox_Email_Mobile"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TextBoxWatermarkBehavior, {"ClientStateFieldID":"ctl00_PageBottom_TBWE2_ClientState","WatermarkCssClass":"watermarked","WatermarkText":"Join our Email List","id":"ctl00_PageBottom_TBWE2"}, null, null, $get("ctl00_PageBottom_TextBox_Email"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":15,"ValidChars":"-+_.@","id":"ctl00_PageBottom_Extender_Email"}, null, null, $get("ctl00_PageBottom_TextBox_Email"));
+});
+//]]>
+function deferredMasterJS() {
+            var pinit = document.createElement("script");
+            pinit.src = "//assets.pinterest.com/js/pinit.js";
+            document.body.appendChild(pinit);
+        }
+        if (window.addEventListener)
+            window.addEventListener("load", deferredMasterJS, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", deferredMasterJS);
+        else window.onload = deferredMasterJS;

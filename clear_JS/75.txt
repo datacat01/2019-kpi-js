@@ -1,0 +1,33 @@
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-21178220-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
+
+				function SearchClick() {
+					var searchTF = document.getElementById("query");
+					var auctionrb = document.getElementById("auctionrb");
+					var searchTypeDDL = document.getElementById("SearchTypeDDL");
+					if (auctionrb.checked) {
+						window.location.href = 'catalog.aspx?searchby=' + searchTypeDDL.options[searchTypeDDL.selectedIndex].value + '&searchvalue=' + searchTF.value;
+					}
+					else {
+						window.location.href = 'itemcatalog.aspx?searchtype=5&search=' + searchTF.value;
+					}
+				}
+
+				function testHeaderEnterKey(e) {
+					var eventInstance = window.event ? event : e;
+					var unicode = eventInstance.charCode ? eventInstance.charCode : eventInstance.keyCode;
+					if (unicode == 13) {
+						SearchClick();
+						return false;
+					}
+				}
+			

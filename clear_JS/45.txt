@@ -1,0 +1,156 @@
+
+    function OptanonWrapper() {
+      Optanon.InsertScript('/js/performance-cookies.js', 'head', null, null, 2);
+      Optanon.InsertScript('/js/targeting-cookies.js', 'head', null, null, 4);
+    }
+  
+
+    //define window.tempBind - this is used, in conjunction with the angular-custom.js file, to prevent scriptaculous and legacy prototype js from breaking angular
+    window.tempBind = Function.prototype.bind;
+
+    function getParameterByName(StrURL, name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(StrURL.toLocaleLowerCase());
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function getLanguage() {
+      var pageLang = "";
+      var loc = window.location.href.toLowerCase();
+      var patt = /departments\/.*-(\d{1,3})-(\d{1,2})\.aspx/;
+      var lang;
+      var IsDepartment = patt.test(loc);
+      //If the language is always coming from the backend, what's the purpose of the following if condition? What is a use case for this?
+      if (pageLang == null || pageLang == "") {
+        if (loc.indexOf("/zh-cn") > -1 || getParameterByName(loc, "sc_lang") == "zh-cn" || getParameterByName(loc, "lid") == "4" || getParameterByName(loc, "languageid") == "4" || (IsDepartment && loc.indexOf("-4.aspx") > -1)) {
+          lang = "zh-cn";
+        } else if (loc.indexOf("/zh") > -1 || getParameterByName(loc, "sc_lang") == "zh" || getParameterByName(loc, "lid") == "3" || getParameterByName(loc, "languageid") == "3" || (IsDepartment && loc.indexOf("-3.aspx") > -1)) {
+          lang = "zh";
+        } else {
+          lang = "en";
+        }
+      } else {
+        lang = pageLang;
+      }
+      return lang;
+
+    }
+
+    var _val = getLanguage();
+    /*var d = new Date();
+    d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();*/
+    document.cookie = "CurrentLanguage=" + _val + ";Domain=.christies.com;path=/";
+
+    function setCookie(name, value, expires, path, domain, secure) {
+      cookieStr = name + "=" + escape(value) + "; ";
+
+      if (expires) {
+        expires = setExpiration(expires);
+        cookieStr += "expires=" + expires + "; ";
+      }
+      if (path) {
+        cookieStr += "path=" + path + "; ";
+      }
+      if (domain) {
+        cookieStr += "domain=" + domain + "; ";
+      }
+      if (secure) {
+        cookieStr += "secure; ";
+      }
+
+      document.cookie = cookieStr;
+    }
+
+    function setExpiration(cookieLife) {
+      var today = new Date();
+      var expr = new Date(today.getTime() + cookieLife * 24 * 60 * 60 * 1000);
+      return expr.toGMTString();
+    }
+
+    setCookie("CurrentLanguage", "", "-100", "/", "www.christies.com", false);
+  
+
+    var sOmnitureEnvironment = 'christiesprod';
+    var APIKey_caption = "APIKey";
+    var mychristies_key = '03F16AEC-B8DB-4697-97EC-A729544223A8';
+    var mychristies_url = 'https://www.christies.com/ChristiesAPIServices/mychristiesapi/api/MyChristies/';
+    var displayFsu = true;
+  
+var s = s || {};
+<!--
+s.prop37 = window.location.href;
+var _userLanguage = "English";
+   var _userLanguageID = "1";
+ var _OmnitureEnvironment = "christiesprod";
+//-->
+
+    <!--Carousel Config --> 
+      var _LanguageID = 1;
+	  s.trackInlineStats=true
+  
+
+    <!--Carousel Config --> 
+	var hpautoplay = true;
+	var hpautoplaySpeed = 3000;		
+  
+
+      //<![CDATA[
+      function nocontext(e) {
+        var clickedTag = (e == null) ? event.srcElement.tagName : e.target.tagName;
+        if (clickedTag == "IMG") {
+          return false;
+        }
+      }
+      document.oncontextmenu = nocontext;
+    //]]>
+  
+<!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+s.pageName = 'Home';
+s.channel = 'Home';
+s.prop5 = 'New';
+s.prop6 = 'Not Logged In/No Account';
+s.eVar22 = 'English';
+
+//-->
+_satellite.pageBottom();
+
+    // Get IE or Edge browser version
+    var detectIE = detectIE();
+    var smallVideo = '<source src="" type="video/mp4">';
+    var largeVideo = '<source src="" type="video/mp4">';
+  
+
+      (function ($) {
+        $(function () {
+          var $carouselImage = $('image');
+          objectFitImages($carouselImage);
+        });
+      })(jQuery);
+  
+
+      /* <![CDATA[ */
+      var google_conversion_id = 1004977320;
+      var google_conversion_label = "3UvnCPii8QMQqPma3wM";
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+          /* ]]> */
+  
+
+      document.cookie = 'CurrentLanguage=; path=/; Domain=.www.christies.com; expires=' + new Date(0).toUTCString();
+      document.cookie = 'CurrentLanguage=; path=/; expires=' + new Date(0).toUTCString();
+   jQuery(document).ready(function(){
+		// this part disables the right click
+			jQuery('img','image-preview-container').on('contextmenu', function(e) {
+			return false;
+			});
+			//this part disables dragging of image
+			jQuery('img','image-preview-container').on('dragstart', function(e) {
+			return false;
+			});
+
+		});
+  
