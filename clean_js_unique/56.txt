@@ -1,0 +1,26 @@
+'use strict';
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt =  require('passport-jwt').ExtractJwt;
+const User = require('../../modules/users/server/models/user-model.js')
+const mongoConfig = require('./mongodb.js');
+
+module.exports = function(passport) {
+  var opts = {}; // Follows the Passport-JWT Documentation Strategy
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+  opts.secretOrKey = mongoConfig.secret;
+  passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
+    User.findByID(jwt_payload.data._id, (err, user) => {
+      if (err) {
+        console.error(err);
+        return done(err, false);
+      }
+
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+      }
+    });
+  }));
+};

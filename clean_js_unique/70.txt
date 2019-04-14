@@ -1,0 +1,123 @@
+import React, { Component } from 'react';
+import '../styles/App.css';
+import SearchField from './SearchField';
+import Parties from './Parties';
+import data from '../data/parliament.json';
+import Footer from './Footer';
+
+class App extends Component {
+  state = {
+    input: '',
+    matchResults: {}
+  };
+
+  handleInputChange = e => {
+    let input = e.target.value;
+    this.setState({ input });
+
+    const matchResults = {};
+
+    Object.keys(data).forEach(party => {
+      const parliamentars = data[party];
+
+      let score = 0;
+      let matchedLastNames = 0;
+      let isBonus = false;
+
+      parliamentars.forEach(parliamentar => {
+        const lastNameArray = parliamentar.split(' ');
+        const lastName = lastNameArray[lastNameArray.length - 1];
+
+        let matchFound = false;
+
+        input = this.turkishToUpper(input);
+
+        // Bonus!
+        if (input === lastName || lastName.includes(input)) {
+          score += 100;
+          matchFound = true;
+          isBonus = true;
+        }
+
+        // Iterate over letters of the input and count matches.
+        let countedLetters = [];
+        [...input].forEach(sourceLetter => {
+          if (
+            lastName.includes(sourceLetter) &&
+            !countedLetters.includes(sourceLetter)
+          ) {
+            score++;
+            countedLetters.push(sourceLetter);
+            matchFound = true;
+          }
+        });
+
+        if (matchFound) {
+          matchedLastNames++;
+        }
+      });
+
+      let multiplier = 0;
+      if (isBonus) {
+        multiplier = 2;
+      } else {
+        multiplier = matchedLastNames / parliamentars.length;
+      }
+
+      matchResults[party] = Math.round(score * multiplier);
+    });
+
+    this.setState({ matchResults });
+  };
+
+  turkishToUpper = string => {
+    var letters = { i: 'İ', ş: 'Ş', ğ: 'Ğ', ü: 'Ü', ö: 'Ö', ç: 'Ç', ı: 'I' };
+    string = string.replace(/(([iışğüçö]))/g, function(letter) {
+      return letters[letter];
+    });
+    return string.toUpperCase();
+  };
+
+  render() {
+    return (
+      <section className="section">
+        <div className="container">
+          <h1 className="title">Soyadıma Göre...</h1>
+          <p className="subtitle is-6">
+            <code>Uysal Sort Algorithm</code>
+          </p>
+          <hr />
+          <p className="subtitle">
+            İstanbul Büyükşehir Belediyesi eski başkanı Mevlüt Uysal tarafından,{' '}
+            <a
+              href="https://www.sozcu.com.tr/2019/gundem/soyisminden-parti-analizi-4383854/?utm_source=szc&utm_medium=free&utm_campaign=ilgilihaber"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10 Nisan 2019
+            </a>{' '}
+            tarihinde tanımlanmış olan{' '}
+            <em>Soyadına Göre Parti Belirleme Algoritması</em>'nın mekanik
+            örneğidir.
+          </p>
+          <p className="subtitle">
+            Aşağıdaki alana soyadınızı girin ve hangi partiye oy verme
+            ihtimalinizin ne kadar olduğunu hemen öğrenin! Sonuç hatalı gibi
+            görünüyorsa, sonuç değil siz hatalısınızdır. :)
+          </p>
+          <SearchField
+            input={this.state.input}
+            onInputChange={this.handleInputChange}
+          />
+          <Parties
+            input={this.state.input}
+            matchResults={JSON.stringify(this.state.matchResults)}
+          />
+          <Footer />
+        </div>
+      </section>
+    );
+  }
+}
+
+export default App;

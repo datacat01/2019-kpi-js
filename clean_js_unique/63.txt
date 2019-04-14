@@ -1,0 +1,80 @@
+'use strict';
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('cors');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const mongoConfig = require('./config/lib/mongodb.js');
+const config = require('./config/config.js');
+
+const app = express();
+
+// MIDDLEWARE
+// MongoDB
+mongoose.connect(mongoConfig.database, { useNewUrlParser: true });
+mongoose.connection.on('connected', () => {
+  console.log('We did it reddit! Connected to our database.');
+});
+mongoose.connection.on('error', (err) => {
+  console.error('Something went horribly wrong... Sorry reddit.');
+  console.error(err);
+});
+
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// CORS
+app.use(cors());
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/lib/passport.js')(passport);
+
+// STATIC FOLDERS
+app.use(express.static(__dirname + '/public'));
+
+// Globbed Static Folders
+var folders = config.getClientFolders();
+folders.forEach((folder) => {
+  var route;
+  for (var i = 9; i < folder.length; i++) {
+    if (folder[i] === '/') {
+      break;
+    }
+  }
+  route = folder.substring(8, i);
+  if (route !== '/home') { // If route is not home, then add a virtual mount
+    app.use(route, express.static(__dirname + folder));
+  } else { // If route is home, then direct it to '/'
+    app.use(express.static(__dirname + folder));
+  }
+});
+
+// ROUTES
+var routes = config.getRoutes();
+routes.forEach((routePath) => {
+  const route = require(routePath);
+  var i;
+  // Extract the route's name from the filename
+  for (i = routePath.length - 1; i >= 0; i--) {
+    if (routePath[i] === '/') {
+      break;
+    }
+  }
+  var fileName = routePath.substring(i);
+  var routeName = fileName.substring(0, fileName.indexOf('-'));
+  app.use(routeName, route);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname +
+    '/modules/home/client/views/home.html'));
+});
+
+// Start server
+app.listen(3000, () => {
+  console.log('Server has started');
+});
