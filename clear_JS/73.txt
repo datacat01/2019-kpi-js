@@ -1,0 +1,17 @@
+
+window.onload=function(){
+	document.getElementById('hpSearch').focus();
+	adBlkNag();
+}
+
+
+<!--
+function breakout_of_frame()
+{
+  if (top.location != location) {
+    top.location.href = document.location.href ;
+  }
+};
+breakout_of_frame();
+-->
+

@@ -1,0 +1,73 @@
+
+    if ((parent) && (parent.frames.length > 0)) parent.location.href = self.location.href;
+    
+if(typeof window.TradeMe === 'undefined'){
+  window.TradeMe = {};
+}
+window.TradeMe.BreadCrumbs = 'All-categories';
+window.TradeMe.MemberID = '0';
+
+
+
+    dataLayer = [{
+  "userId": null,
+  "homepageVersion": "catSplat",
+  "dpId": null,
+  "email": null,
+  "showLuckyOrange": false,
+  "abTestEventId": "2807aed9-033a-4386-b930-60bb3dd6f5a7"
+}];dataLayer.push({'optOut': false});
+
+dataLayer.push({ "showLuckyOrange" : false })
+var adblock = true;
+window.trademe = window.trademe || {};trademe.ads = trademe.ads || {};trademe.ads.config = {"isHeaderBiddingEnabled":true,"openWrapProfileId":0,"openWrapTimeout":1500};
+
+
+    var globalCartDetailsJson = {"buyerId":0,"totalListings":0} ;
+
+
+
+    //<![CDATA[
+    
+    (function($) {
+        $(document).ready(function() {
+         
+            $('.drop-select').dropdown();
+            $('input').placeholder();
+            $('#searchString').ubersuggest({offsetElement: $('.main-search-control')});
+           
+            //Insertion point for adding document.ready javascript 
+            TradeMe.setSearchFocus();
+
+            //Insertion point for loading remote javascript files
+            
+           
+        });
+        
+        $(window).load(function() {
+            if (TradeMe.init != undefined)
+            {
+                TradeMe.init();
+            }
+           
+            //Insertion point for adding window.load javascript 
+            
+            //Insertion point for loading remote javascript files
+            
+        
+        });
+
+         
+    })(jQuery);
+   
+//]]>
+
+
+        <!--
+        if (typeof (Ads) != "undefined") { jQuery(window).load(function () { Ads.populateAds('eyJzIjowLCJtIjoiIiwibWlkIjowLCJtaXAiOiIyMTIuOTAuNjMuMTc4IiwicCI6Ii9ERUZBVUxULkFTUFgiLCJzb3YiOjAsImciOiJCIiwiYmlkIjowLCJyIjoiMiIsInJlcyI6MCwiY3QiOjAsImJkdCI6MCwic2IiOiIiLCJwYyI6IiIsImRwaWQiOjAsImhhc2giOm51bGwsIm1hdCI6IiJ9'); }); }
+    -->
+    
+var currentCid=0;
+window.trademe = window.trademe || {};trademe.ads = trademe.ads || {};trademe.ads.targeting = {"adUnitCode":"150718986/tm-web/home","keyValues":{"p":["2"],"env":["production"],"ptype":["home"]},"kvp":null,"mCatPath":["home"],"ppid":""};
+ko.applyBindings(new HomepageCarouselViewModel(50, OneDollarReserveStripe,false, false), document.getElementById('OneDollarReserveStripe'));
+ko.applyBindings(new HomepageCarouselViewModel(10, CoolAuctionsStripe,false, false), document.getElementById('CoolAuctionsStripe'));

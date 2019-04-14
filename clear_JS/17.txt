@@ -1,0 +1,337 @@
+RegisterSod("initstrings.js", "\u002f_layouts\u002f15\u002f1033\u002finitstrings.js?rev=uNmvBiHdrBzcPQzXRpm\u00252FnQ\u00253D\u00253D");
+RegisterSod("strings.js", "\u002f_layouts\u002f15\u002f1033\u002fstrings.js?rev=1pBRzR\u00252FhlfE8Kkh0JO9LBw\u00253D\u00253D");RegisterSodDep("strings.js", "initstrings.js");
+RegisterSod("sp.init.js", "\u002f_layouts\u002f15\u002fsp.init.js?rev=QI1yUCfCoUkadL93jNZLOg\u00253D\u00253D");
+RegisterSod("sp.res.resx", "\u002f_layouts\u002f15\u002fScriptResx.ashx?culture=en\u00252Dus\u0026name=SP\u00252ERes\u0026rev=yNk\u00252FhRzgBn40LJVP\u00252BqfgdQ\u00253D\u00253D");
+RegisterSod("sp.ui.dialog.js", "\u002f_layouts\u002f15\u002fsp.ui.dialog.js?rev=0xf6wCIW4E1pN83I9nSIJQ\u00253D\u00253D");RegisterSodDep("sp.ui.dialog.js", "sp.init.js");RegisterSodDep("sp.ui.dialog.js", "sp.res.resx");
+RegisterSod("core.js", "\u002f_layouts\u002f15\u002fcore.js?rev=\u00252FmcwmyWAFSbQRHlXU4BIBg\u00253D\u00253D");RegisterSodDep("core.js", "strings.js");
+RegisterSod("menu.js", "\u002f_layouts\u002f15\u002fmenu.js?rev=pcr83s11QGFA2kLt5rDQ1g\u00253D\u00253D");
+RegisterSod("mQuery.js", "\u002f_layouts\u002f15\u002fmquery.js?rev=VYAJYBo5H8I3gVSL3MzD6A\u00253D\u00253D");
+RegisterSod("callout.js", "\u002f_layouts\u002f15\u002fcallout.js?rev=ryx2n4ePkYj1\u00252FALmcsXZfA\u00253D\u00253D");RegisterSodDep("callout.js", "strings.js");RegisterSodDep("callout.js", "mQuery.js");RegisterSodDep("callout.js", "core.js");
+RegisterSod("clienttemplates.js", "\u002f_layouts\u002f15\u002fclienttemplates.js?rev=vtrc0n3sjgxKB4WQrCEeaA\u00253D\u00253D");RegisterSodDep("clienttemplates.js", "initstrings.js");
+RegisterSod("sharing.js", "\u002f_layouts\u002f15\u002fsharing.js?rev=EojJW\u00252FD7vytDfjPyrFWfzw\u00253D\u00253D");RegisterSodDep("sharing.js", "strings.js");RegisterSodDep("sharing.js", "mQuery.js");RegisterSodDep("sharing.js", "clienttemplates.js");RegisterSodDep("sharing.js", "core.js");
+RegisterSod("suitelinks.js", "\u002f_layouts\u002f15\u002fsuitelinks.js?rev=LW8KECQqnuLhetUeLd3iSg\u00253D\u00253D");RegisterSodDep("suitelinks.js", "strings.js");RegisterSodDep("suitelinks.js", "core.js");
+RegisterSod("clientrenderer.js", "\u002f_layouts\u002f15\u002fclientrenderer.js?rev=PWwV4FATEiOxN90BeB5Hzw\u00253D\u00253D");
+RegisterSod("srch.resources.resx", "\u002f_layouts\u002f15\u002fScriptResx.ashx?culture=en\u00252Dus\u0026name=Srch\u00252EResources\u0026rev=RtqWXJ0qK1Fldjs7sAaqWg\u00253D\u00253D");
+RegisterSod("search.clientcontrols.js", "\u002f_layouts\u002f15\u002fsearch.clientcontrols.js?rev=BcwTOzpHOfw2l7rQXvw3HQ\u00253D\u00253D");RegisterSodDep("search.clientcontrols.js", "sp.init.js");RegisterSodDep("search.clientcontrols.js", "clientrenderer.js");RegisterSodDep("search.clientcontrols.js", "srch.resources.resx");
+RegisterSod("sp.runtime.js", "\u002f_layouts\u002f15\u002fsp.runtime.js?rev=5f2WkYJoaxlIRdwUeg4WEg\u00253D\u00253D");RegisterSodDep("sp.runtime.js", "sp.res.resx");
+RegisterSod("sp.search.js", "\u002f_layouts\u002f15\u002fsp.search.js?rev=uZlrSmuyYGO8yQWFVg\u00252BIdw\u00253D\u00253D");RegisterSodDep("sp.search.js", "sp.init.js");RegisterSodDep("sp.search.js", "sp.runtime.js");
+RegisterSod("ajaxtoolkit.js", "\u002f_layouts\u002f15\u002fajaxtoolkit.js?rev=4rOiCbaFgJMmqw9Ojtpa6g\u00253D\u00253D");RegisterSodDep("ajaxtoolkit.js", "search.clientcontrols.js");
+RegisterSod("browserScript", "\u002f_layouts\u002f15\u002fie55up.js?rev=8DOJHU0FO2DVVMI7ZiMUOQ\u00253D\u00253D");RegisterSodDep("browserScript", "strings.js");
+RegisterSod("sp.js", "\u002f_layouts\u002f15\u002fsp.js?rev=PaF2ZrI2GlTO1B5ru0gYug\u00253D\u00253D");RegisterSodDep("sp.js", "sp.runtime.js");RegisterSodDep("sp.js", "sp.ui.dialog.js");RegisterSodDep("sp.js", "sp.res.resx");
+RegisterSod("inplview", "\u002f_layouts\u002f15\u002finplview.js?rev=g73R4ugZvcmHbIXvnOwYcw\u00253D\u00253D");RegisterSodDep("inplview", "strings.js");RegisterSodDep("inplview", "core.js");RegisterSodDep("inplview", "sp.js");
+RegisterSod("sp.core.js", "\u002f_layouts\u002f15\u002fsp.core.js?rev=movVYpCO4QLi\u00252BfD07czxdg\u00253D\u00253D");RegisterSodDep("sp.core.js", "strings.js");RegisterSodDep("sp.core.js", "sp.init.js");RegisterSodDep("sp.core.js", "core.js");
+RegisterSod("dragdrop.js", "\u002f_layouts\u002f15\u002fdragdrop.js?rev=rvaZEcJ\u00252F\u00252BHcW7vn3OONdGw\u00253D\u00253D");RegisterSodDep("dragdrop.js", "strings.js");
+RegisterSod("quicklaunch.js", "\u002f_layouts\u002f15\u002fquicklaunch.js?rev=SV6sY1PxQIso9KC9IL8e2Q\u00253D\u00253D");RegisterSodDep("quicklaunch.js", "strings.js");RegisterSodDep("quicklaunch.js", "dragdrop.js");
+// <![CDATA[ 
+
+
+        var navBarHelpOverrideKey = "WSSEndUser";
+    // ]]>
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var MSOWebPartPageFormName = 'aspnetForm';
+var g_presenceEnabled = true;
+var g_wsaEnabled = false;
+var g_wsaQoSEnabled = false;
+var g_wsaQoSDataPoints = [];
+var g_wsaLCID = 1033;
+var g_wsaListTemplateId = 119;
+var g_wsaSiteTemplateId = 'STS#0';
+var _fV4UI=true;var _spPageContextInfo = {webServerRelativeUrl: "\u002f", webAbsoluteUrl: "https:\u002f\u002fwww.stacksbowers.com", siteAbsoluteUrl: "https:\u002f\u002fwww.stacksbowers.com", serverRequestPath: "\u002fPages\u002fHome.aspx", layoutsUrl: "_layouts\u002f15", webTitle: "SB", webTemplate: "1", tenantAppVersion: "0", webLogoUrl: "\u002f_layouts\u002f15\u002fimages\u002fSBPortal\u002fSBG_Logo_160202.png", webLanguage: 1033, currentLanguage: 1033, currentUICultureName: "en-US", currentCultureName: "en-US", clientServerTimeDelta: new Date("2019-04-14T13:50:11.1902419Z") - new Date(), siteClientTag: "1$$15.0.4420.1017", crossDomainPhotosEnabled:false, webUIVersion:15, webPermMasks:{High:16,Low:200769},pageListId:"{ed089876-1da6-4522-b2e9-a18131770494}",pageItemId:8, pagePersonalizationScope:1, alertsEnabled:true, siteServerRelativeUrl: "\u002f", allowSilverlightPrompt:'True'};var L_Menu_BaseUrl="";
+var L_Menu_LCID="1033";
+var L_Menu_SiteTheme="null";
+
+function _spNavigateHierarchy(nodeDiv, dataSourceId, dataPath, url, listInContext, type) {
+
+    CoreInvoke('ProcessDefaultNavigateHierarchy', nodeDiv, dataSourceId, dataPath, url, listInContext, type, document.forms.aspnetForm, "", "\u002fPages\u002fHome.aspx");
+
+}
+
+function _markElemForSaving(elemId)
+{
+    if (typeof(_spWikiRteElemIds) == 'undefined' || _spWikiRteElemIds == null)
+    {
+        _spWikiRteElemIds = new Object();
+    }
+    _spWikiRteElemIds[elemId] = true;
+}
+
+function _saveMarkedElems()
+{
+    if (typeof(_spWikiRteElemIds) != 'undefined' && _spWikiRteElemIds != null)
+    {
+        for (elemId in _spWikiRteElemIds)
+        {
+            RTE.RichTextEditor.transferContentsToInputField(elemId, true);
+        }
+    }
+}
+var _spWebPartComponents = new Object();//]]>
+
+
+//<![CDATA[
+if (typeof(DeferWebFormInitCallback) == 'function') DeferWebFormInitCallback();function WebForm_OnSubmit() {
+_saveMarkedElems();UpdateFormDigest('\u002f', 1440000);if (typeof(_spFormOnSubmitWrapper) != 'undefined') {return _spFormOnSubmitWrapper();} else {return true;};
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+
+// <![CDATA[ 
+
+
+                                            _spBodyOnLoadFunctionNames.push("setupPageDescriptionCallout");
+                                        // ]]>
+
+setTimeout(function () { { var s = document.createElement('script'); s.type = 'text/javascript'; s.charset = 'UTF-8'; s.src = ((location && location.href && location.href.indexOf('https') == 0) ? 'https://ssl.microsofttranslator.com' : 'http://www.microsofttranslator.com') + '/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=True&ui=true&settings=Manual&from='; var p = document.getElementsByTagName('head')[0] || document.documentElement; p.insertBefore(s, p.firstChild); } }, 0);
+
+
+    function showMailingPopUp() {
+        document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        dojoRequire(["mojo/signup-forms/Loader"], function (L) {
+            L.start(
+                { "baseUrl": "mc.us19.list-manage.com", "uuid": "de7e191dae0e45977ac89103d", "lid": "2d6f327946", "uniqueMethods": true }
+            )
+        });
+    }
+
+
+now = new Date
+            theYear = now.getFullYear()
+            document.write(theYear)
+
+//<![CDATA[
+ExecuteOrDelayUntilScriptLoaded(
+    function()
+    {
+        SP.Ribbon.PageState.PageStateHandler.EnableSaveBeforeNavigate(false);
+    },
+"sp.ribbon.js");
+if (typeof(_spWikiPageNameEditorFlag) == 'undefined' || !_spWikiPageNameEditorFlag)
+{
+_spWikiPageNameEditorFlag = true;
+_spWikiPageNameDisplayElemId = 'ctl00_PlaceHolderMain_wikiPageNameDisplay';
+_spWikiPageNameEditElemId = 'ctl00_PlaceHolderMain_wikiPageNameEdit';
+_spWikiPageNameEditTextBoxId = 'ctl00_PlaceHolderMain_wikiPageNameEditTextBox';
+}
+var _spFormDigestRefreshInterval = 1440000;//]]>
+
+$(document).ready(function () {var isPageLoad = true;$('#browseAuctions').load(function () {if ($('#browseAuctions').length > 0) {if (!isPageLoad) {isPageLoad = true;parent.location.href = "http://uat-stacksbowers.auctionmobility.com/";} else {isPageLoad = false; } } });});
+
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=O54FAVPeeZh1XuYFCyQgezai2KjY3f8Iy_yC8hWe76BL8oo8Xi0NvtHsxGU2b4WjxPW9dfZWX9jRUayWWkf-cwdPz0WFSERsEXfiKEO_8wc1&t=636857441459543264';
+WebForm_InitCallback();
+ExecuteOrDelayUntilScriptLoaded(
+function()
+{
+var initInfo = 
+{
+itemPermMasks: {High: 16, Low: 200769 },
+listPermMasks: {High: 16, Low: 200769 },
+listId: "ed089876-1da6-4522-b2e9-a18131770494",
+itemId: 8,
+editable: false,
+editMode: false,
+postbackScript: "__doPostBack\u0028\u0027__Page\u0027,\u0027PageCommand\u0027\u0029",
+missingRequiredFields: false,
+conflictMergeTargetStatusHtml: null
+};
+SP.Ribbon.WikiPageComponent.registerWithPageManager(initInfo);
+},
+"sp.ribbon.js");
+function _wikiCallback(arg, successCallback, context, errorCallback)
+{
+    __theFormPostData = "";__theFormPostCollection=new Array(); WebForm_OnSubmit();WebForm_InitCallback();_spResetFormOnSubmitCalledFlag();
+    WebForm_DoCallback('__Page',arg,successCallback,context,errorCallback,true);
+}
+
+if(typeof(Sys) != 'undefined' && Sys.Browser.agent == Sys.Browser.Safari && navigator.userAgent.indexOf('AppleWebKit/') > -1)
+{
+  Sys.Browser.AppleWebKit = {};
+  Sys.Browser.version = parseFloat(navigator.userAgent.match(/ AppleWebKit\/(\d+(\.\d+)?)/)[1]);
+  Sys.Browser.agent = Sys.Browser.AppleWebKit;
+}
+var _fV4UI = true;
+function _RegisterWebPartPageCUI()
+{
+    var initInfo = {editable: false,isEditMode: false,allowWebPartAdder: false,listId: "{ed089876-1da6-4522-b2e9-a18131770494}",itemId: 8,recycleBinEnabled: true,enableMinorVersioning: true,enableModeration: true,forceCheckout: false,rootFolderUrl: "\u002fPages",itemPermissions:{High:16,Low:200769}};
+    SP.Ribbon.WebPartComponent.registerWithPageManager(initInfo);
+    var wpcomp = SP.Ribbon.WebPartComponent.get_instance();
+    var hid;
+    hid = document.getElementById("_wpSelected");
+    if (hid != null)
+    {
+        var wpid = hid.value;
+        if (wpid.length > 0)
+        {
+            var zc = document.getElementById(wpid);
+            if (zc != null)
+                wpcomp.selectWebPart(zc, false);
+        }
+    }
+    hid = document.getElementById("_wzSelected");
+    if (hid != null)
+    {
+        var wzid = hid.value;
+        if (wzid.length > 0)
+        {
+            wpcomp.selectWebPartZone(null, wzid);
+        }
+    }
+};
+function __RegisterWebPartPageCUI() {
+ExecuteOrDelayUntilScriptLoaded(_RegisterWebPartPageCUI, "sp.ribbon.js");}
+_spBodyOnLoadFunctionNames.push("__RegisterWebPartPageCUI");var __wpmExportWarning='This Web Part Page has been personalized. As a result, one or more Web Part properties may contain confidential information. Make sure the properties contain information that is safe for others to read. After exporting this Web Part, view properties in the Web Part description file (.WebPart) by using a text editor such as Microsoft Notepad.';var __wpmCloseProviderWarning='You are about to close this Web Part.  It is currently providing data to other Web Parts, and these connections will be deleted if this Web Part is closed.  To close this Web Part, click OK.  To keep this Web Part, click Cancel.';var __wpmDeleteWarning='You are about to permanently delete this Web Part.  Are you sure you want to do this?  To delete this Web Part, click OK.  To keep this Web Part, click Cancel.';function _cUpdx74bbee6762f840edad4fe46f496d8c78(){var myd = null; if (typeof(datax74bbee6762f840edad4fe46f496d8c78) != 'undefined') {myd = datax74bbee6762f840edad4fe46f496d8c78;} var myc = document.getElementById('ctl00_x74bbee6762f840edad4fe46f496d8c78');_cUpdcx74bbee6762f840edad4fe46f496d8c78(myd, myc);}function _cUpdcx74bbee6762f840edad4fe46f496d8c78(data, ctrl){SiteLogoImagePageUpdate(ctrl, data);}if (typeof(_v_rg_spbutton) == 'undefined')
+var _v_rg_spbutton = new Array(); 
+_v_rg_spbutton['Ribbon.WikiPageTab.EditAndCheckout.SaveEdit.Menu.SaveEdit.Edit'] = 'ctl00_PlaceHolderMain_btnWikiEdit';if (typeof(_v_rg_spbutton) == 'undefined')
+var _v_rg_spbutton = new Array(); 
+_v_rg_spbutton['Ribbon.WikiPageTab.EditAndCheckout.SaveEdit.Menu.SaveEdit.SaveAndStop'] = 'ctl00_PlaceHolderMain_btnWikiSave';if (typeof(_v_rg_spbutton) == 'undefined')
+var _v_rg_spbutton = new Array(); 
+_v_rg_spbutton['Ribbon.WikiPageTab.EditAndCheckout.SaveEdit.Menu.SaveEdit.Revert'] = 'ctl00_PlaceHolderMain_btnWikiRevert';
+            ExecuteOrDelayUntilScriptLoaded(
+                function() 
+                {                    
+                    Srch.ScriptApplicationManager.get_current().states = {"webUILanguageName":"en-US","webDefaultLanguageName":"en-US","contextUrl":"https://www.stacksbowers.com","showAdminDetails":false,"defaultPagesListName":"Pages","isSPFSKU":true,"defaultQueryProperties":{"culture":1033,"uiLanguage":1033,"summaryLength":180,"desiredSnippetLength":90,"enableStemming":true,"enablePhonetic":false,"enableNicknames":false,"trimDuplicates":true,"bypassResultTypes":false,"enableInterleaving":true,"enableQueryRules":true,"processBestBets":true,"enableOrderingHitHighlightedProperty":false,"hitHighlightedMultivaluePropertyLimit":-1,"processPersonalFavorites":true}};
+                    Srch.U.trace(null, 'SerializeToClient', 'ScriptApplicationManager state initialized.');
+                }, 'Search.ClientControls.js');var g_clientIdDeltaPlaceHolderMain = "DeltaPlaceHolderMain";
+var g_clientIdDeltaPlaceHolderPageTitleInTitleArea = "DeltaPlaceHolderPageTitleInTitleArea";
+var g_clientIdDeltaPlaceHolderUtilityContent = "DeltaPlaceHolderUtilityContent";
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+g_QuickLaunchControlIds.push("zz1_TopNavigationMenu");_spBodyOnLoadFunctionNames.push('QuickLaunchInitDroppable'); var g_zz1_TopNavigationMenu = null; function init_zz1_TopNavigationMenu() { if (g_zz1_TopNavigationMenu == null) g_zz1_TopNavigationMenu = $create(SP.UI.AspMenu, null, null, null, $get('zz1_TopNavigationMenu')); } ExecuteOrDelayUntilScriptLoaded(init_zz1_TopNavigationMenu, 'SP.Core.js');
+
+                    ExecuteOrDelayUntilScriptLoaded(
+                        function() 
+                        {
+                            if ($isNull($find('ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr')))
+                            {
+                                var sb = $create(Srch.SearchBox, {"delayLoadTemplateScripts":true,"initialPrompt":"Search this site","messages":[],"navigationNodes":[{"id":0,"name":"This Site","url":"~site/_layouts/15/osssearchresults.aspx?u={contexturl}","promptString":"Search this site"}],"queryGroupNames":["MasterPage"],"renderTemplateId":"~sitecollection/_catalogs/masterpage/Display Templates/Search/Control_SearchBox_Compact.js","resultsPageAddress":"~site/_layouts/15/osssearchresults.aspx?u={contexturl}","serverInitialRender":true,"showDataErrors":true,"showNavigation":true,"states":{},"tryInplaceQuery":false}, null, null, $get("ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr"));
+                                sb.activate('Search this site', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_sbox', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_sboxdiv', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_NavButton', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_AutoCompList', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_NavDropdownList', 'ctl00_PlaceHolderSearchArea_SmallSearchInputBox1_csr_SearchLink', 'ms-srch-sbprogress', 'ms-srch-sb-prompt ms-helperText');
+                            }
+                        }, 'Search.ClientControls.js');g_QuickLaunchControlIds.push("zz3_V4QuickLaunchMenu");_spBodyOnLoadFunctionNames.push('QuickLaunchInitDroppable'); var g_zz3_V4QuickLaunchMenu = null; function init_zz3_V4QuickLaunchMenu() { if (g_zz3_V4QuickLaunchMenu == null) g_zz3_V4QuickLaunchMenu = $create(SP.UI.AspMenu, null, null, null, $get('zz3_V4QuickLaunchMenu')); } if(g_spPreFetchKeys) {{ g_spPreFetchKeys.push('SP.Core.js');}}EnsureScriptFunc('SP.Core.js', 'SP.UI.AspMenu', init_zz3_V4QuickLaunchMenu);
+
+function RelatedAdder_addWebPartToRTECore(adder, relatedWeb, relatedList, relatedField, sourceWebPart)
+{
+    var range = RTE.Cursor.get_range();
+    range.collapse(false);
+    var targetWebPartId = adder._createWebpartPlaceholderInRte(range);
+    if (targetWebPartId == null)
+        return false;
+    if (IsFullNameDefined('SP.UI.ModalDialog.showWaitScreenWithNoClose'))
+    {
+        SP.UI.ModalDialog.showWaitScreenWithNoClose(SP.Res.genericLoading, SP.Res.genericLoading, 76, 290);
+    }
+    __doPostBack('ctl00$ctl12', 'addItemAndConnect&wpz&' + relatedWeb + '&' + relatedList + '&' + relatedField + '&' + sourceWebPart + '&' + targetWebPartId);
+}
+function RelatedAdder_addWebPartToRTE(relatedWeb, relatedList, relatedField, sourceWebPart)
+{
+    var editableRegion = RTE.Canvas.currentEditableRegion();
+    if (!RTE.Canvas.getRestriction(editableRegion, RTE.Canvas.allowWebParts, false)) {
+        return false;
+    }
+
+    var adder = window.WPAdder;
+    if (!adder) {
+        LoadWPAdderOnDemand();
+        ExecuteOrDelayUntilEventNotified(
+            function()
+            {
+                var adder = window.WPAdder;
+                if (!adder)
+                {
+                    return false;
+                }
+                RelatedAdder_addWebPartToRTECore(adder, relatedWeb, relatedList, relatedField, sourceWebPart);
+            },
+            "_spEventWebPartAdderReady");
+    }
+    else
+    {
+        RelatedAdder_addWebPartToRTECore(adder, relatedWeb, relatedList, relatedField, sourceWebPart);
+    }
+}
+function RelatedAdder_addItemAndConnect(zone, relatedWeb, relatedList, relatedField, sourceWebPart, bAddToWikiZone)
+{
+    if (bAddToWikiZone)
+    {
+        ExecuteOrDelayUntilScriptLoaded( 
+            function()
+            {
+                RelatedAdder_addWebPartToRTE(relatedWeb, relatedList, relatedField, sourceWebPart);
+            },
+            "sp.ui.rte.js");
+    }
+    else
+    {
+        __doPostBack('ctl00$ctl12', 'addItemAndConnect&' + zone + '&' + relatedWeb + '&' + relatedList + '&' + relatedField + '&' + sourceWebPart + '&');
+    }
+}
+            //]]>
+
+
+$( document ).ready(function() {
+$(".newsticker-jcarousellite").jCarouselLite({
+vertical: true,
+hoverPause:true,
+visible: 4,
+auto:1000,
+speed:1300,
+btnPrev: ".jFlowPrev", 
+btnNext: ".jFlowNext"
+});
+});
+
+
+$(function () {
+$('#HeroCarousel').responsiveSlides({
+auto: true,
+pager: false,
+nav: true,
+pause: true,
+speed: '500',
+timeout: '6000',
+namespace: 'callbacks'
+});
+});
+
+// <![CDATA[ 
+
+
+            var g_Workspace = "s4-workspace";
+        // ]]>
+
+
+            /* <![CDATA[ */
+            var google_conversion_id = 947464958;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        
+
+        

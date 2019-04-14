@@ -1,0 +1,84 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+window.WebForm_PostBackOptions||document.write('<script type="text/javascript" src="/WebResource.axd?d=wyljLYhbbBYfHLPOoJ5qJ5h5D3FtA7jkr91Cn-dJ4VGZgFZET92o8txD_E1aNSbh-WN2Je7JtEX0cE3SboScMz9fMPQ1&amp;t=636426711113374701"><\/script>');//]]>
+
+
+//<![CDATA[
+var predPrefix = 'ctl00_ucHeader_';var _SID='yx2g5mmuxkwm5sxfymrvpq3y',_api='http://api.ridesafely.com',hubUrl = 'https://bc.ridesafely.com/',_rse='',_rscn='', _lang='en';_ahid=0;var routeParam={"lang":"en","url":null};var localPrefix = 'ctl00_CPH_';//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=QCxaLDyqPdne-wU7BLT925JVz2b7ciztp0lG0DdGUgnqhfMJ6D8ND0KU5M-hqm1l46-dWMP-2n1gB1Y_-9EcMlr_Tdde31hOMX0pE4PQcTm9LbU77lAIPJqSfRob9NY75e7qmQ2&t=23c9c237"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys.WebForms)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=EjoEiYPVrbVLzyIi4YbTZAO-faUszt-CMurpUVo-f6rRmGoOsDWOUsPo7m_rqmTCNiR0Cjk1iUgdPBU37NqT1azpr6lpACF3i3mM0RB14Bk-Fnqgki4FcdKMfzuP5ozgMJJa0w2&t=23c9c237"><\/script>');//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$smHM', 'aspnetForm', ['tctl00$CPH$updInventoryID','','tctl00$updMessage',''], ['ctl00$CPH','','ctl00$ucHMFooter',''], [], 90, 'ctl00');
+//]]>
+
+var sa_interval = 5000;function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } if (typeof(shopper_first) == 'undefined') saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/28089.js'); shopper_first = true; 
+
+        var launch = false;
+        var mpe;
+
+        function launchModal(mpeID) {
+            mpe = mpeID;
+            launch = true;
+        }
+
+        function pageLoad() 
+        {
+            if (launch) {
+                $find(mpe).show();
+            }
+        }
+
+
+//<![CDATA[
+(function() {var fn = function() {$get("ctl00_smHM_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();//]]>
+
+
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        if (prm != null) {
+            prm.add_endRequest(endRequest);
+        }
+
+        function endRequest() {
+            clearProcessing();
+        }
+    
+
+	        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+	        if (_rse != '') {
+	            Tawk_API.visitor = {
+	                name: (_rscn == '' ? _rse : _rscn),
+	                email: _rse
+	            };
+	        }
+	        (function () {
+	            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+	            s1.async = true;
+	            s1.src = 'https://embed.tawk.to/5615608f893fab59658a93c7/default';
+	            s1.charset = 'UTF-8';
+	            s1.setAttribute('crossorigin', '*');
+	            s0.parentNode.insertBefore(s1, s0);
+	        })();
+	    

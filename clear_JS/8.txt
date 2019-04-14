@@ -1,0 +1,218 @@
+var MasterTmsUdo = {"promo_id":1};(function(e){var t="2182",n=document,r,i,s={http:"http://cdn.mplxtms.com/s/MasterTMS.min.js",https:"https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"},o=s[/\w+/.exec(window.location.protocol)[0]];i=n.createElement("script"),i.type="text/javascript",i.async=!0,i.src=o+"#"+t,r=n.getElementsByTagName("script")[0],r.parentNode.insertBefore(i,r),i.readyState?i.onreadystatechange=function(){if(i.readyState==="loaded"||i.readyState==="complete")i.onreadystatechange=null}:i.onload=function(){try{e()}catch(t){}}})(function(){});
+
+                    adroll_adv_id ='FYPWNVN23BEYHAEYGNSVFQ'; 
+                    adroll_pix_id ='BIDGCEZQQJDR7LUSXRWH3Q';
+                    (function() {
+                   var oldonload = window.onload;
+                    window.onload = function(){
+                    __adroll_loaded=true;
+                    var scr = document.createElement('script');
+                    var host = (('https:' == document.location.protocol) ? 'https://s.adroll.com' : 'http://a.adroll.com');
+                    scr.setAttribute('async', 'true');
+                    scr.type = 'text/javascript';
+                    scr.src = host + '/j/roundtrip.js';
+                    ((document.getElementsByTagName('head') || [null])[0] ||
+                    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+                    if(oldonload){oldonload();}};
+                    }());
+                
+twttr.conversion.trackPid('nujiy', { tw_sale_amount: 0, tw_order_quantity: 0 });
+
+//<![CDATA[
+var theForm = document.forms['MasterForm'];
+if (!theForm) {
+    theForm = document.MasterForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ctl00$umbracoScriptManager', 'MasterForm', ['tctl00$ctl00$ctl00$MainContent$ctl00','MainContent_ctl00','tctl00$ctl00$ctl00$MainContent$ucFooter$ctl00','MainContent_ucFooter_ctl00','tctl00$ctl00$ctl00$MainContent$ucFooter$BalancePayment_6$MakePayment$UpdPnl_Balance','MainContent_ucFooter_BalancePayment_6_MakePayment_UpdPnl_Balance'], [], [], 90, 'ctl00$ctl00$ctl00');
+//]]>
+
+
+
+    function btn_accept_Click() {
+        // Set a cookie to prevent this being displayed again
+        create_cookie('288_accepted_cookies', 1, 365);
+        // Close the overlay
+
+        var elem = document.getElementById("div_accept_cookies");
+        elem.parentNode.removeChild(elem);
+    }
+
+    function create_cookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else {
+            var expires = "";
+        }
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+
+    $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Btn_No").live("click", function (event) {
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_QuickPayError").hide();
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_QuickPayError").hide();
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_CheckAmount").hide();
+
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_TBox_PaymentVal").val('');
+    });
+
+    $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Btn_Pay").live("click", function (event) {
+        var paymentValue = $("#MainContent_ucFooter_BalancePayment_6_MakePayment_TBox_PaymentVal").val();
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_QuickPayError").hide();
+        $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_CheckAmount").hide();
+
+
+        if ($("#MainContent_ucFooter_BalancePayment_6_MakePayment_TBox_PaymentVal").val().length == 0) {
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_QuickPayError").text('Please enter the amount you would like to pay.');
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_QuickPayError").show();
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_QuickPayError").show();
+        }
+        else if (paymentValue <= 0) {
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_QuickPayError").text('Please enter a valid amount.');
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_QuickPayError").show();
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_QuickPayError").show();
+
+        }
+        else if (paymentValue > 0 && paymentValue < 100) {
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Btn_Yes").click();
+        }
+
+        else if (paymentValue >= 100 && paymentValue < 1000) {
+            var renameMe1 = 'Are you sure you want to pay &#163;' + paymentValue;
+
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").html(renameMe1);
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").show();
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_CheckAmount").show();
+        }
+        else if (paymentValue >= 1000) {
+            if (paymentValue.indexOf('.') != -1) {
+                var renameMe1 = 'Are you sure you want to pay &#163;' + paymentValue;
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").html(renameMe1);
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").show();
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_CheckAmount").show();
+            }
+            else {
+                var length = paymentValue.length - 2;
+                var first2 = paymentValue.substring(0, length);
+                var last2 = paymentValue.substring(length, paymentValue.length);
+                var renameMe2 = 'Are you sure you want to pay &#163;' + paymentValue + ' and you didn\'t mean &#163;' + first2 + '.' + last2 + '?';
+
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").html(renameMe2);
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Lbl_CheckAmount").show();
+                $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Pnl_CheckAmount").show();
+            }
+        }
+
+        return false;
+    });
+
+
+    $("#MainContent_ucFooter_BalancePayment_6_MakePayment_TBox_PaymentVal").live("keyup", function (event) {
+        if (event.keyCode == 13) {
+            $("#MainContent_ucFooter_BalancePayment_6_MakePayment_Btn_Pay").click();
+        }
+    });
+
+
+
+
+                       var d = new Date();
+                       yr = d.getFullYear();
+                       if (yr != 2011)
+                           document.write(" - " + yr);
+                
+_atrk_opts = { atrk_acct:'6G3pl1awEti25T', domain:'westminstercollection.com',dynamic: true};(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = 'https://d31qbv1cthcecs.cloudfront.net/atrk.js'; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+
+        /* <![CDATA[ */
+        var ecomm_prodid = '';
+        var ecomm_pagetype = '';
+        var ecomm_totalvalue = '';
+        var pathnameVal = window.location.pathname;
+        if(pathnameVal == '/my-account/basket.aspx') /* for cart page */
+        {
+            var id = new Array();
+            var price = 0;
+            
+            jQuery('[data-google-cat][data-product-code]').each(function()
+            {
+                id.push($(this).data('productCode'));
+            });
+
+            var ele = jQuery("[data-basket-total]");
+            if (ele != null) {
+                price = ele.data('basketTotal');
+            }
+
+            ecomm_prodid = id; 
+            ecomm_pagetype = 'cart';
+            ecomm_totalvalue = price; 
+        } else if(pathnameVal.indexOf('/p-') == 0) /* for product page */
+        {
+            var productId = '';
+
+            var googleTags = jQuery('[data-google-cat][data-product-code]');
+            if(googleTags != null)
+            {
+                productId = googleTags.data('productCode');
+            };
+
+            //Get product price
+            var price='';
+
+            var ele = jQuery("[data-product-price]");
+            if (ele != null) {
+                price = ele.data('productPrice');
+            }
+
+            ecomm_prodid= productId; 
+            ecomm_pagetype = 'product';
+            ecomm_totalvalue = price;
+        } else if(pathnameVal == '/')/* for home page */
+        {
+            ecomm_pagetype = 'home';
+        } else
+            if(jQuery('#SearchDisplay').length == 1)/* for category page */
+            {
+                ecomm_pagetype = 'category';
+            } else
+            {
+                ecomm_pagetype = 'other'; /* for other page */
+            }
+
+        var google_tag_params = {
+            coinBuyer: '',
+            stampBuyer: '',
+            contPref: '',
+            hiPurch: '',
+            active: '',
+            inActive: '',
+            mainPurchChan: '',
+            ecomm_prodid: ecomm_prodid, 
+            ecomm_pagetype: ecomm_pagetype,
+            ecomm_totalvalue: ecomm_totalvalue
+        }; 
+        /* ]]> */
+    
+
+        /* <![CDATA[ */
+        var google_conversion_id = 1019951245;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    
+
+    

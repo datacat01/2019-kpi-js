@@ -1,0 +1,37 @@
+
+		adnsf$ = jQuery; 
+
+		$(function () {
+			var $radios = $('input:radio');			
+			var $radioLabels = $radios.next('label');
+			if ($radios.length = $radioLabels.length) {
+				$radios.addClass("tft-radios");
+				$radioLabels.addClass("tft-radio-labels");
+			}			
+		});
+	
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+	var createText = $("#divCreatAccountFooter");
+	var siginInOutText = $("#spnSignInOut").html();
+	if (siginInOutText.toLowerCase() == "logout") {
+		createText.hide();
+	}
+	else {
+		createText.show();
+	}
+

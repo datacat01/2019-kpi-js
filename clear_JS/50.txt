@@ -1,0 +1,58 @@
+
+            var _AJAX_ROOT_URL = '/';//  location.protocol + '//' + location.host + '/';
+            var UseNewDesign = true;
+        
+
+//<![CDATA[
+var theForm = document.forms['defaultForm'];
+if (!theForm) {
+    theForm = document.defaultForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+    function DeleteCookieByName(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
+
+        $(document).ready(function () {
+            RefreshListings();
+            Countdown();
+			
+			/*
+			$("#MainContent_uxSlimBanner").html(
+				"<p style=\"background: #9e4848; background: -moz-linear-gradient(top, #9e4848 0%, #d33b3b 100%); background: -webkit-linear-gradient(top, #9e4848 0%,#d33b3b 100%); background: linear-gradient(to bottom, #9e4848 0%,#d33b3b 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e4848', endColorstr='#d33b3b',GradientType=0 ); background-color: #9e4848; color: #ffffff; padding: 5px; text-align: center; font-size: .85rem; font-weight: 400;\"><img style=\"max-width: 60px; vertical-align: middle; padding-right: 20px;\" src=\"https://content.propertyroom.com/listings/banners/!WSImages/Email2016/snowflake-v3.png\" alt=\"snowflake\" /><span style=\"vertical-align: middle;\">It's not too late to get your winnings by <span style=\"font-weight: 600;\">12/25/2018</span>... check the delivery options and choose <span style=\"font-weight: 600;\">expedited shipping </span>if available.</span></p>"  
+			);
+			*/
+        });
+
+        //$(document).ready(function () {
+            mySwipe = new Swipe(document.getElementById("mySwipe"));
+            setTimeout(function () {
+                mySwipe.setup();
+            }, 1);
+
+            // DON'T FORGET!!!  remove the double dashes below to start rotation again (in front of var interval)
+            var interval = setInterval("mySwipe.next()", 4000);
+
+            function swipeNext(e) {
+                e.preventDefault();
+                clearInterval(interval);
+                mySwipe.next();
+            }
+            function swipePrev(e) {
+                e.preventDefault();
+                clearInterval(interval);
+                mySwipe.prev();
+            }
+
+        //});
+    

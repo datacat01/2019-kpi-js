@@ -1,0 +1,170 @@
+
+
+$(document).ready(function() {
+
+	$('input[name=searchtype]').val('address');
+	
+	$('img.hb_photo').animate({opacity: 0.9});
+	
+	$('img.hb_photo').hover(
+		function() {
+			$(this).animate({
+				width: '94px',
+				height: '76px',
+				opacity: 1
+				})
+		},
+		function() {
+			$(this).animate({
+				width: '90px',
+				height: '72px',
+				opacity: 0.9
+				})
+		}
+	);
+
+
+});
+
+function proq() {
+
+	window.open('popup.php','Help','width=560,height=340,menubar=no,toolbar=no,status=no');
+	
+	}
+	
+	
+function checkSearch() {
+
+	var fail = 0;
+	elem = document.getElementById('locationsearch');
+	if (elem.location.value === '' || elem.location.value === 'Town, City, or Feature') { fail = 1; }
+	if (elem.state.value === '- Select State -') { fail = 2; }
+	
+	if (fail === 1) {
+	
+		elem.location.focus();
+		document.getElementById('msg').innerHTML = 'Please enter a location and try again.';
+		return false;
+		
+	
+	} else if (fail === 2) {
+	
+		elem.state.focus();
+		document.getElementById('msg').innerHTML = 'Please select a state and try again.';
+		return false;	
+	
+	} else {
+	
+		document.getElementById('msg').innerHTML = '';
+		return true;
+	
+	}
+	
+
+}
+
+
+
+
+
+
+function checkname(ac){
+	var loc = "http://www.historicmapworks.com/Includes/Functions/";
+
+	if (!ac){
+		uname = document.forms['login'].lg_nm.value;
+		pass = document.forms['login'].pd1.value;
+		getText(loc + 'checkuser.php?u='+uname+'&p='+pass,'', loginDisplay);
+	} else {
+		getText(loc + 'checkuser.php?r=1','', loginDisplay);
+	}
+	
+	return;	
+}
+
+function  loginDisplay(display){
+	
+	document.getElementById('logD').innerHTML = display;
+	var test = display.split("|");
+	
+	var g = '<a href="https://www.historicmapworks.com/Account/account.php" style="margin-left: 20px; font-size: 11px; text-decoration: underline;" class="caton" onmouseover="swapLayers1(this,' + 'submenu1' + '); return true;">My Account<\/a>';
+	
+	var b = '<a href="http://www.historicmapworks.com/MemberDetails.php" style="margin-left: 20px; font-size: 11px;" class="caton" onmouseover="swapLayers1(this,' + 'submenu1' + '); return true;"><img src="/images/register.png" border="0" style="vertical-align: -3px;" alt="Register"> Register<\/a>';
+	
+	if (test.length > 1){
+		document.getElementById('myaccount').innerHTML = g;
+	} else {
+		// check login failure
+		loginRedirect();
+		document.getElementById('myaccount').innerHTML = b;
+	}
+	
+	return;
+}
+
+
+function submitLogin(myfield, e){
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+	if (keycode == 13){
+	   checkname();
+	   return false;
+	} else
+	   return true;
+}
+
+function submitenter(myfield, e){
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+	if (keycode == 13){
+	   myfield.form.submit();
+	   return false;
+	} else
+	   return true;
+}
+
+function loginRedirect(){
+	var nameEQ = "Login_Fail=";
+	var ca = document.cookie.split(';');
+	var cVal = "";
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) cVal = c.substring(nameEQ.length,c.length);		
+	}
+		
+		if (cVal > 2){
+			window.location = "http://www.historicmapworks.com/User/login_help.php";
+		}
+	
+	return;
+}
+
+function hideDocDiv(divName){
+	document.getElementById(divName).style.visibility = "hidden";
+	return;
+}
+
+function waitPreloadPage() { 
+	if (document.getElementById){
+        try{
+		  document.getElementById('prepage').style.display='none';
+        }catch(e){}
+	} else {
+		if (document.layers){ //NS4
+		document.prepage.visibility = 'hidden';
+		} else { //IE4
+		document.all.prepage.style.visibility = 'hidden';
+		}
+	}	
+}
+
+
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+

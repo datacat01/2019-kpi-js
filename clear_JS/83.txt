@@ -1,0 +1,271 @@
+
+	// Convert the WCParam object which contains request properties into javascript object
+	var WCParamJS = {
+		"storeId":'67001',
+		"catalogId":'10001',
+		"langId":'',
+		"pageView":'',
+		"orderBy":'',
+		"orderByContent":'',
+		"searchTerm":''
+	};
+	var absoluteURL = "https://www.babyjogger.com/webapp/wcs/stores/servlet/";
+	var imageDirectoryPath = "/wcsstore/BabyJoggerStorefrontAssetStore/";
+	var styleDirectoryPath = "images/colors/color1/";
+	var supportPaymentTypePromotions = false;
+	
+	var subsFulfillmentFrequencyAttrName = "fulfillmentFrequency";
+	var subsPaymentFrequencyAttrName = "paymentFrequency";
+	var subsTimePeriodAttrName = "timePeriod";
+	
+	var storeNLS = null;
+	var storeUserType = "G";
+	var ios = false;
+	var android = false;
+	var multiSessionEnabled = false;
+	
+	// Store the amount of time of inactivity before a re-login is required, this value is retrieved from wc-server.xml, default is 30 mins
+	var inactivityTimeout = 28800000;
+	
+	// Store the amount of time the inactivity warning dialog will be displayed before it closes itself, default is 20 seconds
+	var inactivityWarningDialogDisplayTimer = 20000;
+	
+	// Store the amount of time to display a inactivity warning dialog before a re-login is required, default is 30 seconds
+	var inactivityWarningDialogBuffer = 30000;
+	
+	// Store the timing event to display the inactivity dialog
+	var inactivityTimeoutTracker = null;
+
+	// Store the timing event to close the inactivity dialog
+	var dialogTimeoutTracker = null;
+	
+	//browse only mode for Web Call Centre integration
+	var browseOnly = false;
+	
+	//Summary: Returns the absolute URL to use for prefixing any Ajax URL call.
+	//Description: Dojo does not handle the case where the parameters in the URL are delimeted by the "/" forward slash. Therefore, in order to
+	//             workaround the issue, all AJAX requests must be done using absolute URLs rather than relative.
+	//Returns: The absolute URL to use for prefixing any Ajax URL call.
+	function getAbsoluteURL() {
+		if (absoluteURL != "") {
+			var currentURL = document.URL;
+			var currentProtocol = "";
+		
+			if (currentURL.indexOf("://") != -1) {
+				currentProtocol = currentURL.substring(0, currentURL.indexOf("://"));
+			}
+			
+			var savedProtocol = "";
+			if (absoluteURL.indexOf("://") != -1) {
+				savedProtocol = absoluteURL.substring(0, absoluteURL.indexOf("://"));
+			}
+			
+			if (currentProtocol != savedProtocol) {
+				absoluteURL = currentProtocol + absoluteURL.substring(absoluteURL.indexOf("://"));
+			}
+		}
+		
+		return absoluteURL;
+	}
+	//Summary: Returns the path pointing to the shared image directory.
+	//Description: In order to get the image directory path in any javascript file, this function can be used.
+	//Returns: The path to reference images.
+	function getImageDirectoryPath() {
+		return imageDirectoryPath;
+	}
+	//Summary: Returns the path pointing to the directory containing color-dependant image files.
+	//Description: In order to get the directory containing color-dependant image files in any javascript file, this function can be used.
+	//Returns: The path to reference color-dependant image files.
+	function getStyleDirectoryPath() {
+		return styleDirectoryPath;
+	}
+
+	
+
+
+ //Set the default NLS to use in the store.
+ if(storeNLS == null) {
+	 dojo.requireLocalization("storetext", "StoreText");
+	 storeNLS = dojo.i18n.getLocalization("storetext","StoreText");
+ }
+ initializeInactivityWarning();
+ var ie6 = false;
+ var ie7 = false;
+ if (navigator != null && navigator.userAgent != null) {
+	 ie6 = (navigator.userAgent.toLowerCase().indexOf("msie 6.0") > -1);
+	 ie7 = (navigator.userAgent.toLowerCase().indexOf("msie 7.0") > -1); 
+ }
+ if (location.href.indexOf('UnsupportedBrowserErrorView') == -1 && (ie6 || ie7)) {
+	 document.write('<meta http-equiv="Refresh" content="0;URL=http://www.babyjogger.com/UnsupportedBrowserErrorView?catalogId=10001&amp;langId=-1&amp;storeId=67001"/>');
+ }
+
+
+  var omnitureEnabled = "true";	
+    var piCollectEnabled = "";	
+
+
+	dojo.addOnLoad(function() { 
+		shoppingActionsJS.setCommonParameters('-1','67001','10001','G','$');
+		
+		var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+		var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+		if (isChrome || isSafari) {
+			var hiddenFields = dojo.query('input[type=\"hidden\"]');
+			for (var i = 0; i < hiddenFields.length; i++) {
+				hiddenFields[i].autocomplete="off"
+			}
+		}
+		if (dojo.has("ios") || dojo.has("android")){
+			dojo.attr(dojo.body(),"data-wc-device","mobile");
+		}		
+	});
+	
+	
+	//For setting BabyJogger Locale Cookie
+	function saveLocaleCookie(Locale){ 
+	        var Locale = Locale.replace("_","-");
+			var cookieName = "BabyJoggerLocale";
+			var cookieVal = Locale;
+			var date = new Date();
+			date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+	        var expires = "; expires=" + date.toGMTString();
+			document.cookie = cookieName + "=" + cookieVal + expires + "; path=/";
+	}
+	// For getting value of a cookie
+	function getCookieValue(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+	}
+	// For Setting up correct redirection based on locale
+	function setLocaleRedirection(Locale) {
+			var cookieValue= getCookieValue("BabyJoggerLocale");
+			var localeValue=Locale.replace("_","-");
+			if(null != cookieValue && null != localeValue && cookieValue != localeValue )
+			{
+				saveLocaleCookie(localeValue);
+			}
+		}
+
+
+	function getUrlVars() {
+		    var vars = {};
+		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		        vars[key] = value;
+		    });
+		    return vars;
+			}
+				
+	function setRedirection() { 
+				var redirection = getUrlVars()["locale"];
+            	var cookieValue= getCookieValue("BabyJoggerLocale"); 
+             	if (cookieValue!= '' && redirection!= 'no')
+             	{	
+             		window.parent.location.href = cookieValue;
+             	} 
+             	return;
+               	}
+               	
+    	function countrySelectorNavigation(){	
+			$('select[name="countrySelect"]').change(function() {
+			console.log($(this).val());
+	        var NA = $('select.rNA_Id');
+	        var EU = $('select.rEU_Id');
+	        var AP = $('select.rAP_Id');
+	        var AU = $('select.rAU_Id');
+	        var AF = $('select.rAF_Id');
+	        if ($(this).val() === "North America") {
+	            NA.toggleClass('hidden');
+	            SA.addClass('hidden');
+	            EU.addClass('hidden');
+	            AP.addClass('hidden');
+	            AU.addClass('hidden');
+	            AF.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	        } else if ($(this).val() === "South America") {
+	            SA.toggleClass('hidden');
+	            EU.addClass('hidden');
+	            NA.addClass('hidden');
+	            AP.addClass('hidden');
+	            AU.addClass('hidden');
+	            AF.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	        } else if ($(this).val() === "Europe") {
+	            SA.addClass('hidden');
+	            EU.toggleClass('hidden');
+	            NA.addClass('hidden');
+	            AP.addClass('hidden');
+	            AU.addClass('hidden');
+	            AF.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	        } else if ($(this).val() === "Asia") {
+	            AP.toggleClass('hidden');
+	            SA.addClass('hidden');
+	            EU.addClass('hidden');
+	            NA.addClass('hidden');
+	            AU.addClass('hidden');
+	            AF.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	        } else if ($(this).val() === "Australia") {
+	            AU.toggleClass('hidden');
+	            SA.addClass('hidden');
+	            EU.addClass('hidden');
+	            NA.addClass('hidden');
+	            AP.addClass('hidden');
+	            AF.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	         } else if ($(this).val() === "Africa") {
+	            AF.toggleClass('hidden');
+	            SA.addClass('hidden');
+	            EU.addClass('hidden');
+	            NA.addClass('hidden');
+	            AP.addClass('hidden');
+	            AU.addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').css('display', 'inline-block');
+	        } else {
+	            $('select.mobileCountry').addClass('hidden');
+	            $('.mobileCountryWrapper .downtick').hide();
+	        }
+	    });
+	
+	    // On Change Go To URL
+	    $('.mobileCountry[name="mobileCountry"]').on('change', function() {
+	        var url = $(this).val();
+	        var path = window.location.hostname;
+	        if (url) {
+	            window.location = 'http://' + path + '/' + url;
+	        }
+	        return false;
+	    });
+	}			
+    
+               	
+
+
+    var DTMData = {
+       "authenticated":   '1',
+       "suid":  '-1002',
+       "channel": '???BJ_LANDING_PAGE_CHANNEL???', 
+       "template":   '???BJ_LANDING_PAGE_PAGE_TEMPLATE???',
+    }
+    _satellite.pageBottom();
+
+
+		$("#countrySelectorAccordion > li > .list-title").click(function(){
+			if(false == $(this).next().is(':visible')) {
+				$('#countrySelectorAccordion ul').slideUp(300).removeClass("active");
+				$('#countrySelectorAccordion ul').parent().removeClass("open");
+			}
+			$(this).next().toggleClass("active").slideToggle(300);
+			$(this).next().parent().toggleClass("open");
+		});
+	
+		$('#countrySelectorAccordion ul:eq(0)').show().addClass("active");
+		$('#countrySelectorAccordion ul:eq(0)').parent().addClass("open");
+	

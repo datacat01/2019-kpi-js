@@ -1,0 +1,62 @@
+
+var bobeAttributes = {
+  domainURL : 'http://www.bidorbuy.co.za',
+  secureDomainURL : 'https://www.bidorbuy.co.za',
+  currentRequestDomainURL : 'https://www.bidorbuy.co.za'
+};
+
+
+var _avp = _avp || []; (function() { var s = document.createElement('script');s.type = 'text/javascript';s.async = true;s.src = 'https://nope.bidorbuy.co.za/js/libcode3.js';var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+
+
+    $(document).ready(function(){
+      $.bobeSocialShare.init();
+      });
+  
+
+	$.bobeMenu.toggleSignInMenuOptions();
+  setReferralInformation ('bidorbuy.co.za');
+
+
+  initialiseHeaderTradeSearchInput('https://www.bidorbuy.co.za/jsp/header/tradesearch/HeaderTradeSearchSuggestionsAJAXHandler.jsp');
+
+document.write(getCartCookieCount());
+_avp.push({ tagid: 'avp_zid_175', alias: '/', type: 'banner', zid: 175, pid: 0 });
+
+var myPageSlideDeck = $.bobeMenu.enableSlideDeck();
+gtm_check_tag();
+
+$(document).ready(function() {
+
+    $().bobeDeferred({
+      cartUrl: 'https://www.bidorbuy.co.za/jsp/cart/Cart.jsp',
+      cartTimeout: 300,
+      disableQuickCartHandleOnHTTPSPage: true,
+      cartItemCount: getCartCookieCount(),
+      TradeListGridHandling: false,
+      TradeListFlyOutHandling: false,
+      FormValidationHandling: false,
+      SlideDeckPagination: true,
+      FacetClickHandler: false,
+      GoogleMapHandling: false,
+      AgreementEnabled: true,
+      siteURL: 'https://www.bidorbuy.co.za',
+      tcAgreementDate: moment("01/10/2014", "DD/MM/YYYY"),
+      WatchAndCartIconsInitialise: true
+    });
+    
+
+  $.bobeCart.initialiseCartlinks();
+  $.bobeWatchlist.initialiseWatchlistlinks();
+  
+	$(window).bind("pageshow", function(event) {
+	    if (event.originalEvent.persisted) {
+	      	setTimeout(function() {
+	   			$.bobeWatchlist.initialiseWatchlistlinks();
+	       	});
+	    }
+	});
+
+
+});
+

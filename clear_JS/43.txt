@@ -1,0 +1,317 @@
+
+    try {       
+        var EnableGA = 'true';
+        var GAEventCategObj = [];
+        GAEventCategObj['LeftNavSupport'] = 'true';
+        GAEventCategObj['BuyerServicesChat'] = 'true';
+        GAEventCategObj['ContactUsForm'] = 'true';
+        GAEventCategObj['ContextualNavigation'] = 'true';
+        GAEventCategObj['Downloads'] = 'true';
+        GAEventCategObj['Email'] = 'true';
+        GAEventCategObj['Errors'] = 'true';
+        GAEventCategObj['ExternalLinks'] = 'true';
+        GAEventCategObj['FAQ'] = 'true';
+        GAEventCategObj['FooterExternalLinks'] = 'true';
+        GAEventCategObj['FooterInternalLinks'] = 'true';
+        GAEventCategObj['SectionNavFAQ'] = 'true';
+        GAEventCategObj['SectionNavHowToBuy'] = 'true';
+        GAEventCategObj['Videos'] = 'true';       
+        var Language = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;        
+    }
+    catch (err) {
+    }
+
+
+        var appRootDir = "/";
+
+        try {
+            var _gaq = _gaq || []; 
+            _gaq.push(['_setAccount', 'UA-6058889-4']);
+            _gaq.push(['_setDomainName', 'iaai.com']);
+            _gaq.push(['_setAllowLinker', true]);
+            _gaq.push(['_setCustomVar', 2, 'Viewed Language Preference', (Language), 3]);
+            _gaq.push(['_trackPageview']);
+        }
+        catch (err) {
+        }
+    
+
+    function RolloutDemoWindow() {
+        window.open('/Vehicles/RollOutOverview', '_Detailpromo', 'width=952,height=600,left=25,top=50,resizable=yes,scrollbars=yes').focus();
+    }
+    $(function () {
+        var appName = navigator.appName;
+        if (appName == "Microsoft Internet Explorer") {
+            DisplayBrowserUpgradeMessage('11', 'True');
+        }
+    });
+
+
+    $(document).ready(
+        function () {
+            var s = document.body.firstChild;
+            var scriptEle = document.createElement('script');
+            $(scriptEle).text('(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],' +
+        'j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=\'//www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);' +
+        '})(window,document,\'script\',\'dataLayer\',\'GTM-KM5XXT\');');
+            s.parentNode.insertBefore(scriptEle, s);
+
+            jQuery('body').prepend('<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KM5XXT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>');
+        }
+            );
+
+
+    var imageURLsArr;
+    var BannerCount = 6;
+
+    var bannerController = {
+        slider: null,
+        slidesShown: 0,
+        isThisTimeoutInitiated: false,
+        timeoutForAutoRotation: null,
+        bannerVisibleTime: parseInt('5'), // in secs
+        startSlide: parseInt('2'), //set the random slide number here (give the index number)
+        autoRotationCompleted: (''), // set whether autorotation is needed
+        currentUser: (''),
+        shouldBodyClickTrigger: true,
+        bannerImgsLoaded: [],
+        imageURLs: imageURLsArr,
+        slidesLoaded : false
+    };
+    jQuery(document).ready(function ($) {
+        $('#slider').sliderBanner({
+            arrowsNav: false,
+            loop: true,
+            keyboardNavEnabled: true,
+            controlsInside: false,
+            imageScaleMode: 'fill',
+            arrowsNavAutoHide: false,
+            autoScaleSlider: true,
+            autoScaleSliderWidth: 880,
+            autoScaleSliderHeight: 204,
+            controlNavigation: 'bullets',
+            thumbsFitInViewport: false,
+            navigateByClick: true,
+            startSlideId: 0,
+            autoPlay: false,
+            transitionType: 'move',
+            globalCaption: true
+        });
+        bannerController.slider = $('.sliderBanner').data('sliderBanner');
+        initContent();
+        bannerController.slider.ev.on('rsBeforeMove', loadSliderImgs);
+        bannerController.slider.ev.on('rsAfterSlideChange', resetAndTrackSlideID);
+    });
+
+    function GeorgiaBrokerClicksTracking() {
+		GAHomeEventTracker('Home Page Clicks', 'BrokerLink', 'BrokerLink');
+	}
+
+	function GATracking() {
+		GAHomeEventTracker('Home Page Clicks', "BrokerPopup" + document.getElementById("brokerCountry").value + "ClickedBrokerDetails", 'BrokerPopup');
+	}
+
+    function initContent() {
+        if (bannerController.bannerImgsLoaded.length === 0) {
+            loadSlide(bannerController.startSlide);
+            if (bannerController.startSlide >= 0)
+                autoRotate(bannerController.startSlide);
+            if ((bannerController.autoRotationCompleted != 'True') && bannerController.currentUser == '') {
+                bannerController.timeoutForAutoRotation = setTimeout(function () { bannerController.isThisTimeoutInitiated = true; autoRotate(); }, (bannerController.bannerVisibleTime * 1000));
+            }
+        }
+    }
+
+    function loadSlide(slideIndex) {
+        if (6 > 0) {
+            bannerController.slider.appendSlide('<div class="content">' + $('#slide' + (slideIndex + 1)).html() + '</div>', slideIndex);
+            bannerController.slider.removeSlide(slideIndex + 1);
+            var noOfNavItems = 0;
+            $('.rsNavItem').each(function () {
+                $(this).attr("id", "navItem" + (noOfNavItems++).toString());
+            });
+        }
+    }
+
+    function loadSliderImgs() {
+        if (!bannerController.slidesLoaded) {
+            for (var slideIndex = 0; slideIndex < BannerCount; slideIndex++) {
+                if (bannerController.bannerImgsLoaded.indexOf(slideIndex) == -1) {
+                    bannerController.bannerImgsLoaded.push(slideIndex)
+                    loadSlide(slideIndex);
+                }
+            }
+        }
+        bannerController.slidesLoaded = true;
+        if (bannerController.isThisTimeoutInitiated) {
+            bannerController.isThisTimeoutInitiated = false;
+            bannerController.shouldBodyClickTrigger = false;
+            if ((++bannerController.slidesShown < BannerCount))
+                bannerController.timeoutForAutoRotation = setTimeout(function () { bannerController.isThisTimeoutInitiated = true; autoRotate() }, (bannerController.bannerVisibleTime * 1000));
+        }
+        else {
+            bannerController.shouldBodyClickTrigger = true;
+            if (bannerController.timeoutForAutoRotation != null) {
+                clearTimeout(bannerController.timeoutForAutoRotation);
+            }
+        }
+        if (bannerController.slidesShown >= BannerCount) {
+            $.ajax({
+                type: 'POST',
+                url: appRootDir + 'Home/AutoRotationCompletedTrack/',
+                data: { autoRotationCompleted: 'True' }
+            });
+        }
+    }
+
+    $('a').live('click', function (e) {
+        if (bannerController != null && bannerController.timeoutForAutoRotation != null)
+            clearTimeout(bannerController.timeoutForAutoRotation);
+    });
+
+    function resetAndTrackSlideID() {
+        if (bannerController.slidesLoaded) {
+            $.ajax({
+                type: 'POST',
+                url: appRootDir + 'Home/BannerSlideIDTrack/',
+                data: { slideID: bannerController.slider.currSlideId }
+            });
+        }
+    }
+
+    function autoRotate(startSlide) {
+        var currSlide;
+        currSlide = startSlide == null ? (bannerController.slider.currSlideId ==( BannerCount - 1) ? 0 : (bannerController.slider.currSlideId + 1))
+                                                                                                : startSlide;
+        $("#navItem" + currSlide).trigger('click');
+    }
+
+
+
+    function ShowPopup(ShowDivId, fadeDivId) {
+        fadeDivId.show();
+        ShowDivId.show();
+
+        var winH = $(window).height(); /*get window height and width*/
+        var winW = $(window).width();
+
+        ShowDivId.css('top', winH / 2 - ShowDivId.height() / 2); //Set the popup window to center
+        ShowDivId.css('left', winW / 2 - ShowDivId.width() / 2);
+
+        return false;
+    }
+
+    function closePopup() {
+        $('#georgiaPopup').hide();
+        $('#fadeRegModalPopUp').hide();
+    }
+	function dontshowclick() {
+        var now = new Date();
+        now.setFullYear(now.getFullYear() + 10);
+        cookievalue = "BrokerPopupCloseClick" + ";"
+        document.cookie = "BrokerPopupCloseClick=" + cookievalue + "expires=" + now.toUTCString() + ";";
+		closePopup();
+		var BrokerCountry = document.getElementById("brokerCountry").value;
+		GAHomeEventTracker('Home Page Clicks', "BrokerPopup"+BrokerCountry+"ClickedDontShowAgain", 'BrokerPopup');
+    }
+
+    $(document).ready(function () {
+        $('.recommendaton-tooltip').tooltipster({
+            theme: 'tooltipster-listing', position: 'top', animation: 'fade', offsetY: 0, maxWidth: 280, contentAsHTML: true
+        });
+        var keywordFeedback = $('#keywordFeedback');
+
+        $('.popUpCloseIcon').on('click', closePopup);
+
+        keywordFeedback.click(function () {
+            if ($('#fadeRegModalPopUp').html().trim().length <= 0) {
+                $.ajax({
+                    url: '/Survey/GetSurvey',
+                    data: "SurveyId=1",
+                    type: "GET",
+                    success: function (data) {
+                        $('#feedbackPopHome').html(data);
+                        ShowPopup($('#feedbackPopHome'), $('#fadeRegModalPopUp'));
+                    }
+                });
+            }
+        });
+
+        //$.ajax({
+        //    url: '/Survey/surveysetting',
+        //    type: "GET",
+        //    success: function (data) {
+        //        var responseJSON = $.parseJSON(data);
+        //        if (responseJSON != null && responseJSON.ShowFullSite == "True") {
+        //            $('#keywordFeedback').show();
+        //            keywordFeedback.animate({ right: "0px", }, 300);
+        //        }
+        //    }
+		//});
+
+		$.ajax({
+            url: '/Home/BrokerPopup',
+            type: "GET",
+			cache: false,			
+            success: function (data) {
+				if (data != null && data != "") {
+					var str = data.split('|');
+                    $('#georgiapopup').html(str[0]);
+					ShowPopup($('#georgiaPopup'), $('#fadeRegModalPopUp'))
+					GAHomeEventTracker('Home Page Clicks', 'BrokerPopup' + str[1] + 'Viewed', 'BrokerPopup');
+					$('#brokerCountry').val(str[1]);
+                }
+            }
+
+        })
+    });
+
+
+
+    try {
+        var footerExternalL = 'Footer - External Links';
+        var footerInternalL = 'Footer - Internal Links';
+        var footerAdesa = 'Adesa';
+        var footerAFC = 'AFC';
+        var footerAndroid = 'Android app store';
+        var footerRulesAgr = 'Auction Rules / Buyer Agreement';
+        var footerAutoVIN = 'AutoVIN';
+        var footerPAR = 'PAR';
+        var footerDentDemon = 'DentDemon';
+        var footerImpact = 'Impact';
+        var footerIphone = 'iPhone app store';
+        var footerKAR = 'KAR';
+        var footerMobileSite = 'Mobile site (m.iaai.com)';
+        var footerPrivacyP = 'Privacy Policy';
+        var footerTerms = 'Terms of Use';
+        var footerClick = 'Click';
+        var footerOpenLane = 'OpenLane';
+        var footerIAAAdvantageIcon = 'IAA Advantage Icon';
+        var footer1Car1DifferenceIcon = '1Car1Difference Icon';
+        var footerIAAPolishMicrosite = 'IAA Polish Microsite';
+        var footerIAAMexicoMicrosite = 'IAA Mexico Microsite';
+        var footeriPadAppStore = 'iPad app store';
+        var footeriPadAppStoreBadge = 'iPad AppStore Badge';
+        var footerSellAtAuction = 'Sell at Auction';
+        var footerSellToIAA = 'Sell to IAA';
+        var footerConsignVehicles = 'Consign Vehicles';
+        var footerCSATodayLogin = 'CSAToday Login';
+        var footerInformationWeek2014 = 'Information Week 2014';
+        var footerBBBImageURL = 'https://seal-chicago.bbb.org/seals/blue-seal-250-52-whitetxt-bbb-88276839.png';
+    }
+    catch (err) {
+    }
+
+
+        (function () {
+            try {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = 'https://ssl.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            }
+            catch (err) { }
+        })();
+    

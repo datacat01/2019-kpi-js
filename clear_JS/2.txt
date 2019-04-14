@@ -1,0 +1,202 @@
+
+        var apmex_app_base = 'https://www.apmex.com';
+        var apmex_app_ppctrycount = 1;
+        var apmex_serverTime = '4/14/2019 8:49:28 AM';
+    
+
+        $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+        var url = apmex_app_base + '/site/GetTopSectionUserStatus';
+        var requestUrl = window.location.href.split('?')[0];
+        MyAccount.getUserStatus(url, requestUrl);
+    
+
+    // <![CDATA[
+    window.DY = window.DY || {};
+            DY.recommendationContext = {type:'HOMEPAGE'};
+// ]]>
+    
+
+    var utag_data = { loyal: "0", authenticated: "0", userid: "0", ocount: "0", uehash: "",uemail:"" , lastorderdate:"" ,customerscore :"0",customertype:"new" };
+
+
+                    (function (d, t) {
+                        "use strict";
+                        var s = d.getElementsByTagName(t)[0], n = d.createElement(t);
+                        n.src = "//paypal.adtag.where.com/merchant.js";
+                        s.parentNode.insertBefore(n, s);
+                    }(document, "script"));
+                
+
+                    var __dcid = __dcid || []; __dcid.push(["DigiCertClickID_ZNL5EszH", "3", "s", "black", "ZNL5EszH"]); (function () { var cid = document.createElement("script"); cid.async = true; cid.src = "//seal.digicert.com/seals/cascade/seal.min.js"; var s = document.getElementsByTagName("script"); var ls = s[(s.length - 1)]; ls.parentNode.insertBefore(cid, ls.nextSibling); }());
+                
+
+
+        $(document).ready(function () {
+            //$('.alp').parents('.page-container, .page-content').css({
+            //    'width': '100%',
+            //    'max-width': '100%',
+            //    'margin': '0 auto',
+            //    'padding': '0',
+            //});
+
+            //$(".spot-wrapper.bottom-fixed").appendTo("body");
+
+            $('.truncate-tip').truncate({ max_length: 364 });
+
+
+
+            var leftCol = $('.mod-product.product-grid .mod-product-card.card-large').outerHeight();
+            var rightCol = $('.mod-product.product-grid .mod-card-grid').outerHeight();
+
+            if (rightCol > leftCol) {
+                $('.mod-product.product-grid .mod-product-card.card-large').css('height', rightCol)
+            }
+
+            $("#site-carousel").on("swiperight", function () {
+                $(this).carousel('prev');
+            });
+            $("#site-carousel").on("swipeleft", function () {
+                $(this).carousel('next');
+            });
+
+            $(".dy-load").delay(100).fadeIn(500).css("opacity", "1");
+
+        });
+
+    
+
+
+                (function (a, b, c, d) {
+                    a = '//tags.tiqcdn.com/utag/apmex/main/prod/utag.js';
+                    d = new Date();
+                    a += ('?ds=' + d.getMonth() + d.getDate());
+                    b = document;
+                    c = 'script';
+                    d = b.createElement(c);
+                    d.src = a;
+                    d.type = 'text/java' + c;
+                    d.async = true;
+                    a = b.getElementsByTagName(c)[0];
+                    a.parentNode.insertBefore(d, a);
+                })();
+
+            
+
+                        //<![CDATA[
+                        (function () {
+                            function riskifiedBeaconLoad() {
+                                var store_domain = 'www.apmex.com';
+                                var session_id = '0aoptrt1hoal5bxla4fbw1ga';
+                                var url = ('https:' == document.location.protocol ? 'https://' : 'http://')
+                                  + "beacon.riskified.com?shop=" + store_domain + "&sid=" + session_id;
+                                var s = document.createElement('script');
+                                s.type = 'text/javascript';
+                                s.async = true;
+                                s.src = url;
+                                var x = document.getElementsByTagName('script')[0];
+                                x.parentNode.insertBefore(s, x);
+                            }
+                            if (window.attachEvent)
+                                window.attachEvent('onload', riskifiedBeaconLoad)
+                            else
+                                window.addEventListener('load', riskifiedBeaconLoad, false);
+                        })();
+                        //]]>
+                
+
+                $(window).load(function () {
+                    defer(function () {
+                        $.ajax({
+                            url: '/Site/CurrentVisitor',
+                            type: 'get',
+                            success: function (data) {
+                            }
+                        });
+                    }, 2000);
+                        });
+
+                $(window).load(function () {
+                    defer(function () {
+                        $.ajax({
+                            url: '/Site/ShowUserPersonalizationPopup' + '?bannertype=none&promo=none&referrer=/&url=/',
+                            type: 'get',
+                            success: function (data) {
+                                if (data.showPopup) {
+                                    $('body').append(data.popupContent);
+                                    $('#modal-register-popup').modal();
+                                    $('#modal-register-popup').on('hidden', function () {
+                                        $('#modal-register-popup').remove();
+                                    });
+                                }
+                            }
+                        });
+                    }, 9000);
+                });
+        
+
+                $(document).ready(function () {
+
+                    if ($(".LiveChatInsert").length) {
+                        $(".boldchat-link").appendTo(".LiveChatInsert");
+                        $(".LiveChatInsert").css("display", "inline");
+                        $(".boldchat-link").css("display", "inline");
+                    }
+                    if (imichatwidget) {
+                        imichatwidget.on("imichat-widget:ready", function(appId){
+                            $(".imc-live-chat-link").show();
+                        });    
+                    }
+                    
+                    var $graphTarget = $('.charts-link');
+
+                    $('.charts-link').on('click', function (e) {
+                        e.preventDefault();
+                        // get chart link status
+                        var hideGraph = $('.charts-link').text().split(' ')[0];
+
+                        // update link status
+                        $($graphTarget).toggleClass('clicked').text(function (i, text) {
+                            return text === "Hide Charts" ? "View Charts" : "Hide Charts";
+                        })
+                        $('.graph-wrapper').slideToggle(350);
+
+
+                        if (hideGraph === "View") {
+                            $.ajax({
+                                cache: false,
+                                data: 'metalname=gold&type=embed&template=daily',
+                                url: 'https://www.apmex.com' + '/spotprice/charts', //url,
+                                type: 'get',
+                                success: function (response) {
+                                    //if (response.success) {
+                                    //console.log(response);
+                                    $('#iframe-chart-view').html(response);
+
+                                }
+                            });
+                        }
+
+                    });
+
+                    $('main').click(function () {
+                        toggleDailyGraph();
+                    });
+
+                    $('.close').click(function () {
+                        toggleDailyGraph();
+                    });
+
+                });
+
+                function toggleDailyGraph() {
+                    var $graphTarget = $('.charts-link');
+                    var hideGraph = $('.charts-link').text().split(' ')[0];
+                    if (hideGraph === "Hide") {
+
+                        $($graphTarget).toggleClass('clicked').text(function (i, text) {
+                            return text === "Hide Charts" ? "View Charts" : "Hide Charts";
+                        })
+                        $('.graph-wrapper').slideToggle(350);
+                    }
+                }
+        

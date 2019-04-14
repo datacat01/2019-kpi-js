@@ -1,0 +1,204 @@
+
+ 	var $HA=window.$HA={callbacks:[],callbackIndex:1000,lazyLoaded:{index:0,resources:{},callbacks:{}},deferredCSS:[]};var errorHandler=function(debugInfo)
+{var debugData=debugInfo.data,debugServer=debugInfo.server;return function(m,u,l)
+{var c=window.onerror.caller||(window.onerror.arguments[4]&&window.onerror.arguments[4].stack)||'';var i=new Image();var page=window.location.href;var width=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var height=Math.max(document.documentElement.clientHeight,window.innerHeight||0);i.src='/c/error/js-error-handler.zx?m='+encodeURIComponent(m)+'&u='+encodeURIComponent(u)+'&l='+encodeURIComponent(l)+'&c='+encodeURIComponent((''+c).replace(/[+]/g,'%2b'))+'&dd='+encodeURIComponent(debugData)+'&s='+encodeURIComponent(debugServer)+'&p='+encodeURIComponent(page)+'&dm='+document.documentMode+'&width='+width+'&height='+height;window.onerror=function(){return false;};return false;};};document.documentElement.className+=' js';Object.defineProperty(Array.prototype,"addToQueue",{enumerable:false,writable:true,value:function(callback,index,dependencies){index=index||$HA.callbackIndex++;if(index<1){throw'Callback indices must be greater than zero.';}
+var item={i:index,f:callback,d:dependencies||[]};return this.push(item);}});$HA.lazyLoad=function(files,callback,test){var newStylesheetIndex=document.styleSheets?document.styleSheets.length-1:0;test=test||function(){return true;};var id=$HA.lazyLoaded['index']++;for(var index=0;index<files.length;index++){var file=files[index];if(isLoaded(file)){queue(file,callback,test);processGroupCallbacks(file);}else if(exists(file)){queue(file,callback,test);}else{$HA.lazyLoaded['resources'][getIndex(file)]={loaded:false,queue:[]};queue(file,callback,test);load(file);}}
+function getIndex(file){return file.replace(/\.\d+\.(js|css)/g,".$1");}
+function load(file){if(getFileType(file)==='css'){appendStylesheet(file);newStylesheetIndex++;}
+if(getFileType(file)==='js'){appendScriptAndCallCallback(file);}}
+function exists(file){return $HA.lazyLoaded['resources'][getIndex(file)]!==undefined;}
+function isLoaded(file){return exists(file)&&$HA.lazyLoaded['resources'][getIndex(file)]['loaded']===true;}
+function queue(file,callback,test){if(callback&&(!$HA.lazyLoaded['callbacks'][id]||!$HA.lazyLoaded['callbacks'][id]['executed'])){$HA.lazyLoaded['resources'][getIndex(file)]['queue'].push({id:id});$HA.lazyLoaded['callbacks'][id]={callback:callback,test:test,dependencies:files,executed:false};}}
+function getFileType(file){return typeof(file)==='string'?file.slice(-3).replace('.','').toLowerCase():'';}
+function appendStylesheet(url){var loaded=false;var firstScript=document.getElementsByTagName('script')[0],head=firstScript.parentNode,oLink=document.createElement("link");oLink.rel="stylesheet";oLink.href=url;oLink.media="only x";oLink.onload=function(){if(!loaded){loaded=true;if(this.media!='all')this.media="all";if(this.rel!='stylesheet')this.rel="stylesheet";processGroupCallbacks(url);}};head.insertBefore(oLink,firstScript||head.firstChild);}
+function appendScriptAndCallCallback(url){var firstScript=document.getElementsByTagName('script')[0],head=firstScript.parentNode,oScript=document.createElement('script');oScript.setAttribute('src',url);oScript.setAttribute('type','text/javascript');oScript.setAttribute('charset','utf-8');if(url.indexOf('heritagestatic')!==-1){oScript.setAttribute('crossorigin','anonymous');}
+if(oScript.addEventListener){oScript.addEventListener('load',function(){processGroupCallbacks(url);},false);}
+head.insertBefore(oScript,firstScript||head.firstChild);}
+function isReady(item){var filesToLoad=0;for(var index=0;index<item['dependencies'].length;index++){if(!isLoaded(item['dependencies'][index])){filesToLoad++;}}
+return filesToLoad===0;}
+function processGroupCallbacks(file){$HA.lazyLoaded['resources'][getIndex(file)]['loaded']=true;if(callback!==undefined){executeQueue(file);for(var index=0;index<files.length;index++){if(files[index]!==file&&exists(files[index])){executeQueue(files[index]);}}}}
+function executeQueue(file){var queue=$HA.lazyLoaded['resources'][getIndex(file)]['queue'];if(queue.length>0){var group,item;for(var index=0;index<queue.length;index++){group=queue[index];if(group['id']>=0&&$HA.lazyLoaded['callbacks'][group['id']]&&!$HA.lazyLoaded['callbacks'][group['id']]['executed']){item=$HA.lazyLoaded['callbacks'][group['id']];if(isReady(item)){queue[index]={};execute(item['callback'],item['test']);$HA.lazyLoaded['callbacks'][group['id']]={executed:true};}}}}}
+function execute(callback,test){var call=false;try{call=test.call();}catch(e){}
+if(call){callback.call();}else{var retry=setInterval(function(){try{call=test.call();}catch(e){}
+if(call){clearInterval(retry);callback.call();}},500);}}};	$HA.loadDeferredCSS = function() { $HA.deferredCSS.push('https://www.heritagestatic.com/c/css/style.115.css','https://www.heritagestatic.com/c/css/web-font.8.css','https://www.heritagestatic.com/c/css/homepage.64.css'); }
+  window.onerror = errorHandler({data: '',server: 'webprod01'});
+ 
+
+	$HA.callbacks.addToQueue(function(){
+  $HA.lazyLoad(Array('https://www.heritagestatic.com/c/js/endeca-searchbox.min.23.js'), function() {
+ $.HA.EndecaSearchBox.KeywordSearch.init();
+ $('#hasJS').val(1); //indicate the user has JS
+ }, function() {
+ return ( typeof $.HA.EndecaSearchBox.KeywordSearch == 'object' );
+ });
+ 	});
+
+
+ var slug = 'www';
+ 
+
+ $HA.callbacks.addToQueue(function(){
+ $HA.lazyLoad(Array('https://www.heritagestatic.com/c/js/homepage.min.58.js'), function() {
+  $.HA.Homepage.EndecaSearchBrowse.init({
+ slug: 'www',
+ icValue: '071713'
+ });
+ $.HA.Homepage.init({
+ slug: 'www',
+ preview: 0 });
+ $.HA.Homepage.AuctionList.init({
+ slug: 'www',
+ parentSlug: '',
+ numberToDisplay: 10 });
+  }, function() {
+ return typeof $.HA.Homepage === 'object' && typeof $.HA.Homepage.AuctionList === 'object' && typeof $.HA.Homepage.LastLotSold === 'function' && typeof $.HA.Homepage.EndecaSearchBrowse === 'object';
+ });
+ });
+
+
+ $HA.callbacks.addToQueue(function() {
+ 	$.HA.Criteo.set("account", 21363)
+ .set("email", "")
+ .set("segment", "Generic Non-Member")
+ .set("event", "viewHome")
+ .set("items", [])
+ .set("observers", [])
+   .run();
+  }, 1100);
+	
+
+ $HA.callbacks.addToQueue(function() {
+ $.HA.Layout.updateBidBuyMenuItems('');
+ });
+	
+
+	$HA.callbacks.addToQueue(function() {
+ $.HA.GoogleStructuredData.addSchema({
+ "@context": "http://schema.org",
+ "@type": "Organization",
+ "name": "Heritage Auctions",
+ "url": "https://www.HA.com/",
+ "logo": "https://www.heritagestatic.com/c/i/ui/heritage-logo-bw.jpg",
+  "contactPoint": [
+ {
+ "@type": "ContactPoint",
+ "telephone": "+1-877-437-4824",
+ "contactType": "customer support"
+ }],
+ "sameAs": ["http://www.facebook.com/HeritageAuctions",
+ "http://www.twitter.com/heritageauction",
+ "http://plus.google.com/103018917927912233380",
+ "https://www.linkedin.com/company/heritage-auctions",
+ "https://www.facebook.com/HeritageAuctions",
+ "https://www.youtube.com/user/HeritageAuctions",
+ "https://www.pinterest.com/heritageauction"],
+  });
+	});
+	$HA.callbacks.addToQueue(function() {
+ $.HA.GoogleStructuredData.addSchema({
+ "@context": "http://schema.org",
+ "@type": "WebSite",
+ "url": "https://www.HA.com/",
+ "potentialAction": {
+ "@type": "SearchAction",
+ "target": "https://www.ha.com/c/search.zx?txtSearch={search_term_string}",
+ "query-input": "required name=search_term_string"
+ }
+ });
+	});
+
+
+ $HA.loadDeferredCSS();
+ $HA.callbacks.addToQueue(function() {
+ $.HA.Layout.init();
+ $.HA.lazyLoadFonts();
+ $.HA.LiveAuctionAlerts.init();
+ $.HA.Forms.init();	// Prevents multiple submissions
+ }, 5);
+  $HA.callbacks.addToQueue(function(deferred){
+ $.HA.LiveAuctionAlerts.load(deferred);
+ return deferred;
+ }, 20);
+  // Our JS cookie
+ document.cookie = "js=1;path=/;domain=.ha.com";
+ // Add our magic links
+ $HA.callbacks.addToQueue(function(){
+ $.HA.prepareLiveLinks();
+ });
+ $HA.callbacks.addToQueue( function() {
+ $.HA.Tooltips.init();
+ $.HA.Loader.init();
+ }, 2000);
+	
+
+ var s_account = "heritageglobal1";
+ $HA.callbacks.addToQueue(function(){
+ $HA.lazyLoad( Array( 'https://www.heritagestatic.com/c/js/thirdparty/app-measurement.min.1.js' ), function() {
+ if( s )
+ {
+ $.HA.Omniture.init( [1,3,4,5,18,24,25,26,27,28,30,31,32,33,34,35,36,37,38] );
+   s.server = "webprod01";
+  s.channel = "www";
+  s.prop2 = "-2065608059";
+  s.ipaddress = "212.90.63.178";
+  s.pageName = "home-www";
+  s.prop1 = "-2065608059:home-www";
+  s.prop10 = "none";
+  s.eVar19 = "-2065608059";
+  s.eVar29 = "-2065608059";
+  s.eVar39 = "-2065608059";
+  s.request_uri = "/";
+  s.visitorID = "";
+   /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+ var s_code = s.t();
+ if( s_code ) document.write( s_code );
+ }
+ }, function() {
+ return typeof s != 'undefined';
+ });
+ }, 3000);
+	
+
+ $HA.callbacks.addToQueue(function(){
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga( 'create', 'UA-29343267-1', {'cookieDomain': 'ha.com', 'siteSpeedSampleRate': 100} );
+ ga( 'send', 'pageview' );
+ 
+ }, 3010);
+  function googleAnalyticsAddEvent( pageName, action, label, value )
+ {
+ if( typeof ga === 'function' )
+ {
+ if (typeof label == 'undefined' ) label = '';
+ cleanValue = typeof value == 'undefined' ? 0 : Math.round(value);
+ ga( 'send', 'event', pageName, action, label, cleanValue );
+ }
+ }
+	 
+
+ $HA.callbacks.addToQueue(function() {
+ // Logs user's device id - Dependency: framework.min.js
+ $.HA.Browser.logFingerprint();
+ });
+
+
+ // Execute all the callbacks
+ $HA.lazyLoad(Array('https://www.heritagestatic.com/c/js/framework.min.268.js'), function() {
+ $(function(){
+ $.HA.Queue.init().process($HA.callbacks);
+ });
+ }, function() {	// Test to make sure jQuery is loaded
+ return typeof $ === 'function' && typeof $.HA.Queue === 'object';
+ });
+	
+
+ $HA.callbacks.addToQueue(function(){
+ $HA.lazyLoad( Array( '//www.googleadservices.com/pagead/conversion_async.js' ), function() {
+  }, function() {
+ return ( typeof window.google_trackConversion === 'function' );
+ });
+ }, 3020);
+	

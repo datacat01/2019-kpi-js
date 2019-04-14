@@ -1,0 +1,62 @@
+
+	function ShowSearchBoxMobile() {
+		$(".clickToSearch").hide();
+		$(".MainSearchBox .SearchBoxContainer .SearchBoxContainerContents").slideDown();
+	}
+	$(document).ready(function () {
+		$.ajax({
+			url: "/Item/CategoryListData",
+			dataType: "json",
+			type: 'GET',
+			success: function (result) {
+				for (var i = 0; i < result.Lines.length; i++) { $('#frmSearchBox select[name="CategoryId"]').append('<option value="' + result.Lines[i].Id + '">' + result.Lines[i].Description + '</option>'); }
+			}
+		});
+
+		$('#btnSearchSubmit').click(function () {
+			//var enteredText = $('#frmSearchBox input[name="Query"]').val();
+			//if (enteredText.trim() == '' || enteredText.trim() == 'Search...') { return false; }
+			$('#frmSearchBox input[name="Query"]').val($('#frmSearchBox input[name="Query"]').val().replace('Search...', ''));
+
+			return true;
+		});
+	});
+
+
+	//$(document).ready()
+	//{
+	//	$('#FreeCatalog').insertAfter($("#ContentAreaRight > .Advertisement").first())
+	//}
+
+
+                $(document).ready(function () {
+                    $('.your-class').slick({
+                        dots: true,
+                        centerMode: false,
+                        centerPadding: '150px',
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        mobileFirst: true,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    centerMode: true,
+                                }
+                            }
+                        ]
+                    });
+                    $('.Slickimage').show();
+                });
+
+            
+var UserAuthenticated = 'N';
+	$(document).ready(function () {
+		$("#MainMenu").slicknav();
+	});
+
+

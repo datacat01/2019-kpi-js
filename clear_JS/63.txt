@@ -1,0 +1,112 @@
+
+						(function() {
+						var referer="";try{if(referer=document.referrer,"undefined"==typeof referer||""==referer)throw"undefined"}catch(exception){referer=document.location.href,(""==referer||"undefined"==typeof referer)&&(referer=document.URL)}referer=referer.substr(0,700);
+						var rcds = document.getElementById("rcjsload_d5e10b");
+						var rcel = document.createElement("script");
+						rcel.id = 'rc_' + Math.floor(Math.random() * 1000);
+						rcel.type = 'text/javascript';
+						rcel.src = "//trends.revcontent.com/serve.js.php?w=111941&t="+rcel.id+"&c="+(new Date()).getTime()+"&width="+(window.outerWidth || document.documentElement.clientWidth)+"&referer="+encodeURIComponent(referer);
+						rcel.async = true;
+						rcds.appendChild(rcel);
+						})();
+						
+
+			var canRunAds = true;
+		
+
+			$(document).ready(function() {
+				var headad = $('#HeaderAd').find('a');
+
+				if (headad.length > 0)
+				{
+					if(headad[0].host == "secondmedia-d.openx.net" && window.canRunAds !== undefined)
+					{
+						console.log("ads");
+						$.post( "https://www.gunauction.com/code/methods.cfc?method=missing&placement=0&block=2" );
+					}
+					/*else if (headad[0].host != "secondmedia-d.openx.net" && window.canRunAds !== undefined)
+					{
+						console.log("no ad");
+						$('#HeaderAd').append("<div style='padding: 0 0 0 10;'><img src='/images/SpeakYourLanguage.jpg' alt='We speak your language! at GunAuction.com'/></div>");
+						$.post( "https://www.gunauction.com/code/methods.cfc?method=missing&placement=0&block=0" );
+					}
+					else if (headad[0].host != "adclick.g.doubleclick.net" && window.canRunAds !== undefined)
+					{
+						console.log("no ad");
+						$('#HeaderAd').append("<div style='padding: 0 0 0 10;'><img src='/images/SpeakYourLanguage.jpg' alt='We speak your language! at GunAuction.com'/></div>");
+						$.post( "https://www.gunauction.com/code/methods.cfc?method=missing&placement=0&block=0" );
+					}
+					else if (headad[0].host == "" && window.canRunAds !== undefined)
+					{
+						console.log("no ad");
+						$('#HeaderAd').append("<div style='padding: 0 0 0 10;'><img src='/images/SpeakYourLanguage.jpg' alt='We speak your language! at GunAuction.com'/></div>");
+						$.post( "https://www.gunauction.com/code/methods.cfc?method=missing&placement=0&block=0" );
+					}*/
+				}
+										
+				/*if( window.canRunAds === undefined ){
+					console.log("ad blocker detected");
+					$("<div style='padding: 0 0 0 10;'><img src='/images/SpeakYourLanguage.jpg' alt='We speak your language! at GunAuction.com'/></div>").insertBefore("#HeaderAd");
+					$.post( "https://www.gunauction.com/code/methods.cfc?method=missing&placement=0&block=1" );
+				  }*/
+			});
+		
+					
+				$(document).ready(function() {
+					
+					/*$("#ak").autocomplete(
+					"http://code.gunauction.com/search.cfm",
+					{
+						minChars:25,
+						delay:150,
+						autoFill:false,
+						matchSubset:false,
+						matchContains:1,
+						cacheLength:10,
+						selectOnly:1
+					}
+					);*/
+/*					$(function() {
+						$('select.styled').customStyle();
+					});*/
+					$("#categmain, #oe_menu").click(function() {
+						$("#categ-o").css({display:'block'});
+						$("#morecatToolTip").css('display','block');
+						$("#tipText").css('display','block');
+					});
+					$(".categmain-a, #oe_menu").click(function(ev){
+						   /*$(this).css({border:'1px solid #ddd', background:'#005594',color:'#fff'});*/
+						   $(".categmain-a").css({border:'1px solid #ddd','border-top-color':'#005594','border-bottom-color':'#fff'});
+						   $(".categmain-a").unbind('mouseenter mouseleave');
+						   $(".categmain-a").removeClass('apply-hover');
+
+					});
+					$("#categmain").mouseleave(function() {
+						$("#categ-o").css("display","none");
+						$(".categmain-a").css({border:'none', background:'none', color:'#a1a1a1'});
+					});
+					$(".categmain-a, #oe_menu").hover(function() {
+						$("#categ-o").css({display:'block'});
+						$("#morecatToolTip").css('display','block');
+						$("#tipText").css('display','block');
+					});
+				});
+			
+
+	function downloadJSAtOnloadHeader() {
+	var element = document.createElement("script");
+	element.src = "https://www.gunauction.com/scripts/header.js";
+	document.body.appendChild(element);
+	}
+	if (window.addEventListener)
+		window.addEventListener("load", downloadJSAtOnloadHeader, false);
+	else if (window.attachEvent)
+		window.attachEvent("onload", downloadJSAtOnloadHeader);
+	else window.onload = downloadJSAtOnloadHeader;
+
+
+		$(document).ready(function(){	
+		
+		$('.wt-scroller').attr('style','display:block;');
+	});
+	

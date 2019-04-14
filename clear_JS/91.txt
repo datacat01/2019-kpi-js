@@ -1,0 +1,75 @@
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.f6f3d3ecd95743eabee4c6c07d846754');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".birthdaydirect.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"439a544cf69a3f08ab7371091ec416dc2d4cec12","type":"ANONYMOUS","visit_id":"74936b99-54f1-4605-80bc-b1bd63488389","visitor_id":"d1c39a6e-dc41-4473-bbde-d319ea8c6db1"},"referer":{"url":""},"request":{"url":"https:\/\/www.birthdaydirect.com\/"}}, '', 2768560, "other", {"customer":{"id":"anonymous"}}, '74936b99-54f1-4605-80bc-b1bd63488389', 'd1c39a6e-dc41-4473-bbde-d319ea8c6db1');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"7ccdce7782b587809ef5f35650ca7d5e9ff23a841fa444ed1545ac4f215ca4a9"};
+
+
+      var ecomm_prodid= '';
+      var ecomm_pagetype= '';
+      var ecomm_totalvalue= 0;
+      var pathnameVal=window.location.pathname;
+      var hrefVal=window.location.href;
+  
+      if(jQuery('.productView').length == 1)  /*  product page */
+      {
+        
+
+        ecomm_prodid= jQuery('.productView-sku span').text().trim();
+        ecomm_pagetype= 'product';
+        ecomm_totalvalue= jQuery('[property="product:price:amount"]').attr('content')   ;
+     }
+      else if(pathnameVal=='/') /* for home page */
+      {
+        ecomm_pagetype= 'home';
+      }
+      else if(jQuery('#product-listing-container').length > 0) /* for category page */
+      {
+        ecomm_pagetype= 'category';
+       
+      }else if(hrefVal.indexOf('/cart.php') != -1) /*  cart page */
+      {   
+           var cart_ids = new Array();
+           jQuery('.cart-item-block.cart-item-title:first')
+          jQuery('.cart-item-block.cart-item-title').each(function(){
+                cart_ids.push(jQuery(this).text().split('SKU:')[1].trim())
+          })
+
+            ecomm_prodid = cart_ids;
+            ecomm_totalvalue = jQuery('.cart-total-value.cart-total-grandTotal').text().replace(/[^0-9.]/g,'');
+            ecomm_pagetype= 'cart';
+            
+      }else if(hrefVal.indexOf('finishorder') != -1)
+      {
+          ecomm_pagetype= 'purchase';
+      } 
+        else
+           {
+              ecomm_pagetype= 'other';
+           }
+
+          var google_tag_params = {
+        ecomm_prodid:  ecomm_prodid, 
+        ecomm_pagetype: ecomm_pagetype,
+        ecomm_totalvalue: parseFloat(ecomm_totalvalue)
+      };
+ 
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072733570;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

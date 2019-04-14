@@ -1,0 +1,48 @@
+/* For Retro Planet by Glendale Designs */theme_path = 'themes/shadows/';(function (mivaJS) {mivaJS.Store_Code = 'RP';mivaJS.Product_Code = '';mivaJS.Category_Code = '';mivaJS.Customer_Login = '';mivaJS.Page = 'SFNT';mivaJS.Screen = 'SFNT';}(window.mivaJS || (window.mivaJS = {})));/* Enjoy! */
+var GDisTestUser = false;var loadCodeVersion = 'live';var doSearshSpring = '1';
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1072583930');
+(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5038416"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PL3MV27');
+!function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};varn=window.pintrk;n.queue=[],n.version="3.0";vart=document.createElement("script");t.async=!0,t.src=e;varr=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");pintrk('load','2621046218272', {em: '',});pintrk('page');
+/* Slick slider preload loading images */var imgPreload= [];if(window.innerWidth < 768) {imgPreload[0]=new Image();imgPreload[0].src='/mm5/themes/shadows/heroLoaderMobile2.gif';imgPreload[0].width=600;imgPreload[0].height=900;} else {imgPreload[0]=new Image();imgPreload[0].src='/mm5/themes/shadows/heroLoaderDesktop2.gif';imgPreload[0].width=1248;imgPreload[0].height=300;}imgPreload[1]=new Image();imgPreload[1].src='/mm5/themes/shadows/loading.gif';imgPreload[1].width=32;imgPreload[1].height=32;
+
+ss_thank_you_message = '<div class="x-messages x-messages--info u-text-center">Thank you for signing up.</div>';
+ss_event_name = "Retro Planet Newsletter Signup Form";
+ss_account_id = "512939";
+ss_email_error = '<div class="x-messages x-messages--error u-text-center">Please enter a valid email address.</div>';
+function validEmail(form) { if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.email_address.value)) { document.getElementById('streamsend-error').innerHTML = '';
+return false;
+}
+else {
+document.getElementById('streamsend-error').innerHTML = ss_email_error;
+return true;
+}
+} document.getElementById('streamsend_form').addEventListener('submit', function(event) {
+console.log("Submitted the newsletter signup form.")
+StreamSendSubmit(event.target);
+event.preventDefault();
+function StreamSendSubmit(form) {
+if (validEmail(form)) {
+return false;
+} else {
+window._ssstats = window._ssstats || [];
+_ssstats.push([
+'configure', {
+accountId: ss_account_id
+}
+]);
+_ssstats.push(['identify', form.email_address.value]);
+_ssstats.push(['publish', ss_event_name]);
+document.getElementById('streamsend_form_fields').innerHTML = "";
+document.getElementById('streamsend_form_success').innerHTML = ss_thank_you_message;
+return false;
+}
+}
+}, false);
+
+var __lc = {};__lc.license = 5965691;(function() {var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);})();
+window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#000"},button:{background:"#ff3600",text:"#ffffff"}},theme:"edgeless",position:"top",content:{dismiss:"Got It!",href:"https://www.retroplanet.com/PRIV.html"}})});

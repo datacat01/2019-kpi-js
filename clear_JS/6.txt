@@ -1,0 +1,980 @@
+var monetateT = new Date().getTime();
+
+        var serverName = "U01";
+    
+
+                          var currDateStr = "4/14/2019 08:49";
+        var currDateTime = Date.parse( currDateStr );
+        
+        var vid = "20091217001";
+        var allowLog = false;
+                if( typeof( console ) == "undefined" ){
+            var console = false;
+        }
+        
+    
+
+    var i=0;
+
+
+var $j = jQuery.noConflict();
+
+
+      function SearchItems2(){
+             document.getElementById('mainSearch-searchText2').value = escape(document.getElementById('mainSearch-searchText2-view').value);
+             document.mainSearch2.submit();
+      }
+      $j().ready(function() {
+
+          $j("#mainSearch-searchText2").autocomplete('typeAhead.ajx',{
+              minChars: 3, 
+              matchSubset:0,
+              max:6,
+              maxItemsToShow:6,
+              width:341,
+              extraParams: {
+                dimensions: ''
+                  }
+           });
+
+          $j("#mainSearch-searchText2").autocomplete().result(function(){
+              $j("form#mainSearch2").submit();
+            });
+          
+      });
+
+
+var pageNeedsReload = false;
+
+
+var js_split_bizrate1 = "${bizrate_split}"; 
+
+
+      function SearchItems(){
+             //document.mainSearch.submit();
+						 jQuery('#mainSearch').submit();
+      }
+
+
+jQuery(document).ready(function($){
+    if( typeof(cmCreateElementTag) == "function" ){
+        jQuery("#header").find("#logo").bind('click', function(){
+            /* this comment allows to send this tag because it has globalPageTag */
+            cmCreateElementTag("Bradford Logo","Header – Desktop","-_--_--_--_--_--_--_--_--_--_--_--_--_--_-");
+        });
+        jQuery("#header").find("#bestGuaranteeTrigger").bind('click', function(){
+            /* this comment allows to send this tag because it has globalPageTag */
+            cmCreateElementTag("Benefit Box","Header – Desktop","-_--_--_--_--_--_--_--_--_--_--_--_--_--_-");
+        });
+    }
+});
+
+
+                      function buyItem(itemId){
+                          document.getElementById('buyButton').onclick = "";
+                          document.getElementById('frmCarousel-iid').value = itemId;
+                          document.frmCarousel.submit();
+                          return true;
+                      }
+                    
+
+if( typeof(cmCreateElementTag) == 'undefined' ){ cmCreateElementTag = function(){}; };
+if( typeof(cmCreateOrderTag) == 'undefined' ){ cmCreateOrderTag = function(){}; };
+if( typeof(cmCreatePageviewTag) == 'undefined' ){ cmCreatePageviewTag = function(){}; };
+if( typeof(cmCreateProductviewTag) == 'undefined' ){ cmCreateProductviewTag = function(){}; };
+if( typeof(cmCreateRegistrationTag) == 'undefined' ){ cmCreateRegistrationTag = function(){}; };
+if( typeof(cmCreateShopAction5Tag) == 'undefined' ){ cmCreateShopAction5Tag = function(){}; };
+if( typeof(cmCreateShopAction9Tag) == 'undefined' ){ cmCreateShopAction9Tag = function(){}; };
+if( typeof(cmDisplayShop5s) == 'undefined' ){ cmDisplayShop5s = function(){}; };
+if( typeof(cmDisplayShop9s) == 'undefined' ){ cmDisplayShop9s = function(){}; };
+
+
+coremetricsHelper.vid = "20091217001";
+coremetricsHelper.hideCmTagsCall = true;
+    coremetricsHelper.hideCmTagsCall = false;
+
+
+coremetricsHelper.attributes_pageView = [];
+coremetricsHelper.getAttributes_pageView = function(){
+    return coremetricsHelper.attributes_pageView.join("-_-");
+}
+var strA = "";
+/* bof pv_a1 */
+    strA = "";
+    coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a1 */
+
+/* bof pv_a2 */
+    strA = "";
+    coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a2 */
+
+/* bof pv_a3 */
+    strA = ""; /*"Homepage", "Category Page", '"Product Page", "Cart", "Order Confirmation", "Service Page", "Search Results Page"*/
+            strA = "Homepage";
+        if( window.location.href.indexOf("/mcategory/") >= 0 || 
+        window.location.href.indexOf("/category/") >= 0 || 
+        window.location.href.indexOf("/custom-landing-page.html") >= 0
+    ){
+        strA = "Category Page";
+    }
+                
+    if( window.location.href.indexOf("/service/") >= 0 || 
+        window.location.href.indexOf("/orderstatuslogin.html") >= 0 || 
+        window.location.href.indexOf("/mapaymentstatus.html") >= 0 || 
+        window.location.href.indexOf("/maorderstatus.html") >= 0 || 
+        window.location.href.indexOf("/signin.html") >= 0 
+    ){
+        strA = "Service Page";
+    }
+    
+    if( jQuery("#breadcrumbs").length > 0 ){
+        if( jQuery("#breadcrumbs").html().search("Customer Support") > 0 ||
+            jQuery("#breadcrumbs").html().search("My Account") > 0
+        ){
+            strA = "Service Page";
+        }
+    }
+    coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a3 */
+
+/* bof pv_a4 */
+    strA = "";//"Web", "Mobile"
+    strA = "Web";
+        coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a4 */
+
+/* bof pv_a5 */
+    strA = "";
+    coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a5 */
+
+/* bof pv_a6 */
+    strA = "";
+        coremetricsHelper.attributes_pageView.push(strA);
+/* eof pv_a6 */
+
+
+
+if( typeof(globalPageTag)!="object" ){
+    globalPageTag = {};
+}
+
+overrideCmFunctions();
+ 
+
+    var splitTestPageSuffix = '';
+    var url = "https://www.bradfordexchange.com/";
+    var externalSearch = "N";
+    var queryString = "vid=20091217001&cid=491&N=8125+9134+9040+9044&Ntt=++1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12+ not display%3AN+ or display%3AY&Ntk=position_491&Ntx=mode+matchboolean&Ns=position_491|0||priority&tpt=5_en";
+    var pageTitle = "Bradford Exchange Official Site: Shop for Collectibles, Jewelry and Gifts";
+    var coremetricsClientId;
+    var coremetricsClientDomain ;
+    var coremetricsDomain = "testdata.coremetrics.com";
+    var pageName = "UNFOUND";
+    var pattern;
+    var pageId;
+    var searchTerm;
+    var searchResults;
+    var states = ["NULL","Alabama","Alaska","American Somoa","Armed Forces - A A","Armed Forces - A E","Armed Forces - A P","Arizona","Arkansas","California","NULL","Colorado","Connecticut","Delaware","Fed. Micronesia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Marshall Islnds","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","N Mariana Islns","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Palau","Pennsylvania","Puerto Rico","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virgin Islands","Virginia","Washington","Washington D. C.","West Virginia","Wisconsin","Wyoming","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","Alberta","Brit. Columbia","Manitoba","Northwest Territories","New Brunswick","Newfoundland","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon Terr." ];
+    var custId=getCookie("customerid-20091217001");
+    /*if( custId.length == 0 ){
+        custId=getCookie("basket-20091217001");
+    }*/
+
+    //var lastPageType = getCookie("bgeCMLastPageType");  
+    var currPageType = getCookie("bgeCMLastPageType");
+    //var currPageType = "";
+    var cookieExpireDays = 365;
+    var cmCategory = "";
+    var cmCategoryCookie = getCookie("cmCategoryCookie");
+    var cmPageSuffix = '_BUS_Desktop';
+
+    if (pageTitle.lastIndexOf("|") > 0) {
+        pageTitle = pageTitle.substring(0, pageTitle.lastIndexOf("|"));
+    }
+
+    //// Last part of URL after "/" and before query string
+    //var requestResource = url.substring(url.lastIndexOf("/")+1);
+    //if (requestResource.indexOf(".") > 0)
+    //{
+    //   requestResource = requestResource.substring(0,requestResource.indexOf("."));
+  //}
+  
+    //var customerId = "\"" + getCookie("basket-" + 20091217001) + "\"";
+    var customerId=getCookie("customerid-20091217001");
+    if( customerId.length == 0 ){
+        customerId=getCookie("basket-20091217001");
+    }
+    var clientManaged = false;
+ 
+  // Coremetrics Page  
+  function coremetricsPage(pageName, pageSearchPattern, pageId)
+  {
+    this.pageName = pageName;
+    this.pageSearchPattern = pageSearchPattern;
+    this.pageId = pageId;
+  }
+
+  var coremetricsPages = new Array();
+
+  // Home page: /index.html/
+  coremetricsPages[0] = new coremetricsPage("home", /\/$/, "HomePage" + cmPageSuffix + splitTestPageSuffix);
+  // Product detail: /products/ANY NUMBERS_ANYTHING.html
+  coremetricsPages[1] = new coremetricsPage("productdetail", /\/products\/\d+_.*\.html/, "ProductPage");
+  // Main Category pg 2-n: /mcategory/ + ANY CHARACTERS + _pg + ANY NUMBERS.html
+  coremetricsPages[2] = new coremetricsPage("maincategory-pg2-n", /\/mcategory\/\D+_pg\d+\.html/,  "PAGETITLE");
+  // Sub-category pg 2-n: /mcategory/ + ANY CHARACTERS + _ + ANY NUMBERS + / + ANY CHARACTERS + _pg + ANY NUMBERS + .html
+  coremetricsPages[3] = new coremetricsPage("subcategory-pg2-n", /\/mcategory\/\D+_\d+\/\D+_pg\d+\.html/,  "PAGETITLE");
+  // Sub-category: /mcategory/ + ANY CHARACTERS + _ + ANY NUMBERS + / + ANY CHARACTERS + .html
+  coremetricsPages[4] = new coremetricsPage("subcategory", /\/mcategory\/\D+_\d+\/\D+\.html/,  "PAGETITLE");
+  // Main Category: /mcategory/ANY CHARACTERS.html
+  coremetricsPages[5] = new coremetricsPage("maincategory", /\/mcategory\/\D+\.html/,  "PAGETITLE");
+  // Search within main category pg 2-n: /catsearch/ + ANY CHARACTERS + _pg + ANY NUMBERS + .html
+  coremetricsPages[6] = new coremetricsPage("searchinmaincategory-pg2-n", /\/catsearch\/\D+\/.+_pg\d+\.html/,  "PAGETITLE");
+  // Search within main category: /catsearch/ + ANY CHARACTERS + .html
+  coremetricsPages[7] = new coremetricsPage("searchinmaincategory", /\/catsearch\/\D+\/.+\.html/,  "PAGETITLE");
+  // Search Drill pg 2-n: /search/ + ANYTHINGS + / + ANY NUMBERS + _ + ANY CHARACTERS + _pg + ANY NUMBERS + .html
+  coremetricsPages[8] = new coremetricsPage("searchdrill-pg2-n", /\/search\/.+\/\d+_\D+_pg\d+\.html/,  "Searchbox Results Page 2-N");
+  // Search Drill: /search/ + ANYTHINGS + / + ANY NUMBERS + _ + ANY CHARACTERS + .html
+  coremetricsPages[9] = new coremetricsPage("searchdrill", /\/search\/.+\/\d+_\D+\.html/,  "Searchbox Results Page 2-N");
+  // Search Result pg 2-n: /search/ + ANYTHINGS + _pg + ANY NUMBERS + .html
+  coremetricsPages[10] = new coremetricsPage("searchresult-pg2-n", /\/search\/.+_pg\d+\.html/,  "Searchbox Results Page 2-N");
+  // Search Result: /search/ + ANYTHINGS + .html
+  coremetricsPages[11] = new coremetricsPage("searchresult", /\/search\/.+\.html/,  "Searchbox Results Page 1");
+  // No Main Category pg 2-n: /category/ + ANY NUMBERS + _ + ANY CHARACTERS + _pg + ANY NUMBERS + .html
+  coremetricsPages[12] = new coremetricsPage("nomaincategory-pg2-n", /\/category\/\d+_\D+_pg\d+\.html/,  "PAGETITLE");
+  // No Main Category: /category/ + ANY NUMBERS + _ + ANY CHARACTERS + .html
+  coremetricsPages[13] = new coremetricsPage("nomaincategory", /\/category\/\d+_\D+\.html/,  "PAGETITLE");
+  // Product Review: /reviews/ + ANY NUMBERS + _ + ANYTHINGS + .html
+  coremetricsPages[14] = new coremetricsPage("productreview", /\/reviews\/\d+_.*\.html/,  "PAGETITLE");
+  
+  coremetricsPages[15] = new coremetricsPage("internationalsite", /\/international-sites\.html/,  "PAGETITLE");
+  coremetricsPages[16] = new coremetricsPage("myaccount-register", /\/register\.html/,  "PAGETITLE");
+  coremetricsPages[17] = new coremetricsPage("myaccount-billingaddress", /\/registerbillingaddress\.html/,  "PAGETITLE");
+  coremetricsPages[18] = new coremetricsPage("myaccount-registersuccess", /\/maregistersuccess\.html/,  "PAGETITLE");
+  coremetricsPages[19] = new coremetricsPage("shoppingcart", /\/basket(_new)*\.html/,  "View Cart - Desktop");
+  
+  coremetricsPages[20] = new coremetricsPage("chkt-welcome", /\/checkout\.html/,  "Checkout");
+  coremetricsPages[21] = new coremetricsPage("chkt-billing", /\/yourinfo\.html/,  "Checkout");
+  coremetricsPages[22] = new coremetricsPage("chkt-shipping", /\/shipaddress\.html/,  "Checkout");
+  coremetricsPages[23] = new coremetricsPage("chkt-shippingoption", /\/shippingoptions\.html/,  "Checkout");
+  coremetricsPages[24] = new coremetricsPage("chkt-paymentoption", /\/paymentoptions\.html/,  "Checkout");
+  coremetricsPages[25] = new coremetricsPage("chkt-revieworder", /\/revieworder\.html/,  "Checkout");
+  coremetricsPages[26] = new coremetricsPage("chkt-thankyou", /\/ordercompleted\.html/,  "Checkout");
+  coremetricsPages[27] = new coremetricsPage("quickinfo", /\/quickinfo\.html/,  "quickinfo");
+  coremetricsPages[28] = new coremetricsPage("billingaddress", /\/billingaddress\.html/,  "Checkout");
+  coremetricsPages[29] = new coremetricsPage("shippingaddress", /\/shippingaddress\.html/,  "Checkout");
+  coremetricsPages[30] = new coremetricsPage("splitshipping", /\/splitshipping\.html/,  "Checkout");
+  coremetricsPages[31] = new coremetricsPage("editshippingaddress", /\/editshippingaddress\.html/,  "Checkout");
+  coremetricsPages[32] = new coremetricsPage("pickaddress", /\/pickaddress\.html/,  "Checkout");
+  coremetricsPages[33] = new coremetricsPage("PromoOnePage", /\/prom-checkout\/\d+\.html/,  "PromoOnePage");
+  coremetricsPages[34] = new coremetricsPage("StdOnePage", /\/std-checkout\/\d+\.html/,  "StdOnePage");
+  coremetricsPages[35] = new coremetricsPage("StorePage", /\/store\.html/,  "StorePage");
+  coremetricsPages[36] = new coremetricsPage("expresscheckout", /\/expresscheckout\.html/,  "Checkout");
+  coremetricsPages[37] = new coremetricsPage("accordioncheckout", /\/accordioncheckout\.html/,  "Checkout");
+  coremetricsPages[38] = new coremetricsPage("paypalcheckout", /\/paypalcheckout\.html/,  "Checkout");
+
+  // No Main Category with refinements
+  coremetricsPages[39] = new coremetricsPage("nomaincategory-pg2-n-rfmnt", /\/category\/[\d\+]+_\D+_pg\d+\.html/,  "PAGETITLE");
+  coremetricsPages[40] = new coremetricsPage("nomaincategory-rfmnt", /\/category\/[\d\+]+_\D+\.html/,  "PAGETITLE");
+  
+  // Main Category with refinements
+  coremetricsPages[41] = new coremetricsPage("subcategory-pg2-n-rfmnt", /\/mcategory\/\D+_[\d\+]+\/\D+_pg\d+\.html/,  "PAGETITLE");
+  coremetricsPages[42] = new coremetricsPage("subcategory-rfmnt", /\/mcategory\/\D+_[\d\+]+\/\D+\.html/,  "PAGETITLE");
+
+  coremetricsPages[43] = new coremetricsPage("itemshipinfo", /\/itemshipinfo\.html/,  "ProductPage");
+  coremetricsPages[44] = new coremetricsPage("shippinginfo", /\/shippinginfo\.html/,  "View Cart - Desktop");
+  
+
+  
+// Write out Coremetrics tags for Quick Info link
+function writeQuickInfoCoremetricsTag(prdid, shortName,subplanFlag, personalizedFlag)
+{
+    
+    cmCategory.categoryLevel4 = "- Quick View Buy";
+    cmCategory.setCategoryCookie();                  
+    pageId = "Quick Info" + cmPageSuffix;
+    cmCreatePageviewTag(pageId,cmCategory.getCategory(), null, null, coremetricsHelper.getAttributes_pageView());
+    
+    var obj = coremetricsHelper.products[prdid];
+    if( typeof(obj) == "undefined" ){
+        obj = {};
+        obj.code = prdid;
+        obj.shortdesc = shortName;
+        obj.textSubplan = subplanFlag;
+        obj.textPersonalized = personalizedFlag;
+    }
+    cmCreateProductviewTag(
+        obj.code, 
+        obj.shortdesc, 
+        cmCategory.getCategory(), 
+        cmCategory.getCategory()+"-_-"+"-_-"+obj.textOption+"-_-"+obj.division+"-_-"+"-_-"+obj.textInstock+"-_-"+"-_-"+obj.textSubplan
+    );
+    
+}
+
+  // Write out Coremetrics tags
+  function writeCoremetricsTag(url, queryString)
+  {
+    // Set the environment  
+          cmSetClientID(coremetricsClientId,clientManaged,coremetricsDomain,coremetricsClientDomain);
+        
+    // Get category
+    var category = cmCategory.getCategory();
+
+    // Find the right page
+    for (var i=0; i < coremetricsPages.length; i++)  {
+        if (url.search(coremetricsPages[i].pageSearchPattern) > -1) {
+            pageName = coremetricsPages[i].pageName;
+            pageId = coremetricsPages[i].pageId;
+            break;
+        }
+    }
+    
+    // Set the page id
+    if (pageName == "UNFOUND") {
+      pageId = pageTitle + cmPageSuffix;
+    }
+    else if (pageId == "PAGETITLE") {
+        pageId = pageTitle + cmPageSuffix ;
+        if(pageName=='maincategory-pg2-n' 
+             || pageName=='subcategory-pg2-n'
+             || pageName=='subcategory'
+             || pageName=='maincategory'
+             || pageName=='searchinmaincategory-pg2-n'
+             || pageName=='searchinmaincategory'
+             || pageName=='nomaincategory-pg2-n'
+             || pageName=='nomaincategory'
+             || pageName=='nomaincategory-pg2-n-rfmnt'
+             || pageName=='nomaincategory-rfmnt'
+             || pageName=='subcategory-pg2-n-rfmnt'
+             || pageName=='subcategory-rfmnt'){
+            pageId = pageId + splitTestPageSuffix;
+        }
+    }
+    else if (pageId == "Checkout") {
+        if(pageName=='accordioncheckout' || pageName=='paypalcheckout' || pageName=='chkt-thankyou' ){
+            pageId = pageTitle + cmPageSuffix + splitTestPageSuffix;
+        } else {
+            pageId = "Checkout - " + pageTitle + cmPageSuffix + splitTestPageSuffix;
+        }
+    }
+    else if(pageId == "View Cart - Desktop"){
+        pageId = pageId + cmPageSuffix + splitTestPageSuffix;
+    }else if (pageId == "StorePage") {
+        pageId = pageId + cmPageSuffix + splitTestPageSuffix;
+    }
+  
+    // Specific process
+    if (pageName == "searchresult" || pageName == "searchresult-pg2-n" 
+             || pageName == "searchdrill" || pageName == "searchdrill-pg2-n") {
+
+        pageId = pageId + cmPageSuffix + splitTestPageSuffix;
+             
+              searchResults = "12";
+            //searchResults = "12";
+      searchTerm = "++1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12+ not display:N+ or display:Y";
+    
+    }
+    else if (pageName == "productdetail" || pageName == "itemshipinfo") {
+        pageId =  "128769001" + " - " +   "Grandma's Pearls Of Wisdom Personalized Diamond Bracelet" + cmPageSuffix + splitTestPageSuffix;
+    }
+    else if (pageName == "PromoOnePage") {
+        pageId =  "PromoOnePage - " + "128769001" + " - " +   "Grandma's Pearls Of Wisdom Personalized Diamond Bracelet" + cmPageSuffix;
+    }
+    else if (pageName == "StdOnePage") {
+        pageId =  "StdOnePage - " + "128769001" + " - " +   "Grandma's Pearls Of Wisdom Personalized Diamond Bracelet" + cmPageSuffix;
+    }
+    else if (pageName == "StorePage" && queryString.search(/epm=customLanding_checksSearch/) > -1 ) {
+        pageId = "Check Landing Page";
+    }
+    
+    // Write out tags
+    // Always create Page View Tag
+    if (searchTerm && externalSearch == "N") {
+      // Search page page view
+      cmCreatePageviewTag(pageId, category, searchTerm, searchResults, coremetricsHelper.getAttributes_pageView());
+    }
+    else {
+      cmCreatePageviewTag(pageId,category, null, null, coremetricsHelper.getAttributes_pageView());
+    }
+    
+    if (pageName == "productdetail" || pageName == "PromoOnePage" || pageName == "StdOnePage" ) {
+    
+        var obj = coremetricsHelper.product;
+        cmCreateProductviewTag(
+            obj.code, 
+            obj.title, 
+            category, 
+            category+"-_-"+obj.textPersonalized+"-_-"+obj.textOption+"-_-"+obj.division+"-_-"+"-_-"+obj.textInstock+"-_-"+"-_-"+obj.textSubplan+"-_-"+obj.splittest_personalUX
+        );
+        
+    }
+    else if (pageName == "shoppingcart")  {
+    
+        jQuery.each( coremetricsHelper.products, function( index, obj ){
+            cmCreateShopAction5Tag(
+                obj.code, 
+                obj.title, 
+                obj.qty, 
+                obj.price, 
+                category, 
+                "-_-"+obj.textPersonalized+"-_-"+obj.textOption+"-_-"+obj.division+"-_-"+"-_-"+obj.textInstock+"-_-"+"-_-"+obj.textSubplan
+            );
+        });
+        cmDisplayShop5s();
+        
+    }
+    else if (pageName == "chkt-thankyou")  {
+    
+        jQuery.each( coremetricsHelper.products, function( index, obj ){
+            cmCreateShopAction9Tag(
+                obj.code, 
+                obj.title, 
+                obj.qty, 
+                obj.price, 
+                customerId, 
+                obj.orderId,
+                obj.totalPrice,
+                category,
+                "-_-"+obj.textPersonalized+"-_-"+obj.textOption+"-_-"+obj.division+"-_-"+"-_-"+obj.textInstock+"-_-"+"-_-"+obj.textSubplan
+            );
+            cmDisplayShop9s();
+        });
+
+                    
+
+          cmCreateOrderTag("$productOrderId", "$orderTotalPrice", "$orderShippingPrice",  customerId);
+          cmCreateRegistrationTag(custId, "$checkoutViewDTO.addresses.billingAddress.email","","","","");
+    }
+    //else if (url.search(/\/signin.html/) > -1)
+    //{
+    //  // Account registration/login
+    //  cmCreateRegistrationTag(custId, document.forms["login"].elements["login"].value);
+    //}
+   
+    //document.write("pageName=" + pageName + ", pageId=" + pageId + ", customerId=" + customerId + "<br>" );
+  }
+
+
+  function createOnePageOrderCartTag(type)
+  {
+  //alert(document.forms[0].elements["qty"].value);
+    if (type == "promo"  && typeof(cmCreateShopAction5Tag) != 'undefined')
+    {
+        cmCreateShopAction5Tag("128769001", "Grandma's Pearls Of Wisdom Personalized Diamond Bracelet", document.forms[0].elements["qty"].value, "99.0", "PROMOTIONAL ONE PAGE - PRODUCT DETAIL BUY");
+    }
+    else if (type = "std" && typeof(cmCreateShopAction5Tag) != 'undefined')
+    {
+        cmCreateShopAction5Tag("128769001", "Grandma's Pearls Of Wisdom Personalized Diamond Bracelet", document.forms[0].elements["qty"].value, "99.0", "STANDARD ONE PAGE - PRODUCT DETAIL BUY");
+    
+    }
+	if(typeof(cmDisplayShop5s) != 'undefined'){
+    cmDisplayShop5s();
+    }
+  } 
+  
+  function setCategory()
+  {
+    var categories = "";
+    cmCategory =  new CoremetricsCategory(); 
+    var entrancePoint = false;
+
+    // No Coremetrics cookie and it's product url, it's Entrance point
+    if ( (cmCategoryCookie == "") 
+           &&  ((url.search(/\/products\/\d+_.*\.html/) > -1) || (url.search(/\/itemshipinfo.html/) > -1) ))
+    {
+        cmCategory.categoryLevel1 = "ENTRANCE POINT";
+        entrancePoint = true;
+        currPageType = "ENTRANCE POINT";
+    }
+
+    // If not entrance point, figure out the category
+    if (!entrancePoint)
+    {
+      if (cmCategoryCookie != "")
+      {
+        // Get category from cookie
+        categories = cmCategoryCookie.split("|");
+        cmCategory.categoryLevel1 = categories[0];
+        cmCategory.categoryLevel2 = categories[1];
+        cmCategory.categoryLevel3 = categories[2];
+        cmCategory.categoryLevel4 = categories[3];
+      }
+      
+      //var tempUrls = url.split("/");
+      var maincategory = "";
+      var subcategory = "";
+      var index;
+      var tempStr, tempStr1;
+      
+      if (url.search(/\/$/) > -1 || url.search(/\/index\.html/) > -1)
+      {
+        // FRONT DOOR
+        cmCategory.categoryLevel1 = "FRONT DOOR";
+
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "FRONT DOOR";
+      }
+      else if (url.search(/\/products\/\d+_.*\.html/) > -1)
+      {
+        // product detail page
+        // Check whether it comes from
+        //var recomm = "";
+        var recomm = "";
+                
+        
+        // Category for Recently viewed should be set. don't change it
+        if ( (cmCategory.categoryLevel1 != "RECENTLY VIEWED") 
+                && (cmCategory.categoryLevel3 != "- SOLO/SUBPLAN PAIR"))
+        {
+            cmCategory.categoryLevel4 = "- PRODUCT DETAIL BUY";
+        }
+        
+        if (recomm == "Y")
+        {
+             featuredProdsLinksClicked("YMAL", "PD");
+        }
+        currPageType = "PRODUCT PG";
+      }
+      else if (url.search(/\/itemshipinfo.html/) > -1)
+      {
+        // Express Ship Available page
+        cmCategory.categoryLevel1 = "Express Ship Available";
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        if( location.href.indexOf('/products/') >= 0 ){
+            cmCategory.categoryLevel4 = "– Desktop – Product Page";
+        }else{
+            cmCategory.categoryLevel4 = "– Desktop – Category Page";
+        }
+        
+        currPageType = "PRODUCT PG";
+      }
+      else if (url.search(/\/shippinginfo.html/) > -1)
+      {
+        // Express Ship Available page
+        cmCategory.categoryLevel1 = "Express Ship Available";
+        cmCategory.categoryLevel4 = "– Desktop – Add to Cart";
+        currPageType = "PRODUCT PG";
+      }
+      else if (url.search(/\/quickinfo\.html/) > -1)
+      {
+        // Quick info page
+        
+        cmCategory.categoryLevel4 = "- QUICK VIEW BUY";
+        currPageType = "QUICKVIEW";
+      }      
+      else if (url.search(/\/mcategory\/[^_]+_pg\d+\.html/) > -1)
+      {
+        // main category pg 2-n
+        // https://www.bradfordexchange.com/mcategory/disney_pg2.html
+        tempStr = url.substring(url.indexOf("/mcategory/") + "/mcategory/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("_"));
+
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "CATEGORY PGS 2-N";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/mcategory\/[^_]+_[\d\+]+\/[^_]+_pg\d+\.html/) > -1)
+      {
+        // sub category pg 2-n
+        // https://systest-shop.bradfordexchange.com/mcategory/disney_9769+503/cinderella+bells_pg2.html
+        tempStr = url.substring(url.indexOf("/mcategory/") + "/mcategory/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("_"));
+
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "SUBCATEGORY DRILL";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/mcategory\/[^_]+_[\d\+]+\/.+\.html/) > -1)
+      {
+        // sub category
+        // https://systest-shop.bradfordexchange.com/mcategory/disney_9769+503/cinderella+bells.html
+        tempStr = url.substring(url.indexOf("/mcategory/") + "/mcategory/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("_"));
+        
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "SUBCATEGORY DRILL";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+        
+      }
+      else if (url.search(/\/mcategory\/.+\.html/) > -1)
+      {
+        // main category
+        // https://www.bradfordexchange.com/mcategory/disney.html
+        tempStr = url.substring(url.indexOf("/mcategory/") + "/mcategory/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("."));
+        
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "CATEGORY PG 1";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+        
+      }
+      else if (url.search(/\/catsearch\/.+\/.+_pg\d+\.html/) > -1)
+      { 
+        // search within main category page 2-n
+        // https://www.bradfordexchange.com/catsearch/disney/pooh_pg2.html
+        tempStr = url.substring(url.indexOf("/catsearch/") + "/catsearch/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("/"));
+        
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "SEARCH RESULTS PGS 2-N";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCHINCATEGORY";
+      }
+      else if (url.search(/\/catsearch\/.+\/.+\.html/) > -1)
+      {
+        // search within main category page
+        // https://www.bradfordexchange.com/catsearch/disney/pooh.html
+        tempStr = url.substring(url.indexOf("/catsearch/") + "/catsearch/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("/"));
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory.toUpperCase();
+        cmCategory.categoryLevel3 = "SEARCH RESULTS";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCHINCATEGORY";
+      }
+      else if (url.search(/\/search\/.+\/[\d\+]+_.+_pg\d+\.html/) > -1)
+      {
+        // search drill page 2-n
+        // https://systest-shop.bradfordexchange.com/catalog/search/plate/8134_celebrities_pg2.html
+        cmCategory.categoryLevel1 = "SEARCH RESULTS";
+        cmCategory.categoryLevel2 = "SUBCATEGORY DRILL";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCH RESULTS";
+      }
+      else if (url.search(/\/search\/.+\/[\d\+]+_.+\.html/) > -1)
+      {
+        // search drill page 1
+        //https://systest-shop.bradfordexchange.com/catalog/search/plate/8134_celebrities.html
+        cmCategory.categoryLevel1 = "SEARCH RESULTS";
+        cmCategory.categoryLevel2 = "SUBCATEGORY DRILL";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCH RESULTS";
+      
+      }
+      else if (url.search(/\/search\/.+_pg\d+\.html/) > -1)
+      {
+        // search page 2-n
+        // https://systest-shop.bradfordexchange.com/catalog/search/pooh_pg2.html
+        cmCategory.categoryLevel1 = "SEARCH RESULTS";
+        cmCategory.categoryLevel2 = "SEARCH PGS 2-N";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCH RESULTS";        
+      }
+      
+      else if (url.search(/\/search\/.+\.html/) > -1)
+      {
+        // search  
+        //https://www.bradfordexchange.com/search/pooh.html
+        cmCategory.categoryLevel1 = "SEARCH RESULTS";
+        cmCategory.categoryLevel2 = "SEARCH PG 1";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";
+        currPageType = "SEARCH RESULTS";
+      }
+      else if (url.search(/\/category\/\d+_\D+_pg\d+\.html/) > -1)
+      {
+        // no main category page 2-n
+        // For example:https://www.bradfordexchange.com/category/73_inspirational_pg2.html
+        tempStr = url.substring(url.indexOf("/category/") + "/category/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf("_pg")).toUpperCase();
+
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory;
+        cmCategory.categoryLevel3 = "- CATEGORY PGS 2-N"; 
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/category\/\d+_\D+\.html/) > -1)
+      {
+        // no main category page
+        // For example:https://www.bradfordexchange.com/category/73_inspirational.html
+        tempStr = url.substring(url.indexOf("/category/") + "/category/".length);
+        maincategory = tempStr.substring(0, tempStr.indexOf(".html")).toUpperCase();
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory;
+        cmCategory.categoryLevel3 = "- CATEGORY PG 1";
+        cmCategory.categoryLevel4 = ""; 
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/category\/[\d\+]+_.+_pg\d+\.html/) > -1)
+      {
+        // no main category page 2-n
+        // For example:https://www.bradfordexchange.com/category/8310+8244_elvis+wall-dcor_pg2.html
+        tempStr = url.substring(url.indexOf("/category/") + "/category/".length);
+        tempStr = tempStr.substring(0, tempStr.indexOf("_pg2"));
+
+        tempStr1 = tempStr.substring(tempStr.indexOf("_")+1);
+        maincategory = tempStr.substring(0, tempStr.indexOf("+")) + "_" + tempStr1.substring(0,tempStr1.indexOf("+")).toUpperCase();
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory;
+        cmCategory.categoryLevel3 = "- SUBCATEGORY DRILL"; 
+        cmCategory.categoryLevel4 = "";
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/category\/[\d\+]+_.+\.html/) > -1)
+      {
+        // no main category page
+        // For example:https://www.bradfordexchange.com/category/8310+8244_elvis+wall-dcor.html
+        tempStr = url.substring(url.indexOf("/category/") + "/category/".length);
+        tempStr = tempStr.substring(0, tempStr.indexOf(".html"));
+        tempStr1 = tempStr.substring(tempStr.indexOf("_")+1);
+        maincategory = tempStr.substring(0, tempStr.indexOf("+")) + "_" + tempStr1.substring(0,tempStr1.indexOf("+")).toUpperCase();
+        cmCategory.categoryLevel1 = "ALL CATEGORIES";
+        cmCategory.categoryLevel2 = maincategory;
+        cmCategory.categoryLevel3 = "- SUBCATEGORY DRILL";
+        cmCategory.categoryLevel4 = ""; 
+        currPageType = "CATEGORY PG";
+      }
+      else if (url.search(/\/basket(_new)*\.html/) > -1)
+      {
+        //var catalogUpsell = "";
+        //var subplanUpsell = "";
+        //var recentlyViewed =  "";
+        var mode = "";
+                
+        var recomm = "";
+                
+
+                      
+        if (recomm == "Y" && mode == "addItems")
+        {
+          featuredProdsLinksClicked("YMAL", "BB", "$lastProductId", "");
+        }
+        currPageType = "VIEW CART";
+      }
+      else if (url.search(/\/ordercompleted\.html/) > -1)
+      {
+        currPageType = "ORDER CONF PG";
+      }
+      else if (url.search(/\/prom-checkout\/\d+\.html/) > -1)
+      {
+        cmCategory.categoryLevel1 = "PROMOTIONAL ONE PAGE";
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "- PRODUCT DETAIL BUY"; 
+        currPageType = "PROMOTIONAL ONE PAGE";
+      }
+      else if (url.search(/\/std-checkout\/\d+\.html/) > -1)
+      {
+        cmCategory.categoryLevel1 = "STANDARD ONE PAGE";
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "- PRODUCT DETAIL BUY"; 
+        currPageType = "STANDARD ONE PAGE";
+      }
+      else if (url.search(/\/service\//) > -1
+               ||url.search(/\/maorderstatus\.html/) > -1 
+               || url.search(/\/mapaymentstatus\.html/) > -1
+               || url.search(/\/maeditbillingaddress\.html/) > -1
+               || url.search(/\/mashippingaddress\.html/)  > -1
+               || url.search(/\/emailpreferences\.html/) > -1
+               || url.search(/\/machangepassword\.html/) > -1
+               || url.search(/\/maregistersuccess\.html/) > -1
+               || url.search(/\/service_contact-us\.html/) > -1
+               || url.search(/\/inquiry\.html/) > -1
+               || url.search(/\/signin\.html/) > -1
+               || url.search(/\/forgot_password\.html/) > -1               
+              )
+      {
+        cmCategory.categoryLevel1 = "FEATURED PRODUCT AREA";
+        cmCategory.categoryLevel2 = "CUST SUPPORT/FAQ/OTHER PGS";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = "";     
+        currPageType = "CUST SUPPORT/FAQ/OTHER PGS";
+      }
+      else if (url.search(/\/checkout\.html/) > -1
+                || url.search(/\/yourinfo\.html/) > -1
+                || url.search(/\/checkoutpass.html\.html/) > -1
+                || url.search(/\/shipaddress\.html/) > -1
+                || url.search(/\/shippingoptions\.html/) > -1
+                || url.search(/\/paymentoptions\.html/) > -1
+                || url.search(/\/revieworder\.html/) > -1
+                || url.search(/\/ordercompleted\.html/) > -1
+                || url.search(/\/billingaddress\.html/) > -1
+                || url.search(/\/shippingaddress\.html/) > -1
+                || url.search(/\/splitshipping\.html/) > -1
+                || url.search(/\/editshippingaddress\.html/) > -1
+                || url.search(/\/pickaddress\.html/) > -1
+                || url.search(/\/expresscheckout\.html/) > -1
+                || url.search(/\/accordioncheckout\.html/) > -1
+                || url.search(/\/paypalcheckout\.html/) > -1
+                )
+      {
+        // do nothing
+      }
+      else if (url.search(/\/store\.html/) > -1  && queryString.search(/epm=customLanding_checksSearch/) > -1 ) {
+        cmCategory.categoryLevel1 = "CS/Misc";
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = ""; 
+        currPageType = "CS/Misc";
+      }
+      else
+      {
+        cmCategory.categoryLevel1 = "UNKNOWN";
+        cmCategory.categoryLevel2 = "";
+        cmCategory.categoryLevel3 = "";
+        cmCategory.categoryLevel4 = ""; 
+        currPageType = "UNKNOWN";
+      
+      }
+      
+    }
+    
+    cmCategory.setCategoryCookie();
+  }
+  
+
+
+
+    //document.write("---Coremetrics Test Start---" + "<br>");
+    //document.write("requestURL=" + url + "<br>");
+    //document.write("requestQueryString=" + queryString + "<br>");
+
+    getCoremetricsEnv("www.bradfordexchange.com");
+    setCategory();
+    writeCoremetricsTag(url, queryString);
+    setJSCookie("bgeCMLastPageType",currPageType,cookieExpireDays);
+
+    //document.write("---Coremetrics Test End---" + "<br>");
+
+
+      jQuery(function(){
+          jQuery('ul.sf-menu').superfish({ 
+              hoverClass:    'sfHover',         
+             pathClass:     'current', 
+            delay:       1000,                     
+            animation:   {opacity:'show',height:'show'},  
+            speed:       'fast',                     
+            autoArrows:  true,                        
+            dropShadows: false                       
+             });
+    });
+
+    
+
+        initAdditionalParams = function() { return undefined; } 
+        refreshAdditionalParams = function() { return undefined; } 
+        processAdditionalInfo = function() { return undefined; } 
+        refreshAddImage = function() { return undefined; } 
+        postRefreshCode = function() { return undefined; } 
+    
+
+    (function($){
+        $().ready(function() {
+    
+            $("#mainSearch-searchText").autocomplete('typeAhead.ajx',{
+                minChars: 3, 
+                matchSubset:0,
+                max:6,
+                maxItemsToShow:6,
+                width:341,
+                extraParams: {
+                  dimensions: '11+844+11225+3+8357+8271+9798+9042'
+                    }
+             });
+    
+            $("#mainSearch-searchText").autocomplete().result(function(){
+                 SearchItems();
+                 return false;
+              });
+            
+        /* platform/browser specific stylesheets loaded here */
+    
+        if (BrowserDetect.OS == "Windows") {
+            $("head").append('<link media="all" href="https://www.bradfordexchange.com/store/20091217001/styles/windows.css?v=2264" type="text/css" rel="stylesheet">');
+        }
+
+        if (BrowserDetect.browser == "Safari") {
+            $("head").append('<link media="all" href="https://www.bradfordexchange.com/store/20091217001/styles/safari.css" type="text/css" rel="stylesheet">');
+        }
+    
+        //if ((BrowserDetect.browser == "Explorer") && (BrowserDetect.version == "6")) {
+            /* hack to get ie6 to active dynamic submenus */
+        //$(".sf-menu ul, .sf-js-enabled ul, li#allDepts ul, li#disney ul, li#tkinkade ul, li#jewelry ul, li#gifts ul, li#theme ul").hover(function() {
+          //      $(this).find("ul").css({
+            //        "position": "absolute",
+              //      "top" : "29px"
+           // });
+    
+            //}, function(){
+              //   $(this).find("ul").css("top","-9999px");
+           // });
+       //}
+            
+        });
+    })(jQuery);
+    
+
+              // giftstid: 
+    
+
+jQuery(document).ready(function($){
+    //send cached error messages
+    if( typeof( err ) != "undefined" ){
+        //err.sendMsg();
+    }
+});
+
+
+            s7sdk.Util.lib.include('s7sdk.common.Container');               
+            s7sdk.Util.lib.include('s7sdk.set.MediaSet');
+            s7sdk.Util.lib.include('s7sdk.set.SpinView');
+            s7sdk.Util.lib.include('s7sdk.set.Swatches');
+            s7sdk.Util.lib.include('s7sdk.image.ZoomView');
+            s7sdk.Util.lib.include('s7sdk.common.Button');
+            s7sdk.Util.lib.include('s7sdk.common.Container');
+            s7sdk.Util.lib.include('s7sdk.event.Event');
+            s7sdk.Util.lib.include('s7sdk.video.VideoControls');
+            s7sdk.Util.lib.include('s7sdk.video.VideoPlayer');
+            s7sdk.Util.lib.include('s7sdk.common.ControlBar');
+        
+
+    if( typeof(globalPageTag)!="object" ){
+        globalPageTag = {};
+    }
+      globalPageTag.login = "false";
+ 
+globalPageTag.customerId = "";
+
+
+
+    globalPageTag.category = ( ((cmCategory.categoryLevel1 == "ALL CATEGORIES") ? "" : cmCategory.categoryLevel1) +
+    ((cmCategory.categoryLevel2 == "") ? "" : " " + cmCategory.categoryLevel2) +
+    ((cmCategory.categoryLevel3 == "") ? "" : " " + cmCategory.categoryLevel3) +
+    ((cmCategory.categoryLevel4 == "") ? "" : " " + cmCategory.categoryLevel4) );
+
+      globalPageTag.basketProductList = [];
+      globalPageTag.basketSubtotal = '$number.currency($productsDetails.total)';
+
+// <!-- home page -->
+
+    globalPageTag.itemcode = '128769001';
+    globalPageTag.categoryBreadcrumb = "Home";
+    globalPageTag.extraLinks = '';
+    
+if( 'console' in window ){
+    console.log(globalPageTag);
+}
+
+
+    cmSetupOther({"cm_TrackImpressions":"R"});
+

@@ -1,0 +1,1213 @@
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-291821-1', {cookieDomain: '.proxibid.com'});ga('require', 'displayfeatures');if (!['LotDetail.asp', 'ItemDetail.asp','SearchAdvanced_i.asp', '/lotInformation/', '/item-information/'].some(function (pattern) {return window.location.href.indexOf(pattern) > -1})) {ga('send', 'pageview');}
+
+	jQuery.noConflict();
+			
+	jQuery(document).ready(function () {
+		var $ = jQuery;
+		jQuery('.proxibiddate').val('');
+		jQuery('.proxibiddate').datepicker({
+			dayNamesMin: [ "S", "M", "T", "W", "T", "F", "S" ],
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			beforeShow: function(input, inst) {
+				$('#ui-datepicker-div').wrap('<div class="eventDate"></div>');
+			},
+			onClose: function (dateText, inst) {
+				if (dateText != '') {
+					jQuery('#selectedDate').val(dateText);
+					jQuery('#auc-date-search').submit();
+				}
+			}
+		});
+
+		jQuery(".auc-cal-global").click(function () {
+			jQuery(this).prev('.proxibiddate').datepicker("show");
+			return false;
+		});
+
+		jQuery('.proxibidtooltip').proxibidtooltip({ delay: 0 });
+
+/* white label only */
+		// separate category fly out from browse fly out.
+
+		jQuery(document.getElementById('wlCategoryContainer')).mouseleave(function () {
+			categoryMouseOut();
+		});
+
+		jQuery(document.getElementById('wlCategoryContainer')).mouseenter(function () {
+			cancelCategoryMouseOut();
+		});
+
+		jQuery(document.getElementById('whiteLabelViewAuctions')).mouseleave(function () {
+			if (showCategoryMenu.hoverDelay) {
+				clearTimeout(showCategoryMenu.hoverDelay);
+			}
+			categoryMouseOut();
+		});
+
+		jQuery(jQuery('#whiteLabelViewAuctions')).mouseenter(function () {
+			showCategoryMenu.hoverDelay = setTimeout(function () {
+				showCategoryMenu(true);
+			}, 200);
+
+			cancelCategoryMouseOut();
+		});
+
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		const source = getParameterByName('utm_source');
+		const medium = getParameterByName('utm_medium');
+		const campaign = getParameterByName('utm_campaign');
+		const keyword = getParameterByName('utm_term');
+
+		if(source || medium) {
+			$.cookie('utm_params', 'source=' + source + '|medium=' + medium +
+				'|campaign=' + campaign + '|keyword=' + keyword, { path: '/', domain: '.proxibid.com' });
+		}
+	});
+	
+	(function ($) {
+		jQuery.fn.proxibidtooltip = function (options) {
+
+			var settings = {
+				track: false,
+				delay: 750,
+				top: 5,
+			    left: 5
+			};
+
+			return this.each(function () {
+			
+				if ( options ) { 
+					$.extend( settings, options );
+				}
+				
+				var text = $(this).attr('title');
+				if(jQuery.trim(text) === '') {
+					return;
+				}
+				
+				var nowrap = ""
+				if($(this).hasClass("tooltipnowrap")) {
+				    nowrap = 'nowrap = "nowrap"'
+				}
+				var tooltipBegin = "<table class=\"proxibid-tooltip-hover\">"
+					+ "<tr><td class=\"proxibid-tooltip-crnrblk\"><img src=\"https://www.proxibid.com/images/hover-bg-topL.png\" /></td>"
+					+ "<td class=\"proxibid-tooltip-crnrblk proxibid-tooltip-topbg\"></td>"
+					+ "<td class=\"proxibid-tooltip-crnrblk\"><img src=\"https://www.proxibid.com/images/hover-bg-topR.png\" /></td>"
+					+ "</tr><tr><td class=\"proxibid-tooltip-crnrblk proxibid-tooltip-lftbg\"></td><td class=\"proxibid-tooltip-txt\"" + nowrap + ">";
+				var tooltipEnd = "</td><td class=\"proxibid-tooltip-crnrblk proxibid-tooltip-rgtbg\"></td>"
+					+ "</tr><tr><td class=\"proxibid-tooltip-crnrblk\"><img src=\"https://www.proxibid.com/images/hover-bg-btmL.png\" /></td>"
+					+ "<td class=\"proxibid-tooltip-crnrblk proxibid-tooltip-btmbg\"></td>"
+					+ "<td class=\"proxibid-tooltip-crnrblk\"><img src=\"https://www.proxibid.com/images/hover-bg-btmR.png\" /></td>"
+					+ "</tr></table>";
+				
+				
+				//Preload images if using tooltips
+				if(jQuery('#preloadToolTipTopLeft').length == 0){
+					jQuery('body').append('<div id="preloadToolTipTopLeft" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipTopRight" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipTop" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipLeft" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipRight" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipBottomLeft" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipBottomRight" class="imgPreload"></div>'
+						+ '<div id="preloadToolTipBottom" class="imgPreload"></div>');
+				}
+
+				jQuery(this).tooltip({
+					track: settings.track,
+					delay: settings.delay,
+					top: settings.top,
+					left: settings.left,
+					showURL: false,
+					fixPNG: true,
+					id: 'proxibid-tooltip',
+					bodyHandler: function () {
+						return tooltipBegin + text + tooltipEnd;
+					}
+				});
+
+			});
+
+		};
+	})(jQuery);
+
+	function cancelCategoryMouseOut() {
+		if (categoryMouseOut.t != "undefined") {
+			clearTimeout(categoryMouseOut.t);
+		}
+	}
+
+	function categoryMouseOut() {
+		if (categoryMouseOut.t != "undefined") {
+			clearTimeout(categoryMouseOut.t);
+		}
+
+		//Half second delay before closing the flyout
+		categoryMouseOut.t = setTimeout(function () {
+			hideCategoryMenu();
+		}, 200);
+	}
+
+	// Category fly out functions
+	function showCategoryMenu(throttle) {
+		var $ = jQuery;
+		//Longer fx interval for performance
+		//jQuery.fx.interval = 25;
+		cancelCategoryMouseOut();
+
+		$('#wlCategorySlider2').hide();
+		$('#wlCategorySlider').show();
+		$('#wlCategoryContainer').stop();
+		$('#wlCategoryContainer').animate({
+			top: "0px"
+		}, 200, 'linear', function () {
+			//Reset fx interval to default
+			//jQuery.fx.interval = fxInterval;
+		});
+
+		//Prevent clicking for a period of time so the user
+		// doesn't hover then immediately click it away
+		if (throttle) {
+			showCategoryMenu.throttle = true;
+			setTimeout(function () {
+				showCategoryMenu.throttle = false;
+			}, 300);
+		}
+	}
+			
+	function hideCategoryMenu() {
+		if (!jQuery('#wlCategorySlider').is(':hidden')) {
+			jQuery('#wlCategoryContainer').stop();
+			jQuery('#wlCategoryContainer').animate({
+				top: "-380px"
+			}, 200, 'linear', function () {
+				jQuery('#wlCategorySlider').hide();
+			});
+		}
+	}
+
+	function isSubdomain() {
+		if(document.getElementById("whiteLabelHeader") != null) {
+			return true;
+		}else{
+			return false;
+		}
+	}	
+
+	var TimerConsleLoggingOn = "1"
+
+
+
+	jQuery(document).ready(function() {
+		var $ = jQuery
+
+		$(".adAnnouncement a").mousedown(function(e) {
+			$.ajax({
+				url:"/asp/ajax/activityLogClick.asp",
+				type:"POST",
+				data: {
+					"announceId"	: this.parentElement.id,
+					"activityType"	: "HOMEPAGE_AD_CLICK",
+					"categoryId"	: "0"
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("Error logging ad click activity");
+				}
+			});
+		});
+				
+		$(".atLink").click(function(evt){
+			logActivityWithJSON({"activityTypeCode" : $(this).data("activity-type")});
+			return true;
+		});
+				
+		$(".atLinkAdmin").click(function(evt){
+			logActivityWithJSON({"activityTypeCode" : $(this).data("activity-type"), "auctionId" : $(this).data("auction-id")});
+			return true;
+		});
+	});
+	
+	function logActivityWithJSON(jsonObject){
+		var $ = jQuery
+		var protocol = 	location.protocol == 'http:' ? 'http://' : 'https://';
+		var auctioneerId = '';
+		var adminId = '';
+		
+		// These items either exist or not already at this point and should go with every log request
+		// In many cases the only item the jsonObject may hold is the activity type code 
+		jsonObject.userId = adminId == '' ? auctioneerId : adminId ;
+		jsonObject.bidderId = ''
+		jsonObject.cookie1 = 'DAE40817-8337-4052-9135-6DBB97775663';
+		jsonObject.activityId = '898B94ED-1E96-4B7E-BD45-DDE35E9D6ADE';
+		jsonObject.requestParameter = '';
+		jsonObject.httpReferrer = document.referrer;
+
+		$.ajax({
+			url: protocol + 'app.proxibid.com/proxibid3xwaterton_lakes_004/activityLog?logActivityUsingJSON',
+			type:"POST",
+			data: JSON.stringify(jsonObject), // Have to stringify to allow ASP to pass it through with quotes, etc. to ActivityLogServlet
+			error: function(e){//ignore
+			}
+		});
+	}
+	
+
+
+
+$j = jQuery.noConflict();
+
+function changeImage(elementId, img){
+	document.getElementById(elementId).src=img;
+}
+/*
+function showAllCategories() {
+	if (jQuery("#allCategories").css("display") != "block") {
+		jQuery("#allCategories").css("display", "block");
+		jQuery("#allCategories").animate({ opacity: 1 }, 150)
+	}
+	else {
+		jQuery("#allCategories").animate({ opacity: 0 }, 150, function () { jQuery("#allCategories").css("display", "none"); })
+	}
+}
+*/
+/*
+function disableScrollRight() {
+	jQuery("#scrollRight").addClass('disabled');
+	jQuery("#scrollRight").attr('disabled', 'disabled');
+}
+function disableScrollLeft() {
+	jQuery("#scrollLeft").addClass('disabled');
+	jQuery("#scrollLeft").attr('disabled', 'disabled');
+}
+function enableScrollRight() {
+	jQuery("#scrollRight").removeClass('disabled');
+	jQuery("#scrollRight").removeAttr('disabled');
+}
+function enableScrollLeft() {
+	jQuery("#scrollLeft").removeClass('disabled');
+	jQuery("#scrollLeft").removeAttr('disabled');
+}
+*/
+
+
+	jQuery(document).ready(function() {
+		
+		var iFeaturedLotStart = parseInt(jQuery("#featuredLotStart").val());
+
+		function carouselImageSwap(carousel, imgArray) {
+			jQuery('#' + carousel).find('img').each(function(index, row) {
+				if (row.src.indexOf('paddle') === -1) {
+					row.src = imgArray[index];
+				}
+			});
+		};
+		
+		jQuery('#featuredLots').jcarousel({
+			scroll: 4,
+			visible: 4,
+			animation: 300,
+			itemFallbackDimension: 222,
+			wrap: 'both',
+			auto: 0,
+			start: iFeaturedLotStart,
+			setupCallback: function() {
+				jQuery('#featuredLotsContainer .jcarousel-skin-proxibid').css('height', 'auto');
+				jQuery('#featuredLotsContainer .jcarousel-next').bind('click', function(el) {
+					carouselImageSwap('featuredLotsContainer', jQuery('#featuredLotImages').val().split(','));
+				});
+				jQuery('#featuredLotsContainer .jcarousel-prev').bind('click', function(el) {
+					carouselImageSwap('featuredLotsContainer', jQuery('#featuredLotImages').val().split(','));
+				});
+			}
+		});
+		
+		jQuery("#DisplayMain").mouseenter(function(){
+			pauseToggle();
+		});
+		jQuery("#DisplayMain").mouseleave(function(){
+			pauseToggle();
+		});
+
+		// Focus the Search bar on the home page on page ready.
+		jQuery("#topNavSearchInput").focus();
+	});
+
+
+	
+	(function($){
+	
+		window.closeCookieBannerAndSetAccepted = function () {
+		
+			$.cookie('acceptedCookies', true, {expires: 730, path: '/', domain: '.proxibid.com'});
+			$('#clientCookieUsageBanner').fadeOut().remove();
+			$('body').removeClass('clientCookieUsageBannerPresent');
+		
+		};		
+		
+		$(document).ready(function() {		
+			
+			// Get cookie that stores whether or not they have accepted cookie terms
+			var hasAccepted = $.cookie('acceptedCookies');
+				
+			// Ensure it is part of body for positioning purposes 
+			// remove from Dom and add to body
+			$('body').append($('#clientCookieUsageBanner').remove());
+			
+			$('#acceptUserCookiesButton').click(function (evt) {
+			
+				evt.preventDefault();
+				window.closeCookieBannerAndSetAccepted(evt);
+				return false;
+				
+			});
+			
+			// Show banner until it has been accepted
+			if (!hasAccepted) {
+				
+				// Ensure it is part of body for positioning purposes 
+				$('#clientCookieUsageBanner').fadeIn();
+				$('body').addClass('clientCookieUsageBannerPresent');				
+				
+			}
+			
+		});
+		
+	})(jQuery);
+
+
+
+		var showSalesAlertPrompt = ''
+		var fxInterval = jQuery.fx.interval;var showingSearchCategories = false;function showSearchCategories() {try { document.getElementById('wlCategorySlider2').style.display = 'block';} catch(e) {}showingSearchCategories = true;};function searchCategory(cat) {jQuery("#catSearchCurrently").text(cat.toLowerCase());jQuery('#wlCategorySlider2').hide();showingSearchCategories = false;};function searchFocus() {if(searchBlur.searchText == document.getElementById('topNavSearchInput').value){document.getElementById('topNavSearchInput').value = '';}document.getElementById('topNavSearchInput').style.color = '#000';var searchInput = document.getElementById('topNavSearch');searchInput.className += ' searchFocus';searchInput = document.getElementById('topNavSearchLeft');searchInput.className += ' searchFocus';try { jQuery("#wlCategorySlider2").hide();showingSearchCategories = false;} catch(e) {}};function searchBlur() {if (!showingSearchCategories) {document.getElementById('topNavSearchInput').style.color = 'gray';var searchInput = document.getElementById('topNavSearch');searchInput.className = searchInput.className.replace(/\bsearchFocus\b/, '');document.getElementById('topNavSearchLeft').className = '';try { jQuery("#wlCategorySlider2").hide();showingSearchCategories = false;} catch(e) {}}};searchBlur.searchText = 'Search the Marketplace';jQuery(document).ready(function () {var $ = jQuery;var query = '';if(''){query = "&prefilter=AuctionHouseID:|ParentAuctionHouseID:"}$( '#topNavSearchInput' ).autocomplete({source: '/asp/GetAutoSuggestResult.asp?isCatalog=False' + query ,minLength: 3,focus: function(event, ui) {return false;},open: function(e,ui) {var topNavSearchInputVal = jQuery('#topNavSearchInput').val();jQuery('<span class="topNavSearchInputVal">' + topNavSearchInputVal + '</span>').insertBefore('.searchAutocomplete .ui-menu-item:first-child');jQuery('.searchAutocomplete').append('<span class="bottomFixedText">Auto Suggestions</span>');},select: function( event, ui ) {event.preventDefault();var category = ui.item.categoryPath.trim();ga('send','event','search','Global Search AutoSuggest Category Click', category);jQuery('#topNavSearchSubmit3').trigger('click', category);}}).autocomplete( 'widget' ).addClass( 'searchAutocomplete' );function checkSearchInputValue() {var searchInput = document.getElementById('topNavSearchInput');if (typeof(searchInput.defaultValue) !== "undefined" && searchInput.defaultValue && searchInput.value != searchInput.defaultValue) {if (searchInput.defaultValue != 'Search the Marketplace') {searchInput.value = searchInput.defaultValue;} else {searchInput.value = "" }}}window.onload = checkSearchInputValue;var $globalSearchInput = jQuery('#topNavSearchInput');$globalSearchInput.keyup(function (event) {(event.currentTarget.value === "" || event.currentTarget.value === undefined) ? jQuery(event.target).next().css('display','none') : jQuery(event.target).next().css('display','flex');});jQuery('.closeSearchIcon').click(function (event) {jQuery(event.currentTarget).prev().val("");jQuery(event.currentTarget).css('display','none');});$globalSearchInput.val() !== "" ? $globalSearchInput.next().css('display','flex') :  $globalSearchInput.next().css('display','none');$('#topNavSearchInput').keypress(function (event) {if (event.which == '13') {var searchTerm = $('#topNavSearchInput').val();searchTerm = searchTerm.replace(/[^\w_]/g,"").trim();if (searchTerm !== ""){submitSearch();return false;}else{$('#topNavSearchInput').val("");}};});$('#topNavSearchSubmit1').click(function () {submitSearch();return false;});$('#topNavSearchSubmit2').click(function () {submitSearch();return false;});$('#topNavSearchSubmit3').click(function (event,autoSuggestCategory) {var searchTerm = $('#topNavSearchInput').val();searchTerm = searchTerm.replace(/[^\w_]/g,"").trim();if (searchTerm !== ""){submitSearch(autoSuggestCategory);return false;}else{$('#topNavSearchInput').val("");}});$('#wlCategoryContainer2').mouseleave(function() {showingSearchCategories = false;$('#wlCategorySlider2, #wlCategoryContainer2').removeClass("hover1");});$('#topNavSearchCategory, #ArrowIcon').mouseenter(function() {showSearchCategories();});$('#topNavSearchCategory').mouseleave(function() {$('#wlCategoryContainer2').removeClass("hover2");if (!$('#wlCategoryContainer2').hasClass('hover1')){hideSearchCat();};});inputPlaceholderShim('#topNavSearchInput', false);});function getParameterFromHashByName(name) {name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),results = regex.exec(location.hash);return results == null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));}function getCookie(cname) {var name = cname + '=';var ca = document.cookie.split(';');for(var i=0; i<ca.length; i++) {var c = ca[i];while (c.charAt(0)==' ') c = c.substring(1);if (c.indexOf(name) == 0) return c.substring(name.length,c.length);}return '';}function submitSearch(autoSuggestCategory) {var searchTerm = document.getElementById('topNavSearchInput').value.replace(/\&/g, '%26').replace(/ /g, '+').replace(/,/g, '%2C');searchTerm = searchTerm.replace(/&*<*>*#*/g, '').trim();var defaultSearchText = defaultSearchText;var search = '';var type = 'lot';var searchCategoryDefault = 'all categories';var lotCategory = '';if (autoSuggestCategory){lotCategory = autoSuggestCategory;}else{lotCategory = searchCategoryDefault;}var refine = lotCategory.replace(/\&/g, '%26').replace(/ /g, '+').replace(/,/g, '%2C');var categoryName = searchCategoryDefault;var searchUrl =  '/asp/SearchAdvanced_i.asp';if(getCookie('search') !== '') {var sortType = getCookie('search').split('&')[0];var viewType = getCookie('search').split('&')[1];var endingResult = getCookie('search').split('&')[2];}else{var sortType = 'relevance';var viewType = 'gallery';var endingResult = '25';}if(getParameterFromHashByName('type') != 'lot' && getParameterFromHashByName('type')) {type = getParameterFromHashByName('type');}if(searchTerm != '' && searchTerm != defaultSearchText && window.location.pathname != '/asp/SearchAdvanced_i.asp') {search += 'searchTerm=' + searchTerm;if (!getParameterFromHashByName('type')) {search += '&firstSearch=true';}search += '&category=' + categoryName;if(refine.toLowerCase() == searchCategoryDefault.replace(/ /g, '+')) {refine = '';} else if (autoSuggestCategory) {refine = 'Category|' + refine;} else {refine =  'CategoryName|' + refine;}search = '?' + search + '#' + search + refine;search += '&searchid=&type=' + type + '&search=' + encodeURIComponent(searchTerm) + '&sort=' + sortType + '&view=' + viewType + '&length=' + endingResult + '&start=1&refine=' + refine;document.location = searchUrl + search;} else {search += 'searchTerm=' + searchTerm;if (!getParameterFromHashByName('type')) {search += '&firstSearch=true';}search += '&category=' + categoryName;if(refine.toLowerCase() == searchCategoryDefault.replace(/ /g, '+')) {refine = '';} else if (autoSuggestCategory) {refine = 'Category|' + refine;} else {refine =  'CategoryName|' + refine;}search = '?' + search + '&timestamp=' + new Date().getMilliseconds() +  '#' + search + refine;search += '&searchid=&type=' + type + '&search=' + encodeURIComponent(searchTerm) + '&sort='+getParameterFromHashByName('sort')+'&view='+getParameterFromHashByName('view')+'&length='+getParameterFromHashByName('length')+'&start=1&refine=' + refine;document.location = searchUrl + search;}}function hideSearchCat(){try { jQuery('#wlCategorySlider2').delay(500).css('display','none');} catch(e) {};};
+
+		function showSalesAlertModal() {
+		    jQuery("#salesAlertModal").dialog({
+			    autoOpen: false,
+			    height: 220,
+			    width: 370,
+			    modal: true,
+			    resizable: false,
+			    draggable: false,
+			    buttons: {
+				    "Okay": function () {
+					var salesAlertSignup = jQuery("#salesAlertSignup").is(':checked') ? 1 : 0;
+					jQuery.post("/asp/ajax/salesAlertResponse.asp", {
+					    salesAlertSignup: salesAlertSignup
+					}, function() {})
+					jQuery("#salesAlertModal").dialog("close");
+				    }
+			    },
+			    open: function () {
+				    jQuery(this).parents(".ui-dialog:first").find(".ui-dialog-titlebar-close").remove();
+			    }
+
+		    });
+		    jQuery("#salesAlertModal").html('<center>Proxibid is continually bringing new and exciting inventory to be sold in our marketplace, and we don&#39;t want you to miss out.</center> <br /> <input checked = "checked" type = "checkbox" name = "salesAlertSignup" id = "salesAlertSignup" value = "1"> <label for = "salesAlertSignup">Yes, I want to receive sale alerts based on my recent purchases.</label>');
+		    jQuery("#salesAlertModal").dialog("open");
+		    jQuery("html, body").animate({ scrollTop: 0 }, "slow");
+		}
+		jQuery(document).ready(function () {
+			var $ = jQuery;
+			if( showSalesAlertPrompt === '1') {
+			    showSalesAlertModal();
+			    
+			}
+			//Fix for when coming from embedded solution
+			if(window == top){
+				$('#headerWide').show();
+			}
+
+			calculateCategoryNameMaxWidth();
+			
+			$('#browseButtonLink').click(function () {
+				//$('#topNavBrowseSlider').toggle();
+
+				//Slide out
+				if ($('#topNavBrowseSlider').is(':hidden')) {
+					showBrowseMenu();				
+				}
+				else {
+					if (showBrowseMenu.throttle == false) {
+						hideBrowseMenu();
+					}
+				}
+
+				return false;
+			});
+
+			$('#categoryButtonLink').click(function () {
+				//$('#topNavcategorySlider').toggle();
+
+				//Slide out
+				if ($('#topNavCategorySlider').is(':hidden')) {
+					showCategoryMenu();
+				}
+				else {
+					if (showCategoryMenu.throttle == false) {
+						hideCategoryMenu();
+					}
+				}
+
+				return false;
+			});
+
+			$('#headerNotice #bidderActivation').click(function () {
+				var el = $(this)[0];
+				var sd = 'Activation Email';
+				
+				$(el).html("Sending Activation Email");
+				$.getJSON('/asp/bidder/sendactivationemail.asp?bid=', function (data) {
+					var success = 0;
+					var errMsg = "";
+					$.each(data, function (key, val) {
+						if (key == 'success') {
+							success = val;
+						}
+						else if (key == 'error') {
+							errMsg = val;
+						}
+					});
+					if (success == 1) {
+						$(el).replaceWith("Activation Email Sent");
+						$('#headerNotice #bidderActivation').click(function () {
+							return false;
+						});
+
+					}
+				});
+				return false;
+			});
+
+			$(document.getElementById('topNavBrowseContainer')).mouseleave(function () {
+				browseMouseOut();
+			});
+
+			$(document.getElementById('topNavBrowseContainer')).mouseenter(function () {
+				cancelBrowseMouseOut();
+			});
+
+			$(document.getElementById('browseButtonLink')).mouseleave(function () {
+				if(showBrowseMenu.hoverDelay) {
+					clearTimeout(showBrowseMenu.hoverDelay);
+				}
+				browseMouseOut();
+			});
+
+			$(document.getElementById('browseButtonLink')).mouseenter(function () {
+				showBrowseMenu.hoverDelay = setTimeout(function() {
+					showBrowseMenu(true);
+				}, 200);
+				
+				cancelBrowseMouseOut();
+			});
+
+			// separate category fly out from browse fly out.
+
+			$(document.getElementById('topNavCategoryContainer')).mouseleave(function () {
+				categoryMouseOut();
+			});
+
+			$(document.getElementById('topNavCategoryContainer')).mouseenter(function () {
+				cancelCategoryMouseOut();
+			});
+
+			$(document.getElementById('categoryButtonLink')).mouseleave(function () {
+				if (showCategoryMenu.hoverDelay) {
+					clearTimeout(showCategoryMenu.hoverDelay);
+				}
+				categoryMouseOut();
+			});
+
+			$(document.getElementById('categoryButtonLink')).mouseenter(function () {
+				showCategoryMenu.hoverDelay = setTimeout(function () {
+					showCategoryMenu(true);
+				}, 200);
+
+				cancelCategoryMouseOut();
+			});
+
+			$(document.getElementById('topNavCategoryBridge')).mouseleave(function () {
+				categoryMouseOut();
+			});
+
+			$(document.getElementById('topNavCategoryBridge')).mouseenter(function () {
+				cancelCategoryMouseOut();
+			});
+
+			//Truncate category name length in event of long name(s)
+			function calculateCategoryNameMaxWidth() {
+				if(document.getElementById('headerCategoryText')) {
+					var headerWidth = document.getElementById('header').offsetWidth;
+					var topNavUserWidth = document.getElementById('topNavUser').offsetWidth;
+					var headerCategoryTextLeft = document.getElementById('headerCategoryText').offsetLeft;
+
+					document.getElementById('headerCategoryText').style.maxWidth = (headerWidth - headerCategoryTextLeft - topNavUserWidth) + "px";
+				}
+			}
+
+			// Browse fly out functions
+			function showBrowseMenu(throttle) {
+				//Longer fx interval for performance
+				//jQuery.fx.interval = 25;
+				cancelBrowseMouseOut();
+				
+				$('#topNavBrowseSlider').show();
+				$('#ddlAuctionType').blur();
+				$('#ddlCategory').blur();
+				$('.ddlAucType').blur();
+				$('.cat').blur();
+				
+
+				$('#topNavBrowseContainer').stop();
+				$('#topNavBrowseContainer').animate({
+					top: "0px"
+				}, 200, 'linear', function () {
+					//Reset fx interval to default
+					//jQuery.fx.interval = fxInterval;
+				});
+
+				//Prevent clicking for a period of time so the user
+				// doesn't hover then immediately click it away
+				if (throttle) {
+					showBrowseMenu.throttle = true;
+					setTimeout(function () {
+						showBrowseMenu.throttle = false;
+					}, 300);
+				}
+			}
+
+			function hideBrowseMenu() {
+				//Longer fx interval for performance
+				//jQuery.fx.interval = 25;
+
+
+				if (!$('#topNavBrowseSlider').is(':hidden')) {
+					$('#topNavBrowseContainer').stop();
+					$('#topNavBrowseContainer').animate({
+						top: "-275px"
+					}, 200, 'linear', function () {
+						//complete
+
+						$('#topNavBrowseSlider').hide();
+						//Reset fx interval to default
+						//jQuery.fx.interval = fxInterval;
+					});
+				}
+
+
+				//$('#topNavBrowseSlider').hide();
+			}
+
+			function cancelBrowseMouseOut() {
+				if (browseMouseOut.t != "undefined") {
+					clearTimeout(browseMouseOut.t);
+				}
+			}
+
+			function browseMouseOut() {
+				if (browseMouseOut.t != "undefined") {
+					clearTimeout(browseMouseOut.t);
+				}
+
+				//Half second delay before closing the flyout
+				browseMouseOut.t = setTimeout(function () {
+					hideBrowseMenu();
+				}, 200);
+			}
+
+			// Category fly out functions
+			function showCategoryMenu(throttle) {
+				//Longer fx interval for performance
+				//jQuery.fx.interval = 25;
+				cancelCategoryMouseOut();
+
+				$('#topNavCategorySlider').show();
+				$('#ddlAuctionType').blur();
+				$('#ddlCategory').blur();
+				$('.ddlAucType').blur();
+				$('.cat').blur();
+				
+
+				$('#topNavCategoryContainer').stop();
+				$('#topNavCategoryContainer').animate({
+					top: "0px"
+				}, 200, 'linear', function () {
+					//Reset fx interval to default
+					//jQuery.fx.interval = fxInterval;
+				});
+
+				//Prevent clicking for a period of time so the user
+				// doesn't hover then immediately click it away
+				if (throttle) {
+					showCategoryMenu.throttle = true;
+					setTimeout(function () {
+						showCategoryMenu.throttle = false;
+					}, 300);
+				}
+			}
+
+			function hideCategoryMenu() {
+				//Longer fx interval for performance
+				//jQuery.fx.interval = 25;
+
+
+				if (!$('#topNavCategorySlider').is(':hidden')) {
+					$('#topNavCategoryContainer').stop();
+					$('#topNavCategoryContainer').animate({
+						top: "-380px"
+					}, 200, 'linear', function () {
+						//complete
+
+						$('#topNavCategorySlider').hide();
+						//Reset fx interval to default
+						//jQuery.fx.interval = fxInterval;
+					});
+				}
+
+
+				//$('#topNavCategorySlider').hide();
+			}
+
+			function cancelCategoryMouseOut() {
+				if (categoryMouseOut.t != "undefined") {
+					clearTimeout(categoryMouseOut.t);
+				}
+			}
+
+			function categoryMouseOut() {
+				if (categoryMouseOut.t != "undefined") {
+					clearTimeout(categoryMouseOut.t);
+				}
+
+				//Half second delay before closing the flyout
+				categoryMouseOut.t = setTimeout(function () {
+					hideCategoryMenu();
+				}, 200);
+			}
+		});
+
+		function logOutBidder() {
+		    jQuery.ajax({
+		    	cache : false,
+		    	type : "POST",
+		    	url : "/asp/ajax/logOutBidder.asp", 
+		        async : false,
+		    	success : function() {
+		    		location.reload(); 
+		    	}
+		    });
+		}
+		
+	
+
+function OnSubmitForm() {
+	document.dateSearchForm.action ="/asp/webcast-auctions-calendar.asp?cat=0&asvt=all&dt=" + document.dateSearchForm.children.selectedDate.value;
+	return true;
+}
+
+
+				var AuctionInfo = "0|<a href='https://www.proxibid.com/asp/Catalog.asp?aid=160061&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6tNtUAJ'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1360).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/AuctionsByCompany.asp?ahid=560&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6tULUAZ'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1363).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/AuctionsByCompany.asp?ahid=11062&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6tDuUAJ'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1374).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/AuctionsByCompany.asp?ahid=7998&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6w1iUAB'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1373).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/Catalog.asp?aid=157188&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6vqZUAR'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1377).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/AuctionsByCompany.asp?ahid=481&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6vrSUAR'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1378).jpg' width='740' height='360' alt='' /></a>~!~0|<a href='https://www.proxibid.com/asp/Catalog.asp?aid=152456&amp;utm_medium=Homepage&amp;utm_content=Slider&amp;utm_campaign=a0F2J00000B6wbEUAR'><img src='/AnnouncementFiles/Image/!HomepageSlider_Template(1381).jpg' width='740' height='360' alt='' /></a>".split("~!~")
+				var GliderTag = "defaultGliderTag";
+				var showMovieButtons = false;
+			
+
+
+	jQuery(document).ready(function () {
+	
+	
+	
+	});
+
+
+  jQuery(document).ready(function() {
+    jQuery('[ali-count]').each(function(index, adAnnouncement) {
+      jQuery(adAnnouncement).bind("DOMSubtreeModified", function() {
+        var $ad = jQuery(this);
+        // If there is an anchor tag, we know there is an ad in this zone, so add the label divider if one hasn't been added.
+        if ($ad.find('a').size() === 1 && $ad.attr('ad-loaded') !== 'true') {
+          $ad.attr('ad-loaded', 'true');
+          $ad.prepend('<div class="labeledDivider" style="margin-bottom:20px;"></div>');
+        }
+      });
+    });
+  });
+
+
+jQuery(document).ready(function() {
+
+	var $ = jQuery;
+	
+	jQuery('#newsletterForm').keydown(function(e) {
+		if(e.keyCode == 13) { // enter key
+			SignupSubmit('newsletter',5);
+		}
+	});
+//embedded detection
+if(window == top || location.hostname.indexOf("clicktale.com") >= 0 || false){
+	$$(
+		'#header',
+		'.slider_outer_top_with_inner_top_round',
+		'.slider_outer_mid_with_inner_mid',
+		'.slider_outer_bottom_with_inner_bottom_round',
+		'#auctionCounter',
+		'#contentWrapper',
+		'.side_label_timed','.side_label_webcast','.side_label_current','.side_label_archived',
+		'#footerFill',
+		'#footerWrapper',
+		'#copyrightNormal', '#timeStamp', '#trustarea'
+	).each( function(e){ 
+		try{ Element.setStyle(e,{display:"block"}); 
+		}catch(ex){/*alert(ex);*/}
+	});
+	
+}else{
+	//is embedded
+
+	try{ Element.setStyle(e,{display:"none"}); 
+	}catch(ex){}	
+
+	$$(
+		'#topNavEmbeddedImage',	'#copyrightEmbed', '#timeStamp'
+
+		
+	).each( function(e){
+		try{ Element.setStyle(e,{display:"block"}); 
+		}catch(ex){/*alert(ex);*/}
+	});
+	
+	document.getElementById('header').style.display = 'none';
+
+}
+	//fade to .6 opacity any navagation button that is empty (any button (<div>) with no <a> in it matching the given class selector)
+	$$(['.smallNextButton','.nextButton']).each( function (e){ if(!Prototype.Browser.IE && e.empty()) Effect.Fade.delay(0.1, e, {to:0.4, duration: 0.6}); });
+	$$(['.smallPrevButton','.prevButton']).each( function (e){ if(!Prototype.Browser.IE && e.empty()) Effect.Fade.delay(0.1, e, {to:0.4, duration: 0.6}); });
+	$$(['*.catNav']).each( function (e){ if(!Prototype.Browser.IE && e.empty()) Effect.Fade.delay(0.1, e, {to:0.4, duration: 0.6}); });
+
+  //call the pages onload
+  if(typeof(DoOnLoad) != "undefined") {DoOnLoad();}
+  
+  //start ad glider
+  if (typeof GliderTag != "undefined") {
+	  if (GliderTag  > "") {
+		  if($("DisplayMain")){ 
+			StartGlider(); 
+			Element.toggleClassName("GliderTagImage", GliderTag);
+		  }
+	  }
+  }
+
+  //start counter
+  if(typeof(startAuctionCounter) != "undefined") {startAuctionCounter();}
+  
+  
+  //start counter
+  if(typeof(startHotLotsUpdater) != "undefined") {startHotLotsUpdater();}
+
+
+
+
+});
+
+
+
+
+			    var MTCli;
+			    var MTCx151s = "031104";
+			    var MTCx150s = "stats.manticoretechnology.com";
+			    var MTCx100b = false;
+			    var MTCx104n = 3;
+			    var MTCx104s = "";
+			    var sTMTag = "";
+			    var MTCip = "";
+			    var MTCpc = "";
+			    var MTCaf = "";
+			    var MTCo_pce = "30";
+			    var MTCo_pcsl = 0;
+			    var MTCci;
+			    var MTCpn;
+			    var MTCpt;
+			    var MTCrp;
+			    var MTCbv;
+			    var MTCsr;
+			    var MTCcd;
+			    var MTCje;
+			    var MTCbt;
+			    var MTCtz;
+			    var MTCml;
+			    var sTMServerGroup = "";
+			    var sTMContentCategory = "";
+			    var MTCon = "";
+			    var MTCii = "";
+			    var MTCea = "";
+			    var MTCcp = "";
+			    var MTCepci = "";
+			    var MTCvd = "";
+			    var MTC_GROUP="503";
+			    var MTC_ID="30102";
+			    var MTC_Key="2170BB4B-1024-4C3E-B472-67F972228950";
+
+			    function mtc4300s() {
+			        var MTCx402d = new Date();
+			        var MTCx401s = "";
+			        MTCx401s = ((location.protocol == 'http:') ? 'http:' : 'https:') + "//" + MTCx150s + "/Data/" + MTC_GROUP + "/" + MTC_ID + "/" + MTC_Key + "/mtcLogData.asp?ID=" + MTC_ID + "&Key=" + MTC_Key;
+			        MTCx401s += mtc4400s("ra", MTCx402d.getTime());
+			        MTCx401s += mtc4400s("pn", MTCpn);
+			        MTCx401s += mtc4400s("rp", MTCrp);
+			        MTCx401s += mtc4400s("sr", MTCsr);
+			        MTCx401s += mtc4400s("cd", MTCcd);
+			        MTCx401s += mtc4400s("tz", MTCtz);
+			        MTCx401s += mtc4400s("ci", MTCci);
+			        MTCx401s += mtc4400s("je", MTCje);
+			        MTCx401s += mtc4400s("cc", sTMContentCategory);
+			        MTCx401s += mtc4400s("sg", sTMServerGroup);
+			        MTCx401s += mtc4400s("ip", MTCip);
+			        MTCx401s += mtc4400s("pc", MTCpc);
+			        MTCx401s += mtc4400s("pt", MTCpt);
+			        MTCx401s += mtc4400s("af", MTCaf);
+			        if (MTCjsv) {
+			            MTCx401s += mtc4400s("jsv", MTCjsv);
+			        }
+			        MTCx401s += mtc4400s("on", MTCon);
+			        MTCx401s += mtc4400s("ii", MTCii);
+			        MTCx401s += mtc4400s("ea", MTCea);
+			        MTCx401s += mtc4400s("cp", MTCcp);
+			        MTCx401s += mtc4400s("epci", MTCepci);
+			        MTCx401s += mtc4400s("vd", MTCvd);
+			        MTCx401s += mtc4400s("o_pce", MTCo_pce);
+			        MTCx401s += mtc4400s("o_pcsl", MTCo_pcsl);
+			        MTCx401s += mtc4400s("ml", MTCml);
+			        return MTCx401s;
+			    }
+
+			    function mtc4400s(MTCx401s, MTCx402s) {
+			        return "&" + MTCx401s + "=" + escape(MTCx402s);
+			    }
+
+			    function mtc4401(MTCx400s, MTCx401s) {
+			        document.cookie = MTCx400s + "=" + escape(MTCx401s) + "; path=/";
+			    }
+
+			    function mtc4402s(MTCx400s) {
+			        var arg = MTCx400s + "=";
+			        var alen = arg.length;
+			        var clen = document.cookie.length;
+			        var i = 0;
+			        while (i < clen) {
+			            var j = i + alen;
+			            if (document.cookie.substring(i, j) == arg) {
+			                return mtc4403s(j);
+			            }
+			            i = document.cookie.indexOf(" ", i) + 1;
+			            if (i == 0) break;
+			        }
+			        return null;
+			    }
+
+			    function mtc4403s(MTCx400n) {
+			        var endstr = document.cookie.indexOf(";", MTCx400n);
+			        if (("" + endstr) == "" || endstr == -1) endstr = document.cookie.length;
+			        return unescape(document.cookie.substring(MTCx400n, endstr));
+			    }
+
+			    function mtc4201() {
+			        sTMTag = "<img src=\"" + mtc4300s() + "\" hspace=0 vspace=0 height=1 width=1 visibility=hide suppress=true>";
+			    }
+
+			    function mtc4200() {
+			        mtc4201();
+			        sImageTag = sTMTag;
+			    }
+
+			    function mtc7201() {
+			        mtcSetVTSCampaignAID(mtc6400("vtsaid"));
+			        mtcSetVTSCampaignAID(mtc6400("mtcCampaign"));
+			    }
+
+			    function mtc6400(MTCx400s) {
+			        var sCP = "",
+                        s;
+			        s = location.search;
+			        i = s.toUpperCase().lastIndexOf(MTCx400s.toUpperCase() + "=");
+			        if (i >= 0) {
+			            sCP = s.substring(i + 1 + MTCx400s.length);
+			            i = sCP.indexOf("&");
+			            if (i >= 0) {
+			                sCP = sCP.substring(0, i);
+			            }
+			        }
+			        return sCP;
+			    }
+
+			    function mtc6401(MTCx400s, MTCx401s) {
+			        var MTCx402s = "";
+			        var MTCx403s = MTCx401s;
+			        i = MTCx401s.toUpperCase().lastIndexOf(MTCx400s.toUpperCase() + "=");
+			        if (i >= 0) {
+			            MTCx402s = MTCx401s.substring(i + 1 + MTCx400s.length);
+			            MTCx403s = MTCx401s.substring(0, i);
+			            i = MTCx402s.indexOf("&");
+			            if (i >= 0) {
+			                MTCx403s = MTCx403s + MTCx402s.substring(i + 1, MTCx402s.length);
+			            }
+			            i = MTCx403s.indexOf("?");
+			            if (i == MTCx403s.length - 1) {
+			                MTCx403s = MTCx403s.substring(0, MTCx403s.length - 1);
+			            }
+			            if (MTCx403s.substring(MTCx403s.length - 1, MTCx403s.length) == "&") {
+			                MTCx403s = MTCx403s.substring(0, MTCx403s.length - 1);
+			            }
+			        }
+			        return MTCx403s;
+			    }
+
+			    function mtc6402(MTCx400s, MTCx401s, MTCx402s) {
+			        i = MTCx402s.indexOf("?");
+			        if (i >= 0) {
+			            MTCx402s = MTCx402s + "&"
+			        } else {
+			            MTCx402s = MTCx402s + "?"
+			        }
+			        MTCx402s = MTCx402s + MTCx400s + "=" + escape(MTCx401s);
+			        return MTCx402s;
+			    }
+
+			    function mtcGO() {
+			        MTCli = new Image();
+			        MTCli.src = mtc4300s();
+			    }
+
+			    function mtcGoCritical() {
+			        window.onunload = mtc8200;
+			        MTCli = new Image();
+			        MTCli.src = mtc4300s();
+			        MTCli.onload = mtc8100;
+			    }
+
+			    function mtcConfig(sOption, sValue) {
+			        if (sOption == "MTC_PROMO_EXP") MTCo_pce = sValue;
+			        else if (sOption == "MTC_PROMO_SETLAST") MTCo_pcsl = sValue;
+			        else if (sOption == "MTC_EE_URL") mtc4401("mtcEEO_U", sValue);
+			        else if (sOption == "MTC_EE_DELAY") mtc4401("mtcEEO_D", sValue);
+			    }
+
+			    function mtc8200() {
+			        if (MTCx100b == false) return false;
+			        mtc8201();
+			    }
+			    var mtc8201;
+			    if (document.body) mtc8201 = document.body.onunload;
+
+			    function mtc8100() {
+			        MTCx100b = true;
+			    }
+
+			    function mtcSetOrderNumber(sOrderNumber) {
+			        if (sOrderNumber != "") {
+			            MTCon = sOrderNumber;
+			            mtc4200();
+			        }
+			    }
+
+			    function vcmSetOrderNumber(sOrderNumber) {
+			        mtcSetOrderNumber(sOrderNumber);
+			    }
+
+			    function vcmSetPageName(sPageName) {
+			        MTCpn = sPageName;
+			        mtc4200();
+			    }
+
+			    function mtcAddOrderItem(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity) {
+			        mtc500100(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity, 0);
+			    }
+
+			    function vcmAddOrderItem(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity) {
+			        mtcAddOrderItem(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity);
+			    }
+
+			    function mtcRemoveCartItem(sItemID) {
+			        mtc500100(sItemID, "", "", 0.00, 0, 2);
+			    }
+
+			    function mtcEmptyCart() {
+			        mtc500100("", "", "", 0.00, 0, 3);
+			    }
+
+			    function mtcSetCartItem(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity) {
+			        mtc500100(sItemID, sItemName, sItemCategory, fUnitPrice, nQuantity, 4);
+			    }
+
+			    function mtcCommitCart() {
+			        mtc500100("", "", "", 0.00, 0, 5);
+			    }
+
+			    function mtcProductView(sItemID, sItemName, sItemCategory) {
+			        mtc500100(sItemID, sItemName, sItemCategory, 0.00, 0, 6);
+			    }
+
+			    function mtc500100(MTCx401s, MTCx402s, MTCx403s, MTCx404f, MTCx405n, MTCx406n) {
+			        MTCii += "<i><d>" + escape(MTCx401s) + "</d><n>" + escape(MTCx402s) + "</n><c>" + escape(MTCx403s) + "</c><p>" + escape(MTCx404f) + "</p><q>" + escape(MTCx405n) + "</q><a>" + escape(MTCx406n) + "</a></i>";
+			        mtc4200();
+			    }
+
+			    function vtmSetPageName(sPageName) {
+			        mtcSetPageName(sPageName);
+			        mtcSetPageTitle(sPageName);
+			    }
+
+			    function vtmSetAbsolutePageName(sPageName) {
+			        mtcSetAbsolutePageName(sPageName);
+			    }
+
+			    function mtcSetPageName(sPageName) {
+			        var np, i;
+			        mtc7201();
+			        MTCpn = location.hostname;
+			        i = location.pathname.lastIndexOf("/");
+			        if (i < 0) i = location.pathname.lastIndexOf("\\");
+			        if (i >= 0) {
+			            np = location.pathname.substring(0, i);
+			        }
+			        MTCpn += np + "/" + sPageName;
+			    }
+
+			    function mtcSetAbsolutePageName(sPageName) {
+			        mtc7201();
+			        sPageName = "ABS:" + sPageName;
+			        MTCpn = sPageName;
+			    }
+
+			    function mtcSetPageTitle(sPageTitle) {
+			        mtc7201();
+			        sPageTitle = "ABS:" + sPageTitle;
+			        MTCpt = sPageTitle;
+			    }
+
+			    function mtcMonitorFlash(sPageTitle, sPageName) {
+			        sPageTitle = sPageTitle.replace(" ", "");
+			        if (sPageTitle.length > 0) {
+			            mtcSetPageTitle(sPageTitle);
+			        }
+			        mtcSetAbsolutePageName(sPageName);
+			        mtcGO();
+			    }
+
+			    function mtcPopup(nW, nH, sURL) {
+			        var MTCx401w;
+			        if (navigator.appName == "Netscape") {
+			            var x1 = this.screenX + (this.outerWidth - nW) / 2;
+			            var y1 = this.screenY + (this.outerHeight - nH) / 2;
+			            MTCx401w = window.open(sURL, "mtcPopup", 'screenX=' + x1 + ',screenY=' + y1 + ',width=' + nW + ',height=' + nH + ',resizable=0,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,zorder=1');
+			        }
+			        if (navigator.appName == "Microsoft Internet Explorer") {
+			            var x1 = (screen.width - nW) / 2;
+			            var y1 = (screen.height - nH) / 2;
+			            MTCx401w = window.open(sURL, "mtcPopup", 'screenX=' + x1 + ',screenY=' + y1 + ',left=' + x1 + ',top=' + y1 + ',width=' + nW + ',height=' + nH + ',resizable=0,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,zorder=1');
+			        }
+			        MTCx401w.focus();
+			    }
+
+			    function vtmDownload(sFileName) {
+			        MTCon = "";
+			        MTCii = "";
+			        MTCrp = MTCpn;
+			        var np, i;
+			        MTCpn = location.hostname;
+			        i = location.pathname.lastIndexOf("/");
+			        if (i < 0) i = location.pathname.lastIndexOf("\\");
+			        if (i >= 0) {
+			            np = location.pathname.substring(0, i);
+			        }
+			        MTCpt = sFileName;
+			        MTCpn += np + "/" + sPageName;
+			        mtc4200();
+			        MTCpn = "http://" + MTCpn;
+			        document.location = mtc4300s() + "&rd=1";
+			    }
+
+			    function mtcDownload(sURL, sPageTitle) {
+			        document.location = mtcDownload_GetURL(sURL, sPageTitle);
+			    }
+
+			    function mtcMonitorLink(sURL, sLinkTitle) {
+			        MTCml = "1";
+			        document.location = mtcDownload_GetURL(sURL, sLinkTitle);
+			    }
+
+			    function mtcDownload_GetURL(sURL, sPageTitle) {
+			        MTCrp = MTCpn;
+			        MTCon = "";
+			        MTCii = "";
+			        MTCpt = sPageTitle;
+			        if (sURL.indexOf("http") == 0 || sURL.indexOf("ftp") == 0) {
+			            MTCpn = sURL;
+			        } else {
+			            MTCpn = "http://" + sURL;
+			        }
+			        return (mtc4300s() + "&rd=1");
+			    }
+
+			    function mtcSetVTSEAID(sEAID) {
+			        MTCea = sEAID;
+			    }
+
+			    function mtcSetVTSCampaignAID(sCampaignAID) {
+			        MTCcp = sCampaignAID;
+			    }
+
+			    function mtcSetVTSEntryPageCampaignAID(sCampaignAID) {
+			        MTCepci = sCampaignAID;
+			    }
+
+			    function mtcSetPromotion(sPromotionCode) {
+			        MTCpc = sPromotionCode;
+			    }
+
+			    function mtcSetContentCategory(sContentCategory) {
+			        sTMContentCategory = sContentCategory;
+			    }
+
+			    function mtcSetServerGroup(sServerGroup) {
+			        sTMServerGroup = sServerGroup;
+			    }
+
+			    function mtcSetVisitorID(sVisitorID) {
+			        MTCvd = "L3:" + sVisitorID;
+			    }
+			    var mtc8301;
+
+			    function mtc8300() {
+			        MTCip = "1";
+			        mtcGO();
+			        MTCip = "";
+			        if (mtc8301) mtc8301();
+			    }
+			    if (navigator.userAgent.toLowerCase().indexOf("msie") >= 0) {
+			        mtc8301 = window.onafterprint;
+			        window.onafterprint = mtc8300;
+			    }
+			    MTCci = "0";
+			    if (mtc4402s("MTCCK") != "1") mtc4401("MTCCK", "1");
+			    if (mtc4402s("MTCCK") == "1") MTCci = "1";
+			    mtc7201();
+			    MTCpc = mtc6400("mtcPromotion");
+			    MTCaf = mtc6400("mtcAffiliate");
+			    mtcSetVisitorID(mtc6400("mtcEmail"));
+			    MTCpn = unescape(window.location.href);
+			    MTCpt = unescape(document.title);
+			    MTCrp = unescape(document.referrer);
+			    MTCbv = parseFloat(navigator.appVersion);
+			    MTCsr = screen.width + 'x' + screen.height;
+			    MTCcd = screen.colorDepth;
+			    MTCje = navigator.javaEnabled() ? "1" : "0";
+			    MTCbt = navigator.appName;
+			    var today = new Date();
+			    MTCtz = today.getHours();
+			    mtc4200();
+			    mtcGO();
+			
