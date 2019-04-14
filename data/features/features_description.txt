@@ -1,0 +1,36 @@
++script_len     - The length of the script in characters
++num_of_lines   - The number of newline characters in the script
++char_per_line  - The avg. number of characters on each line.
+unicode_num    - The number of unicode characters in the script
++str_enc_freq   - Frequency of subsrtings like "0x"
+human_read     - # of heman readeble words. We judge a word to be readable if it is >70% alphabetical, has
+		20% <vowels <60%, is less than 15 characters long, and does not
+		contain >2repetitions of the same character in a row
+
++comment_chars  - Percentage of chars belonging to a comment
++if_freq        - Frequency of keyword if
++lines_100      - % of lines>1000 chars
++false_ferq     - Frequency of keyword false
++whitesp_freq   - The percentage of the script that is whitespace
++true_ferq      - Frequency of keyword false
+array_access   - Freqeucny of array accesses using dotor  bracket  syntax
++return_freq    - Frequency of keyword return
++var_freq       - Frequency of keyword car
++this_freq      - Frequency of keyword this
++toString_freq  - Frequency of keyword toString
++eval_freq      - Frequency of keyword eval
+
+methods_called - The number of methods invoked by the scrip
++comment_amount - The number of comments in the scrip	t
+
+method_len     - Number of characters in method name
+class_len      - Number of characters in class name
++word_count     - The number of “words” in the script where words are delineated by whitespace and javascript symbols (for example, arithmetic 			 operators)
+
++vowel_freq    - Frequency of vowels in strings
++non_read_freq   - Number of strings containing non-readable characters
++entropy        - Distribution of bytes within a string
+
+n_grams        - Occurrences of special characters within a string N=1
+
+
