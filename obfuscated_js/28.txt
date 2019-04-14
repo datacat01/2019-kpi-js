@@ -1,0 +1,1 @@
+var _0x50c7=["\x69\x74\x20\x65\x78\x69\x73\x74\x73","\x73\x75\x62\x6A\x65\x63\x74","\x6F\x6B"];import   moduleFor  test  from "ember-qunit";;moduleFor('controller:<%= dasherizedModuleName %>','<%= friendlyTestDescription %>',{});test(_0x50c7[0],function(_0xd142x1){let _0xd142x2=this[_0x50c7[1]]();_0xd142x1[_0x50c7[2]](_0xd142x2)})

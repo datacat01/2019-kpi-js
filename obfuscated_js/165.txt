@@ -1,0 +1,1 @@
+var _0xbb10=["\x65\x78\x70\x6F\x72\x74\x73","\x64\x69\x73\x74\x2F"];module[_0xbb10[0]]= {dev:{options:{base:_0xbb10[1],port:4000}}}
