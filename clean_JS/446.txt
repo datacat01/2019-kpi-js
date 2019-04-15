@@ -1,0 +1,42 @@
+
+    (function e() { var e = document.createElement("script"); e.type = "text/javascript", e.async = true, e.src = "//staticw2.yotpo.com/2slsGuEIG4p14nUBNcgSnHmo2kF0sUbvxfDgPnQf/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+
+var ANS_customer_id="4e0a4275-3534-4e99-bb26-3cffdb574678";
+
+			adnsf$.minicart.initialize(
+			{
+				minicart_DeleteWaitMessage: "Deleting...",
+				miniwish_MoveSingleMessage: "Moving item to cart.",
+				miniwish_MoveAllMessage: "Moving all items to cart.",
+				minicart_UpdateFailureMessage: "Sorry, there was an error updating your cart.",
+				miniwish_UpdateFailureMessage: "Sorry, there was an error updating your wishlist.",
+				minicart_CountLabel: "Items",
+				minicart_CountLabelSingular: "Item",
+				checkoutUrl: "/shoppingcart.aspx",
+				loginUrl: "/signin.aspx"
+			});
+			adnsf$.minicart.cartEnabled = true;
+			adnsf$.minicart.wishEnabled = true;
+			adnsf$.minicart.onCheckoutPage = false;
+		
+
+		window.postalCodeRegexConfiguration = {
+			postalCodeRegexMapUrl: "/country/postalcoderegexmap",
+		};
+    
+
+		adnsf$.initializeAddToCartForms(
+		{
+			ajaxAddToCartUrl: "/minicart/ajaxaddtocart",
+			ajaxAddKitToCartUrl: "/minicart/ajaxaddkittocart",
+			addToCartMessage: "Adding to cart",
+			addToWishMessage: "Adding to wishlist",
+			invalidQuatityMessage: "Please enter a valid quantity",
+			addToCartFailureMessage: "Your item was not added to the cart because of an error",
+			addToWishFailureMessage: "Your item was not added to the wishlist because of an error",
+			checkoutUrl: "/shoppingcart.aspx",
+			loginUrl: "/signin.aspx"
+		});
+
+		adnsf$.validator.unobtrusive.adapters.addSingleVal('min', 'val');
+    

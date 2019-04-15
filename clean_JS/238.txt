@@ -1,0 +1,361 @@
+
+var site = {"paypal_web_server":"www.paypal.com","sitegen_hostname":"sitegen.dharmatrading.com","ssl_server_prefix":"https","num_product_images":"50","default_thumb_width":"1","default_image_alt":"","default_thumb_cols":"3","show_related_in_webcart":1,"use_inline_shopping_cart":1,"sitesslserver":"sitegen","siteserver":"sitegen","default_image_src":"clear.gif","www_server_hostname":"www.dharmatrading.com","sitessldomain":".dharmatrading.com","default_thumb_src":"clear.gif","www_server_domain":".dharmatrading.com","default_thumb_rows":"3","default_thumb_alt":"","imagedomain":".dharmatrading.com","www_server_server":"www","ssl_server_server":"www","default_image_width":"1","imageserver":"https://dharma-www.s3.amazonaws.com","sitedomain":".dharmatrading.com","ssl_server_domain":".dharmatrading.com","ssl_prefix":"http","default_thumb_height":"1","default_image_height":"1"};
+var USE_INLINE_SHOPPING_CART = site['use_inline_shopping_cart'] == ('1' || 'y' || 'Y') ? true : false;
+site['imagepath'] = "/";
+
+
+assure_www();
+
+var idx = 0;
+var navInclude = "home.html";
+var maxImgW = "250";
+var maxImgH = "400";
+var featuredIDs = new Array();
+var imageserver = "https://dharma-www.s3.amazonaws.com";
+var imagedomain = ".dharmatrading.com";
+var imagepath = "";
+var sslPrefix = "https";
+var sslDomain = ".dharmatrading.com";
+var sslServer = "www";
+var picArray = new Array();
+var iconArray = new Array();
+var videoArray = new Array();
+var id= "";
+var objid= "1137-AA";
+var stocknum = "HOME";
+var vcode = "";
+var productid= "0";
+var pagestyle = "page_home";
+var scripturl = "";
+var scriptname = "";
+var modulename = "";
+var relatedVideos = "";
+var medalLoad = false;
+
+if (relatedVideos == "true") {
+	relatedVideos = true;
+} else {
+	relatedVideos = false;
+}
+
+var browserName = navigator.appName; 
+var userAgent = navigator.userAgent; 
+var freshnessDate = "1 April, 2019";
+var avgRating = "0";
+var numRatings = "0";
+var originalURL = document.location.href;
+
+if (originalURL.indexOf('#') > 0) {
+	originalURL = originalURL.substring(0, originalURL.indexOf('#'));
+}
+
+var customerCommentJSONActive = false;
+
+featuredIDs[0] = 442;
+featuredIDs[1] = 443;
+featuredIDs[2] = 444;
+featuredIDs[3] = 445;
+featuredIDs[4] = 360;
+featuredIDs[5] = 446;
+featuredIDs[6] = 447;
+featuredIDs[7] = 448;
+featuredIDs[8] = 449;
+featuredIDs[9] = 450;
+featuredIDs[10] = 451;
+featuredIDs[11] = 452;
+featuredIDs[12] = 171;
+featuredIDs[13] = 462;
+featuredIDs[14] = 465;
+
+
+picArray[1] = new picObject("catalog-2009-1-091006114922.jpg", "248", "400", "Dharma Trading Co. Homepage", "1");
+picArray[2] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[3] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[4] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[5] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[6] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[7] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[8] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[9] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[10] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[11] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[12] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[13] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[14] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[15] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[16] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[17] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[18] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[19] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[20] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[21] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[22] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[23] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[24] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[25] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[26] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[27] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[28] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[29] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[30] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[31] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[32] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[33] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[34] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[35] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[36] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[37] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[38] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[39] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[40] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[41] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[42] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[43] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[44] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[45] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[46] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[47] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[48] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[49] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+picArray[50] = new picObject("clear.gif", "1", "1", "Dharma Trading Co. Homepage", "");
+
+var thePic = picArray[1];
+
+videoArray[1] = new videoObject("", "", "");
+videoArray[2] = new videoObject("", "", "");
+videoArray[3] = new videoObject("", "", "");
+videoArray[4] = new videoObject("", "", "");
+videoArray[5] = new videoObject("", "", "");
+videoArray[6] = new videoObject("", "", "");
+videoArray[7] = new videoObject("", "", "");
+videoArray[8] = new videoObject("", "", "");
+videoArray[9] = new videoObject("", "", "");
+videoArray[10] = new videoObject("", "", "");
+
+
+
+
+function signIn() {
+  document.location.href = "/cgi-bin/myaccount.cgi?mode=login";
+  return(false);
+}
+function signOut() {
+  document.location.href = "/cgi-bin/myaccount.cgi?mode=signout";
+  return(false);
+}
+function myAccount() {
+  document.location.href = ("https" + "://" + "www" + ".dharmatrading.com" + "/cgi-bin/myaccount.cgi");
+  return(false);
+}
+function addFavorite(theObjid) {
+  document.location.href = "/cgi-bin/myaccount.cgi?mode=add_favorite&objid=" + theObjid;
+  return(false);
+}
+
+$(window).on('load', function() {
+	$(document).ready(function() {
+
+    // Draw left side navigation
+    drawLnav();
+
+    //Fancybox declarations
+    $(".fancybox").fancybox({
+      iframe: {
+        scrolling : 'yes',
+        preload   : true
+      },
+      helpers: {
+        title : {
+          type : 'inside'
+        }
+      }
+    });
+    $('[data-overlay="fancybox"]').fancybox({
+      iframe: {
+        scrolling : 'yes',
+        preload   : true
+      },
+      helpers: {
+        title : {
+          type : 'inside'
+        }
+      }
+    });
+    $(".fancybox-product-image").fancybox({
+      helpers: {
+        title : {
+          type : 'inside'
+        }
+      }
+    });
+    $('.fancybox-media').fancybox({
+      openEffect  : 'none',
+      closeEffect : 'none',
+      closeBtn    : true,
+      arrows      : false,
+      helpers : {
+        media : {},
+        title : {
+          type : 'inside'
+        }
+      }
+    });
+
+
+    //Find all product tabs with content and 'hide' the unnecessary ones
+    $(".product-tab-content").each(function() {
+      if ($(this).text() == "") {
+        $('[title=' + $(this).attr("alt") + ']').addClass('hidden');
+      }
+    });
+    
+    getMenuData();
+    
+    getMyAccountOptions_v2();
+    
+    geolocationMsg();
+
+
+    // SET PROMOCELL MIN-HEIGHT
+    // Get an array of all element heights
+      var elementHeights = $('.promoCell').map( function() {
+      return $(this).height();
+    }).get();
+  
+    // Math.max takes a variable number of arguments
+    // `apply` is equivalent to passing each height as an argument
+    var maxHeight = Math.max.apply(null, elementHeights);
+
+    // Set each height to the max height
+    $('.promoCell').css('height', maxHeight);
+
+
+    // LOAD EXTERNAL SCRIPTS
+    // Load tooltip script
+    $.getScript("/js/wz_tooltip.js");
+ 
+    // Load bizrate script
+    $('.bizMedal').mouseover( function() { 
+      if (!medalLoad) { 
+        $.getScript("//medals.bizrate.com/medals/js/98494_medal.js");
+        medalLoad = true;
+      }
+    });
+ 
+    //Free Currency Rates for non-secure pages only
+    $.getScript("//www.freecurrencyrates.com/converter-widget?source=Yahoo%20Finance&width=300&currs=USD,EUR&precision=2&language=en&flags=1&currchangable=1&firstrowvalue=1&id=597011665");
+  });
+
+        Cookies.remove("cc_name");
+        Cookies.remove("address_1");
+        Cookies.remove("address_2");
+        Cookies.remove("stateName");
+        Cookies.remove("city");
+        Cookies.remove("postCode");
+        Cookies.remove("country");
+        Cookies.remove("phone");
+        Cookies.remove("birthdate");
+
+  clear_http_sid_cookie();
+  assure_https();
+
+});
+
+function popReportAProblem() {
+	getReportAProblemContent('/cgi-bin/report_a_problem.pl');
+}
+
+function getReportAProblemContent(url) {
+	$.ajax({ url: url, success: function(result) {
+    $("#jqueryUIDialogSource").html(result);
+    showReportAProblemContent();
+    }
+  });
+}
+
+function showReportAProblemContent() {
+	$.fancybox({
+    content: $('#jqueryUIDialogSource'),
+    title: '<div class="font-size-xl bold">Send Us A Note</div>',
+    helpers: {
+      title: {
+        type: 'inside',
+        position: 'top'
+      }
+    }
+  });
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3986669-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+
+      				document.writeln(getWelcomeMessage());
+      				
+
+            getHeaderPromoData();
+            
+
+	          var screenSize = findBootstrapEnvironment();
+	          var deviceType = (screenSize == 'xs') ? 'm' : ( (screenSize == 'sm') ? 't' : ( (screenSize == 'md' || screenSize == 'lg') ? 'd' : 'error' ) );
+	          var md5sum = getCookie('email_md5sum');
+
+            document.writeln(getWelcomeMessage());
+          
+
+	$(window).on('load', function() {
+		$('#slider').nivoSlider({
+			effect:'fade', 					         // Specify sets like: 'sliceDown,sliceDownLeft,sliceUp,sliceUpLeft,sliceUpDown,sliceUpDownLeft,fold,fade'
+			slices:1,                        // For slice animations
+		    boxCols: 8,                    // For box animations
+		    boxRows: 4,                    // For box animations
+  			animSpeed:500,					       // Slide transition speed
+  			pauseTime:4000,					       // How long each slide will show
+  			startSlide:0,					         // Set starting Slide (0 index)
+  			directionNav:false,				     // Next & Prev
+  			directionNavHide:true,			   // Only show on hover
+  			controlNav:true,				       // 1,2,3...
+  			controlNavThumbs:true,			   // Use thumbnails for Control Nav
+  			keyboardNav:true,				       // Use left & right arrows
+  			pauseOnHover:true,				     // Stop animation while hovering
+  			manualAdvance:false,			     // Force manual transitions
+  			captionOpacity:0.0,				     // Universal caption opacity
+  			beforeChange: function(){},    // Triggers before a slide transition
+		    afterChange: function(){},     // Triggers after a slide transition
+		    slideshowEnd: function(){},    // Triggers after all slides have been shown
+		    lastSlide: function(){},       // Triggers when last slide is shown
+		    afterLoad: function(){}        // Triggers when slider has loaded
+		});
+
+		$('[name="sub-sche"]').click(function() {
+			$('.selsche').removeClass('selsche').addClass('delsche');
+			$(this).removeClass('delsche').addClass('selsche');
+			$('[rel^="sub-con"]').addClass('invis');
+			$('[rel="' + $(this).attr('id') + '"]').removeClass('invis');
+		});
+	});
+
+
+fixProductDetailsHeight();
+animatedcollapse.init();
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
+}
+
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+

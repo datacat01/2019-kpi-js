@@ -1,0 +1,359 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbnm-DTC';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+dataLayer = [];
+
+headerData = {"isSearchRedirect":"false","usedSearchRecommendationDD":"false","searchTermUsed":"","cartAmount":"","cartID":"","currCartTotal":"","pageType":"home","pageTitle":"homepage","pageName":"home: homepage","pageCategory":"home","channel":"home","pageTemplate":"homepage","sawEmailLightbox":"no","sourceCode":"","offerCode":"DTC","isMobileView":"no","isTabletView":"no"};
+dataLayer[0] = {"isSearchRedirect":"false","usedSearchRecommendationDD":"false","searchTermUsed":"","cartAmount":"","cartID":"","currCartTotal":"","pageType":"home","pageTitle":"homepage","pageName":"home: homepage","pageCategory":"home","channel":"home","pageTemplate":"homepage","sawEmailLightbox":"no","sourceCode":"","offerCode":"DTC","isMobileView":"no","isTabletView":"no"};
+
+
+var loadBackupRecommendationsFlag = true;
+
+//<!--
+/* <![CDATA[ */
+(function(){
+try {
+	if(window.CQuotient) {
+		var cq_params = {};
+		
+		cq_params.cookieId = window.CQuotient.getCQCookieId();
+		cq_params.userId = window.CQuotient.getCQUserId();
+		cq_params.accumulate = true;
+		cq_params.products = [{
+			id: '46227',
+			sku: '',
+			type: '',
+			alt_id: ''
+		}];
+	
+		cq_params.recommenderName = '__UNDEFINED__';
+		
+		if(window.CQuotient.sendActivity)
+			window.CQuotient.sendActivity( CQuotient.clientId, 'viewReco', cq_params );
+		else
+			window.CQuotient.activities.push( {activityType: 'viewReco', parameters: cq_params} );
+	}
+} catch(err) {}
+})();
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (viewProduct-active_data.js) */
+dw.ac._capture({id: "46227", type: "recommendation"});
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ */
+(function(){
+try {
+	if(window.CQuotient) {
+		var cq_params = {};
+		
+		cq_params.cookieId = window.CQuotient.getCQCookieId();
+		cq_params.userId = window.CQuotient.getCQUserId();
+		cq_params.accumulate = true;
+		cq_params.products = [{
+			id: '44206',
+			sku: '',
+			type: '',
+			alt_id: ''
+		}];
+	
+		cq_params.recommenderName = '__UNDEFINED__';
+		
+		if(window.CQuotient.sendActivity)
+			window.CQuotient.sendActivity( CQuotient.clientId, 'viewReco', cq_params );
+		else
+			window.CQuotient.activities.push( {activityType: 'viewReco', parameters: cq_params} );
+	}
+} catch(err) {}
+})();
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (viewProduct-active_data.js) */
+dw.ac._capture({id: "44206", type: "recommendation"});
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ */
+(function(){
+try {
+	if(window.CQuotient) {
+		var cq_params = {};
+		
+		cq_params.cookieId = window.CQuotient.getCQCookieId();
+		cq_params.userId = window.CQuotient.getCQUserId();
+		cq_params.accumulate = true;
+		cq_params.products = [{
+			id: '45718',
+			sku: '',
+			type: '',
+			alt_id: ''
+		}];
+	
+		cq_params.recommenderName = '__UNDEFINED__';
+		
+		if(window.CQuotient.sendActivity)
+			window.CQuotient.sendActivity( CQuotient.clientId, 'viewReco', cq_params );
+		else
+			window.CQuotient.activities.push( {activityType: 'viewReco', parameters: cq_params} );
+	}
+} catch(err) {}
+})();
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (viewProduct-active_data.js) */
+dw.ac._capture({id: "45718", type: "recommendation"});
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ */
+(function(){
+try {
+	if(window.CQuotient) {
+		var cq_params = {};
+		
+		cq_params.cookieId = window.CQuotient.getCQCookieId();
+		cq_params.userId = window.CQuotient.getCQUserId();
+		cq_params.accumulate = true;
+		cq_params.products = [{
+			id: '46721',
+			sku: '',
+			type: '',
+			alt_id: ''
+		}];
+	
+		cq_params.recommenderName = '__UNDEFINED__';
+		
+		if(window.CQuotient.sendActivity)
+			window.CQuotient.sendActivity( CQuotient.clientId, 'viewReco', cq_params );
+		else
+			window.CQuotient.activities.push( {activityType: 'viewReco', parameters: cq_params} );
+	}
+} catch(err) {}
+})();
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (viewProduct-active_data.js) */
+dw.ac._capture({id: "46721", type: "recommendation"});
+/* ]]> */
+// -->
+
+
+globalData = {"pageNavigationHierarchy":"","customerLatitude":50.4547,"customerLongitude":30.5238,"customerEmail1":"","customerEmail2":"","customerCountry":"","customerState":"","customerCity":"","customerZip":"","dwID":"","visitorLoginState":"guest","omsID":"","preferredStoreID":"","preferredStoreName":"","platform":"demandware","sessionId":"uP8eQJW38mS6nVVxQ5HSTYo6nmg5RInyB9Q="};
+
+
+pageData = {"pageNavigationHierarchy":""};
+
+
+if(pageData != null){
+//Push page specific data to ATM if exists
+if (Object.keys(pageData).length !== 0) {
+/*removed to render datalayer as single object
+if (pageData.event) {
+//Push global data to ATM
+dataLayer.push(globalData);
+dataLayer.push(pageData);
+}
+*/
+for (var prop in pageData) {
+if (prop && pageData.hasOwnProperty(prop)) {
+if (typeof headerData != 'undefined') {
+if(prop == 'pageType' || prop == 'pageName' || prop == 'pageCategory' || prop == 'channel' || prop == 'pageTitle' || prop == 'productPageType' || prop == 'pageTemplate' || prop == 'cartAmount' || prop == 'currCartTotal'){
+headerData[prop] = pageData[prop];
+}
+if(pageData.productPageType == 'Quickview' && prop == 'pageTemplate'){
+headerData[prop] = pageData[prop];
+}
+if(prop == 'ecommerce' && pageData.productPageType != 'Quickview'){
+var property = headerData[prop];
+if(typeof property != 'undefined'){
+var arry = property.detail;
+var attr = arry.products;
+var property1 = pageData[prop];
+var arry1 = property1.detail;
+var attr1 = arry1.products;
+for (var k in attr) {
+attr1[k].id = attr[k].id;
+attr1[k].name = attr[k].name;
+}
+}
+}
+}
+globalData[prop] = pageData[prop];
+}
+}
+if(typeof dataLayer != 'undefined'){
+for(var prop in globalData){
+for (var properties in headerData){
+if(prop && !globalData.hasOwnProperty(headerData[properties])){
+dataLayer[0][prop] = globalData[prop];
+}
+}
+}
+} else {
+dataLayer.push(globalData);
+}
+} else {
+//Push global data to ATM
+if (typeof hearderData != 'undefined') {
+for (var data in headerData) {
+if(data != 'ecommerce'){
+globalData[data] = headerData[data];
+}
+}
+}
+dataLayer.push(globalData);
+}
+}
+
+
+try {
+	console.log('_satellite.pageBottom() - before');
+	_satellite.pageBottom();
+	console.log('_satellite.pageBottom() - after');
+} catch (e) {
+	console.error(e);
+}
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE","CONSUMER_LOGIN":false};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","MERGE_Model_MSG":"Items saved from a previous visit are now in your shopping cart.","MERGE_Model_MSG_HEADER":"Welcome back","MERGE_Model_VIEW_CART":"view shopping cart","YOUR_PASSWORD_UPDATE":"We've sent you an email with a link to reset your password. The email might take a couple of minutes to reach your inbox.","PASSWORD_UPDATE_CONFIRM":"<div class=\"passwordresetconfirm-copy\">\r\nYou should recieve an email from us in just a few moments with a link to reset your password.\r\n<div>This link will expire in 6 hours.</div>\r\n</div>","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","MISSING_COUPON":"Please enter a promo code.","SELECT_AN_ADDRESS":"Please select an Address","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","SELECT_VARIATION":"Please select a size above and try again.","PRODUCT_ITEM":"Item","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"Gift Card Quantity:","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","GIFT_PIN_MISSING":"Please enter a gift certificate pin.","GIFT_CERT_VALID_PIN":"Please enter a valid PIN.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a promo code.","COOKIES_DISABLED":"Your Browser Is Not Currently Set to Accept Cookies or check to see If you have another program set to block cookies?","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"{0} Characters remaining","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"payment method","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"Search inventory by location","SELECT_STORE":"Select Store","NEAREST_STORE":"Inventory at stores near you","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter City and State or Zip code","INVALID_ZIP":"Please enter a valid ZIP Code.","NO_RESULT":"This search returns no results. Please update your query.","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"QuickView","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","ZIP_LENGTH":"Please enter at least 5 characters.","EXPIRY_ERROR":"This credit card is expired.","COMPANYNAME_NUMERIC":"Company field can not be numeric only.","NOUSER_EXISTS":"No User Exists","VALIDATE_REQUIRED":"This field is required.","VALIDATE_EMAIL_REQUIRED":"validate.email.required","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","INVALID_EMAIL":"Please enter a valid email address.","EMAIL_MISMATCH":"Email Mismatch","PASSWORD_MISMATCH":"Password fields do not match.","USER_EXISTS":"User Already Exists","VALIDATE_EMAIL_MISMATCH":"Email fields do not match.","VALIDATE_PRICE":"Gift Cards can only be  purchased with a minimum of $10 and maximum of $500.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_PASSWORD":"Enter a Password between 5-20 characters in length.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","GET_STORE":"MY STORE:","FIND_STORE":"FIND A STORE","STORE_HEADING":"Store Hours","ERROR_PROMO_MESSAGE":"We are sorry, the code you entered was not found. Please double-check the code and try again or you may remove the code and proceed without one.","EmailPreference_UNSELECT":"Oops! You don't have any subscriptions selected.","EmailPreference_ERROR_MESSAGE":"Select at least one type of email to continue.","CatalogPreference_UNSELECT":"Please select a catalog.","NOT_AVAILABLE_STORE":"Not Available in Stores","AVAILABLE_GIFT_CARD_BALANCE":"Available Gift Card Balance:","ADD_COMPANY":"Add Company","ADD_ADDRESS2":"Add Address 2","EMPTY_CART_CONTENT":"global.header.emptycart","ERROR_STATUS_0":"This account is currently locked.  Please try again later.","ERROR_STATUS_1":"Invalid password.  This account will be locked after one more invalid login.","ERROR_STATUS_2":"Sorry, this email address already has an account registered with this site.  Please login or use the forgot password link to reset your password.","ERROR_STATUS_3":"Sorry, this does not match our records. Check your spelling and try again.","ERROR_STATUS_4":"Please check your email for a link to reset your password.","ERROR_STATUS_5":"We're sorry, but this password doesn't match our records. Please try entering it again.","ERROR_STATUS_6":"Oops! This doesn't match our records. Please try again.","ERROR_STATUS_7":"It looks like you haven't logged in recently. Please click on \"Create a Login\" and fill out the required fields. Thank you.","HEADER_RESET_BTN":"Request to Reset Your Password Received","HEADER_RESET_CONFIRM":"Hey, Check Your Email!","PASSWORD_RESET_MSG":"We've sent you an email with a link to reset your password. The email might take a couple of minutes to reach your inbox.","PASSWORD_RESET_CONFIRM":"<div class=\"passwordresetconfirm-copy\">\r\nYou should recieve an email from us in just a few moments with a link to reset your password.\r\n<div>This link will expire in 6 hours.</div>\r\n</div>","HOME_LINK":"Go to the Home page","HOME_LINK_1":"Continue","SIGNUPFAIL":"Email Subscribtion failed.","SIGNUPSUCCESS":"Email Subscribed.","SIGNUPINVALID":"Inavalid email.","FORGOT_PASSWORD":"global.forgotpassword","GIFTCARD_INVALID":"Invalid Gift Card Number.","GIFTCARD_INVALID_PIN":"Invalid Gift Card PIN number.","GIFTCARD_NOTPROCESSED":"We're sorry! We are unable to process online gift card orders at this time. Please call Customer Care to place your order at 800-505-8888.","GIFTCARD_LEGACY_INVALID":"Please confirm you’ve entered the correct number or call Customer Care for assistance at 800-505-8888.","ADD_TO_CART":"Add to Cart","UPDATE":"Update","OUT_OF_STOCK":"OUT OF STOCK","OUT_OF_STOCK_MSG":"Out Of Stock","IN_STOCK_MSG":"In Stock","STORE_ERROR_MSG":"Can not be added to the cart as product not available in store","MY_STORE":"My Store","USE_MY_STORE":"Make this my store","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) are in stock and ready to ship.","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on backorder.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-DTC-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-DTC-Site/default/Page-Include","continueUrl":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Home-Show","staticPath":"/on/demandware.static/Sites-DTC-Site/-/default/v1555232787113/","addGiftCert":"/buy-gift-certificate/","minicartGC":"/on/demandware.store/Sites-DTC-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-DTC-Site/default/Cart-AddProduct","minicart":"/on/demandware.store/Sites-DTC-Site/default/Cart-MiniAddProduct","cartShow":"/cart/","addressList":"/addressbook/","giftRegAdd":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.duluthtrading.com/wallet/","addressesList":"https://www.duluthtrading.com/addressbook/","wishlistAddress":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-DTC-Site/default/Address-Delete","getProductUrl":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Product-Show","getBonusProducts":"/on/demandware.store/Sites-DTC-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-DTC-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-DTC-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-DTC-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-DTC-Site/default/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-DTC-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-DTC-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-DTC-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-DTC-Site/default/COBilling-UpdateSummary","summaryReviewRefreshURL":"/on/demandware.store/Sites-DTC-Site/default/COBilling-UpdateReviewSummary","billingSelectCC":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-DTC-Site/default/COBilling-ResetPaymentForms","compareShow":"/compare/","compareAdd":"/on/demandware.store/Sites-DTC-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-DTC-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-DTC-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Cart-AddCouponJson","removeCoupon":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COBilling-RemoveCouponJson","addPromoCoupon":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/Promo-AddPromoCodeToCookie","storesInventory":"/on/demandware.store/Sites-DTC-Site/default/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-DTC-Site/default/Stores-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-DTC-Site/default/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-DTC-Site/default/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-DTC-Site/default/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-DTC-Site/default/StoreInventory-GetZipCode","billing":"/billing/","setSessionCurrency":"/on/demandware.store/Sites-DTC-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-DTC-Site/default/COShippingMultiple-AddEditAddressJSON","shippingAddEditAddress":"/on/demandware.store/Sites-DTC-Site/default/COShipping-AddEditAddressJSON","cookieHint":"/cookie_hint.html","rateLimiterReset":"/on/demandware.store/Sites-DTC-Site/default/RateLimiter-HideCaptcha","csrffailed":"/on/demandware.store/Sites-DTC-Site/default/CSRF-Failed","cityStateLookup":"/on/demandware.store/Sites-DTC-Site/default/CityStateLookup-Start","qasVerifyAddress":"/on/demandware.store/Sites-DTC-Site/default/QAS-VerifyAddress","qasUpdateAddress":"/on/demandware.store/Sites-DTC-Site/default/QAS-UpdateAddress","qasVerifyEmail":"/on/demandware.store/Sites-DTC-Site/default/QAS-VerifyEmail","addGiftPackage":"/on/demandware.store/Sites-DTC-Site/default/COGiftPackage-AddGiftPackage","removeGiftPackage":"/on/demandware.store/Sites-DTC-Site/default/COGiftPackage-RemoveGiftPackage","getGiftCardMessage":"/on/demandware.store/Sites-DTC-Site/default/Cart-GetGiftCardMessage","updateGiftCardMessage":"/on/demandware.store/Sites-DTC-Site/default/Cart-UpdateGiftCardMessage","updateQuantity":"/on/demandware.store/Sites-DTC-Site/default/Cart-UpdateQuantity","removeProductLineItems":"/on/demandware.store/Sites-DTC-Site/default/Cart-RemoveProductLineItems","summary":"/on/demandware.store/Sites-DTC-Site/default/COBilling-Billing","sessionTimeOut":"/on/demandware.store/Sites-DTC-Site/default/Page-Show","storeDetail":"/on/demandware.store/Sites-DTC-Site/default/Stores-StoreModelDetail","getLatLong":"/on/demandware.store/Sites-DTC-Site/default/GetLatLongResponse-Start","findByCityState":"/find-stores/","chatLink":"/on/demandware.store/Sites-DTC-Site/default/LiveChat-OpenChatWindow","addItemToCart":"/on/demandware.store/Sites-DTC-Site/default/Cart-AddItemCart","emailoverlay":"/on/demandware.store/Sites-DTC-Site/default/EmailOverlay-Show","displayAbandonedCart":"/on/demandware.store/Sites-DTC-Site/default/EmailOverlay-DisplayAbandonedCart","wishlisturl":"/wishlist/","productInventory":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/StoreInventory-GetAvailableStore","getUserPreferredStore":"/on/demandware.store/Sites-DTC-Site/default/Stores-GetPreferredStore","underwearOvershareModal":"/on/demandware.store/Sites-DTC-Site/default/Overshare-GetForm","customerInfo":"/on/demandware.store/Sites-DTC-Site/default/Home-IncludeHeaderCustomerInfo","multiShippingSelectSM":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/COShippingMultiple-SelectShippingMethod","ioProduct":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/IO-Product","ioCart":"https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/IO-Cart","revalidateGoogleCaptcha":"/on/demandware.store/Sites-DTC-Site/default/GoogleCaptcha-RevalidateGoogleCaptcha","getStore":"/find-stores/","homepageSlot":"/on/demandware.store/Sites-DTC-Site/default/Util-Start","getStoreUrl":"/locations/","editEmail":"/on/demandware.store/Sites-DTC-Site/default/Account-EditEmailPreference","showUpdateMessgae":"/on/demandware.store/Sites-DTC-Site/default/Account-ShowUpdateMessage","findStoreByGeoLocation":"/on/demandware.store/Sites-DTC-Site/default/Stores-FindStoreByGeoLocation","accountShow":"https://www.duluthtrading.com/account/","loginShow":"https://www.duluthtrading.com/login/","retailStore":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dw3da35512/images/map-pin-Retail.png","outlet":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dw798d8bf6/images/map-pin-outlet.png","comingSoon":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dwbe53f832/images/map-pin-coming-soon.png","activeRetailStore":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dw6b1da3bf/images/map-pin-retail-active-v2.png","activeOutlet":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dw0f3dc0e5/images/map-pin-outlet-active-v2.png","activeComingSoon":"https://www.duluthtrading.com/on/demandware.static/Sites-DTC-Site/-/default/dwa99d9ceb/images/map-pin-coming-soon-active-v2.png","homePage":"/on/demandware.store/Sites-DTC-Site/default/Home-Show","showCartModal":"/on/demandware.store/Sites-DTC-Site/default/Cart-ShowCartModal","showPasswordModel":"/on/demandware.store/Sites-DTC-Site/default/Account-ShowPasswordModel","checkStoreInventory":"/on/demandware.store/Sites-DTC-Site/default/Stores-ValidateInventory","updatePickupInStore":"/on/demandware.store/Sites-DTC-Site/default/Cart-UpdatePickup","storesFinder":"/on/demandware.store/Sites-DTC-Site/default/Stores-GetStoreFinder","getBopisStore":"/on/demandware.store/Sites-DTC-Site/default/Stores-GetStoresInventry","getPickUPStoresFromCodinate":"/on/demandware.store/Sites-DTC-Site/default/Stores-GetPickUPStoresFromCodinate","showShippingOption":"/on/demandware.store/Sites-DTC-Site/default/Product-ShowShippingOption","setBrowserLocation":"/on/demandware.store/Sites-DTC-Site/default/Stores-SetBrowserLocation","geLoginURL":"/on/demandware.store/Sites-DTC-Site/default/COCustomer-FormLogin"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":true,"LISTING_REFINE_SORT":true,"MAKE_NEWSLETTER_MODAL_STICKY":true,"STORE_PICKUP":true,"COOKIE_HINT":false,"CHECK_TLS":false,"CHAT_LOCATION":"https://chat.duluthtrading.com/i3root/chat/","CHAT_HOST_RELATIVE_URL":"https://chat.duluthtrading.com/i3root/Server","CHAT_HOST_RESOURCE_PATH":"/websvcs/queue/query","CAPTCHA_SITEKEY":"6LfroWAUAAAAABnV_bdIqF60WD4fgOE3V8uhh9am","CAPTCHA_SECRETKEY":"6LfroWAUAAAAADyybIiPU4UEkj09jHi1XU7M3vyl","AP_SELLER_ID":null,"TOKENIZATION_ENABLED":false,"GC_MIN":10,"GC_MAX":500,"QTY_LIMIT":99,"ANALYTICS_ENABLED":true,"QASc_ENABLED":true,"QASc_ENABLEDINBILLING":true,"FINDINSTORE_ENABLED":false,"STATIC_PROMO_MESSAGE":"<style>\r\n.header-banner {\r\n    width: 100%;\r\n}\r\n\r\n.promo-tooltip-content p {\r\ntext-transform: initial;\r\npadding-bottom: 8px;\r\n}\r\n\r\n.promo-tooltip-content p:first-child {\r\nfont-weight:bold;\r\n}\r\n\r\n.promo-tooltip {\r\nbackground-color:white !important;\r\n}\r\n\r\n.promo-tooltip:before {\r\nborder: 13px solid #ffffff !important;\r\nborder-color: transparent transparent #ffffff !important;\r\n}\r\n\r\n@media (min-width:620px) {\r\n.promo-tooltip {\r\nwidth:400px !important;\r\n}\r\n}\r\n</style>\r\n\r\n<div class=\"header-promotion\">\r\n\r\n\t<div id=\"promo1\" class=\"dtm-hearder-banner\">\r\n\t\t<span class=\"promo-text-one\">Free Shipping on Orders Over $75</span>\r\n\t\t\r\n<div class=\"promo-tooltip\">\r\n<div class=\"promo-tooltip-content\">\r\n<p><b>Free Shipping on your order of $75 or more.</b></p><br/>\r\n<p>$75 minimum order requirement applies to the order total before taxes, shipping, gift packaging, and gift cards.</p><br/>\r\n<p>Valid on domestic standard delivery only.</p><br/>\r\n<p>Not valid in combination with other offers, for use on prior purchases or on purchases of gift cards.</p>\r\n</div>\r\n</div>\r\n</div>\r\n</div>","GOOGLE_MAPS_KEY":"AIzaSyDmFk-iTwmezJaEI4L0v9LnI5CNXMs9jpw","STATIC_S2S_MESSAGE":"<div class=\"content-sts-pickupeta\">\r\nShips to store <br/>(available in 4-7 days)\r\n</div>","STATIC_BOPIS_MESSAGE":"<div class=\"content-bopis-pickupeta\">\r\nAvailable Today\r\n</div>","STATIC_BOPIS_MESSAGE_NEXTDAY":"<div class=\"content-bopis-pickupeta_nextday\">\r\nAvailable Tomorrow\r\n</div>","UNDO_TIME_LIMIT":10000};
+//PREVAIL-Window Properties
+window.isAVSEnabled = true;
+window.isGoogleAnalyticsEnabled = false;
+window.isEmailSubscriptionEnabled = true;
+window.isGoogleMapsEnabled = true;
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.duluthtrading.com/on/demandware.store/Sites-DTC-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

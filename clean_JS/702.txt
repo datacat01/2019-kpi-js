@@ -1,0 +1,65 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.surplusstore.co.uk';
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    /* <![CDATA[ */
+    function allowSaveCookie() {
+        Mage.Cookies.set('user_allowed_save_cookie', '{"1":1}', new Date(new Date().getTime() + 31536000 * 1000));
+        if (Mage.Cookies.get('user_allowed_save_cookie')) {
+            window.location.reload();
+        } else {
+            window.location.href = 'https://www.surplusstore.co.uk/cms/index/noCookies/';
+        }
+    }
+    $('notice-cookie-block').show();
+    /* ]]> */
+    
+
+      /* index slider */
+      jQuery(function(){
+      jQuery('#camera_wrap').camera({
+      alignmen: 'topCenter',
+      height: '41.452%',
+      minHeight: '50px',
+      loader : false,
+      pagination: true,
+      fx: 'scrollLeft',
+      navigationHover:false,
+      thumbnails: false,
+      playPause: false,
+      time: 4000,
+      transPeriod: 1000
+      });
+      });    
+      
+
+        //<![CDATA[
+           jQuery(window).load(function(){
+                jQuery().youamaAjaxLogin({
+                    redirection : '0',
+                    profileUrl : 'https://www.surplusstore.co.uk/customer/account/',
+                    autoShowUp : 'no',
+                    controllerUrl : 'https://www.surplusstore.co.uk/ajaxlogin/ajax/index/'
+                });
+            });
+        //]]>
+    
+
+    /* <![CDATA[ */
+    function allowSaveCookie() {
+        Mage.Cookies.set('user_allowed_save_cookie', '{"1":1}', new Date(new Date().getTime() + 31536000 * 1000));
+        if (Mage.Cookies.get('user_allowed_save_cookie')) {
+            window.location.reload();
+        } else {
+            window.location.href = 'https://www.surplusstore.co.uk/cms/index/noCookies/';
+        }
+    }
+    $('notice-cookie-block').show();
+    /* ]]> */
+

@@ -1,0 +1,129 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".tonyperottiusa.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"18e3973504cab5f884cc31e720ec4f40afa0409a","type":"ANONYMOUS","visit_id":"58b6a511-136a-4534-8ed4-20ef9c466904","visitor_id":"e7eed08f-20f2-43e5-83ca-54c32c1a9de9"},"referer":{"url":""},"request":{"url":"https:\/\/www.tonyperottiusa.com\/"}}, '', 1353044, "other", {"customer":{"id":"anonymous"}}, '58b6a511-136a-4534-8ed4-20ef9c466904', 'e7eed08f-20f2-43e5-83ca-54c32c1a9de9');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"7b5d23dfc9e57135a0ec4247634b8aa58602db60a9d723490070f9e77797b5a5"};
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/en6PztGADWqXDL4eCXRdQaCZi4wLbsWnCQmeZ3Iu/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+
+
+    $(window).load(function() {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "slide",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: true
+        });
+    });
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+
+
+$(document).ready(function() {
+
+    $('#items-count').css('background', 'url(https://cdn10.bigcommerce.com/r-fd46977c2e6a72683379f7a1fa2f48cef3a69ca8/themes/SavileRow/images/view.png) no-repeat right 2px');
+
+    $(document).on('click touchstart', function (e) {
+        var container = $(".MiniCart");
+        var cartlink = $("#ShowMiniCart");
+
+        if (!container.is(e.target) && !cartlink.is(e.target) && container.has(e.target).length === 0) {
+        container.slideUp("fast");
+        }
+     });
+
+    if ($('#items-count').is(':empty')) {
+        $('#items-count').text('(0 items)');
+    }
+
+     $(".CartLink a#ShowMiniCart").on('click', function(event) {
+        $(".MiniCart").load("/cart.php #CartFormContainer", function() {
+            $('#AjaxLoading').hide();
+            $('.MiniCart form').attr('id','MiniCartForm');
+        });
+
+        setTimeout(function() {
+
+                $(".MiniCart").slideDown('fast');
+
+        }, 300);
+        event.preventDefault()
+    });
+
+    /* toggle nav */
+    $("#nav-icon").on("click", function(){
+        $(".sf-menu").slideToggle();
+        $(this).toggleClass("active");
+    });
+
+    /* mobile swipe/tap fix */
+    var touch_pos;
+    $(document).on('touchstart', '.ProductList a', function(e) {
+        touch_pos = $(window).scrollTop();
+    }).on('click touchend', '.ProductList a', function(e) {
+        e.preventDefault();
+        if(e.type=='touchend' && (Math.abs(touch_pos-$(window).scrollTop())>3)) return;
+        var url = $(this).attr('href');
+        window.location = url;
+    });
+});
+

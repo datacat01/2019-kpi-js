@@ -1,0 +1,591 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.lancasterarchery.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-10573977-1', 'lancasterarchery.com');
+    ga('require', 'displayfeatures');
+    ga('require', 'ec');
+
+
+var Translator = new Translate({"Please enter a valid email address. For example johndoe@domain.com.":"Please enter a valid email address.","Credit card number doesn't match credit card type":"Credit card number does not match credit card type","Please use only letters (a-z or A-Z), numbers (0-9) or underscore(_) in this field, first character should be a letter.":"Please use only letters (a-z or A-Z), numbers (0-9) or underscores (_) in this field, first character must be a letter."});
+
+    Enterprise.TopCart.initialize('pc_container');
+    if ($J('#perpetual_cart .show_all')) {
+    	 $J('#perpetual_cart a.show_all').click(function() {
+    		 $J('#perpetual_cart .pc_inner_productsincart').each(function() {
+                if ($J(this).attr('style')) {
+                	$J(this).fadeIn();
+                }
+            });
+    		 $J('#perpetual_cart .show_all').html('');
+    		 $J('#perpetual_cart .num').text($J('#perpetual_cart .t_num').text());
+            return false;
+        });
+    }
+
+jQuery(document).ready(function() { var tlc = ['bows','bow-accessories','arrows','targets','shooting-gear','tools-training','hunting','lifestyle']; for(var itlc = 0; itlc < tlc.length; itlc++) { if(document.location.pathname.indexOf(tlc[itlc]) === 1) { var tlcO = jQuery('#nav li[class*='+tlc[itlc].replace('-','_')+']'); tlcO.addClass('active'); tlcO.find('a:first').addClass('active');}}});
+
+		jQuery(document).ready(function() {
+			jQuery("#mobile-menu").mmenu({
+				offCanvas: {
+					position  : "top",
+					zposition : "front"
+				}
+			});
+			jQuery(".mobile-menu").click(function() {
+				if(jQuery('#mobile-menu').css('display') == 'block'){
+					jQuery("#mobile-menu").trigger("close.mm");
+				}else{
+					jQuery("#mobile-menu").trigger("open.mm");
+				}
+			});
+			jQuery('.mm-panel').click(function(event) {
+				if(!jQuery(event.target).is('.mm-panel li') && !jQuery(event.target).parents().is('.mm-panel li')){
+					jQuery("#mobile-menu").trigger("close.mm");
+				}
+			});
+		});
+	
+
+	jQuery(document).ready(function(){
+		jQuery('.mobile-search').click(function(){
+			if( jQuery('.mobile-search-dropdown').css('display') == "none" ) {
+				jQuery('.mobile-search-dropdown').show('slide', {direction: 'up', easing: 'easeOutCubic'}, 500)
+			} else {
+				jQuery('.mobile-search-dropdown').hide();
+			}
+		});
+		jQuery('.mobile-service').click(function(){
+			if( jQuery('.mobile-service-dropdown').css('display') == "none" ) {
+				jQuery('.mobile-service-dropdown').show('slide', {direction: 'up', easing: 'easeOutCubic'}, 500)
+			} else {
+				jQuery('.mobile-service-dropdown').hide();
+			}
+		});
+		jQuery('.link-customer-service').click(function(){
+			if( jQuery('.mobile-service-dropdown').css('display') == "none" ) {
+				jQuery('.mobile-service-dropdown').show('slide', {direction: 'up', easing: 'easeOutCubic'}, 500)
+			} else {
+				jQuery('.mobile-service-dropdown').hide();
+			}
+		});
+	});
+
+
+		jQuery('.tabs ul.tabs-list li').click(function(){
+			var tabName = jQuery(this).attr('id');
+			switch(tabName){
+				case 'top-sellers-tab':
+					jQuery('.top-sellers-slider').css('visibility','visible');
+					jQuery('.new-arrivals-slider').css('visibility','hidden');
+					jQuery('.clearance-slider').css('visibility','hidden');
+					jQuery('.featured-brand-slider').css('visibility','hidden');
+
+					if( !jQuery(this).hasClass('active') ) {
+						jQuery('.tabs ul.tabs-list li').each(function(){
+							jQuery(this).removeClass('active');
+						});
+
+						jQuery(this).addClass('active');
+					}
+					break;
+				case 'new-arrivals-tab':
+					jQuery('.top-sellers-slider').css('visibility','hidden');
+					jQuery('.new-arrivals-slider').css('visibility','visible');
+					jQuery('.clearance-slider').css('visibility','hidden');
+					jQuery('.featured-brand-slider').css('visibility','hidden');
+
+					if( !jQuery(this).hasClass('active') ) {
+						jQuery('.tabs ul.tabs-list li').each(function(){
+							jQuery(this).removeClass('active');
+						});
+
+						jQuery(this).addClass('active');
+					}
+					break;
+				case 'clearance-tab':
+					jQuery('.top-sellers-slider').css('visibility','hidden');
+					jQuery('.new-arrivals-slider').css('visibility','hidden');
+					jQuery('.clearance-slider').css('visibility','visible');
+					jQuery('.featured-brand-slider').css('visibility','hidden');
+
+					if( !jQuery(this).hasClass('active') ) {
+						jQuery('.tabs ul.tabs-list li').each(function(){
+							jQuery(this).removeClass('active');
+						});
+
+						jQuery(this).addClass('active');
+					}
+					break;
+				case 'featured-brand-tab':
+					jQuery('.top-sellers-slider').css('visibility','hidden');
+					jQuery('.new-arrivals-slider').css('visibility','hidden');
+					jQuery('.clearance-slider').css('visibility','hidden');
+					jQuery('.featured-brand-slider').css('visibility','visible');
+
+					if( !jQuery(this).hasClass('active') ) {
+						jQuery('.tabs ul.tabs-list li').each(function(){
+							jQuery(this).removeClass('active');
+						});
+
+						jQuery(this).addClass('active');
+					}
+					break;
+			}
+		});
+	
+
+jQuery(document).ready(function(){
+	jQuery('.top-sellers-slider').slick({
+		infinite: true,
+		speed: 300,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 4,
+		        slidesToScroll: 4
+		      }
+		    },
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3
+		      }
+		    },
+		    {
+		      breakpoint: 650,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		]
+	});
+	jQuery('.new-arrivals-slider').slick({
+		infinite: true,
+		speed: 300,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 4,
+		        slidesToScroll: 4
+		      }
+		    },
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3
+		      }
+		    },
+		    {
+		      breakpoint: 650,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		]
+	});
+	jQuery('.clearance-slider').slick({
+		infinite: true,
+		speed: 300,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 4,
+		        slidesToScroll: 4
+		      }
+		    },
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3
+		      }
+		    },
+		    {
+		      breakpoint: 650,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		]
+	});
+	jQuery('.featured-brand-slider').slick({
+		infinite: true,
+		speed: 300,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 4,
+		        slidesToScroll: 4
+		      }
+		    },
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3
+		      }
+		    },
+		    {
+		      breakpoint: 650,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		]
+	});
+});
+
+
+	jQuery(document).ready(function(){
+		jQuery.fn.randomize = function(selector){
+			var jQueryelems = selector ? jQuery(this).find(selector) : jQuery(this).children(),
+			  jQueryparents = jQueryelems.parent();
+			jQueryparents.each(function(){
+			  jQuery(this).children(selector).sort(function(){
+			      return Math.round(Math.random()) - 0.5;
+			  }).detach().appendTo(this);
+			});
+			return this;
+		};
+		jQuery('.pro-picks-home').find('.pro-picks-slider').randomize('.pro-picks-slide');
+		jQuery('.pro-picks-home').find('.pro-picks-slider').slick({
+			infinite: true,
+			speed: 300,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			responsive: [
+			    {
+			      breakpoint: 465,
+			      settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			      }
+			    }
+			]
+		});
+	});
+	
+
+//<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+
+
+	jQuery(document).ready(function(){
+
+jQuery.ajax({
+        type: "POST",
+        url: "/ccode.php",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+                if ((msg.ccode == "" || msg.ccode == "US" || msg.ccode == "MX" || msg.ccode == "CA" || msg.ccode == "BR" || msg.ccode == "AR" || msg.ccode == "AU") || jQuery.cookie("noti") === "closed") {
+jQuery('.dropdown-notification').remove();
+} else {
+jQuery('.dropdown-notification').prependTo('.page');
+}
+        }
+});
+
+// On button click close and add cookie (expires in 100 days)
+jQuery('.close').on('click', function(){
+   jQuery.cookie("noti", "closed", { expires : 100 });
+   jQuery('.dropdown-notification').remove();
+});
+
+
+		jQuery('.mf-list li h3').click(function(){
+			var headerID = jQuery(this).attr('id');
+			var subChild = jQuery(this).parent().children('#' + headerID + '-sub');
+
+			if(subChild.css('display') == 'none'){
+				subChild.show('slide', {direction: 'up', easing: 'easeOutCubic'}, 500);
+
+				jQuery(this).children('.arrow-right').css({
+					'transform':'rotate(90deg)',
+					'-ms-transform':'rotate(90deg)',
+					'-webkit-transform':'rotate(90deg)'
+				});
+			} else {
+				subChild.hide();
+
+				jQuery(this).children('.arrow-right').removeAttr('style');
+			}
+		});
+		if(jQuery('#mobile-header').css('display') == 'block'){
+			if(window.location.hash){
+				jQuery('html, body').animate({scrollTop:jQuery(window.location.hash).offset().top-82 }, 300);
+			}
+		}
+
+		// HP Tracking
+	    // Slider
+	    jQuery(".home_banner .slide_images a").click(function(){
+	        ga_track_event("Homepage", "Slider", jQuery(this).attr("href"));
+	    });
+
+	    // Special Buy
+	    jQuery(".specialbuy a.yellow").click(function(){
+	        ga_track_event("Homepage", "Special Buy", "Link");
+	    });
+	    jQuery(".specialbuy-image a").click(function(){
+	        ga_track_event("Homepage", "Special Buy", "Image");
+	    });
+	    
+	    // Tabs
+	    jQuery(".home-product-sliders .tabs li").click(function(){
+	        ga_track_event("Homepage", "Tab Click", jQuery(this).text());
+	    });
+	    jQuery(".home-product-sliders .sliders .slick-slide a").click(function(){
+	        ga_track_event("Homepage", "Tab Product Click", jQuery(this).attr("href"));
+	    });
+
+	    // Pro Picks
+	    jQuery(".pro-picks-slider .slick-slide a").click(function(){
+	        ga_track_event("Homepage", "Pro Picks", jQuery(this).attr("href"));
+	    });
+
+	    // Gift Card
+	    jQuery("#right_ttt a").click(function(){
+	        ga_track_event("Homepage", "Gift Card", jQuery(this).attr("href"));
+	    });
+
+	    // Archery Style Tracking
+	    // Main Navigation
+	    jQuery("#hshopstyle .recurve a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "olympic_recurve");
+	    });
+		jQuery("#hshopstyle .compound a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "compound_target");
+	    });
+		jQuery("#hshopstyle .threed a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "3d_archery");
+	    });
+		jQuery("#hshopstyle .recreational a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "recreational");
+	    });
+		jQuery("#hshopstyle .bowhunting a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "bow_hunting");
+	    });
+		jQuery("#hshopstyle .traditional a").click(function(){
+	        ga_track_event("archery_style", "main nav click", "traditional");
+	    });
+
+		// Mobile Navigation
+		jQuery("#mobile-menu .recurve").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "olympic_recurve");
+	    });
+		jQuery("#mobile-menu .compound").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "compound_target");
+	    });
+		jQuery("#mobile-menu .threed").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "3d_archery");
+	    });
+		jQuery("#mobile-menu .recreational").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "recreational");
+	    });
+		jQuery("#mobile-menu .bowhunting").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "bow_hunting");
+	    });
+		jQuery("#mobile-menu .traditional").click(function(){
+	        ga_track_event("archery_style", "mobile nav click", "traditional");
+	    });
+
+		// Category Level
+	    jQuery(".shopbyba-inner #recurve").click(function(){
+	        ga_track_event("archery_style", "top cat click", "olympic_recurve");
+	    });
+		jQuery(".shopbyba-inner #compound").click(function(){
+	        ga_track_event("archery_style", "top cat click", "compound_target");
+	    });
+		jQuery(".shopbyba-inner #threed").click(function(){
+	        ga_track_event("archery_style", "top cat click", "3d_archery");
+	    });
+		jQuery(".shopbyba-inner #recreational").click(function(){
+	        ga_track_event("archery_style", "top cat click", "recreational");
+	    });
+		jQuery(".shopbyba-inner #bowhunting").click(function(){
+	        ga_track_event("archery_style", "top cat click", "bow_hunting");
+	    });
+		jQuery(".shopbyba-inner #traditional").click(function(){
+	        ga_track_event("archery_style", "top cat click", "traditional");
+	    });
+
+		// Subcategory Level
+	    jQuery("#category_name .Olympic_Recurve a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "olympic_recurve");
+	    });
+		jQuery("#category_name .Compound_Target a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "compound_target");
+	    });
+		jQuery("#category_name .ThreeD_Archery a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "3d_archery");
+	    });
+		jQuery("#category_name .Recreational a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "recreational");
+	    });
+		jQuery("#category_name .Bowhunting a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "bow_hunting");
+	    });
+		jQuery("#category_name .Traditional a").click(function(){
+	        ga_track_event("archery_style", "sub cat click", "traditional");
+	    });
+
+	    // Subcategory Level Mobile
+	    jQuery(".category-filter-list .Olympic_Recurve a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "olympic_recurve");
+	    });
+		jQuery(".category-filter-list .Compound_Target a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "compound_target");
+	    });
+		jQuery(".category-filter-list .ThreeD_Archery a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "3d_archery");
+	    });
+		jQuery(".category-filter-list .Recreational a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "recreational");
+	    });
+		jQuery(".category-filter-list .Bowhunting a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "bow_hunting");
+	    });
+		jQuery(".category-filter-list .Traditional a").click(function(){
+	        ga_track_event("archery_style", "sub cat mobile click", "traditional");
+	    });
+	});
+	function ga_track_event(category, action, label) {
+		ga('send', 'event', category, action, label);
+    }
+
+    jQuery("a[href^='#']").on('click', function(e) {
+		if(jQuery('#mobile-header').css('display') == 'block'){
+		    if(jQuery(this.hash).offset()){
+                e.preventDefault();
+                jQuery('html, body').animate({
+                    scrollTop: jQuery(this.hash).offset().top - 82
+                    }, 300, function(){
+                });
+            }
+		}
+	});
+
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/1864.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+var _kiq = _kiq || [];
+(function(){
+setTimeout(function()
+{ var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//s3.amazonaws.com/ki.js/52884/boH.js'; f.parentNode.insertBefore(s, f); }
+, 1);
+})();
+
+
+	//<![CDATA[
+		CelebrosAutoComplete("Lancaster", "search",  onSelect, "lancaster-ac.celebros.com", "lancaster-ac.celebros.com");
+		function onSelect(aParameter)
+		{ 
+			if ((aParameter["SelectedURL"]!="") &&(aParameter["IsAutoComplete"]))
+			{	
+				var sCmp = (aParameter["SelectedURL"].indexOf("?") == -1) ? "?" : "&";
+				window.location = aParameter["SelectedURL"] + sCmp + "cmp=cel" + "&trigger=ac";
+			}
+			else
+			{ 
+                  var targetLocation = "http://www.lancasterarchery.com/salesperson/result/?q="+encodeURIComponent(aParameter["SelectedQuery"]);
+                  if (aParameter["IsAutoComplete"].toString().toLowerCase() == "true") 
+	                  targetLocation += "&Trigger=ac";
+                  window.location = targetLocation;
+			}
+		}
+		
+		var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+		
+	//]]>
+	
+
+arrEcjs = [];
+function _ecjs(ecid,email) { new Ajax.Request("https://www.lancasterarchery.com/remarketing/email/", {parameters:{cid: ecid, email: email}}); }
+function ecjsInit() {for(var ecjsi = 0; ecjsi < arrEcjs.length; ecjsi++) {if($(arrEcjs[ecjsi].id)) {$(arrEcjs[ecjsi].id).stopObserving("change", arrEcjs[ecjsi].fn);$(arrEcjs[ecjsi].id).observe("change", arrEcjs[ecjsi].fn);}}}
+arrEcjs.push({id:"newsletter", fn: function() { _ecjs(3, $(this).value);}});
+arrEcjs.push({id:"ltkmodal-email", fn: function() { _ecjs(4, $(this).value);}});
+document.observe("dom:loaded", function() { ecjsInit(); 
+Ajax.Responders.register({onComplete: function() {ecjsInit();}});});
+
+var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cscript src='" + biJsHost + "cdn.listrakbi.com/scripts/script.js?m=FUlOilw31kkj&v=1' type='text/javascript'%3E%3C/script%3E"));
+var _mlm = setInterval(function() { if(!window.jQuery) { return; }clearInterval(_mlm);jQuery(document).bind("ltkmodal.show", function() { if(typeof ecjsInit === "function") { ecjsInit(); } }); }, 100);
+
+    //<![CDATA[
+    ga('send', 'pageview');
+    //]]>
+

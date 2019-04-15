@@ -1,0 +1,132 @@
+ //<![CDATA[
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-231894-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+    
+        $(function(){
+            $('.dropdown-toggle').click(function() { var location = $(this).attr('href'); window.location.href = location; return false; });
+            $(".dropdown").mouseenter(function() {
+                var el = this;
+                var timeoutId = setTimeout(function() {
+                    $(el).addClass('open');
+                }, 125);
+                $(this).data("timeoutId", timeoutId);
+            }).mouseleave(function() {
+                clearTimeout($(this).data("timeoutId"));
+                $(this).removeClass('open');
+            });
+        });
+    
+
+
+
+if (sessionStorage.getItem('popcontainer') !== 'true') { 
+        $(function(){
+            var hasShown = getCookie("emailpopup");
+            if (hasShown != 'shown')  {
+                $('#npfade').show();
+                $('#popcontainer').fadeIn(1000);
+                //set_cookie('supress_ad', 1, 183);
+                setCookie('emailpopup', 'shown', 180 * 24 * 60 * 60 * 1000);
+            } else {
+                //$('#npfade').show();
+                //$('#popcontainer').fadeIn(1000);
+            }
+            
+            $('#close, #npfade, #go').click(closeOverlay);
+        });
+
+        sessionStorage.setItem('popcontainer','true');
+}
+
+function closeOverlay() {
+	$('#popcontainer').fadeOut(1000, function(){
+		$('#npfade').hide();
+	});
+}   
+
+
+
+$("#search_keyword").on("click", function() {
+    $(this).val("");
+    $(this).removeAttr('placeholder');
+});
+
+
+        $(function() {
+                    $('.carousel').carousel();
+        });
+        function changeCaption(){
+            alert('hi');
+        }
+          $(function() {
+	
+      	      		$("#prev-slide").click(function() {
+         		$("#Carousel").carousel('prev');
+      		});
+      
+      	      		$("#next-slide").click(function() {
+         		$("#Carousel").carousel('next');
+      		});
+   		});
+    
+
+    $(document).ready(function () {
+      $(".carousel-fade .carousel-inner div").removeClass("active");
+      $("#index .carousel-indicators li").removeClass("active");
+      $('#Carousel').find('.item').first().addClass('active');
+      $("#index .carousel-indicators li").first().addClass("active");
+});
+
+
+            function slideSearch() {
+                if ($('#mobile-search').css('display') == 'none') {
+                    $('#mobile-search').slideDown(600);
+                }
+                else {
+                    $('#mobile-search').slideUp(600);
+                }
+            }
+            $('nav#menu').mmenu();
+        
+
+$("#promo_code").on("click", function() {
+    $(this).val("");
+    $(this).removeAttr('placeholder');
+});
+
+
+    $(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+});
+

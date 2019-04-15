@@ -1,0 +1,97 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.portfolios-and-art-cases.com/&h=www.portfolios-and-art-cases.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+var monitus=monitus||{};
+monitus.callback = function(trigger) {
+switch(trigger) {
+case "tracker_before_tracking":
+ga('require', 'displayfeatures');
+break;
+}
+};
+monitus.id=50;monitus.ga_mode=2;
+
+ ddaccordion.init({
+		 headerclass: "submenuheader", 
+		 contentclass: "submenu", 
+		 revealtype: "click", 
+		 mouseoverdelay: 200, 
+		 collapseprev: false, 
+		 defaultexpanded: [], 
+		 onemustopen: false, 
+		 animatedefault: false, 
+		 persiststate: false, 
+		 toggleclass: ["", ""],
+		 togglehtml: ["suffix", "<img src='https://lib.store.yahoo.net/lib/rt-portfolios/collapsed.png' />", "<img src='https://lib.store.yahoo.net/lib/rt-portfolios/expanded.png' class='statusicon' />"], 
+		 animatespeed: "fast", 
+		 oninit:function(headers, expandedindices){},
+		 onopenclose:function(header, index, state, isuseractivated){}
+ })
+
+
+$(function() {
+	$('input, textarea').placeholder();
+	var html;
+	if ($.fn.placeholder.input && $.fn.placeholder.textarea) {} 
+	else if ($.fn.placeholder.input) {}
+	if (html) {
+		$('<p class="note">' + html + '</p>').insertAfter('form');
+	}
+});
+
+
+function eyacc(n){
+var mc="SubSection-"+n;
+
+if (document.getElementById(mc).style.display == "block") {
+document.getElementById('SubSection-'+n).style.display='none';
+document.getElementById('Arrow-'+n).src='https://lib.store.yahoo.net/lib/rt-portfolios/ey-plus.jpg';
+} 
+else {
+document.getElementById('SubSection-'+n).style.display='block';
+document.getElementById('Arrow-'+n).src='https://lib.store.yahoo.net/lib/rt-portfolios/ey-minus.jpg';
+}
+}
+
+$(document).ready(function(){
+	//$('#show-all').bind('click',function(event){
+          //  $('#view-all-accessories-wrapper').toggle();
+        //});
+        $('#ship_calc_head_title').remove();
+        $('#ship_calc_submit img').attr('src','https://lib.store.yahoo.net/lib/rt-portfolios/ey-calculate.jpg');
+});
+
+
+function ShippingCalcThru () { ShippingCalc ('index', ''); } 
+
+    var google_tag_params = {
+        ecomm_prodid: 'index',
+        ecomm_pagetype: 'home',
+        ecomm_totalvalue: ''
+    };
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072731170;
+var google_conversion_label = "fM52CNWVowUQoqjC_wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+<!--
+
+vs_account_id      = "CtjSgFbgagNlvAAM";
+
+//-->
+
+
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/ea2b85987b731668b5b0723484c0c818?id=1bda7a74a12e'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

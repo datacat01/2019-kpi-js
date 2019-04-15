@@ -1,0 +1,95 @@
+
+    window.isPreviewMode = false ;
+    if (window.isPreviewMode === false ){
+      var bActiveX;
+      try {
+        new ActiveXObject('Microsoft.XMLHTTP');
+        bActiveX = true;
+      }
+      catch(e) { bActiveX = false; }
+      if (window.XMLHttpRequest || bActiveX) {
+        var xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            window.endpointRegistry = xhttp.response ;
+          }
+        };
+        xhttp.open("GET", "/ccstoreui/v1/registry", true);
+        xhttp.responseType = 'json';
+        xhttp.setRequestHeader("X-CCProfileType", "storefrontUI");
+        xhttp.send();
+      }
+    }
+  
+
+    if (self === top) {
+      var antiClickjack = document.getElementById("antiClickjack");
+      antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+      top.location = self.location;
+    }
+  
+
+    window.urlLocale = '[{"displayName":"English","repositoryId":"1","name":"en","localeId":"1"}]';
+  
+
+    window.siteBaseURLPath = '/';
+    window.siteId = '800056';
+    window.siteIdOnURL = '';
+  
+
+    window.externalServiceData = { social: { scheme: 'https', host: 'ccsocial.oracleoutsourcing.com', port: '443' } };
+  
+
+      function getSamlResponse() {
+        return "";
+      }
+  
+
+      function getAgentAuthToken() {
+        return "";
+     }
+  
+
+      function getAgentRedirectUrl() {
+        return "";
+     }
+  
+    
+        function getRelayState() {
+          return "";
+        }
+  
+
+      function getOAuthToken() {
+        return "";
+     }
+      function getAdditionalFormData() {
+        var additionalFormDataJson = {  
+            
+        };
+        return additionalFormDataJson;
+     }
+  
+var require = {
+  "config": {
+    "ccNavState": {
+      "pageContext": null,
+      "pageNumber": "0",
+      "pageid": "languages",
+      "referrer": "/",
+      "slug": null,
+      "statusCode": "200"
+    },
+    "ccResourceLoader": {"jsUrls": [
+      "/file/v1227573729880079681/global/elementResizer.min.js?bust=MTIyNzU3MzcyOTg4MDA3OTY4MQ==",
+      "/file/v2121493216249525297/global/swiperSlider.min.js?bust=LTIxMjE0OTMyMTYyNDk1MjUyOTc=",
+      "/file/v2551734311322804432/global/product-override.min.js?bust=MjU1MTczNDMxMTMyMjgwNDQzMg==",
+      "/file/v6285943089560200136/global/versione_ale.min.js?bust=LTYyODU5NDMwODk1NjAyMDAxMzY=",
+      "/file/v4477503281278469638/global/versione_Sergio.min.js?bust=LTQ0Nzc1MDMyODEyNzg0Njk2Mzg=",
+      "/file/v4313129040804225862/global/widgets_url_vm.min.js?bust=NDMxMzEyOTA0MDgwNDIyNTg2Mg=="
+    ]},
+    "pageLayout/css-loader": {"optimizingCSS": true}
+  },
+  "urlArgs": "bust=18.6.1.1"
+};

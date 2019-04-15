@@ -1,0 +1,105 @@
+
+            function preload(arrayOfImages) {
+                $(arrayOfImages).each(function(){
+                    $('<img/>')[0].src = this;
+                    // (new Image()).src = this;
+                });
+            }
+
+            // Usage:
+
+            preload([
+                '/files/product/5c57e1e873bec.jpg','/files/product/5ac4c41d4fb69.jpg','/files/product/5ac4c3f27c798.jpg','/files/product/5ac4c3c6a9e5f.jpg','/files/product/5ac4c392a5578.jpg','/files/product/5ac4c34839795.jpg','/files/product/5ac4c2fd32649.jpg','/files/product/5ac4c2d4d5e93.jpg','/files/product/5ac4c295b004d.jpg','/files/product/5ac4c26969920.jpg',            ]);
+        
+
+    
+    $(document).ready(function() {
+        var prev_currentSlide=0;
+        $('#pro_title').html($('.pro_title_d:eq(0)').html());
+        $('#pro_slider_box').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            if(prev_currentSlide==nextSlide){
+                return;
+            }
+            prev_currentSlide=nextSlide;
+            TweenMax.to($('#pro_title'),.3,{y:'-10px',opacity:0,ease:Power1.easeIn,onComplete:function(){
+                $('#pro_title').html($('.pro_title_d:eq('+nextSlide+')').html());
+                TweenMax.to($('#pro_title'),0,{y:'10px',opacity:0,ease:Power1.easeOut});
+                TweenMax.to($('#pro_title'),.3,{y:'0px',opacity:1,ease:Power1.easeOut});
+            }});
+        });
+        $('#pro_slider_box').slick({
+            slidesToShow: 3,    
+            dots:true,
+            centerMode:false,
+            centerPadding:'0px',
+            slidesToScroll: 1,
+            autoplay: true,
+            speed:400,
+            autoplaySpeed: 2000,
+            arrows:true,
+            infinite: false,
+            accessibility:false,
+            prevArrow:"<div class='pro_prev_arrow vcenter'></div>",
+            nextArrow:"<div class='pro_next_arrow vcenter'></div>",
+            responsive: [
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            } ,
+            {
+                breakpoint: 750,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+            ]
+        }); 
+
+        
+        if($('.blog_prev_right_slide').length!=1){
+            $('.blog_prev_right_slider').slick({
+                slidesToShow: 1,    
+                dots:false,
+                centerMode:true,
+                centerPadding:'0px',
+                slidesToScroll: 1,
+                autoplay: true,
+                speed:400,
+                autoplaySpeed: 2000,
+                arrows:true,
+                accessibility:false,
+
+                        
+                prevArrow:"<div id='blog_prev_right_arrow' class='blog_prev_arrow vcenter'></div>",
+                nextArrow:"<div id='blog_prev_left_arrow' class='blog_prev_arrow vcenter'></div>",
+            }); 
+        }
+    });
+
+
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//uniqodemo.ir/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '10']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+
+
+    window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+    })(document);
+    smartlook('init', '3b43e3c6352bfad9f1d879fe4c3df43fa5cf7102');
+

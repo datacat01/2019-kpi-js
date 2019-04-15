@@ -1,0 +1,601 @@
+
+//Declares empty variables used for Brand Lightbox
+	mobileBrandGrid = "";
+	desktopBrandGrid = "";
+
+
+			!function(a,b,c,d,e,f,g){a.ktag||(e=function(){e.sendEvent?e.sendEvent(arguments):e.ktq.push(arguments)},e.ktq=[],
+				a.ktag=e,f=b.getElementsByTagName(d)[0],g=b.createElement(d),g.async=!0,g.src=c,f.parentNode.appendChild(g))
+					}(window,document,"//resources.xg4ken.com/js/v2/ktag.js?tid=KT-N3B45-3EE","script");
+						ktag('setup', 'KT-N3B45-3EE', '<USER_ID>');
+		
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aaea-tyler-tool';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+		var utag_data = {"page_name":"","page_type":"home","section":"homepage","site_section":"homepage","page":"","site_name":"tyler tool","site":"tyler-tool","device_type":"desktop","visitor_id":"ab2PVudnOcekNeWXJdN4JaLSuo","customer_email":"","customer_status":"guest","customer_id":"guest","ip":"212.90.63.178","external_campaign":"","cart_total_items":"0","cart_total_value":"0.00","cart_product_id":[],"cart_product_sku":[],"cart_product_price":[],"cart_product_quantity":[]};
+
+		// hash param overrides
+		readHashParams(window.location.hash);
+
+		function readHashParams(hash) {
+			if(!hash) { return; }
+			else if(hash.indexOf("xsell") > -1) {
+				var xsell = app.util.getHashParameter("xsell").split("--");
+				utag_data["xsell_product_id"] = xsell[0];
+				utag_data["xsell_product_position"] = xsell[1];
+			}
+		}
+
+		(function(a,b,c,d) {
+			a="//tags.tiqcdn.com/utag/" + "cpocommerce" + "/" + "main" + "/" + "prod" + "/" + "utag.js";
+
+			b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=1;
+			a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+		})();
+	
+
+		var miniItems = 0.0;
+		window.addEventListener('DOMContentLoaded', function() {
+			jQuery(document).ready(function() {
+				miniitemcheck();
+			});
+		});
+		
+
+
+	var enableEinstein = "false";
+	var searchSuggestURL = "/on/demandware.store/Sites-tyler-tool-Site/default/Search-GetSuggestions";
+
+
+
+	//Prepares Main HP Images
+	
+
+
+			
+	jQuery(document).ready(function() {
+		jQuery(".promotext li:lt(3)").after("<div class='promodivide'></div>");
+		
+		setTimeout(function() {
+			$('.hpmidfull').show();
+			setTimeout(function() {
+				jQuery(".hpmidfull").find(".logogrid").touchCarousel({
+					itemsPerMove: 1,
+					pagingNav: true,
+					dragUsingMouse: false,
+					useWebkit3d: true,
+					scrollbarAutoHide: true,
+					transitionSpeed: 200
+				})
+			}, 300);
+		}, 1000);
+		
+	});
+
+var app = app || {}; app.ns = "homepage";
+var d = new Date();document.write(d.getFullYear());
+
+	window.addEventListener('DOMContentLoaded', function() {
+
+	$(document).ready(function(){
+		$(".dvaddtocart").find("#prodATCButton").on('click', function () {
+			var requestedQty = 1;
+			var selectedProduct=$(this).parent().parent().find('.prodid').html().trim().toLowerCase();
+			
+			if(requestedQty < 1) { return; }
+			else if(!selectedProduct) { return showATCError(); }
+			app.minicart.add( "", { pid: selectedProduct, Quantity: requestedQty });
+	}); 
+	});
+	});
+	function hideBrRpQv(){for(var e=document.querySelectorAll(".br-rp-qv-show"),t=0;t<e.length;t++){var r=e[t].getAttribute("class")+" ";r=r.replace("br-rp-qv-show ","br-rp-qv-hide "),e[t].setAttribute("class",r)}}
+	function showBrRpQv(e){
+		$("#divpopup").html("");
+		var url = $(e).data('url');
+		   showDialog(url);
+
+		   return false;		
+	}
+	$("#divpopup").dialog({  //create dialog, but keep it closed
+		   autoOpen: false,
+		   height: 620,
+		   width: 925,
+		   modal: true
+		});
+
+		function showDialog(url){  //load content and open dialog
+			 $.ajax({
+				    url: url,
+				    type: "GET",
+				    success: function (data) {
+				    	$("#divpopup").html($.parseHTML(data));
+				    	 if(jQuery(".retailprice, .ourprice").length == 0) {
+				 			jQuery(".saleprice").addClass("ctcpadding");
+				 		};
+				 		
+				 		$("#viewmore").show();
+				 		var viewmoreUrl = "/on/demandware.store/Sites-tyler-tool-Site/default/Product-Show"+"?pid="+$('#divpopup').find('#product-id').html().trim().toLowerCase();
+				 		$("#viewmore").attr("href",viewmoreUrl);
+				 		$('.conditionBadge a').bind('click', false);
+
+				 	//moving promo message under pricebox
+				 	jQuery(".promomsg").insertAfter(".addtocart-wrap").show();
+				 	$("#divpopup").find("#prodATCButton").on('click', function () {
+						var requestedQty = $("#divpopup").find('#prodQtyInput').val();
+						var selectedProduct=$("#divpopup").find('#product-id').html().trim().toLowerCase();
+						
+						if(requestedQty < 1) { return; }
+						else if(!selectedProduct) { return showATCError(); }
+						app.minicart.add( "", { pid: selectedProduct, Quantity: requestedQty });
+						$("#divpopup").dialog("close");	
+						$("#divpopup").html('');
+					}); 
+				 	//update qty on plus/minus click
+				 	$("#divpopup").find(".qtyButtons").on("click", function() {
+
+				 	  var button = jQuery(this);
+				 	  var oldValue = $("#divpopup").find("#prodQtyInput").val();
+
+				 	  if (button.text() == "+") {
+				 	  	var newVal = parseFloat(oldValue) + 1;
+				 	  	$("#divpopup").find(".qtyButtons.minus").removeClass("disabled");
+				 		} else {
+				 	   // Don't allow decrementing below zero
+				 	    if (oldValue > 1) {
+				 	      var newVal = parseFloat(oldValue) - 1;
+				 	    } else {
+				 	      newVal = 1;
+				 	    }
+				 	  }
+
+				 	 $("#divpopup").find("#prodQtyInput").val(newVal);
+				 	  if (newVal == 1) {
+				 		 $("#divpopup").find(".qtyButtons.minus").addClass("disabled");
+				 	  }
+
+				 	});
+
+				 	//update qty plus/minus buttons on input
+				 	$("#divpopup").find("#prodQtyInput").on("input", function() {
+				 		var qtyValue = jQuery(this).val();
+				 		var minusValue = $("#divpopup").find(".qtyButtons.minus");
+				 	    if(qtyValue > 1) {
+				 	    	minusValue.removeClass("disabled");
+				 	    } else {
+				 	    	minusValue.addClass("disabled");
+				 	    }
+				 	});
+
+				 	ssm.addStates([
+				 	    {
+				 	    	maxWidth: 470,
+				 	        onEnter: function(){
+				 	        	/* jQuery("#pdpATCDivpdpMain").addClass("fixed"); */
+
+
+				 				setTimeout(function(){
+				 					if(jQuery(".categorypla").length) {
+				 						var atcVariables = function(){
+				 				        	btmContOffset = jQuery(".productresultarea").find(".producttile:first").offset().top;
+				 				        	btmContHeight = jQuery(".productresultarea").find(".producttile:first").height();
+				 						};
+				 					} else {
+				 						var atcVariables = function(){
+				 				        	btmContOffset = jQuery(".btm-cont").offset().top;
+				 				        	btmContHeight = jQuery(".btm-cont").height() + 100;
+				 						};
+				 					}
+
+				 					atcVariables();
+
+				 					var hideATC = function(){
+				 						var windowHeight = jQuery(window).height();
+				 						var windowScroll = jQuery(window).scrollTop();
+
+				 						if (jQuery("#pdpATCDivpdpMain").hasClass("fixed")) {
+				 							if ((windowHeight + windowScroll) > (btmContOffset + btmContHeight) && !jQuery(".oosBar").length) {
+				 								$("#divpopup").find(".quantity, #pdpATCDivpdpMain").slideUp(200);
+				 							} else {
+				 								$("#divpopup").find(".quantity, #pdpATCDivpdpMain").slideDown(200);
+				 							}
+				 						}
+				 					};
+
+				 					hideATC();
+
+				 					jQuery(window).scroll(function() {
+				 					    hideATC();
+				 					});
+
+				 					$("#divpopup").find(".sectiontitle").on("click", function() {
+				 						atcVariables();
+				 						hideATC();
+				 					});
+
+				 				},500);
+
+				 				//disables quantity input
+				 				jQuery("input.quantityinput").prop('disabled', true);
+
+				 			},
+				 			onLeave: function() {
+				 				$("#divpopup").find("#pdpATCDivpdpMain").removeClass("fixed");
+
+				 				//enables quantity input
+				 				$("#divpopup").find("input.quantityinput").prop('disabled', false);
+				     		}
+				     	}
+				 	]).ready();
+				    	$("#divpopup").dialog("open");	
+				    }
+				    });
+		             
+		}
+	
+
+/* 02/01/12: TOP NAV SCRIPT THAT DYNAMICALLY CREATES DROPDOWN, ORGANIZES LIST INTO COLUMNS, AND POSITIONS DROPDOWN CONTAINER */
+
+//Sets equal column height
+function setColHeight() {
+	jQuery("div.tab_container").each(function() {
+		
+		var heights = jQuery(this).find(".ddcolumn").not(".promotionColumn").map(function (){
+					  	return jQuery(this).outerHeight();
+					  }).get()
+	    var maxHeight = Math.max.apply(null, heights);
+	    jQuery(this).find(".dropdown_list_container").height(maxHeight);
+	  
+	    /*
+	    	if(typeof window.console != "undefined" && typeof console.log != "undefined"){
+	    		console.log(jQuery(this).attr("id") + "Height:" + maxHeight)
+	    	}
+	   	*/
+	});
+	
+};
+
+// Positions dropdown
+var winResize;
+function reposition_dropdown_menus() {
+	var left_side = jQuery(".nav #top_nav").offset().left;
+	var nav_width = jQuery(".nav #top_nav").width();
+	var nav_adj = left_side + nav_width;
+	
+	jQuery(".tab_container").each(function() {
+		var dd_left = jQuery(this).find('.dropdown_list_container').offset().left;
+		var dd_width = jQuery(this).find('.dropdown_list_container').width();
+		var dd_adj = dd_left + dd_width
+		
+		if(dd_adj > nav_adj) {
+			jQuery(this).find('.dropdown_list_container').addClass("navAdj");
+		}
+		
+	});
+}
+
+jQuery(document).ready(function() {
+
+	//Load nav images only on hover
+	jQuery(".tab_container").bind("mouseenter", function(){			
+		if (!jQuery(this).hasClass("imgloaded")) {				
+			jQuery(this).addClass("imgloaded");
+			jQuery(this).find("img").each(function(){
+				var url = jQuery(this).attr("data-src");		
+				jQuery(this).attr("src", url)
+			});
+		}	
+	});
+
+	//calculate hover alignments
+	jQuery('.dropdown_list_container').each(function(){
+	
+		//If no menus exist, add Class for clearing styling
+		if(jQuery(this).find("ul").length < 1 ) {
+			jQuery(this).addClass("empty");
+		}
+	
+		//Identify the first ul of each column
+		jQuery(this).find("ul").each(function() {
+			jQuery(this).find("li:eq(0)").addClass("first")
+		})
+	});
+	
+/********* 08/2013 New Top Nav jQuery *********/
+	 
+	jQuery("div.tab_container").each(function() {
+		//Removes unused topnav divs
+		if(jQuery(this).children().length < 1) {
+			jQuery(this).remove();
+		}
+		
+		//Removes mention of word Recon from sublists
+	    if(jQuery(this).find('.tab_title').text().indexOf('Reconditioned') != -1) {
+	    	jQuery(this).find(".subcats-ul a").each(function() {
+	    		jQuery(this).text(jQuery(this).text().replace(/Reconditioned /ig, ""));
+	    	});
+	    };
+
+		//Creates a column around every 2 highlighted category
+		jQuery(this).find(".topcategory").slice(0,2).wrapAll("<div class='ddcolumn topcatcol' />");
+		jQuery(this).find(".topcategory").slice(2,4).wrapAll("<div class='ddcolumn topcatcol' />");
+		jQuery(this).find(".topcategory").slice(4,6).wrapAll("<div class='ddcolumn topcatcol' />");
+	    
+	    //Sets no. of Columns as class
+		var noOfCol = jQuery(this).find('.ddcolumn').length;
+		jQuery(this).addClass("column" + noOfCol);
+	    
+	    //Sets Class for styling of list column
+	    if(jQuery(this).find(".ddcolumn").length > 1) {
+	    	jQuery(this).find(".ddcolumn:gt(0)").addClass("border");
+	    };
+	    
+	    //Sets class subcats of category list
+	    jQuery(this).find(".subcats-ul li").each(function() {
+	    	if(jQuery(this).not('.subcat').prev().hasClass('subcat')) {
+	    		jQuery(this).addClass('marginAdj');
+	    	}
+	    });
+   
+	});
+	
+	setTimeout(function() {setColHeight()},300);
+	reposition_dropdown_menus();
+	
+	//Identifies first and last top nav menu item
+	jQuery(".nav #top_nav .tab_container:eq(0)").addClass("first");
+	jQuery(".nav #top_nav .tab_container").filter(":last").addClass("last");
+	
+	ssm.addState({
+	    minWidth: 781,
+	    onEnter: function() {
+		//bind hover drop down
+			
+	    	jQuery(".nav #top_nav > div").hover(function(e){
+	    		e.preventDefault()
+	    		jQuery(this).delay(250).addClass("topNavHover").queue(function(show){    		
+	    		    $(this).find('div.dropdown_list_container').css({'visibility':'visible'});			
+	    		    show();
+	    		});
+	    		}, function(e) {
+	    			e.preventDefault()
+	    			jQuery(this).removeClass("topNavHover").queue(function(hide){
+	    		    $(this).find('div.dropdown_list_container').css({'visibility':'hidden'});			
+	    		    hide();
+	    		});
+	    			
+	    			});
+		},
+		onResize: function() {
+			setColHeight();
+			reposition_dropdown_menus();
+		},
+		onLeave: function() {
+			if(ssm.getBrowserWidth() != 0) {
+				jQuery(".nav #top_nav > div").unbind("mouseenter mouseleave");
+			}
+		}
+	}).ready();
+
+});
+
+
+
+	app.URLs.addToCart 					= "/on/demandware.store/Sites-tyler-tool-Site/default/Cart-MiniAddProduct";
+	app.URLs.getProductUrl 				= "/on/demandware.store/Sites-tyler-tool-Site/default/Product-Show";
+	app.URLs.getSearchUrl 				= "/on/demandware.store/Sites-tyler-tool-Site/default/Search-Show";
+	app.URLs.getVariants 				= "/on/demandware.store/Sites-tyler-tool-Site/default/Product-GetVariants";
+	app.URLs.loadingSmallImg 			= "/on/demandware.static/Sites-tyler-tool-Site/-/default/dw270e6649/images/loading-small.gif";
+	app.URLs.formatMoney				= "/on/demandware.store/Sites-tyler-tool-Site/default/Product-FormatPrices";
+	app.URLs.tealiumAccount				= "/on/demandware.store/Sites-tyler-tool-Site/default/Tealium-Account";
+	
+	app.URLs.email = {
+		addRecipient: "/on/demandware.store/Sites-tyler-tool-Site/default/Silverpop-AddRecipient",
+		selectRecipient: "/on/demandware.store/Sites-tyler-tool-Site/default/Silverpop-SelectRecipient"
+	};
+
+	app.URLs.warranty = {
+		change: "https://www.tylertool.com/on/demandware.store/Sites-tyler-tool-Site/default/Warranty-Change",
+		remove: "https://www.tylertool.com/on/demandware.store/Sites-tyler-tool-Site/default/Warranty-Remove"
+	};
+
+	app.URLs.cart = {
+		show: "/on/demandware.store/Sites-tyler-tool-Site/default/Cart-Show"
+	};
+
+	app.URLs.bonusproduct = {
+		add: "/on/demandware.store/Sites-tyler-tool-Site/default/BonusProduct-Add",
+		getContent: "/on/demandware.store/Sites-tyler-tool-Site/default/BonusProduct-GetContent"
+	};
+
+	app.resources["MISSINGVAL"] 		= "Please Enter {0}";
+	app.resources["SERVER_ERROR"] 		= "Server connection failed!";
+	app.resources["MISSING_LIB"] 		= "jQuery is undefined.";
+	app.resources["BAD_RESPONSE"]		= "Bad response, Parser error";
+	app.resources["INVALID_PHONE"]		= "Please specify a valid phone number.";
+
+	//Declares empty variables used for Brand Lightbox
+	mobileBrandGrid = "";
+	desktopBrandGrid = "";
+
+	app.resources["CURRENT_SITE"] = "Tyler Tool";
+
+	
+
+	var deviceType = "desktop";
+	app.customer = {"deviceType":"desktop","isAuthenticated":false,"isRegistered":false,"isGuest":true,"hasAddress":false,"email":"","firstName":"","lastName":"","city":"","postalCode":"","stateCode":"","countryCode":""};
+
+
+			var triggermail=triggermail||[];triggermail.load=function(a){var b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src="https://api.bluecore.com/triggermail.js/"+a+".js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)};triggermail.load("tyler_tool");window.triggermail=triggermail;
+		
+
+window.addEventListener('DOMContentLoaded', function() {
+	jQuery(document).ready(function(){
+		// Force Email and Coupon Code to lowercase
+
+		var inputFieldIds = "#emailsignupinput, #dwfrm_billing_billingAddress_email_emailAddress, #dwfrm_wishlist_search_email,";
+		inputFieldIds = inputFieldIds + "#email_exclusive, #dwfrm_guestEmail_emailAddress,";
+		inputFieldIds = inputFieldIds + "#dwfrm_login_username, #dwfrm_sendtofriend_friendsemail, #email,";
+		inputFieldIds = inputFieldIds + "#dwfrm_requestpassword_email, #dwfrm_profile_customer_email,";
+		inputFieldIds = inputFieldIds + "#dwfrm_profile_customer_emailconfirm, #dwfrm_billingcoupon_couponCode,";
+		inputFieldIds = inputFieldIds + "#dwfrm_sendtofriend_youremail, #dwfrm_sendtofriend_confirmfriendsemail";
+		function lowerCase(id) {
+			var lower = jQuery("#" + id).val().toLowerCase()		
+			jQuery("#" + id).val(lower);
+		};
+		
+		jQuery(inputFieldIds).blur(function() {
+			lowerCase(jQuery(this).attr("id"));
+		});
+		jQuery(inputFieldIds).keypress(function(event) { 
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if(keycode == '13'){
+				lowerCase(jQuery(this).attr("id"));
+			}
+		});
+	});
+});
+
+
+/* <![CDATA[ */
+var google_conversion_id = 971443127;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 965743513;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+window.addEventListener('DOMContentLoaded', function() {
+(function () {
+	// Check existence of PriceSpider WTB query string parameter & save value to cookie if found
+	var PRICE_SPIDER_QUERY_STRING_PARAM = "psrid";
+	
+	var psridTrackingCode = app.util.getURLParameter(PRICE_SPIDER_QUERY_STRING_PARAM);
+	
+	if(psridTrackingCode) {
+		// Set cookie with param name, code value, and with session lifespan
+		app.util.saveCookie(PRICE_SPIDER_QUERY_STRING_PARAM, psridTrackingCode);
+	}
+}());
+});
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.tylertool.com/on/demandware.store/Sites-tyler-tool-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

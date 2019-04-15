@@ -1,0 +1,77 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".specialtybottle.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"3ee3c7072c87e07723aad6f732fe69e94c6b53ef","type":"ANONYMOUS","visit_id":"be460e20-e756-48a6-944a-4326a791afc3","visitor_id":"d30f698a-b803-46f3-970d-df219887bf83"},"referer":{"url":""},"request":{"url":"https:\/\/www.specialtybottle.com\/"}}, '', 1720748, "other", {"customer":{"id":"anonymous"}}, 'be460e20-e756-48a6-944a-4326a791afc3', 'd30f698a-b803-46f3-970d-df219887bf83');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"7dcd7ed8bf0d4eae6abfef7c96ab865947eafc817d1d457f2cc7ae3004aa9e55"};
+
+
+window.renderBadge = function() {
+    if ("BOTTOM_LEFT" === "INLINE") {
+        var ratingBadgeContainer = document.getElementById("");
+    } else {
+        var ratingBadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingBadgeContainer);
+    }
+
+    window.gapi.load('ratingbadge', function() {
+        window.gapi.ratingbadge.render(
+            ratingBadgeContainer, {
+                "merchant_id": 76773,
+                "position": "BOTTOM_LEFT"
+        });
+    });
+}
+
+
+
+
+// Livechat script
+var __lc = {};
+__lc.license = 4330221;
+(function() {
+var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+
+    try {
+        if (jQuery('.category-page-type').length > 0) {
+            var google_tag_params = {
+                ecomm_prodid: '',
+                ecomm_pagetype: 'category',
+                ecomm_totalvalue: 0
+            };
+        }
+        if (window.location.pathname == '/') {
+            var google_tag_params = {
+                ecomm_prodid: '',
+                ecomm_pagetype: 'home',
+                ecomm_totalvalue: 0
+            };
+        }
+        if (jQuery('#product-detail-div').length > 0) {
+            var id = document.querySelector('[property="og:description"]').content;
+            var price = prodPrice.replace(/[^0-9.-]/g, '');
+            var google_tag_params = {
+                ecomm_pagetype: 'product',
+                ecomm_prodid: id,
+                ecomm_totalvalue: parseFloat(price)
+            };
+        }
+    } catch (err) {}
+    if (window.location.pathname.match(/cart/i)) {
+        var id = new Array();
+        var price = document.querySelector('.cart-total>span').innerText.replace(/[^0-9]/g, '') / 100;
+        jQuery('.cart-part-number').each(function() {
+            id.push(this.innerText.split(': ')[1])
+        })
+        var google_tag_params = {
+            ecomm_prodid: id,
+            ecomm_pagetype: 'cart',
+            ecomm_totalvalue: parseFloat(price)
+        };
+    }
+

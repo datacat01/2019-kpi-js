@@ -1,0 +1,533 @@
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/experimentationPlatformReporting.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/visitor.230.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/external/domutils.100.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/babel-polyfill/polyfill.min.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/external/webcomponents/webcomponentsjs/webcomponents-bundle.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+var WSI = {
+disabled : {
+dotomi: true,
+outwardColorSwap: true
+},
+cmVenValues: ["EMAIL","EDM","EDM_PROMO","E3","EDM_TRIGGER","PROMO","TRIG","TRANSACT","STORES"],
+offsiteRequests : [],
+addOffsiteRequest : function(t,u,a){this.offsiteRequests.push(a?[t,u,a]:[t,u]);},
+imgIfNotBodyState : function(c,s,a,w,h){var d=document,b=d.body;if(!new RegExp("\\b"+c+"\\b").exec(b.className)){var i=d.createElement("img");i.src=s;i.alt=a||"";i.width=w||1;i.height=h||1;b.appendChild(i);}},
+isRetailStoreRequest : function(){var r=!!/\bisRetailStoreRequest\b/.exec(document.body.className);WSI.isRetailStoreRequest=function(){return r};return r},
+isEnabled : function(f){return !WSI.disabled[f];},
+cookies : {
+savedCart : "PB_SAVEDCART",
+sessionCart : "PBMX_SESCART",
+ivrHideSiteLink : {name : '', ttl : '0'}
+},
+contentPersonalization : {
+isOn: true,
+hideEmailCaptureOverlay: false,
+emailExperience: "stickyOverlay"
+, creServer: "//match.collectandgather.com",
+profileCookieList: "CoreID6,wsiakid,svi_dec",
+lookupUrl : "/personalization/lookup/v2/pb/",
+promotionCodeUrl : "/personalization/promotion-code-used/v2/pb/",
+notificationUrl : "/personalization/notification/v2/pb/",
+flatFileServer: "//lookup.collectandgather.com",
+emailOptinUrl: "/email-opt-in-service/v1/PB/"
+},
+config: {
+appUrl : "https://www.potterybarn.com/",
+secureAppUrl : "https://www.potterybarn.com/",
+ecmAssetUrl : "https://www.potterybarn.com/pbimgs/rk/images/dp/",
+sitePref : "PB_SITE_PREF_PROD",
+cookieSubDomain : ".potterybarn.com",
+catImageBase : "https://www.potterybarn.com/pbimgs/rk/images/dp/",
+secureCatImageBase : "https://www.potterybarn.com/pbimgs/rk/images/dp/",
+docImageBase : "https://www.potterybarn.com/pbimgs/rk/images/"
+, sessionCookieName : "PBPE_SID"
+, id : "pb",
+brand:"Pottery Barn"
+, isDigitalSwatchEnabled: false
+, isDigitalSwatchMobileEnabled: false
+, digitalSwatchAcceptedPercentage: "32"
+, digitalSwatchApiUrl: ""
+, isDigitalSwatchABTestEnabled: false
+, isDigitalSwatchMobileABTestEnabled: false
+, storePickupEnabled: true
+, storePickupMessages: {
+chooseADifferentStore: "Choose a different Store"
+, chooseAStore: "Choose a Store"
+}
+, currencyCode: "USD"
+, countryCode: "US"
+, currencySymbol: "$"
+, hideZeroCents: true
+, plccPayType: "PLCC/PB"
+, isEcmPagesEnabled: true
+, isEcmContentTagDisplayEnabled: false
+}
+,
+adobeTnt : {
+isOn: true,
+cookieName: "WSI-MBOX"
+},
+isPwaUxEnabled: false,
+pwaEnabledUxFeatures: false,
+isFavoritesEnabled: true,
+isAdvancedFavoritesEnabled: true,
+isShareFavoritesEnabled: true,
+isGlobalTopNavLinkNavigationSuppressedForIpad: true,
+app_router: {
+isPartialPageRenderEnabled: false
+},
+outward : {
+isMonogramEnabled : false,
+monogramUrl : 'https://expression-wsi.outwardinc.com/',
+monogramApiHost : 'https://expression-wsi.outwardinc.com/image/',
+monogramApiVersion : '1'
+},
+isScene7Enabled : true,
+noopUrl: 'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/noop.js',
+user_name :'',
+RichRelevance : {
+hasRichRelevanceRatings : false,
+richRelUrl : '//recs.richrelevance.com/rrserver/',
+richRelApiKey : 'c436aba8bfbad255',
+channelApiKey : '6a7f0eaa4f1d5ad2',
+url : 'https://www.potterybarn.com/',
+sessionCookieName : 'PBPE_SID'
+},
+search : {
+isRankedExperience:
+true
+, maxSuggestions: 10,
+minChars: 3,
+accountID: '4068',
+domainKey: 'potterybarn_en_pb_prd_d2',
+apiUrl: 'https://suggest.dxpapi.com/api/v1/suggest/'
+}
+};
+djConfig={parseOnLoad: false, locale: 'en-us', isDebug: false, blankGif:'https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/images/common/blank.gif', dojoBlankHtmlUrl:'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/dojo/dojo/resources/blank.html'};
+WSI.addOffsiteRequest('js', 'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/oo_engine.js');
+
+(function() {
+window.SOASTA = {
+pg : "home-page"
+};
+if (window.BOOMR && window.BOOMR.version) { return; }
+var dom,
+doc,
+where,
+iframe = document.createElement("iframe"),
+win = window;
+function boomerangSaveLoadTime(e) {
+win.BOOMR_onload=(e && e.timeStamp) || new Date().getTime();
+}
+if (win.addEventListener) {
+win.addEventListener("load", boomerangSaveLoadTime, false);
+} else if (win.attachEvent) {
+win.attachEvent("onload", boomerangSaveLoadTime);
+}
+iframe.src = "javascript:void(0)";
+iframe.title = "";
+iframe.role = "presentation";
+(iframe.frameElement || iframe).style.cssText = "width:0;height:0;border:0;display:none;";
+where = document.getElementsByTagName("script")[0];
+where.parentNode.insertBefore(iframe, where);
+try {
+doc = iframe.contentWindow.document;
+} catch(e) {
+dom = document.domain;
+iframe.src = "javascript:var d=document.open();d.domain='"+dom+"';void(0);";
+doc = iframe.contentWindow.document;
+}
+doc.open()._l = function() {
+var js = this.createElement("script");
+if (dom) {
+this.domain = dom;
+}
+js.id = "boomr-if-as";
+js.src = "//c.go-mpulse.net/boomerang/" + "56PYS-C3ATC-457ES-L76XM-KKMDN";
+BOOMR_lstart = new Date().getTime();
+this.body.appendChild(js);
+};
+doc.write('<body onload="document._l();">');
+doc.close();
+})();
+
+
+
+WSI.imageSuffixes = {
+"cartRecs" : "u",
+"checkoutOrderSummary" : "j",
+"dotomiThumb" : "m",
+"dynaMonoThumbnail" : "r",
+"facetSwatch" : "a",
+"groupGiftRegistryList" : "f",
+"guidedPipAttributeSwatch" : "u",
+"guidedPipSwatch" : "r",
+"guidedPipSwatchCopy" : "l",
+"guidedPipMultibuyThumbnail" : "r",
+"fullWidthHero" : "fwh",
+"hero" : "c",
+"mobileAltImages" : "c",
+"mobileAltImagesSkuThumb" : "c",
+"mobileAltImagesVideoThumb" : "w",
+"mobileHero" : "m",
+"ordereturnthumbnail" : "r",
+"orderRecs" : "u",
+"pipCSLRecs" : "d",
+"pipRecs" : "d",
+"pipRecsMobile" : "j",
+"pipRecsRacMobile" : "j",
+"pipRVIRecs" : {
+"vertical" : "r",
+"horizontal" : "d"
+},
+"quickcart" : "r",
+"quicklookHero" : "b",
+"rac" : "s",
+"racRecs" : "s",
+"regAddRecs" : "x",
+"registryList" : "x",
+"related" : "d",
+"relatedProduct" : "f",
+"searchRecs" : "u",
+"shopRecs" : "j",
+"subset" : "u",
+"swatch" : "m",
+"thumbnail" : "r",
+"favoritesGalleryPanel" : "m",
+"videoThumbPip" : "v",
+"videoThumbSearch" : "w",
+"viewLarger" : "o",
+"vtaCategoryThumbnail" : "e",
+"vtaProductThumbnail" : "e",
+"zoom" : "l",
+"environmental" : {
+"thumb" : "t",
+"medium" : "h",
+"wide" : "w",
+"relatedThumb" : "x"
+},
+"hprecs" : "c"
+};
+djConfig={parseOnLoad: false, locale: 'en-us', isDebug: false, blankGif:'https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/images/common/blank.gif', dojoBlankHtmlUrl:'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/dojo/dojo/resources/blank.html'};
+WSI.addOffsiteRequest('js', 'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/oo_engine.js');
+
+(function() {
+window.SOASTA = {
+pg : "home-page"
+};
+if (window.BOOMR && window.BOOMR.version) { return; }
+var dom,
+doc,
+where,
+iframe = document.createElement("iframe"),
+win = window;
+function boomerangSaveLoadTime(e) {
+win.BOOMR_onload=(e && e.timeStamp) || new Date().getTime();
+}
+if (win.addEventListener) {
+win.addEventListener("load", boomerangSaveLoadTime, false);
+} else if (win.attachEvent) {
+win.attachEvent("onload", boomerangSaveLoadTime);
+}
+iframe.src = "javascript:void(0)";
+iframe.title = "";
+iframe.role = "presentation";
+(iframe.frameElement || iframe).style.cssText = "width:0;height:0;border:0;display:none;";
+where = document.getElementsByTagName("script")[0];
+where.parentNode.insertBefore(iframe, where);
+try {
+doc = iframe.contentWindow.document;
+} catch(e) {
+dom = document.domain;
+iframe.src = "javascript:var d=document.open();d.domain='"+dom+"';void(0);";
+doc = iframe.contentWindow.document;
+}
+doc.open()._l = function() {
+var js = this.createElement("script");
+if (dom) {
+this.domain = dom;
+}
+js.id = "boomr-if-as";
+js.src = "//c.go-mpulse.net/boomerang/" + "56PYS-C3ATC-457ES-L76XM-KKMDN";
+BOOMR_lstart = new Date().getTime();
+this.body.appendChild(js);
+};
+doc.write('<body onload="document._l();">');
+doc.close();
+})();
+
+
+
+WSI.vtaConfig = {
+"vtaCategoryThumbnail" : "e",
+"vtaProductThumbnail" : "e"
+};
+
+
+(function(doc, WSI){
+WSI.tnt = WSI.tnt || {};
+WSI.tnt.setCookie = function setCookie(cookieName, cookieValue) {
+doc.cookie = cookieName + '=' + escape(cookieValue) + ';expires=0' ;
+}
+}( document, WSI ));
+function statusCheck(){
+if (document.cookie.indexOf('CoreID6') == -1) {
+if (document.cookie.indexOf('TnTNew') == -1) {
+WSI.tnt.setCookie('TnTNew','true');
+}
+return 'profile.visitorStatus=new';
+}
+else if (document.cookie.indexOf('CoreID6') != -1 &&
+document.cookie.indexOf('TnTNew') != -1) {
+return 'profile.visitorStatus=new';
+}
+else if (document.cookie.indexOf('CoreID6') != -1 &&
+document.cookie.indexOf('TnTNew') == -1) {
+return 'profile.visitorStatus=returning';
+}
+}
+mboxCreate('pb-global-home',statusCheck());
+
+ mboxCreate('pb-store-near-you'); 
+mboxCreate('pb-cross-brand-header');
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/dojo/dojo/dojo.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/polyfills.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+isGlobalTopNavLinkNavigationMenuToggledForIpad = true; WSI.config.pageID = {
+"PAGE_PIP" : "PAGE_PIP",
+"PAGE_MONOGRAM" : "PAGE_MONOGRAM",
+"PAGE_EMPTY_CART" : "PAGE_EMPTY_CART",
+"PAGE_SHOPPING_CART" : "PAGE_SHOPPING_CART",
+"PAGE_CHKT_SIGNIN" : "PAGE_CHKT_SIGNIN",
+"PAGE_CHKT_SINGLE_SHIP" : "PAGE_CHKT_SINGLE_SHIP",
+"PAGE_CHKT_MULTI_SHIP" : "PAGE_CHKT_MULTI_SHIP",
+"PAGE_CHKT_DELIVERY" : "PAGE_CHKT_DELIVERY",
+"PAGE_CHKT_BILLING" : "PAGE_CHKT_BILLING",
+"PAGE_CHKT_PAYMENT" : "PAGE_CHKT_PAYMENT",
+"PAGE_CHKT_CONFIRM" : "PAGE_CHKT_CONFIRM",
+"PAGE_CHKT_ERROR_PROMO" : "PAGE_CHKT_ERROR_PROMO",
+"PAGE_CHKT_ERROR_NO_VERIFY" : "PAGE_CHKT_ERROR_NO_VERIFY",
+"PAGE_ID" : "index.ftl",
+"PAGE_ID_FULL" : "index.ftl",
+"PAGE_NAME" : "not in PAGE_MAP"
+};
+window.WSI._digitalData = {};
+window.digitalData = window.digitalData || {};
+window.WSI.dataLayer = window.WSI.dataLayer || { preReg:[], registerCallback: function(func){this.preReg.push(func);}, isReady: function(){return false;}};
+WSI._digitalData.x_user = {
+
+};
+WSI._digitalData.x_state = {
+countryCode : "US",
+currencyCode : "USD"
+
+};
+WSI._digitalData.version="0.1";
+WSI._digitalData.page = {
+pageName : 'HOME PAGE'
+,
+pageCategory : {
+primaryCategory : "home"
+}
+, attributes : {
+cmPageId :
+'HOME PAGE'
+,
+pwa :
+false
+}
+};
+(function(p){
+var _typeahead = dojo.queryToObject( window.location.search.slice(1) ).typeahead;
+if (_typeahead){ p.searchTypeahead = true;
+var attrs = _typeahead.split("+");
+if (attrs[0]) if (attrs[0]!=="") p.searchPfm = attrs[0];
+if (attrs[1]) if (attrs[1]!=="") p.searchTerm = attrs[1];
+if (attrs[2]) if (attrs[2]!=="") p.searchAlgo = attrs[2];
+}
+})(WSI._digitalData.page.attributes);
+// WSI.dataLayer._addChild requires the page object to be present
+if ( !(digitalData && digitalData.page) ) {
+digitalData = typeof dojo !== "undefined" ? dojo.clone( WSI._digitalData ) : JSON.parse(JSON.stringify( WSI._digitalData ));
+} else {
+// We have digitalData and digitalData.page
+WSI.dataLayer._addChild( WSI._digitalData );
+}
+var throbberImageObject = document.createElement("IMG");
+throbberImageObject.setAttribute("src", "https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/images/chrome/img-throbber.gif")
+throbberImageObject.setAttribute("class", "throbber")
+WSI.throbber = throbberImageObject;
+dojo.addOnLoad(function(){
+WSI.utils = new wsgc.js.Utils();
+var overlay = wsgc.js.Overlay.getByHref('https://www.potterybarn.com/international/setcountry.html');
+overlay.addOnShown(function() {
+WSI.intl.flagBasedCurrencySelector(overlay);
+WSI.dataLayer._addChild(
+{
+page : {
+pageName : "international shipping to",
+pageCategory : {
+primaryCategory : "international"
+}
+, pageType: "overlay"
+, attributes : {
+cmPageId : "INTERNATIONAL: SHIPPING TO"
+,
+cmCategoryId : "INTERNATIONAL"
+}
+}
+}
+);
+});
+var overlay = wsgc.js.Overlay.getByHref('https://www.potterybarn.com/international/setcountry.html');
+overlay.addOnShown(function() {
+WSI.intl.flagBasedCurrencySelector(overlay);
+WSI.dataLayer._addChild(
+{
+page : {
+pageName : "international shipping to",
+pageCategory : {
+primaryCategory : "international"
+}
+, pageType: "overlay"
+, attributes : {
+cmPageId : "INTERNATIONAL: SHIPPING TO"
+,
+cmCategoryId : "INTERNATIONAL"
+}
+}
+}
+);
+});
+WSI.searchController = new wsgc.common.js.SearchController();
+new wsgc.js.QuickCart();
+setTimeout(function() {
+var closeButton = document.querySelector('.curalate-homepage__modal-close');
+var prevArrow = document.querySelector('.curalate-homepage__modal-control--prev');
+var nextArrow = document.querySelector('.curalate-homepage__modal-control--next');
+var modalColumn = document.querySelector('.curalate-homepage__modal-column');
+var galleryLink = document.querySelector('.curalate-homepage__gallery-link');
+var modalCaption = document.querySelector('.curalate-homepage__modal-caption');
+modalColumn.parentNode.insertBefore(prevArrow, modalColumn.nextSibling);
+modalColumn.parentNode.insertBefore(nextArrow, modalColumn.nextSibling);
+modalColumn.parentNode.insertBefore(closeButton, modalColumn.nextSibling);
+modalCaption.parentNode.insertBefore(galleryLink, modalCaption.nextSibling);
+}, 100);
+wsgc.js.Overlay.addOnShownByHref('#registrySweepsOverlay', function(overlay) {
+});
+WSI.intl = new wsgc.js.IntlUtils();
+WSI.utils.setStylesheetLoaded([
+'https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/css/homepage.css',
+'https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/css/new-core.css',
+'https://www.potterybarn.com/pbimgs/rk/images/i/201915/0027/css/tools-components/curalate-fanreel/curalate-fanreel.css'
+]);
+});
+
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/wsgc.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/slideshow.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/favoritesGallery.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/external/webcomponents/webcomponentsjs/custom-elements-es5-adapter.js',
+'https://www.potterybarn.com/pbimgs/rk/images/s/201915/0021/js/dojo/wsgc/curalate-fanreel.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+wsgc.js.experimentationPlatform.reportToTarget( WSI.config.id + "-experimentation-platform"
+);
+const callTealium = function() {
+var utag_data = {};
+(function(a,b,c,d){
+a='//tags.tiqcdn.com/utag/wsi/potterybarn/prod/utag.js';
+b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+})();
+}
+if ("" !== "") {
+this.addEventListener("", function() {
+callTealium();
+})
+} else {
+if (!WSI.isRetailStoreRequest()) {
+callTealium();
+}
+}
+wsgc.js.location.LocationService.setLocation(50.43 , 30.52 , true, true);
+wsgc.js.location.LocationService.initialize();
+var eventName = !!navigator.userAgent.match(/iP(?:ad|hone)/i) ? 'touchend' : 'click',
+showPromoBtn = document.getElementById("pull-down-show"),
+hidePromoBtn = document.getElementById("pull-down-hide"),
+fixedHeaderElement = document.querySelector(".fixed-header"),
+headroomOptions = {
+offset : 72,
+classes : {
+initial : "headroom",
+pinned : "headroom-pinned",
+unpinned : "headroom-unpinned",
+top : "headroom-top",
+notTop : "headroom-not-top"
+}
+},
+pullDownContainer = document.getElementsByClassName("us-pull-down-container");
+pullDownContainerHeight = pullDownContainer ? dojo.position(pullDownContainer).h : 0;
+WSI.Events.delegate(eventName, '#pull-down-show', function(evt) {
+dojo.toggleClass(showPromoBtn, "hide");
+dojo.toggleClass(hidePromoBtn, "hide");
+dojo.animateProperty({
+node:"pull-down-promo", duration: 400,
+properties: {marginTop: 0},
+easing: dojo.fx.easing.cubicOut
+}).play();
+headroomOptions.offset = pullDownContainerHeight + 30;
+(new Headroom(fixedHeaderElement, headroomOptions).init());
+});
+WSI.Events.delegate(eventName, '#pull-down-hide', function(evt) {
+dojo.toggleClass(showPromoBtn, "hide");
+dojo.toggleClass(hidePromoBtn, "hide");
+var promoHeight = dojo.position("pull-down-promo").h;
+dojo.animateProperty({
+node:"pull-down-promo", duration: 400,
+properties: {marginTop: -promoHeight},
+easing: dojo.fx.easing.cubicOut
+}).play();
+headroomOptions.offset = 72;
+(new Headroom(fixedHeaderElement, headroomOptions).init());
+});
+WSI.noRACRecs = 4;
+if(WSI.rr){
+WSI.rr.init('c436aba8bfbad255', '6a7f0eaa4f1d5ad2','\//recs.richrelevance.com/rrserver/', 'https://www.potterybarn.com/', 'PBPE_SID');
+}
+WSI.addOffsiteRequest('js', 'https://www.potterybarn.com/pbimgs/rk/images/s/201912/0026/js/external/opinionlab.js');
+if (dojo.byId("pb_global")){
+mboxDefine("pb_global", "pb_global_SD3_10");
+mboxUpdate( "pb_global_SD3_10");
+}
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/resources/6bc1cecfa4192b55e9d7077fa283d4']);

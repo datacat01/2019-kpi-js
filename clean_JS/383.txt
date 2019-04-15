@@ -1,0 +1,107 @@
+
+//<![CDATA[
+	Mnet.init('/', 'www.madflowers.com');
+
+	/* if (!Mnet.isMobile()) {
+		Cufon.replace('.cufon',{ fontFamily: 'High Tower Text'});
+	} */
+// ]]>
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26745311-1']);
+  _gaq.push(['_setDomainName', 'madflowers.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+						// <![CDATA[
+							function validateVoucher(form) {
+								var val = new CValidate();
+
+								val.formString(form.code, 'Voucher Code', true);
+								//val.formString(form.sec_code, 'Password', true);
+
+								return val.checkError();
+							}
+						// ]]>
+						
+
+			// <![CDATA[
+				function validateHeaderSearch(form) {
+					var val = new CValidate();
+
+					val.formString(form.search, 'Product Search', true);
+
+					return val.checkError();
+				}
+			// ]]>
+			
+
+		setTimeout(function(){var a=document.createElement("script");
+			var b=document.getElementsByTagName("script")[0];
+			a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/2427.js?"+Math.floor(new Date().getTime()/3600000);
+			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+	
+
+					// <![CDATA[
+						function validateVoucher(form) {
+							var val = new CValidate();
+							val.formString(form.code, 'Voucher Code', true);
+							return val.checkError();
+						}
+					// ]]>
+					
+
+				function validateMailingList(form) {
+					var val = new CValidate();
+
+					val.formString(form.first_name, 'First Name', true);
+					val.formString(form.surname, 'Surname', true);
+					val.formEmail(form.email, 'Email', true);
+					val.formString(form.accept_privacy_policy, 'Agree to Privacy Policy', true);
+
+					return val.checkError();
+				}
+			
+
+	//Cufon.now();
+
+	if (window.MooPlaceholder) {
+    	MooPlaceholder();
+    }
+
+    Mnet.checkRedeemBox('hideRedeemVoucherBox');
+
+
+/* <![CDATA[ */
+var google_conversion_id = 995043716;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+adroll_adv_id = "DO47X6LXQ5DJFMZS3XL6YB";
+adroll_pix_id = "PX7IC527Z5AGBBTP7ZV6NI";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+

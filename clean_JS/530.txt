@@ -1,0 +1,75 @@
+
+    var ebdDeviceType = "desktop";
+            window.onAmazonLoginReady = function() {
+        amazon.Login.setClientId('amzn1.application-oa2-client.24b4d2ef04024732aa60ccc5da07446d');
+            };
+    var amazonButtonFunctions = new Array();
+
+
+  var amazonloginbtnheadFuncs =  function(){
+        var amazonAuthRequest,
+        amazonButtonId = 'amazon-login-btn-head';
+        $amazonLoginBtn = $('#' + amazonButtonId);
+        OffAmazonPayments.Button(amazonButtonId, "	A3B49UYQ1HEINM", {
+        type: "LwA",
+        color: "Gold",
+        size: "middle",
+        authorization: function() {
+            if ('desktop' != ebdDeviceType) {
+                loginOptions = {scope: "profile postal_code payments:widget payments:shipping_address", popup: false};
+                amazonAuthRequest = amazon.Login.authorize(loginOptions, '/user/amazon-login');
+            } else {
+                var redirect = "/";
+                loginOptions = {scope: "profile postal_code payments:widget payments:shipping_address", popup: true};
+                amazonAuthRequest = amazon.Login.authorize(loginOptions, function(response) {
+                    if (response.error) {
+                        $.alert(response.error);
+                        return;
+                    } else {
+                        var token = response.access_token;
+                        $amazonLoginBtn.ajaxAuto({
+                            'data': {'access_token' : token, 'redirect': redirect},
+                            'success': function(response){
+                                if (response.status == 'ok') {
+                                    if (response.redirect != '') {
+                                        window.location = response.redirect;
+                                    } else {
+                                        window.location.reload();
+                                    }
+                                } else {
+                                    if (response.msg != '') {
+                                        $.alert(response.msg);
+                                    } else {
+                                        window.location.reload();
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        },
+        onError: function(error) {
+        }
+        });
+    };
+           amazonButtonFunctions.push(amazonloginbtnheadFuncs);
+        /*$('#amazon-logout-btn').click(function(){
+        amazon.Login.logout();
+        $(this).ajaxAuto();
+        return false;
+    });*/
+
+
+
+window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'11609953'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;}
+
+
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1746890908';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+

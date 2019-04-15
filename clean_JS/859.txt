@@ -1,0 +1,50 @@
+
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-498241-2'
+                    
+                    
+                    , 'auto'
+                    
+                    );
+                
+                
+                ga('send', 'pageview');
+            
+
+
+    if(false) {
+        document.getElementById("skipNavigationLink").onclick =function skipElement () {
+            var element = document.getElementById('');
+            if(element == null || element == undefined) {
+                element = document.getElementsByClassName('').item(0);
+            }
+            element.setAttribute('tabindex','0');
+            element.focus();
+
+        }
+
+    }
+
+
+
+
+if(!document.getElementById('checkadblockernowjs')){
+  document.getElementById('checkadblockernow').style.display='block';
+}
+
+
+
+    var lastChar = document.URL.charAt( document.URL.length - 1 )
+    if(window.history.pushState && lastChar == "#" || lastChar == "_") {
+        window.history.pushState('', '/', window.location.pathname)
+    }
+

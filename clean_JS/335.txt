@@ -1,0 +1,15 @@
+
+		showMsgVar='';
+		showinSold=1;
+	
+
+		loggedin=false;
+		activeMaincategory='';
+		activeSubcategory='';
+		activeSearchfor='';
+	formprefix="";
+	tld="www.dollsofindia.com";
+	
+
+	socialmediacart=0;
+

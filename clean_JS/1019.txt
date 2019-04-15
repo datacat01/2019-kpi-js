@@ -1,0 +1,4 @@
+var dataLayer=[];var googleAccount="UA-125929-2";var tracking_memberType="Anonymous";dataLayer.push({'event':'fullStory'});dataLayer.push({'event':'standardGatc'});dataLayer.push({'event':'gaEcommerceDone'});
+dataLayer.push({'event':'fullStory'});
+if(self===top){var antiClickjack=document.getElementById("antiClickjack");antiClickjack.parentNode.removeChild(antiClickjack);}else{top.location=self.location;}
+dataLayer.push({'event':'adwordsGeneric'});dataLayer.push({'event':'Marketo'});var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-125929-2']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();

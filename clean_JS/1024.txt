@@ -1,0 +1,16 @@
+
+    //Global-e script initializer
+                       (function (w, d, u, t,o, h, m, s, l) {
+                       w['globaleObject'] = o;
+                       w[o] = w[o] || function () {{(w[o].q = w[o].q || []).push(arguments)}};
+                       w[o].m = m,  w[o].v = h; s = d.createElement(t);
+                       l = d.getElementsByTagName(t)[0];
+                       s.async = true;
+                       s.src = u + '?v=' + h;
+                       l.parentNode.insertBefore(s, l);
+                       })(window, document, 'https://web.global-e.com/Scripts/Merchants/globale.merchant.client.js', 'script','gle' ,'2.1.4', 329 );
+                       gle('ScriptsURL','https://web.global-e.com/');
+gle("SetCookieDomain", '.toolstoday.com');
+gle("SetMerchantParameters", {"AllowClientTracking":{"Value":"true"},"CDNEnabled":{"Value":"true"},"CheckoutContainerSuffix":{"Value":"Global-e_International_Checkout"},"FullClientTracking":{"Value":"true"},"IsMonitoringMerchant":{"Value":"false"},"IsV2Checkout":{"Value":"true"},"SetGEInCheckoutContainer":{"Value":"true"},"SwitcherRedirectInfo":{"Value":"[, ]"},"AnalyticsUrl":{"Value":"https://services.global-e.com/"},"CDNUrl":{"Value":"https://webservices.global-e.com/"},"CheckoutCDNURL":{"Value":"https://webservices.global-e.com/"},"InternalTrackingEnabled":{"Value":"false"}});
+gle('LoadWelcome', 'UA', 'ru', 'UAH');
+gle("LoadShippingSwitcher", 'UA', 'ru', 'UAH',false);

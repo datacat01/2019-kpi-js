@@ -1,0 +1,64 @@
+
+    (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1314336-7e0e-48b3-b951-490efd8b3f6d1.js','script','ire',document,window);
+  
+
+  // setTimeout(function() {
+  // $(document).ready(function() {
+    $('.carousel').flickity({
+      pageDots: true,
+      wrapAround: true,
+      autoPlay: 5000,
+      pauseAutoPlayOnHover: true,
+      lazyLoad: true
+    });
+  // });
+  // }, 50);
+
+
+  setTimeout(function() {
+    $('.vendor-slider-container').flickity({
+      pageDots: false,
+      wrapAround: true,
+      autoPlay: 8000,
+      pauseAutoPlayOnHover: true,
+      selectedAttraction: 0.01
+    });
+  }, 50);
+
+
+  setTimeout(function() {
+    $('.rebate-slider-container').flickity({
+      pageDots: false,
+      wrapAround: true,
+      // autoPlay: 2000,
+      // pauseAutoPlayOnHover: true,
+      // selectedAttraction: 0.01,
+      groupCells: true
+    });
+  }, 50);
+
+ire('identify', {customerId: '', customerEmail: ''});
+
+    let modalTriggers = document.getElementsByClassName('modal-trigger');
+    for (i = 0; i < modalTriggers.length; i++) {
+      modalTriggers[i].addEventListener('click', event => {
+        let modalSelector = `[data-modal-id=${event.target.dataset.targetModal}]`;
+        document.querySelector(modalSelector).classList.toggle("show-modal");
+      });
+    }
+
+    let modalCloseButtons = document.getElementsByClassName('modal-close-button');
+    for (i = 0; i < modalCloseButtons.length; i++) {
+      modalCloseButtons[i].addEventListener('click', event => {
+        event.stopPropagation();
+        event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle("show-modal");
+      });
+    }
+
+    let modalContainers = document.getElementsByClassName('modal-container');
+      for (i = 0; i < modalContainers.length; i++) {
+      modalContainers[i].addEventListener('click', event => {
+        event.target.classList.toggle("show-modal");
+      });
+    }
+  

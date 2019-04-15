@@ -1,0 +1,136 @@
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+        //<![CDATA[
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        
+ga('create', 'UA-2300803-8', 'auto');
+
+ga('send', 'pageview');
+        
+        //]]>
+    
+
+    var brandoptions = {
+        url: function(phrase) {
+            return "brandmodel/index/brandSayt";
+        },
+        
+        getValue: function(element) {
+            return element;
+        },
+        
+        ajaxSettings: {
+            dataType: "json",
+            method: "POST",
+            data: {
+            dataType: "json"
+            }
+        },
+        
+        preparePostData: function(data) {
+            data.brand = $("#brand_input").val();
+            
+            return data;
+        },
+        
+        requestDelay: 400,
+
+        theme: "square"
+    };
+
+    var modeloptions = {
+        url: function(phrase) {
+            return "brandmodel/index/modelSayt";
+        },
+        
+        getValue: function(element) {
+            return element;
+        },
+        
+        ajaxSettings: {
+            dataType: "json",
+            method: "POST",
+            data: {
+            dataType: "json"
+            }
+        },
+        
+        preparePostData: function(data) {
+            data.brand = $("#brand_input").val();
+            data.model = $("#model_input").val();
+            
+            return data;
+        },
+        
+        requestDelay: 400,
+
+        theme: "square"
+    };
+    
+    $("#brand_input").easyAutocomplete(brandoptions);
+    $("#model_input").easyAutocomplete(modeloptions);
+
+    $('#model_form_submit').click(function(){
+        $('#model_form').submit();
+        
+        return false;
+    })
+
+    $('#model_form').submit(function(){
+        if ($('#brand_input').val() == '') {
+            $('#brand_input').focus(); 
+            
+            return false;
+        }
+
+        if ($('#model_input').val() == '') {
+            $('#model_input').focus(); 
+            
+            return false;
+        }
+
+        $.post(this.action, $(this).serialize(), function(data){
+            if (data.url) {
+                window.location = data.url;
+            } else {
+                alert('Hmm, we do not recognize that TV model. Please give it another shot.');
+            }
+        });
+
+        return false;
+    });
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "17498"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_US"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+
+  })();
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?2WBSqB1N1DEEKwJgJjeCiOZFHi535lks';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+

@@ -1,0 +1,26 @@
+
+   window.fbq=window.fbq||function(){};
+
+
+var gts = gts || [];
+
+gts.push(["id", "498768"]);
+gts.push(["badge_position", "USER_DEFINED"]);
+gts.push(["badge_container", "gts_container"]);
+gts.push(["locale", "en_US"]);
+gts.push(["google_base_subaccount_id", "1046493"]);
+gts.push(["google_base_country", "US"]);
+gts.push(["google_base_language", "en"]);
+
+(function() {
+   var gts = document.createElement("script");
+   gts.type = "text/javascript";
+   gts.async = true;
+   gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+   var s = document.getElementsByTagName("script")[0];
+   s.parentNode.insertBefore(gts, s);
+})();
+
+
+   var App = {"setMentions":true,"objectNameSingular":"Device","which":"ifixit","isLoggedIn":false,"lang":"en","apiUrlParams":[],"showTranslatedPlaceholder":false,"sentryToken":"fe0ff8430baa49b6a857f1325a0e55c3","sentryHost":"sentry.io","sentryProjectid":"1281569","FrameModules":["NewsletterFrameModule"],"isProduction":true,"locale":"en_US","isAdmin":false,"siteName":"ifixit","useSecureCookies":true,"imageSizeWidths":{"mini":56,"thumbnail":96,"140x105":140,"200x150":200,"standard":300,"440x330":440,"medium":592,"large":800,"huge":1600},"facebookAppId":"401112919922369","rightToRepairStates":{"IL":{"stateName":"Illinois","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/Illinois.jpg"},"MA":{"stateName":"Massachusetts","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/Massachusetts.jpg"},"MN":{"stateName":"Minnesota","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/Minnesota.jpg"},"NY":{"stateName":"New York","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/New York.jpg"},"OR":{"stateName":"Oregon","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/Oregon.jpg"},"CA":{"stateName":"California","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/California.jpg"},"NH":{"stateName":"New Hampshire","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/New Hampshire.jpg"},"NJ":{"stateName":"New Jersey","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/New Jersey.jpg"},"VT":{"stateName":"Vermont","image":"https:\/\/d1ulmmr4d4i8j4.cloudfront.net\/static\/images\/RightToRepair\/Vermont.jpg"}},"canonical":"https:\/\/www.ifixit.com\/","page_title":"iFixit: The Free Repair Manual"};
+

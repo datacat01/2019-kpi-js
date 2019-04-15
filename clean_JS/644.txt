@@ -1,0 +1,32 @@
+
+    !function (e) {
+        if (!window.pintrk) {
+            window.pintrk = function () {
+                window.pintrk.queue.push(Array.prototype.slice.call(arguments));
+            };
+            var n = window.pintrk;
+            n.queue = []; n.version = "3.0";
+            var t = document.createElement("script");
+            t.async = !0; t.src = e;
+            var r = document.getElementsByTagName("script")[0];
+            r.parentNode.insertBefore(t, r);
+        }
+    }("https://s.pinimg.com/ct/core.js");
+
+    pintrk('load', '2614999337289');
+    pintrk('page');
+
+
+        (function e() { var e = document.createElement("script"); e.type = "text/javascript", e.async = true, e.src = "//staticw2.yotpo.com/6f1F0OnNtSWyuxiDZMUPAGCbmxH1RBZrv06s7Kx8/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+    
+
+        if (typeof (Model) == "undefined") { Model = {}; }
+        Model.Display= {
+            Desktop:   ("True".toLowerCase() == "true" ? true : false),
+            Tablet: ("False".toLowerCase() == "true" ? true : false),
+            Phone: ("False".toLowerCase() == "true" ? true : false)
+        };
+        var CustomerEmail = CustomerEmail || "";
+    
+
+    

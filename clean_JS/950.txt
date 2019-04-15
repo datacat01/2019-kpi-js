@@ -1,0 +1,162 @@
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+//
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+//
+/*  */
+var wplupp_vars = {"prettyPhoto_rel":"wp_lightbox_prettyPhoto","animation_speed":"fast","slideshow":"5000","autoplay_slideshow":"false","opacity":"0.80","show_title":"false","allow_resize":"true","allow_expand":"false","default_width":"640","default_height":"480","counter_separator_label":"\/","theme":"pp_default","horizontal_padding":"20","hideflash":"false","wmode":"opaque","autoplay":"false","modal":"false","deeplinking":"false","overlay_gallery":"false","overlay_gallery_max":"30","keyboard_shortcuts":"true","ie6_fallback":"true"};
+/*  */
+SG_POPUPS_QUEUE = [];
+							SG_POPUP_DATA = [];
+							SG_APP_POPUP_URL = 'https://kyuw0olnhx1fan3s3n98im5t-wpengine.netdna-ssl.com/wp-content/plugins/popup-builder-platinum';
+							SG_POPUP_VERSION='3.38_4;';
+							
+							function sgAddEvent(element, eventName, fn) {
+								if (element.addEventListener)
+									element.addEventListener(eventName, fn, false);
+								else if (element.attachEvent)
+									element.attachEvent('on' + eventName, fn);
+							}
+SG_POPUPS_QUEUE = ["1"];
+WP_LIGHTBOX_VERSION="2.2.3";
+        WP_LIGHTBOX_PLUGIN_URL="https://kyuw0olnhx1fan3s3n98im5t-wpengine.netdna-ssl.com/wp-content/plugins/wp-lightbox-ultimate";
+        
+                function wplu_paramReplace(name, string, value) {
+            // Find the param with regex
+            // Grab the first character in the returned string (should be ? or &)
+            // Replace our href string with our new value, passing on the name and delimeter
+
+            var re = new RegExp("[\?&]" + name + "=([^&#]*)");
+            var matches = re.exec(string);
+            var newString;
+
+            if (matches === null) {
+                // if there are no params, append the parameter
+                newString = string + '?' + name + '=' + value;
+            } else {
+                var delimeter = matches[0].charAt(0);
+                newString = string.replace(re, delimeter + name + "=" + value);
+            }
+            return newString;
+        }
+document.documentElement.className += " js";
+//
+	dataLayer.push({"pagePostType":"frontpage","pagePostType2":"single-page","pagePostAuthor":"garrett"});//
+var doc = document.documentElement;
+		doc.setAttribute('data-useragent', navigator.userAgent);
+// Get the modal
+jQuery(document).on('click','#exporevid',function(){
+	this.nextElementSibling.style.display='block'; 
+	this.style.display='none';
+	 jQuery("iframe")[0].src += "&autoplay=1";
+	 ev.preventDefault();
+ 
+
+});
+/*jQuery(document).on('click','#myBtn',function(){
+	
+	jQuery('#exploreyou').show().addClass('active');
+});
+jQuery(document).on('click','.close',function(){
+	
+	jQuery('#exploreyou').hide().removeClass('active');
+
+});*/
+/*  */
+	jQuery(document).ready(function($){
+		$(function(){
+                    $("a[rel=wp_lightbox_fancybox_image]").fancybox({
+                        padding         : 10
+                    });
+                    $("a[rel=wp_lightbox_fancybox_youtube_video]").fancybox({
+                        padding		: 10,
+                        width		: "80%",
+                        height		: "80%",
+                        maxWidth	: 640,
+                        maxHeight	: 480,
+                        autoPlay        : false,
+                        helpers : {
+                                media : {
+                                    youtube : {
+                                        params : {
+                                            autoplay : 0
+                                        }
+                                    }
+                                }
+                        }
+                    });
+                    $("a[rel=wp_lightbox_fancybox_vimeo_video]").fancybox({
+                        padding		: 10,
+                        width		: "80%",
+                        height		: "80%",
+                        maxWidth	: 640,
+                        maxHeight	: 480,
+                        autoPlay        : false,
+                        helpers : {
+                                media : {
+                                    vimeo : {
+                                        params : {
+                                            autoplay : 0
+                                        }
+                                    }
+                                }
+                        }
+                    });
+                    $("a[rel=wp_lightbox_fancybox_flash_video]").fancybox({
+                        padding		: 10,
+                        width		: "80%",
+                        height		: "80%",
+                        maxWidth	: 640,
+                        maxHeight	: 480
+                    });
+		});
+	});
+	/*  */
+jQuery( document ).ready( function() {
+					var ajaxurl = 'https://www.jackrabbitclass.com/wp-admin/admin-ajax.php';
+					if ( 0 < jQuery( '.fusion-login-nonce' ).length ) {
+						jQuery.get( ajaxurl, { 'action': 'fusion_login_nonce' }, function( response ) {
+							jQuery( '.fusion-login-nonce' ).html( response );
+						});
+					}
+				});
+/*  */
+var pollsL10n = {"ajax_url":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"1","show_fading":"1"};
+/*  */
+/*  */
+var leadin_wordpress = {"userRole":"visitor","pageType":"home","leadinPluginVersion":"7.2.2"};
+/*  */
+/*  */
+var fusionVideoGeneralVars = {"status_vimeo":"1","status_yt":"1"};
+var fusionLightboxVideoVars = {"lightbox_video_width":"1280","lightbox_video_height":"720"};
+var fusionLightboxVars = {"status_lightbox":"","lightbox_gallery":"1","lightbox_skin":"metro-white","lightbox_title":"1","lightbox_arrows":"1","lightbox_slideshow_speed":"5000","lightbox_autoplay":"","lightbox_opacity":"0.90","lightbox_desc":"1","lightbox_social":"1","lightbox_deeplinking":"1","lightbox_path":"vertical","lightbox_post_images":"1","lightbox_animation_speed":"Normal"};
+var avadaPortfolioVars = {"lightbox_behavior":"all","infinite_finished_msg":"<em>All items displayed.<\/em>","infinite_blog_text":"<em>Loading the next set of posts...<\/em>","content_break_point":"800"};
+var fusionEqualHeightVars = {"content_break_point":"800"};
+var fusionTabVars = {"content_break_point":"800"};
+var fusionAnimationsVars = {"disable_mobile_animate_css":"0"};
+var fusionRecentPostsVars = {"infinite_loading_text":"<em>Loading the next set of posts...<\/em>","infinite_finished_msg":"<em>All items displayed.<\/em>","slideshow_autoplay":"1","slideshow_speed":"7000","pagination_video_slide":"","status_yt":"1"};
+var fusionMapsVars = {"admin_ajax":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php"};
+var fusionVideoBgVars = {"status_vimeo":"1","status_yt":"1"};
+var fusionContainerVars = {"content_break_point":"800","container_hundred_percent_height_mobile":"0","is_sticky_header_transparent":"0"};
+var fusionTestimonialVars = {"testimonials_speed":"4000"};
+var fusionBgImageVars = {"content_break_point":"800"};
+var fusionCountersBox = {"counter_box_speed":"1000"};
+var fusionVideoVars = {"status_vimeo":"1"};
+var fusionCarouselVars = {"related_posts_speed":"2500","carousel_speed":"2500"};
+var fusionFlexSliderVars = {"status_vimeo":"1","page_smoothHeight":"false","slideshow_autoplay":"1","slideshow_speed":"7000","pagination_video_slide":"","status_yt":"1","flex_smoothHeight":"false"};
+var fusionBlogVars = {"infinite_blog_text":"<em>Loading the next set of posts...<\/em>","infinite_finished_msg":"<em>All items displayed.<\/em>","slideshow_autoplay":"1","slideshow_speed":"7000","pagination_video_slide":"","status_yt":"1","lightbox_behavior":"all","blog_pagination_type":"load_more_button","flex_smoothHeight":"false"};
+var avadaHeaderVars = {"header_position":"top","header_layout":"v1","header_sticky":"1","header_sticky_type2_layout":"menu_only","side_header_break_point":"800","header_sticky_mobile":"0","header_sticky_tablet":"0","mobile_menu_design":"modern","sticky_header_shrinkage":"0","nav_height":"84","nav_highlight_border":"3","nav_highlight_style":"bar","logo_margin_top":"5px","logo_margin_bottom":"5px","layout_mode":"boxed","header_padding_top":"0px","header_padding_bottom":"0px","offset_scroll":"full"};
+var avadaMenuVars = {"header_position":"Top","logo_alignment":"Left","header_sticky":"1","side_header_break_point":"800","mobile_menu_design":"modern","dropdown_goto":"Go to...","mobile_nav_cart":"Shopping Cart","mobile_submenu_open":"Open Sub Menu","mobile_submenu_close":"Close Sub Menu","submenu_slideout":"1"};
+var fusionScrollToAnchorVars = {"content_break_point":"800","container_hundred_percent_height_mobile":"0"};
+var fusionTypographyVars = {"site_width":"1400px","typography_responsive":"","typography_sensitivity":"0.6","typography_factor":"1.5","elements":"h1, h2, h3, h4, h5, h6"};
+var avadaCommentVars = {"title_style_type":"double solid","title_margin_top":"0px","title_margin_bottom":"31px"};
+var avadaSidebarsVars = {"header_position":"top","header_layout":"v1","header_sticky":"1","header_sticky_type2_layout":"menu_only","side_header_break_point":"800","header_sticky_tablet":"0","sticky_header_shrinkage":"0","nav_height":"84","content_break_point":"800"};
+var toTopscreenReaderText = {"label":"Go to Top"};
+var avadaToTopVars = {"status_totop_mobile":"0"};
+var avadaFusionSliderVars = {"side_header_break_point":"800","slider_position":"below","header_transparency":"1","mobile_header_transparency":"0","header_position":"Top","content_break_point":"800","status_vimeo":"1"};
+var frm_js = {"ajax_url":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php","images_url":"https:\/\/www.jackrabbitclass.com\/wp-content\/plugins\/formidable\/images","loading":"Loading\u2026","remove":"Remove","offset":"4","nonce":"925da28e91","id":"ID","no_results":"No results match","file_spam":"That file looks like Spam.","calc_error":"There is an error in the calculation in the field with key","empty_fields":"Please complete the preceding required fields before uploading a file."};
+var frm_js = {"ajax_url":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php","images_url":"https:\/\/www.jackrabbitclass.com\/wp-content\/plugins\/formidable\/images","loading":"Loading\u2026","remove":"Remove","offset":"4","nonce":"925da28e91","id":"ID","no_results":"No results match","file_spam":"That file looks like Spam.","calc_error":"There is an error in the calculation in the field with key","empty_fields":"Please complete the preceding required fields before uploading a file."};
+var frm_js = {"ajax_url":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php","images_url":"https:\/\/www.jackrabbitclass.com\/wp-content\/plugins\/formidable\/images","loading":"Loading\u2026","remove":"Remove","offset":"4","nonce":"925da28e91","id":"ID","no_results":"No results match","file_spam":"That file looks like Spam.","calc_error":"There is an error in the calculation in the field with key","empty_fields":"Please complete the preceding required fields before uploading a file."};
+var frm_js = {"ajax_url":"https:\/\/www.jackrabbitclass.com\/wp-admin\/admin-ajax.php","images_url":"https:\/\/www.jackrabbitclass.com\/wp-content\/plugins\/formidable\/images","loading":"Loading\u2026","remove":"Remove","offset":"4","nonce":"925da28e91","id":"ID","no_results":"No results match","file_spam":"That file looks like Spam.","calc_error":"There is an error in the calculation in the field with key","empty_fields":"Please complete the preceding required fields before uploading a file."};
+/*  */

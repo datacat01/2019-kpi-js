@@ -1,0 +1,229 @@
+
+jQuery(window).on('load',  function() {
+				new JCaption('img.caption');
+			});JCEMediaBox.init({popup:{width:"",height:"",legacy:0,lightbox:0,shadowbox:0,resize:1,icons:1,overlay:1,overlayopacity:0.8,overlaycolor:"#000000",fadespeed:500,scalespeed:500,hideobjects:0,scrolling:"fixed",close:2,labels:{'close':'Close','next':'Next','previous':'Previous','cancel':'Cancel','numbers':'{$current} of {$total}'},cookie_expiry:"",google_viewer:0},tooltip:{className:"tooltip",opacity:0.8,speed:150,position:"br",offsets:{x: 16, y: 16}},base:"/",imgpath:"plugins/system/jcemediabox/img",theme:"standard",themecustom:"",themepath:"plugins/system/jcemediabox/themes",mediafallback:0,mediaselector:"audio,video"});window.setInterval(function(){var r;try{r=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP")}catch(e){}if(r){r.open("GET","/index.php?option=com_ajax&format=json",true);r.send(null)}},3540000);jQuery(function($){ $(".hasTooltip").tooltip({"html": true,"container": "body"}); });jQuery(function($) {
+			 $('.hasTip').each(function() {
+				var title = $(this).attr('title');
+				if (title) {
+					var parts = title.split('::', 2);
+					var mtelement = document.id(this);
+					mtelement.store('tip:title', parts[0]);
+					mtelement.store('tip:text', parts[1]);
+				}
+			});
+			var JTooltips = new Tips($('.hasTip').get(), {"maxTitleChars": 50,"fixed": false});
+		});Calendar._DN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]; Calendar._SDN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; Calendar._FD = 0; Calendar._MN = ["January","February","March","April","May","June","July","August","September","October","November","December"]; Calendar._SMN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; Calendar._TT = {"INFO":"About the Calendar","ABOUT":"DHTML Date\/Time Selector\n(c) dynarch.com 2002-2005 \/ Author: Mihai Bazon\nFor latest version visit: https:\/\/www.dynarch.com\/projects\/calendar\/\nDistributed under GNU LGPL.  See https:\/\/gnu.org\/licenses\/lgpl.html for details.\n\nDate selection:\n- Use the \u00ab and \u00bb buttons to select year\n- Use the < and > buttons to select month\n- Hold mouse button on any of the buttons above for faster selection.","ABOUT_TIME":"\n\nTime selection:\n- Click on any of the time parts to increase it\n- or Shift-click to decrease it\n- or click and drag for faster selection.","PREV_YEAR":"Select to move to the previous year. Select and hold for a list of years.","PREV_MONTH":"Select to move to the previous month. Select and hold for a list of the months.","GO_TODAY":"Go to today","NEXT_MONTH":"Select to move to the next month. Select and hold for a list of the months.","SEL_DATE":"Select a date.","DRAG_TO_MOVE":"Drag to move.","PART_TODAY":" Today ","DAY_FIRST":"Display %s first","WEEKEND":"0,6","CLOSE":"Close","TODAY":"Today","TIME_PART":"(Shift-)Select or Drag to change the value.","DEF_DATE_FORMAT":"%Y-%m-%d","TT_DATE_FORMAT":"%a, %b %e","WK":"wk","TIME":"Time:"};
+	window.addEvent("domready", function() {
+		$("submit_btn").addEvent("click", function(event) {
+			//prevent the page from changing
+			document.formvalidator = new JFormValidator;
+			if(document.formvalidator.isValid(document.getElementById("josForm")))
+			{
+				ajaxdata();
+			} else {
+				return false;
+			}
+		});
+	 });
+
+if (typeof Virtuemart === "undefined")
+	Virtuemart = {};Virtuemart.vmSiteurl = vmSiteurl = 'https://www.oasisillusions.com/' ;
+Virtuemart.vmLang = vmLang = "&lang=en";
+Virtuemart.vmLangTag = vmLangTag = "en";
+Itemid = '&Itemid=102';
+Virtuemart.addtocart_popup = "1" ; 
+usefancy = true;
+	
+
+		(function() {
+			Joomla.JText.load({"JLIB_FORM_FIELD_INVALID":"Invalid field:&#160"});
+		})();
+	
+var s5_boxeffect = "elastic";
+
+  jQuery.fn.colorbox.settings.initialWidth=200;
+  jQuery.fn.colorbox.settings.initialHeight=200;
+  jQuery.fn.colorbox.settings.transition="elastic";
+  jQuery(document).ready(function(){
+    jQuery(".s5box_register").colorbox({width:"40%", inline:true, href:"#s5box_register"});
+    jQuery(".s5box_login").colorbox({width:"25%", inline:true, href:"#s5box_login"});
+    jQuery(".s5box_one").colorbox({width:"35%", inline:true, href:"#s5box_one"});
+    jQuery(".s5box_two").colorbox({width:"35%", inline:true, href:"#s5box_two"});
+    jQuery(".s5box_three").colorbox({width:"35%", inline:true, href:"#s5box_three"});
+    jQuery(".s5box_four").colorbox({width:"35%", inline:true, href:"#s5box_four"});
+    jQuery(".s5box_five").colorbox({width:"35%", inline:true, href:"#s5box_five"});
+    jQuery(".s5box_six").colorbox({width:"35%", inline:true, href:"#s5box_six"});
+    jQuery(".s5box_seven").colorbox({width:"35%", inline:true, href:"#s5box_seven"});
+    jQuery(".s5box_eight").colorbox({width:"35%", inline:true, href:"#s5box_eight"});
+    jQuery(".s5box_nine").colorbox({width:"35%", inline:true, href:"#s5box_nine"});
+    jQuery(".s5box_ten").colorbox({width:"35%", inline:true, href:"#s5box_ten"});
+  });
+
+	if(jQuery().jquery=='1.11.0') { jQuery.easing['easeOutExpo'] = jQuery.easing['easeOutCirc'] };
+
+ 
+
+	//<![CDATA[
+				        jQuery(document).ready( function() {
+		            var myMenu = new MenuMatic({
+				tabletWidth:1400,
+                effect:"slide & fade",
+                duration:500,
+                physics: 'easeOutCirc',
+                hideDelay:250,
+                orientation:"horizontal",
+                tweakInitial:{x:0, y:0},
+				                                     	            direction:{    x: 'right',    y: 'down' },
+				                opacity:100            });
+        });		
+			//]]>	
+    
+//<![CDATA[
+	var s5_resize_columns_browser_check = "other";
+	var s5_resize_columns = "all";
+	var s5_resize_columns_delay = "500";
+	var s5_resize_columns_small_tablets = "default";
+//]]>
+
+		var s5_responsive_trigger = 750;
+		var s5_responsive_login_url = "";
+		var s5_responsive_register_url = "";
+		var s5_responsive_layout = "dropdowns";
+	
+//<![CDATA[ 
+if (typeof Virtuemart === "undefined")
+	var Virtuemart = {};
+	Virtuemart.updateChosenDropdownLayout = function() {
+		var vm2string = {editImage: 'edit image',select_all_text: 'Select all',select_some_options_text: 'Available for all'};
+		jQuery("select.vm-chzn-select").each( function () {
+			var swidth = jQuery(this).css("width")+10;
+			jQuery(this).chosen({enable_select_all: true,select_all_text : vm2string.select_all_text,select_some_options_text:vm2string.select_some_options_text,disable_search_threshold: 5, width: swidth});
+		});
+	}
+	jQuery(document).ready( function() {
+		Virtuemart.updateChosenDropdownLayout($);
+	}); //]]>
+
+//<![CDATA[ 
+jQuery(document).ready( function($) {
+			$("#virtuemart_country_id_field").vm2front("list",{dest : "#virtuemart_state_id_field",ids : "",prefiks : ""});
+		}); //]]>
+
+//<![CDATA[ 
+jQuery(document).ready( function($) {
+			$("#shipto_virtuemart_country_id_field").vm2front("list",{dest : "#shipto_virtuemart_state_id_field",ids : "",prefiks : "shipto_"});
+		}); //]]>
+
+
+/*! Jquery scrollto function */
+!function(o,n){var l=function(){var l,t=n(o.documentElement),e=n(o.body);return t.scrollTop()?t:(l=e.scrollTop(),e.scrollTop(l+1).scrollTop()==l?t:e.scrollTop(l))}();n.fn.smoothScroll=function(o){return o=~~o||400,this.find('a[href*="#s5"]').click(function(t){var e=this.hash,a=n(e);location.pathname.replace(/^\//,"")===this.pathname.replace(/^\//,"")&&location.hostname===this.hostname&&a.length&&(t.preventDefault(),jQuery.fn.fullpage?jQuery.fn.fullpage.scrollPage2(a):l.stop().animate({scrollTop:a.offset().top},o,function(){location.hash=e}))}).end()}}(document,jQuery);
+function initSmoothscroll(){
+	jQuery('html').smoothScroll(700);
+}
+jQuery(document).ready(function(){
+	initSmoothscroll();
+});
+var s5_page_scroll_enabled = 1;
+function s5_page_scroll(obj){ if(jQuery.browser.mozilla) var target = 'html'; else var target='html body'; jQuery(target).stop().animate({scrollTop:jQuery(obj).offset().top},700,function(){location.hash=obj}); } 
+function s5_hide_scroll_to_top_display_none() { if (window.pageYOffset < 300) { document.getElementById("s5_scrolltopvar").style.display = "none"; } }
+function s5_hide_scroll_to_top_fadein_class() { document.getElementById("s5_scrolltopvar").className = "s5_scrolltop_fadein"; }
+function s5_hide_scroll_to_top() {
+	if (window.pageYOffset >= 300) {document.getElementById("s5_scrolltopvar").style.display = "block";
+		document.getElementById("s5_scrolltopvar").style.visibility = "visible";
+		window.setTimeout(s5_hide_scroll_to_top_fadein_class,300);}
+	else {document.getElementById("s5_scrolltopvar").className = "s5_scrolltop_fadeout";window.setTimeout(s5_hide_scroll_to_top_display_none,300);}}
+jQuery(document).ready( function() {s5_hide_scroll_to_top();});
+jQuery(window).resize(s5_hide_scroll_to_top);
+if(window.addEventListener) {
+	window.addEventListener('scroll', s5_hide_scroll_to_top, false);   
+}
+else if (window.attachEvent) {
+	window.attachEvent('onscroll', s5_hide_scroll_to_top); 
+}
+
+
+
+		var s5_multibox_enabled = 1;
+
+		jQuery(document).ready(function(){
+
+			jQuery('.s5mb').each(function(i,z){if(!z.getAttribute('rel'))z.setAttribute('rel','[me]');});
+
+		}(jQuery));
+
+		var s5mbox = {};
+
+		
+		
+        jQuery(document).ready(function($){
+
+            initMultibox('.s5mb');
+
+        });
+
+		
+
+
+		
+	function initMultibox(mbClass){
+
+		window.s5mbox = new multiBox({
+
+			mbClass: mbClass,/*class you need to add links that you want to trigger multiBox with (remember and update CSS files)*/
+
+			container: jQuery(document.body),/*where to inject multiBox*/
+
+			path: 'https://www.oasisillusions.com/templates/traction/js/multibox/',/*path to mp3player and flvplayer etc*/
+
+			useOverlay: true,/*detect overlay setting*/
+
+			maxSize: {w:600, h:400},/*max dimensions (width,height) - set to null to disable resizing*/
+
+			movieSize: {w:400, h:300},
+
+			addDownload: false,/*do you want the files to be downloadable?*/
+
+			descClassName: 's5_multibox',/*the class name of the description divs*/
+
+			pathToDownloadScript: 'https://www.oasisillusions.com/templates/traction/js/multibox/forceDownload.asp',/*if above is true, specify path to download script (classicASP and ASP.NET versions included)*/
+
+			addRollover: true,/*add rollover fade to each multibox link*/
+
+			addOverlayIcon: false,/*adds overlay icons to images within multibox links*/
+
+			addChain: false,/*cycle through all images fading them out then in*/
+
+			recalcTop: true,/*subtract the height of controls panel from top position*/
+
+			addTips: true,/*adds MooTools built in 'Tips' class to each element (see: https://mootools.net/docs/Plugins/Tips)*/
+
+			autoOpen: 0/*to auto open a multiBox element on page load change to (1, 2, or 3 etc)*/
+
+		});	}
+
+		<!--}(jQuery));-->
+
+		
+		Eventx.onResizend(function(){		
+
+			s5mbox.resize(); 
+
+		});
+
+		
+	
+//<![CDATA[
+	var s5_lazyload = "all";
+//]]>
+
+	jQuery(document).ready(function(){
+	    jQuery('.s5_is_slide').each(function (i, d) {
+				jQuery(d).wrapInner(jQuery('<div class="s5_is_display"></div>'));
+			});
+			var options = {
+				wrapperId: "s5_body"
+			};
+			var slide = new Slidex();
+			slide.init(options);
+		});
+	

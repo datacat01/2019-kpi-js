@@ -1,0 +1,65 @@
+
+ require([
+        'jquery',
+        'jquery/validate'
+    ], function ($) {
+
+        function splitByLastDot(text) {
+          var index = text.lastIndexOf('.');
+          return [text.slice(0, index), text.slice(index + 1)]
+        }
+
+        function replaceName(text, newName) {
+          var index = text.lastIndexOf('/');
+          var newUrl = text.slice(0, index) + '/' + newName;
+          return newUrl;
+        }
+
+
+        function changeImgSrc(loopClass, postfix){
+          var i = 0;
+          $('.' + loopClass + ' img').each(function(){
+                var src = splitByLastDot($(this).attr('src'));
+                var oldSrc = replaceName(src[0],loopClass + '_' + i++);
+                var extension = '.jpg';
+                var newSrc = oldSrc + postfix + extension;
+                $(this).attr('src', newSrc);
+              });
+        }
+
+        $(document).ready(function () {
+          var countryAustria = $.cookie("shipping_country");
+          if(countryAustria == 'AT'){
+            $('.blue_warning').css('display','block');
+
+            changeImgSrc('mobile_main_banner','_AT');
+            changeImgSrc('side_images_3','_AT');
+            changeImgSrc('desktop_main_banner','_AT');
+
+          }
+        });
+
+    });
+
+
+
+  function onSubmitSubscribe(token) {
+       
+      
+      document.getElementById("submitNewsLetterhiden").click();
+   
+    }
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?2pIo3qgknX7ZmFsiHw9VjJbfrr6plHcy";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+
+  function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+  }
+

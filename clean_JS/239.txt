@@ -1,0 +1,21 @@
+var smarty_vars = {"divinity":{"page":"index","action":"index"},"html_url":"https:\/\/www.naturesgardencandles.com\/","secure_html_url":"https:\/\/www.naturesgardencandles.com\/","rel_html_url":"\/","rel_assets_url":"\/mas_assets\/","return_url":"YToyOntzOjM6InVybCI7czozNzoiaHR0cHM6Ly93d3cubmF0dXJlc2dhcmRlbmNhbmRsZXMuY29tLyI7czo0OiJobWFjIjtzOjQwOiIxY2YyNDg5MDQxY2U1ZDRmNTkwZjliOGMxMGE4OGZmOTJlNGU3ZjMwIjt9","request_uri":"https:\/\/www.naturesgardencandles.com\/","relative_request_uri":"\/","company":"Nature's Garden","currency":"USD","currency_symbol":"$","selected_currency":"USD","selected_currency_symbol":"$","cart_behavior":"ajax","mas_id":null,"gdpr_required":false,"theme":"ngc","theme_assets_url":"\/mas_assets\/theme\/ngc\/","id":""};
+
+var _learnq = _learnq || [];
+			_learnq.push(['account', "JMf5mq"]);
+
+			//if users have the ability to create accounts on the site we'd want to also do this (see if they're logged in, if so track them)
+
+			var user = "";
+			if (user){
+				_learnq.push(['identify', {
+					email: "",
+					first_name: "",
+					last_name: "",
+				}]);
+			}
+
+			(function () {
+				var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+				b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+				var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+			})();

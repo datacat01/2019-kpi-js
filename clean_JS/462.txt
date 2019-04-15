@@ -1,0 +1,61 @@
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27877351-1']);
+    _gaq.push(['_setDomainName', '.dx.com']);/* .dx.com*/
+    _gaq.push(['_setSiteSpeedSampleRate', 2]);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+
+    _atrk_opts = { atrk_acct:"a6ghi1agq800Oo", domain:"dx.com",dynamic: true};
+    (function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+
+
+    var google_tag_params = {
+        prodId : [],
+        pname : [],
+        pcat : [],
+        pvalues : [],
+        pagetype : 'Home',
+        orderId : '',
+        g : '',
+        age : ''
+    };
+
+    var google_conversion_id = 1015343275;
+    var google_conversion_label = "dAKRCM2WrAMQq9GT5AM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+
+
+    /* <![CDATA[ */
+    var google_conversion_id = 998665725;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "YkCMCMOo2AMQ_duZ3AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+
+
+
+
+    rtgsettings ={
+
+        'pdt_url': 'https://www.dx.com',
+        'pagetype': 'home',
+        'key': 'DIR',
+        'token': 'DX_GLB',
+        'layer': 'iframe'
+    };
+    (function(d) {
+        var s = d.createElement('script'); s.async = true;s.id='madv2014rtg';s.type='text/javascript';
+        s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.mainadv.com/Visibility/Rtgdir2-min.js';
+        var a = d.getElementsByTagName('script')[0]; a.parentNode.insertBefore(s, a);
+    }(document));
+

@@ -1,0 +1,157 @@
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-321328-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+window.lpTag={site:'33389791',_v:'1.1',protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);});},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);});}},defer:function(fn){this._defL=this._defL||[];this._defL.push(fn);},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();}};lpTag.init();
+
+    var nb_def_text = 'Enter Your E-mail Here';
+
+
+    function nb_onfocus() {
+      if( document.getElementById('ns_box') != null) {
+        document.getElementById('ns_box').value = '';
+      }
+      check_nb();
+    }
+
+    function check_nb() {
+      if( document.getElementById('ns_box') != null) {
+        stext = document.getElementById('ns_box').value;
+        if (stext == nb_def_text) {
+          document.getElementById('ns_box').style.color = 'gray';
+        } else {
+          document.getElementById('ns_box').style.color = 'black';
+        }
+      }
+    }
+
+    if( document.getElementById('ns_box') != null) {
+      document.getElementById('ns_box').value = nb_def_text;
+      check_nb();
+    }
+  
+
+  var gts = gts || [];
+
+  gts.push(["id", "23586"]);
+  gts.push(["google_base_offer_id", ""]);
+  gts.push(["google_base_subaccount_id", "343005"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+  /* <![CDATA[ */
+  var google_conversion_id = 1070096164;
+  var google_conversion_label = "bLfNCL66xwMQpL6h_gM";
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+
+
+
+
+		
+			// FLASH EMBED PART
+			var flashvars = {};
+			var params = {};
+			var attributes = {};
+			attributes.id = "flashPreview";
+			params.quality = "high";
+			params.scale = "noscale";
+			params.salign = "tl";
+			params.wmode = "transparent";
+			params.bgcolor = "#111";
+			params.devicefont = "false";
+			params.allowfullscreen = "true";
+			params.allowscriptaccess = "always";
+			swfobject.embedSWF("preview.swf", "flashPreview", "100%", "100%", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+			
+			//functions called from flash
+			var jsReady = false;//for flash/js communication
+			function flashVideoEnd() {jQuery.fn.videoGallery.flashVideoEnd();}
+			function flashVideoStart() {jQuery.fn.videoGallery.flashVideoStart();}
+			function dataUpdateFlash(bl,bt,t,d) {jQuery.fn.videoGallery.dataUpdateFlash(bl,bt,t,d);}
+			function flashVideoPause() {jQuery.fn.videoGallery.flashVideoPause();}
+			function flashVideoResume() {jQuery.fn.videoGallery.flashVideoResume();}
+			function flashMainPreviewOff() {jQuery.fn.videoGallery.flashMainPreviewOff();}
+			function flashResizeControls() {jQuery.fn.videoGallery.flashResizeControls();}
+			function isReady() {return jsReady;}
+			
+			jQuery(document).ready(function($) {
+					
+				
+				jsReady = true;
+			    //init component
+			    $('#componentWrapper').videoGallery({	
+				
+			
+					
+					/* REQUIRED */
+					
+					/* DEEPLINKING SETTINGS */
+				    /* useDeeplink: true, false */
+					useDeeplink:false,
+					/* startUrl: deeplink start url, enter 'ul' data-address/'li' data-address (two levels). Or just 'ul' data-address (single level). */
+					startUrl: 'mix2/youtube_single1',
+					
+					/* NO DEEPLINKING SETTINGS */
+					/*activePlaylist: enter element 'id' attributte */
+					activePlaylist:'mix2',
+					/*activeItem: video number to start with (-1 = none, 0 = first, 1 = second, 2 = third ...etc) */
+					activeItem:0,
+					
+					/* GENERAL */
+					/*thumbOrientation: horizontal, vertical (for scrolling) */
+					thumbOrientation: 'vertical',
+					/*playlistPosition: bottom / right */
+					playlistPosition: 'right',
+					/*fullSize: true/false (dont forget to edit the css as well) */
+					fullSize: false,
+					/*flashHolder: id of the flash movie */
+					flashHolder:'#flashPreview',
+					
+					/* DEFAULTS */
+					
+					/*defaultVolume: 0-1 */
+					defaultVolume:0.5,
+					/*autoPlay: true/false */
+					autoPlay:true,
+					/* loopingOn: loop playlist on end (last item in playlist), true/false */
+					loopingOn:true,
+					/* randomPlay: random play in playlist, true/false */
+					randomPlay:false,
+					/*autoAdvanceToNextVideo: true/false */
+					autoAdvanceToNextVideo:true,
+					/*autoMakePlaylistThumb: true/false (valid only for youtube and vimeo, auto make thumb for each video) */
+					autoMakePlaylistThumb:true,
+					/*autoMakePlaylistInfo: true/false (valid only for youtube and vimeo, auto make title and description for each video) */
+					autoMakePlaylistInfo:true,
+					/* outputPlaylistData: console.log out playlist data */
+					outputPlaylistData:false,
+					/* useYoutubeHighestQuality: true/false (use highest available quality for youtube video, if false, then it set to default)  */
+					useYoutubeHighestQuality:false,
+					
+					videoGallerySetupDone:function() {
+						//console.log('videoGallerySetupDone');
+					}
+				});		
+    	    });
+		
+        

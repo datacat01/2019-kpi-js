@@ -1,0 +1,360 @@
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/wsgc/experimentationPlatformReporting.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/external/visitor.230.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/external/domutils.100.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+var WSI = {
+disabled : {
+dotomi: true
+},
+cmVenValues: ["EMAIL","EDM","EDM_PROMO","E3","EDM_TRIGGER","PROMO","TRIG","TRANSACT","STORES"],
+offsiteRequests : [],
+addOffsiteRequest : function(t,u,a){this.offsiteRequests.push(a?[t,u,a]:[t,u]);},
+imgIfNotBodyState : function(c,s,a,w,h){var d=document,b=d.body;if(!new RegExp("\\b"+c+"\\b").exec(b.className)){var i=d.createElement("img");i.src=s;i.alt=a||"";i.width=w||1;i.height=h||1;b.appendChild(i);}},
+isRetailStoreRequest : function(){var r=!!/\bisRetailStoreRequest\b/.exec(document.body.className);WSI.isRetailStoreRequest=function(){return r};return r},
+isEnabled : function(f){return !WSI.disabled[f];},
+cookies : {
+savedCart : "WS_SAVEDCART",
+sessionCart : "SESSIONCART",
+ivrHideSiteLink : {name : '', ttl : '0'}
+},
+contentPersonalization : {
+isOn: true,
+hideEmailCaptureOverlay: false,
+emailExperience: "stickyOverlay"
+, creServer: "//match.collectandgather.com",
+profileCookieList: "CoreID6,wsiakid,svi_dec",
+lookupUrl : "/personalization/lookup/v2/ws/",
+promotionCodeUrl : "/personalization/promotion-code-used/v2/ws/",
+notificationUrl : "/personalization/notification/v2/ws/",
+flatFileServer: "//lookup.collectandgather.com",
+emailOptinUrl: "/email-opt-in-service/v1/WS/"
+},
+config: {
+appUrl : "https://www.williams-sonoma.com/",
+secureAppUrl : "https://www.williams-sonoma.com/",
+ecmAssetUrl : "https://www.williams-sonoma.com/wsimgs/rk/images/dp/",
+sitePref : "WS_SITE_PREF_PROD",
+cookieSubDomain : ".williams-sonoma.com",
+catImageBase : "https://www.williams-sonoma.com/wsimgs/rk/images/dp/",
+secureCatImageBase : "https://www.williams-sonoma.com/wsimgs/rk/images/dp/",
+docImageBase : "https://www.williams-sonoma.com/wsimgs/rk/images/"
+, sessionCookieName : "WSPE_SID"
+, id : "ws",
+brand:"Williams Sonoma"
+, isDigitalSwatchEnabled: false
+, isDigitalSwatchMobileEnabled: false
+, digitalSwatchAcceptedPercentage: "32"
+, digitalSwatchApiUrl: ""
+, isDigitalSwatchABTestEnabled: false
+, isDigitalSwatchMobileABTestEnabled: false
+, storePickupEnabled: true
+, storePickupMessages: {
+chooseADifferentStore: "Choose a different Store"
+, chooseAStore: "Choose a Store"
+}
+, currencyCode: "USD"
+, countryCode: "US"
+, currencySymbol: "$"
+, hideZeroCents: true
+, plccPayType: "PLCC/WS"
+, isEcmPagesEnabled: true
+, isEcmContentTagDisplayEnabled: true
+}
+,
+adobeTnt : {
+isOn: true,
+cookieName: "WSI-MBOX"
+},
+isPwaUxEnabled: false,
+pwaEnabledUxFeatures: false,
+isFavoritesEnabled: true,
+isAdvancedFavoritesEnabled: true,
+isShareFavoritesEnabled: true,
+isGlobalTopNavLinkNavigationSuppressedForIpad: true,
+app_router: {
+isPartialPageRenderEnabled: false
+},
+outward : {
+isMonogramEnabled : false,
+monogramUrl : 'https://expression-wsi.outwardinc.com/',
+monogramApiHost : 'https://expression-wsi.outwardinc.com/image/',
+monogramApiVersion : '1'
+},
+isScene7Enabled : true,
+noopUrl: 'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/wsgc/noop.js',
+user_name :'',
+RichRelevance : {
+hasRichRelevanceRatings : true,
+richRelUrl : '//recs.richrelevance.com/rrserver/',
+richRelApiKey : '03e2e3c1e0620ced',
+channelApiKey : 'da61701bd5c34ff0',
+url : 'https://www.williams-sonoma.com/',
+sessionCookieName : 'WSPE_SID'
+},
+search : {
+isRankedExperience:
+true
+, maxSuggestions: 10,
+minChars: 3,
+accountID: '4060',
+domainKey: 'williamssonoma_en_ws_prd_d2',
+apiUrl: 'https://suggest.dxpapi.com/api/v1/suggest/'
+}
+};
+djConfig={parseOnLoad: false, locale: 'en-us', isDebug: false, blankGif:'https://www.williams-sonoma.com/wsimgs/rk/images/i/201915/0015/images/common/blank.gif', dojoBlankHtmlUrl:'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/dojo/resources/blank.html'};
+
+document.domain = "williams-sonoma.com";
+(function() {
+window.SOASTA = {
+pg : "home-page"
+};
+if (window.BOOMR && window.BOOMR.version) { return; }
+var dom,
+doc,
+where,
+iframe = document.createElement("iframe"),
+win = window;
+function boomerangSaveLoadTime(e) {
+win.BOOMR_onload=(e && e.timeStamp) || new Date().getTime();
+}
+if (win.addEventListener) {
+win.addEventListener("load", boomerangSaveLoadTime, false);
+} else if (win.attachEvent) {
+win.attachEvent("onload", boomerangSaveLoadTime);
+}
+iframe.src = "javascript:void(0)";
+iframe.title = "";
+iframe.role = "presentation";
+(iframe.frameElement || iframe).style.cssText = "width:0;height:0;border:0;display:none;";
+where = document.getElementsByTagName("script")[0];
+where.parentNode.insertBefore(iframe, where);
+try {
+doc = iframe.contentWindow.document;
+} catch(e) {
+dom = document.domain;
+iframe.src = "javascript:var d=document.open();d.domain='"+dom+"';void(0);";
+doc = iframe.contentWindow.document;
+}
+doc.open()._l = function() {
+var js = this.createElement("script");
+if (dom) {
+this.domain = dom;
+}
+js.id = "boomr-if-as";
+js.src = "//c.go-mpulse.net/boomerang/" + "G3KQ4-BNXLJ-Y2SGH-WLEVH-9JGSD";
+BOOMR_lstart = new Date().getTime();
+this.body.appendChild(js);
+};
+doc.write('<body onload="document._l();">');
+doc.close();
+})();
+
+
+
+(function(doc, WSI){
+WSI.tnt = WSI.tnt || {};
+WSI.tnt.setCookie = function setCookie(cookieName, cookieValue) {
+doc.cookie = cookieName + '=' + escape(cookieValue) + ';expires=0' ;
+}
+}( document, WSI ));
+function statusCheck(){
+if (document.cookie.indexOf('CoreID6') == -1) {
+if (document.cookie.indexOf('TnTNew') == -1) {
+WSI.tnt.setCookie('TnTNew','true');
+}
+return 'profile.visitorStatus=new';
+}
+else if (document.cookie.indexOf('CoreID6') != -1 &&
+document.cookie.indexOf('TnTNew') != -1) {
+return 'profile.visitorStatus=new';
+}
+else if (document.cookie.indexOf('CoreID6') != -1 &&
+document.cookie.indexOf('TnTNew') == -1) {
+return 'profile.visitorStatus=returning';
+}
+}
+mboxCreate('ws-global-home',statusCheck());
+
+mboxCreate('ws-global-ticker');
+mboxCreate('ws-store-near-you');
+
+mboxCreate('ws-supercategory-affinity-lower-row');
+
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/dojo/dojo.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/external/polyfills.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+isGlobalTopNavLinkNavigationMenuToggledForIpad = true; WSI.config.pageID = {
+"PAGE_PIP" : "PAGE_PIP",
+"PAGE_MONOGRAM" : "PAGE_MONOGRAM",
+"PAGE_EMPTY_CART" : "PAGE_EMPTY_CART",
+"PAGE_SHOPPING_CART" : "PAGE_SHOPPING_CART",
+"PAGE_CHKT_SIGNIN" : "PAGE_CHKT_SIGNIN",
+"PAGE_CHKT_SINGLE_SHIP" : "PAGE_CHKT_SINGLE_SHIP",
+"PAGE_CHKT_MULTI_SHIP" : "PAGE_CHKT_MULTI_SHIP",
+"PAGE_CHKT_DELIVERY" : "PAGE_CHKT_DELIVERY",
+"PAGE_CHKT_BILLING" : "PAGE_CHKT_BILLING",
+"PAGE_CHKT_PAYMENT" : "PAGE_CHKT_PAYMENT",
+"PAGE_CHKT_CONFIRM" : "PAGE_CHKT_CONFIRM",
+"PAGE_CHKT_ERROR_PROMO" : "PAGE_CHKT_ERROR_PROMO",
+"PAGE_CHKT_ERROR_NO_VERIFY" : "PAGE_CHKT_ERROR_NO_VERIFY",
+"PAGE_ID" : "index.ftl",
+"PAGE_ID_FULL" : "index.ftl",
+"PAGE_NAME" : "not in PAGE_MAP"
+};
+window.WSI._digitalData = {};
+window.digitalData = window.digitalData || {};
+window.WSI.dataLayer = window.WSI.dataLayer || { preReg:[], registerCallback: function(func){this.preReg.push(func);}, isReady: function(){return false;}};
+WSI._digitalData.x_user = {
+
+};
+WSI._digitalData.x_state = {
+countryCode : "US",
+currencyCode : "USD"
+
+};
+WSI._digitalData.version="0.1";
+WSI._digitalData.page = {
+pageName : 'HOME PAGE'
+,
+pageCategory : {
+primaryCategory : "home"
+}
+, attributes : {
+cmPageId :
+'HOME PAGE'
+,
+pwa :
+false
+,
+experimentationPlatform :
+{
+campaignExperiences :
+{
+wsAAtest :
+'control2'
+}
+,
+globalControl :
+false
+}
+}
+};
+(function(p){
+var _typeahead = dojo.queryToObject( window.location.search.slice(1) ).typeahead;
+if (_typeahead){ p.searchTypeahead = true;
+var attrs = _typeahead.split("+");
+if (attrs[0]) if (attrs[0]!=="") p.searchPfm = attrs[0];
+if (attrs[1]) if (attrs[1]!=="") p.searchTerm = attrs[1];
+if (attrs[2]) if (attrs[2]!=="") p.searchAlgo = attrs[2];
+}
+})(WSI._digitalData.page.attributes);
+// WSI.dataLayer._addChild requires the page object to be present
+if ( !(digitalData && digitalData.page) ) {
+digitalData = typeof dojo !== "undefined" ? dojo.clone( WSI._digitalData ) : JSON.parse(JSON.stringify( WSI._digitalData ));
+} else {
+// We have digitalData and digitalData.page
+WSI.dataLayer._addChild( WSI._digitalData );
+}
+var throbberImageObject = document.createElement("IMG");
+throbberImageObject.setAttribute("src", "https://www.williams-sonoma.com/wsimgs/rk/images/i/201912/0003/images/chrome/img-throbber.gif")
+throbberImageObject.setAttribute("class", "throbber")
+WSI.throbber = throbberImageObject;
+dojo.addOnLoad(function(){
+WSI.utils = new wsgc.js.Utils();
+var overlay = wsgc.js.Overlay.getByHref('https://www.williams-sonoma.com/international/setcountry.html');
+overlay.addOnShown(function() {
+WSI.intl.flagBasedCurrencySelector(overlay);
+WSI.dataLayer._addChild(
+{
+page : {
+pageName : "international shipping to",
+pageCategory : {
+primaryCategory : "international"
+}
+, pageType: "overlay"
+, attributes : {
+cmPageId : "INTERNATIONAL: SHIPPING TO"
+,
+cmCategoryId : "INTERNATIONAL"
+}
+}
+}
+);
+});
+new wsgc.js.QuickCart();
+WSI.searchController = new wsgc.common.js.SearchController();
+WSI.intl = new wsgc.js.IntlUtils();
+WSI.utils.setStylesheetLoaded([
+'https://www.williams-sonoma.com/wsimgs/rk/images/i/201915/0015/css/homepage.css',
+'https://www.williams-sonoma.com/wsimgs/rk/images/i/201915/0015/css/new-core.css'
+]);
+});
+WSI.vtaConfig = {
+"vtaCategoryThumbnail" : "e",
+"vtaProductThumbnail" : "e"
+};
+
+
+(function() {
+if(window.WSI && WSI.utils) {
+WSI.utils.setScriptLoaded([
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201915/0002/js/dojo/wsgc/wsgc.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/wsgc/slideshow.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/external/thirdparty.js',
+'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/dojo/wsgc/favoritesGallery.js'
+]);
+} else {
+setTimeout(arguments.callee, 50);
+}
+}());
+
+
+wsgc.js.experimentationPlatform.reportToTarget( WSI.config.id + "-experimentation-platform"
+);
+const callTealium = function() {
+var utag_data = {};
+(function(a,b,c,d){
+a='//tags.tiqcdn.com/utag/wsi/williamssonoma/prod/utag.js';
+b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+})();
+}
+if ("" !== "") {
+this.addEventListener("", function() {
+callTealium();
+})
+} else {
+if (!WSI.isRetailStoreRequest()) {
+callTealium();
+}
+}
+wsgc.js.location.LocationService.setLocation(50.43 , 30.52 , true, true);
+wsgc.js.location.LocationService.initialize();
+WSI.noRACRecs = 3;
+if(WSI.rr){
+WSI.rr.init('03e2e3c1e0620ced', 'da61701bd5c34ff0','\//recs.richrelevance.com/rrserver/', 'https://www.williams-sonoma.com/', 'WSPE_SID');
+}
+WSI.addOffsiteRequest('js', 'https://www.williams-sonoma.com/wsimgs/rk/images/s/201912/0015/js/external/opinionlab.js');
+wsgc.js.location.LocationService.initialize();
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/assets/6ffb32bb178077b3efdcd06e4c63']);

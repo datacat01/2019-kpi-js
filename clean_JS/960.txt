@@ -1,0 +1,421 @@
+
+    function loadjscssfile(e,t){if("js"==t){var s=document.createElement("script");s.setAttribute("type","text/javascript"),s.setAttribute("src",e)}else if("css"==t){var s=document.createElement("link");s.setAttribute("rel","stylesheet"),s.setAttribute("type","text/css"),s.setAttribute("href",e)}"undefined"!=typeof s&&document.getElementsByTagName("head")[0].appendChild(s)}
+
+
+    window.Krux||((Krux=function(){Krux.q.push(arguments);}).q=[]);
+    (function(){
+        function retrieve(n){
+            var k= 'kx'+'internetbrands_'+n, ls=(function(){
+                try {
+                    return window.localStorage;
+                } catch(e) {
+                    return null;
+                }
+            })();
+            if (ls) {
+                return ls[k] || '';
+            } else if (navigator.cookieEnabled) {
+                var m = document.cookie.match(k+'=([^;]*)');
+                return (m && unescape(m[1])) || '';
+            } else {
+                return '';
+            }
+        }
+        Krux.user = retrieve('user');
+        Krux.segments = retrieve('segs') ? retrieve('segs').split(',') : [];
+    })();
+
+
+        var gptadslots = [];
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    
+
+        googletag.cmd.push(function() {
+            if (typeof window.headertag === 'undefined' ||
+                    window.headertag.apiReady !== true) {
+                window.headertag = googletag;
+            }
+        });
+    
+
+        var onSSL = 'https:' == document.location.protocol;
+        googletag.cmd.push(function() {
+            gptadslots['RJ_300x240'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_300x240', [300, 240], 'div-gpt-ad-RJ_300x240')
+     .addService(googletag.pubads()); 
+
+gptadslots['RJ_300x250_mid'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_300x250_mid', [[300, 250],[300, 600]], 'div-gpt-ad-RJ_300x250_mid')
+     .addService(googletag.pubads())
+     .setTargeting('kw', ['mid','btf']); 
+
+gptadslots['RJ_728x75'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_728x75', [728, 75], 'div-gpt-ad-RJ_728x75')
+     .addService(googletag.pubads()); 
+
+gptadslots['RJ_728x90_bot'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_728x90_bot', [728, 90], 'div-gpt-ad-RJ_728x90_bot')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'bot'); 
+
+gptadslots['RJ_728x90_top'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_728x90_top', [728, 90], 'div-gpt-ad-RJ_728x90_top')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'top'); 
+
+gptadslots['RJ_140x70_1'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_1', [140, 70], 'div-gpt-ad-RJ_140x70_1')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_2'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_2', [140, 70], 'div-gpt-ad-RJ_140x70_2')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_3'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_3', [140, 70], 'div-gpt-ad-RJ_140x70_3')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_4'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_4', [140, 70], 'div-gpt-ad-RJ_140x70_4')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_5'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_5', [140, 70], 'div-gpt-ad-RJ_140x70_5')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_6'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_6', [140, 70], 'div-gpt-ad-RJ_140x70_6')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_7'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_7', [140, 70], 'div-gpt-ad-RJ_140x70_7')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_8'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_8', [140, 70], 'div-gpt-ad-RJ_140x70_8')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Major'); 
+
+gptadslots['RJ_140x70_10'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_10', [140, 70], 'div-gpt-ad-RJ_140x70_10')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_11'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_11', [140, 70], 'div-gpt-ad-RJ_140x70_11')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_12'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_12', [140, 70], 'div-gpt-ad-RJ_140x70_12')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_13'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_13', [140, 70], 'div-gpt-ad-RJ_140x70_13')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_14'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_14', [140, 70], 'div-gpt-ad-RJ_140x70_14')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_15'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_15', [140, 70], 'div-gpt-ad-RJ_140x70_15')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_16'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_16', [140, 70], 'div-gpt-ad-RJ_140x70_16')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_17'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_17', [140, 70], 'div-gpt-ad-RJ_140x70_17')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_18'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_18', [140, 70], 'div-gpt-ad-RJ_140x70_18')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_9'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_9', [140, 70], 'div-gpt-ad-RJ_140x70_9')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Presenting'); 
+
+gptadslots['RJ_140x70_19'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_19', [140, 70], 'div-gpt-ad-RJ_140x70_19')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_20'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_20', [140, 70], 'div-gpt-ad-RJ_140x70_20')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_21'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_21', [140, 70], 'div-gpt-ad-RJ_140x70_21')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_22'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_22', [140, 70], 'div-gpt-ad-RJ_140x70_22')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_23'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_23', [140, 70], 'div-gpt-ad-RJ_140x70_23')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_24'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_24', [140, 70], 'div-gpt-ad-RJ_140x70_24')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_25'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_25', [140, 70], 'div-gpt-ad-RJ_140x70_25')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_26'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_26', [140, 70], 'div-gpt-ad-RJ_140x70_26')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_27'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_27', [140, 70], 'div-gpt-ad-RJ_140x70_27')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_28'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_28', [140, 70], 'div-gpt-ad-RJ_140x70_28')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_29'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_29', [140, 70], 'div-gpt-ad-RJ_140x70_29')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+gptadslots['RJ_140x70_30'] = googletag.defineSlot('/2922/RacingJunk/homepage/RJ_140x70_30', [140, 70], 'div-gpt-ad-RJ_140x70_30')
+     .addService(googletag.pubads())
+     .setTargeting('kw', 'Associate'); 
+
+
+
+                                googletag.pubads().setTargeting("MemberLvl", "0_Guest");
+                        googletag.pubads().setTargeting("sitename", "www.racingjunk.com");
+                        googletag.pubads().setTargeting("homepage", "yes");
+            
+            var rendered = 0;
+            googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                rendered++;
+                if (event.slot.getSlotElementId() == "div-gpt-ad-RJ_468x60") {
+                    if (!event.isEmpty) {
+                        $("#internalMessageAdMessage").show();
+                    }
+                }
+                if (rendered == 35) {
+                    $.fn.matchHeight._maintainScroll = true;
+                    $(".matchHeight").matchHeight();
+                    $(".sticky").stick_in_parent({parent: ".sticky-parent", spacer: ".sticky-spacer"});
+                }
+            });
+        
+        
+                        
+
+            googletag.pubads().enableSingleRequest();
+            // A9 implementation
+            googletag.pubads().disableInitialLoad();
+
+                    googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+        });
+    
+
+        !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function()
+        {q("f",arguments)},setDisplayBids:function(){},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(
+            A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+        // initialize apstag and have apstag set bids on the googletag slots when they are returned to the page
+        apstag.init({
+            pubID: '3146',
+            adServer: 'googletag',
+        });
+        // request the bids for the four googletag slots
+        apstag.fetchBids({
+            slots: [
+    {
+        "slotID": "div-gpt-ad-RJ_728x90_top",
+        "slotName": "\/2922\/RacingJunk\/homepage\/RJ_728x90_top",
+        "sizes": [
+            [
+                728,
+                90
+            ]
+        ]
+    },
+    {
+        "slotID": "div-gpt-ad-RJ_728x90_bot",
+        "slotName": "\/2922\/RacingJunk\/homepage\/RJ_728x90_bot",
+        "sizes": [
+            [
+                728,
+                90
+            ]
+        ]
+    },
+    {
+        "slotID": "div-gpt-ad-RJ_728x75",
+        "slotName": "\/2922\/RacingJunk\/homepage\/RJ_728x75",
+        "sizes": [
+            [
+                728,
+                75
+            ]
+        ]
+    },
+    {
+        "slotID": "div-gpt-ad-RJ_300x250_mid",
+        "slotName": "\/2922\/RacingJunk\/homepage\/RJ_300x250_mid",
+        "sizes": [
+            [
+                300,
+                250
+            ],
+            [
+                300,
+                600
+            ]
+        ]
+    },
+    {
+        "slotID": "div-gpt-ad-RJ_300x240",
+        "slotName": "\/2922\/RacingJunk\/homepage\/RJ_300x240",
+        "sizes": [
+            [
+                300,
+                240
+            ]
+        ]
+    }
+],
+            timeout: 2e3
+        }, function(bids) {
+            // trigger the first request to DFP
+            googletag.cmd.push(function() {
+                apstag.setDisplayBids();
+                headertag.pubads().refresh();
+            });
+        });
+    
+
+    var _sf_startpt=(new Date()).getTime()
+
+
+    ga('set', 'dimension1', 'Non-Member');
+    ga('set', 'userId', '');
+
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_728x90_top'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_728x90_bot'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_728x75'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_300x250_mid'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_1'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_2'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_3'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_4'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_5'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_6'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_7'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_8'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_300x240'); });
+    
+
+                        if($('div[id^="google_ads_div_RJ_300x240"]').length) {
+                            $('#featuredVideoContainer').show();
+                        }
+                    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_9'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_10'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_11'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_12'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_13'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_14'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_15'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_16'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_17'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_18'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_19'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_20'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_21'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_22'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_23'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_24'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_25'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_26'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_27'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_28'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_29'); });
+    
+
+        googletag.cmd.push(function() { headertag.display('div-gpt-ad-RJ_140x70_30'); });
+    
+
+    IBEUGDPR.displayBanner();
+
+
+    !function(e,n){var t=document.createElement("script");t.onload=t.onreadystatechange=function(e){("load"===(e||window.event).type||/loaded|complete/.test(t.readyState)&&document.documentMode<=11)&&(t.onload=t.onreadystatechange=t.onerror=null,new IBTracker(n))},t.onerror=function(){t.onload=t.onreadystatechange=t.onerror=null},t.async=1,t.src="//ibclick.stream/assets/js/track/dist/js/v1/tracker.min.js",t.setAttribute("crossorigin","anonymous"),document.getElementsByTagName("head")[0].appendChild(t)}(0,{site:"racingjunk.com",snippetVersion:"1.1",vertical:"auto-classifieds"});
+

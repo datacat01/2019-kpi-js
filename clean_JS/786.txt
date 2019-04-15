@@ -1,0 +1,175 @@
+
+        $(document).ready(function() {
+            $('.fancybox').fancybox({
+                afterLoad : function() {
+                    this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+                }
+            });
+        });
+
+    
+
+        $(document).ready(function(){
+			$(".jetmenu").jetmenu();
+        });
+    
+
+           	window.$zopim || (function (d, s) { 
+            	var z = $zopim = function (c) { 
+                z._.push(c) }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0]; 
+                z.set = function (o) {
+                    z.set._.push(o) 
+                };
+             	z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8"); 
+            	$.src = "//v2.zopim.com/?2IGUlip9pCiqtmLFJm7euVrlIr1wF3OM"; z.t = +new Date; 
+            	$.type = "text/javascript"; 
+            	e.parentNode.insertBefore($, e) 
+            })(document, "script"); 
+
+            $zopim(function () { 
+            	$zopim.livechat.departments.filter('Customer Service', 'Delivery Service', 'Pet Care Consultant'); 
+            }); 
+        
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-62587094-1', 'auto');
+        ga('set', 'userId', ''); // Set the user ID using signed-in user_id.
+        ga('require','ecommerce','ecommerce.js');
+        ga('send', 'pageview');
+    
+
+    	_atrk_opts = { atrk_acct:"/z1pl1awEti2fn", domain:"petloverscentre.com",dynamic: true};
+    	(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+    
+
+(function(w,d,n) {
+w[n]=w[n]||function(name,value){ w[n][name]=value; };
+var dwa = d.createElement('script'); dwa.type = 'text/javascript'; dwa.async = 1;
+dwa.src = '/Admin/Content/JsLib/dw/dwansta.min.js';
+var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dwa, s);
+})(window,document,'analytics');
+
+analytics('sessionID', 'ovpilihmdgsc4sfem20whksb');
+analytics('pageID', 3);
+analytics('areaID', 2);
+analytics('engagement', 0);
+
+
+        $(function() {
+            var dd1 = new DropDown1( $('.dd1') );
+            var dd2 = new DropDown2( $('.dd2') );
+            $(document).click(function() {
+                $('.wrapper-dropdown-3').removeClass('active');
+            });
+
+        });
+    
+
+        function queryStringLinks(){
+            var mainLinks = document.getElementsByName("main");
+            for(var i = 0;i< mainLinks.length; i++){
+                if(mainLinks[i].innerHTML == "Brand" || mainLinks[i].innerHTML == "Burb" || mainLinks[i].innerHTML == "applpaws"  ){}
+                else if( mainLinks[i].innerHTML =="Home"){mainLinks[i].href="/home";}
+                else if(mainLinks[i].innerHTML != "Fish"){
+                    mainLinks[i].href += "?firstgroup="+(mainLinks[i].innerHTML.substring(0,mainLinks[i].innerHTML.length -1).toLowerCase());
+                }
+                else{
+                    mainLinks[i].href += "?firstgroup="+(mainLinks[i].innerHTML).toLowerCase();
+                }
+            }
+            var mainmenu = document.getElementsByName("mainmenu");
+            for(var i = 0;i< mainmenu.length; i++){
+                var firstLinks = mainmenu[i].querySelectorAll('[name=first]');
+                var thirdMenu = mainmenu[i].querySelectorAll('[name=Third]');
+                var secondLinks = mainmenu[i].querySelectorAll('[name=second]');
+                var nothirdLinks = 0;
+                if(mainmenu[i].getAttribute("id") == "Small Pets"){
+                    mainmenu[i].setAttribute("id","SmallPets");
+                }
+                var firstLinkHTML = "";
+                var mainLinks = document.getElementsByName("main");
+
+                for(var k = 0;k<firstLinks.length; k++){
+                    if(k==0){
+                        if(firstLinks[k].innerHTML !="Fish"){
+                            if(firstLinks[k].innerHTML !="Brand"){
+                                firstLinkHTML = firstLinks[k].innerHTML.substring(0,firstLinks[k].innerHTML.length -1);
+                                firstLinks[k].href += "?firstgroup="+(firstLinkHTML).toLowerCase();
+                            }
+                            else{
+                                firstLinks[k].href += "/"+(firstLinkHTML).toLowerCase();
+                            }
+
+                        }
+                        else{
+                            firstLinkHTML = firstLinks[k].innerHTML;
+                            firstLinks[k].href += "?firstgroup="+(firstLinkHTML).toLowerCase();
+                        }
+                    }
+                    else{
+                        firstLinks[k].href += "/"+(firstLinkHTML).toLowerCase();
+                    }
+                }
+
+
+                for(var j=0;j<secondLinks.length;j++){
+                    if(firstLinks[0].href.indexOf("brand")>-1){
+
+                    }
+                    else{
+                        secondLinks[j].href = firstLinks[0].href+"&secondgroup="+(secondLinks[j].innerHTML.replace("&amp;","-a-")).toLowerCase();
+                    }
+                }
+
+
+                for(var j=0;j<secondLinks.length;j++){
+                    if(secondLinks[j].parentNode.getElementsByTagName('ul').length ==0){
+                        nothirdLinks++;
+                    }
+                    if(thirdMenu[j]!=null){
+                        var thirdLinks = thirdMenu[j].querySelectorAll("a");
+                        for(var l=0;l<thirdLinks.length;l++){
+
+                            thirdLinks[l].href = secondLinks[j+nothirdLinks].href+"&thirdgroup="+(thirdLinks[l].innerHTML.replace("&amp;","-a-")).toLowerCase();
+
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+
+        $(document).ready(function() {
+			$('#tableData').paging({limit:50});
+            //queryStringLinks();
+        });
+        $(document).ready(function(){
+      		$(".dropdown").hover(
+                function() { $('.dropdown-menu', this).fadeIn("fast");
+                },
+                function() { $('.dropdown-menu', this).fadeOut("fast");
+            });
+        });
+
+        function RefreshImage(valImageId) {
+            var objImage = document.images[valImageId];
+            if (objImage == undefined) { return; }
+            var now = new Date(); objImage.src = objImage.src.split('?')[0] + '?x=' + now.toUTCString(); }
+        	$(document).ready(function(){ $("#btnSubmit").click(
+        	function() {
+      			// alert($("#captchacode").val())
+            	$.getJSON("/inc/captcha.asp?validateCaptchaCode=" + $("#captchacode").val() + "&format=json&jsoncallback=?", function(data) {
+                	if (data.status == "1") { $("#moreinfo-form").submit(); result = true; }
+                	else { if (data.session == "0") RefreshImage("imgCaptcha");
+                    alert("Enter captcha code correctly please");
+                    $("#captchacode").focus(); result = false; }
+      			});
+      		});
+      	});
+    

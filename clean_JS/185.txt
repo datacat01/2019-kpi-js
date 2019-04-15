@@ -1,0 +1,819 @@
+
+    function SignUpPop() {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(document.frmSignUp.email.value)){
+            var url = '/template/inc/signup/?email=' + document.frmSignUp.email.value;
+			var popup = window.open(url ,'privacy','height=300,width=300,resizable=no,scrollbars=yes');
+			popup.focus();
+        } else {
+            alert ("Invalid email address, please re-enter");
+        }
+	}
+function css_browser_selector(u){
+var ua=u.toLowerCase(),is=function(t){
+ return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; 
+ css_browser_selector(navigator.userAgent);
+ 
+
+function fnvalidatePhoneNumber(phoneNumbers,id) {
+		  var phonenumber=jQuery(phoneNumbers).val();
+		  if(phonenumber!=null && phonenumber!='' && phonenumber!=' ') { 
+		  phonenumber = phonenumber.trim();
+		  var phonenumber_d=phonenumber.replace(/-/gi,"").replace(/[(]/gi,"").replace(/ /gi,"").replace(/[)]/gi,"");
+			  var regExp1 = "^[0-9]{11,}$";
+			  var phone = (phonenumber_d).match(regExp1);
+			  if (phone) {
+				  jQuery(phoneNumbers).val(phonenumber_d.substring(0,3)+"-"+phonenumber_d.substring(3,6)+"-"+phonenumber_d.substring(6,15));
+				  document.getElementById(id).innerHTML ='* Phone numbers must be 10 digits';
+				  return false;
+			  } else {
+				  var regExp2 = "^[0-9]{10}$";
+				  phone = (phonenumber_d).match(regExp2);
+				  if (phone) {
+					  document.getElementById(id).innerHTML ='';
+					  jQuery(phoneNumbers).val(phonenumber_d.substring(0,3)+"-"+phonenumber_d.substring(3,6)+"-"+phonenumber_d.substring(6,15));
+					  return true;
+				  } 
+				  else {
+					  document.getElementById(id).innerHTML ='<font color="#CC3300">* Phone numbers must be 10 digits</font>';
+					  return false;
+				  }
+			  }	  
+		  } else {
+		  var phone = jQuery(phoneNumbers).attr('id');
+		  if(null!=phone){
+			  if((phone.trim())!='evening_phone' ) {
+				  document.getElementById(id).innerHTML ='* Field cannot be blank';
+				  return false;
+			  } else {
+				  document.getElementById(id).innerHTML ='';
+				  return true;
+			  }
+		  }
+		  }
+	   
+}
+
+function fnvalidform(){
+	var divValue = jQuery("#day_phone");
+	var phoneDivValue = jQuery("#evening_phone");
+	var zipcode = jQuery("#zip");
+	var country=jQuery( "#countryCode option:selected" ).text().trim();
+
+		if(null!=divValue && null!=phoneDivValue && undefined!=divValue.val() && undefined !=phoneDivValue.val()){
+			if(!fnvalidatePhoneNumber(divValue,'msg-day_phone') && !fnvalidatePhoneNumber(phoneDivValue,'msg-evening_phone'))
+				{
+					return false;
+				}
+		}
+		if(null!=divValue && undefined!=divValue.val()){
+			if(!fnvalidatePhoneNumber(divValue,'msg-day_phone'))
+			{
+				return false;
+			}
+		}
+
+		if(null!=phoneDivValue && undefined !=phoneDivValue.val()) {
+			if(!fnvalidatePhoneNumber(phoneDivValue,'msg-evening_phone'))
+			{
+				return false;
+			}
+		}
+		if(null!=zipcode && undefined !=zipcode.val() && zipcode !='' && country !='Canada') {
+			if(!fnvalidatezipValue(zipcode,'msg-zip'))
+			{
+				return false;
+			}
+		}
+		return true; 
+	}
+function fnvalidatezipValue(zipcode,errorMessageDiv){
+	var zipValue = jQuery(zipcode).val();
+	zipValue = zipValue.trim();
+	var ziplength = zipValue.length;
+	
+	if(ziplength == 5) { 
+		return true;  
+	} else {
+		updateDivMessages(errorMessageDiv,'*Please enter a valid 5-digit ZIP Code'); 
+		return false;
+	}
+	
+	}
+
+function fnisNumber(event){ 
+
+	 var keycode = event.which;
+    if (!(event.shiftKey == false && (keycode == 9 || keycode == 46 || keycode == 8 || keycode == 37 || keycode == 39 || (keycode >= 48 && keycode <= 57) || (keycode >= 96 && keycode <= 105)))) {
+        event.preventDefault();
+    }
+}
+
+
+window.gr_pageType ="";
+window.gr_prodId = [];
+window.gr_total = [];
+
+
+function setGoogleRemarketingParam(pagetype,prodid,total){
+	window.gr_pageType = pagetype;
+	window.gr_prodId.push(prodid);
+	window.gr_total.push(total);
+}
+
+
+var enc = encodeURI("Sun Apr 14 07:10:30 EDT 2019");
+    jQuery("#p_soon").val(enc);
+
+
+	function getFloatWithoutComma(strValue){
+		var floatValue;
+		if(strValue){
+			if(strValue.indexOf(',') > -1) {
+				floatValue = parseFloat(strValue.replace(/,/g,''));
+			}
+			else{
+				floatValue = parseFloat(strValue);
+			}
+		}
+		return floatValue;
+	}
+	function removeArrow(){
+		 $("a.maintainHover").removeClass("maintainHover");
+	}	
+function signinRedirectPage(event,thisElement) {
+	event.preventDefault(); // otherwise, it won't wait for the ajax response
+	jQuerylink = jQuery(thisElement);
+	var redirectHref = jQuerylink.data("redirecturi");
+	jQuery.ajax({
+       type: 'POST',
+       data: {searchPage: redirectHref},
+       url:  '/include/searchLogin_page.jsp',
+       success : function() {
+     	 window.location.href = jQuerylink.attr('href');
+          return true;
+       },
+       error : function(xhr,e) {
+    	   var err = eval("(" + xhr.responseText + ")");    	 
+       } 
+   });
+}
+//#651670 Starts
+function signIn(event,thisElement) {
+	event.preventDefault(); // otherwise, it won't wait for the ajax response
+	jQuerylink = jQuery(thisElement);
+	var currentHref = window.location.pathname+window.location.search;
+	jQuery.ajax({
+       type: 'POST',
+       data: {searchPage: currentHref},
+       url:  '/include/searchLogin_page.jsp',
+       success : function() {
+     	 window.location.href = jQuerylink.attr('href');
+          return true;
+       },
+       error : function(xhr,e) {
+    	   console.debug(xhr); 
+   		   console.debug(e);
+    	   var err = eval("(" + xhr.responseText + ")");
+       } 
+   });
+}
+function signOut(event,thisElement) {
+	event.preventDefault(); // otherwise, it won't wait for the ajax response
+	jQuerylink = jQuery(thisElement);
+	var currentHref = window.location.pathname+window.location.search;
+	if (jQuery("#thankscontainer").length > 0){
+		currentHref = "/template/index/";
+	}
+	if(window.location.href.indexOf('/wf') >= 0){
+		currentHref = '/template/index/';
+	}
+	jQuery.ajax({
+       type: 'POST',
+       data: {currentPage: currentHref},
+       url:  '/include/current_page.jsp',
+       success : function() {
+              window.location.href = jQuerylink.attr('href');
+              return true;
+          },
+          error : function(xhr,e) {
+       	   console.debug(xhr); 
+      		   console.debug(e);
+       	   var err = eval("(" + xhr.responseText + ")");
+          } 
+    });
+}
+//#651670 Ends
+
+
+function isWhiteSpace1(s) { 
+	 var query=document.getElementById("searchbxquery").value;
+	 query=query.trim();
+	 document.getElementById("searchbxquery").value=query;
+	s = s.replace(/[^\w\s\][^,]/gi, ''); 
+	for(var i = 0; i < s.length; i++) {        
+		var c = s.charAt(i);        
+		if ((c != ' ') && (c != '\n') && (c != '\t')) 
+		return false;
+        }    
+	return true; 
+}
+function chkWhiteSpace(f) { 
+	var msg;    var empty_fields = "";    var errors = "";    if (isWhiteSpace1(f.query_string.value))    {      alert("Please enter your query first!");	  return false;    }         return true;}
+
+
+        var $menu = $(".dropdown-menu");
+        $menu.menuAim({
+            activate: activateSubmenu,
+            deactivate: deactivateSubmenu
+        });
+   
+        function activateSubmenu(row) {
+            var $row = $(row),
+                submenuId = $row.data("submenuId"),
+                $submenu = $("#" + submenuId),
+                height = $menu.outerHeight(),
+                width = $menu.outerWidth();
+            // Show the submenu
+            $submenu.css({
+                display: "block",
+                top: -1,
+                left: width - 3,  // main should overlay submenu
+                height: height - 4  // padding for main dropdown's arrow
+            });
+            // Keep the currently activated row's highlighted look
+            $row.find("a").addClass("maintainHover");
+        }
+        function deactivateSubmenu(row) {
+            var $row = $(row),
+                submenuId = $row.data("submenuId"),
+                $submenu = $("#" + submenuId);
+            // Hide the submenu and remove the row's highlighted look
+            $submenu.css("display", "none");
+            $row.find("a").removeClass("maintainHover");
+        }
+        
+        jQuery(".dropdown-menu li").click(function(e) {
+            e.stopPropagation();
+        });
+        jQuery(document).click(function() {
+            jQuery(".popover").css("display", "none");
+            jQuery("a.maintainHover").removeClass("maintainHover");
+        });        
+        function updateSearchCombo(){
+    		var El_optVal = $('.searchOptions_SelectedVal');
+    		var optSelectedName = $(".searchOptions").find(":selected").text();
+    		El_optVal.html(optSelectedName+" <span>\u25BC</span>");
+    		$('.search').width(395-El_optVal.width());
+    		$(".searchOptions").width(El_optVal.width());
+    		$('#searchCatSel_ip').val($(".searchOptions").val() );
+        }       
+        updateSearchCombo();
+		$('.searchOptions').change(function(){
+    		updateSearchCombo();
+    	});
+
+;(function($, window, undefined) {
+    var $allDropdowns = $();
+    $.fn.dropdownHover = function(options) {
+
+        $allDropdowns = $allDropdowns.add(this.parent());
+
+        return this.each(function() {
+            var $this = $(this),
+                $parent = $this.parent(),
+                defaults = {
+                    delay: 500,
+                    instantlyCloseOthers: true
+                },
+                data = {
+                    delay: $(this).data('delay'),
+                    instantlyCloseOthers: $(this).data('close-others')
+                },
+                settings = $.extend(true, {}, defaults, options, data),
+                timeout;
+
+            $parent.hover(function(event) {
+                // so a neighbor can't open the dropdown
+                if(!$parent.hasClass('open') && !$this.is(event.target)) {
+                    return true;
+                }
+
+                if(shouldHover) {
+                    if(settings.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
+                    
+                    window.clearTimeout(timeout);
+                    $parent.addClass('open');
+                }
+            }, function() {
+                if(shouldHover) {
+                    timeout = window.setTimeout(function() {
+                        $parent.removeClass('open');
+                    }, settings.delay);
+                }
+            });
+            // this helps with button groups!
+            $this.hover(function() {
+                if(shouldHover) {
+                    if(settings.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
+
+                    window.clearTimeout(timeout);
+                    $parent.addClass('open');
+                }
+            });
+            // handle submenus
+            $parent.find('.dropdown-submenu').each(function(){
+                var $this = $(this);
+                var subTimeout;
+                $this.hover(function() {
+                    if(shouldHover) {
+                        window.clearTimeout(subTimeout);
+                        $this.children('.dropdown-menu').show();
+                        // always close submenu siblings instantly
+                        $this.siblings().children('.dropdown-menu').hide();
+                    }
+                }, function() {
+                    var $submenu = $this.children('.dropdown-menu');
+                    if(shouldHover) {
+                        subTimeout = window.setTimeout(function() {
+                            $submenu.hide();
+                        }, settings.delay);
+                    } else {
+                        // emulate Twitter Bootstrap's default behavior
+                        $submenu.hide();
+                    }
+                });
+            });
+        });
+    };
+    // helper variables to guess if they are using a mouse
+    var shouldHover = false,
+        mouse_info = {
+            hits: 0,
+            x: null,
+            y: null
+        };
+    $(document).ready(function() {
+        // apply dropdownHover to all elements with the data-hover="dropdown" attribute
+        $('[data-hover="dropdown"]').dropdownHover();
+
+        // if the mouse movements are "smooth" or there are more than 20, they probably have a real mouse
+        $(document).mousemove(function(e){
+            mouse_info.hits++;
+            if (mouse_info.hits > 20 || (Math.abs(e.pageX - mouse_info.x) + Math.abs(e.pageY - mouse_info.y)) < 4) {
+                $(this).unbind(e);
+                shouldHover = true;
+            }
+            else {
+                mouse_info.x = e.pageX;
+                mouse_info.y = e.pageY;
+            }
+        });
+    });
+    // for the submenu to close on delay, we need to override Bootstrap's CSS in this case
+    var css = '.dropdown-submenu:hover>.dropdown-menu{display:none}';
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    $('head')[0].appendChild(style);
+})(jQuery, this);
+
+
+function addPscForHD(elem,prodId,parentQty,count,itemPrice){
+	jQuery(".pscpricediv" + prodId).css("display","none");
+	 var addPscLink = "#idPsc"+prodId+count;
+	 var pscPluValue = elem.options[elem.selectedIndex].value;
+	 if(pscPluValue == "/ShopCartServlet?action=display_cart") {
+		 jQuery(document.getElementById(addPscLink)).removeAttr("href");
+		  return false;
+	  }
+	  else {
+	 	 //document.getElementById(addPscLink).href=pscPluValue;
+	 	 jQuery("#errPsc"+prodId).css("display","none");
+		 var indexOfChar = pscPluValue.indexOf('=');
+		 var indexOfChar1 = pscPluValue.indexOf('-');
+		 if (indexOfChar != -1 && indexOfChar1 != -1) 
+		 var pscpPu = pscPluValue.substring(indexOfChar,indexOfChar1);
+		 if(pscpPu != null) {
+			 var replacePlu = pscpPu.replace("=" , " ");
+			 var formattedPlu = replacePlu.trim();
+			 jQuery("#"+formattedPlu+prodId).css("display","block");
+			 var pscPrice = jQuery("#"+formattedPlu+prodId).text();
+			 var formattedPscPrice = pscPrice.substr(1);
+			 var itemPriceStr = itemPrice.toString();
+			 var totalPrice = ((getFloatWithoutComma(itemPriceStr)+getFloatWithoutComma(formattedPscPrice)).toFixed(2)); 
+			 jQuery(addPscLink).attr("href","/ShopCartServlet?purchase="+formattedPlu+"&parentPlu="+prodId+"&sequence="+parentQty+"&actualSubtotal="+totalPrice+"&editSelectPart=editPart&checkoutClick=true&coverageStatus=addCoverage");
+		 }
+	  }
+}
+
+
+function applyCoupon(couponsApp,prodExPrice,prodId){
+	var couponCode = document.getElementById("couponCode").value;
+	var data = {id:prodId,couponNum:couponCode,price:prodExPrice,coupons:couponsApp};
+	if (couponCode != null) {
+	        if (couponCode.length == 0) {
+	        	document.getElementById('validationerroresdPromo').innerHTML = "<div><span class='col-xs-12 alert-box error font_med'><span>Error: </span>Please Enter Promo Code</span></div>";
+	            return false;
+	        } else {
+	        	jQuery("#promoapply").html("<button data-role='none' class='btn btn-success btn-sm btn_space btn_main font_med'><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Apply...</button>");
+	        	jQuery.ajax({
+	 	        	type: 'POST',
+	 	        	data: data,
+	 	       		url: '/template/inc/price/applyCouponOnPopUp.jsp',
+	 	            datatype:'text',
+	 	            cache:false
+		 		  }).done(function ( response ) {
+		 			   var resdata = response.trim();
+		 			   if(resdata.indexOf("Success=")>-1){
+		 				  	var preString = "Success";
+		 				  	var searchString = "=";
+		 				  	var newPreString = "Disc";
+		 				  	var newPreIndex = resdata.indexOf(newPreString);
+		 				  	var coups = resdata.substring(0,newPreIndex);
+		 				  	var newSearchIndex = newPreIndex + resdata.substring(newPreIndex).indexOf(searchString);
+		 				  	var preIndex = resdata.indexOf(preString);
+		 				  	var searchIndex = preIndex + resdata.substring(preIndex).indexOf(searchString);
+		 				  	var extPrice = resdata.substring(newSearchIndex+1,preIndex);
+		 				  	extPrice = parseFloat(Math.round(extPrice * 100) / 100).toFixed(2);
+		 				  	var discPrice = prodExPrice - extPrice;
+		 				  	discPrice = parseFloat(Math.round(discPrice * 100) / 100).toFixed(2);
+		 				  	document.getElementById('esdCoupExt').innerHTML = "<Strong>Ext Price : $"+extPrice+"</Strong>";
+		 				  	document.getElementById('esdCoupDisc').innerHTML = "<Strong style='color:green;'>You Saved : $"+discPrice+"</Strong>";
+		 				  	resdata = resdata.substring(searchIndex+1,resdata.length);
+		 				  	if(coups != null && coups != "" && coups.indexOf(",")>-1) {
+		 				  		coups = coups.substring(0, coups.length - 1);
+		 				  	}
+		 				  	jQuery("#promoapply").html("<a href='javascript:void(0);' id='couponClick' onclick='return applyCoupon(\""+coups+"\","+prodExPrice+","+prodId+")' data-ajax='false'><button id='applyPromo' data-role='none' class='btn btn-success btn-sm btn_space btn_main font_med' value='apply'> Apply </button></a>");
+		 					document.getElementById('validationerroresdPromo').innerHTML = "<div><span class='col-xs-12 font_med alert alert-success'> Promo Code applied successfully.</span></div>";  
+		 					document.getElementById("couponCode").value='';
+		 					var loginlink = jQuery('#esdloginlink').attr('href');
+		 					if(loginlink.indexOf("EBC=")>-1){
+		 						var ebcIndex = loginlink.indexOf("&EBC");
+		 						loginlink = loginlink.substring(0,ebcIndex);
+		 					}
+		 					loginlink = loginlink+"&EBC="+resdata;
+		 					jQuery('#esdloginlink').attr('href',loginlink);
+		 					return true;
+		 			    }
+		 				else if(resdata.indexOf("Success=")<0){
+		 					jQuery("#promoapply").html("<a href='javascript:void(0);' id='couponClick' onclick='return applyCoupon(\""+couponsApp+"\","+prodExPrice+","+prodId+")' data-ajax='false'><button id='applyPromo' data-role='none' class='btn btn-success btn-sm btn_space btn_main font_med' value='apply'> Apply </button></a>");
+		 					document.getElementById('validationerroresdPromo').innerHTML = "<div><span class='col-xs-12 alert-box error font_med'><span>Error: </span> "+resdata+"</span></div>";
+		 					return false;
+		 				}
+		 				else{
+		 					jQuery("#promoapply").html("<a href='javascript:void(0);' id='couponClick' onclick='return applyCoupon(\""+couponsApp+"\","+prodExPrice+","+prodId+")' data-ajax='false'><button id='applyPromo' data-role='none' class='btn btn-success btn-sm btn_space btn_main font_med' value='apply'> Apply </button></a>");
+		 					document.getElementById('validationerroresdPromo').innerHTML = "<div><span class='col-xs-12 alert-box error font_med'><span>Error: </span> System Error. Please Try Again</span></div>";
+		 					return false;
+		 				}
+		 		  });
+	        }
+	 }
+	 else{
+		 document.getElementById('validationerroresdPromo').innerHTML = "<div><span class='col-xs-12 alert-box error font_med'><span>Error: </span>Please Enter Promo Code</span></div>";
+         return false;
+	 }
+}
+
+function addPsc(elementId,x,prod_id){
+	jQuery(".pscpricediv" + prod_id).css("display","none");
+	 y = "idPsc" + prod_id + x;
+	 
+	  if ( elementId.value == "/ShopCartServlet?action=display_cart") {
+		  jQuery(document.getElementById(y)).removeAttr("href");
+		  return false;
+	  }
+	  else {
+	 document.getElementById(y).href=elementId.value;
+	 jQuery("#errPsc"+prod_id).css("display","none");
+	  }
+	  
+	  var pscPluValue = elementId.value ;
+	 var indexOfChar = pscPluValue.indexOf('=');
+	 var indexOfChar1 = pscPluValue.indexOf('-');
+	 if (indexOfChar != -1 && indexOfChar1 != -1) 
+	 var pscpPu = pscPluValue.substring(indexOfChar,indexOfChar1);
+	 if(pscpPu != null) {
+	 var replacePlu = pscpPu.replace("=" , " ");
+	 jQuery("#"+replacePlu.trim()+prod_id).css("display","block"); 
+	 }
+	 return false;
+}
+function noPsc(elementId,x,prod_id){
+	  if ( elementId.value == "/ShopCartServlet?action=display_cart") {
+		  jQuery("#errPsc"+prod_id).show();
+	        return false;
+	        
+	    }
+}
+function addToCartBtnHome(plu_id ){
+
+			var cartUrl = '/template/inc/price/addToCartModal.jsp?sku='+plu_id;
+			jQuery("#addToCartModal").find(".modal-content").load(cartUrl);		
+	
+}
+
+function addToCartBtnSearchDownload(plu_id ){
+	 var cartUrl = '/template/inc/price/add2DownloadPopup.jsp?sku='+plu_id;
+	 var chkMedia = 'Desktop' ;
+	 	/*  $.ajax({
+	       type: "GET",
+	       url:"/ShopCartServlet?purchase=" + plu_id,
+	       dataType: "html"}).done(function (data) {  */
+	    	  
+	    	  jQuery("#addToCartModal").find(".modal-content").load(cartUrl);
+	    	 /* });  */
+	 
+}
+//#644953 (start)
+function addToCartBtnClickDetail() {
+	var first_name = jQuery("#form-firstName").val(jQuery.trim(jQuery("#form-firstName").val()));
+	var last_name = jQuery("#form-lastName").val(jQuery.trim(jQuery("#form-lastName").val()));
+	var email = jQuery("#form-email").val(jQuery.trim(jQuery("#form-email").val()));
+	var plu = jQuery("#col_sku").val();
+	var fromCFDPopup = jQuery("#fromClickForDetailForm").val();
+	var isValidated = validateClickDetailForm(first_name, last_name, email); 
+	 if(isValidated === true){
+		jQuery("#clickForDet").val("false");
+		addToCartBtnSearchClickDetail(plu, first_name, last_name, email, fromCFDPopup);
+		jQuery("#addToCartModal").modal('show');
+	}else {
+		jQuery("#clickForDetailsModal").modal('show');
+		return false;
+	}   
+}
+
+ function validateClickDetailForm(first_name, last_name, email) {
+	var first_name = jQuery("#form-firstName").val();
+	var last_name = jQuery("#form-lastName").val();
+	var email = jQuery("#form-email").val();
+	var letters ="^[a-zA-Z]+$";
+	var emailRegex = new RegExp(/^\w+([\.-]\w+)*@\w+([\.-]\w+)*(\.(\w{2,12}))+$/);    //#690178
+    var valid = emailRegex.test(email);
+	var isFieldsValidated = true;
+    //apply validations on all fields.
+    if (!first_name.match(letters) || first_name.length == 0) {
+		isFieldsValidated = false;
+    	jQuery("#error_msg_firstName").html("*Please enter your first name.");
+    	jQuery("#error_msg_firstName").css("color","red");
+    	jQuery("#error_msg_firstName").css("font-size","11px");
+		jQuery('firstName').focus();		
+    }
+    else {
+    	jQuery("#error_msg_firstName").text("");    	
+    }
+    if(!last_name.match(letters) || last_name.length == 0) {
+		isFieldsValidated = false;
+    	jQuery("#error_msg_lastName").html("*Please enter your last name.");
+    	jQuery("#error_msg_lastName").css("color","red");
+    	jQuery("#error_msg_lastName").css("font-size","11px");
+    	jQuery('lastName').focus();
+    }
+    else {
+    	jQuery("#error_msg_lastName").text("");    	
+    }
+    if(!email.match(emailRegex) || email.length == 0){
+		isFieldsValidated = false;
+    	jQuery("#error_msg_email").html("*Please enter valid email address.");
+    	jQuery("#error_msg_email").css("color","red");
+    	jQuery("#error_msg_email").css("font-size","11px");
+    	jQuery('email').focus();
+    }
+    else {
+    	jQuery("#error_msg_email").text("");    	
+    }
+	if (isFieldsValidated) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function addToCartBtnSearchClickDetail(plu_id, first_name, last_name, email, fromCFDPopup) {
+		jQuery("#clickForDetailsModal").modal('hide');
+		var currentHref = window.location.href;
+		var base_url = currentHref.substring(0, currentHref.indexOf("com") + 3);
+		var chkMedia = 'Desktop' ;
+		
+		var item_quantity = jQuery(".itm_qnty").val();
+		 var psc_plu = jQuery("#PSC_plu").val();
+		 var desktopCartUrl =null;
+		 var mobileCartUrl =null;
+		if(item_quantity != null){
+			if(psc_plu != null && psc_plu.length != 0){
+				desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id +"&firstname=" + first_name +"&lastname=" + last_name +"&email=" + email + "&fromClickForDetailForm=" + fromCFDPopup+"&item_qty="+item_quantity+"&purchase="+psc_plu+"&isPscExist=true";
+				
+			}else{
+				desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id +"&firstname=" + first_name +"&lastname=" + last_name +"&email=" + email + "&fromClickForDetailForm=" + fromCFDPopup+"&item_qty="+item_quantity;
+				
+			}
+	 }else{
+		 desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id +"&firstname=" + first_name +"&lastname=" + last_name +"&email=" + email + "&fromClickForDetailForm=" + fromCFDPopup;
+		 
+	 }
+		
+		 	 jQuery.ajax({
+		       type: "POST", 
+			   contentType: "text/html",
+		       url: base_url+desktopCartUrl,
+		       dataType: "html"
+		     }).done(function (data) {
+		    	 jQuery("#addToCartModal").find(".modal-content").html(data);		
+		   	 }); 
+		 	 
+	}
+//#644953 (end)
+
+	function addToCartBtnSearch(plu_id) {
+		 //var cartUrl = '/template/inc/price/addToCartModal.jsp?sku='+plu_id;  
+		 var item_quantity = jQuery(".itm_qnty").val();
+		 var psc_plu = jQuery("#PSC_plu").val();
+		 var desktopCartUrl =null;
+		 var mobileCartUrl =null;
+		if(item_quantity != null){
+			if(psc_plu != null && psc_plu.length != 0){
+				desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id+"&item_qty="+item_quantity+"&purchase="+psc_plu+"&isPscExist=true";
+			}else{
+				desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id+"&item_qty="+item_quantity;
+			}
+	 }else{
+		 desktopCartUrl = "/ShopCartServlet?action=add_item&form_plu=" + plu_id;
+	 } 
+		 
+			 jQuery.ajax({
+		       type: "GET",
+		       url:desktopCartUrl,
+		       dataType: "html"
+		     }).done(function (data) {
+		    		// $("#addToCartModal").find(".modal-content").load(cartUrl);	
+	    		  	jQuery("#addToCartModal").find(".modal-content").html(data);		
+		   	 }); 
+		 	 
+	}
+//589760
+ function addToCartBtnHomeNew(plu_id,neareststorename,defaultstoreno){
+	// var cartUrl = '/template/inc/price/addToCartModal.jsp?sku='+plu_id+'&neareststorename='+neareststorename+'&defaultstoreno='+defaultstoreno;		
+	var cartUrl  = "/ShopCartServlet?action=add_item&form_plu=" + plu_id+'&neareststorename='+neareststorename+'&defaultstoreno='+defaultstoreno;	
+	 	jQuery("#addToCartModal").find(".modal-content").load(cartUrl);	
+		
+	} 
+ 	
+ function addToCartBtnSearchNew(plu_id,neareststorename,defaultstoreno){
+		 
+   	 		jQuery.ajax({
+		       type: "GET",
+		       url:"/ShopCartServlet?action=add_item&form_plu=" + plu_id+'&neareststorename='+neareststorename+'&defaultstoreno='+defaultstoreno,
+		       dataType: "html"}).done(function (data){ 
+		    	   jQuery("#addToCartModal").find(".modal-content").html(data);  		
+		    	 });  
+   	  		
+	 } 
+ //589760
+ function removeItemFromCart(plu_id){
+	 jQuery.ajax({
+	       type: "GET",
+	       url:"/ShopCartServlet?action=remove_item&form_plu=" + plu_id,
+	       dataType: "html"}).done(function (data) {
+	    	   window.location.reload();
+	    	 }); 
+ }
+
+ function removeHomeDeliveryItemFromCart (plu_id,itmQty,sequence){
+	 jQuery.ajax({
+	 		type: "GET",
+			data: {
+			    form_plu: plu_id,
+			    quantity: itmQty,
+			    sequence:sequence
+		    },
+			url:"/ShopCartServlet?action=change_quantity",
+			dataType: "html"
+			}).done(function (data){
+				  //window.location.reload();
+				  window.location.href="/ShopCartServlet?action=display_cart";
+			});
+	}
+
+ 
+ function refreshPage(){		
+	 window.location.reload();
+ }
+
+ function updateCartCount() {
+	 var itemsAdded = jQuery(".countCart").text();
+	 jQuery("#cartCountDiv").text(itemsAdded);
+	 /* $("#cartCountDiv").load(" #cartCount"); */
+ }
+ 
+ 
+
+	
+
+
+
+function goToMobile() {
+	event.defaultPrevented;
+	var currentHref = window.location.href;
+	currentHref = currentHref.substring(currentHref.lastIndexOf("/")+1);
+	var href = jQuery("#mobile_link").attr("href")+"?page="+currentHref;
+	jQuery("#mobile_link").attr('href',href);
+}
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1014029178;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "h0XUCIbBvAMQ-rbD4wM";
+var google_remarketing_only = true;
+var google_custom_params = window.google_tag_params;
+var google_conversion_value = 0;
+/* ]]> */
+
+
+
+
+ var _lrc = _lrc || [];
+ _lrc.push(['aw_lrid', '386056']);
+ _lrc.push(['ds_lrid', '386066']);
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript';
+ ga.src = '//cdn.rlcdn.com/js/ga.js?' + new Date().getTime();
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
+(function () {
+var tagjs = document.createElement("script");
+var s = document.getElementsByTagName("script")[0];
+tagjs.text = "{'site':'gIgF3sY'}";
+tagjs.async = true;
+tagjs.src = "//s.btstatic.com/tag.js";
+s.parentNode.insertBefore(tagjs, s);
+}());
+
+
+	try {
+		var pageTracker = _gat._getTracker("UA-6796986-1");
+		pageTracker._setDomainName("frys.com");
+		pageTracker._setAllowLinker(true);
+		pageTracker._trackPageview();
+	} catch(err) {}
+
+
+$(function(){
+	
+	var homepageMainSlider = jQuery('.homepage-slider-main');
+	homepageMainSlider.slick({
+	    dots: true,
+	    lazyLoad: 'ondemand',
+	    slidesToShow: 1,
+	    slidesToScroll: 1,
+	    fade: true,
+	    autoplay: true,
+	    arrows:false,
+	    autoplaySpeed: 5000,
+	    infinite: true,
+	    pauseOnFocus: false
+	 });
+	
+	var dDealSlider = jQuery('#daily-deals-wrapper');
+	dDealSlider.slick({ 
+		lazyLoad: 'ondemand',            
+	    slidesToShow: 4,
+	    slidesToScroll: 4,
+		infinite: true,
+	    variableWidth: true,
+	    arrows:true
+	});
+	
+	 var dHotSlider = jQuery('#hot-deals-wrapper');
+	 dHotSlider.slick({   
+        lazyLoad: 'ondemand',	  
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        variableWidth: true,
+        arrows:true
+	 });       
+	 
+	    
+	var dNewSlider = jQuery('#new-deals-wrapper');
+	dNewSlider.slick({   
+        lazyLoad: 'ondemand',	  
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        variableWidth: true,
+        arrows:true
+	});
+});
+     
+	
+

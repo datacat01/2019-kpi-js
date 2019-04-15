@@ -1,0 +1,315 @@
+
+        dataLayer = [];
+        dataLayer.push({ "pageTitle": "официальный сайт бытовой техники dyson на украине" });
+        dataLayer.push({ "visitorLoginState": "false" });
+        dataLayer.push({ "visitorId": "00000000-0000-0000-0000-000000000000" });
+    
+        dataLayer.push({ "virtualPagePath": "" });
+    
+        dataLayer.push({ "gtmTimeout": "100" });
+
+
+            
+        
+    
+
+
+               
+    
+
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', fn);
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState != 'loading')
+        fn();
+    });
+  }
+}
+ready(function() {
+     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|bada/i.test(navigator.userAgent) ) {
+		var container = document.getElementsByClassName("outer-container");
+
+			for(i=0; i<container.length; i++)
+			{
+				var con2 = container[i].getElementsByClassName("video-js BrightcoveExperience")[0];
+				con2.style.opacity = "1";
+				con2.getElementsByClassName("vjs-tech")[0].style.opacity = "1"
+			}
+       }
+});
+
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+					            (function () {
+					                var cx = '014277226867154973489:10kbyji_nc4';
+					                var gcse = document.createElement('script');
+					                gcse.type = 'text/javascript';
+					                gcse.async = true;
+					                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+								        '//www.google.com/cse/cse.js?cx=' + cx;
+					                var s = document.getElementsByTagName('script')[0];
+					                s.parentNode.insertBefore(gcse, s);
+					            })();
+					        
+
+
+    jQuery('.clearable').clearSearch();
+
+    var searchUrl = '';
+
+    function magentoSearch() {
+
+        if (jQuery('.magento-search').val() != '') {
+            window.location.href = searchUrl + '?q=' + htmlEncode(jQuery('.magento-search').val());
+        }
+    }
+
+    function htmlEncode(value) {
+        return jQuery('<div/>').text(value).html();
+    }
+
+
+
+
+    (function () {
+
+        var preloadTrigger = 5, allowCSS3 = true;
+        if (jQuery('html').hasClass('ipad')) {
+
+            jQuery('.hideFromTablet').next('script').remove();
+            jQuery('.hideFromTablet').remove();
+
+            preloadTrigger = 1; // Only load 1 slide each side of the viewport
+            allowCSS3 = false;
+        }
+
+
+
+        var slidercarouselCarousel = $('#carouselCarousel').royalSlider({
+            keyboardNavEnabled: false,
+            autoScaleSlider: false,
+            imageScaleMode: 'none',
+            slidesSpacing: 0,
+            navigateByClick: false,
+            addActiveClass: true,
+            allowCSS3: allowCSS3,
+            arrowsNavAutoHide: false,
+            arrowsNav: true,
+            numImagesToPreload: preloadTrigger,
+            controlNavigation: 'bullets',
+            loop: false,
+            sliderTouch: true,
+            sliderDrag: true,
+            transitionType: 'move',
+            transitionSpeed: 600,
+            fadeinLoadedSlide: false,           
+            autoPlay: {
+                enabled: true,
+                pauseOnHover: true,
+                delay: 5000
+                }
+        }).data('royalSlider');
+        
+        slidercarouselCarousel.ev.on('rsAfterSlideChange', function(event) {
+            $(window).trigger("resize", [ { responsiveHeaderShouldIgnore: true } ]);
+        });
+            
+        jQuery('#carouselCarousel .rsArrowLeft').hide();
+        jQuery('#carouselCarousel .rsArrowRight').show();
+        
+        if (4 == 1) {
+            jQuery('#carouselCarousel .rsArrowRight').hide();
+        }
+
+        jQuery('#carouselCarousel').find('.rsOverflow').append("<div id='carouselCarouselleft'></div>");
+        jQuery('#carouselCarousel').find('.rsOverflow').append("<div id='carouselCarouselright'></div>");
+
+        var carouselName = jQuery('carouselCarousel').attr('id');
+        var cLeft = jQuery("#carouselCarouselleft");
+        var cRight = jQuery("#carouselCarouselright");
+        var carouselNameFromHiddenField = $("input[id$='hiddenfieldcarouselname']").val();
+        if (1 == "0") {
+            var carouselArrows = new AnimateCarouselArrows(jQuery(cLeft), jQuery(cRight), jQuery('#carouselCarousel'));
+        }
+
+        // push the slider into a collection
+        dyson.storage.sliders.push(slidercarouselCarousel);
+        var collectionIndex = dyson.storage.sliders.length - 1;
+
+        // set up the video slides, if they exist
+        dyson.bcVideoJs.videoSlideSetup(slidercarouselCarousel, collectionIndex);
+
+        dyson.bcVideoJs.videoBlockSetup(slidercarouselCarousel);
+
+        slidercarouselCarousel.ev.on('rsBeforeMove', function (event, type, userAction) {
+            // User initiated slide change (not LTR autoplay).
+            // Not any RTL events as they are all considered user actions as autoplay is re-created calling slider.prev()
+            if ( userAction && !isRtl ) {
+                var slideId = slidercarouselCarousel.currSlideId;
+                if (type == 'next') {
+                    slideId++;
+                } else if (type == 'prev') {
+                    slideId--;
+                } else {
+                    slideId = type;   
+                }
+                TrackCarouselSlideChange(slideId);
+            }                             
+        });
+
+        function TrackCarouselSlideChange(slideId) {
+            if (slidercarouselCarousel.slides[slideId] !== undefined) {
+                var slidename = slidercarouselCarousel.slides[slideId].content.attr('data-trackingname');
+                dyson.tracking.trackCarouselSlideChange('carouselCarousel', slidename);
+            }
+        }
+
+        function BindRtlChangeSlideEvents() {
+            $('#carouselCarousel .rsArrow, #carouselCarousel .rsBullet, #carouselCarousel .arrows-container').on('click', function() {
+                clearInterval(rtlAutoplayInterval);
+
+                thisSlider.ev.one('rsAfterSlideChange', function() {
+                    TrackCarouselSlideChange(thisSlider.currSlideId);
+                });
+            });
+
+            thisSlider.ev.on('rsDragStart', function() {
+                clearInterval(rtlAutoplayInterval);
+                var prevSlideId = thisSlider.currSlideId;
+                thisSlider.ev.one('rsAfterSlideChange', function() {
+                    if (thisSlider.currSlideId !== prevSlideId) {
+                        TrackCarouselSlideChange(thisSlider.currSlideId);
+                    }
+                });
+            });
+        }
+
+        slidercarouselCarousel.ev.on('rsAfterSlideChange', function(event) {
+
+                  if(1 == "0") {
+                    carouselArrows.CarouselAfterSlideEvent();
+                }
+          
+            function findCategoryObject(object) {
+                var elem = object;
+                if ("categoryRangeCarousel" == elem.attr("id")) {
+                    return true;
+                }
+                if (elem.attr("class") == "wrapper_content") {
+                    return false;
+                }
+                return findCategoryObject(elem.parent());
+            }
+            
+            if(event.currentTarget.currSlide != undefined)
+            {
+                var categoryObj = findCategoryObject($(event.currentTarget.currSlide.content));
+                if (categoryObj) {
+                    var index = slidercarouselCarousel.currSlideId;
+                    index++;
+                    var categoryLinkClass = ".categoryLink" + index;
+                    $(categoryLinkClass).trigger('click');
+                }
+            }
+            
+
+            if (slidercarouselCarousel.currSlideId == (4 - 1)) {
+                jQuery('#carouselCarousel .rsArrowRight').hide();
+            } else {
+               
+                jQuery('#carouselCarousel .rsArrowRight').show();
+            }
+            if (slidercarouselCarousel.currSlideId == 0) {
+                jQuery('#carouselCarousel .rsArrowLeft').hide();
+                    
+                
+            } else {
+                 jQuery('#carouselCarousel .rsArrowLeft').show();
+             
+                    
+                
+            }
+            jQuery(".videoSlide").parent(".rsSlide").css('overflow','visible');
+        });
+
+        if ("true" === "Light") {
+            jQuery("#carouselCarousel.rsArrowIcn").addClass("greyImage");
+
+        }
+
+        var isRtl = $('.wrapper_main').attr('dir') === 'rtl';
+        if (isRtl) {
+            var thisSlider = slidercarouselCarousel;
+            var lastItemIndex = 4 - 1;
+            var oldSpeed = thisSlider.st.transitionSpeed;
+            thisSlider.st.transitionSpeed = 0;
+            thisSlider.goTo(lastItemIndex);
+            setTimeout(function() {
+                thisSlider.st.transitionSpeed = oldSpeed;
+                var shouldAutoplay = true;
+                if (shouldAutoplay) {
+                    StartRtlAutoplay();
+                }
+                BindRtlChangeSlideEvents();
+            }, 10);
+        }
+
+        var rtlAutoplayInterval;
+        function StartRtlAutoplay()
+        {
+            var thisSlider = slidercarouselCarousel;
+
+            rtlAutoplayInterval = setInterval(function() {
+                if (thisSlider.currSlideId === 0) {
+                    var lastItemIndex = 4 - 1;
+                    thisSlider.goTo(lastItemIndex);
+                } else {
+                    thisSlider.prev();
+                }
+            },
+            5000);
+        }
+    })();
+
+    jQuery(document).ready(function() {
+        jQuery("#carouselCarousel.isStaticTitle .rsOverflow")
+            .prepend("<div class=\"staticSliderTitle\"><h2 style=\"text-align: \"></h2></div>");
+    });
+
+
+            dyson.animation.init();
+        
+
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+
+
+        jQuery(document).ready(function () {
+            jQuery('body').find('*').not('script, noscript, form').css('font-family', 'Arial');
+        });
+    

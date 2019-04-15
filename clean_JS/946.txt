@@ -1,0 +1,368 @@
+
+
+
+        // Convert the WCParam object which contains request properties into javascript object
+        var WCParamJS = {
+            "storeId":'10051',
+            "catalogId":'10001',
+            "langId":'-1',
+            "pageView":'',
+            "orderBy":'',
+            "orderByContent":'',
+            "searchTerm":'',
+            "businessUnit ":'FMS-US'
+        };
+        var storeNLS = null; // Used inside js files
+
+        //Summary: Returns the absolute URL to use for prefixing any Ajax URL call.
+        //Description: Dojo does not handle the case where the parameters in the URL are delimeted by the "/" forward slash. Therefore, in order to
+        //             workaround the issue, all AJAX requests must be done using absolute URLs rather than relative.
+        //Returns: The absolute URL to use for prefixing any Ajax URL call.
+       
+    
+
+	var mboxData = {
+			"storeNumber": '411',
+			"pageType": 'PortalHomePage',
+			"businessUnit": 'FMS-US',
+			"language": 'en'
+	};
+
+
+        dojo.addOnLoad(function() {
+			checkUnsupportedBrowser();	
+			readAkamaiCookieValues();	
+	    }); 
+    
+
+<!--
+var MasterTmsUdo = {
+"abandon": {
+"promo_id": "1",
+"platform": "",
+"school": "",
+"school_img": "",
+"store_name": "",
+"store_id": "",
+"department": "",
+"category": "",
+"sub_category": "",
+"productList": "",
+"prod_imgs": "",
+"source": "",
+"customer_type": ""
+}
+};
+//-->
+
+
+
+	
+	      
+	var cart = {} ;
+    var siteSearch = {} ;
+    var event = [] ;
+    var product = [] ;
+    var productReference = [] ;
+
+      if (typeof MasterTmsUdo == "undefined"){var MasterTmsUdo="";}
+      if (typeof WCParamJS == "undefined"){var WCParamJS="";}
+      
+      var department="";
+      var category="";
+      var subcategory="";
+      var conversantPromoId ="";
+      var productList = "";
+      var productImages ="";
+      
+      if (MasterTmsUdo!=""){
+      
+       if (typeof MasterTmsUdo.transaction1 == "undefined") {
+         department=safeEncodeHtml(MasterTmsUdo.abandon.department);
+         category=safeEncodeHtml(MasterTmsUdo.abandon.category);
+         subcategory=safeEncodeHtml(MasterTmsUdo.abandon.sub_category);
+         conversantPromoId =MasterTmsUdo.abandon.promo_id;
+          productList = MasterTmsUdo.abandon.productList;
+         productImages = MasterTmsUdo.abandon.prod_imgs;
+         }
+         
+         else 
+          conversantPromoId =MasterTmsUdo.transaction1.promo_id;
+      }
+   
+   	  var common = {
+             "pageName":'',
+             "follettStoreNumber":'411',
+             "schoolImg":'https://images.efollett.com/htmlroot/images/templates/storeLogos/CA/411.gif',
+             "storeName":'eFollett',
+             "businessUnit":'FMS-US',
+             "department":department,
+             "category":category,
+             "subcategory":subcategory,
+             "schoolName":'',
+             "conversantPromoId":conversantPromoId,
+             "productList":productList,
+             "productImages":productImages,
+             "signInStatus":'not signed in',
+             "tlSessionId":'1BDDC15B0264B2A41D727294FF2A3113',
+             "crossSellDisplay":'',
+             "integrationType":'',
+             "cmSource":''        
+	   };
+   
+      if (typeof cart == "undefined" ){ cart="";}
+      if (typeof siteSearch == "undefined" ){ siteSearch="";}
+      if (typeof event == "undefined" ){ event="[]";}
+      if (typeof product == "undefined" ){ product="[]";}
+      if (typeof productReference == "undefined" ){ productReference="[]";}
+      
+      var DtmObject  = { WCParamJS:WCParamJS, MasterTmsUdo:MasterTmsUdo, common:common, Cart:cart, siteSearch:siteSearch, product:product, event:event};
+
+	  var htmlDecoderElement;
+      function decodeHtml(input)
+	  {
+		  if(!htmlDecoderElement)
+		  {
+			htmlDecoderElement=document.createElement('div');
+		  }
+		  htmlDecoderElement.innerHTML=input;
+		  return  htmlDecoderElement.innerHTML;
+	  }
+	  function encodeHtml(input)
+	  {
+		   return  input.replace('&amp;', '&').replace(/[,;]/g,' ').replace(/\s+/g,' ');
+	  }
+	  function safeEncodeHtml(input)
+	  {
+	  return encodeHtml(decodeHtml(input));
+	  }
+      
+      if (typeof adobeAnalyticsCrossSellType === 'string') {
+      		if (typeof DtmObject != 'undefined' && DtmObject != null) {
+    			if (typeof DtmObject.common != 'undefined' && DtmObject.common != null) {
+    				DtmObject.common.crossSellDisplay = adobeAnalyticsCrossSellType;
+    			}
+    		}
+      	
+      }
+
+
+
+/**
+* This function gets a cookie
+* @param {String} c the name of the cookie to be get.
+*/
+function readWcCookie(c) {
+	var cookies = document.cookie.split(";");
+	for (var i = 0; i < cookies.length; i++) {
+		var index = cookies[i].indexOf("=");
+		var name = cookies[i].substr(0,index);
+		name = name.replace(/^\s+|\s+$/g,"");
+		if (name == c) {
+			return unescape(cookies[i].substr(index + 1));
+		}
+	}
+}
+
+	function dtmNoCacheReadAkamaiCookie(pvCookiename) {
+		// Get name followed by anything except a semicolon
+		var  lvCookiestring=RegExp(""+pvCookiename+"[^;]+").exec(document.cookie);
+		// Return everything after the equal sign
+		var lvCookieVal = unescape(!!lvCookiestring ? lvCookiestring.toString().replace(/^[^=]+./,"") : "");
+		var lvCommaSeparatedCookieValue = null;
+		lvCommaSeparatedCookieValue = dtmNoCacheReplaceStringWithComma(lvCookieVal);
+		return lvCommaSeparatedCookieValue;
+	}
+
+	function dtmNoCacheReplaceStringWithComma(pvSrcString) {
+		if(pvSrcString != null){
+			pvSrcString = pvSrcString.replace(/#/g,',');
+		}
+		return pvSrcString;
+	}
+
+	function dtmNoCacheGetUserInfoFromAkamaiCookie() {
+		var lvAkamaiCookieValue = dtmNoCacheReadAkamaiCookie('EFOLLETT_USER_CART');
+		var lvAkamaiCookieParsedJSONObject = null;
+		
+		try {
+			lvAkamaiCookieParsedJSONObject = jQuery.parseJSON(lvAkamaiCookieValue);
+		} catch (e) {
+			console.log(e);
+		}
+		return lvAkamaiCookieParsedJSONObject;
+	}
+	
+	
+	if (typeof DtmObject != 'undefined' && DtmObject != null) {
+    	if (typeof DtmObject.common != 'undefined' && DtmObject.common != null) {
+			var dtmNoCacheUserInfo = dtmNoCacheGetUserInfoFromAkamaiCookie();
+			var wccookie = readWcCookie('WC_PERSISTENT');
+			var persId = '';
+			if (wccookie!= null) { 
+				wccookie=decodeURIComponent(wccookie);
+				var valArr = wccookie.split("_");
+				persId = valArr[1];
+			}
+			
+			if (dtmNoCacheUserInfo != null) {
+				var dtmUserName = dtmNoCacheUserInfo.userInfo.username;
+				if (dtmUserName == "") {
+					DtmObject.common.signInStatus = 'not signed in';
+				} else {
+					DtmObject.common.signInStatus = 'signed in';
+				}
+				var uid = dtmNoCacheUserInfo.userInfo.uid;
+				var ut = dtmNoCacheUserInfo.userInfo.ut;
+				DtmObject.common.userId = uid;
+				DtmObject.common.puid = persId;
+				DtmObject.common.ut = ut;
+			} else {
+				DtmObject.common.signInStatus = 'not signed in';
+				DtmObject.common.userId = '';
+				DtmObject.common.puid = persId;
+				DtmObject.common.ut = '';
+			}
+		}
+	}
+
+
+	if (typeof DtmObject != 'undefined' && DtmObject != null) {
+    	if (typeof DtmObject.common != 'undefined' && DtmObject.common != null) {
+			DtmObject.common.pageName = '411:efollett Home Page';
+			if(DtmObject.common.pageName.indexOf("My Account:Financial Aid:Login") != -1){
+				DtmObject.common.category = '';
+				DtmObject.common.department = '';
+			}
+			
+			DtmObject.common.LanguageId=-1;
+			DtmObject.common.catalogId=10001;
+			DtmObject.common.storeId=10051;
+		}
+	}
+
+
+
+var certona = {
+	"environment" : "PROD",
+    "pagetype" : "HOME",
+    "device": "WEB"
+};
+
+
+ 
+
+var interval=null;
+var counter=0;
+var certonaRespSchemes= [];
+ 
+
+//Gets called on the callback of Certona resonance call
+function certonaRecommendations(recs) {
+	displayCertonaProductRecs(recs);
+}
+dojo.query(".recsProdLink").on("click", function() { adobeAnalyticsCrossSell(); });
+
+var adobeTracking={
+"home1_rr":"cm_sp=Certona_Homepage1-_-Desktop-_-",
+"home2_rr":"cm_sp=Certona_Homepage2-_-Desktop-_-",
+"search1_rr":"cm_sp=Certona_SearchpageTop-_-Desktop-_-",
+"search2_rr":"cm_sp=Certona_SearchpageBottom-_-Desktop-_-",
+"product1_rr":"cm_sp=Certona_PDPNonTextBottom-_-Desktop-_-",
+"product2_rr":"cm_sp=Certona_PDPNonTextRight-_-Desktop-_-",
+"parentcategory1_rr":"cm_sp=Certona_L1Catpage1-_-Desktop-_-",
+"parentcategory2_rr":"cm_sp=Certona_L1Catpage2-_-Desktop-_-",
+"cart1_rr":"cm_sp=Certona_Cartpage-_-Desktop-_-",
+"emptycart1_rr":"cm_sp=Certona_EmptyCartpage-_-Desktop-_-",
+"ddcs1_rr":"cm_sp=Certona_DDCSpage-_-Desktop-_-",
+"cmrp1_rr":"cm_sp=Certona_CMRPpage-_-Desktop-_-"
+ 
+};
+var saleTag="&$FlashSale$";
+ 
+
+ 
+var adobeAnalyticsCrossSellType = 'certona'; 
+if (typeof DtmObject != 'undefined') 
+    	{ 
+      	DtmObject.common.crossSellDisplay = 'certona'; 
+    	} 
+function adobeAnalyticsCrossSell() 
+{ 
+if ((typeof _satellite !== 'undefined') && _satellite && _satellite.track) { 
+_satellite.track('crossSellProduct'); 
+}	
+} 
+
+_satellite.pageBottom();
+
+
+      function prepareEmailSignUp(id)
+	  {
+		var emailAddress = dojo.byId(id).value;
+	
+	    if (multElementDoubleClkCheck()){
+			if(emailAddress!=null && dojo.trim(emailAddress)!='' && emailAddress != "Enter e-mail address"){
+				emailAddress = dojo.trim(emailAddress);
+			
+			    if (!isValidEmail(emailAddress)){
+			      	multElementDoubleClkCheckReset();
+			      	alert(emailAddress + " is not a valid email address.");
+			    }
+			    else {	
+		      		emailAddress = emailAddress.toLowerCase();
+		      		
+		      		var url ='http://em.efollett.com/pub/rf?_ri_=X0Gzc2X%3DWQpglLjHJlTQGjEJUowLXkzdT0WjbzgRS1cAmXPkkIVwjpnpgHlpgneHmgJoXX0Gzc2X%3DWQpglLjHJlTQGrAXzet0UdRdnCnUmq2KGFzbjjrl4zf';
+		      		var isFVC="false";
+		      		var FVCPortalStoreId="339405";
+		      		var storeNum = "411";
+		      		var storeId="10051";
+		      		if (isFVC =="true"||(FVCPortalStoreId == storeId)){
+		      		url = url +"?STORENUMBER="+storeNum+"&email_address="+emailAddress;
+		      		}else{
+		      		url = url +"&STORENUMBER="+storeNum+"&EMAIL_ADDRESS_="+emailAddress;
+		      		}
+		      		window.location = url; 
+		      		
+		      	}
+			}else{
+				multElementDoubleClkCheckReset();
+			    alert(" Type an Email address in the Email address field.");
+			}
+	 	 }
+	  }
+	  function clearText(id) {
+		if(dojo.byId(id)) {
+			var value = dojo.byId(id).value;
+			if(value != null && (value == "Enter e-mail address")) {
+				dojo.byId(id).value = '';
+			}
+		}
+	  }	
+
+document.getElementById("email").value = "Enter e-mail address";
+
+
+
+dojo.ready(function() {
+
+  jQuery('ul.topMerch:eq(0) li > div > ul').hide();
+  jQuery('ul.topMerch:eq(0) > li > div').click(function() {
+    jQuery(this).toggleClass('closed').toggleClass('open').next('ul').slideToggle('fast')
+    .siblings('ul:visible').slideUp('fast');
+     jQuery(this).siblings('div:visible').removeClass('open').addClass('closed');
+  });
+});
+
+
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1069120983;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

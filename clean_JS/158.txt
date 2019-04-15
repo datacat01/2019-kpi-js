@@ -1,0 +1,30 @@
+var digitalData = {};try {digitalData = {page: {storeId: "11203",pageName: "home",pageKind: "homepage",language: "en",brand: "anf",env: "",currency: "MXN",userAgent: navigator.userAgent,referrer: {domain: document.referrer.replace(/^(https?:\/\/)?(.*?)\/.*/, '$2'),isDiff: !document.referrer.startsWith(location.origin)},screen: {resolution: Object.create(Object.prototype, {height: {get: function () {return screen.height;}},width: {get: function () {return screen.width;}},nativeHeight: {get: function () {return screen.height * window.devicePixelRatio;}},nativeWidth: {get: function () {return screen.width * window.devicePixelRatio;}}})},noTrack: (navigator.msDoNotTrack === '1' || window.doNotTrack === '1' || navigator.doNotTrack === '1'),url: {path: location.pathname,domain: {full: location.host,sub: (function () {var l = location.host.split('.');return l.slice(0, l.indexOf(/(abercrombie|hollisterco)/) - 1).join('.');})(),top: (function () {var l = location.host.split('.');return l.slice(l.indexOf(/(abercrombie|hollisterco)/) - 1).join('.');})()},filteredQS: (function () {return location.search.replace(/^\?/, '').split('&').filter(function (s) {var v = s.replace(/(?:^|&)([^&=]*)=?([^&]*)/g, '$1=$2');return !v.startsWith('email=') && !v.startsWith('orderEmail=');}).join('&');})(),qsObject: (function () {return location.search.replace(/^\?/, '').split('&').reduce(function (o, s) {var v = s.replace(/(?:^|&)([^&=]*)=?([^&]*)/g, function (a,b,c) { o[b] = c; });return o;}, {});})()},langPrefrence: navigator.language.toLowerCase(),cookie: (function () {return document.cookie.split(';').reduce(function (o, s) {var v = s.trim().replace(/(.*?)=(.*)/g, function (a,b,c) {var d;c = decodeURIComponent(c);b = b.trim();if (b.length > 0) {switch (b) {case 'uPref' :c = JSON.parse(c);break;case 'geoLocation' :c = (function (r) {return {country: r[0], state: r[1], zipcode: r[2]};})(c.split(':'));break;}o[b] = c;}});return o;}, {});})()},user: {state: "",id: "",fName: "",gender: ""}};} catch (e) {console.error(e);}
+
+var getCookie = function(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return match[2];
+}
+
+var loggedInState = getCookie('userType'),
+    style = document.createElement('style');
+    
+style.type = 'text/css';
+
+if(loggedInState === 'R') {
+    style.innerHTML = '.show-for-logged-in {display: block !important;} .show-for-logged-out {display: none !important;}';
+} else {
+    style.innerHTML = '.show-for-logged-out {display: block !important;} .show-for-logged-in {display: none !important;}';
+}
+
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+	(function () {
+		var tagjs = document.createElement("script");
+		var s = document.getElementsByTagName("script")[0];
+		tagjs.async = true;
+		tagjs.src = "//s.btstatic.com/tag.js#site=Qpejd48&referrer=" + encodeURIComponent(window.location.href);
+		s.parentNode.insertBefore(tagjs, s);
+	}());
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/static/e37cda453b62138597cf877c617aea2']);

@@ -1,0 +1,35 @@
+
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/plusone.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      
+
+    function openNewsletterPopup() {
+      
+        $.get("/pages/pop-up.json", function(data) {
+        $("#target").prepend("<h1>" + data["page"]["title"] + "</h1>" + data["page"]["body_html"]);
+        });
+      
+      setTimeout( function() {
+        $('#newsletter').fancybox({maxWidth: 700});
+        $('#newsletter').trigger('click'); 
+      }, 
+      7*1000);
+    }
+
+    $(function() {
+      var popup = $.cookie('popup');
+      var cookie_enabled = true;
+
+      if (cookie_enabled && popup == 'open') {
+          return false;
+      } else {
+        openNewsletterPopup();
+      }
+      if (cookie_enabled) {
+        $.cookie('popup', 'open', { expires: 1 });
+      }
+    });
+  

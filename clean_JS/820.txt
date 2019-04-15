@@ -1,0 +1,365 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.keh.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var AWACP_CONFIG = {
+        mageVersion: '1.14.3.9',
+        useProgress : 1,
+        popupForAllProducts : 0,
+        addProductConfirmationEnabled : 1,
+        removeProductConfirmationEnabled : 1,
+        dialogsVAlign: 'center',
+        cartAnimation: 'opacity',
+        addProductCounterBeginFrom : 0,
+        removeProductCounterBeginFrom : 0,
+
+                
+        hasFileOption : false    };
+
+    Event.observe(document, 'dom:loaded', function(){
+        AW_AjaxCartPro.init(AWACP_CONFIG);
+    });
+
+//]]>
+
+
+        var slickConfig = {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            arrows: true,
+            dots: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 420,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        };
+
+        var slickConfigMini = {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            arrows: true,
+            dots: true,
+            infinite: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 420,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        };
+
+        var slickConfigAcp = {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            arrows: true,
+            dots: true,
+            infinite: false,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 420,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        };
+
+
+        var certonaResonance = $j('certonaResonance');
+
+        function certonaRecommendations(response)
+        {
+            console.log(response);
+            certonaResonance.setSlickConfig(slickConfig, slickConfigMini, slickConfigAcp, response);
+        }
+
+
+
+    var certona = {"pagetype":"home","visualsearch":false,"rrec":true};
+
+    certona.device = certonaResonance.getDeviceType();
+    console.log(certona);
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    var google_tag_params = {
+        ecomm_pagetype: "home"
+    };
+
+
+    /* <![CDATA[ */
+    var google_conversion_id = 1072633099;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.keh.com/shop/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+    
+    var cartDropdown = new InchooToggle("header-minicart", {
+                defaultCallback: handleMinicartClick.bindAsEventListener(this)
+    });
+
+    var $header = $("header");
+    var $headerMinicart = $("header-minicart");
+
+    function handleMinicartClick() {
+        if(!$headerMinicart.hasClassName("active"))  {
+            $header.removeClassName("header-hover-stick");
+        }
+
+        setTimeout(function() {
+            if($headerMinicart.hasClassName("active")) {
+                $header.addClassName("header-hover-stick");
+            }
+        },100);
+    }
+
+    /* $("minicart-close").on("click", cartDropdown.closeToggleImportant.bindAsEventListener(cartDropdown)); */
+
+
+        var headerBanner = new InchooToggle("header-banner", {
+        activeOnLoad: true,
+        closeOnOutsideClick: false,
+        closeOnly: false,
+        useCSS: false
+    });
+
+    $j(function () {
+        if ($j('#search').length === 0) {
+            return;
+        }
+
+        $j('#search').on('input', function () {
+            if (this.value.length > 0) {
+              $j('#header').addClass('header-has-input');
+            } else {
+                $j('#header').removeClass('header-has-input');
+            }
+        });
+        $j('#search-close').on('click', function() {
+            $j('#page-overlay').click();
+        });
+    });
+    
+
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    
+
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    
+(function () {
+                var js = window.document.createElement("script");
+                js.src = '//www.shopperapproved.com/seals/certificate.js';
+                js.type = "text/javascript";
+                document.getElementsByTagName("head")[0].appendChild(js);
+            })();
+
+            (function () {
+                var js = window.document.createElement("script");
+                js.src = '//www.shopperapproved.com/seals/certificate.js';
+                js.type = "text/javascript";
+                document.getElementsByTagName("head")[0].appendChild(js);
+            })();
+        
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', '48021501248116e9fc07fb7ccbd5287ba0a8dbd697d3bb0d6d6da453c5977436']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/7bg7xtbcgiu85tlwfy75w0zj7ux8qdk5ej32756rcevo8769hu/48021501248116e9fc07fb7ccbd5287ba0a8dbd697d3bb0d6d6da453c5977436/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('https://www.keh.com/shop/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+
+
+    //<![CDATA[
+
+    // Handle Magento Email Fields
+    Event.observe(window, 'load', function() {
+        $$('input.validate-email').each(function(item) {
+            item.observe('change', function(event) {
+                captureEmail(item.value);
+            });
+        });
+    });
+
+    // Handle Popup Event
+    if (document.addEventListener) {
+        document.addEventListener('bronto:popup-created', function(e) {
+            $$('.popup-dialog input[id*=inputs-email]').each(function(item) {
+                item.observe('change', function(event) {
+                    captureEmail(item.value);
+                });
+            });
+        }, false);
+    }
+
+    // Trigger AJAX call to capture Email Address
+    function captureEmail(emailAddress) {
+        var targetUrl = 'https://www.keh.com/shop/emailcapture/index/capture/';
+        new Ajax.Request(targetUrl, {
+            method: 'post',
+            parameters: {emailAddress: emailAddress}
+        });
+    }
+    //]]>
+
+
+	var klevu_sessionId = '36a4e8eac1c8760cbaeb0575d12306c0';
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.2.18';
+    		(function () {
+			// Remove Magento event observers from the search box
+			// Redirect to klevu js page
+			for( i = 0, len = allInputs.length; i < len; i++ ){
+				if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+					if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+						var search_input = allInputs[i];
+						search_input.stopObserving('click');
+						search_input.stopObserving('keydown');
+						search_input.form.action='https://www.keh.com/shop/search/' ;//?q="+search_input.value;
+						search_input.form.observe('submit', function (e) {
+							//if(search_input.value.length!= 0){
+								//Event.stop(e);
+								//return false;
+							//}
+						});
+					}
+				}
+			}
+			
+		})();
+		 var klevu_storeLandingPageUrl = 'https://www.keh.com/shop/search/';
+		 var klevu_showQuickSearchOnEnter=false;
+    		// call store js
+		var klevu_apiKey = 'klevu-15345048244378417',
+			searchTextBoxName = 'search',
+			klevu_lang = 'en',
+			klevu_result_top_margin = '',
+			klevu_result_left_margin = '';
+		(function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+    var klevu_cms_module_enabled=true;
+
+
+// Enable cms for klevu template
+        var klevu_cmsSearchEnabled = true;
+          
+
+
+    (function() {
+        var referrer, search_term, klevu_search_product_tracking;
+        referrer = document.referrer;
+        search_term = referrer.toQueryParams().q;
+        if (referrer.indexOf('content/index') > -1 && search_term) {
+            klevu_search_product_tracking = {"klevu_apiKey":"klevu-15345048244378417","klevu_term":"","klevu_type":"clicked","klevu_productId":"2","klevu_productName":"Used Cameras & Lenses - Buy & Sell","klevu_productUrl":"home","Klevu_typeOfRecord":"KLEVU_CMS"};
+            klevu_search_product_tracking.klevu_term = search_term;
+
+            // Send the ajax request
+            new Ajax.Request('//stats.ksearchnet.com/analytics/productTracking', {
+                method: "GET",
+                parameters: klevu_search_product_tracking,
+
+                // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                }
+            });
+        }
+    })();
+
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b1969c1834","applicationID":"228577610","transactionName":"YVxXbUBUCxACAhdcXlgWdFpGXAoNTBECUlRVWFZRVxoXBhIUBkZFGUlHVlFQFhA=","queueTime":0,"applicationTime":80,"atts":"TRtUGwhOGB4=","errorBeacon":"bam.nr-data.net","agent":""}

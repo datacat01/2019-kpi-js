@@ -1,0 +1,259 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbbw-JSS';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+window.criteo_q = window.criteo_q || [];
+var deviceType= /iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";
+window.criteo_q.push(
+{ event: "setAccount", account: 26669},
+{ event: "setSiteType", type: deviceType},
+
+{ event: "viewHome"}
+
+
+
+
+
+);
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search Johnny's","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","INVALID_POSTAL":"Please specify a valid postal code.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","INVALID_CCNUMBER":"There appears to be a letter in your credit card number. Please enter your credit card number again.","INVALID_CVN":"There appears to be a letter in your Security Code. Please enter your Security Code again.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"Out of Stock","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick Shop","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"The browser you're using does not meet industry recommended minimum security standards, as such you will be unable to place an order using this browser. Please upgrade your browser or use a different browser. Alternatively, you may contact our call center at 1.877-564-6697 to place an order.","QUICKFACTS_DEFAULT_DIALOG_TITLE":"Symbols Explained","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","EMAIL_SIGN_UP_GROWING_EXPERIENCE_SUCCESS":"Thank you for sharing your growing experience.","SEED_CALCULATOR_TOTAL_NEEDED":"Total seeds or plants you will need","SEED_CALCULATOR_PER_UNIT_METRIC":"Total seeds or plants per 100 meters","SEED_CALCULATOR_PER_UNIT_US":"Total seeds or plants per 100 feet","SEED_CALCULATOR_ROW_LENGTH_US":"Number of Feet of row","SEED_CALCULATOR_ROW_LENGTH_METRIC":"Number of Meters of row","SEED_CALCULATOR_LENGTH_ROW_US":"Length of row (feet)","SEED_CALCULATOR_LENGTH_ROW_METRIC":"Length of row (meters)","SEED_CALCULATOR_DISTANCE_US":"Inches between seeds or plants","SEED_CALCULATOR_DISTANCE_METRIC":"Centimeters between seeds or plants","SEED_CALCULATOR_ERROR_DISTANCE":"Please provide distance between plants.","SEED_CALCULATOR_ERROR_ROW_LENGTH":"Please provide length of row.","SEED_CALCULATOR_ERROR_NUMBER_ROWS":"Please provide the number of rows.","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"Out of Stock","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-JSS-Site/en_US/Resources-Load","pageInclude":"/on/demandware.store/Sites-JSS-Site/en_US/Page-Include","pageShow":"/on/demandware.store/Sites-JSS-Site/en_US/Page-Show","continueUrl":"https://www.johnnyseeds.com/","staticPath":"/on/demandware.static/Sites-JSS-Site/-/en_US/v1555219048571/","addGiftCert":"/gift-cert-purchase/","minicartGC":"/on/demandware.store/Sites-JSS-Site/en_US/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-JSS-Site/en_US/Cart-AddProduct","minicart":"/on/demandware.store/Sites-JSS-Site/en_US/Cart-MiniCart","cartShow":"/cart/","checkConfig":"/on/demandware.store/Sites-JSS-Site/en_US/Cart-CheckConfiguration","giftRegAdd":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/Address-GetAddressDetails?addressID=","paymentsList":"https://www.johnnyseeds.com/wallet/","addressesList":"https://www.johnnyseeds.com/address-book/","wishlistAddress":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-JSS-Site/en_US/Address-Delete","getProductUrl":"/on/demandware.store/Sites-JSS-Site/en_US/Product-Show","getBonusProducts":"/on/demandware.store/Sites-JSS-Site/en_US/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-JSS-Site/en_US/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-JSS-Site/en_US/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-JSS-Site/en_US/Product-Detail","getAvailability":"/on/demandware.store/Sites-JSS-Site/en_US/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-JSS-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-JSS-Site/en_US/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-JSS-Site/en_US/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-JSS-Site/en_US/COBilling-UpdateSummary","billingSelectCC":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COBilling-SelectCreditCard","updateAddressDetails":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COShipping-SelectShippingMethod","compareShow":"/compare/","compareAdd":"/on/demandware.store/Sites-JSS-Site/en_US/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-JSS-Site/en_US/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-JSS-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-JSS-Site/en_US/StoreInventory-GetZipCode","billing":"/billing/","setSessionCurrency":"/on/demandware.store/Sites-JSS-Site/en_US/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-JSS-Site/en_US/COShippingMultiple-AddEditAddressJSON","cookieHint":"/cookie_hint.html","rateLimiterReset":"/on/demandware.store/Sites-JSS-Site/en_US/RateLimiter-HideCaptcha","csrPostalCodeLookup":"/on/demandware.store/Sites-JSS-Site/en_US/CSRUtil-PostalCodeLookup","csrPutOrderOnHold":"/on/demandware.store/Sites-JSS-Site/en_US/CSROrder-PutOrderOnHold","setCategoryViewSelection":"/on/demandware.store/Sites-JSS-Site/en_US/Search-SetCategoryViewSelection","seedCalculatorOption1":"/on/demandware.store/Sites-JSS-Site/en_US/SeedCalculator-CalculateOption1","emailSignUpPopUpForm":"/on/demandware.store/Sites-JSS-Site/en_US/EmailSignUp-PopUpForm","zipCodeInfo":"/on/demandware.store/Sites-JSS-Site/en_US/Cart-ZipCodeInfo","liveChatBeacon":"/on/demandware.store/Sites-JSS-Site/en_US/Livechat-GetStatus","comparisonTable":"/on/demandware.store/Sites-JSS-Site/en_US/Content-ComparisonChart","addToWishlist":"/on/demandware.store/Sites-JSS-Site/en_US/Wishlist-Add"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":false,"COOKIE_HINT":false,"CHECK_TLS":true,"ENABLE_LIVECHAT":true,"TOKENIZATION_ENABLED":true,"RECAPTCHA_3_SITE_KEY":"6Lcl4psUAAAAALUOKktlaAV8JO1EaB5IEiG4cJZY"};
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+
+	var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+	document.write(unescape("%3Cscript src='" + biJsHost + "cdn.listrakbi.com/scripts/script.js?m=OuUzF37HjJHB&v=1' type='text/javascript'%3E%3C/script%3E"));
+	
+
+	
+	try {
+		
+		/* Capture the click from a message. */
+		_ltk.Click.Submit();
+	}
+	catch (er)
+	{
+		/* An error has occurred, yet to determine if we want to do anything here. */
+	}
+
+
+	
+	var _ltkwmt = '';
+	
+		_ltkwmt = 'Enter your email';
+	
+		
+	
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_profile_customer_email");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_login_username");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_billing_billingAddress_email_emailAddress");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_emailsignup_email");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_ordertrack_orderEmail");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_catalogrequest_email");
+		
+	
+			
+	
+
+
+	/* Used to reset the activity tracker parameters in the pdict upon successful send up to Listrak endpoint. */
+	function resetProductActivityParams()
+	{
+		var path = '/on/demandware.store/Sites-JSS-Site/en_US/ltkActivityTracking-ClearTracker';
+		jQuery.ajax({
+			  url: path,
+			  context: document,
+			  success: function(){ }
+		});
+	}	
+	
+	try {
+		/* Perform activity/page/product browse logging. */
+		var sessionSku = 'null';
+		var sessionCategory = 'null';
+		var sessionQuickViewSkus = 'null';		
+		
+		/* Iterate through any quickviews and add them as product browses. */
+		if (sessionQuickViewSkus != null && sessionQuickViewSkus != "null" && sessionQuickViewSkus.length > 0)
+		{
+			var quickViews = sessionQuickViewSkus.split(',');
+			
+			for (var i = 0; i < quickViews.length; i++)
+			{
+				_ltk.Activity.AddProductBrowse(quickViews[i]);			
+			}
+		}
+		
+		/* Add the product browse if we have it. */
+		if (sessionSku != null && sessionSku != "null" && sessionSku.length > 0)
+		{
+			_ltk.Activity.AddProductBrowse(sessionSku);
+		}			
+		
+		/* Add the page browse. We should ALWAYS have if this JS fires. */
+		var currentPage = window.location.href;
+		_ltk.Activity.AddPageBrowse(currentPage);
+		
+		/* Submit the activity through client side JS to the endpoint. */
+		_ltk.Activity.Submit();
+		
+		/* Do a post to reset the browse/quickview/page parameters if there are products in them. */
+		resetProductActivityParams();
+	}
+	catch (er)
+	{
+		/* An error has occurred, yet to determine if we want to do anything here. */
+	}
+
+
+
+window.__lc = window.__lc || {};
+window.__lc.license = 9092445;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+
+
+				var google_tag_params = {
+					ecomm_pagetype: 'home'
+				};
+			
+
+			/* <![CDATA[ */
+			var google_conversion_id = 1071024477;
+			var google_custom_params = window.google_tag_params;
+			var google_remarketing_only = true;
+			/* ]]> */
+		
+
+		
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.johnnyseeds.com/on/demandware.store/Sites-JSS-Site/en_US/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

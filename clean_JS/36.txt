@@ -1,0 +1,37 @@
+
+      var _qevents = _qevents || [];
+
+      (function() {
+      var elem = document.createElement('script');
+      elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+      elem.async = true;
+      elem.type = "text/javascript";
+      var scpt = document.getElementsByTagName('script')[0];
+      scpt.parentNode.insertBefore(elem, scpt);
+      })();
+
+      _qevents.push({
+      qacct:"p-4fmSNPFuULbDo"
+      });
+    
+
+var scrollPoint=90;
+window.onscroll = function()
+{if(window.XMLHttpRequest)
+    {if(document.documentElement.scrollTop>scrollPoint || self.pageYOffset>scrollPoint ) $("#staysTop").addClass("onTop");
+      else $("#staysTop").removeClass("onTop");
+    }
+}
+
+var wsz = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+if(wsz<=1580) {document.getElementById("hdrtopmenu").style.display="none";document.getElementById("titlebox").innerHTML+="<br>";}
+else {document.getElementById("hdrtopmenu").innerHTML=document.getElementById("hdrtopmenu2").innerHTML;document.getElementById("hdrtopmenu2").innerHTML="";}
+
+var userAgent = window.navigator.userAgent.toLowerCase(), safari = /safari/.test( userAgent ), ios = /iphone|ipod|ipad/.test( userAgent );
+//if(safari&&ios) {document.getElementById("newsipad").innerHTML=document.getElementById("newsorig").innerHTML;document.getElementById("newsorig").innerHTML="&nbsp;";}
+if(navigator.userAgent.toLowerCase().indexOf('msie 6.')!=-1) document.getElementById("newsorig").innerHTML="<br><font color='red'>You are using Internet Explorer 6 which is no longer supported. You must upgrade to view this website!</font>";
+if(navigator.userAgent.toLowerCase().indexOf('msie 7.')!=-1) document.getElementById("newsorig").innerHTML="<br><font color='red'>Your browser is outdated. This website stopped supporting Internet Explorer 7. You must upgrade!</font>";
+if(navigator.userAgent.toLowerCase().indexOf('msie 8.')!=-1) document.getElementById("newsorig").innerHTML="<br>Your browser is outdated, please consider upgrading it.";
+if(navigator.userAgent.toLowerCase().indexOf('msie 9.')!=-1) document.getElementById("newsorig").innerHTML="<br>Your browser is outdated, please consider upgrading it.";
+if(navigator.userAgent.toLowerCase().indexOf('msie 6.')!=-1 || navigator.userAgent.toLowerCase().indexOf('msie 7.')!=-1) {sdf=document.getElementsByTagName("INPUT");for(i=0;i<sdf.length;i++) if(sdf[i].nodeName=="INPUT" && sdf[i].type=="checkbox") sdf[i].style.display="none";}
+

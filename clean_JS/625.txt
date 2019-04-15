@@ -1,0 +1,346 @@
+
+        var dataLayer = new Object();
+        dataLayer = {
+        		
+        	
+	        		"dl_sessionID": "",
+	    		
+	       			 "dl_guestID":"",
+	       		 
+        	
+            "dl_productsInCart": [
+                
+            ],
+            
+                "dl_userStatus":  "G",
+            
+            "dl_productionBox": "www.zales.com",
+            "dl_userAgent":  navigator.userAgent,
+			"dl_ASMloggedin":"false",
+        };
+
+        dataLayer.page = {
+            "dl_pageName":"Zales | Zales | Your Online &amp; Local Jewelry Store - Zales",
+            "dl_pageType": "Home",
+            "dl_refUrlSource": "",
+            "dl_storeAssisted": "",
+            "dl_retailerName": "Zales",
+            "dl_StoreId": "0002",
+			
+		    		"dl_salesChannel" : "Website"
+		    	
+        };
+
+        dataLayer.user = {
+            
+                "dl_UsersId": "anonymous",
+            
+
+            "dl_Email": "anonymous",
+            "dl_ipAddress": "23.46.239.71",
+            "dl_city": "",
+            "dl_state": "",
+            "dl_zip": "",
+            "dl_country": "",
+            "dl_wishlistSKUs": "V-19887785,V-18059741,V-19582857,V-20025979,V-19984096,V-18628990,V-20012023,18114140,20022407,V-20122832,20053586,20042054,19565043,19977812,20132153,V-20101225,20112833,20112858,20112926,20057897,20031889,19995743,19984539,20016399,20065531,19973325,20152392,V-20100743,20074953,20042934,20138145,20058534,19818269,20067804,20141667,20157407,20052267,20140776,19992222,19956795,19990154,19992333,19956857,20157121,20039796,20095866,19987332,20024738,20023188,20091511,20095820,19283639,20064391,20044561,20154426,19995378,20073882,19981538,20015791,19959632,19980858,20287470,20147598,20102966,18274456,V-20099820,20152713,18671842,20277750,20058524,20038618,17988080,20289009,20288991,20155464,19970422,20156499,20153006,20051194,20053470,20190233,20052243,20258063,20092755,20048271,20257917,20042529,20053596,19981300,17903048,18114116,18554816,20043393,20070907,20133016,20046510,20158794,19665595,20153000,20149462,20076044,20107080,20107075,20154384,20122594,20157437,20150145,20027197,17872227,20076673,19992311,20069608,20082641,20036342,19981027,20039959,20154360,20036343,20113520,20045971,20160624,20280576,19992327,20051290,20288677,20051249,20293428,18278721,20070361,19946621,18654541,20130789,20254977,20294079",
+            "dl_lastLoginDate": "",
+			"dl_LoginMethod": ""
+        };
+        
+        dataLayer.search = {
+        	     "dl_searchTerm":  "",
+        	     "dl_orderItem.filter2": "",
+        	     "dl_orderItem.filterName": "",
+        	     "dl_results": "",
+        	     "dl_defaultPageSize":""	
+        };
+        
+        dataLayer.category = {
+        	      "dl_orderItem.productCategory":  "",
+        	      "dl_orderItem.filter1":    "",
+        	      "dl_orderItem.filter2":    "",
+        	      "dl_orderItem.filterName":  "",
+        	      "dl_defaultPageSize":""	
+        	    };
+
+       
+    
+
+	if (navigator.userAgent.indexOf('IEMobile') === -1) {
+		document.documentElement.className += ' ie-sb';
+	}
+
+
+var ACC = { config: {} };
+ACC.siteId = "zales";
+ACC.siteName = "Zales";
+ACC.config.baseUrl = "https://www.zales.com";
+ACC.config.isDuplicateCheckEnabled='true';
+ACC.config.duplicateOrderUiMessage='Your order is processing. Please do not refresh your browser; this may cause multiple orders to be placed.';
+ACC.config.cartId = "";
+ACC.config.contextPath = "";
+ACC.config.encodedContextPath = "";
+ACC.config.sharedResourcePath = "/_ui/v0003/shared";
+ACC.config.commonResourcePath = "/_ui/v0003/responsive/common";
+ACC.config.themeResourcePath = "/_ui/v0003/responsive/theme-zales";
+ACC.config.siteResourcePath = "/_ui/v0003/responsive/site-zales";
+ACC.config.rootPath = "/_ui/v0003/responsive";
+ACC.config.CSRFToken = "0cc0f20c-6ca1-42c6-b5f1-e7e2b2e955a7";
+ACC.config.desktopMegaMenu = "/content/megamenu/desktop";
+
+	ACC.config.mobileMegaMenu = "/content/megamenu/mobile/0";
+
+ACC.pwdStrengthVeryWeak = 'Very weak';
+ACC.pwdStrengthWeak = 'Weak';
+ACC.pwdStrengthMedium = 'Medium';
+ACC.pwdStrengthStrong = 'Strong';
+ACC.pwdStrengthVeryStrong = 'Very strong';
+ACC.pwdStrengthUnsafePwd = 'password.strength.unsafepwd';
+ACC.pwdStrengthTooShortPwd = 'Too short';
+ACC.pwdStrengthMinCharText = '';
+ACC.accessibilityLoading = 'Loading... Please wait...';
+ACC.accessibilityStoresLoaded = 'Stores loaded';
+ACC.enablesignuppopup = 1;
+ACC.config.googleApiKey="AIzaSyBmG_d5PiyoIWn5gs8EKlX3ePMrUeUf3_Y";
+ACC.config.googleApiVersion="3.7";
+ACC.config.facebookApiEndpoint="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1&cookie=1&appId=1985145928400680";
+ACC.config.googleClientId="833808508677-8rba4jf002s3hdpfbh78ltnbbdet9jof.apps.googleusercontent.com";
+ACC.config.googleApiEndpoint="https://apis.google.com/js/platform.js";
+ACC.forms = {};
+
+ACC.config.moxieEvents = true;
+ACC.config.moxieDeflection = true;
+
+// Used for the email sign up
+ACC.responsysCname = "https://em.zales.com/pub/rf?_ri_=X0Gzc2X%3DYQpglLjHJlYQGNPqazbW8lzfdXy5uGku5ePlf5MDnILfVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGpAzdGE7wSzd1F8oPWJzaWsAbezbzd6UCgR&EMAIL_ADDRESS_=[URL encoded email]&Z_OPTEDIN_DT=[YYYY-MM-DD]&Z_EMAIL_PERMISSION_STATUS=1&Z_OPTIN_SRC=[LIGHTBOX or FOOTER]";
+ACC.config.emailSignupJSPUrl = "/emailSignupModal";
+
+
+
+// Compare product cookie config
+ACC.config.compareCookies = {
+	ids: {
+		name: ACC.siteId.toLowerCase()+'_compareProductIds',
+		expiry: 90
+	},
+	compareTray: {
+		name: ACC.siteId.toLowerCase()+'_compareProducts',
+		expiry: 90
+	}
+};
+
+
+ACC.findinstore = {
+		url: ''
+};
+
+// Put text that needs to be used in javascript files in this object
+ACC.localized = {
+	outOfStock:"Out of Stock",
+	addToCompare: "Add to Compare",
+	addedToCompare: "Added to Compare",
+	favorite:"Add to Favorites  ",
+	
+	favorited:"Favorited",
+	
+	origPrice: "Orig",
+	nowPrice: "Now",
+	
+
+	startingAtPrice: "Starting at",
+	favoritesNoProducts: "No Favorites to Display",
+	itemAddedToCart: "Added to Your Cart",
+	menu: "Menu",
+	close: "Close",
+	loginForm: {
+		emailIncorrectFormat: "Please be certain you have entered a valid email address.",
+		fieldRequired: "This field is required."
+	},
+    logoutMsg: {
+        m: "You have signed out of your Zales account.",
+        f: "You have signed out of your Zales account. You are still currently signed in to Facebook.",
+        g: "You have signed out of your Zales account. You are still currently signed in to Google."
+    },
+	giftCardForm: {
+		recipientRequiredError: "Please enter the recipient's name.",
+		recipientMaxlengthError: "Please enter a name with 20 characters or fewer",
+		recipientEmailRequiredError: "Please enter a valid e-mail address.",
+		senderEmailRequiredError: "Please enter a valid e-mail address.",
+		amountRequiredError: "Please select an amount",
+		customAmountRequiredError: "Please enter an amount",
+		customAmountRangeError: "Please enter a value between $50 and $500",
+		customAmountPagodaRangeError: "Please enter a value between $25 and $500",
+		senderRequiredError: "Please enter your name.",
+		senderMaxlengthError: "Please enter a name with 20 characters or fewer",
+		senderEmailMaxLengthError: "Please be certain you have entered a valid email address.",
+		recipientEmailMaxLengthError:"Please be certain you have entered a valid email address."
+
+
+
+	},
+	signetUpdatePwdForm:{
+		validationCheckPwdEquals :  "New Password and Confirm New Password fields must match.",
+		updatePwdPwdInvalid  :  "Password does not meet minimum requirements. See below.",
+		updatePwdPwdStrongPassword : "Password does not meet minimum requirements. See below.",
+		requiredError: "This field is required.",
+	},
+	signetUpdateName: {
+		serverError: "An error occurred when trying to save. Please try again later",
+		successfulSave: "Name saved successfully.",
+		firstName: {
+			"invalid": "Please enter a first name.",
+		},
+		lastName: {
+			"invalid": "Please enter a last name.",
+		}
+	},
+	updateEmailForm: {
+		invalidEmail: "Please be certain you have entered a valid email address.",
+		emailCheckEquals: "Email address fields do not match. Please reenter matching text in fields.",
+	},
+	aos: {
+		consultant2Name: "Jewelry Consultant 2 Name:",
+		consultant2Id: "Jewelry Consultant 2 ID Number (up to 9 digits):",
+		consultantName: {
+			required: "Please enter your full name."
+		},
+		consultantId: {
+			tooShort: "If your Consultant ID is less than 9 digits, please enter zeroes before your ID number.",
+			required: "Consultant ID is required.	",
+			characters: "Only numbers are allowed."
+		},
+		storeId: {
+			tooShort: "If your Store Number is less than 4 digits, please enter zeroes before your store number.",
+			required: "Store number is required.",
+			characters: "Only numbers are allowed."
+		}
+	},
+	checkoutGuest: {
+	    email: {
+	    	required: "This field is required.",
+	    	format: "Please be certain you have entered a valid email address."
+	    }
+	},
+	addressForm:{
+		firstnameRequired:"Please enter a valid first name.",
+		lastnameRequired:"Please enter a valid last name.",
+		addressline1Required:"Please enter a valid address.",
+		addressline2Required:"Please enter address Line 2",
+		cityRequired:"Please enter a valid city.",
+		
+		regionRequired:"Please enter a valid state.",
+		postCodeRequired:"Please enter a valid ZIP Code.",
+		
+		phoneRequired:"Please enter a valid phone number.",
+		phonePattern:"Please enter a valid phone number in the form of XXX-XXX-XXXX",
+		selectAddress: "Select an Address"
+	},
+
+	registerForm:{
+		firstnameRequired:"This field is required.",
+		lastnameRequired:"This field is required.",
+		invalidEmail:"Please be certain you have entered a valid email address.",
+		passwordPatternMismatch:"Password does not meet minimum requirements. See below.",
+		passwordConfirmPatternMismatch:"Password does not meet minimum requirements.",
+		newPasswordRequired:"Password does not meet minimum requirements. See below.",
+		confirmPasswordRequired:"This field is required.",
+		confirmPasswordEquals:"New Password and Confirm New Password fields must match."
+
+	},
+	updatePasswordForm:{
+		currentPasswordRequired:"Please enter your current password.",
+		newPasswordRequired:"Password does not meet minimum requirements. See below.",
+		checkNewPasswordRequired:"Password does not meet minimum requirements. See below.",
+		confirmPasswordEqual:"New Password and Confirm New Password fields must match."
+	},
+	checkoutPaymentForm: {
+		card_cardType_error: "Please select a valid credit card type",
+		card_accountNumber_error: "Please enter a valid credit card number",
+		card_nameOnCard_error: "Please enter a valid name on card",
+		card_expirationMonth_error: "Please enter a valid expiry month",
+		card_expirationYear_error: "Please enter a valid expiry year",
+		card_cvNumber_error: "Please enter a valid CVV number",
+		card_invalidCvNumber_error: "Please enter a valid CVV number",
+		card_accountNumber_error: "Please enter a valid credit card number",
+		card_paymentPlan_error: "Please select a Payment Plan Option",
+		billTo_country: "Please select a country",
+		billTo_city: "Please enter a valid city",
+		billTo_titleCode: "Please select a title",
+		billTo_firstName: "Please enter a valid first name",
+		billTo_lastName: "Please enter a valid last name",
+		billTo_street1: "Please enter a valid address",
+		
+		billTo_state: "Please enter a valid state",
+		billTo_postalCode: "Please enter a valid ZIP code"
+		
+
+	},
+
+	giftCardApplyForm:{
+		cardNumber_error:"Please enter a valid Gift Card Number.",
+		pin_error:"Please enter a valid PIN Number.",
+	},
+
+	cartItemQtyForm: {
+		qtyRangeError: "Please enter a quantity between 0 and 50."
+	},
+	shipToStoreForm: {
+		showingResults: "Showing closest stores to",
+		
+		noResults: "Sorry, no store results within 100 miles of that location. Perform another search or choose Ship to Address",
+		badResponse: "Sorry, no store results within 100 miles of that location. Perform another search or choose Ship to Address",
+		emptySearch: "Please enter a City, State, or ZIP code",
+		
+
+	},
+	storeFinderSearchForm: {
+		noResults: "Sorry, no locations were found within 100 miles of your ZIP code or city. State searches return all stores in the state.",
+		noResultsPeoples: "Sorry, no locations were found within 150 km of your postal code or city. Province searches return all stores in the province.",
+		badResponse: "An error occurred while searching. Please try again later",
+		
+		emptySearch: "Please enter your City, State, or ZIP Code",
+		
+	},
+	giftMessageForm: {
+		messageRequired: "A message is required if a message type has been selected."
+	},
+	productClassification:{
+		requiredMessage : "Please enter all required fields marked with a *"
+	},
+	contactUs: {
+		firstNameInvalid: "Please enter your First name.",
+		firstNameMaxlength: "Please enter a First name fewer than 30 characters",
+		lastNameInvalid: "Please enter your Last name.",
+		lastNameMaxlength: "Please enter a Last name fewer than 30 characters",
+		emailInvalid: "Please enter a valid email in the form of text@text.com",
+		phoneNumberInvalid: "Please enter a phone number where we can contact you",
+		messageOptionInvalid: "Please select how we can help you",
+		messageInvalid: "Please enter details on how we can help you.",
+		messageMaxlength: "Please enter a message fewer than 255 characters",
+		storeLocatorInvalid: "Please enter Store ID",
+	}
+};
+
+
+ACC.autocompleteUrl = '/search/autocompleteSecure';
+
+
+
+// Used for payment - refer to Checkout TDD for details
+ACC.gsi = {
+		 encryptionJs: '//F5JSCODE'
+};
+
+ACC.emailValidateProperties = {
+	enabled : 'true',
+	timeout : '3000',
+	endPoint : '/validate/email?email=',
+	emailInvalid: "THE EMAIL ADDRESS ISN'T VALID. PLEASE CHECK THE SPELLING AND TRY AGAIN.",
+	emailInvalidSuggestion: "THE EMAIL ADDRESS ISN'T VALID. DID YOU MEAN:",
+	emailCheckOutInvalid: "THE EMAIL ADDRESS YOU'VE ENTERED ISN'T ABLE TO BE VALIDATED. YOU CAN CONTINUE WITH YOUR ORDER BUT WILL NOT RECEIVE ORDER UPDATES.",
+	emailCheckOutInvalidSuggestion: "THE EMAIL ADDRESS YOU'VE ENTERED ISN'T ABLE TO BE VALIDATED. YOU CAN CONTINUE WITH YOUR ORDER BUT WILL NOT RECEIVE ORDER UPDATES. DID YOU MEAN"
+};
+
+ACC.addressValidation='true';
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/static/348ca4fd3892095fcc5fd77576f34a6']);

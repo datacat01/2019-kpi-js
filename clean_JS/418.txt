@@ -1,0 +1,1603 @@
+  
+        try {
+            
+                   (function (i, s, o, g, r, a, m) {
+                       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                           (i[r].q = i[r].q || []).push(arguments)
+                       }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                   })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                       ga('create', 'UA-491213-33', 'ediblearrangements.com');
+                   ga('send', 'pageview');
+                   ga('require', 'ecommerce', 'ecommerce.js');
+            
+        } catch (e) { }    
+                        
+ try { if (document.documentMode == 7) document.write('<script src="resources/en-us/js/json2.js"><\/script>'); } catch (err) { }
+
+        window.dataLayer = window.dataLayer || [];
+        var gaJsHost1 = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Clink href='" + gaJsHost1 + "fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Oswald:400,700|PT+Sans:400,700' rel='stylesheet' type='text/css'%3E"));
+
+
+        function TrackItem(TrackingItemID, BannerID) {
+            if (BannerID != null) { BannerID = "&BannerID=" + BannerID; }
+            else { BannerID = ''; }
+            jQuery.ajax({
+                type: "GET",
+                url: "https://www.ediblearrangements.com/WebsiteTracker.aspx?TrackingItemID=" + TrackingItemID + BannerID,
+                async: false
+            });
+        }
+
+
+        var _vwo_code=(function(){
+        var account_id=393756,
+        settings_tolerance=2000,
+        library_tolerance=2500,
+        use_existing_jquery=false,
+        /* DO NOT EDIT BELOW THIS LINE */
+        f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+        
+
+            
+            var triggermail_email_address = "";
+             
+        
+
+         $(function () {
+             $('#__load').ajaxStart(function () { if ($("#txtArrangementSearch").is(":focus") != true) { $(this).show(); } }); $('#__load').ajaxStop(function () { $(this).hide(); syncPH(); });
+             $(document).click(function (e) {
+                 if ($(e.target).is("#divLocalize, #divLocalize *, #spanLocalize, #spanLocalize *, #lnklocator, #lnklocator*, #lnkInternational, #lnkInternational *") == false) {
+                     if ($("#divLocalize").is(":visible") == true) {
+                         $("#divLocalize").slideUp();
+                     }
+                 }
+                 if ($(e.target).is("#divMyAccMenu, #divMyAccMenu *, #lnkUserName, #lnkUserName *") == false) {
+                     if ($("#divMyAccMenu").is(":visible") == true) {
+                         $("#divMyAccMenu").slideUp();
+                     }
+                 }
+                 if ($(e.target).is("#divInStoreMenu, #divInStoreMenu *, #lnkStoreNumber, #lnkStoreNumber *") == false) {
+                     if ($("#divInStoreMenu").is(":visible") == true) {
+                         $("#divInStoreMenu").slideUp();
+                     }
+                 }
+             });
+         });
+         $(document).ready(function() {
+         
+       });
+   
+
+    $(function () {
+        var AlternateImage = 'False';
+        if (AlternateImage == 'True') {
+            var imageMap = document.getElementsByTagName('area')[0];
+            imageMap.setAttribute('onmouseover', 'ChangeSkinnyImage("");');
+             imageMap.setAttribute('onmouseout', 'ChangeSkinnyImage("");');
+         }
+    });
+     function ChangeSkinnyImage(src) {
+         document.getElementById('imgSkinnyTop2').src = src;
+     }
+
+
+                    $("#lnkUserName").css("display", "none");
+                    $("#spnWelcome").css("display", "none");
+                
+            
+            var keywordManagement = false;
+            var tempKeywordTable = null;
+            var PreviousID = "";
+            var PreviousLocation = "";
+            var NewLocation = "";
+            var objArrangements;
+            var GSXHR;
+            var _timer;
+            $(function () {
+                ShowStoreLoginDiv();
+            });
+            function EscapeChars(txt) {
+                var escapedName = txt.replace(/\\['\\]|'/g, function (s) {
+                    if (s == "'") return "&apos;";
+                    else return s;
+                });
+                return escapedName;
+            }
+            function searchArrangement(searchText) {
+                searchText = searchText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                if (searchText == '' || searchText == $("#txtArrangementSearch").attr("placeholder")) {
+                    $("#txtArrangementSearch").css("border", "solid 1px #E21836");
+                }
+                else {
+                    if( $("#divSuggestion ul li").length > 0){
+                        if( $("#divSuggestion ul li.hoverClass").length > 0){
+                            searchText = $("#divSuggestion ul li.hoverClass").text();
+                        }                      
+                    }
+                }
+                if (keywordManagement == true) {
+                    var id = $("#divSuggestion ul li.hoverClass").attr("id");
+                    if (id != undefined && id > -1) {
+                        ShowUrlAndFaq(id);
+                    }
+                    else if (!IsFaqOrUrl()) {
+                        RedirectToUnSuggestedKeywords(searchText);
+                    }
+                }
+                else {
+                    RedirectToUnSuggestedKeywords(searchText);
+                }
+                }
+            function RedirectToUnSuggestedKeywords(searchText){
+                if (!(searchText.match(/^\d+$/) && searchText.length == 4)){
+                    if ($("#divSuggestion ul li").length > 0){
+                        location.href = encodeURI('https://www.ediblearrangements.com/fruit-arrangements?SearchText=' + encodeURIComponent(searchText));
+                    }
+                    else  if(!IsFaqOrUrl()){
+                        location.href = encodeURI('https://www.ediblearrangements.com/fruit-arrangements?SearchText=' + encodeURIComponent(searchText));
+                    }
+                }
+                else {
+                    location.href = encodeURI('https://www.ediblearrangements.com/fruit-arrangements?SearchText=' + encodeURIComponent(searchText));
+                }
+            }         
+            function SearchByButton() {
+                if ($("#txtArrangementSearch").val() == "" || $("#txtArrangementSearch").val() == $("#txtArrangementSearch").attr("placeholder")) {
+                    $("#txtArrangementSearch").css("background-color", "#FFDDDD");
+                    $("#txtArrangementSearch").focus();
+                }
+                else {
+                    var DefaultCountryID = '1';
+                    var regExpAreaUS = /^\d{5}(-\d{4})?$/;
+                    var regExpAreaCan = /(^[ABCEGHJKLMNPRSTVXYabceghjklmnprstvxy]{1}\d{1}[A-Za-z]{1} *\d{1}[A-Za-z]{1}\d{1}$)/;                    
+                    if (DefaultCountryID == 1) {
+                        if (regExpAreaUS.test($("#txtArrangementSearch").val()) == true) {
+                            window.location = encodeURI("https://www.ediblearrangements.com/stores/store-locator.aspx?q=" + encodeURIComponent($("#txtArrangementSearch").val()) + "&currloc=false");
+                        }
+                        else if ($("#txtArrangementSearch").val().match(/^\d+$/) && $("#txtArrangementSearch").val().length == 4 && $("#divSuggestion ul li.hoverClass").length == 0)
+                        {
+                            location.href = encodeURI('https://www.ediblearrangements.com/fruit-arrangements?SearchText=' + encodeURIComponent($("#txtArrangementSearch").val()));
+                        }
+                        else {
+                            searchArrangement($('#txtArrangementSearch').val());
+                        }
+                    }
+                    else if (DefaultCountryID == 2) {
+                        if (regExpAreaCan.test($("#txtArrangementSearch").val()) == true) {
+                            window.location = encodeURI("https://www.ediblearrangements.com/stores/store-locator.aspx?q=" + encodeURIComponent($("#txtArrangementSearch").val()) + "&currloc=false");
+                        }
+                        else if ($("#txtArrangementSearch").val().match(/^\d+$/) && $("#txtArrangementSearch").val().length == 4 && $("#divSuggestion ul li.hoverClass").length == 0)
+                        {
+                            location.href = encodeURI('https://www.ediblearrangements.com/fruit-arrangements?SearchText=' + encodeURIComponent($("#txtArrangementSearch").val()));
+                        }
+                        else {
+                            searchArrangement($('#txtArrangementSearch').val());
+                        }
+                    }                    
+                }
+            }
+            
+            $("#txtArrangementSearch").keyup(function (e) {
+                clearTimeout(_timer);
+                var code = (e.keyCode ? e.keyCode : e.which);
+                var txtSearch = $("#txtArrangementSearch");
+                txtSearch.removeClass("validatorTxt");
+                txtSearch.css("background-color", "");
+                if (code == 13) {
+                    if (txtSearch.val() == "") {
+                        txtSearch.addClass("validatorTxt");
+                        txtSearch.css("background-color", "#FFDDDD");
+                        return false;
+                    } else {
+                    HideSuggestion();
+                    $("#imgbtnArrangementSearch").click();
+                        return false;                     
+                    }
+                }
+                else if (code == 40 || code == 38) {
+                    txtSearch.focus();
+                    var Elems = $("#divSuggestion ul li");
+                    var total = Elems.length;
+                    var i = 0;
+                    if (total > 0) {
+                        var selected = $("#divSuggestion ul li.hoverClass");
+                        if (selected.length == 0) {
+                            if (code == 40) {
+                                $($("#divSuggestion ul li")[0]).css("padding", "2px 7px 2px 15px");
+                                $($("#divSuggestion ul li")[0]).addClass("hoverClass");
+                                txtSearch.val($($("#divSuggestion ul li")[0]).text());
+                            } else if (code == 38) {
+                                var lastElm = $("#divSuggestion ul li");
+                                $((lastElm)[lastElm.length - 1]).css("padding", "2px 7px 2px 15px");
+                                $((lastElm)[lastElm.length - 1]).addClass("hoverClass");
+                                txtSearch.val($((lastElm)[lastElm.length - 1]).text());
+                            }
+                        } else {
+                            $(Elems).each(function () {
+                                selected.removeClass("hoverClass");
+                                selected.css("padding", "4px 7px 4px 15px");
+                                if (code == 40) {
+                                    var next = $(selected.next());
+                                    if (next.length == 0) {
+                                        txtSearch.val(txtSearch.attr("SearchText"));
+                                    }
+                                    else {
+                                        next.css("padding", "2px 7px 2px 15px");
+                                        next.addClass("hoverClass");
+                                        txtSearch.val(next.text());
+                                    }
+                                } else if (code == 38) {
+                                    var prev = $(selected.prev());
+                                    if (prev.length == 0) {
+                                        txtSearch.val(txtSearch.attr("SearchText"));
+                                    }
+                                    else {
+                                        prev.css("padding", "2px 7px 2px 15px");
+                                        prev.addClass("hoverClass");
+                                        txtSearch.val(prev.text());
+                                    }
+                                }
+
+                            });
+                        }
+                    }
+                    txtSearch.focus();
+                } else {
+                    txtSearch.attr("SearchText", txtSearch.val());
+                    if (txtSearch.val() != '') {
+                        setTimeout("ShowKeywords()", 10);
+                    }
+                    else{
+                        HideSuggestion();
+                    }
+                }
+            });
+            function ShowKeywords() {
+                if (tempKeywordTable == null) {
+                    $.ajax({
+                        url: encodeURI('https://www.ediblearrangements.com/ajax/searchcatalog.aspx'),
+                        success: function (data) {
+                            var JsonObj = $.parseJSON(data);
+                            if (JsonObj._Status == "OK") {
+                                tempKeywordTable = JsonObj._Data;
+                            }
+                        },
+                        async: false
+                    });
+                }
+                var txtSearch = $("#txtArrangementSearch").val().trim().toLowerCase();
+                if (tempKeywordTable != null) {
+                    keywordManagement = false;
+                    var container = $("#divSuggestion ul");
+                    container.empty();
+                    for (i = 0; tempKeywordTable.length > i; i += 1) {
+                        if (tempKeywordTable[i].KeywordName.toLowerCase().indexOf(txtSearch) > -1) {
+                            var txt = $("#txtArrangementSearch").val().trim().replace(/\s{2,}/g, ' ').replace('\\', ' ');
+                            var splitTxt = txt.split(' ');
+                            var suggestion = null;
+                            suggestion = tempKeywordTable[i].Name;
+                            var replacement = "***$&###";
+                            for (var j = 0; j < splitTxt.length; j++) {
+                                var regex = new RegExp('(' + splitTxt[j].split('\\').join('\\\\') + ')', 'i');
+                                suggestion = suggestion.replace(regex, replacement);
+                            }
+                            var reg2 = new RegExp('(###)', 'gi');
+                            suggestion = suggestion.replace(/\*{3}/g, "<span style='color:#000;'>").replace(/#{3}/g, "</span>");
+                            var elm = $("<li style='cursor:pointer;' id='" + i + "'>" + suggestion + "</li>");
+                            elm.hover(function () {
+                                var e = $("#divSuggestion ul li");
+                                $(e).each(function () {
+                                    $(this).css("padding", "4px 7px 4px 15px");
+                                    $(this).removeClass("hoverClass");
+                                });
+                                $(this).css("padding", "2px 7px 2px 15px");
+                                $(this).addClass("hoverClass");
+                            });
+                            elm.click(function () {
+                                $("#txtArrangementSearch").val($(this).text());
+                                $("#txtArrangementSearch").attr("SearchText", $("#txtArrangementSearch").val());
+                                $("#divSuggestion ul").empty();
+                                HideSuggestion();
+                                ShowUrlAndFaq($(this).attr("id"));
+                            });
+                            keywordManagement = true;
+                            if (container.children("li").length < 5) {
+                                if (tempKeywordTable[i].IsSuggestion) {
+                                    container.append(elm);
+                                }
+                            }
+                        }
+                    }
+                    if ($("#divSuggestion ul li").length > 0) {
+                        $("#divSuggestion").css({ "top": $("#txtArrangementSearch").position().top + 24, "left": $("#txtArrangementSearch").position().left });
+                        $("#divSuggestion").show();
+                    }
+                    else {
+                        HideSuggestion();
+                    }
+                }
+                else {
+                    HideSuggestion();
+                }
+                if (!keywordManagement) {
+                    setTimeout("GetSuggestions('" + Escaped(txtSearch) + "')", 10);
+                }
+            }
+            function IsFaqOrUrl() {
+                var result = false;
+                var txtSearch = $("#txtArrangementSearch").val().trim().toLowerCase();
+                if (tempKeywordTable == null || tempKeywordTable == undefined) {
+                    $.ajax({
+                        url: encodeURI('https://www.ediblearrangements.com/ajax/searchcatalog.aspx'),
+                        success: function (data) {
+                            var JsonObj = $.parseJSON(data);
+                            if (JsonObj._Status == "OK") {
+                                tempKeywordTable = JsonObj._Data;
+                            }
+                        },
+                        async: false
+                    });
+                }
+                else {
+                    var table = tempKeywordTable;
+                    for (i = 0; table.length > i && result == false; i += 1) {
+                        var tempTable = table[i].KeywordName.split(",");
+                        for (var k = 0; k < tempTable.length; k++) {
+                            if (tempTable[k].toLowerCase() == txtSearch) {
+                                result = true;
+                                ShowUrlAndFaq(i);
+                            }
+                        }
+                    }
+                }
+                return result;
+            }
+            function ShowUrlAndFaq(tableRowIndex){
+                 var tableRow = tempKeywordTable[tableRowIndex];
+                 if(tableRow.URL != "" && tableRow.URL != null){       
+                     if(tableRow.ExternalLink){
+                       if(tableRow.OpenNewTab){ window.open(tableRow.URL,'_blank'); }
+                        else { location.href = tableRow.URL; }
+                     }
+                     else{
+                        if(tableRow.OpenNewTab){ window.open(encodeURI("https://www.ediblearrangements.com/" + tableRow.URL),'_blank'); }
+                        else { location.href = encodeURI("https://www.ediblearrangements.com/" + tableRow.URL); }
+                     }
+                 }
+                 else{
+                      location.href = encodeURI('https://www.ediblearrangements.com/customer-service/FAQ.aspx?CategoryID=' + tableRow.FAQCategoryID + '&FaqID=' + tableRow.FaqID);
+                 }
+             }
+            function GetSuggestions(SearchText) {
+                var param = "{'SearchText':'" + SearchText + "'}";
+                if (GSXHR) GSXHR.abort();
+                GSXHR = $.get(encodeURI('https://www.ediblearrangements.com/ajax/searchcatalog.aspx?s=' + encodeURIComponent(SearchText)), function (data) {
+                    var JsonObj = $.parseJSON(data);
+                    if (JsonObj._Status == "OK") {
+                        objArrangements = JsonObj._Data;
+                        var TotalRec = objArrangements.length;
+                        var container = $("#divSuggestion ul");
+                        container.empty();
+                        var i = 0;
+                        $(objArrangements).each(function () {
+                            var txt = SearchText.trim().replace(/\s{2,}/g, ' ');
+                            var splitTxt = txt.split(' ');
+                            var suggestion = objArrangements[i].Name;
+                            var replacement = "***$&###";
+                            for (var j = 0; j < splitTxt.length; j++) {
+                                var regex = new RegExp('(' + splitTxt[j].split('\\').join('\\\\') + ')', 'i');
+                                suggestion = suggestion.replace(regex, replacement);
+                            }
+                            var reg2 = new RegExp('(###)', 'gi');
+                            suggestion = suggestion.replace(/\*{3}/g, "<span style='color:#000;'>").replace(/#{3}/g, "</span>");
+                            var elm = $("<li  style='cursor:pointer;'>" + suggestion + "</li>");
+                            elm.hover(function () {
+                                var e = $("#divSuggestion ul li");
+                                $(e).each(function () {
+                                    $(this).css("padding", "4px 7px 4px 15px");
+                                    $(this).removeClass("hoverClass");
+                                });
+                                $(this).css("padding", "2px 7px 2px 15px");
+                                $(this).addClass("hoverClass");
+                            });
+                            elm.click(function () {
+                                $("#txtArrangementSearch").val($(this).text());
+                                $("#txtArrangementSearch").attr("SearchText", $("#txtArrangementSearch").val());
+                                $("#divSuggestion ul").empty();
+                                HideSuggestion();
+                                $("#imgbtnArrangementSearch").click();
+                            });
+                            container.append(elm);
+                            i++;
+                        });
+                        if (TotalRec > 0) {
+                            keywordManagement = false;
+                            $("#divSuggestion").css({ "top": $("#txtArrangementSearch").position().top + 24, "left": $("#txtArrangementSearch").position().left });
+                            $("#divSuggestion").show();
+                        }
+                        else {
+                            HideSuggestion();
+                        }
+                    }
+                });
+            }
+            $("body").click(function () {
+                HideSuggestion();
+            });
+            function HideSuggestion() {
+                $("#divSuggestion").hide();
+            }
+            
+            function ShowHloginDiv() {
+                
+                $("#divHLogin").remove();
+                $("body").append("<div id='divHLogin'></div>");
+                $("#divHLogin").load("https://www.ediblearrangements.com/ajax/loginuser.aspx?t=" + new Date().getTime());
+                
+                
+            }
+
+            function ShowStoreLoginDiv() {
+                
+
+            }
+
+            function ShowMyAccountMenu() {
+                var windowwidth = $(window).width() - $("#hd").width();
+                $('#divMyAccMenu').css("left", $("#Details").position().left - 190);
+                $('#divMyAccMenu').css("top", $("#Details").position().top + 20);
+                $("#divMyAccMenu").slideToggle();
+            }
+            function ShowStoreLogOutMenu() {
+                
+                $('#divInStoreMenu').css("left", $("#lnkStoreNumber").position().left);
+                $('#divInStoreMenu').css("top", $("#lnkStoreNumber").position().top + 21);
+                $('#divInStoreMenu').css("width", $("#lnkStoreNumber").width());
+                $("#divInStoreMenu").slideToggle();
+                
+            }
+
+            $('.SearchBox').focus(function () {
+                $(this).addClass("focus");
+            }).blur(function () {
+                if ($(this).val().trim() == "") {
+                    $(this).removeClass("focus");
+                }
+            });
+   function FloodLightTagForStoreSearchinHeaderMenu() {}     
+            function ChangeCulture(elm) {
+                var val = $(elm).html();
+                var culture = "";
+                if (val == "French") {
+                    culture = "fr-ca";
+                } else if (val == "English") {
+                    culture = "en-us";
+                }                
+                if (GSXHR) GSXHR.abort();
+                GSXHR = $.ajax({
+                    type: "POST",
+                    url: "https://www.ediblearrangements.com/default.aspx/CultureChange",
+                    data: "{'culture':'" + culture + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: 'true',
+                    success: function (response) {
+                        if (response.d != "null") {
+                            var JsonObj = $.parseJSON(response.d);
+                            if (JsonObj._Status == "OK") {
+                                location.reload();
+                            }
+                        }
+                    },
+                    failure: function (msg) {
+                        alert(msg);
+                    }
+                });
+            }
+            function AccountSignOut() {
+                if (GSXHR) GSXHR.abort();
+                GSXHR = $.ajax({
+                    type: "POST",
+                    url: "https://www.ediblearrangements.com/default.aspx/accountsignout",
+                    data: "",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: 'true',
+                    success: function (response) {
+                        if (response.d != "null") {
+                            var JsonObj = $.parseJSON(response.d);
+                            if (JsonObj._Status == "OK") {
+                                window.location = "https://www.ediblearrangements.com/my-account/sign-in.aspx?ReturnUrl=%2fdefault.aspx";
+                            }
+                        }
+                    },
+                    failure: function (msg) {
+                        alert(msg);
+                    }
+                });
+            }
+        
+
+            $(document).ready(function () {
+                manageHeaderMenuLooks();
+                $(window).resize(function () {
+                    manageHeaderMenuLooks();
+                });                                                                                                                  
+            });
+            function manageHeaderMenuLooks() {
+                ulWidth = 0
+                $(".LinksPanel").show();
+                $(".LinksPanel a").css({ "padding-right": "0px", "padding-left": "0px" });
+                $(".LinksPanel li").each(function () {
+                    ulWidth = ulWidth + $(this).outerWidth()
+                });
+                var paddingVal = ((($(".LinksPanel").outerWidth() - ulWidth) / $(".LinksPanel a").length) / 2);
+                if (paddingVal > 4) {
+                    $(".LinksPanel a.mmNormalLink").css({ "padding-right": paddingVal + "px", "padding-left": paddingVal + "px" });                   
+                    $(".LinksPanel li").each(function () {
+                        if ($(this).find("a span").text().indexOf("'") != -1) {
+                            $(this).find("a").css({ "padding-right": (paddingVal - 3) + "px", "padding-left": (paddingVal - 3) + "px" });
+                        }
+                    });
+                    $(".LinksPanel a.mmNormalLink:last").css({ "padding-right": (paddingVal - 5) + "px" });
+                    $(".LinksPanel a.mmNormalLink:last").parent("li").css({ "padding-right": "2px" });
+                }
+                else {
+                    $(".LinksPanel a").css({ "padding-right": "5px", "padding-left": "5px" });
+                }
+            }
+            
+
+
+    
+        var imgLogVisit = new Image();
+        
+            imgLogVisit.src = "https://www.ediblearrangements.com/logvisit.aspx?R="
+        
+    function SetCartQty(Qty) {
+        $(".fcart").addClass("hasCount");
+        $("#ItemsInCart").html("" + Qty).show();
+        if (Qty > 9 && Qty < 100) { $("#ItemsInCart").css({ "right": "9px", "line-height": "16px", "width": "14px", "height": "15px", "border-radius": "15px" }); }
+        if (Qty > 99) { $("#ItemsInCart").css({ "right": "9px", "line-height": "16px", "width": "15px", "height": "15px", "border-radius": "15px" }); }
+    }
+    function ShowLocalizeDivFromLocalize(elem) {
+        if ($("#divLocalize").is(":visible") && $("#divLocalize").attr("caller") == "header") {
+            $("#divLocalize").slideUp();
+        }
+        else {
+            $("#divLocalize").attr("caller", "header");
+            $("#divLocalize").css("left", "-80px");
+            $("#divLocalize").css("top", $(elem).position().top + 130 + $(elem).outerHeight());
+            if ($("#divLocalize").is(":visible") == false) {
+                $("#divLocalize").slideDown();
+            }
+        }
+    }
+    function LogoutUser() {
+        $.ajax({
+        type: "POST",
+        url: "https://www.ediblearrangements.com/Ajax/loginuser.aspx/logoutuser",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            if (response.d != "null") {
+                var JsonObj = $.parseJSON(response.d);
+                if (JsonObj._Status == "OK") {
+                    if (document.URL.toLowerCase().indexOf("/my-account") != -1) {
+                        location.href = "https://www.ediblearrangements.com/my-account/sign-in.aspx?ReturnUrl=%2fMyAccount";
+                    }
+                     $("#lnkUserName").css("display", "none");
+                    $("#spnWelcome").css("display", "none");
+                    $("#divMyAccMenu").css("display", "none");
+                    $("#divInStoreMenu").css("display", "none");
+                    $("#lnkAddressBook").css("display", "none");
+                    triggermail_email_address = "";
+
+                    if (JsonObj._IsStoreLogin == false) {
+                        $("#lnkLogin").css("display", "");
+                        $("#spnOr").css("display", "");
+                        $("#lnkRegister").css("display", "");
+                        $("#lnkEdibleReward").css("display", "");
+                        $("#min-sep").css("display", "");
+                        $("#dvReg").css("display", "");
+                    
+                        $("#lnkSignout").css("display", "");
+                    }
+
+
+                }
+                else if (JsonObj._Status == "RedirectUserAfterLogOut") {
+                    location.href = 'https://www.ediblearrangements.com/';
+                }
+            }
+        },
+            failure: function (msg) { alert(msg); }
+        });
+    }
+    function LogoutStoreUser() {
+        $.ajax({
+        type: "POST",
+        url: "https://www.ediblearrangements.com/ajax/LoginStoreUser.aspx/LogoutStoreUser",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            
+            if (response.d != "null") {
+                    var JsonObj = $.parseJSON(response.d);
+               $("#lnkStoreNumber").css("display", "none");
+               $("#divInStoreMenu").css("display", "none");
+
+                if (JsonObj._isUserLoggedIn == false) {
+                   $("#lnkLogin").css("display", "");
+                   $("#spnOr").css("display", "");
+                   $("#lnkRegister").css("display", "");
+                   $("#lnkEdibleReward").css("display", "");
+                   $("#min-sep").css("display", "");
+                   $("#dvReg").css("display", "");
+                   $("#lnkSignout").css("display", "");
+                   $("#liLogin").show();
+                   $(".loginToMyAccount").show();
+                }
+            }
+        },
+            failure: function (msg) { alert(msg); }
+        });
+    }   
+     function MegaMenu_Arranger(MenuClassName) {
+        var MegaMenu_items = $(".nav-"+MenuClassName + " .cols"),
+        MegaMenu_items_height = [],
+        MegaMenu_itemMaxHeight = 0,
+        MegaMenu_heightCounter = 0,
+        MegaMenu_startIndex = 0,
+        MegaMenu_endIndex = 0,
+        MegaMenu_renderingHTML = "";
+        if (MegaMenu_items.length < 1 || $(".nav-" + MenuClassName).hasClass("shopSubMenuTemplate") == true) {
+            return false;
+        }
+        for (var i = 0; i < MegaMenu_items.length; i++) {
+            MegaMenu_items_height.push($(MegaMenu_items[i]).height());
+        }
+
+        MegaMenu_itemMaxHeight = Math.max.apply(null, MegaMenu_items_height);
+        MegaMenu_startIndex = 0;
+        MegaMenu_heightCounter = $(MegaMenu_items[0]).height();
+        MegaMenu_renderingHTML = "";
+
+        for (var i = 1; i < MegaMenu_items.length; i++) {
+            MegaMenu_heightCounter += $(MegaMenu_items[i]).height();
+            if (MegaMenu_heightCounter >= MegaMenu_itemMaxHeight) {
+                MegaMenu_endIndex = i - 1;
+
+                MegaMenu_renderingHTML += "<div class='mega-menu-block'>";
+                for (var j = MegaMenu_startIndex; j <= MegaMenu_endIndex; j++) {
+                    MegaMenu_renderingHTML += MegaMenu_items[j].outerHTML;
+                }
+                MegaMenu_renderingHTML += "</div>";
+                MegaMenu_startIndex = i;
+                MegaMenu_heightCounter = $(MegaMenu_items[i]).height();
+            }
+
+        }
+
+        MegaMenu_endIndex = i - 1;
+        MegaMenu_renderingHTML += "<div class='mega-menu-block'>";
+        for (var j = MegaMenu_startIndex; j <= MegaMenu_endIndex; j++) {
+            MegaMenu_renderingHTML += MegaMenu_items[j].outerHTML;
+        }
+        MegaMenu_renderingHTML += "</div>";
+        $(".nav-" + MenuClassName).html(MegaMenu_renderingHTML);
+
+        var maxwidth = 0;
+        $(".mega-menu-block").each(function () {
+            maxwidth = maxwidth + $(this).width();
+        });
+
+        if (maxwidth > 900) {
+            $(".nav-" + MenuClassName).css("width", "1000px")
+        }
+        else {
+            $(".nav-" + MenuClassName).css("width", maxwidth + 2)
+        }
+
+        var MegaMenu_blocks = $(".nav-" + MenuClassName + " .mega-menu-block");
+        for (var k = 0; k < MegaMenu_blocks.length; k++) {
+            if ($(MegaMenu_blocks[k]).offset().top == $(MegaMenu_blocks[0]).offset().top)
+            {
+                $(MegaMenu_blocks[k]).css("height", MegaMenu_itemMaxHeight + 15)
+            }
+            
+        }
+        
+    }
+   
+        $(".mmli").mouseenter(function () {
+        var LiClasses = $(this).attr("class").split(" "); var currentli = '.nav-' + LiClasses[1];
+        if ($('.divSubMenuContainer' + currentli + ' .cols').length > 0) {
+            $(currentli).show().siblings().hide(); $(this).children().addClass("mmSelected");
+            if ($('.divSubMenuContainer' + currentli + ' .cols').length == 1) {
+                $('.divSubMenuContainer' + currentli + ' .cols>h3').hide();
+            }
+        }
+        MegaMenu_Arranger(LiClasses[1]);
+        var totalArea = ($(this).position().left + $(currentli).outerWidth());
+
+        if (totalArea > $(".LinksPanel").outerWidth()) {
+            $(currentli).css("left", ($(".LinksPanel").outerWidth() - $(currentli).outerWidth()) + "px");
+        }
+        else {
+            $(currentli).css("left", $(this).position().left + "px");
+        }
+    });
+    $(".mmli").mouseleave(function () {
+        $(".divSubMenuContainer").hide();
+        $(".mmli a").removeClass("mmSelected");
+    });
+    $(".divSubMenuContainer").mouseenter(function () {
+        var LiClasses = $(this).attr("class").split(" "); var currentli = LiClasses[1].substring(4);
+        $('li.mmli.' + currentli + ' > a').addClass("mmSelected")
+        $(this).show().siblings().hide();
+    });
+    $(".divSubMenuContainer").mouseleave(function () {
+        var LiClasses = $(this).attr("class").split(" "); var currentli = LiClasses[1].substring(4);
+        $(this).hide(); $('li.mmli.' + currentli + ' > a').removeClass("mmSelected")
+    });
+    
+
+
+    function EventHandler(e) {
+        if (!e)
+            e = window.event;
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+        else {
+            e.cancelBubble = true;
+        }
+    }
+    function isIE8() {
+        var myNav = navigator.userAgent.toLowerCase();
+        return (myNav.indexOf('msie 8.0') != -1) ? true : false;
+    }
+    function changeURL(elm) {
+        if (typeof ContactID === "undefined") {
+            ContactID = 0;
+        }
+        var url = '';
+        if (typeof RID === 'undefined') {
+            url = 't=' + new Date().getTime() + '&ContactID=' + ContactID;
+        } else {
+            url = 't=' + new Date().getTime() + ((RID != null && RID != 0) ? "&RID=" + RID : "");
+        }
+        if ($(elm).attr("href1").indexOf("ArrangementID") == -1)
+            url = "?" + url;
+        else
+            url = "&" + url;
+        if (isIE8() == true) { location.href = $(elm).attr("href1") + url; }
+        else { elm.href = $(elm).attr("href1") + url; }
+    }
+    function sQV(ArrID, elem) {
+        var IsOrderingApp = "False";
+        $("#___dvQV").remove();
+        $("body").append("<div id='___dvQV'></div>");
+        if (typeof ContactID === "undefined") {
+            ContactID = 0;
+        }
+        if (typeof RID === 'undefined') {
+            var url = 'https://www.ediblearrangements.com/ajax/QuickView.aspx?t=' + new Date().getTime() + '&ContactID=' + ContactID + '&ArrID=' + ArrID + '&PageURL=' + $(elem).parent("a.aArrImg").attr("href1") + '&ServiceOption=' + 0 + '&IsOrderingApp=' + IsOrderingApp;
+        } else {
+            var url = 'https://www.ediblearrangements.com/ajax/QuickView.aspx?t=' + new Date().getTime() + '&ArrID=' + ArrID + ((RID != null && RID != 0) ? "&RID=" + RID : "") + '&PageURL=' + $(elem).parent("a.aArrImg").attr("href1") + '&ServiceOption=' + 0 + '&IsOrderingApp=' + IsOrderingApp;
+        }
+        $("body #___dvQV").load(url);
+    }
+
+   
+
+
+    $(function () {
+        $('.lazy').lazy({
+            effect: "fadeIn",
+            effectTime: 100,
+            threshold: 0
+	  });
+  });
+    
+
+        window.PopUpInactive = true;
+        window.PopUpConfirmationInactive = true;
+    function createCookie(name) {
+        var date = new Date();
+        date.setTime(date.getTime() + (3650 * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+        document.cookie = name + "=" + 'y' + expires + "; path=/";
+    }
+    function createCookieForDonut(name) {
+        document.cookie = name + "=" + 'y' + "; path=/";
+    }
+    function readCookie(name) {
+        var ca = document.cookie;
+        if (ca.indexOf(name) >= 0) return 'y';
+        else return null;
+    }
+        $(document).ready(function () {
+        try {
+            //Wrap arrangement list ULs in a div
+            $(".ArrangementList ul").each(
+              function () {
+                  var elem = $(this);
+                  if (elem.children().length == 0) {
+                      elem.remove();
+                  }
+              }
+            );
+            $('.ArrangementList ul').wrap('<div class="divArrangementSubList"></div>');
+        }
+        catch(e){}
+        
+
+        var x = readCookie('showSignup');
+        if (x == null) {
+                
+                    createCookie('showSignup');
+                
+                ShowDivSignUptini_Birthday_15Dollar();
+                
+            }
+        });
+	    
+        function ShowDivSignUptini_Birthday_15Dollar() {
+                DisableBackground();
+                var html = $("#__dvSignUPtini_5Dollar").html();
+                $("#__dvSignUPtini_5Dollar").remove();
+                $("body").append(html);
+                $("#divEmailSignUpTini_Birthday_5Dollar").center();
+                $("#divEmailSignUpTini_Birthday_5Dollar").css("top", "350px");
+                $("#divEmailSignUpTini_Birthday_5Dollar").show();
+                $("#txtEmailAddressSignUpTini_Birthday_5Dollar").focus();
+            }
+            function HideDivSignUp_Birthday_5Dollar() {
+                $('#divEmailSignUpTini_Birthday_5Dollar').hide();
+                EnableBackground();
+                return false;
+            }
+            function HideDivThankyou_Birthday_5Dollar() {
+                $('#divSignupThankyouTini_Birthday_5Dollar').hide();
+                EnableBackground();
+                return false;
+            }
+            function HideDivSignUpSuccess_Birthday_5Dollar() {
+                $('#divSignupThankyouTini_Birthday_5Dollar').hide();
+                EnableBackground();
+                return false;
+            }
+            function SubscribeToPromotion_Birthday_5Dollar() {
+                var emailAddress = trim($("#txtEmailAddressSignUpTini_Birthday_5Dollar").val());
+                var msg = "";
+                if (emailAddress == "") {
+                    msg = 'Enter your email address';
+                }
+                else if (isEmailValid_Birthday_5Dollar(emailAddress) == false) {
+                    msg = 'Enter a valid email address';
+                }
+                if (msg == "") {
+                    var img = new Image();
+                    img.src = "Subscribe.aspx?EmailAddress=" + emailAddress + "&Section=6";
+                        HideDivSignUp_Birthday_5Dollar();
+                        DisableBackground();
+                        $("#divSignupThankyouTini_Birthday_5Dollar").center();
+                        $("#divSignupThankyouTini_Birthday_5Dollar").css("top", "375px");
+                        $("#divSignupThankyouTini_Birthday_5Dollar").show();
+                }
+                else {
+                    emailAddress = "";
+                    alert(msg);
+                }
+                return false;
+            }
+            function isEmailValid_Birthday_5Dollar(str) {
+                if ($("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == "" || $("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == $("#txtEmailAddressSignUpTini_Birthday_5Dollar").attr("placeholder")) {
+                    return false;
+                }
+                else {
+                    return /^[a-zA-Z0-9\.\-\_]+\@[a-zA-Z0-9](?:[\.\-]{0,1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/.test(str);
+                }
+            }
+            function EmailSignup_Birthday_5Dollar() {
+                if ($("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == "" || $("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == $("#txtEmailAddressSignUpTini_Birthday_5Dollar").attr("placeholder")) {
+                    $("#txtEmailAddressSignUpTini_Birthday_5Dollar").addClass("hasPlaceholder").css("color", "#aaaaaa").val($("#txtEmailAddressSignUpTini_Birthday_5Dollar").attr("placeholder"));
+                }
+                else {
+                    $("#txtEmailAddressSignUpTini_Birthday_5Dollar").removeClass("hasPlaceholder").css("color", "#000000");
+
+                }
+            }
+            function EmailSignupfocus_Birthday_5Dollar() {
+                if ($("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == "" || $("#txtEmailAddressSignUpTini_Birthday_5Dollar").val() == $("#txtEmailAddressSignUpTini_Birthday_5Dollar").attr("placeholder")) {
+                    $("#txtEmailAddressSignUpTini_Birthday_5Dollar").removeClass("hasPlaceholder").css("color", "#aaaaaa").val("");
+                }
+                else {
+                    $("#txtEmailAddressSignUpTini_Birthday_5Dollar").removeClass("hasPlaceholder").css("color", "#000000");
+                }
+            }
+        function SignUpPressed_Birthday_5Dollar(e) {
+            var charCode = (e.which) ? e.which : e.keyCode;
+            if (charCode == '13') {
+                SubscribeToPromotion_Birthday_5Dollar();
+                e.cancelBubble = true;
+                if (e.stopPropagation) e.stopPropagation();
+                return false;
+            }
+        }    
+		
+    
+
+    var StoreNumber = '';
+    var StoreMapAddress = '';
+    var StoreTimings = null;
+    var StorePhoneNumber  = '';
+    var StoreAddress1 = '';
+    var StoreAddress2 = '';
+    var StoreTodaysTimings = '';
+    var StoreImage = '';
+    $(document).ready(function () {     
+        GetUsersLocation()     
+    });
+    function GetUsersLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(GetNearestStoreByCurrentLocation, function (error) {
+                switch (error.code) {
+                    case error.TIMEOUT:
+                        $(".neareststorewrapper").hide();
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        $(".neareststorewrapper").hide();
+                        break;
+                    case error.PERMISSION_DENIED:    
+                         
+                       
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        $(".neareststorewrapper").hide();
+                        break;
+                }
+            }, { 'enableHighAccuracy': true, 'timeout': 15000 });
+        } else {
+            $(".divStoreDetails").hide();
+
+        }
+    }
+
+    function GetNearestStoreByCurrentLocation(position) {        
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;      
+
+         $.ajax({
+                type: "POST",
+                url: "/Default.aspx/GetNearestStoresByCurrentLocation",
+                data: "{'Latitude' : '" + latitude + "' , 'Longitude': '" + longitude + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response.d != "null") {                        
+                        var JsonObj = $.parseJSON(response.d);
+                        if (JsonObj._Status == "OK") {                            
+                            var Store = JsonObj._Data;
+                            populateStoreInfo(JsonObj._Data);
+                        }
+                    else {$(".neareststorewrapper").hide();}
+                }
+                else {$(".neareststorewrapper").hide();}
+                },
+                failure: function (msg) {                  
+                }
+            });
+        
+    }
+
+    function populateStoreInfo(Store) {
+        if (Store.StoreAddress1.length > 0 && Store.StoreAddress2.length > 0 && Store.ZipCode.length > 0) {
+            $(".storelink").html(Store.StoreAddress1 + ". " +  Store.StoreAddress2); 
+           
+            StoreNumber  = Store.Number;
+            StoreMapAddress  = Store.MapAddress;
+            StoreTimings  = Store.Timings;
+            StorePhoneNumber = Store.Phone;
+            StoreAddress1 = Store.StoreAddress1;
+            StoreAddress2 = Store.StoreAddress2;
+            StoreTodaysTimings  = Store.TodaysTimings;
+            StoreImage = Store.Image;
+            $(".neareststorewrapper").click(function(){
+                
+                    loadStoreDtails();
+                
+            });
+            $(".neareststorewrapper").show();
+
+
+        }
+        else { $(".neareststorewrapper").hide(); }
+    }
+
+    function LogUserInput(IsBlocked)
+    {
+
+        $.ajax({
+            type: "POST",
+            url: "/Default.aspx/LogUserInteractionWithGeolocation",
+            data: "{'IsBlocked' : '" + IsBlocked + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"            
+        });
+
+    }
+
+   
+
+    var MondayToFriday = 19;    
+    var Sunday = 15;
+    var Saturday  = 17;
+    var closingTime;
+    var NextDay = false;
+    var ___uTickerQNS;
+    Date.prototype.addHours= function(h){
+        this.setHours(this.getHours()+h);
+        return this;
+    }
+
+     function InitializeNSClock(){        
+        var date = new Date();
+
+        if (date.getDay() == 0){
+            if(date.getHours() >= Sunday){
+                closingTime = MondayToFriday 
+                NextDay = true;
+            }
+            else{
+                closingTime=Sunday;
+            }
+        }
+        else if(date.getDay()== 6){
+            if(date.getHours() >= Saturday){
+                closingTime = Sunday
+                NextDay = true; 
+            }
+            else{
+                closingTime=Saturday;
+            }
+        }
+        else if(date.getDay() > 0 && date.getDay() < 6){
+           if(date.getDay() == 5 && date.getHours() >= MondayToFriday){
+                closingTime = Saturday;
+                NextDay = true;
+            }
+            else{
+                closingTime=MondayToFriday;
+            }
+        }
+        ___uTickerQNS = setInterval("uTickerQNS()",1000);        
+        }
+     function uTickerQNS(){     
+         var elmTicker = $("#TickerNS");
+        var elmTickerQ = $("#TickerQNS");
+        var elmTimetext = $("#Timetext");        
+        var date = new Date();
+        var Day = date.getDay();
+        var Hours = date.getHours();
+        if (NextDay){
+            Hours = Hours + 24;
+            closingTime = closingTime + (24-date.getHours());
+        }
+        if (Hours<closingTime-2 && NextDay == false){
+            var rHours = closingTime - date.getHours()-3;
+            var rMins = 60 - (date.getMinutes()+1);
+          
+            elmTickerQ.html('Same Day Pickup & Delivery!');
+            elmTimetext.html('Order In The Next ');
+            elmTicker.html(rHours +  ' Hours '  + (rMins==0?'':rMins + ' Minutes '));
+            if (rHours == 1){
+                if(rMins == 0){
+                    elmTimetext.html('');
+                    elmTicker.html(' Order In The Next Hour ');
+                }
+                    
+                else{
+                    elmTimetext.html('Order In The Next ');
+                    elmTicker.html(rHours +  ' Hours ' + (rMins==0?'':rMins + ' Minutes ') );
+    }
+
+            }
+            if (rHours == 0){
+                if(rMins == 0){
+                    elmTimetext.html('Stores are Open Until ');
+                    if(closingTime >= 12){
+                    
+                        elmTicker.html((closingTime-12) + 'pm' );
+                    }
+                    
+                    else{                   
+                        elmTicker.html((closingTime) + 'am' );
+                    }
+                        
+                }
+                else{
+                    elmTimetext.html('Order In The Next ');
+                    elmTicker.html(rMins +  ' Minutes ' );
+                }
+            }
+        }
+        else if(Hours<closingTime && NextDay == false){
+             elmTickerQ.html('Same Day Pickup & Delivery!');
+             elmTimetext.html('Stores are Open Until ');
+            if(closingTime >= 12){
+
+                elmTicker.html((closingTime-12) + 'pm' );
+            }
+                
+            else{
+                elmTicker.html((closingTime) + 'am' );
+            }
+                
+        }
+        else{
+            if(new Date().getHours()==0){
+                NextDay = false;
+                if (new Date().getDay()==0) closingTime = Sunday;
+                else if(new Date().getDay()==6) closingTime = Saturday;
+                else closingTime = MondayToFriday;                
+                return 0;
+            }
+            if (date.getDay() == 0){
+                if(date.getHours() >= Sunday){
+                    closingTime = MondayToFriday 
+                }
+                else{
+                    closingTime=Sunday;
+                }
+            }
+            else if(date.getDay() == 6){
+                if(date.getHours() >= Saturday){
+                    closingTime = Sunday 
+                }
+                else{
+                    closingTime=Saturday;
+                }
+            }
+            else if(date.getDay() > 0 && date.getDay() < 6){
+                if(date.getDay() == 5 && date.getHours() >= MondayToFriday){
+                    closingTime = Saturday;
+                }
+                else{
+                    closingTime=MondayToFriday;
+                }
+            }
+            var rHours = 24 - (date.getHours() + 3 - closingTime);
+            var rMins = 60 - (date.getMinutes()+1);
+            elmTickerQ.html('Want it by TOMORROW?');
+            elmTimetext.html('Order In The Next ');
+            elmTicker.html(rHours + ' Hours ' +(rMins==0?'':rMins + ' Minutes ') );            
+        }
+       
+}    
+    //InitializeNSClock();
+
+    function loadStoreDtails()
+    {
+        $("#hstorenumber").html("- " + StoreNumber);
+        $("#paddress1").html(StoreAddress1);
+        $("#paddress2").html(StoreAddress2);       
+        if(StoreImage != "")
+        {      
+            
+          $(".divleft").html("<img src='https://resources.ediblearrangements.com/Resources/en-US/i/revamp_p/" + StoreImage + "' alt='Store Image'/>");     
+            $(".divleft").show();
+        }
+        else
+        {
+            $(".divright").css("width","98%");
+        }
+        var tblStoreTimings = $("#timingAreaContent");     
+        var html = "";     
+        if(StoreTodaysTimings != "Closed")
+        {
+            html = html + "<div class='store_timeLable' style='display: block; padding: 10px 0 15px 0px;'>";
+            html = html + "<p class='phead'>Today's Hours:</p>";           
+
+
+            html = html + " <span class='store_timeSpan' style='font-family: geomanistbook, Arial;color: #252525;font-size: 16px;'>"+StoreTodaysTimings +"</span>";           
+            html = html + "</div>";
+        }
+        $.each(StoreTimings, function (i, obj) {       
+            html = html + "<div class='store_timeLable'>";
+            html = html + "<p class='phead'>"+obj.Days+":</p>";
+            html = html + " <span class='store_timeSpan' style='font-family: geomanistbook, Arial;color: #252525;font-size: 16px;'>"+ obj.Timing +"</span>";           
+            html = html + "</div>";       
+                      
+        });
+        tblStoreTimings.html(html);
+        $("#spnPhone").html(StorePhoneNumber);        
+        $("#divStoreDetails").show();
+        $("#divStoreDetails").height($(".dvinfocntnr").height());
+
+
+    }
+
+    function GetDirections()
+    {        
+        window.open("http://www.google.com/maps?saddr=&daddr=" + StoreMapAddress);
+    }
+
+
+
+    $(document).ready(function () {
+
+        $("#slider > ul > li:first > img").one("load", function () {
+            if ($(this).width() > 1000)
+                bindFullWidthBanner();
+            else
+                bindEasySlider();
+        }).each(function () {
+            if (this.complete) {
+                $(this).load(); // For jQuery < 3.0 
+                // $(this).trigger('load'); // For jQuery >= 3.0 
+            }
+        });
+
+    });
+
+    function bindEasySlider() {
+        $("#slider").easySlider({
+            vertical: false,
+            speed: 400,
+            auto: true,
+            pause: 12000,
+            continuous: true,
+            showPager: true
+        });
+        if ($("#ulbnr").find("li").length < 2)
+            $(".__ctrl").hide();
+    }
+
+    var bannerIndex = 0;
+    var adjustSpace = 0;
+    var maxWidth = 1920;
+    var bannerLength = $("#ulbnr").find("li").length;
+    var bannerInterval = null;
+    
+    function bindFullWidthBanner() {
+        if (bannerLength > 1) {
+            var firstElement = $("#ulbnr").find("li:first");
+            var lastElement = $("#ulbnr").find("li:last")
+            $(firstElement).clone().appendTo("#ulbnr");
+            $(lastElement).clone().css("margin-left", "-" + (maxWidth + (adjustSpace > 0 ? adjustSpace : 0)) + "px").prependTo("#ulbnr");
+            for (i = 0; i < bannerLength; i++) {
+                $(".__ctrl #pager").append("<a href='javascript:void(0);' class='index" + i + "' onclick='setIndex(this);' data-val='" + i + "'></a>");
+            }
+            bannerInterval = setInterval(function () { startBannerRotation(); }, 12000);
+            $(".index0").addClass("selected").siblings("a").removeClass("selected");
+        }
+        else {
+            $(".__ctrl").hide();
+        }
+        adjustBannerLooks();
+        $(window).resize(function () {
+            adjustBannerLooks();
+            $("#ulbnr").css("margin-left", "-" + ((maxWidth * bannerIndex) + (adjustSpace > 0 ? adjustSpace : 0)) + "px");
+        });
+    }
+
+    function adjustBannerLooks() {
+        adjustSpace = Math.round((maxWidth - $(document).width()) / 2);
+        if (adjustSpace > 0) {
+            $("#ulbnr").stop().width($("#ulbnr").find("li").length * $("#ulbnr li:last").find("img").width()).css("margin-left", "-" + adjustSpace + "px");
+        }
+        else {
+            $("#ulbnr").stop().width($("#ulbnr").find("li").length * $("#ulbnr li:last").find("img").width()).css("margin-left", "-0px");
+        }
+    }
+    function startBannerRotation() {
+        bannerIndex = bannerIndex + 1;
+        $("#ulbnr").animate({ marginLeft: "-" + ((maxWidth * bannerIndex) + (adjustSpace > 0 ? adjustSpace : 0)) + "px" }, 400, function () {
+            if (bannerIndex > (bannerLength - 1)) {
+                $("#ulbnr").stop().css("margin-left", "-" + adjustSpace + "px");
+                bannerIndex = 0;
+            }
+            $(".index" + bannerIndex).addClass("selected").siblings("a").removeClass("selected");
+        });
+    }
+
+    function setIndex(elem) {
+        if ($(elem).hasClass("selected") == false) {
+            clearInterval(bannerInterval);
+            bannerIndex = (parseInt($(elem).attr("data-val")) - 1);
+            startBannerRotation();
+            bannerInterval = setInterval(function () { startBannerRotation(); }, 12000);
+        }
+    }
+
+    function moveNext() {
+        var elem = $("#pager .selected");
+        bannerIndex = parseInt($(elem).attr("data-val"));
+
+        if (bannerIndex == (bannerLength - 1))
+            setIndex($(".index0"));
+        else
+            setIndex($(elem).next());
+    }
+
+    function movePrevious() {
+        var elem = $("#pager .selected");
+        bannerIndex = parseInt($(elem).attr("data-val"));
+
+        if (bannerIndex == 0)
+            setIndex($("#pager a:last"));
+        else
+            setIndex($(elem).prev());
+    }
+
+
+
+    $(document).ready(function () {
+        $(".carousel ul").each(function () {
+            if ($(this).children("li").length > 4) {
+                $(this).slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    arrows: true,
+                    infinite: false,
+                    nextArrow: "<button type='button' class='slick-next slick-arrow'></button>",
+                    prevArrow: "<button type='button' class='slick-prev slick-arrow'></button>"
+                });
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+        $(".carousel ul").each(function () {
+            if ($(this).children("li").length > 4) {
+                $(this).slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    arrows: true,
+                    infinite: false,
+                    nextArrow: "<button type='button' class='slick-next slick-arrow'></button>",
+                    prevArrow: "<button type='button' class='slick-prev slick-arrow'></button>"
+                });
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+        $(".carousel ul").each(function () {
+            if ($(this).children("li").length > 4) {
+                $(this).slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    arrows: true,
+                    infinite: false,
+                    nextArrow: "<button type='button' class='slick-next slick-arrow'></button>",
+                    prevArrow: "<button type='button' class='slick-prev slick-arrow'></button>"
+                });
+            }
+        });
+    });
+
+
+            function ShowLocalizeDiv(elem) {
+                if ($("#divLocalize").is(":visible") && $("#divLocalize").attr("caller") == "localize") {
+                    $("#divLocalize").slideUp();
+                }
+                else {
+                    var offset = $(".footer-bottom").offset();
+                    var height = $(document).height();
+                    $("#divLocalize").attr("caller", "localize");
+                    //$("#divLocalize").css("bottom", height - offset.top);
+                    $("#divLocalize").css("left", "50px");
+                    //$("#divLocalize").css("right", $(".head").width() - ($("#spanLocalize").position().left + $("#spanLocalize").outerWidth()));
+                    if ($("#divLocalize").is(":visible") == false) {
+                      //  $("#divLocalize").css("right", $(".head").width() - ($("#spanLocalize").position().left + $("#spanLocalize").outerWidth()));
+                        $("#divLocalize").slideDown();
+                    }
+                }
+            }
+        
+
+    $(document).ready(function() {
+        $("#txtMailingListEmail").keydown(function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) {
+                SubscribeToEmail();
+            }
+            else {
+                $(this).removeClass("validatorTxt");
+            $(this).css("background-color","");
+            }
+        });
+        $("#txtPhoneList").keydown(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) {
+                SubscribeToPhone();
+            }
+            else {
+                $(this).removeClass("validatorTxt");
+                $(this).css("background-color", "");
+            }
+        });
+        EnablePhoneMasking();
+    });
+    function checkboxClick() {
+        $("#chkPhoneTerms").attr('checked', !$("#chkPhoneTerms").is(':checked'));
+    }
+    function SubscribeToEmail() {
+        var emailAddress = trim($("#txtMailingListEmail").val());
+        var phoneNumber = '';
+        var msg = "";
+        if (emailAddress == "" || emailAddress == ('Email address'))
+            msg = 'Enter email address.';
+        else if (emailAddress != "" && emailAddress != ('Email address') && (isEmailFooter(emailAddress) == false))
+            msg = 'Enter a valid email address.';
+        if (msg != "") {
+            $("#txtMailingListEmail").css("background-color", "#FDD");
+            $("#txtMailingListEmail").addClass("validatorTxt");
+        }
+        else {
+            if (emailAddress == ('Email address'))
+                emailAddress = "";
+            var img = new Image();
+            img.src = "https://www.ediblearrangements.com/Subscribe.aspx?EmailAddress=" + emailAddress + "&PhoneNumber=" + phoneNumber + "&Section=1";
+            $("#txtMailingListEmail").val('');
+            ShowSubcribeModalPopup();
+        }
+        return false;
+    }
+    function SubscribeToPhone() {
+        var emailAddress = '';
+        var phoneNumber = trim($("#txtPhoneList").val());
+        if ((phoneNumber == "" || phoneNumber == ('Phone number')) || (phoneNumber.length <= 9 && phoneNumber.length <= 17) || (hasNumbers(phoneNumber) < 10) || (!ValidateMgagePhoneNumber($("#txtPhoneList")))) {
+            $("#txtPhoneList").css("background-color", "#FDD");
+            $("#txtPhoneList").addClass("validatorTxt");
+            return false;
+        }
+        if (!($("#chkPhoneTerms").is(':checked'))) {
+            $("#agreephonevalidator").css("display", "block");
+            $("#chkPhoneTerms").addClass("error");
+            $("#terms").css("margin-top", "");   
+            return false;
+        }
+        var img = new Image();
+        img.src = "https://www.ediblearrangements.com/Subscribe.aspx?EmailAddress=" + emailAddress + "&PhoneNumber=" + phoneNumber + "&Section=1";
+        $("#txtPhoneList").val('');
+        $("#agreephonevalidator").css("display", "none");
+        $("#chkPhoneTerms").attr('checked', false).removeClass("error");
+        ShowPhoneModalPopup();
+        return false;
+    }
+    function hasNumbers(t) {        
+       var myString = t;
+       var count = 0;
+       for (var i = 0; i < myString.length; i++) {
+           var c = myString.charAt(i);          
+           if (c >= '0' && c <= '9') {
+               count++;
+           }
+       }
+       return count;
+    }
+    function isEmailFooter(str) {
+        return /^[a-zA-Z0-9\.\-\_]+\@[a-zA-Z0-9](?:[\.\-]{0,1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/.test(str);
+    }
+    function trim(sInput) {
+        return sInput.replace(/^ +/, "").replace(/ +$/, "");
+    }
+    function ShowSubcribeModalPopup() {
+        $.ajax({
+            type: "GET",
+            url: "https://www.ediblearrangements.com/Ajax/PageUtil.aspx?ThankYouEmailPopup=1",
+            success: function (response) {
+                DisableBackground();
+                $("body").append($(response));
+                $("#divThanksEmailFooter").center();
+                $("#divThanksEmailFooter").css("display","block");
+                $("#divThanksEmailFooter").css("top", getScrollTop() + 250);
+                $("#txtMailingListEmail").blur();
+            }
+        });
+    }
+    function ShowPhoneModalPopup() {
+        $.ajax({
+            type: "POST",
+            url: "https://www.ediblearrangements.com/Ajax/PageUtil.aspx?ThankYouMobilePopup=1",
+            success: function (response) {
+                DisableBackground();
+                $("body").append($(response));
+                $("#divThanksPhoneFooter").center();
+                $("#divThanksPhoneFooter").css("display", "block");
+                $("#divThanksPhoneFooter").css("top", getScrollTop() + 250);
+                $("#txtMailingListEmail").blur();
+            }
+         });
+    }
+    function HideSubcribeModalPopup() {
+        EnableBackground();
+        $("#divThanksEmailFooter").remove();
+    }
+    function HidePhoneModalPopup() {
+        EnableBackground();
+        $("#divThanksPhoneFooter").remove();
+    }
+    $(document).ready(function () {
+    if (document.getElementById("ico_PayPal") != null)
+    document.getElementById("ico_PayPal").src = document.location.protocol + "//www.paypalobjects.com/en_US/i/bnr/bnr_nowAccepting_150x40.gif";   
+    });
+
+
+//<![CDATA[
+SetCartQty(0);//]]>
+
+
+
+        // GTM Dynamic page type binding(kamran)
+        var pageName = location.pathname;
+        var isGtmAlreadySet = false;
+        var maxWidth = 1920;
+        var adjustSpace = 0;
+        pageName = (pageName == "/" ? "/Home" : pageName);
+        $(document).ready(function () {
+            try {
+                GetDatalayerDetails();
+            }
+            catch (e) { }
+
+            adjustFullWidthBanner();
+
+            $(window).resize(function () {
+                adjustFullWidthBanner();
+        });
+        });
+
+        function GetDatalayerDetails() {
+            if (isGtmAlreadySet == true)
+                return;
+
+                // Get page and product inage
+                var gtmItem = {
+                    productId: [],
+                    pageType: pageName,
+                    totalValue: 0
+                }
+                window.dataLayer.push(gtmItem);
+            
+        }
+
+        function setDataLayer(gtm) {
+             window.dataLayer.push(gtm);
+            isGtmAlreadySet = true;
+        }
+
+        function adjustFullWidthBanner(){
+            adjustSpace = Math.round((maxWidth - $(document).width()) / 2);
+            $(".full-banner").css("margin-left", "-" +  (adjustSpace > 0 ? adjustSpace : 0) + "px");
+        }
+
+    
+
+        
+          try {           
+            var VH = 'https://' + 'www.ediblearran' + 'gements.com/';
+            if (0 != document.location.href.indexOf(VH)) {
+                var NL = document.location.href.replace(/https?:\/\/[^\/]+\//, VH);
+                if (NL != document.location.href) {
+                    var imgLogReq = new Image();
+                    imgLogReq.src = "https://www.ediblearrangements.com/logReq.aspx?R=" + document.location.href;
+                    document.location.replace(NL);
+                }
+                   
+            }
+       }
+       catch(err) {} 
+
+

@@ -1,0 +1,438 @@
+var spuritCartTotal = "";
+
+
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/* eslint-disable */
+
+(function() {
+  // Declarations start here
+  var EXTERNAL_JS_RESOURCES_URL = 'https://d192j2fhh9i6kr.cloudfront.net/bigcommerce/v1/src/';
+  
+  /**
+   * this will only be executed when a Shopgate App visits the desktop site.
+   */
+  function shopgateInit() {
+    var yourTheme = 'minimal'; // Default Theme: cornerstone
+
+    loadTheme(yourTheme);
+  }
+
+  /**
+   * loading a theme to make the page escape proof.
+   *
+   * @param {string} themeName
+   */
+  function loadTheme(themeName) {
+    var theme = document.createElement('script');
+    theme.setAttribute('src', EXTERNAL_JS_RESOURCES_URL + 'themes/' + themeName + '.bundle.min.js');
+    document.head.appendChild(theme);
+  }
+
+  /**
+   * This function is a wrapper for BigCommerce pageTracker variable
+   * @param {Object} previousPageTracker
+   *
+   * @constructor
+   */
+  function ShopgateUniversalTracking(previousPageTracker) {
+    this.previousPageTracker = previousPageTracker;
+    if (previousPageTracker) {
+      for (var property in previousPageTracker) {
+        if (typeof previousPageTracker[property] === 'function') {
+          this[property] = previousPageTracker[property];
+        }
+      }
+    }
+
+    this._addTrans = addTrans;
+    this._addItem = addItem;
+    this._trackTrans = trackTrans;
+    this.products = [];
+    this.orderId = null;
+    this.currency = shopgateGetCurrency();
+  }
+
+  /**
+   * @returns {string|null}
+   */
+  function shopgateGetCurrency() {
+    // quotes are necessary example content: All prices are in <span title='Euro'>EUR</span>
+    var currencyInfo = "All prices are in <span title='US Dollars'>USD</span>";
+    var regularResult = currencyInfo.match(new RegExp('/*.>([A-Za-z]{3})</'));
+
+    if (regularResult && regularResult.length > 1) {
+      return regularResult[1];
+    }
+
+    return null;
+  }
+
+  /**
+   * Starts a transaction for a specific order id
+   *
+   * @param {string} orderID
+   * @param {string} store
+   * @param {string} total
+   * @param {string} tax
+   * @param {string} shipping
+   * @param {string} city
+   * @param {string} state
+   * @param {string} country
+   */
+  function addTrans(orderID, store, total, tax, shipping, city, state, country) {
+    if (this.previousPageTracker && typeof this.previousPageTracker._addTrans === 'function') {
+      this.previousPageTracker._addTrans(orderID, store, total, tax, shipping, city, state, country);
+    }
+
+    this.orderId = orderID;
+    this.shippingTotal = {
+      type: 'shipping',
+      amount: shipping
+    };
+    this.taxTotal = {
+      type: 'tax',
+      amount: tax
+    };
+    this.priceTotal = {
+      type: 'grandTotal',
+      amount: total
+    };
+  }
+
+  /**
+   * Adds a product to an existing transaction
+   *
+   * @param {string} orderID order id
+   * @param {string} sku product sku
+   * @param {name} product product name
+   * @param {Object} variation
+   * @param {number} price
+   * @param {string} qty
+   */
+  function addItem(orderID, sku, product, variation, price, qty) {
+    if (this.previousPageTracker && typeof this.previousPageTracker._addItem === 'function') {
+      this.previousPageTracker._addItem(orderID, sku, product, variation, price, qty);
+    }
+
+    this.products.push({
+      id: String(sku),
+      name: product,
+      price: {
+        withTax: String(price)
+      },
+      quantity: qty
+    });
+  }
+
+  /**
+   * The final request in BigCommerce analytics tracking
+   */
+  function trackTrans() {
+    if (this.previousPageTracker && typeof this.previousPageTracker._trackTrans === 'function') {
+      this.previousPageTracker._trackTrans();
+    }
+
+    var checkoutSuccess = {
+      order: {
+        number: this.orderId,
+        currency: this.currency ? this.currency : 'USD',
+        totals: [
+          this.shippingTotal,
+          this.taxTotal,
+          this.priceTotal
+        ],
+        products: this.products
+      }
+    };
+
+    shopgateExecuteWithRetry(50, 5000, function() {
+      if (!window.SGJavascriptBridge) {
+        return false;
+      }
+
+      sendCommandsToApp([
+        {
+          'c': 'broadcastEvent',
+          'p': {
+            'event': 'checkoutSuccess',
+            'parameters': [checkoutSuccess]
+          }
+        }
+      ]);
+
+      return true;
+    });
+  }
+
+  /**
+   * Enabling ShopgateApp events by injecting a libshopgate meta tag.
+   * Needed early (in the page loading phase) in order for iOS app to work as we expect it to.
+   */
+  function enableShopgateAppEvents() {
+    // Check if insertion is needed
+    var libshopgate = 'libshopgate';
+    if (document.getElementById(libshopgate)) {
+      return;
+    }
+
+    // Insert libshopgate as meta tag, to tell the Shopgate app to send events
+    // Not using a script tag to avoid "src unavailable" errors in the browsers console
+    var metaTag = document.createElement('meta');
+    metaTag.setAttribute('id', libshopgate);
+    // Add a "src" property (not an attribute, because of the iOS app not receiving it otherwise)
+    metaTag.src = libshopgate;
+    document.getElementsByTagName('head').item(0).appendChild(metaTag);
+  }
+
+  /**
+   * Send all given commands to the app
+   * @param {Array} commands
+   */
+  function sendCommandsToApp(commands) {
+    if ('dispatchCommandsForVersion' in SGJavascriptBridge) {
+      SGJavascriptBridge.dispatchCommandsForVersion(commands, '9.0');
+    } else {
+      SGJavascriptBridge.dispatchCommandsStringForVersion(JSON.stringify(commands), '9.0');
+    }
+  }
+
+  /**
+   * Shopgate App code execution
+   * @param intervalInMilliseconds
+   * @param maximumIntervalTimeInMilliseconds
+   * @param executeCallback
+   */
+  function shopgateExecuteWithRetry(
+    intervalInMilliseconds,
+    maximumIntervalTimeInMilliseconds,
+    executeCallback
+  ) {
+    var startTimestampInMilliseconds = Date.now();
+
+    var interval = setInterval(function() {
+      if (Date.now() >= startTimestampInMilliseconds + maximumIntervalTimeInMilliseconds) {
+        clearInterval(interval);
+        return;
+      }
+
+      if (!executeCallback()) {
+        return;
+      }
+
+      clearInterval(interval);
+    }, intervalInMilliseconds);
+  }
+
+  // SGEvent placeholder needed early (in the page loading phase) in order for iOS app to work as we expect it to.
+  window.SGEvent = {
+    /**
+     * @param {string} eventName Name of the event.
+     * @param {Array} eventArguments Arguments to the event.
+     */
+    __call: function call(eventName, eventArguments) {
+      console.log(`${`# Received event ${eventName}`}$`);
+
+      var args = eventArguments;
+
+      if (!eventArguments || !Array.isArray(eventArguments)) {
+        args = [];
+      }
+
+      console.warn(`Received event ${eventName} is not processed`);
+    },
+
+    /**
+     * It is required for iOS app in order for SGEvent to be used.
+     * Additionally due to issue in android app page in in app browser gets changed.
+     * @returns {boolean}
+     */
+    isDocumentReady: function isDocumentReady() {
+      return true;
+    }
+  };
+  // Declarations end here
+
+  // Code execution starts end here
+  enableShopgateAppEvents();
+  
+  var scriptFileName = window.location.pathname.substr(1);
+  if (scriptFileName === 'checkout/order-confirmation' || scriptFileName === 'finishorder.php') {
+    var previousPageTracker = null;
+    if (window.pageTracker) {
+      previousPageTracker = window.pageTracker;
+    }
+
+    window.pageTracker = new ShopgateUniversalTracking(previousPageTracker);
+  }
+
+  if (window.SGJavascriptBridge) {
+    shopgateInit();
+    return;
+  }
+
+  if (navigator.userAgent.indexOf('libshopgate') === -1) {
+    // No Shopgate Android App and Shopgate iOS app at all
+    return;
+  }
+
+  /**
+   * Shopgate iOS App polling
+   */
+  shopgateExecuteWithRetry(25, 2500, function() {
+    if (!window.SGJavascriptBridge) {
+      return false;
+    }
+
+    shopgateInit();
+
+    return true;
+  });
+// Code execution ends here
+})();
+
+/* eslint-enable */
+/* eslint-enable eslint-comments/no-unlimited-disable */
+
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".dinovite.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"e28a0f67534bc6d8e710c23a8aacde44d2333af4","type":"ANONYMOUS","visit_id":"8e1e741e-f63b-46a5-9ea0-078b5327c637","visitor_id":"2404ff57-3478-4abd-a22f-eb634d301e57"},"referer":{"url":""},"request":{"url":"https:\/\/www.dinovite.com\/"}}, '', 1530291, "other", {"customer":{"id":"anonymous"}}, '8e1e741e-f63b-46a5-9ea0-078b5327c637', '2404ff57-3478-4abd-a22f-eb634d301e57');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	$(".QuickView").quickview({
+		buttonText: "Quick View",
+		buttonColor: "#f7f7f7",
+		gradientColor: "#dcdbdb",
+		textColor: "#000000"
+	});
+});
+
+
+var BCData = {"csrf_token":"2aad5ba42954e91f074a2bc2601f79880047629fbf91f86145a2cf24b23b8054"};
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/0zg8IrfBAwPeZlNVRvQbBUxLFzSQZIJbt0LakG02/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+(function(d, w) {
+  var x = d.getElementsByTagName('SCRIPT')[0];
+  var g = d.createElement('SCRIPT');
+  g.type = 'text/javascript';
+  g.async = true;
+  g.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  x.parentNode.insertBefore(g, x);
+  var f = function () {
+    var x = d.getElementsByTagName('SCRIPT')[0];
+    var s = d.createElement('SCRIPT');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = "//np.commercecentral.yahoo.com/3920ac10";
+    x.parentNode.insertBefore(s, x);
+  };
+  w.attachEvent ? w.attachEvent('onload', f) : w.addEventListener('load', f, false);
+}(document, window));
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], input[type=radio], select').not('.UniApplied').uniform();
+	});
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], input[type=radio], select').not('.UniApplied').uniform();
+	});
+
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'dinovite-tests.mybigcommerce.com';
+window.sloyalty.key = 'd5923d9d-1796-4d91-81fa-5da7326073ad';
+window.sloyalty.customer_id = '';
+window.sloyalty.customer_email = '';
+
+
+                var google_tag_params = {
+                ecomm_pagetype: 'home',
+                ecomm_prodid: '',
+                ecomm_totalvalue: 0
+                };
+            
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+
+
+    if (window.google_tag_params == undefined) {
+    var google_tag_params = {
+    ecomm_pagetype: 'other',
+    ecomm_prodid: '',
+    ecomm_totalvalue: 0
+    };
+    }
+
+
+    /* <![CDATA[ */
+            var google_conversion_id = 1071740641;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+

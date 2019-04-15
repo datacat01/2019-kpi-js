@@ -1,0 +1,32 @@
+
+            // JQuery is included already (Allows for ad-hoc plugins that don't use require)
+            define('jquery', [], function () { return jQuery; });
+        
+
+        var google_tag_params = { ecomm_prodid: '', ecomm_pagetype: 'home', ecomm_totalvalue: 0 };
+    
+
+            var klevu_cms_module_enabled = true, klevu_cmsSearchEnabled = true, klevu_current_version = '20.0.1'; klevu_filterLimit = 10;
+            var klevu_storeLandingPageUrl = '/search/', klevu_showQuickSearchOnEnter = false, klevu_searchQueryParam = 'q', klevu_cms_module_enabled = true, klevu_cmsSearchEnabled = true;
+            var klevu_apiKey = 'klevu-15180169106067475', searchTextBoxName = 'q', klevu_lang = 'en', klevu_result_top_margin = '', klevu_result_left_margin = '';
+            (function () { var ws = document.createElement('script'), kl_protocol = ("https:" === document.location.protocol ? "https://" : "http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol + 'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; ws.charset = "UTF-8"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+        
+
+    /* <![CDATA[ */
+    var google_conversion_id = 1062418606;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+
+
+(function() { "use strict"; var e=null, b="4.0.0", n="23214", additional="", 
+t, r, i; try { t = top.document.referer !== "" ? encodeURIComponent(top.document.referrer.substring(0, 2048)) : "" } catch (o) { t = document.referrer !== null ? document.referrer.toString().substring(0, 2048) : "" } try { r = window && window.top && document.location && window.top.location === document.location ? document.location : window && window.top && window.top.location && "" !== window.top.location ? window.top.location : document.location } catch (u) { r = document.location } try { i = parent.location.href !== "" ? encodeURIComponent(parent.location.href.toString().substring(0, 2048)) : "" } catch (a) { try { i = r !== null ? encodeURIComponent(r.toString().substring(0, 2048)) : "" } catch (f) { i = "" } } var l, c = document.createElement("script"), h = null, p = document.getElementsByTagName("script"), d = Number(p.length) - 1, v = document.getElementsByTagName("script")[d]; if (typeof l === "undefined") { l = Math.floor(Math.random() * 1e17) } h = "dx.steelhousemedia.com/spx?" + "dxver=" + b + "&shaid=" + n + "&tdr=" + t + "&plh=" + i + "&cb=" + l + additional; c.type = "text/javascript"; c.src = ("https:" === document.location.protocol ? "https://" : "http://") + h; v.parentNode.insertBefore(c, v) })();
+
+
+    (function (d, s, i, r) {
+        if (d.getElementById(i)) { return; }
+        var n = d.createElement(s), e = d.getElementsByTagName(s)[0];
+        n.id = i; n.src = '//js.hs-analytics.net/analytics/' + (Math.ceil(new Date() / r) * r) + '/560107.js';
+        e.parentNode.insertBefore(n, e);
+    })(document, "script", "hs-analytics", 300000);
+

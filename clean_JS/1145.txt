@@ -1,0 +1,26 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.weddingfavorites.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.weddingfavorites.com\/mm5\/json.mvc\u003F";
+var Store_Code = "eb";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.weddingfavorites.com\/search.html\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+!function(e){if(!window.pintrk){window.pintrk = function () { window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0]; r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js"); pintrk('load', '2613745248019', {em: ''}); pintrk('page'); 
+var sa_interval = 10000;function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } if (typeof(shopper_first) == 'undefined') saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/24620.js'); shopper_first = true; 
+var localizedErrMap = {};localizedErrMap['required'] = 'This field is required.';localizedErrMap['ca'] = 'An unexpected error occurred while attempting to send email.';localizedErrMap['email'] = 'Please enter your email address in name@email.com format.';localizedErrMap['birthday'] = 'Please enter birthday in MM/DD format.'; localizedErrMap['anniversary'] = 'Please enter anniversary in MM/DD/YYYY format.';localizedErrMap['custom_date'] = 'Please enter this date in MM/DD/YYYY format.';localizedErrMap['list'] = 'Please select at least one email list.';localizedErrMap['generic'] = 'This field is invalid.';localizedErrMap['shared'] = 'Sorry, we could not complete your sign-up. Please contact us to resolve this.';localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';localizedErrMap['state_province'] = 'Select a state/province';localizedErrMap['selectcountry'] = 'Select a country';var postURL = 'https://visitor2.constantcontact.com/api/signup';
+var ANS_customer_id="212e4686-6f4e-4f7a-a8b4-75ff56b4e5e0";
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+var _neq = _neq || [];_neq.push(['_nebusassid', '1369']);_neq.push(['_nedomain', 'weddingfavorites.com']);(function() {var ne = document.createElement('script');ne.type ='text/javascript';ne.async = true;ne.src = ('https:' == document.location.protocol ? 'https://' : 'https://') +'www.adelixir.com/v2track/ne.js';var l = document.getElementsByTagName('script')[0];l.parentNode.insertBefore(ne,l);})();
+var google_tag_params = {ecomm_prodid: 'REPLACE_WITH_VALUE',ecomm_pagetype: 'REPLACE_WITH_VALUE',ecomm_totalvalue: 'REPLACE_WITH_VALUE',};
+/* <![CDATA[ */var google_conversion_id = 1072658419;var google_custom_params = window.google_tag_params;var google_remarketing_only = true;/* ]]> */
+

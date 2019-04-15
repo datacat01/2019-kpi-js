@@ -1,0 +1,125 @@
+window.Prototype || document.write('<script src="https://www.dinntrophy.com/skin/frontend/dinntrophy/default/grandriver/framework/js/prototype.js" type="text/javascript">\x3C/script>');
+window.Scriptaculous || document.write('<script src="https://www.dinntrophy.com/skin/frontend/dinntrophy/default/grandriver/framework/js/scriptaculous.js" type="text/javascript">\x3C/script>');
+
+	WebFontConfig = { google: { families: [ 'Lato:100', 'Lato:300', 'Lato:regular', 'Lato:700', 'Lato:900' ] }};
+
+window.WebFont || document.write('<script src="https://www.dinntrophy.com/skin/frontend/dinntrophy/default/grandriver/framework/js/webfont.js" type="text/javascript">\x3C/script>');
+window.jQuery || document.write('<script src="https://www.dinntrophy.com/skin/frontend/dinntrophy/default/grandriver/framework/js/jquery.min.js" type="text/javascript">\x3C/script>');
+jQuery.noConflict();
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.dinntrophy.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+                                var pr_style_sheet="//cdn.powerreviews.com/aux/15997/15847/css/express.css";
+                            
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+// <![CDATA[
+var seRLO9=document.createElement("script");seRLO9.type="text/javascript";var seRLO9s=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1lttaylqklw0h0yj85wx0og8jr/safe-textlink.js?ps_h=RLO9&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seRLO9.src=seRLO9s;document.getElementById('sdRLO9').appendChild(seRLO9)",1)
+// ]]>
+
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        
+_gaq.push(['_setAccount', 'UA-73605-1']);
+
+_gaq.push(['_trackPageview']);
+        
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        //]]>
+    
+
+            //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'SEARCH Keyword or item #');
+            searchForm.initAutocomplete('https://www.dinntrophy.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+            //]]>
+        
+
+            //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'SEARCH Keyword or item #');
+            searchForm.initAutocomplete('https://www.dinntrophy.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+            //]]>
+        
+    
+jQuery.noConflict();
+ var acc = document.getElementsByClassName("top-level1");      
+ var i;        
+var b;
+ for (i = 0; i < acc.length; i++) {        
+   acc[i].onclick = function() {       
+     this.classList.toggle("active");      
+     var panel = this.nextElementSibling;      
+     if (panel.style.maxHeight){       
+       panel.style.maxHeight = null;       
+     }      
+     else {      
+        panel.style.maxHeight = panel.scrollHeight + "px";             
+      }       
+   }       
+ }     
+ 
+ 
+
+       var google_tag_params = {
+           ecomm_pagetype: 'home',
+           ecomm_prodid: '', 
+           ecomm_totalvalue: 0
+       };
+    
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', '5c3fe01b76832c43be4c6184f796e3cb4805e75742105121482eadc98272fe60']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/6f5du8czcbvoiewregzlzyg4ho28y02j3xsgffkgc4yvzwy2b4/5c3fe01b76832c43be4c6184f796e3cb4805e75742105121482eadc98272fe60/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('https://www.dinntrophy.com/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+
+
+    //<![CDATA[
+    var bta = new __bta('7cce3b00ce2c557356376bad3ced4d7f');
+    //]]>
+
+
+
+    jQuery(document).ready(function () {
+        
+        jQuery('#').submit(function() {
+            window.uetq = window.uetq || [];
+            window.uetq.push({
+                'ec': '',
+                'ea': '',
+                'el': '',
+                'ev': ''
+            });
+
+            console.log('Bind tracker: subscribe event pushed');
+        });
+
+            });
+
+
+var seDj5e=document.createElement("script");seDj5e.type="text/javascript";var seDj5es=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1lttaylqklw0h0yj85wx0og8jr/safe-standard.js?ps_h=Dj5e&ps_t="+new Date().getTime();setTimeout("seDj5e.src=seDj5es;document.getElementById('sdDj5e').appendChild(seDj5e)",1)

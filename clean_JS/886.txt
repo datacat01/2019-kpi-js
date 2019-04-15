@@ -1,0 +1,425 @@
+
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-T6NQQT');
+
+        
+
+	var site = 'corporate';
+	var $$ = jQuery;
+	var linkURL = '/feedback.jsp'
+	var customerServiceURL = '/feedback.jsp'
+	var faqURL = '/main/corporate/support/faqs_detail.jsp?faqURL=support/faq/shopping-faqs.jsp&faqArea=Shopping+FAQ'
+
+
+s.server=window.location.hostname;
+s.linkTrackVars="eVar3,events";
+s.linkTrackEvents="event4";
+s.prop10='en_US';
+s.prop11=window.location.hostname;
+
+	
+	
+
+	
+		s.prop3="non-csr";
+	
+	
+
+
+
+var expDays = 90; // number of days the cookie should last
+var pCount = 5; // number of pages before the popup should occur
+var PercentOpen = 100; //The percentage in which the popup will trigger.
+var link = 'https://ecollector.responsetek.com/collection/collection.aspx?cguid=ccb-624a639b954f&hguid1=f3d-373332ddd299&cType=1&sessioncustomtext1=' + TLGetCookie('TLTSID');
+
+
+
+
+    
+    
+	
+    
+    
+
+    
+    
+	
+    
+    
+		var product = []; 
+/*
+
+  Need to add the following line for displaying
+  the data for cat shop
+  The issue with javascrit and data representaion
+  may cause  an error on browser
+
+
+*/
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+	
+
+
+
+var jeppUtilHover = false;
+
+function initUtils() {
+	$$('#site-utils .util').each(function () {
+		var util = $$(this);
+		var block = $$('.util-block',this);
+		var handler = $$('.util-handler',this);
+		var link = $$('.lnk',this);
+		var dialog = $$('.util-dialog',this);
+		var isLink = false;
+		handler.click(function (e) {
+			if (!isLink) {
+				if (!event) var event = e;
+				if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+			}
+			if (block.hasClass('active') && !isLink) {
+				util.removeClass('selected-util');
+				block.removeClass('active');
+				dialog.hide();
+			} else if (!isLink) {
+				$$('#site-utils .util.active .util-dialog').hide();
+				$$('#site-utils .active').removeClass('active');
+				util.addClass('selected-util');
+				block.addClass('active');
+				dialog.show();
+			}
+		});
+		link.click(function () {
+			isLink = true;
+		});
+	});
+	$$('#site-utils .util').hover(function() {
+		jeppUtilHover = true;
+	},function() {
+		jeppUtilHover = false;
+	});
+	$$().click(function() {
+		if (!jeppUtilHover) hideUtils();
+	});
+}
+
+function hideUtils() {
+	$$('ul#site-utils li.active .util-dialog').hide();
+	$$('ul#site-utils .active').removeClass('active');
+}
+
+
+
+
+    
+    
+	
+    
+    
+
+    
+    
+	
+    
+    
+		var product = []; 
+/*
+
+  Need to add the following line for displaying
+  the data for cat shop
+  The issue with javascrit and data representaion
+  may cause  an error on browser
+
+
+*/
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+	
+
+
+s.prop12='not set';
+
+// 
+// $$("#site-account-util .dl-mnu").click(function() {
+// 	$$("#site-account-util .dl-bd").hide();
+// 	$$("#site-account-util .dl-mnu-active").removeClass("dl-mnu-active");
+// 	$$(this).addClass("dl-mnu-active");
+// 	$$($$(this).attr("href")).show();
+// 	return false;
+// });
+
+
+initLogin();
+
+function initLogin() {
+	var loginForm = $$('form[name=loginForm]');
+	loginForm.attr('action', loginForm.attr('action') + '');
+	$$('#site-utils #site-account-util .util-handler').click(function () {
+		$$(":input[name=uNameTxt]").focus();
+	});
+	$$(':input[name=pWordTxt]').keyup(function(e) {
+		if(e.keyCode == 13) loginForm.submit();
+	});
+}
+
+
+                    initUtils();
+
+                
+
+$$('.nav-menu').hover(
+	function () {
+		$$(this).addClass('nav-menu-active');
+		//$$('.nav-menu-container',this).css('display','block').fadeTo(300,1);
+		//$$('.nav-menu:not(.nav-menu-active) .nav-menu-container').stop().fadeTo(1,0, function () { $$('.nav-menu:not(.nav-menu-active) .nav-menu-container').css('display','none');});
+		if (hideUtils) hideUtils();
+		
+		$$('.nav-menu-container',this).show()
+		$$('.nav-menu:not(.nav-menu-active) .nav-menu-container').hide();
+		if (hideUtils) hideUtils();
+	}, function () {
+		$$(this).removeClass('nav-menu-active');	
+		//$$('.nav-menu-container',this).fadeOut();
+		$$('.nav-menu-container',this).hide();
+});
+
+
+            $$(document).ready(function() {
+                setInterval(advanceSlideshow, 10000);
+            });
+
+            function advanceSlideshow() {
+                $('.slideshow').each(function() {
+                    var currentSlide = $$(".slide.active", this);
+                    var nextSlide = (currentSlide.is(":last-child")) ? $$(".slide:first", this) : currentSlide.next();
+                    currentSlide.removeClass('active').fadeOut(1800);
+                    nextSlide.addClass('active').fadeIn(1800);
+                });
+                //var currentSlide = $$(".spotlight .slide.active");
+                //var nextSlide = (currentSlide.is(":last-child"))?$$(".spotlight .slide:first"):currentSlide.next();
+                //currentSlide.removeClass('active').fadeOut(1800);
+                //nextSlide.addClass('active').fadeIn(1800);
+            }
+
+        
+
+var interval = 1000;
+var tickerTimer = setInterval('countToAdvance()', interval);	 
+var tickerCount = $$('#site-ticker .ticker-list li').length;
+var tickerIndex = 0;
+var tickerTimerCount = 0;
+var tickerTimerMaxCount = 8;
+var tickerOnPause = false;
+
+$$('#site-ticker .ticker-headline').text($$('#site-ticker .ticker-list li:eq('+tickerIndex+')').attr('itype'));
+
+function countToAdvance() {
+	if (!tickerOnPause) tickerTimerCount++;
+	updateProgress();
+	if (tickerTimerCount >= tickerTimerMaxCount) advanceTicker();
+}
+
+function advanceTicker(dir) {
+	var step = '-=15';
+	if (dir == 'up') { tickerIndex--; step = '+=15'; }
+	else tickerIndex++;
+	if (tickerIndex >= tickerCount) {
+		$$('#site-ticker .ticker-list').css('top', 0);
+		tickerIndex = 1;
+	} else if (tickerIndex < 0) {
+		$$('#site-ticker .ticker-list').css('top', -$$('#site-ticker .ticker-list li:last').position().top);
+		tickerIndex = tickerCount-2;
+	}
+	$$('#site-ticker .ticker-list').animate({'top': step},400,'swing',function () {
+		$$('#site-ticker .ticker-headline').text($$('#site-ticker .ticker-list li:eq('+tickerIndex+')').attr('itype'));
+		updateProgress();
+	});
+	tickerTimerCount = 0;
+}
+
+function resetTimer() {
+	clearInterval(tickerTimer);
+	tickerTimer = setInterval('countToAdvance()', interval);
+	updateProgress();	
+}
+
+function updateProgress() {
+	var pw = (tickerTimerMaxCount-tickerTimerCount)*100/tickerTimerMaxCount;
+	$$('#site-ticker .ticker-timer-progress').css('width', pw+'%');
+}
+
+$$('#site-ticker .ticker-next').click(function () {
+	advanceTicker();
+	resetTimer();
+});
+
+$$('#site-ticker .ticker-prev').click(function () {
+	advanceTicker('up');
+	resetTimer();
+});
+
+$$('#site-ticker .ticker-list li').hover(function () {
+	tickerOnPause = true;
+}, function () {
+	tickerOnPause = false;
+});
+
+
+var _crsl = {
+	totalBlocks: $$('#site-carousel .itemlist li.block').length,
+	idx: null,
+	container : {
+		width: null
+	},
+	block: {
+		count: null,
+		width: null
+	},
+	scrBar: {
+		trackWidth: null,
+		thumbWidth: null,
+		thumbPos: function () { return $$('#site-carousel .scrollbar .thumb').position().left; },
+		onDrag: false,
+		hoverThumb: false,
+		mx: 0
+	},
+	content: {
+		width: null,
+		pos: function() { return $$('#site-carousel .itemlist').position().left; },
+		posOfIdx: function (i) { return $$('#site-carousel .itemlist li.block:eq('+ i +')').position().left; }
+	}
+};
+
+initCrsl();
+
+$$('#site-carousel .next').click(function() {
+	if (_crsl.idx < _crsl.block.count) {
+		_crsl.idx+=4;
+		if (_crsl.idx+4 >= _crsl.block.count) _crsl.idx = _crsl.block.count-4;
+		animateCrsl(800);
+	}
+});
+
+$$('#site-carousel .prev').click(function() {
+	if (_crsl.idx >= 0) {
+		_crsl.idx -= 4;
+		if (_crsl.idx < 0) _crsl.idx = 0;
+		animateCrsl(800);
+	}
+});
+
+$$('#site-carousel .thumb').bind('mousedown touchstart', onScrollStart);
+$$('#site-carousel .thumb').bind('touchmove', onScroll);
+$$('#site-carousel .thumb').bind('touchend', onScrollEnd);
+$$().mouseup(onScrollEnd);
+
+
+function onScrollStart(e) {
+	if (!event) var event = e;
+	if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+	_crsl.scrBar.onDrag = true;
+	if (event.touches) {
+		_crsl.scrBar.mx = event.touches[0].pageX;
+	} else {
+		_crsl.scrBar.mx = e.pageX;
+		$$().mousemove(onScroll);
+	}
+}
+
+function onScroll(e) {
+	if (!event) var event = e;
+	if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+	if (_crsl.scrBar.onDrag) {
+		if (event.touches) mx = event.touches[0].pageX;
+		else mx = e.pageX;
+		var dx = mx - _crsl.scrBar.mx;
+		var toPos = _crsl.scrBar.thumbPos()+dx;
+		if (toPos < 0) toPos = 0;
+		if (toPos+_crsl.scrBar.thumbWidth > _crsl.scrBar.trackWidth) toPos = _crsl.scrBar.trackWidth - _crsl.scrBar.thumbWidth;
+		$$('#site-carousel .scrollbar .thumb').stop().css('left',toPos);
+		$$('#site-carousel .itemlist').stop().css('left', -toPos*_crsl.content.width/_crsl.scrBar.trackWidth);
+		_crsl.scrBar.mx = mx;
+		_crsl.idx = Math.round(Math.abs(_crsl.content.pos())/_crsl.block.width);
+		return false;
+
+	}
+}
+
+function onScrollEnd(e) {
+	if (!event) var event = e;
+	if (_crsl.scrBar.onDrag) {
+		if (!event.touches) $$().unbind('mousemove');
+		_crsl.scrBar.onDrag = false;
+		animateCrsl(100);
+		return false;
+	}
+}
+
+$$('#site-carousel .thumb').hover(function () {
+	_crsl.scrBar.hoverThumb = true;
+},function () {
+	_crsl.scrBar.hoverThumb = false;
+});
+
+$$('#site-carousel .track').click(function(e) {
+	var mx = e.pageX;
+	if (!_crsl.scrBar.hoverThumb) {
+		px = mx - $$(this).offset().left;
+		_crsl.idx = Math.round((_crsl.content.width*px/_crsl.scrBar.trackWidth)/_crsl.block.width)-2;
+		if (_crsl.idx < 0) _crsl.idx = 0;
+		if (_crsl.idx+4 >= _crsl.block.count) _crsl.idx = _crsl.block.count-4; 
+		animateCrsl(600);
+	}
+});
+
+function initCrsl() {
+	_crsl.idx = 0;
+	_crsl.block.count = $$('#site-carousel .itemlist li.block').length;
+	if (_crsl.block.count > 4) $$('#site-carousel .scrollbar').show();
+	_crsl.container.width = $$('#site-carousel .container').outerWidth();
+	_crsl.block.width = $$('#site-carousel .itemlist li.block:first').outerWidth();
+	_crsl.content.width =  _crsl.block.count * _crsl.block.width;
+	_crsl.scrBar.trackWidth = $$('#site-carousel .scrollbar .track').outerWidth();
+	_crsl.scrBar.thumbWidth = _crsl.container.width * _crsl.scrBar.trackWidth / _crsl.content.width;
+	$$('#site-carousel .scrollbar .thumb').css('width', _crsl.scrBar.thumbWidth-4);
+	
+}
+
+function animateCrsl(speed) {
+	var thumbScroll = _crsl.scrBar.trackWidth * _crsl.idx/_crsl.block.count;
+	var carouselScroll = -_crsl.content.posOfIdx(_crsl.idx)-1;
+	$$('#site-carousel .scrollbar .thumb').animate({'left':thumbScroll}, speed, 'swing');
+	$$('#site-carousel .itemlist').animate({'left':carouselScroll}, speed , 'swing');
+}
+
+
+<!--
+        s.prop15 = "Eastern";
+        s.eVar27 = "Eastern";
+        var s_code=s.t();if(s_code)document.write(s_code);
+        if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-');
+        //-->

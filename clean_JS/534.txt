@@ -1,0 +1,290 @@
+
+  var contextPath='';
+
+
+  shpResponsive.setDevice("normal");
+
+
+                  $.ajax({
+                    url: '/q?json=true&kw=recs_homepage_carousel'
+                  }).complete(function(data){
+                    var items = []
+                    data.responseJSON.zoneMap.Carousel.forEach(function(item){
+                      items.push(item.productPartNumber)
+                    })
+                    var uniqueCarousel = new ProductCarousel();
+                    uniqueCarousel.request(items, "dynamicItems1", "layout.item.detail.products", 3);
+
+                  })
+				
+
+	$(document).ready(function(){
+		var $footerEmailSignUp = $('#footerEmailSignUp');
+		$('#email-sign-footer').submit(function (e) {
+			var emailFooterSignup = new EmailAjaxSupport({
+				emailId: '#shpFtrEmailAddress2',
+				emailConfirmId: '#shpFtrEmailAddressConfirm',
+				formId: '#email-sign-footer'
+			});
+
+			emailFooterSignup.sendEmail(function(data){
+
+				$('#email-signup-form').attr('data-location', 'Chronic Footer Signup');
+
+				if (data.signup == 'success') {
+					$('#email-sign-footer').addClass('first-signup');
+				}
+				else {
+					$('#email-sign-footer').addClass('return-signup');
+				}
+				if ($(".first-signup").length > 0) {
+					$("#emailConfirmSuccessFooter").removeClass('hidden').fadeIn(800);
+					$footerEmailSignUp.addClass('hidden');
+				}
+				else if ($(".return-signup").length > 0) {
+					$.cookie('email-signup_shown', "true", {expires: 365, path: '/'});
+					$("#emailAlreadyFooter").removeClass('hidden').fadeIn(800);
+					$footerEmailSignUp.addClass('hidden');
+				}
+
+			}, function(){
+				$footerEmailSignUp.addClass('real-error');
+				$("#OopsErrorFooter").fadeIn(800);
+				$footerEmailSignUp.delay(100000).slideUp(1800).removeClass('has-animated');
+				$('.hide-me-on-signup').hide();
+			});
+			return false;
+		});
+
+		$(window).scroll(function () {
+			if (!$.cookie('Signup_Shown')) {
+				$footerEmailSignUp.show();
+				$.cookie('Signup_Shown', "true", {
+					expires: 30,
+					path: '/'
+				});
+			}
+		});
+
+	});
+
+
+
+
+				document.addEventListener("DOMContentLoaded", function(event) {
+					function emailPopup() {
+						if ( !$.cookie('Signup_Shown') ) {
+							var $emailForm = $('#email-signup-form');
+							$emailForm.attr('data-location', 'Auto');
+							headerBox.show();
+
+							$.cookie('Signup_Shown', "true" , { expires: 30, path: '/' });
+						}
+					}
+					emailPopup();
+				});
+			
+
+	// Delete cookie for we recommend test
+    $.cookie("CheckoutRecommend", null, { path: '/' });
+
+	$(document).ready(function(){
+		if(window.location.href.indexOf('SourceCode=INTF') > -1){
+			$.cookie('Signup_Shown', "true" , { expires: 30, path: '/' });
+		}
+
+		function emailPopup() {
+			if(!$.cookie('Signup_Shown')){
+				$emailForm.attr('data-location', 'Auto');
+				headerBox.show();
+				$.cookie('Signup_Shown', "true" , { expires: 30, path: '/' });
+			}
+		}
+
+		function showAfterIntl() {
+			var isIntl = document.referrer.indexOf("SourceCode=INTL") > -1 ? true:false;
+			if (isIntl) {
+				emailPopup();
+			}
+		}
+
+		
+			showAfterIntl();
+		
+
+		$('#email-signup-header').singleEmailSignup();
+		$('#email-sign-footer').singleEmailSignup({tooltipPlacement: 'top'}); // loadHeaderUpd();
+	});
+
+	// Set Birthday Cookie
+	$(function() {
+		var _bexists = $.cookie("haslofin") == "INTTEQLBD";
+		var _bsc = $.cookie("sourcecode") == "INTTEQLBD";
+		if( _bsc && !_bexists ) {
+			$.cookie('sourcecode', null);
+			$.cookie("sourcecode","INTTEQLBD",{ expires: 7, path: '/' });
+			$.cookie("haslofin","INTTEQLBD",{ expires: 7, path: '/' });
+		}
+	});
+    $('#footer-refer-a-friend:empty').css('display','none');
+
+
+	$(".item-pic img").error(function () {
+		$(this).attr("src", "https://media.swansonvitamins.com/images/common/error/missing_sm.jpg");
+	});
+	$(".sem-product img").error(function () {
+		$(this).attr("src", "https://media.swansonvitamins.com/images/common/error/missing_lg.jpg");
+	});
+
+
+	$(document).ready(function() {
+		/*
+		 ** Bing Universal Event Tracking Pixel
+		 */
+		(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o=
+				{ti:"4034846"}
+				;o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+		{var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)}
+				,i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+
+	});
+
+
+        // Convert JSP landing URL to JS landing URL
+        var landURL = '/toprated?icid=HpHeroSemi1530Apr&SourceCode=INTHBVDMA';
+        var hexColor = '';
+        var longDescription = '*Order total must meet or exceed the qualifying threshold before shipping and taxes. Gift certificate purchases, charitable donations, and select Swanson/National items are excluded. Limit one offer per order. Pricing, availability, and expiration are subject to change and other restrictions may apply. Promotional offers may not be applied to items already marked down (Facebook promos, Deal of the Day discounts, buy-one-get-one-free (BOGO) offers, etc.). Swanson offers a full refund for products 30 days from date of purchase. See site for full terms and conditions.';
+        var shortDescription = 'SEMI-ANNUAL SPREE: $15 off $65 or $30 off $100';
+        var nameDescription = '04.11.19_Tiered%OffApr_INT999';
+        var headerDescription = 'Exclusions Apply';
+        var echoDivContent ='';
+        // Set default echo content
+
+        if(landURL.length > 0) {
+            // icid should be removed after probiotic.
+            if(landURL.indexOf('?')==-1){
+                echoDivContent = "<div id=\"echoOffer\"><a class='echo-banner-link' href=\" " + landURL + "\"><img src=\"https://media.swansonvitamins.com/images/common\" alt=\"Shop Now\" /><div id='see-details-echo-banner'>" +
+                "<p id='see-details-echo-banner-link'> </p>" +
+                    "</div></a></div>";
+            }else{
+                echoDivContent = "<div id=\"echoOffer\"><a class='echo-banner-link' href=\" " + landURL + "\"><img src=\"https://media.swansonvitamins.com/images/common\" alt=\"Shop Now\" /><div id='see-details-echo-banner'>" +
+                        "<p id='see-details-echo-banner-link'> </p>" +
+                        "</div></a></div>";
+            }
+        }
+        else {
+            echoDivContent = "<div id=\"echoOffer\" ><span class=\"echo-banner-link\"><img src=\"https://media.swansonvitamins.com/images/common\" alt=\"Shop Now\" /><div id='see-details-echo-banner'>" +
+                    "<p id='see-details-echo-banner-link'> </p>" +
+                    "</div></span></div>";
+        }
+        if(window.location.pathname.indexOf('/lp/') > -1){
+          echoDivContent = '<a class="echo-banner echo-banner--lp" href=' + landURL + '>' + shortDescription + '</a>'
+        }else{
+          echoDivContent = '<a class="echo-banner" href=' + landURL + '>' + shortDescription + '</a>'
+        }
+
+        $(document).ready(function () {
+
+            var echoBannerLightBoxContent = '<div>' +
+                '<div class="h1-style secondary-green">' + headerDescription + '</div>' +
+                '<p class="promoname-short-description-lightbox-text" >' + shortDescription + '</p>' +
+                '<p>' + longDescription + '</p>' +
+                '</div>';
+
+            if (longDescription.length >= 10) {
+                var echoBannerLightBox = new BetterLightBox({className:'banner-see-details-lightbox'});
+                echoBannerLightBox.build(echoBannerLightBoxContent);
+
+                $(document).ready(function() {
+                    $('#see-details-echo-banner').click(function(e){
+                        e.preventDefault();
+                        echoBannerLightBox.show();
+                    });
+                });
+            }
+
+            function determineBannerLocation() {
+                if ($("body").hasClass("view-mobile") || $("body").hasClass("view-tablet")){
+                    var element;
+                      element = document.getElementsByClassName("echo-banner");
+
+
+                    if(element) {
+                        element.parentNode.removeChild(element);
+                    }
+                    if(window.matchMedia("(min-width: 900px)").matches) {
+                        $("#site-container").before(echoDivContent);
+                    } else {
+                        $("#store-content, #store-content-pdp").before(echoDivContent);
+                    }
+                }
+            }
+
+            window.addEventListener('orientationchange', determineBannerLocation);
+            var path = window.location.pathname;
+            if ((path.indexOf('my-account') != -1) || (path.indexOf('AddressBook') != -1)
+                    || (path.indexOf('AddressEdit') != -1) || (path.indexOf('MyCoupons') != -1)) { // If user is in my-account
+                // Don't display echo banner
+            }
+            else {
+                // Phone or Tablet
+                if ($("body").hasClass("view-mobile") || $("body").hasClass("view-tablet")){
+                    if(window.matchMedia("(min-width: 900px)").matches) {
+                        $("#site-container").before(echoDivContent);
+                    } else {
+                        $("#store-content, #store-content-pdp").before(echoDivContent);
+                    }
+                }
+                // Health Library
+                else if ($("#health-library-content").length > 0) {
+                    $("#wrapper").before(echoDivContent);
+                }
+                // Sourcecode ==
+                else if ($.cookie("sourcecode") == "INTHBTEL" || $.cookie("sourcecode") == "INT999") {
+                    $("#site-container").before(echoDivContent);
+                    if(echoDivContent.indexOf('INTETELA-echo.png') > -1) {
+                        $('#echoOffer').css('background' , '#319060'); // green
+                    }
+                    else if(echoDivContent.indexOf('disruptive-4.gif') > -1
+                        || echoDivContent.indexOf('INTETECA-echo-last.gif') > -1) {
+                        $('#echoOffer').css('background' , '#ffc869'); // orange
+                    }
+                }
+                // Default
+                else {
+                    $("#site-container").before(echoDivContent);
+                }
+                if(hexColor) {
+                    $('#echoOffer').css('background' , '#' + hexColor);
+                }
+                
+            } // End path IF
+        });
+    
+
+	window.lhnJsSdkInit = function () {
+		lhnJsSdk.setup = {
+			application_id: "83aafa6d-a1e3-41c3-bb08-4c6736f2a4fb",
+			application_secret: "i7rd2i08sqaev5ot5dzwsllrr7nr8pa88ggbl1rrua0xr6y7bp"
+		};
+		lhnJsSdk.controls = [{
+			type: "hoc",
+			id: "d951b160-2755-410e-a487-89054d10c504"
+		}];
+	};
+
+	(function (d, s) {
+		var newjs, lhnjs = d.getElementsByTagName(s)[0];
+		newjs = d.createElement(s);
+		newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js";
+		lhnjs.parentNode.insertBefore(newjs, lhnjs);
+	}(document, "script"));
+
+	//Give LiveHelpNow script time to load before displaying button
+	$(document).ready(function () {
+        setTimeout(function(){
+            $('#lhnBTN').removeClass('hidden');
+        }, 1100);
+    });
+
+_satellite.pageBottom();

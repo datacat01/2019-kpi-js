@@ -1,0 +1,456 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.silkplantsdirect.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = 'https://ssl.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+            var _gaq = _gaq || [];
+
+            _gaq.push(["_setAccount", "UA-51313012-1"], ["_trackPageview",""]);
+
+
+            if(Ajax.Responders){
+                Ajax.Responders.register({
+                  onComplete: function(response){
+                    if(!response.url.include("progress") && !response.url.include("getAdditional")){
+                        if(response.url.include("saveOrder")){
+                            _gaq.push(["_trackPageview", ""+ "/opc-review-placeOrderClicked"]);
+                        }else if(accordion.currentSection){
+                            _gaq.push(["_trackPageview", "/"+ accordion.currentSection]);
+                        }
+                    }
+                  }
+                });
+            }
+
+//]]>
+
+
+        //<![CDATA[
+            try {
+                Prototype && Prototype.Version && Event && Event.observe && Event.observe(window, 'load', function()
+                {
+                    if ($$('#search,form input[name="q"]').length) {
+                        $$('#search,form input[name="q"]')[0].stopObserving('keydown');
+                    }
+                });
+            } catch (e) {}
+        //]]>
+        
+
+            //<![CDATA[
+                Searchanise = {};
+                Searchanise.host        = 'http://www.searchanise.com';
+                Searchanise.api_key     = '7a0e3m8S3K';
+                Searchanise.SearchInput = '#search,form input[name="q"]';
+                
+                Searchanise.AutoCmpParams = {};
+                Searchanise.AutoCmpParams.union = {};
+                Searchanise.AutoCmpParams.union.price = {};
+                Searchanise.AutoCmpParams.union.price.min = 'se_price_0';
+
+                Searchanise.AutoCmpParams.restrictBy = {};
+                Searchanise.AutoCmpParams.restrictBy.status = '1';
+                Searchanise.AutoCmpParams.restrictBy.visibility = '3|4';
+                
+                
+                Searchanise.options = {};
+                Searchanise.AdditionalSearchInputs = '#name,#description,#sku';
+
+                Searchanise.options.ResultsDiv = '#snize_results';
+                Searchanise.options.ResultsFormPath = 'https://www.silkplantsdirect.com/searchanise/result';
+                Searchanise.options.ResultsFallbackUrl = 'https://www.silkplantsdirect.com/catalogsearch/result/?q=';
+                Searchanise.ResultsParams = {};
+                Searchanise.ResultsParams.facetBy = {};
+                Searchanise.ResultsParams.facetBy.price = {};
+                Searchanise.ResultsParams.facetBy.price.type = 'slider';
+
+                Searchanise.ResultsParams.union = {};
+                Searchanise.ResultsParams.union.price = {};
+                Searchanise.ResultsParams.union.price.min = 'se_price_0';
+
+                Searchanise.ResultsParams.restrictBy = {};
+                Searchanise.ResultsParams.restrictBy.status = '1';
+                Searchanise.ResultsParams.restrictBy.visibility = '3|4';
+                
+
+                Searchanise.options.PriceFormat = {
+                    decimals_separator:  '.',
+                    thousands_separator: ',',
+                    symbol:              '$',
+
+                    decimals: '2',
+                    rate:     '1',
+                    after:     false
+                };
+                
+                (function() {
+                    var __se = document.createElement('script');
+                    __se.src = 'https://www.searchanise.com/widgets/v1.0/init.js';
+                    __se.setAttribute('async', 'true');
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(__se, s);
+                })();
+            //]]>
+        
+
+  var baseurl = "https://www.silkplantsdirect.com/"
+
+
+    var offcanvaseffect = 'st-effect-default';
+    ja = jQuery.noConflict();
+    ja(document).ready(function() {
+          var test = new ja.fn.jmbasetheme({
+              ismobile:0,
+              istable:0,
+              productgridimagewidth:200,
+              productgridimageheight:200,
+              productlistimageheight:200,
+              productlistimagewidth:200,
+              productgridnumbercolumn:4,
+              productgridimagewidthtabletportrait:298,
+              productgridimageheighttabletportrait:298,
+              productlistimagewidthtabletportrait:298,
+              productlistimageheighttabletportrait:298,
+              productgridnumbercolumntabletportrait:2,
+              productlistimagewidthmobileportrait:298,
+              productlistimageheightmobileportrait:298,
+              productgridimageheightmobileportrait:298,
+              productgridimagewidthmobileportrait:298,
+              productgridnumbercolumnmobileportrait:1,
+
+          });
+  
+  });
+
+
+  var baseurl = "https://www.silkplantsdirect.com/"
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+	
+    //ie10 class
+    var doc = document.documentElement;
+    if(navigator.userAgent.indexOf("MSIE 10.0")){
+      doc.className+=' ie10';
+    }
+   var Baseurl = 'https://www.silkplantsdirect.com/';
+
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search');
+            searchForm.initAutocomplete('https://www.silkplantsdirect.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+        (function($){
+            $(document).ready(function($){
+                $('#jm-slide-5cb315ff7aa7f').jaslider({
+                    animation: 'fade',                       //[slide, fade, slice], slide and fade for old compactible
+                    interval: 5000,                               //interval - time for between animation
+                    duration: 1000,                               //duration - time for animation
+                    repeat: 1,                               //animation repeat or not
+                    autoPlay: 1,                           //auto play
+                    mainWidth: 910,                             //width of main item
+                    mainHeight: 608,                           //height of main item
+                    rtl: null,                                  //rtl
+                    thumbType: 'number',                       //false - no thumb, other [number, thumb], thumb will animate
+                    thumbItems: 4,                               //number of thumb item will be show
+                    thumbWidth: 15,                               //width of thumbnail item
+                    thumbHeight: 15,                         //width of thumbnail item
+                    thumbSpaces: [3,3,3,3],                 //space between thumbnails
+                    thumbTrigger: 'click',                     //thumb trigger event, [click, mouseenter]
+                    thumbDirection: 'horizontal',             //thumb orientation
+                    thumbPosition: 'br',                       //[0%, 50%, 100%]
+                    showThumbDesc: '',
+                    showDesc: 'desc',                             //show description or not
+                    descTrigger: 'always',                       //[always, mouseover, load]
+                    maskAnim: 'fade',                     //mask transition style [fade, slide, slide-fade], slide - will use the maskAlign to slide
+                    maskWidth: 300,                             //mask - a div over the the main item - used to hold descriptions
+                    maskHeight: 200,                           //mask height
+                    maskOpacity: 0,                         //mask opacity
+                    maskPosition: 'bl',                     //[0%, 50%, 100%]
+                    controlBox: 0,                           //show navigation controller [next, prev, play, playback] - JM does not have a config
+                    controlPosition: 'tr',                           //show navigation controller [next, prev, play, playback] - JM does not have a config
+                    navButtons: '1',                         //main next/prev navigation buttons mode, [false, auto, fillspace]
+                    showProgress: 0,                           //show the progress bar
+                    urls: ['volume-&-trade-discounts.html','index.php','index.php','request-a-proposal.html'],                                 // [] array of url of main items
+                    targets: ['_self','_self','_self','_self'] // [] same as urls, an array of target value such as, '_blank', 'parent', '' - default
+                });
+            });
+        })(jQuery);
+    
+
+
+//<![CDATA[
+jQuery(document).ready(function($) {
+     $("ul.products-grid").jminfinite({
+        columns:4,
+    	itemSelector:'li.pitem',
+    	viewmoretext:'Load More..',
+    	loadalltext:'That\'s all we have for now <i class=\'icon-smile\'></i>',
+    	loadingimage:'skin/frontend/default/jm_crafts/wavethemes/jmbasetheme/profiles/default/images/default/ajax-loader.gif',
+    	callback:function(obj,newElements){
+            columns = obj.options.columns;
+            container = obj.options.container;
+            itemSelector = obj.options.itemSelector;
+            width = (100/columns).toString() + "%";
+               console.log(container);
+            
+    		    $( newElements ).css("width",width);
+			   // update
+			    $('#item-more').appendTo(container).find('h3:first').show(); 	
+				$(container).find(itemSelector).removeClass("first last");
+				$(container).find(itemSelector).each(function(index,item){
+				if(index%columns == 0){
+                      $(item).addClass("first");
+				}else if(index%columns == (columns-1)){
+                      $(item).addClass("last"); 
+				}
+				 $(window).trigger("resize");
+				 $("ul.products-grid").jmquickview({});					
+			});
+    	}
+
+
+    });
+ });
+ //]]>
+
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+        //<![CDATA[
+        var advancednewsletterForm1 = new VarienForm('advancednewsletter-form-1');
+        //]]>
+    
+
+    function initAjaxLayeredNavigationSliders() {
+        jQuery('.ajaxlayerednavigation-sliders').each(function() {
+            var prices = jQuery(this).val(),
+                priceData = prices.split(';'),
+                from = priceData[0],
+                to = priceData[1],
+                prefixSymbol = '',
+                postfixSymbol = '',
+                id = jQuery(this).attr('id'),
+                requestVar = id.substr(22);
+            if ('price' == requestVar) {
+                prefixSymbol = '$';
+                postfixSymbol = '';
+            }
+            ajaxlayerednavigation.slidersValues[requestVar] = prices;
+            min = priceData[0];
+            max = priceData[1];
+            jQuery("#" + id).ionRangeSlider({
+                min: parseInt(min),
+                max: parseInt(max),
+                from: parseInt(from),
+                to: parseInt(to),
+                type: "double",
+                step: 1,
+                prefix: prefixSymbol,
+                postfix: postfixSymbol,
+                prettify: true,
+                grid: true,
+                onFinish: function(obj) {
+                    var isAjax     = '1';
+                    var isAdvanced = '';
+                    var currentUrl = jQuery(location).attr('href');
+                    if ('1' == isAjax && !isAdvanced) {
+                        updateUrlHash(jQuery(obj.input[0]).attr('data-var'), obj.from, obj.to);
+                        ajaxlayerednavigation.checkUrlHash();
+                    } else if(isAdvanced){
+                        var url = updateAdvancedURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    } else {
+                        var url = updateURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    }
+                }
+            });
+        });
+     }
+    Event.observe(window, 'load', function() { //KB927917 fix
+        initAjaxLayeredNavigationSliders();
+    });
+
+    function updateAjaxLayeredSliders(){
+        jQuery('.ajaxlayerednavigation-sliders').each(function() {
+            var prices = jQuery(this).val(),
+                priceData = prices.split(';'),
+                from = parseInt(priceData[0]),
+                to = parseInt(priceData[1]),
+                prefixSymbol = '',
+                postfixSymbol = '',
+                id = jQuery(this).attr('id'),
+                requestVar = id.substr(22);
+
+            if ('price' == requestVar) {
+                prefixSymbol = '$';
+                postfixSymbol = '';
+            }
+            var maxMin = ajaxlayerednavigation.slidersValues[requestVar],
+                maxPriceData = "",
+                minValue = 0,
+                maxValue = 0;
+            if (!maxMin) {
+                minValue = from;
+                maxValue = to;
+            } else {
+                maxPriceData = maxMin.split(';');
+                minValue = maxPriceData[0];
+                maxValue = maxPriceData[1];
+            }
+
+            jQuery(this).val(maxMin);
+
+            var slider = jQuery("#" + id).ionRangeSlider({
+                min: parseInt(minValue),
+                max: parseInt(maxValue),
+                from: parseInt(from),
+                to: parseInt(to),
+                type: "double",
+                step: 1,
+                prefix: prefixSymbol,
+                postfix: postfixSymbol,
+                prettify: true,
+                grid: true,
+                onFinish: function(obj) {
+                    var isAjax     = '1';
+                    var currentUrl = jQuery(location).attr('href');
+                    if ('1' == isAjax) {
+                        updateUrlHash(jQuery(obj.input[0]).attr('data-var'), obj.from, obj.to);
+                        ajaxlayerednavigation.checkUrlHash();
+                    } else if(isAdvanced){
+                        var url = updateAdvancedURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    } else {
+                        var url = updateURLParameter(window.location.href, jQuery(obj.input[0]).attr('data-var'), obj.from + ',' + obj.to);
+                        window.location.href = url;
+                    }
+                }
+            });
+        });
+    }
+
+    function updateURLParameter(url, param, paramVal) {
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+
+        var rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function updateAdvancedURLParameter(url, param, paramVal) {
+        if (ajaxlayerednavigation.home && ajaxlayerednavigation.seoUrls) {
+            if (ajaxlayerednavigation.useAjax) {
+                window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '#' + requestVar + '=' + from + ',' + to;
+            } else {
+                window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '?' + requestVar + '=' + from + ',' + to;
+            }
+            return false;
+        } else if (ajaxlayerednavigation.home){
+            if (ajaxlayerednavigation.useAjax) {
+                window.location = this.categoryUrl + '#' + requestVar + '=' + from + ',' + to;
+            } else {
+                window.location = this.categoryUrl + '?' + requestVar + '=' + from + ',' + to;
+            }
+            return false;
+        }
+
+        url = decodeURIComponent(url);
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param+'[from]' && tempArray[i].split('=')[0] != param+'[to]'){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+        var params = paramVal.split(',');
+        var rows_txt = temp + "" + param + '[from]' + "=" + params[0];
+        rows_txt += temp + "" + param + '[to]' + "=" + params[1];
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function updateUrlHash(requestVar, from, to) {
+        var hash = location.hash,
+            newHash = '#',
+            hashParams = [],
+            i = 0
+            hashLenght = 0;
+        if (-1 != hash.indexOf(requestVar + "=")) {
+            hash = hash.substr(1, hash.length);
+            hashParams = hash.split('&');
+            hashLenght = hashParams.length;
+
+            hashParams.each(function(param){
+                if (-1 !== param.indexOf(requestVar)) {
+                    newHash += requestVar + '=' + from + ',' + to;
+                } else {
+                   newHash += param;
+                }
+                i++;
+
+                if (i != hashLenght) { newHash += "&"; }
+            });
+
+            window.location.hash = newHash;
+        } else {
+            if (ajaxlayerednavigation.home && ajaxlayerednavigation.seoUrls) {
+                if (ajaxlayerednavigation.useAjax) {
+                    window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '#' + requestVar + '=' + from + ',' + to;
+                } else {
+                    window.location = ajaxlayerednavigation.seoCat + ajaxlayerednavigation.seoSuffix + '?' + requestVar + '=' + from + ',' + to;
+                }
+            } else {
+                if (hash.length > 1) {
+                    window.location.hash = hash + '&' + requestVar + '=' + from + ',' + to;
+                } else {
+                    window.location.hash = requestVar + '=' + from + ',' + to;
+                }
+            }
+
+        }
+    }
+
+
+var _glc =_glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGPW6xZAIDA');
+var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' : 
+'http://my.clickdesk.com/clickdesk-ui/browser/');
+var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+var glcspt = document.createElement('script'); glcspt.type = 'text/javascript'; 
+glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
+var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(glcspt, s);
+	
+

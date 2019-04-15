@@ -1,0 +1,111 @@
+
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+
+
+  function setDFPPage(){ 
+  if (_page = window.location.pathname.replace(/^\/|\/$/g, '')) 
+      return _page;
+      return 'home'; 
+  }
+  var page = setDFPPage();
+  googletag.cmd.push(function() {
+    var slot = googletag.defineSlot('/24156345/SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home', [1,1], 'overlay')
+    
+    .addService(googletag.pubads());
+        slot = slot.setTargeting('position', 'overlay');
+      var leaderboard_mapping = googletag.sizeMapping().
+        addSize([1024, 0], [[970, 250], [728, 90], [468, 60]]). 
+        addSize([767, 0], [[728, 90], [468, 60]]). 
+        addSize([640, 0], [[320, 50], [320, 100], [300, 50]]).
+        addSize([0, 0], [[320, 50]]). 
+        build();
+    var slot = googletag.defineSlot('/24156345/SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home', [[970, 250], [728, 90]], 'leaderboard-1')
+    .defineSizeMapping(leaderboard_mapping)
+    .addService(googletag.pubads());
+        slot = slot.setTargeting('position', 'leaderboard-1');
+    var slot = googletag.defineSlot('/24156345/SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home', [[300, 250], [300, 600]], 'mpu-1')
+    
+    .addService(googletag.pubads());
+        slot = slot.setTargeting('position', 'mpu-1');
+    var slot = googletag.defineSlot('/24156345/SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home', [[300, 250], [300, 600]], 'mpu-2')
+    
+    .addService(googletag.pubads());
+        slot = slot.setTargeting('position', 'mpu-2');
+  googletag.pubads().setTargeting('pageType', (page == 'home') ? 'home' : 'home');
+    googletag.pubads().setTargeting('make_ccfs', '');
+    googletag.pubads().setTargeting('model_ccfs', '');
+    googletag.pubads().setTargeting('vehicle_type', 'cars');
+    googletag.pubads().setTargeting('category_ccfs', '');
+    googletag.pubads().setTargeting('url', 'https://www.classiccarsforsale.co.uk/');
+    googletag.pubads().setTargeting('referrer', '');
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().disableInitialLoad();
+    googletag.enableServices();
+  });
+
+
+  !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+  apstag.init({
+    pubID: 3244,
+    adServer: 'googletag',
+    bidTimeout: 2e3
+  });
+
+  apstag.fetchBids({
+    slots: [
+        {
+          slotID: 'overlay',
+          slotName: '/24156345//SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home',
+          sizes: [1,1]
+        } ,
+        {
+          slotID: 'leaderboard-1',
+          slotName: '/24156345//SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home',
+          sizes: [[970, 250], [728, 90]]
+        } ,
+        {
+          slotID: 'mpu-1',
+          slotName: '/24156345//SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home',
+          sizes: [[300, 250], [300, 600]]
+        } ,
+        {
+          slotID: 'mpu-2',
+          slotName: '/24156345//SAUTOMOTIVE/SAUT_Classic-Cars-for-Sale/home',
+          sizes: [[300, 250], [300, 600]]
+        } 
+    ]
+  }, function(bids) {
+    googletag.cmd.push(function() {
+      apstag.setDisplayBids();
+      googletag.pubads().refresh();    
+    });
+  });
+
+
+    googletag.cmd.push(function() { googletag.display('overlay'); });
+  
+
+    googletag.cmd.push(function() { googletag.display('leaderboard-1'); });
+  
+
+    googletag.cmd.push(function() { googletag.display('mpu-1'); });
+  
+
+    googletag.cmd.push(function() { googletag.display('mpu-2'); });
+  
+
+    window.cookieconsent_options =
+    {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":"http://static.bauercdn.com/cookiePolicy/policy.html","theme":"dark-top"}
+    ;
+    

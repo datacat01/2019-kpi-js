@@ -1,0 +1,201 @@
+
+            var infobox_center_parent = "#main";
+        
+
+    ; (function ($) {
+        if (!window.Overrides) window.Overrides = {};
+        $.extend(window.Overrides, {
+            listingsBaseUrl: window.Overrides.listingsBaseUrl ? window.Overrides.listingsBaseUrl : ''
+        });
+        if (!window._diTranslations) window._diTranslations = {};
+        $.extend(window._diTranslations, {
+            "RemoveFromWatchlist": "Remove From Watchlist",
+            "AddToWatchlist": "Add To Watchlist",
+            "EventTypeID-2": "For Rent",
+            "EventTypeID-20": "For Lease",
+            "NoCategoriesAvailable": "No Categories Available",
+            "ExpandYourSearch": "Expand Your Search"
+        });
+        if (!window.baseCatDictionary) window.baseCatDictionary = {};
+        $.extend(window.baseCatDictionary,  {13 : 'aircraft',464 : 'farm-equipment',4 : 'construction-equipment',28 : 'trailers',27 : 'trucks',26 : 'trucks-and-trailers',40000 : 'other-items',81 : 'construction-attachment',22000 : 'farm-attachment',35000 : 'truck-trailer-attachment',125 : 'aircraft-additional-item',132 : 'truck-trailer-additional-item',2000 : 'processor',5000 : 'computerpoweruser',7000 : 'cybertrend',30000 : 'aircraft-parts-components-avionics',12001 : 'turf-equipment',1015 : 'cranes',1035 : 'forestry-equipment',153000 : 'power-systems',152000 : 'oil-field-equipment',300100 : 'specialty-crop-equipment'});
+        var cb = function () {
+            var $head = $("head");
+            var $headlinklast = $head.find("link[rel='stylesheet']:last");
+            var defaultStyles = '<link href="//media.sandhills.com/cdn/CSS/font-awesome-4.3.0.min.css" rel="stylesheet"/><link href="//media.sandhills.com/cdn/CSS/flags/flags-1.0.0.min.css" rel="stylesheet"/>';
+            defaultStyles += '<link href="//media.sandhills.com/cdn/CSS/jqueryui/all-1.11.3.min.css" rel="stylesheet"/>';
+            if ($headlinklast.length) {
+                $headlinklast.after(defaultStyles);
+            } else {
+                $head.append(defaultStyles);
+            };
+        };
+        try {
+            if (window.addEventListener) {
+                var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+                if (raf) raf(cb);
+                else window.addEventListener('load', cb);
+            } else {
+                window.attachEvent("onload", cb);
+            };
+        } catch (e) { };
+        $('form').preventDoubleSubmission();
+        $('img.lazyload').lazyload({ effect: "fadeIn" });
+        $('.pagination select, .pagination-locator select').on('change', function () { window.location = window.Overrides.listingsBaseUrl + '/?page=%23page%23'.replace("%23page%23", $(this).val()); });
+        $('.pagination-blog select-blog, .pagination-locator-blog select').on('change', function () {
+            window.location = window.Overrides.listingsBaseUrl + '/'.replace("%23page%23", $(this).val()); });
+        $('.listingsortorder').on('change', function () {
+            var self = $(this);
+            if (isNaN(self.val()) || self.val() == 0) {
+                window.location = window.Overrides.listingsBaseUrl + '/?SCF=True'
+            } else {
+                window.location = window.Overrides.listingsBaseUrl + '/?sortorder=%23sortorder%23&SCF=False'.replace("%23sortorder%23", self.val());
+            }
+        });
+        $('#sort-listings').click(function () {
+            $('.sort-filter').show();
+        });
+        $(".menu-close").click(function () {
+            $(".sort-filter").hide();
+        });
+        $('.mobile-controls-sort').click(function (event) {
+            var self = event.target.id;
+            if (isNaN(self) || self == 0) {
+                window.location = window.Overrides.listingsBaseUrl + '/?SCF=True'
+            } else {
+                window.location = window.Overrides.listingsBaseUrl + '/?sortorder=%23sortorder%23&SCF=False'.replace("%23sortorder%23", self);
+            }
+        });
+
+        var height = $('.mobile-controls').height();
+        $('cc-bottom').height(height);
+        $('cc-window').height(height);
+        $('.submit-on-change').on('change', function () { $(this).submit(); });
+        $('.mobile-list > div > ul > li > ul').addClass('closed').click(function (event) { event.stopPropagation(); });
+        $('.mobile-list > div > ul > li').each(function () {
+            var elem = $(this);
+            if ($('> ul', this).length > 0) {
+                elem.prepend('<span class="ui-icon ui-icon-plusthick"></span>').addClass('with-children').click(function (event) {
+                    var $elem = $(this);
+                    var $child = $('> ul', this);
+                    var $icon = $('span.ui-icon', this);
+                    if ($child.hasClass('closed')) {
+                        $child.removeClass('closed');
+                        $icon.removeClass('ui-icon-plusthick').addClass('ui-icon-minusthick');
+                    } else {
+                        $child.addClass('closed');
+                        $icon.removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
+                    }
+                });
+            }
+        });
+        if (window.DealerLogin) {
+            DealerLogin.options.redirecturl = "https://www.sandhillscloud.com";
+            DealerLogin.options.dsdomain = "dealers.sandhills.com";
+            DealerLogin.options.sitename = "controller.com";
+            DealerLogin.CreateOnClickRedirect();
+        };
+    })(jQuery);
+
+
+            (function ($) {
+                var menuButton = $('#mobile-menu');
+                var userMenuButton = $('#user-menu');
+                menuButton.sidr();
+                var resizeTimeout;
+                var resiszeMenuClose = function () {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(function () {
+                        if (!menuButton.is(':visible') && $('.sidr').css('display') == 'block') {
+                            menuButton.click();
+                        };
+                        if (!userMenuButton.is(':visible') && $('.user-nav').css('display') == 'block') {
+                            userMenuButton.click();
+                        };
+                    }, 100);
+                };
+                if (window.addEventListener) {
+                    window.addEventListener('resize', resiszeMenuClose);
+                } else {
+                    window.attachEvent('onresize', resiszeMenuClose);
+                }
+
+                $(document).on("touchstart", function (e) {
+                    if ($(e.target).closest(".user-nav").length == 0 &&
+                        $(".user-nav").css('display') == 'block' &&
+                        $(e.target).closest("#user-menu").length == 0){
+                        $('.user-nav').slideToggle();
+                    }
+                    if ($('#sidr').css('left') == '0px') {
+                        if (e.target.id != "mobile-menu" &&
+                            $(e.target).closest(".sidr").length == 0) {
+                            $('#mobile-menu').click();
+                        }
+                    }
+                });
+                $("#user-menu").click(function () {
+                    $(".user-nav").slideToggle();
+                    if ($('.region-language-drop').css('display') == 'block') {
+                        $(".region-language-drop.cf").toggle();
+                    }
+                    if ($('.language-map-mobile').css('display') == 'block') {
+                        showMap();
+                    }
+                });
+                $('.show_div').click(function () {
+                    var self = $(this);
+                    var links = self.next();
+                    var src = '/Content/images/navarrow.png';
+                    var navArrow = $('.arrow', self);
+                    links.slideToggle('slow');
+                    self.toggleClass('nav_highlight').removeClass('show_div');
+                    if (navArrow.attr('src') == src) {
+                        src = '/Content/images/navarrowdown.png';
+                    }
+                    navArrow.attr('src', src);
+                    return false;
+                });
+                $('a[href="#PartsSearchTag"]').click(function () {
+                    if ($("body.sidr-open").length) {
+                        menuButton.click();
+                    };
+                });
+                $('.infobox-trigger').click(function () {
+                    if ($("body.sidr-open").length) {
+                        menuButton.click();
+                    };
+                });
+
+                // Ensure toggle button is visible while menu is open
+                $('#mobile-menu').on('click', function () {
+                    if ($('#sidr').css('left') != '0px') {
+                        $('#sidr').css('position', 'fixed');
+                        $('#container').css({ 'position': 'fixed', 'width': '100%' });
+                    }
+                    else {
+                        $('#sidr').css('position', '');
+                        $('#container').css({ 'position': '', 'width': '' });
+                    }
+                });
+            })(jQuery);
+        
+
+
+        function cookiesAreEnabled() {
+            var cookieEnabled = (navigator.cookieEnabled) ? 1 : 0;
+            if (typeof navigator.cookieEnabled == "undefined" && cookieEnabled == 0) {
+                document.cookie = "testcookie";
+                cookieEnabled = (document.cookie.indexOf("test­cookie") != -1) ? 1 : 0;
+            };
+            return cookieEnabled == 1;
+        };
+        if (cookiesAreEnabled()) {
+
+            $.ajax({
+                type: 'POST',
+                url: "/UserSettings/ScreenSize",
+                data: { "width": screen.width, "height": screen.height },
+
+            });
+        
+        };
+    

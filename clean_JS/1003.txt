@@ -1,0 +1,75 @@
+
+adnsf$ = jQuery; 
+
+    try { Typekit.load(); } catch (e) { }
+stLight.options({publisher: "307fdcb3-bec6-4abb-bcf4-f27e5a6f721e"}); 
+
+       $(window).load(function() {
+    $('#slider').nivoSlider({
+        effect: 'slideInLeft', // Specify sets like: 'fold,fade,sliceDown'
+        slices: 20, // For slice animations
+        boxCols: 8, // For box animations
+        boxRows: 4, // For box animations
+        animSpeed: 500, // Slide transition speed
+        pauseTime: 4000, // How long each slide will show
+        startSlide: 0, // Set starting Slide (0 index)
+        directionNav: true, // Next & Prev navigation
+        controlNav: true, // 1,2,3... navigation
+        controlNavThumbs: false, // Use thumbnails for Control Nav
+        pauseOnHover: true, // Stop animation while hovering
+        manualAdvance: false, // Force manual transitions
+        prevText: 'Prev', // Prev directionNav text
+        nextText: 'Next', // Next directionNav text
+        randomStart: false, // Start on a random slide
+        beforeChange: function(){}, // Triggers before a slide transition
+        afterChange: function(){}, // Triggers after a slide transition
+        slideshowEnd: function(){}, // Triggers after all slides have been shown
+        lastSlide: function(){}, // Triggers when last slide is shown
+        afterLoad: function(){} // Triggers when slider has loaded
+    });
+});
+	 $(document).ready(function(e) {   
+     $("#searchtopbox").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#g-search-button").click();
+    }
+});
+ });
+	 
+	
+ 
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+
+
+//<![CDATA[
+    var fMnc = function() {
+        var minCart = $create(aspdnsf.Controls.MinicartControl, null, null, null, $get('ctl00_ctl14_pnlMiniCart'));
+        minCart.setRefreshDelegate( function(){ __doPostBack('ctl00$ctl14$lnkRefresh','') } );
+        minCart.setExtender( 'ctl00_ctl14_extCollapseMinicart' );
+        aspdnsf.Controls.Minicart.setInstance(minCart);
+        Sys.Application.remove_load(fMnc);
+    }
+    Sys.Application.add_load(fMnc);
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.CollapsiblePanelBehavior, {"ClientStateFieldID":"ctl00_ctl14_extCollapseMinicart_ClientState","CollapseControlID":"ctl00_ctl14_pnlMinicartHeader","Collapsed":true,"CollapsedText":"Shopping Cart","ExpandControlID":"ctl00_ctl14_pnlMinicartHeader","ExpandedText":"Shopping Cart","SuppressPostBack":true,"TextLabelID":"btnViewMiniCart","id":"ctl00_ctl14_extCollapseMinicart"}, null, null, $get("ctl00_ctl14_pnlMinicartControl"));
+});
+//]]>
+

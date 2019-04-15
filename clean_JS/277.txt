@@ -1,0 +1,76 @@
+
+	var Config_VCompare_MaxProducts = '3';
+	var PageText_783 = "Compare";
+	var PageText_784 = "Change Selections";
+	var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+	var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+
+
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/ajaxcart.asp?cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+
+
+	var global_Config_EnableDisplayOptionProducts = 'False';
+	var global_Config_ForceSecureShoppingCartPage = false;
+	var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+	var Config_EnableSoftAddToCart = false;
+
+
+	var Config_Search_Auto_Complete = false;
+
+var switchTo5x=true;
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3293821-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+if(window.VCompare){VCompare('LA-Embrace-2-Glass-Pendant', 5);}
+if(window.VCompare){VCompare('GR-pendant-lm-Plum-gld-heart', 5);}
+if(window.VCompare){VCompare('GR-melody-glass-pearl-Grey', 5);}
+if(window.VCompare){VCompare('GR-rhombic-pendant-Fossil', 5);}
+if(window.VCompare){VCompare('GR-melody-glass-pearl-Orange', 5);}
+if(window.VCompare){VCompare('GR-Pink-dots-glass-bead', 5);}
+if(window.VCompare){VCompare('LEM-collage-laser-marker-comp', 5);}
+if(window.VCompare){VCompare('GR-pendant-lm-green-slvr-heart', 5);}
+if(window.VCompare){VCompare('GR-harmony-glass-pearl-Yellow', 5);}
+if(window.VCompare){VCompare('PSM-color-ceramic-oval', 5);}
+if(window.VCompare){VCompare('GR-pendant-lm-lavender-heart', 5);}
+if(window.VCompare){VCompare('LPM-PLQ12x12', 5);}
+
+document.getElementById('search_v5_1') ? document.getElementById('search_v5_1').value=QueryString('Search') : null;
+document.getElementById('search_v5_2') ? document.getElementById('search_v5_2').value=QueryString('Search') : null;
+document.getElementById('search_v5_3') ? document.getElementById('search_v5_3').value=QueryString('Search') : null;
+
+var ANS_customer_id="79121167-d2f0-47af-8fdb-fcf70b268ea6";
+function store_init(event){} AttachEvent(window, 'load', store_init);

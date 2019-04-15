@@ -1,0 +1,49 @@
+ 
+ <!-- 
+ (new Image).src="https://www.authenticwatches.com/cgi-bin/refsd?cd=.authenticwatches.com&e=http://www.authenticwatches.com/&h=www.authenticwatches.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+<!--
+SC.setStoreId('movadobaby',{"130|136|146|130|141":"120|111|113|119|150"});SC.setPageId('index');SC.setCartURL('https://secure.authenticwatches.com/movadobaby/cgi-bin/wg-order?movadobaby');SC.setCurrency('$');SC.setPersCharge('');SC.setATCmsg(0,'','scATCthrobber.gif');
+//-->
+
+
+//<![CDATA[
+$.getScript("https://sep.yimg.com/ty/cdn/movadobaby/scAnimatedNav.min.js").done(function() {$(window).load(function(){$.animateNav('cNav',true);});});//]]>
+
+$.getScript("https://sep.yimg.com/ty/cdn/movadobaby/scSequenceBanner.min.js").done(function() {
+if (SC.scStCk){$(document).ready(function(){var scSB = $('.scSequenceBanner').scSequenceBanner({slideWidth:765,showNumbersX:20,showNumbersY:174,showNumbers:true,slideTimer:5,slideAuto:true}); scSB.initialize();});}});
+if (SC.scStCk){jQuery(document).ready(function() {jQuery('#mycarousel').jcarousel({scroll: 4, animation:1000});});}else { jQuery(document).ready(function() {jQuery('.jcarousel-skin-tango').empty();}); }
+try{scInteractiveContentInit.vars({'ei': '/lib/movadobaby/expandall.gif', 'ci': '/lib/movadobaby/closeall.gif', 'pi':[{'i': '/lib/movadobaby/plussign.gif', 'h': '14', 'w': '15'}], 'mi': [{'i': '/lib/movadobaby/minussign.gif', 'h': '14', 'w': '15'}], 'et': 'Expand All', 'ct': 'Close All'});}catch(e){}
+  
+/* * * CONFIGURATION * * */
+var UnbxdSiteName = "prod-authenticwatches-com801841534750239" ; // Replace the value with your Site Key. /* * * DON'T EDIT BELOW THIS LINE * * */
+( function () {
+var ubx = document.createElement( 'script' ); ubx.type = 'text/javascript' ; ubx.async = true ;
+ubx.src = '//d21gpk1vhmjuf5.cloudfront.net/unbxdAnalytics.js' ;
+( document.getElementsByTagName( 'head' )[ 0 ] || document.getElementsByTagName( 'body' )[ 0 ]).appendChild( ubx );
+})(); 
+try{scCountDownInit = new scCountDown; scCountDownInit.Init({'dateFrom': '', 'dateTo': '', 'timeFrom': '', 'timeTo': '15:30', 'line1': [], 'line2': [], 'oneDay1': [], 'oneDay2': [], 'finalText': '', 'finalTextDateExp': '', 'finalTextTimeExp': '', 'lastDay': '', 'showFinal': false, 'bg': '', 'image': '', 'em': false});}catch(err){}
+
+//<![CDATA[
+window.RESOURCE_PATH="https://cfd7d358a332f6e081d3-f16251c5720d0a86fc2d97121bdf4efc.ssl.cf5.rackcdn.com/authenticwatches/site/1";//]]>
+
+(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[5]='MMERGE5';ftypes[5]='text';fnames[6]='MMERGE6';ftypes[6]='text';fnames[7]='MMERGE7';ftypes[7]='text';fnames[8]='MMERGE8';ftypes[8]='text';fnames[9]='MMERGE9';ftypes[9]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[10]='MMERGE10';ftypes[10]='text';fnames[3]='BIRTHDAY';ftypes[3]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);
+
+//<![CDATA[
+//]]>
+
+
+//<![CDATA[
+var nakMailchimpConfig={"store_domain":"authenticwatches.com","store":"movadobaby","store_id":"i6J1LBke","mode":"image"};//]]>
+
+
+//<![CDATA[
+//]]>
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'secure.authenticwatches.com';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/92c47cb088833e0ba181cc2486cee28e?id=267daf92114f'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

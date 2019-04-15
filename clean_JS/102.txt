@@ -1,0 +1,43 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.partypalooza.com\/Merchant2\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.partypalooza.com\/Merchant2\/json.mvc\u003F";
+var Store_Code = "PFSFK";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.partypalooza.com\/product-search.htm\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+ //<![CDATA[ var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));//]]>
+SearchSpring.Autocomplete.init({siteId: 'p56b0x',queryClass: 'searchspring-query'});
+SearchSpring.Autocomplete.init({siteId: 'p56b0x',queryClass: 'searchspring-query'});
+
+/* Instantiate the Date Object. */
+var fullDate=new Date();
+/* Create the months array used to convert variable fullDate's month from int to string. */
+var months=new Array();
+months[0]='January';
+months[1]='February';
+months[2]='March';
+months[3]='April';
+months[4]='May';
+months[5]='June';
+months[6]='July';
+months[7]='August';
+months[8]='September';
+months[9]='October';
+months[10]='November';
+months[11]='December';
+document.write(months[fullDate.getMonth()]+' Special! FREE Beach Ball with every order over $25.00!');
+
+
+TrustLogo("https://www.partypalooza.com/Merchant2/images/comodo_secure_seal_113x59_transp.png", "CL1", "none");
+
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+if(window._GUARANTEE && _GUARANTEE.Loaded) {_GUARANTEE.Hash = "G56RB7KRHWCbepEN%2Bc8Jc%2BQDoIRSVOpKIwYmw9XDo%2FQ2sOEEyuqBTK4MPxM%2BZXblyMdbkKqQB20GP5NGM861Ag%3D%3D";_GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");}

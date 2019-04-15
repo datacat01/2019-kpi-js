@@ -1,0 +1,18 @@
+    
+
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+
+
+    $(function() {
+
+    $('.menuIcon > a').bind('click', function() {
+      if ($(this).attr('rel') != 'undefined') {
+        $('#'+$(this).attr('rel')).toggle('slow');
+        return false;
+      }
+    });
+
+ }); 
+

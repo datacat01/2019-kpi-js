@@ -1,0 +1,149 @@
+
+// CART PAGE GIVEAWAY TEXT
+var hideGiveaway = false;
+function giveawayText() {
+    // wording for Cart page subscription
+    var giveawayWording = "With your purchase of $30+ get a bonus subscription to Golf ($10 value) and Cigar Aficionado ($12 value).  No bill.  No auto renew.";
+    $('.cart-subscription-message').text(giveawayWording);
+    if (hideGiveaway === true) {
+        $('#cart_subscribe_me, #cart_subscribe_me_label, .cart-subscription-message, .cart-subscription-link').hide();
+    }
+}
+
+// TRADE IN VARIABLES
+var tradeInMethods = [
+    {
+        "method"   : "Store Credit With 25% Bonus",
+        "discount" : "0.25"
+    },
+    {
+        "method"   : "Check for the amount of trade-in",
+        "discount" : null
+    }
+];
+
+// message to display above "submit trade-in request" button
+// just be careful not to break the string with double quotes
+// ------------------------------------------------------
+var tradeInMessage = "Please note: bonus credit may not be used on purchases containing Titleist or TaylorMade products.";
+
+// Discount to apply to all base product's prices
+// 1 = 100% base price
+// 0.8 = 80% base price
+// 0.5 = 50% base price
+// ------------------------------------------------------
+var tradeInBaseDiscount = .92;
+
+$(document).ready(function() {
+  giveawayText();
+});
+
+
+  (function (url) { 
+      /*Tracking Bootstrap
+      Set Up DataLayer objects/properties here*/ 
+      if(!window.DataLayer){
+        window.DataLayer = {}; 
+      }
+ 
+      if(!DataLayer.events){
+        DataLayer.events = {};
+      }
+      DataLayer.events.SPIVersion = DataLayer.events.SPIVersion || "3.2";
+      DataLayer.events.SiteSection = "1";
+          
+var loc, ct = document.createElement("script"); 
+    ct.type = "text/javascript";  
+    ct.async = true; 
+    ct.src = url; 
+    loc = document.getElementsByTagName('script')[0]; 
+    loc.parentNode.insertBefore(ct, loc); 
+  }(document.location.protocol + "//intljs.rmtag.com/113600.ct.js")); 
+
+
+if (window.location.pathname == "/account.php" || window.location.pathname == "/login.php") {
+  $(document).bind('ready ajaxComplete', function() {
+    $( "#FormField_11_select option" ).remove( ":not(:contains('Australia')):not(:contains('Austria')):not(:contains('Canada')):not(:contains('China')):not(:contains('Denmark')):not(:contains('Finland')):not(:contains('France')):not(:contains('Germany')):not(:contains('Greece')):not(:contains('Greenland')):not(:contains('Hong Kong')):not(:contains('Iceland')):not(:contains('India')):not(:contains('Ireland')):not(:contains('Italy')):not(:contains('Japan')):not(:contains('Luxembourg')):not(:contains('Monaco')):not(:contains('Netherlands')):not(:contains('New Zealand')):not(:contains('Norway')):not(:contains('Philippines')):not(:contains('Portugal')):not(:contains('Puerto Rico')):not(:contains('San Marino')):not(:contains('Singapore')):not(:contains('Korea, Republic of')):not(:contains('Spain')):not(:contains('Sweden')):not(:contains('Switzerland')):not(:contains('Taiwan')):not(:contains('United Arab Emirates')):not(:contains('United Kingdom')):not(:contains('United States'))" );
+    $( "#FormField_11_select option" ).remove( ":contains('Minor Outlying Islands')" );
+    $( "#FormField_11_select option" ).remove( ":contains('British Indian Ocean Territory')" );
+  });
+} else if (window.location.pathname == "/cart.php") {
+  $(document).bind('ready ajaxComplete', function() {
+    $( "#shipping-country option" ).remove( ":not(:contains('Australia')):not(:contains('Austria')):not(:contains('Canada')):not(:contains('China')):not(:contains('Denmark')):not(:contains('Finland')):not(:contains('France')):not(:contains('Germany')):not(:contains('Greece')):not(:contains('Greenland')):not(:contains('Hong Kong')):not(:contains('Iceland')):not(:contains('India')):not(:contains('Ireland')):not(:contains('Italy')):not(:contains('Japan')):not(:contains('Luxembourg')):not(:contains('Monaco')):not(:contains('Netherlands')):not(:contains('New Zealand')):not(:contains('Norway')):not(:contains('Philippines')):not(:contains('Portugal')):not(:contains('Puerto Rico')):not(:contains('San Marino')):not(:contains('Singapore')):not(:contains('Korea, Republic of')):not(:contains('Spain')):not(:contains('Sweden')):not(:contains('Switzerland')):not(:contains('Taiwan')):not(:contains('United Arab Emirates')):not(:contains('United Kingdom')):not(:contains('United States'))" );
+    $( "#shipping-country option" ).remove( ":contains('Minor Outlying Islands')" );
+    $( "#shipping-country option" ).remove( ":contains('British Indian Ocean Territory')" );
+  });
+} else if (window.location.pathname == "/checkout.php") {
+  var x = 0;
+  $(document).bind('focusin blur load', function() {
+    $( ".checkout-country option" ).remove( ":not(:contains('Australia')):not(:contains('Austria')):not(:contains('Canada')):not(:contains('China')):not(:contains('Denmark')):not(:contains('Finland')):not(:contains('France')):not(:contains('Germany')):not(:contains('Greece')):not(:contains('Greenland')):not(:contains('Hong Kong')):not(:contains('Iceland')):not(:contains('India')):not(:contains('Ireland')):not(:contains('Italy')):not(:contains('Japan')):not(:contains('Luxembourg')):not(:contains('Monaco')):not(:contains('Netherlands')):not(:contains('New Zealand')):not(:contains('Norway')):not(:contains('Philippines')):not(:contains('Portugal')):not(:contains('Puerto Rico')):not(:contains('San Marino')):not(:contains('Singapore')):not(:contains('Korea, Republic of')):not(:contains('Spain')):not(:contains('Sweden')):not(:contains('Switzerland')):not(:contains('Taiwan')):not(:contains('United Arab Emirates')):not(:contains('United Kingdom')):not(:contains('United States'))" );
+    $( ".checkout-country option" ).remove( ":contains('Minor Outlying Islands')" );
+    $( ".checkout-country option" ).remove( ":contains('British Indian Ocean Territory')" );
+  });
+}
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".rockbottomgolf.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"5b01cd85d5756a39bc8329d8efd1d20f1442996a","type":"ANONYMOUS","visit_id":"c876f20e-3046-40c1-9de4-c377d58ffb7f","visitor_id":"03c47fda-ad85-4ff0-b1a5-873a463754f3"},"referer":{"url":""},"request":{"url":"https:\/\/www.rockbottomgolf.com\/"}}, '', 1761047, "other", {"customer":{"id":"anonymous"}}, 'c876f20e-3046-40c1-9de4-c377d58ffb7f', '03c47fda-ad85-4ff0-b1a5-873a463754f3');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"19bc9f4ceed19595b60abd8c39278872f17e8228b5599f4955cc355c686c7329"};
+
+
+	var DY = {};
+	DY.recommendationContext = { type: 'HOMEPAGE' };
+
+
+function pdInit() {
+
+    var elements = document.getElementsByClassName("pdRatingStarCategory");
+    var productIdList = new Array();
+    for(var i=0;i<elements.length;i++) {
+        productIdList[i] = elements[i].getAttribute("productid");
+    }
+    var productIdListCsv = productIdList.join(",");
+
+    var cb = (new Date()).getTime();
+    var scriptUrl = "https://rockbottomgolf.practicaldatacore.com/mod_bigcommerce/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&customerId=" + encodeURIComponent(document.getElementById("bcLoginInfo").getAttribute("customerId"));
+    scriptUrl += "&email=" + encodeURIComponent(document.getElementById("bcLoginInfo").getAttribute("customerEmail"));
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListCsv=" + encodeURIComponent(productIdListCsv);
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+}
+pdInit();
+
+
+    _linkedin_data_partner_id = "270924";
+    (function () {
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript"; b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);
+    })();
+
+
+	var google_tag_params = {
+		ecomm_prodid: '',
+		ecomm_pagetype: 'home',
+	};
+	
+
+console.log("google_tag_params ", google_tag_params);
+/* <![CDATA[ */
+	var google_conversion_id = 1069598867;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+/* ]]> */
+

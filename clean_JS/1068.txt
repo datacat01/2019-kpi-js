@@ -1,0 +1,342 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.luggageonline.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+	(function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+	a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+	f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+	tp('register','dJ0hTcl89ggXnfV9');
+
+
+		document.addEventListener('DOMContentLoaded', function() {
+            if (false) {
+                tp('trustBox', JSON.parse('{"snippet":"PCEtLSBUcnVzdEJveCB3aWRnZXQgLSBDYXJvdXNlbCAtLT4KPGRpdiBjbGFzcz0idHJ1c3RwaWxvdC13aWRnZXQiIGRhdGEtbG9jYWxlPSJlbi1VUyIgZGF0YS10ZW1wbGF0ZS1pZD0iNTNhYTg5MTJkZWM3ZTEwZDM4ZjU5ZjM2IiBkYXRhLWJ1c2luZXNzdW5pdC1pZD0iNDgxNzM0ZWUwMDAwNjQwMDA1MDI2MmY3IiBkYXRhLXN0eWxlLWhlaWdodD0iMTMwcHgiIGRhdGEtc3R5bGUtd2lkdGg9IjEwMCUiIGRhdGEtdGhlbWU9ImxpZ2h0IiBkYXRhLXN0YXJzPSIzLDQsNSIgZGF0YS1zY2hlbWEtdHlwZT0iT3JnYW5pemF0aW9uIj4KICA8YSBocmVmPSJodHRwczovL3d3dy50cnVzdHBpbG90LmNvbS9yZXZpZXcvd3d3Lmx1Z2dhZ2VvbmxpbmUuY29tIiB0YXJnZXQ9Il9ibGFuayI+VHJ1c3RwaWxvdDwvYT4KPC9kaXY+CjwhLS0gRW5kIFRydXN0Qm94IHdpZGdldCAtLT4=","position":"before","xpath":"aWQoInRoZS1mb290ZXIiKQ=="}'));
+            }
+        });
+	
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+// <![CDATA[
+try{Typekit.load();}catch(e){}
+// ]]>
+if(typeof stLight !== 'undefined') {stLight.options({publisher: "d6cf52ff-6091-4965-9287-107b4bc122b6", doNotHash: false, doNotCopy: false, hashAddressBar: false});}
+
+(function(d, s, id) {
+  window.Wishpond = window.Wishpond || {};
+  Wishpond.merchantId = '1376421';
+  Wishpond.writeKey = '617e45cdf651';
+  var js, wpjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//cdn.wishpond.net/connect.js";
+  wpjs.parentNode.insertBefore(js, wpjs);
+}(document, 'script', 'wishpond-connect'));
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?2VszSYbgX62N2Z1DVOFCA8aPgZw2AjCk";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+// <![CDATA[
+function isEmail(emailAddress) {
+
+	emailAddressValue = emailAddress.value;
+	var emailAddressRegex = /^[^@\s]+@[^\.@\s]+(\.[^@\s^\.]+)+$/;if (emailAddress.value == '' || emailAddress == null) {
+		return true;
+	}
+	
+	if (!emailAddressRegex.test(emailAddressValue)) {
+		alert('The Email address doesn\'t seem to be correct,\nplease check syntax.');
+		emailAddress.focus();
+		return false;
+	}
+	
+	return true;
+
+}
+
+String.prototype.trim = function() { return this.replace(/^\s*(\b.*\b|)\s*$/, "$1");         }
+
+function mandatoryText(input,fieldName){
+
+	if(input.value.trim()==''||input==null){
+	alert('Please enter your '+fieldName+'.');
+	input.focus();
+	return false;
+	} else {
+	return true;
+	}
+
+}
+
+function validFormData(){
+
+if(!mandatoryText(document.getElementById('EMAIL_FIELD'), 'email capture')) return;
+if(!isEmail(document.getElementById('EMAIL_FIELD'))) return;
+document.getElementById('emvForm').submit();
+
+}
+// ]]>
+
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        
+_gaq.push(['_setAccount', 'UA-1348134-1']);
+
+_gaq.push(['_trackPageview']);
+        
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        //]]>
+    
+decorateList('header-cart-content', 'none-recursive')
+
+function initCartPopup() {
+    $$('.header-cart .summary')[0].observe('click', function() {
+        $('header-cart-content').toggle();
+    });
+};
+initCartPopup();
+
+
+				jQuery(document ).ready(function(){
+					//jQuery("#topcart-target").empty();
+					jQuery.get( "https://www.luggageonline.com/top-cart-page", function( data ) {
+						jQuery( "#topcart-target" ).html( data );
+					});
+				});
+				
+
+        document.observe("dom:loaded", function() {
+            navPro("navigationpro-top-mobile", {
+                show_delay: 100,
+                hide_delay: 100,
+                dropdown_side: "right",
+                fit_width: false
+            });
+        });
+        transformMenu('navigationpro-top-mobile');
+        new accordion('navigationpro-top-mobile');
+        
+
+document.observe("dom:loaded", function() {
+    navPro("navigationpro-top", {
+        show_delay: 100,
+        hide_delay: 100,
+        dropdown_side: "right",
+        constraint_el: $("navigationpro-top")
+    });
+});
+new accordion('navigationpro-top');
+
+
+document.observe('dom:loaded', function() {
+    new MobileNavigation();
+
+    var searchToggle = $('mobile-search-toggle'),
+        searchForm = $('search_mini_form');
+    if (searchToggle && searchForm) {
+        searchToggle.observe('click', function() {
+            searchForm.toggleClassName('shown');
+        });
+    }
+});
+
+
+        jQuery.noConflict();
+    
+
+                    if (typeof jQuery === 'undefined') {
+                        alert('jQuery library is not found. Please enable it from Easyslider configuration');
+                    }
+                
+
+            jQuery(document).ready(function(){
+                jQuery('#slider-1').nivoSlider({
+                    'effect': 'slideInRight',
+                    'slices': 15, // For slice animations
+                    'boxCols': 8, // For box animations
+                    'boxRows': 4, // For box animations
+                    'animSpeed': 500, // Slide transition speed
+                    'pauseTime': 5000, // How long each slide will show
+                    'directionNav': true, // Next & Prev navigation
+                    'controlNav': true, // 1,2,3... navigation
+                    'pauseOnHover': true, // Stop animation while hovering
+                    'manualAdvance': false, // Force manual transitions
+                    'prevText': 'Prev',
+                    'nextText': 'Next'
+                });
+            });
+        
+// <![CDATA[
+new Slider("slider-brands-container", "left", "right", {shift: 'auto'});
+// ]]>
+
+    document.observe('dom:loaded', function () {
+        var ajaxUrl = 'https://www.luggageonline.com/popup/index/ajax/page/home/';
+        if (window.location.href.match('https://') && !ajaxUrl.match('https://')) {
+            ajaxUrl = ajaxUrl.replace('http://', 'https://');
+        }
+        Popup.init(ajaxUrl + 'rand/' + Math.round(Math.random() * 1000000));
+    });
+
+
+//<![CDATA[
+    function popupSignupNewsletter() {
+        var popupNewsletterSubscriberFormDetail = new VarienForm('popup-newsletter-validate-detail');
+        var FORM_KEY = '';
+        if(popupNewsletterSubscriberFormDetail.validator.validate()) {
+            var form_email = $('popup_newsletter').getValue();
+            new Ajax.Updater({ success: 'newsletter-form' }, 'https://www.luggageonline.com/newsletter/subscriber/new/', {
+                asynchronous:true, evalScripts:false,
+                parameters: { email: form_email },
+                onComplete:function(request, json) {
+                    Element.hide('popup-footer-newsletter-loader');
+                    
+                    var response = request.responseText.evalJSON();
+                    if(response.error == true) {
+                        if($$('.validation-advice').size() > 0) {
+                            $$('.validation-advice').innerHTML = response.message;
+                        } else {
+                            $('popup_newsletter').addClassName('validation-failed');
+                            $('popup-footer-newsletter-input').insert({bottom: '<div class="validation-advice" id="advice-validate-email-newsletter">' + response.message + '</div>'});
+                        }
+                    } else {
+                        window.location.href="https://www.luggageonline.com/25-off";
+                    }
+                },
+                onLoading:function(request, json){Element.show('popup-footer-newsletter-loader');}
+            });
+        }
+        return false;
+    }
+//]]>
+
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+// <![CDATA[
+new TabBuilder();
+// ]]>
+
+        //<![CDATA[
+            document.observe("dom:loaded", Catalog.Map.bindProductForm);
+        //]]>
+        
+// <![CDATA[
+_atrk_opts = { atrk_acct:"5JKNi1a8Dy00G5", domain:"luggageonline.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+// ]]>
+
+function contact_popup(){
+	jQuery(document).ready(function(){
+		jQuery.fancybox({
+				'width': '910px',
+				'height': '450px',
+				'padding': '0px',
+				'autoScale': true,
+				'transitionIn': 'fade',
+				'transitionOut': 'fade',
+				'showCloseButton': true,
+				'type': 'inline',
+				'href': '#contact-popup'
+		  });
+	});
+}
+
+
+jQuery(document).ready(function() {
+	jQuery( ".mobile_refinement_landscape" ).click(function() {
+	  jQuery( ".amshopby-collapse-enabled" ).toggleClass( "collapsed" );
+	});
+});
+
+// <![CDATA[
+    window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'55073639',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn)},0)},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json)},1)}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn)}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn)}else{this._defL=this._defL||[];this._defL.push(fn)}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id)},0)},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id)}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s)},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady')})}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady')},false);window.addEventListener('load',function(){that._domReady('domReady')},false)}if(typeof(window._lptStop)=='undefined'){this.load()}},start:function(){this.autoStart=true},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n})}this._timing[n]=(new Date()).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init()}else{window.lpTag._tagCount+=1}
+// ]]>
+
+// <![CDATA[
+window.setTimeout("checkSaRating()",10000);
+function checkSaRating() {
+    if(document.sarating && !document.sarating.complete) {
+        document.sarating.src    = '';
+        document.sarating.width  = 0;
+        document.sarating.height = 0;
+    }
+}
+// ]]>
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?2VszSYbgX62N2Z1DVOFCA8aPgZw2AjCk';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+
+//<![CDATA[
+document.observe("dom:loaded", function () {
+    if ('undefined' !== typeof Askit) {
+        Askit.setConfig({"general":{"enabled":"1","defaultQuestionStatus":"1","defaultAnswerStatus":"1","allowedGuestQuestion":"1","allowedCustomerAnswer":"1","allowedGuestAnswer":"0","allowedHint":"1","shareCustomerName":"1","productBlockView":"1","countQuestionShowOnProductPage":"5","enableAkismet":"0","urlPrefix":"questions","fold":"0"},"email":{"enableCustomerNotification":"1","enableAdminNotification":"1","admin_template":"askit_email_admin_template","customer_template":"askit_email_customer_template","admin_email":"customerservice@luggageonline.com","sender":"general"},"rss":{"enabled":"0","title":"Rss Askit Feed Title"}}).init();
+    }
+});
+//]]>
+
+// <![CDATA[
+document.observe('dom:loaded', function() {
+    $('scroll-up').hide();
+    Event.observe(window, 'scroll', function() {
+        if (document.viewport.getScrollOffsets()[1] > 180) {
+            $('scroll-up').show();
+        } else {
+            $('scroll-up').hide();
+        }
+    });
+
+    /*$('scroll-up').down('a').observe('click', function(e) {
+        e.stop();
+        Effect.ScrollTo(document.body, { duration:'0.2' });
+        return false;
+    });*/
+  jQuery('p#scroll-up').click(function(e) {
+    e.preventDefault();
+    jQuery('body, html').animate({ scrollTop: 0 }, 800);
+  });
+});
+// ]]>
+
+new BlockToggler({
+    maxWidth: 480,
+    useEffect: false,
+    block: '.main-container .sidebar .block'
+});
+
+
+					
+  var pixelezeData = pixelezeData || {};
+					
+  pixelezeData.AccountId = "87f1e96f-fa29-4b20-b2e0-a2e500ff8f12";
+					
+
+
+/* <![CDATA[ */
+var google_conversion_id = 970004614;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

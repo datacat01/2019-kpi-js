@@ -1,0 +1,51 @@
+
+        var appInsights = window.appInsights || function (config) {
+            function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
+        }({
+            instrumentationKey: "407d0b18-88e5-4fba-a340-05713cfc77af"
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+window.WebForm_PostBackOptions||document.write('<script type="text/javascript" src="/WebResource.axd?d=ZzXeORgfIbNlm3xtvKRkSjGTNvsnOZYMms_kj2EYY_D93c6tRuxxFovt7_pCUjaKOKkTiE3bxCuDbiAvtAaELIaJHInjLwPmI_TkiqRY6G41&amp;t=636849238732503127"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="Scripts/WebForms/MsAjax/MicrosoftAjax.js"><\/script>');//]]>
+
+
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys.WebForms)||document.write('<script type="text/javascript" src="Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"><\/script>');//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+
+
+                var hattonsIdentifier = Get_Cookie("hattonsIdentifier");
+                dataLayer.push({ 'visitorId': hattonsIdentifier.toString() });
+            

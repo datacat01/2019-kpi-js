@@ -1,0 +1,16 @@
+    var onGoogleSafeSite = false;
+
+    window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;//ie8 js console error fix
+    if (window.hasOwnProperty("universal_variable") == false) {
+        window.universal_variable = {};
+    }
+    window.universal_variable.MWVistor_VisitorId = "58090811-787b-43ce-a940-fceb300cf348";
+    window.universal_variable.version = "1.0.0";
+    window.universal_variable.variantid = "0";
+    window.universal_variable.experimentid = "7TX1_ThsT32vOt2KxLmT7g";
+    window.universal_variable.siteVersion = "PROD";
+    window.universal_variable.isRemembered = "";
+
+            window.universal_variable.page = { "category": "Q001",
+"type": "Home" };
+            

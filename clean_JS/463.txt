@@ -1,0 +1,324 @@
+
+loadCSS('https://www.hsn.com/cassette.axd/stylesheet/5d261e523556cb8ed8c489b9a91c921d6f2376f4/site.css');
+
+
+    (function($){
+        //chat window click event
+        var ftchat = $('.footer-outer .customer-service-links .account-chat-window');
+        switch(true){
+            //if this is an acct page with a breadbox chat link, click on it
+            case(!!$('#breadbox-chat-window').length):
+                //console.log('>>> is acct page w/breadbox:');
+                ftchat.on('click',function(ev){
+                    $('#breadbox-chat-window')[0].click();
+                    return false;
+                });
+            break;
+            //if this is the bag page, remove data attr and use default cust svc widget click event
+            case(!!$('#bag-template .customer-service-container > .customer-service-links').length):
+                //console.log('>>> is bag page:');
+                ftchat.removeAttr('data-chatlink');
+            break;
+            //else use this click event
+            default:
+                $('.footer-outer .customer-service-links')
+                    .on('click','.account-chat-window[data-chatlink]',function(ev){
+                        ev.preventDefault();
+                        //if the option is hidden, stop
+                        if(!$(this).closest('.chat-option').is(':visible')){ return false; }
+                        //get the customer info
+                        var cust = HSN.Instance()._accountStatusData,
+                            //create the url with customer info
+                            url = $(this).attr('data-chatlink')
+                                .replace(/(first_name=)/gi,'$1'+(cust.name || ''))
+                                //.replace(/(last_name=)/gi,'$1'+(cust.name || ''))
+                                //.replace(/(phone_number=)/gi,'$1'+(cust.phone || ''))
+                                .replace(/(email_address=)/gi,'$1'+(cust.emailAddress || ''));
+                        //if the window is closed or never was, create it
+                        if(!window.__chatWindow || !!window.__chatWindow.closed){
+                            delete window.__chatWindow;
+                            window.__chatWindow = window.open(url, 'HSNChat', 'menubar=no,status=no,location=no,width=600,height=600,toolbar=no,scrollbars=yes,resizable=yes');
+                        } else {
+                            //else focus it
+                            window.__chatWindow.focus();
+                        }
+                        return false;
+                    });
+            break;
+        }
+        
+        //override for grid feature resp text resizing and img token on grid pages on navigation - 100517
+        //-also for moving doublewide prodcards from the last position in grids so that they don't wrap and leave a gap
+        try {
+            var __tpg = $('body:not(.mobile):not(.appTablet)#CmsShops').find('#torso .grid-layout #template-product-grid');
+            if(!!__tpg.length){
+                window._moveDCEl = $();
+                var _moveDC = function(){
+                        //doublewide
+                        var vv, n, idx,
+                            //the grid ul
+                            c = __tpg.find('.grid-body .grid-right > ul'),
+                            //all of the children in the grid that are items or prodcards
+                            ch = c.children('li,div.item'),
+                            cc = c.find('div.item:not(._moved)'),
+                            //if the breadbox is visible on the page
+                            hasBbx = (!!$('#breadbox.module').is(':visible') && 1) || 0;
+
+                        //if there are no prodcards, stop
+                        if(cc.length == 0){ return false; }
+                        
+                        //stored elements would have been replaced on paginated grids, but on infinite grids, they are still there, get rid of the ones that are no longer on the page
+                        window._moveDCEl = window._moveDCEl.filter(function(i,v){ return !!$(document.body).find(v).length; });
+
+                        //if there are 4 items in a row, the last row item index is 3
+                        //-if there is a breadbox, subtract one
+                        //-if this is an infinite scroller, also subtract the number of dblwide cards already on the page mod the number of items in a row to get the current row end index
+                        idx = (3 - hasBbx) - (window._moveDCEl.length % (4 - hasBbx));
+                        
+                        //filter through all of the prodcards that have not yet been moved
+                        cc.filter(function(i,v){
+                            //mark cell as moved so it won't get caught up on infinite scrolling pages
+                            vv = $(v).addClass('_moved');
+                            //find the next item
+                            n = vv.nextAll('.item').first();
+                            //reset the index if it's negative
+                            (idx < 0) ? idx = (3 - hasBbx) : '';
+                            //if this is a dblwide card, decrement the index after moving the current card if necessary
+                            if(vv.outerWidth() > n.outerWidth()){
+                                //if this card is in the last position in the row, swap positions with the cell after it, add the element to the global obj
+                                if(ch.index(vv) % (4 - hasBbx) == idx){
+                                    vv.insertAfter(n);
+                                    console.log('--- moved ---');
+                                    window._moveDCEl = window._moveDCEl.add(vv);
+                                }
+                                //-doublewide cards push the index of the last card in a row down by 1
+                                idx--;
+                            }
+                        });
+                    },
+                    magObserver = new MutationObserver(function(mutations,instance){
+                        mutations.forEach(function(mutation) {
+                            //console.debug(mutation);
+                            if(!!$(mutation.addedNodes).filter('.grid-body').find('.TextContainer .rText').length){
+                                HSN.ResponsiveCells.prototype.TextResize('.TextContainer','.rText');
+                            }
+                            //need to break token apart in selector and regex so it doesn't get replaced, need to leave token together in the replace call so that it does get replaced and no device detection is required
+                            $(mutation.addedNodes).find('img[src*="~!@#$DeviceRecipe'+'~!@#$"]').each(function(i,v){
+                                v.setAttribute('src',v.src.replace(/(^http(s)*:)*(.*)(~!@#\$DeviceRecipe~!@#)(\$)(.*)/g,'$3desktop$6'));
+                            });
+                            //doublewide
+                            _moveDC();
+                        });
+                    });
+                magObserver.observe(__tpg[0], { attributes: false, childList: true, characterData: false });
+                //handle doublewide on first page load
+                _moveDC();
+            }
+        } catch(er){ /*console.log('=== mutation error:'); console.debug(er);*/ }
+        // Generic Global Variables
+        window.zWebPID = jQuery("#webp_id").val();
+        window.zPFID = jQuery("#pfid").val();
+        // window.zPFID on Andrew PD Pages (v2)
+        if (!window.zPFID){
+            jQuery(document).ready(function() {
+                var zTmp = jQuery("#template-lessman-product-detail .product-item-number");
+                if (zTmp.length){
+                    window.zPFID = zTmp.text().replace("#", "").replace("-", "");
+                } else {
+                    var zTmp = jQuery("#template-lessman-product-detail .lessman-mainimage img").attr("src");
+                    var zItem = /~\d+/.exec(zTmp);
+                    if (zItem && zItem.length){
+                        window.zPFID = zItem[0].replace("~", "");
+                    }
+                }
+            });
+        }
+        //text prodcard borders - 100517
+        var DynamicCards = jQuery(".DynamicCard");
+        if (DynamicCards.length){
+            //var Wrapper = jQuery('<div class="DynamicCardWrapper" />'); //compat only
+            DynamicCards.parent().addClass('_dcc')
+                .filter(':even:first').addClass('_dce _dct').end()
+                .filter(':even:last').addClass('_dce _dcb').end()
+                .filter(':odd:first').addClass('_dco _dct').end()
+                .filter(':odd:last').addClass('_dco _dcb').end();
+        }
+        
+        //cm2 tag replacement based on data-zone - 01052018
+        var cm2Replace = function(){
+            var num = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+            //get any elements that have -cm2- in the tracking attrs
+            $('[manual_cm_re*="-cm2-"],[manual_cm_sp*="-cm2-"],[manual_cm_re*="-CM2-"],[manual_cm_sp*="-CM2-"]')
+                .each(function(_i,_v){
+                    //loop through the elements and use their outer data-zone attr to lowercase no underscores with numbers replaced with their string equivalents as the cm2
+                    var zone = ($(_v).closest('[data-zone]').attr('data-zone') || '').toLowerCase().replace(/_/g,''),
+                        cm2 = zone.replace(/\d+/,num[parseInt(zone.replace(/[^\d]/g,''))]);
+                        //function that updates the attr based upon the current attr
+                        _update = function(){
+                            return ($(this).attr('manual_cm_re') || $(this).attr('manual_cm_sp') || '').replace(/-cm2-/i,'-'+cm2+'-');
+                        };
+                    //set the attr
+                    $(_v).attr('manual_cm_re',_update).attr('manual_cm_sp',_update);
+                    //set the data-cm2-zone attr on the data-zone container
+                    $(_v).closest('[data-zone]').attr('data-cm2-zone',cm2);
+                });
+        };
+        cm2Replace();
+    
+        //product-detail-modal handler
+        $(document.body).on('click._footer','.product-detail-modal',function(ev){
+            ev.preventDefault();
+            ev.stopPropagation();
+            if(!$(this).attr('data-product-id') || !$(this).attr('data-preview-url')){
+                window.console && window.console.error && window.console.error('HSN footer product-detail-modal error: missing required attributes: data-product-id or data-preview-url');
+                window.console && window.console.debug && window.console.debug(this);
+            } else {
+                HSN.Instance().GetProductModal().Show($(this).attr('data-product-id'),$(this).attr('data-preview-url').replace(/\/preview$/g,'')+'/preview');
+            }
+            return false;
+        });
+        
+        // Fix webanalytic for arcade help page
+        if((/\/arcade\/help/i).test(window.location.pathname)){
+            if (window.webanalytics){
+                webanalytics.page.categoryid = "Arcade";
+            }
+        }
+        // Doubleclick for Clearance
+        if (window.location.pathname == "/shop/clearance/4525"){
+            var axel = Math.random() + "",
+                a = axel * 10000000000000;
+            jQuery(window).on('load', function () {
+                jQuery('#hsnlayout-doubleclick-iframe-b').attr('src', '//fls.doubleclick.net/activityi;src=3636840;type=categ527;cat=hsnca752;u4=NA;u3=NA;u2=SA;u1=n/a;ord=' + a + '?');
+            });
+        }
+        // Redirect Mastercard page to Creditcard page
+        if (window.location.pathname == "/myaccount/creditcard/HM"){
+            $("#torso").hide();
+            window.location.replace("/article/hsn-card-redirect/6629");
+        }
+        // Pull in script library for this set of pages ($ = Prototype here)
+        if (window.location.pathname == "/cnt/hsn_today/hosts/default.aspx"){
+            jQuery.ajax({ url: "https://img.hsni.com/images/prod/scripts/ShowHostScripts.js?v=1", dataType: "script", cache: true });
+        }
+        // Hide email signup form for community
+        if (window.location.hostname == "community.hsn.com"){
+            jQuery("#connect-web-links .CommunityHide").hide();
+        }
+    })(jQuery);
+    //====== document ready ======
+    // All repairs that can wait until .ready go here
+    jQuery(document).ready(function ($) {
+        try {
+            //override DisplayModal prototype to center modals after images are done loading if there are images
+            HSN.ArticleModal.prototype.DisplayModal = function (data, time) {
+                var __scope = this;
+                __scope.Root.css('opacity',0);
+                this.Content.showHtml(data, time,
+                    function () {
+                        var elementToFocus = __scope.Root.find('#modalPopup'),
+                            imgs = __scope.Root.find('img:last'),
+                            _animate = function(){
+                                __scope.Root.css('opacity',1);
+                                __scope.Content.animate({ opacity: 1 }, function() {
+                                    __scope.SetFocus(elementToFocus);
+                                });
+                            };
+                        __scope.Center();
+                        if(!!imgs.length){
+                            imgs.one('load error',function(){
+                                __scope.Center();
+                                _animate();
+                            });
+                        } else {
+                            _animate();
+                        }
+                    },
+                    function () {
+                        //__scope.Center();
+                    });
+            };
+        } catch(er){}
+        
+        //show the socialRoll icons
+        setTimeout(function(){
+            $('.footer-outer .socialRollOuter').addClass('_show');
+        },1500);
+        
+        //accurately set the year in the footer
+        HSN.OnAccountStatusLoad(function(dt){
+            var d = new Date(dt.serverTime);
+            $('#legal2 ._legal-year').text(new Date(d.getTime()-(5*60*60*1000)).getUTCFullYear());
+        });
+
+        //dont disable modals on arcade
+        HSN.Modal.prototype.Enable();
+        
+        //lessman supplment to nutrition label - 100517
+        if($('.lessman-supplementfacts').length){
+            // Most web id's, but some matrix # as well
+            var x,
+                LessmanSupWebIDs = [10066525,7322907,7418567,7418574,7418624,10067445,10066628];
+            for (x = 0; x < LessmanSupWebIDs.length; x++){
+                if ((window.zWebPID == LessmanSupWebIDs[x])){
+                    $('.lessman-supplementfacts h3').text('Nutrition Facts');
+                }
+            }
+        }
+        // CTRL + ; to copy item number to clipboard for IE only - 100517
+        if (window.zPFID && window.clipboardData){
+            document.onkeydown = function(event){
+                if (!event){
+                    event = window.event;
+                }
+                //console.log(event.keyCode)
+                // 85 is "u"
+                // 186 is ";"
+                if ((event.keyCode == 186) && (event.ctrlKey)){
+                    window.clipboardData.setData("text", window.zPFID);
+                }
+            }
+        }
+        
+        // Grid page video player fix
+        $('.tall-product-item').find('.video a').each(function( index ) {
+            if(!$(this).data('w')){
+                $(this).data('w', 156);
+                $(this).data('h', 280);
+            }
+        });
+        
+        // Closed Captioning for quicklook video's on PD pages - 100517
+        if (window.zWebPID){
+            var videoUrlParse = $(".video[data-disttypeid='" + 2 +"']").data("rtmpUrl");
+            if(videoUrlParse){
+                var assetIdVideo = videoUrlParse.match(/([^\/]+)(?=\.\w+$)/)[0],
+                    quickvideoCaptions = "https://odv.hsn.com/customcontent/" + assetIdVideo + ".srt";
+                $(".video[data-disttypeid='" + 2+"']").data("ccUrl", quickvideoCaptions);
+            }
+        }
+        
+    // End of document.ready
+    });
+    // Facebook - 100517
+    (function ($) {
+        function appendFunctions(function1, function2) {
+            return function () {
+                if (function1){
+                    function1();
+                }
+                if (function2){
+                    function2();
+                }
+            }
+        }
+        window.fbAsyncInit = appendFunctions(window.fbAsyncInit, function () {
+            FB.Event.subscribe('edge.create',
+                function (href, widget) {
+                    if (widget.id == "fb-footer") {
+                        cmCreateManualLinkClickTag('/footer?cm_sp=global-_-footer-_-facebooklike&cm_re=global-_-footer-_-facebooklike', 'FacebookLike');
+                    }
+                });
+        });
+    })(jQuery);
+

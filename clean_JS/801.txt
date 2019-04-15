@@ -1,0 +1,196 @@
+
+
+  
+    Currency.format = 'money_format';
+  
+
+  var shopCurrency = 'USD';
+
+  /* Sometimes merchants change their shop currency, let's tell our JavaScript file */
+  Currency.money_with_currency_format[shopCurrency] = "$ {{amount}} USD";
+  Currency.money_format[shopCurrency] = "$ {{amount}}";
+
+  /* Default currency */
+  var defaultCurrency = 'USD' || shopCurrency;
+  
+  if ($(window).width() >= 798) {
+    var $currencySelector = $(".top_bar .currencies");
+  } else {
+    var $currencySelector = $("#mobile_menu .currencies");
+  }
+  
+  /* Cookie currency */
+  var cookieCurrency = Currency.cookie.read();
+
+  /* Fix for customer account pages */
+  $('span.money span.money').each(function() {
+    $(this).parents('span.money').removeClass('money');
+  });
+
+  /* Saving the current price */
+  $('span.money').each(function() {
+    $(this).attr('data-currency-USD', $(this).html());
+  });
+
+  // If there's no cookie.
+  if (cookieCurrency == null) {
+    if (shopCurrency !== defaultCurrency) {
+      Currency.convertAll(shopCurrency, defaultCurrency);
+    }
+    else {
+      Currency.currentCurrency = defaultCurrency;
+    }
+  }
+  // If the cookie value does not correspond to any value in the currency dropdown.
+  else if ($currencySelector.length && $currencySelector.find('option[value=' + cookieCurrency + ']').length === 0) {
+    Currency.currentCurrency = shopCurrency;
+    Currency.cookie.write(shopCurrency);
+  }
+  else if (cookieCurrency === shopCurrency) {
+    Currency.currentCurrency = shopCurrency;
+  }
+  else {
+    Currency.convertAll(shopCurrency, cookieCurrency);
+  }
+
+  $currencySelector.val(Currency.currentCurrency).change(function() {
+    var newCurrency = $(this).val();
+    Currency.convertAll(Currency.currentCurrency, newCurrency);
+    jQuery('.selected-currency').text(Currency.currentCurrency);
+  });
+
+  var original_selectCallback = window.selectCallback;
+  var selectCallback = function(variant, selector) {
+    original_selectCallback(variant, selector);
+    Currency.convertAll(shopCurrency, $currencySelector.val());
+    jQuery('.selected-currency').text(Currency.currentCurrency);
+  };
+
+  function convertCurrencies() {
+    if($currencySelector.val() && $currencySelector.val() != $currencySelector.data('default-shop-currency')) {
+      Currency.convertAll($currencySelector.data('default-shop-currency'), $currencySelector.val());
+      jQuery('.selected-currency').text(Currency.currentCurrency);
+    }
+  }
+
+
+
+    function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js";
+    document.body.appendChild(element);
+    }
+    if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+    else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+    else window.onload = downloadJSAtOnload;
+
+    function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "//cdn.shopify.com/s/assets/themes_support/api.jquery-c1754bd1a7bb06d28ce2b85087252f0d8af6d848c75139f5e2a263741ba089b0.js	";
+    document.body.appendChild(element);
+    }
+    if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+    else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+    else window.onload = downloadJSAtOnload;
+
+    function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "//cdn.shopify.com/s/files/1/0826/6259/t/26/assets/bold-helper-functions.js?10478932986500104587";
+    document.body.appendChild(element);
+    }
+    if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+    else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+    else window.onload = downloadJSAtOnload;
+
+    function downloadJSAtOnload() {
+    var element = document.createElement("script");
+      element.src = "//cdn.shopify.com/s/assets/themes_support/ga_urchin_forms-668547562549a84f5dfa01ef82607987f85ecbe1c8301faf25059becfa208199.js";
+    document.body.appendChild(element);
+    }
+    if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+    else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+    else window.onload = downloadJSAtOnload;
+
+  if (typeof window.saso_config != "object") {
+    window.saso_config = {}
+  }
+  if (typeof window.saso_config.hide_shown_upsells_for != "number") {
+    window.saso_config.hide_shown_upsells_for = 15
+  }
+  if (typeof window.saso_config.hide_closed_notifications_for != "number") {
+    window.saso_config.hide_closed_notifications_for = 10
+  }
+  window.saso_config.hide_shown_upsells_for *= 60 //seconds  
+  window.saso_config.hide_closed_notifications_for *= 60 //seconds
+  
+  if (typeof window.saso_config.crosssell_continue_after_close != "boolean") {
+    window.saso_config.crosssell_continue_after_close = true
+  }
+  if (typeof window.saso_config.crosssell_popup_on_add != "boolean") {
+    window.saso_config.crosssell_popup_on_add = true
+  }
+  if (typeof window.saso_config.product_title_max_length != "number") {
+    window.saso_config.product_title_max_length = 40
+  }
+  if (typeof window.saso_config.upsell_variant_choose_option != "string") {
+    window.saso_config.upsell_variant_choose_option = "please select"
+  }
+  if (typeof window.saso_config.upsell_variant_choose_message != "string") {
+    window.saso_config.upsell_variant_choose_message = "Please select an option"
+  }
+  
+  
+
+  
+  window.saso = {
+    shop_slug: "sitstay",
+    money_format: "$ {{amount}}",
+    customer: null,
+    cart: null,
+  }
+  window.saso_extras = {}
+
+  
+
+  
+  
+
+  
+    
+  
+
+  
+  	window.saso.cart = {"token":"759cbdaec4dd6cd167a65a68322b7744","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]}
+    delete window.saso.cart.note
+    window.saso.cart_collections = {}
+    
+	if (typeof window.saso.cart.items == "object") {
+    	for (var i=0; i<window.saso.cart.items.length; i++) {
+        	["sku", "grams", "vendor", "url", "image", "handle", "requires_shipping", "product_type", "product_description"].map(function(a) {
+          		delete window.saso.cart.items[i][a]
+        	})
+    	}
+    }
+  
+
+  window.saso.page_type = ""
+  if (typeof window.location == "object" && typeof window.location.pathname == "string") {
+    if (window.location.pathname.indexOf('/checkouts/') > -1) {
+      window.saso.page_type = "checkout"
+    }
+  }
+
+
+//<![CDATA[
+if (typeof jQuery === 'undefined') {document.write("\u003cscript src=\"https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1\/jquery.min.js\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");	document.write('<script type="text/javascript">jQuery.noConflict();<\/script>');}
+//]]>
+
+var reorder_discount_cart;!function(){reorder_discount_cart=function(){function b(){var a=sessionStorage.getItem("discount");if(null!=a&&""!=a){var b=document.getElementsByTagName("form");if(null!=b)for(var c=0;c<b.length;c++){var d=/cart/i;d.test(b[c].action)&&(pattern_questionmark=/\?/,pattern_discount=/discount\=/,pattern_questionmark.test(b[c].action)&&!pattern_discount.test(b[c].action)?b[c].action=b[c].action+"&discount="+a:pattern_discount.test(b[c].action)||(b[c].action=b[c].action+"?discount="+a))}}else{var b=document.getElementsByTagName("form");if(null!=b)for(var c=0;c<b.length;c++){var d=/cart/i;d.test(b[c].action)&&(pattern_questionmark=/\?/,pattern_ref=/ultimatereorder\=/,pattern_questionmark.test(b[c].action)&&!pattern_ref.test(b[c].action)?b[c].action=b[c].action:pattern_ref.test(b[c].action)||(b[c].action=b[c].action))}}}var c=jQuery;c(document).ready(function(){c(document.body).on("mouseup",function(a){pattern=/cart/i,pattern.test(a.target.className)&&b()}),b()})}}(),reorder_discount_cart();

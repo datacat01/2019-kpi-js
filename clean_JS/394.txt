@@ -1,0 +1,251 @@
+
+//<![CDATA[
+var theForm = document.forms['orderform'];
+if (!theForm) {
+    theForm = document.orderform;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;JavaScript: return formSubmitted();
+return true;
+}
+//]]>
+
+
+        $(function () {
+
+            $('#carousel-products-related .slide-link').click(function () {
+                var self = $(this);
+
+                ga('send', 'pageview', '/Slider');
+
+                var fieldsObject = {
+                    hitType: 'event',
+                    eventCategory: 'Product Carousel on ' + self.data('location'),
+                    eventAction: 'click',
+                    eventLabel:  'Product ID: ' + self.data('productid')
+                };
+
+                ga('send', fieldsObject);
+
+                console.log('sent... ',fieldsObject);
+            });
+            
+        });
+	
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1"), document.getElementById("Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4"), document.getElementById("Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4"));
+//]]>
+
+
+//<![CDATA[
+var Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1 = document.all ? document.all["Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1"] : document.getElementById("Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1");
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.controltovalidate = "Footer1_ConstantContactMailerSignup1_Name";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.errormessage = "Please enter your Name.";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.display = "Dynamic";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.validationGroup = "ConstantContactMailerSignup";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator1.initialvalue = "";
+var Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4 = document.all ? document.all["Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4"] : document.getElementById("Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4");
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.controltovalidate = "Footer1_ConstantContactMailerSignup1_Email";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.errormessage = "Please enter your Email Address.";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.display = "Dynamic";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.validationGroup = "ConstantContactMailerSignup";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+Footer1_ConstantContactMailerSignup1_RequiredFieldValidator4.initialvalue = "";
+var Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4 = document.all ? document.all["Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4"] : document.getElementById("Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4");
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.controltovalidate = "Footer1_ConstantContactMailerSignup1_Email";
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.errormessage = "Email is incorrectly formatted. Please review and corrrect. Single quotes are not permitted in our system.";
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.display = "Dynamic";
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.validationGroup = "ConstantContactMailerSignup";
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+Footer1_ConstantContactMailerSignup1_RegularExpressionValidator4.validationexpression = "[a-zA-Z0-9!#$%&*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?";
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+
+
+<!--
+function Is() {
+ var agent = navigator.userAgent.toLowerCase();
+ this.major = parseInt(navigator.appVersion);
+ this.minor = parseFloat(navigator.appVersion);
+ this.ns = ((agent.indexOf('mozilla')!=-1) && ((agent.indexOf('spoofer')==-1) && (agent.indexOf('compatible') == -1)));
+ this.ns2 = (this.ns && (this.major == 2));
+ this.ns3 = (this.ns && (this.major == 3));
+ this.ns4 = (this.ns && (this.major == 4));
+ this.ns5 = (this.ns && (this.major > 4));
+ this.ns6 = (this.ns && (agent.indexOf('netscape6')!=-1) );
+ this.ns7 = (this.ns && (agent.indexOf('netscape/7')!=-1) );
+ this.ns7pr = (this.ns && (agent.indexOf('netscape/7.0b1')!=-1) );
+ this.ns71 = (this.ns && (agent.indexOf('netscape/7.1')!=-1) );
+ this.ns72 = (this.ns && (agent.indexOf('netscape/7.2')!=-1) );
+ this.ie = (agent.indexOf("msie") != -1);
+ this.ie3 = (this.ie && (this.major == 2));
+ this.ie4 = (this.ie && (this.major >= 4));
+ this.ie5 = (this.ie && (this.major == 4) && (agent.indexOf("msie 5.0") != -1));
+ this.ie55 = (this.ie && (this.major == 4) && (agent.indexOf("msie 5.5") != -1));
+ this.ie6 = (this.ie && (agent.indexOf("msie 6.0")!=-1));
+ this.op3 = (agent.indexOf("opera") != -1);
+ this.pc  = (agent.indexOf("win") != -1);
+ this.mac = (agent.indexOf("mac")!=-1); // Mac detect
+ this.client = ( (navigator.userAgent.indexOf('AOL')!=-1) || (navigator.userAgent.indexOf('CS 2000')!=-1) )? 1 : 0;
+ this.moz = ( this.ns && (agent.indexOf("netscape/") == -1) );
+ if (this.moz) this.ns = 0;
+
+}
+
+var is = new Is()
+var doshow = true;
+var exitWindow;
+
+
+function ShowExitWindow(mode) {
+  var popWidth;
+  var popHeight;
+  var Xpos;
+  var Ypos;
+  var popURL;
+  var popTitle;
+  var popParms;
+
+  
+  //alert('event.clientX=' + window.event.clientX + ' event.clientY=' +window.event.clientY +' pageY=' +pageY);
+  // Determine which mode we are opening the Exit Window?
+  if(mode == 'insite'){
+
+
+	popURL = 'https://www.brantflorist.com/ExitPagePlaceholder.aspx';
+    popTitle = "SiteExitWindow";
+    popWidth = 650;
+    popHeight = 550;
+    if(is.ns){
+	    Xpos = window.screenX;  // Get Parent's X positoin
+		Ypos = window.screenY; // Get Parent's Y position
+    }else{
+	    Xpos = window.screenLeft;  // Get Parent's X positoin
+		Ypos = window.screenTop; // Get Parent's Y position
+    }
+
+    popParms = "scrollbars,resizable,width="+popWidth+",height="+popHeight +",left=" +Xpos +",top="+Ypos +",screenX=" +Xpos +",screenY=" +Ypos;
+
+    try{
+		exitWindow.blur();
+	}
+	catch (e){
+		exitWindow = window.open(popURL, popTitle, popParms);
+		self.focus();
+		if (!exitWindow.opener) {
+ 		exitWindow.opener = window;
+		}
+		if (exitWindow.opener == null) 
+		{
+		exitWindow.opener = window;
+		}
+	}
+
+
+  } else if (mode == 'exit_site' && doshow == true) {
+
+ 
+	popURL = 'https://www.brantflorist.com/ExitPagePlaceholder.aspx';
+    popTitle = "SiteExitWindow";
+    popWidth = 650;
+    popHeight = 550;
+    if(is.ns){
+	    Xpos = window.screenX;  // Get Parent's X positoin
+		Ypos = window.screenY; // Get Parent's Y position
+    }else{
+	    Xpos = window.screenLeft;  // Get Parent's X positoin
+		Ypos = window.screenTop; // Get Parent's Y position
+    }
+    popParms = "scrollbars,resizable,width="+popWidth+",height="+popHeight+",left=" +Xpos +",top="+Ypos +"screenX=" +Xpos +",screenY=" +Ypos;
+
+    try{
+		exitWindow.blur();
+	}
+	catch (e){
+		exitWindow = window.open(popURL, popTitle, popParms);
+		self.focus();
+		if (!exitWindow.opener) {
+			exitWindow.opener = window;
+		}
+		if (exitWindow.opener == null) 
+		{
+			exitWindow.opener = window;
+		}
+	}
+    
+
+
+  }else if (mode == 'abandon_checkout' && doshow == true) {
+
+ 
+	popURL = 'https://www.brantflorist.com/ExitPage.aspx?SurveyAlways=Yes';
+    popTitle = "SiteExitWindow";
+    popWidth = 650;
+    popHeight = 500;
+    if(is.ns){
+	    Xpos = window.screenX;  // Get Parent's X positoin
+		Ypos = window.screenY; // Get Parent's Y position
+    }else{
+	    Xpos = window.screenLeft;  // Get Parent's X positoin
+		Ypos = window.screenTop; // Get Parent's Y position
+    }
+    popParms = "scrollbars,resizable,width="+popWidth+",height="+popHeight+",left=" +Xpos +",top="+Ypos +"screenX=" +Xpos +",screenY=" +Ypos;
+    try{
+		exitWindow.blur();
+	}
+	catch (e){
+		exitWindow = window.open(popURL, popTitle, popParms);
+		self.blur();
+		if (!exitWindow.opener) {
+			exitWindow.opener = window;
+		}
+		if (exitWindow.opener == null) 
+		{
+			exitWindow.opener = window;
+		}
+	}
+    
+
+  }
+  
+  
+  
+}
+
+function NoShow() {
+  doshow = false;
+}
+
+
+-->
+

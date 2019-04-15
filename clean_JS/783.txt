@@ -1,0 +1,210 @@
+
+    //<![CDATA[
+    var THREESIXTY_IMAGES = 'https://www.litter-robot.com/skin/frontend/autopets/default/images/international-landing/360/';
+    var CLOSE_ICON_IMAGE = 'https://www.litter-robot.com/skin/frontend/autopets/default/images/international-landing/icon-close.gif';
+    //]]>
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.litter-robot.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+        jQuery(document).ready(function() {
+            if (typeof(_etmc) !== 'undefined') {
+            _etmc.push(['setOrgId', '100009540']);_etmc.push(['trackPageView']);            }
+        });
+    
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/dxdH8YUOawZY5QhSccRCNau7EmEcSpAom92cbwJo/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+var _vwo_code=(function(){
+var account_id=398623,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+
+    if (typeof GtsValidator != 'undefined')
+        GtsValidator.badge = true;
+
+
+
+    var gts = gts || [];
+    gts.push(["id", "563686"]);
+    gts.push(["badge_position", "BOTTOM_RIGHT"]);
+    gts.push(["google_base_offer_id", "-1"]);
+    gts.push(["locale", "en_US"]);
+    gts.push(["google_base_subaccount_id", "7335803"]);
+    gts.push(["google_base_country", "US"]);
+    gts.push(["google_base_language", "en"]);
+
+    (function() {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+
+
+    jQuery(document).ready(function(){
+
+            jQuery('.menu-item-has-children').on('mouseenter',function(){
+                jQuery('.menu-item-has-children').not(this).removeClass('menu_click');
+                jQuery(this).addClass('menu_click');
+            });
+
+            jQuery('.menu-item-has-children').on('mouseleave',function(){
+                jQuery('.menu-item-has-children').not(this).removeClass('menu_click');
+                jQuery(this).removeClass('menu_click');
+            });
+
+        jQuery('.menu-item-has-children').on('touchstart', function (e) {
+            jQuery('.menu-item-has-children').not(this).removeClass('menu_click');
+            jQuery(this).toggleClass('menu_click');
+        });
+        jQuery('.header_account_login').click(function(){
+            jQuery('.menu-item-has-children').removeClass('menu_click');
+            jQuery(this).toggleClass('account_click');
+        });
+        jQuery('.header_rl_country').click(function(){
+            jQuery('.menu-item-has-children').removeClass('menu_click');
+            jQuery(this).toggleClass('country_click');
+        });
+    });
+
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.litter-robot.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+    jQuery(document).ready(function () {
+        lastScroll = 0;
+        jQuery(window).on('scroll', function () {
+            var scroll = jQuery(window).scrollTop();
+            lastScroll = scroll;
+        });
+    });
+
+
+        window.Attribution = window.Attribution||[];
+        window.Attribution.methods = ["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];
+        window.Attribution.factory=function(e){
+            return function(){
+                var t=Array.prototype.slice.call(arguments);
+                t.unshift(e);
+                window.Attribution.push(t);
+                return window.Attribution
+            }
+        };
+        for(var i=0;i<window.Attribution.methods.length;i++){
+            var key=window.Attribution.methods[i];
+            window.Attribution[key]=window.Attribution.factory(key)}window.Attribution.load=function(e){
+                if(document.getElementById("attribution-js"))
+                    return;
+                var t=document.createElement("script");
+                t.type="text/javascript";
+                t.id="attribution-js";
+                t.async=true;
+                t.src="//scripts.attributionapp.com/attribution.js";
+                var n=document.getElementsByTagName("script")[0];
+                n.parentNode.insertBefore(t,n)};
+        window.Attribution.load();
+        window.Attribution.projectId="Mb1vhanW";
+        window.Attribution.page();
+
+    
+    
+    
+
+jQuery(document).ready(function() {
+        var owl = jQuery('#customers-testimonials');
+        owl.owlCarousel({
+            navigation : false,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            items : 1,
+            itemsDesktop : false,
+            itemsDesktopSmall : false,
+            itemsTablet: false,
+            itemsMobile : false,
+            animateOut: 'fadeOut'
+        });
+
+        jQuery(document).on('click','.pagination li',function(){
+
+           if(jQuery(this).index() == 0 || jQuery(this).index() ==6){
+
+           }
+           else{
+               jQuery('.pagination li').removeClass('active');
+               jQuery(this).addClass('active');
+           }
+        });
+
+        jQuery('.pagination-wrapper a#next').click(function(){
+            if(jQuery('.pagination li.active').index() < 5){
+                owl.trigger('next.owl.carousel');
+                var ind = jQuery('.pagination li.active').index();
+                ind = ind + 1;
+                jQuery('.pagination li').removeClass('active');
+                jQuery('.pagination li').eq(ind).addClass('active');
+            }
+        });
+
+        jQuery('.pagination-wrapper a#prev').click(function(){
+            if(jQuery('.pagination li.active').index() > 1){
+                owl.trigger('prev.owl.carousel');
+                var ind = jQuery('.pagination li.active').index();
+                ind = ind - 1;
+                jQuery('.pagination li').removeClass('active');
+                jQuery('.pagination li').eq(ind).addClass('active');
+            }
+        });
+
+        // Already visible modules
+        jQuery('.auto-animate').each(function(i, el) {
+          var el = jQuery(el);
+          if (el.visible(true)) {
+            el.addClass("already-visible");
+          }
+        });
+        jQuery(window).on('resize scroll', function() {
+            jQuery('.auto-animate').isInViewport().removeClass('scroll-hidden').addClass('scroll-visible come-in');
+        });
+
+        jQuery(document).on('click','.play',function(e){
+
+            BigPicture({
+                el: e.target,
+                ytSrc: jQuery(this).data('video-id')
+            });
+        });
+
+    });
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071676675;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

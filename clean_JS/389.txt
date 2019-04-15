@@ -1,0 +1,12 @@
+<!--
+$(document).ready(function() {
+	$('#slideshow0').nivoSlider({pauseTime:5000});
+});
+-->
+<!--
+$('#carousel0 ul').jcarousel({
+	vertical: false,
+	visible: 5,
+	scroll: 3});
+//-->
+(function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://www.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({ c: '1dde6a2d-ab1a-4b14-9e07-956375dca37d', f: true }); done = true; } }; })();

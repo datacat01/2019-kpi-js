@@ -1,0 +1,191 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".bccamera.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"96ab5a7a1f43dc7921f7b56c11a40b681b6a3f2d","type":"ANONYMOUS","visit_id":"c9bbcaff-8cdc-4c92-b57a-4852d034b798","visitor_id":"385d49b0-e7fd-4dc2-b761-14514d708dbb"},"referer":{"url":""},"request":{"url":"https:\/\/bccamera.com\/"}}, '', 2457869, "other", {"customer":{"id":"anonymous"}}, 'c9bbcaff-8cdc-4c92-b57a-4852d034b798', '385d49b0-e7fd-4dc2-b761-14514d708dbb');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"d284f2775816bf27d173358f476ff2b4e6e0d11f18b913f82543e2fd883501bf"};
+
+
+    document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+
+
+    $(document).ready(function(){
+        $("select.form-select").addClass("needsclick");
+    });
+
+
+jQuery(document).ready(function() {
+    jQuery('.left.phone-number').html('<a href="/contact-us/">Hours & Locations</a>');
+    jQuery('.mapBox .label').click(function() {
+      jQuery(this).parent().toggleClass('exp');
+      if (jQuery(this).parent().hasClass('exp') == true) {
+        jQuery(this).parent().find('.label').text('Disable Map Controls')
+      } else {
+        jQuery(this).parent().find('.label').text('Enable Map Controls')       
+      }      
+    });
+    jQuery('.ajaxMe').each(function(){
+        var getContent = jQuery(this).attr('data-url');
+        jQuery(this).load(getContent);
+    });
+    initMap();
+});
+
+
+var map0;
+var map1;
+function initMap() {
+    map0 = new google.maps.Map(document.getElementById('map0'), {
+      zoom: 15,
+      center: new google.maps.LatLng(49.263620, -123.126960),
+      mapTypeId: 'roadmap'
+    });
+    map1 = new google.maps.Map(document.getElementById('map1'), {
+      zoom: 15,
+      center: new google.maps.LatLng(49.175770, -123.131483),
+      mapTypeId: 'roadmap'
+    });
+    
+    map2 = new google.maps.Map(document.getElementById('map2'), {
+      zoom: 15,
+      center: new google.maps.LatLng(49.186879, -122.848213),
+      mapTypeId: 'roadmap'
+    });
+    
+    map3 = new google.maps.Map(document.getElementById('map3'), {
+      zoom: 15,
+      center: new google.maps.LatLng(49.275806, -122.792774),
+      mapTypeId: 'roadmap'
+    });
+    
+     var contentString0 = '<div class="bodyContent">'+
+        '<p><strong>Broadway Camera Vancouver</strong><br />102 - 1055 West Broadway Vancouver, </p><p><a target="_blank" href="https://www.google.com/maps?ll=49.263607,-123.12791&z=16&t=m&hl=en-US&gl=CA&mapclient=embed&cid=7070704194105606961" jsaction="mouseup:placeCard.largerMap">View larger map</a> </p>'+
+        '</div>';
+    var infowindow0 = new google.maps.InfoWindow({
+      content: contentString0
+    });
+    
+    var contentString1 = '<div class="bodyContent">'+
+        '<p><strong>Broadway Camera Richmond</strong><br />955 - 5300 No. 3 Road, Lansdowne Centre,<br> Richmond, BC V6X 2X9</p><p><a target="_blank" href="https://www.google.com/maps/place/Broadway+Camera/@49.175355,-123.132426,16z/data=!4m5!3m4!1s0x0:0xe105cda99739caed!8m2!3d49.1753555!4d-123.1324262?hl=en-US" jsaction="mouseup:placeCard.largerMap">View larger map</a> </p>'+
+        '</div>';
+    var infowindow1 = new google.maps.InfoWindow({
+      content: contentString1
+    });
+    
+    
+    var contentString2 = '<div class="bodyContent">'+
+        '<p><strong>Broadway Camera Surrey</strong><br />1063 - 10153 King George Blvd, Central City,<br> Surrey, BC V3T 2W1</p><p><a target="_blank" href="https://maps.google.com/maps?ll=49.18622,-122.84817&z=15&t=m&hl=en-US&gl=PH&mapclient=embed&cid=18261062678060242910" jsaction="mouseup:placeCard.largerMap">View larger map</a> </p>'+
+        '</div>';
+    var infowindow2 = new google.maps.InfoWindow({
+      content: contentString2
+    });
+    
+    var contentString3 = '<div class="bodyContent">'+
+        '<p><strong>Broadway Camera Coquitlam</strong><br />720 - 3025 Lougheed Highway, Sunwood Square,<br> Coquitlam, BC V3B 6S2</p><p><a target="_blank" href="https://maps.google.com/maps?ll=49.275764,-122.794233&z=15&t=m&hl=en-US&gl=PH&mapclient=embed&cid=4275622503714718684" jsaction="mouseup:placeCard.largerMap">View larger map</a> </p>'+
+        '</div>';
+    var infowindow3 = new google.maps.InfoWindow({
+      content: contentString3
+    });
+    
+    
+
+    // Create markers.
+      var marker0 = new google.maps.Marker({
+        position: new google.maps.LatLng(49.263620, -123.126960),
+        icon: 'https://cdn6.bigcommerce.com/s-745x53acpn/product_images/uploaded_images/marker.png?t=1494922003&_ga=2.249553857.792417278.1494922236-474850419.1492399769',
+        map: map0
+      });
+      
+      var marker1 = new google.maps.Marker({
+        position: new google.maps.LatLng(49.175770, -123.131483),
+        icon: 'https://cdn6.bigcommerce.com/s-745x53acpn/product_images/uploaded_images/marker.png?t=1494922003&_ga=2.249553857.792417278.1494922236-474850419.1492399769',
+        map: map1
+      });
+      
+      var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(49.186879, -122.848213),
+        icon: 'https://cdn6.bigcommerce.com/s-745x53acpn/product_images/uploaded_images/marker.png?t=1494922003&_ga=2.249553857.792417278.1494922236-474850419.1492399769',
+        map: map2
+      });
+       var marker3 = new google.maps.Marker({
+        position: new google.maps.LatLng(49.275806, -122.792774),
+        icon: 'https://cdn6.bigcommerce.com/s-745x53acpn/product_images/uploaded_images/marker.png?t=1494922003&_ga=2.249553857.792417278.1494922236-474850419.1492399769',
+        map: map3
+      });
+    
+    
+    marker0.addListener('click', function() {
+      infowindow0.open(map0, marker0);
+    });
+    marker1.addListener('click', function() {
+      infowindow1.open(map1, marker1);
+    })
+    marker2.addListener('click', function() {
+      infowindow2.open(map2, marker2);
+    })
+    marker3.addListener('click', function() {
+      infowindow3.open(map3, marker3);
+    })
+
+
+    setTimeout(function(){ 
+        infowindow0.open(map0,marker0); 
+        infowindow1.open(map1,marker1); 
+        infowindow2.open(map2,marker2); 
+        infowindow3.open(map3,marker3); 
+        
+    }, 2000);
+}
+
+ ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('7236-386-10-7828');
+
+    adroll_adv_id = "DNWHKOLFQFHGNJ74BZWLMB";
+    adroll_pix_id = "COX2XHV375HQTKJHB5K4IY";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+(function (d,s,l,t,p) { t = d.createElement(s); t.type =
+'text/java'+s; t.async = true; t.src = l;
+p = d.getElementsByTagName(s)[0]; p.parentNode.insertBefore(t,p); })
+(document,'script','//a.sellpoint.net/c/6445/sp.js?cv='+Math.floor(Date.now() /
+86400000));
+
+
+/* <![CDATA[ */
+var google_conversion_id = 980050039;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+<!--
+vs_account_id      = "fwABAVrjQHN7GwDH";
+
+//-->
+
+
+
+ (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/W1ljvtyF66dDshb2Zpjq3yzDDECgxX2a1zGLM9Ya/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+//<![CDATA[
+var div = document.createElement("div");div.setAttribute('class', 'yotpo yotpo-main-widget');div.setAttribute('data-product-id',"");div.setAttribute('data-name',"");div.setAttribute('data-url', "https://bccamera.com");div.setAttribute('data-image-url', "[object Object]");div.setAttribute('data-price', "");div.setAttribute('data-currency', "CAD");document.querySelectorAll('.productView')[0].appendChild(div)//]]>

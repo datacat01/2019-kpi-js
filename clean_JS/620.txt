@@ -1,0 +1,352 @@
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.watchuseek.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.5"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+	window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+	window._wp_rp_wp_ajax_url = "https://www.watchuseek.com/wp-admin/admin-ajax.php";
+	window._wp_rp_plugin_version = '3.6.4';
+	window._wp_rp_post_id = '121337';
+	window._wp_rp_num_rel_posts = '4';
+	window._wp_rp_thumbnails = true;
+	window._wp_rp_post_title = 'The+Best+Apple+Watch+Accessories+You+Can+Get+Right+Now';
+	window._wp_rp_post_tags = ['meridio', 'apple+watch', 'spigen', 'best+apple+watch+accessories', 'x-doria', 'bucardo', 'elago', 'griffin', 'kehangda', 'buying+guides', 'watch', 'accessor', 'multifunct', 'product', 'design', 'armor', 'life', 'case', 'avalanch', 'appl', 'nifti', 'luxuri', 'accessori', 'trick', 'alt'];
+	window._wp_rp_promoted_content = true;
+
+
+var vsCFIsEU = vsCFIsEU || null;
+var vsCFUserGeoIP = vsCFUserGeoIP || null;
+var vsCFTagsEUFunctions = vsCFTagsEUFunctions || [];
+var vsCFTagsNonEuFunctions = vsCFTagsNonEuFunctions || [];
+var vsCFCookieLimit = vsCFCookieLimit || 1; //1 day
+
+function vsCFCreateCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+function vsCFReadCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(";");
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==" ") c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+ 
+//Execute ajax call to verify user EU GEOIP and start correct process.
+function vsCFSendAjax() {
+	xhttp = new XMLHttpRequest();
+	xhttp.abort();
+	xhttp.onreadystatechange = function () {
+		if (xhttp.readyState == 4) { 
+			if (xhttp.status == 200) {
+				var jsonResponse = JSON.parse(xhttp.responseText);
+
+				if (jsonResponse.status == true) {
+					// if EU and execute eu tags
+					vsCFIsEU = true;
+					vsCFUserGeoIP = jsonResponse.geoip;
+					vsCFExecuteEuTags();
+				} else {
+					// if Non EU and execute Non eu tags
+					vsCFIsEU = false;
+					vsCFUserGeoIP = jsonResponse.geoip;
+					vsCFExecuteNonEuTags();
+				}
+				
+				vsCFCreateCookie("vsCFIsEU", vsCFIsEU, vsCFCookieLimit);
+				vsCFCreateCookie("vsCFUserGeoIP", vsCFUserGeoIP, vsCFCookieLimit);
+			}
+		}
+	};
+	xhttp.open("GET", "/videoplayer/verify_user_eu_geoip.php?verifyUserGeoIp=true");
+	xhttp.setRequestHeader("X-Requested-With", "xmlhttprequest");
+	xhttp.send(); 
+}
+
+function vsCFVerifyUserGeoIp(geoIps) {
+
+	if (!vsCFUserGeoIP || !geoIps)
+	 return true;
+	
+	if (!(geoIps instanceof Array)) {
+		geoIps = geoIps.replace("__gt__" , "");
+		geoIps = geoIps.split(',');
+	}
+        
+	target = true;
+	if (geoIps instanceof Array && geoIps[0] && geoIps[0] == "-") {
+		target = false; // Exclusion is selected
+		geoIps.shift();
+	}
+	
+	geoIPCountryCode = vsCFUserGeoIP;
+	
+	if (!geoIPCountryCode)
+		return ((target) ? false : true);
+	
+	return ((target) ? (geoIps.includes(geoIPCountryCode) ? true : false) : (geoIps.includes(geoIPCountryCode) ? false : true));
+}
+
+//Execute Eu Tags Function
+function vsCFExecuteEuTags() {
+	for (f of vsCFTagsEUFunctions) {
+		f();
+	}
+	
+	vsCFTagsEUFunctions = [];
+}
+
+//Execute None Eu Tags Function
+function vsCFExecuteNonEuTags() {
+	for (f of vsCFTagsNonEuFunctions) {
+		f();
+	} 
+
+	vsCFTagsNonEuFunctions = [];
+}
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45305421-8']);
+  _gaq.push(['_setDomainName', '.watchuseek.com']);
+  _gaq.push(['_gat._anonymizeIp']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+function vsCFComscoreEU() {
+	if (typeof googlefc == "object") {
+		googlefc.callbackQueue.push(function() {
+			if ( gfchelper.isAdProviderAllowed("comscore") ) {
+				var _comscore = _comscore || [];
+				_comscore.push({ c1: "2", c2: "6036030", c4: "watchuseek.com" });
+				(function() {
+					var s = document.createElement("script"), el =
+					document.getElementsByTagName("script")[0]; s.async = true;
+					s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+					el.parentNode.insertBefore(s, el);
+				})();
+			}
+		});
+	} else { 
+		console.log("cf: comscore googlefc not found.");
+	}
+}
+function vsCFComscoreNonEU() {
+	var _comscore = _comscore || [];
+	_comscore.push({ c1: "2", c2: "6036030", c4: "watchuseek.com" });
+	(function() {
+		var s = document.createElement("script"), el =
+		document.getElementsByTagName("script")[0]; s.async = true;
+		s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+		el.parentNode.insertBefore(s, el);
+	})();
+}
+
+//Add comscore tag functions to eu and non-eu arrays.
+vsCFTagsEUFunctions.push(vsCFComscoreEU);
+vsCFTagsNonEuFunctions.push(vsCFComscoreNonEU);  
+
+
+		window.Adomik = window.Adomik || {};
+		Adomik.randomAdGroup = function() {
+			var rand = Math.random();
+			switch (false) {
+				case !(rand < 0.09): return "ad_ex" + (Math.floor(100 * rand));
+				case !(rand < 0.10): return "ad_bc";
+				default: return "ad_opt";
+			}
+		};
+	
+
+					var googletag = googletag || {};
+					googletag.cmd = googletag.cmd || [];
+					(function() {
+					var gads = document.createElement('script');
+					gads.async = true;
+					gads.type = 'text/javascript';
+					var useSSL = 'https:' == document.location.protocol;
+					gads.src = (useSSL ? 'https:' : 'http:') + 
+					'//www.googletagservices.com/tag/js/gpt.js';
+					var node = document.getElementsByTagName('script')[0];
+					node.parentNode.insertBefore(gads, node);
+					})();
+	
+
+					googletag.cmd.push(function() {
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_1', [300, 250], 'WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_1').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_2', [300, 250], 'WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_2').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_3', [300, 250], 'WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_3').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_4', [300, 250], 'WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_4').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_Middle_COL_Homepage', [300, 250], 'WatchUSeek_com_300x250_Middle_COL_Homepage').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_Bottom_COL_Homepage_0', [300, 250], 'WatchUSeek_com_300x250_Bottom_COL_Homepage_0').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_300x250_Bottom_COL_Homepage_1', [300, 250], 'WatchUSeek_com_300x250_Bottom_COL_Homepage_1').setTargeting('ad_group', Adomik.randomAdGroup()).setTargeting('ad_h', (new Date).getUTCHours().toString()).addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_1', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_1').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_2', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_2').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_3', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_3').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_4', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_4').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_5', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_5').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_6', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_6').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_7', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_7').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_8', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_8').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_9', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_9').addService(googletag.pubads());
+					googletag.defineSlot('/1030735/WatchUSeek_com_125x150_VendorBottom_COL_Homepage_10', [125, 150], 'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_10').addService(googletag.pubads());
+					if (typeof(ccauds) != 'undefined') {
+	(function(googletag, ccauds) {
+		var aud_abbr = [], audience = ccauds.Profile.Audiences.Audience;
+		for (var cci = 0; cci < audience.length; cci++) {
+			aud_abbr.push(audience[cci].abbr);
+		}
+		googletag.pubads().setTargeting("aud_abbr", aud_abbr);
+	})(googletag, ccauds);
+}
+                                                    googletag.pubads().setTargeting("filename", "index_html");
+    googletag.pubads().setTargeting("PageID", "homepage");
+
+					googletag.pubads().setTargeting("sitename", "WatchUSeek.com");
+					googletag.pubads().enableSingleRequest();
+					googletag.enableServices();
+					});
+	
+
+function vsCFCaptifyEU() {
+	if (vsCFVerifyUserGeoIp('GB')) {
+		if (typeof googlefc == "object") {
+			googlefc.callbackQueue.push(function() {
+				if ( gfchelper.isAdProviderAllowed("captify") ) {
+					var _captifyAnalytics = _captifyAnalytics || [];
+					_captifyAnalytics.push("3");
+					(function(){var s=document.createElement("script"), 
+					t=document.getElementsByTagName("script")[0];s.type="text/javascript";s.async=true; 
+					s.defer=true;s.src="//p.cpx.to/p/11003/px.js?r="+(65536*(1+Math.random())|0). 
+					toString(16);t.parentNode.insertBefore(s,t)})();
+				}
+			});
+		} else { 
+			console.log("cf: captify googlefc not found.");
+		}
+	}
+}
+
+//Add captify tag functions to eu and non-eu arrays.
+vsCFTagsEUFunctions.push(vsCFCaptifyEU);
+
+ 
+function vsCFCaptifyUSNonEU() { 
+	if (vsCFVerifyUserGeoIp('US')) {
+		var captify_kw_query_11825 = "";
+		(function(c,a,p,t,i,f,y){i=c.createElement(a);t=c.getElementsByTagName(a)[0];i.type='text/javascript';i.async=true;i.src=p;t.parentNode.insertBefore(i,t);})(document,'script','https://p.cpx.to/p/11825/px.js');
+	}
+}
+
+vsCFTagsNonEuFunctions.push(vsCFCaptifyUSNonEU);
+
+
+		googletag.cmd.push(function() { googletag.display("WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_1"); });
+		
+
+		googletag.cmd.push(function() { googletag.display("WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_2"); });
+		
+
+		googletag.cmd.push(function() { googletag.display("WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_3"); });
+		
+
+		googletag.cmd.push(function() { googletag.display("WatchUSeek_com_300x250_VendorAdsense_COL_Homepage_4"); });
+		
+
+		googletag.cmd.push(function() { googletag.display("WatchUSeek_com_300x250_Middle_COL_Homepage"); });
+		
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_1"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_2"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_3"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_4"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_5"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_6"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_7"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_8"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_9"); });
+                    
+
+                    googletag.cmd.push(function() { googletag.display("'WatchUSeek_com_125x150_VendorBottom_COL_Homepage_10"); });
+                    
+
+/* <![CDATA[ */
+var scriptParams = {"google_search_engine_id":"partner-pub-7865546952023728:8665348048"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var alm_localize = {"ajaxurl":"https:\/\/www.watchuseek.com\/wp-admin\/admin-ajax.php","alm_nonce":"3757b7a4ed","pluginurl":"https:\/\/www.watchuseek.com\/wp-content\/plugins\/ajax-load-more","scrolltop":"false","ajax_object":{"is_single":true,"is_singular":true}};
+/* ]]> */
+
+
+ggpid=2274;
+function vsCFGumgumNonEU() {
+	(function() {
+		var s = document.createElement("script");
+		s.src = "https://js.gumgum.com/services.js";
+		document.body.appendChild( s );
+	})();
+}
+
+//Add gumgum tag functions to non-eu arrays.
+vsCFTagsNonEuFunctions.push(vsCFGumgumNonEU);
+
+
+function vsCFLotameNonEU() {
+	(function() {
+		var s = document.createElement("script");
+		s.src = "//tags.crwdcntrl.net/c/8060/cc_af.js";
+		document.body.appendChild( s );
+	})(); 
+}
+
+//Add Lotame tag functions to non-eu arrays.
+vsCFTagsNonEuFunctions.push(vsCFLotameNonEU);  
+
+
+//Check if GEOIP cookie exists.
+if (vsCFIsEU === null) {
+	vsCFIsEU = vsCFReadCookie("vsCFIsEU");
+	vsCFUserGeoIP = vsCFReadCookie("vsCFUserGeoIP");
+}
+
+//Main checks to start new process or use existing data.
+if (vsCFIsEU === null && (vsCFTagsEUFunctions.length > 0 || vsCFTagsNonEuFunctions.length > 0)) {
+	vsCFSendAjax();
+} else if (vsCFIsEU === false || vsCFIsEU === "false") {
+	vsCFExecuteNonEuTags();
+} else if (vsCFIsEU === true || vsCFIsEU === "true") {
+	vsCFExecuteEuTags();
+}
+

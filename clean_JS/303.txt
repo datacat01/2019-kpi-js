@@ -1,0 +1,281 @@
+
+      var nwapi = new neowing_api();
+      var nwcar = new ProductCarousel();
+      var nw_cust_info = undefined;
+    
+
+      var nwrr = new RichRelevance('cdj', 1);
+    
+
+  RR.jsonCallback = function() {
+    var dt = RR.data.JSON.placements || [];
+
+    for (i = 0; i < 3; i++) {
+    $.ajax({
+      url: 'http://www.cdjapan.co.jp/api/rr/1',
+      type: 'POST',
+      data: {'rcdata' : JSON.stringify(dt[i]), sid : i + 1, rpp : i ? 20 : (window.innerWidth >= 1090 ? 5 : 10)},
+      timeout: 30000,
+      success: function(ds) {
+        if (ds && ds.length) {
+          var d = ds.split( "\t" );
+          if (d[0]) {
+          $('#rrrecom' + d[2]).html(
+            '<div id="third-menu-center' + (d[2] == 1 ? '' : d[2]) + '" class="col4 colo cal_list">' +
+            '<h4 class="spec-hl">' + d[1] + '</h4>' +
+            '<ul class="items item-thumb small" id="detail-recommend-item' + d[2] + '"></ul></div>' + 
+            '<div class="rdum" style="height:2.2em;"></div>');
+          $('#detail-recommend-item' + d[2]).append(d[0]);
+          if (d[2] == 1) {
+            $('#rr-side-data').append(d[0]);
+            $('#rr-side-title').html(d[1]);
+          }
+          nwapi.transCurrency('.price-jp-yen', '.price-exchange');
+          if ( typeof nwcar !== 'undefined' ) {
+            nwcar.put_carousel('#detail-recommend-item' + d[2],{"loop":1,"callback":function(obj) { obj.load_stop = 0;$('.rdum').hide(); }});
+          }
+          }
+        }
+      },
+      error:  function(req, st) {
+        console.log('err:', st);
+      }
+    });
+    }
+  };
+
+
+(function () {
+  var _cb = RR.jsonCallback;
+  RR.jsonCallback = function() {
+    _cb();
+    DisplaySpecialFeatures();
+  }
+}());
+
+  function DisplaySpecialFeatures() {
+    for (var key in RR.data.JSON.content) {
+      if ( !RR.data.JSON.content[key]['placement_name'].match(/specialfeatures/) ) continue;
+      var p = RR.data.JSON.content[key]['clickthrough_URL'].split("?", 2);
+      var p2 = p[1].split("&");
+      var newp = [];
+      for (var i in p2) {
+        if (!(p2[i].match(/^ct=/))) {
+          newp.push(p2[i]);
+        }
+      }
+
+      var linkElement = document.createElement("a");
+      linkElement.href = RR.data.JSON.content[key]['raw_url'];
+      linkElement.setAttribute('onclick', "nwrr.log_click('" + p[0] + "?" + newp.join("&") + "');if ( typeof ga == 'function' ) ga('send', 'event', 'top-pickup-eng-click', 'click', '" + RR.data.JSON.content[key]['raw_url'].replace(/'/g,'%27') + "')");
+      var alt_txt = RR.data.JSON.content[key]['title'] || '';
+      var imgElement = document.createElement("img");
+        imgElement.src = RR.data.JSON.content[key]['asset_image_URL'];
+        imgElement.title = alt_txt;
+        imgElement.alt = alt_txt;
+      var textElement = document.createElement("h4");
+        textElement.textContent = alt_txt;
+      linkElement.appendChild(imgElement);
+      linkElement.appendChild(textElement);
+      var targetdiv = document.getElementById(
+        RR.data.JSON.content[key]['placement_name']);
+      if ( targetdiv ) targetdiv.appendChild(linkElement);
+    }
+  }
+
+
+(function () {
+  var _cb = RR.jsonCallback;
+  RR.jsonCallback = function() {
+    _cb();
+    DisplayNewShoppers();
+  }
+}());
+
+  function DisplayNewShoppers() {
+    for (var key in RR.data.JSON.content) {
+      if ( RR.data.JSON.content[key]['placement_name'].match(/newshoppers/) ) {
+        var p = RR.data.JSON.content[key]['clickthrough_URL'].split("?", 2);
+        var p2 = p[1].split("&");
+        var newp = [];
+        for (var i in p2) {
+          if (!(p2[i].match(/^ct=/))) {
+            newp.push(p2[i]);
+          }
+        }
+        var linkElement = document.createElement("a");
+        linkElement.href = RR.data.JSON.content[key]['raw_url'];
+        linkElement.setAttribute('onclick',
+          "nwrr.log_click('" + p[0] + "?" + newp.join("&") +
+          "');ga('send', 'event', 'header-banner-eng-click', 'click', '" +
+          RR.data.JSON.content[key]['raw_url'].replace(/'/g,'%27') + "')");
+        linkElement.setAttribute('style',
+          'display:block;line-height:0;text-decoration:none;background-color:#'
+          + ( RR.data.JSON.content[key]['header_color'] || 'fff' ) );
+        var alt_txt = RR.data.JSON.content[key]['title'] || '';
+        var imgElement = document.createElement("img");
+          imgElement.src = RR.data.JSON.content[key]['asset_image_URL'] || '';
+          imgElement.title = alt_txt;
+          imgElement.alt = alt_txt;
+        linkElement.appendChild(imgElement);
+        var targetdiv = document.getElementById('newshoppers');
+        if ( targetdiv ) targetdiv.appendChild(linkElement);
+      }
+    }
+  }
+
+
+      var nw2rr = new RichRelevance('cdj', 1);
+      nw2rr.func.push(function(r3c){
+        r3c.addPlacementType('category_page.specialfeatures01');
+        r3c.addPlacementType('category_page.specialfeatures02');
+        r3c.addPlacementType('category_page.specialfeatures03');
+        r3c.addPlacementType('category_page.specialfeatures04');
+        var R3_CATEGORY = new r3_category();
+      });
+      nw2rr.rich_req();
+    
+
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    header: {
+      right: 'prev,next',
+      left: 'title'
+    },
+    height: 'auto',
+    defaultDate: '2019-04-14'
+  });
+  var hday = function(hd) {
+    hd = hd || [];
+    $.each(hd, function(i, value) {
+      $("td[data-date='" + value + "']").addClass("fc-holiday");
+    });
+  };
+  var arr;
+  $.getJSON("http://st.cdjapan.co.jp/assets/js/holiday.json" , function(data) {
+    arr = data;
+    var dt = new Date();
+    dt.setMonth(dt.getMonth() - 6);
+    var yy1 = dt.getUTCFullYear();
+    var yy2 = yy1 + 1;
+    arr.push(yy1+'-12-30',yy1+'-12-31',yy2+'-01-01',yy2+'-01-02',yy2+'-01-03');
+    hday(arr);
+  });
+  $('.fc-button').click(function () {
+    hday(arr);
+  });
+});
+
+
+      $(function(){
+        moment.lang('en');
+        neowing_init();
+
+        if( nwapi.isLogin() ) {
+            nwapi.callLoginInfo().done(function(data){
+              if( data && data['result'] == 'YES' ) {
+                $('#header .top-menu-cust>a, #header .top-menu-cust>div').append(
+                    '<div class="menu-badge"><i class="fa fa-check" style="color:#FFF;font-size:0.8em;"></i></div>'
+                );
+                $('#cust-info-name').text(
+                    data.name1 + ' ' + data.name2
+                );
+                $('#cust-info-point').text(data.having_point);
+                nw_cust_info = data;
+                if (!$.cookie('__stid') && data.id) {
+                  $.cookie('__stid', data.id, {expires:3});
+                }
+                if(!data['privacy_policy_agreement']) {
+                  var modal = new nwModal('js-modal-privacy-policy');
+                  modal.open();
+                }
+              }
+              nwrr.rich_req(data);
+           });
+           $('.js-service-name').text('Account');
+        } else {
+          if ($.cookie('__stid')) {
+            $.removeCookie('__stid');
+          }
+          nwrr.rich_req();
+        }
+        $('.js-cart-count').text(nwapi.countCart());
+         nwapi.transCurrency('.price-jp-yen', '.price-exchange');
+         var nwshr = new neowing_share_button({ hashtags: 'cdjapan' });
+
+        $('#js-modal-privacy-policy-do').on('click', function(e){
+          e.preventDefault();
+          nwapi.agree_privacy_policy();
+          $('#js-modal-privacy-policy').hide();
+        });
+      });
+    
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-216925-2', 'cdjapan.co.jp', {'useAmpClientId': true});
+      ga('require', 'displayfeatures');
+      ga('require', 'linkid', 'linkid.js');
+      ga('require', 'ecommerce', 'ecommerce.js');
+      ga('send', 'pageview');
+
+      if (document.referrer.match(/google\.(com|co\.jp)/gi) && document.referrer.match(/cd/gi)) {
+        var myString = document.referrer;
+        var r        = myString.match(/cd=(.*?)&/);
+        var rank     = parseInt(r[1]);
+        var kw       = myString.match(/q=(.*?)&/);
+        if (kw[1].length > 0) {
+          var keyWord  = decodeURI(kw[1]);
+        } else {
+          keyWord = "(not provided)";
+        }
+        var p        = document.location.pathname;
+        ga('send', 'event', 'RankTracker', keyWord, p, rank, true);
+      }
+
+      $(function() {
+         $.scrollDepth();
+         var self_host = $.url(location.href).attr('host');
+         var clk = ('ontouchstart' in window) ? 'touchstart' : 'mousedown';
+         $("a").on(clk, function(e) {
+            var ev_category = $(this).attr('data-ga-event');
+            var href = $(this).attr('href');
+            var url = $.url(href);
+            var host = url.attr('host');
+            if( host.length > 0 && self_host == host ) {
+                href = url.attr('path');
+                if( url.attr('query') ) {
+                   href = href + '?' + url.attr('query');
+                }
+            }
+            if ( ev_category ) {
+              ga('send', 'event', ev_category, 'click', href);
+            }
+            if (href != '#') {
+              ga('send', 'event', 'linkclick', 'click', href);
+            }
+         });
+         $("button:submit").click(function(e) {
+             var ev_name = $(this).attr('data-ga-event');
+            if ( ev_name ) {
+              ga('send', 'event', 'submit', ev_name);
+            }
+          });
+      });
+    
+
+    $.smartbanner({
+      title: 'CDJapanAPP',
+      author: 'Neowing',
+      price: 'FREE',
+      appStoreLanguage: 'us',
+      inGooglePlay: 'In Google Play',
+      url: null,
+      button: 'VIEW',
+      daysHidden: 30,
+      daysReminder: 90,
+    });
+  

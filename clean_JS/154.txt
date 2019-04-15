@@ -1,0 +1,292 @@
+
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('777-ERD-451');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+
+
+//<![CDATA[
+var theForm = document.forms['form'];
+if (!theForm) {
+    theForm = document.form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+	//<![CDATA[
+
+function PM_Postback(param) { if (window.top.HideScreenLockWarningAndSync) { window.top.HideScreenLockWarningAndSync(1080); } if(window.CMSContentManager) { CMSContentManager.allowSubmit = true; }; __doPostBack('m$am',param); }
+function PM_Callback(param, callback, ctx) { if (window.top.HideScreenLockWarningAndSync) { window.top.HideScreenLockWarningAndSync(1080); }if (window.CMSContentManager) { CMSContentManager.storeContentChangedStatus(); };WebForm_DoCallback('m$am',param,callback,ctx,null,true); }
+//]]>
+
+
+	//<![CDATA[
+
+var CMS = CMS || {};
+CMS.Application = {
+  "isRTL": "false",
+  "isDebuggingEnabled": false,
+  "applicationUrl": "/",
+  "imagesUrl": "/CMSPages/GetResource.ashx?image=%5bImages.zip%5d%2f",
+  "isDialog": false
+};
+
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('manScript', 'form', ['tctxM',''], [], [], 90, '');
+//]]>
+
+
+$(function() {
+	$('.dropdown-menu-full').on('click', function(event){
+	    // The event won't be propagated up to the document NODE and 
+	    // therefore delegated events won't be fired
+	    event.stopPropagation();
+	});
+});
+
+
+                    $('.autoplay').slick({
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      autoplay: true,
+                      autoplaySpeed: 5000,
+                      dots: true,
+                    });
+					$(function () {
+						$( '' ).insertBefore($( "footer" )); 
+					});
+					$(function() {  
+					  $('#modalVideo').on('hidden.bs.modal', function () {
+					    $('#youtube-video-iframe').attr("src", $('#youtube-video-iframe').attr("src"));
+					  })
+					});
+				
+
+	//<![CDATA[
+// Get query string parameters
+$.urlParams = function () {
+    var queryParameters = {},
+        queryString = location.search.substring(1),
+        re = /([^&=]+)=([^&]*)/g,
+        m;
+
+    // Creates a map with the query string parameters
+    while (m = re.exec(queryString)) {
+        queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+
+    return queryParameters;
+}
+
+// Prevent form submit
+$('form').submit(function (e) {
+    e.preventDefault();
+});
+
+// Build the query
+$(document).keypress(function (ev) {
+    var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+    if (keycode == '13') {
+        var searchTerm = $('#primarySearch').val();
+        if (searchTerm !== '') {
+            var params = $.urlParams();
+            params['searchText'] = $('<div/>').html(searchTerm).text();
+            params['searchMode'] = "AnyWord";
+            params['category'] = "All";
+            if (location.pathname.toLowerCase().indexOf('search') > -1) {
+                $('#primarySearch').val('');
+                // Change the query string and reload
+                location.search = $.param(params);
+            } else {
+                // Redirect to search results
+                location.href = '/search?' + $.param(params);
+            }
+        }
+    }
+});
+//]]>
+
+
+	//<![CDATA[
+$(document).ready(function () {
+    /*
+    var urlPath = location.pathname.toLowerCase();
+    // Add the hash to the path
+    urlPath = urlPath + location.hash.toLowerCase();
+    var urlSplit = urlPath.split('/');
+    urlSplit = $.grep(urlSplit, function(n){ return (n); });
+    var urlWholePath = '';
+    var links = $("#PrimaryNav ul a");
+    var selectedMenuItemClass = 'selected-menu-item';
+
+    $('.primary-nav .panel-right.panel-default').show();
+
+    // Highlight the selected links to create psuedo breadcrumb
+    $.each(urlSplit, function (index, item) {
+        if (item === '') {
+            return true;
+        }
+        urlWholePath = urlWholePath + '/' + item;
+        links.each(function () {
+            var anchorLink = $(this);
+            if (anchorLink.hasClass('panel-link')) {
+                return true;
+            }
+            var anchorHref = anchorLink.attr('href').toLowerCase();
+            if (anchorHref === "#") {
+                return true;
+            }
+            if (anchorHref.endsWith('/')) {
+                anchorHref = anchorHref.slice(0, -1);
+            }
+            if (anchorHref === urlWholePath.toLowerCase()) {
+                anchorLink.addClass(selectedMenuItemClass);
+            }
+        });
+    });
+
+    if (urlSplit.length > 2) {
+        $('.primary-nav .dropdown-menu-full .dropdown-section li.has-sub a.' +  selectedMenuItemClass).next('div.panel-right').addClass('panel-active');
+        //$('.primary-nav .panel-right.panel-default').hide();
+    }
+
+    // Only the last sub-section should be highlighted
+    var activeLinks = $('.primary-nav .dropdown-menu-full .sub-section > li > a.' + selectedMenuItemClass);
+    if (activeLinks.length > 1) {
+        activeLinks.each(function(index) {
+            if (index < activeLinks.length - 1) {
+                $(this).removeClass(selectedMenuItemClass)
+            }
+        });
+    }
+    
+   // If url contains a hash, set related tab to active
+    if (location.hash) {
+        var hashValue = location.hash.replace('#', '');
+        // Find current active tab and remove active state
+        var tabActive = $('li.active');
+        if (tabActive) {
+            tabActive.removeClass('active')
+        }
+        // Set tab to active state
+        var tabItem = $('a[href="' + location.hash + '"]');
+        if (tabItem && tabItem.parent()) {
+            tabItem.parent().addClass('active');
+        }
+
+        // Find the current active panel and remove active state
+        var tabDiv = $('div.in.active');
+        if (tabDiv) {
+            tabDiv.removeClass('active');
+            tabDiv.removeClass('in');
+        }
+
+        // Set panel to active state
+        tabDiv = $('div[id="' + hashValue + '"]');
+        if (tabDiv) {
+            tabDiv.addClass('active');
+            tabDiv.addClass('in');
+        }
+    }
+    */
+});
+//]]>
+
+
+	//<![CDATA[
+$(function() {
+   	$('.leader-overlay .btn-yellow').click(function(){ 
+		dataLayer.push({'event': 'homeBannerClick'});
+	});
+
+$( "h3.heading-quaternary:contains('DISCOVER THE ALIGHT PARTNER NETWORK')" ).css( "margin-top", "20px" );
+});
+//]]>
+
+
+	//<![CDATA[
+$(function() {
+   	$('.dropdown-toggle').mouseenter(function(){ 
+		if (!($(this).parent().hasClass("open"))) {
+			$(this).click();
+		}
+	});
+
+    $('#expertRow').html("<h2>Connect with Alight</h2><p>Please fill out the form and a member of our sales team will be in touch as soon as possible.</p>");
+    
+ 
+
+	$(".dropdown-menu").mouseleave(function(){
+		$('body').click();
+
+	});
+
+
+    if ((typeof $.urlParams()['formopen'] != "undefined") && ($.urlParams()['formopen'] == 'true'))
+    {
+        setTimeout(function(){  $('#talk-expert-10385').click(); }, 1000);
+ 
+    }
+
+$('#employees').children('option').remove();
+$('#employees').append('<option value="0-999">0 - 999</option>');
+$('#employees').append('<option value="1000-3499">1,000 - 3,499</option>');
+$('#employees').append('<option value="3500-9999">3,500 - 9,999</option>');
+$('#employees').append('<option value="10,000+">10,000 +</option>');
+
+});
+function expandContentArea(t) {
+
+    $('.expanding-container').removeClass('expanded');
+    $('#customer-' + t).addClass('expanded');
+    $('html, body').animate({
+        scrollTop: ($('#customer-' + t).offset().top - 120)
+    }, 500);
+}
+
+
+//]]>
+
+
+	//<![CDATA[
+WebServiceCall('/cmsapi/webanalytics', 'LogHit', '{"NodeAliasPath":"/Home","DocumentCultureCode":"en-US","UrlReferrer":""}')
+//]]>
+
+
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=beToSAE3vdsL1QUQUxjWdTormcAFNzzCL6IZkev8fHYa4uTe2hlLkhzX8ledFIGfa2HK5PUY4ivbT2vLPR0FGQ2&t=636765283264470882';
+WebForm_InitCallback();
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+

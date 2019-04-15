@@ -1,6 +1,0 @@
-window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'b1632fe5-3c0f-4a0f-9426-1b2d0461181b', f: true }); done = true; } }; })();
-
-                $(document).ready(function () {
-                    var chart = Netdania.RenderChart(Netdania.Chart.Config.Default);
-                });				
-            

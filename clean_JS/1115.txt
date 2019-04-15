@@ -1,0 +1,256 @@
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-87014-1']);
+  _gaq.push(['_setDomainName', 'dealerrater.com']);
+  _gaq.push(['_trackPageview']);
+
+  function recordOutboundLink(link, category, action, label, value, noninteraction) {
+     _gaq.push(['_trackEvent', category, action, label, value, noninteraction]);
+     setTimeout('document.location = "' + link.href + '"', 100);
+  }
+
+  (function () {
+     var ga = document.createElement('script');
+     ga.type = 'text/javascript';
+     ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0];
+     s.parentNode.insertBefore(ga, s);
+  })();
+
+  function recordEvent(category, action, label, value, noninteraction) {
+     _gaq.push(['_trackEvent', category, action, label, value, noninteraction]);
+  }
+
+
+dataLayer = [{  "page_type" : "home", "zipcode" : "", "username" : "Not Logged-in",}]; 
+
+function recordGoogleTagManagerConnection(connectionType) {
+dataLayer.push({"is_connection" : true, "connection_type" : connectionType,  "event" : "connectionEvent"});  }
+
+function recordGoogleTagManagerMakeSelected(make) {
+dataLayer.push({"make" : make});  }
+
+function recordGoogleTagManagerProductPurchase() {
+dataLayer.push({"event" : "productPurchase"});  }
+
+
+
+        /* <![CDATA[ */
+        var google_conversion_id = 1068898459;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    
+
+    window.onload = function() {  };
+
+    
+    function showLocationMessage(currentLocaleName, localeSwitchHost) {
+        var promptText = "We noticed you're currently located in " +
+            currentLocaleName +
+            "and so are we! Please visit <a href=\"http://" + localeSwitchHost + "\">" + currentLocaleName + "</a> website for a more optimized experience.";
+        $('#locationPromptText').html(promptText);
+        $('#locationAlertBar').show();
+    }
+
+
+    function translatePlaceholders() {
+
+        // Find all placeholders
+        var placeholders = $('input[placeholder], textarea[placeholder]');
+
+        if (placeholders.length) {
+            // convert to array
+            placeholders = Array.prototype.slice.call(placeholders);
+            window.placeholdersToTranslate = placeholders;
+
+            // copy placeholder text to a hidden div
+            var div = $('<div id="placeholders" style="display:block"></div>');
+
+            placeholders.forEach(function (input) {
+                var text = input.placeholder;
+                div.append('<div>' + text + '</div>');
+            });
+
+            $('body').append(div);
+
+            // check for changes and update as needed
+            setInterval(checkTranslated, 500);
+        }
+    }
+
+    function checkTranslated()
+    {
+        $('#placeholders > div').each(function (i, div) {
+            if (window.placeholdersToTranslate[i].placeholder != $(div).text()) {
+                updatePlaceholders();
+                return false;
+            }
+        });
+    }
+
+    function updatePlaceholders() {
+        $('#placeholders > div').each(function (i, div) {
+            window.placeholdersToTranslate[i].placeholder = $(div).text();
+        });
+    }
+
+
+    $(document).ready(function () {
+        // new hamburger
+        $("#hamburgerButton").click(function() {
+            $("#hamburger").toggleClass("is-active");
+            toggleMobileNav();
+            return false;
+        });
+        
+        // google translate init
+
+        $('input[id="headerAutoComplete"]').keydown( function (e) {
+            if (e.which == 13) {
+                location.href = '/search/?q=' + escape($('#' + $(this).context.id).val());
+            }
+        });
+        $('#pushdownNoticeClose').click(function () {
+            $('#pushdownNotice').fadeOut(250, function () {
+                $.cookie("suppressLocalizationPrompt", "true", { "path": "/" });
+            });
+        });
+        //pad footer placement
+        var fillH = $(window).height() - ($('footer').height() + $('header').height() +30);
+        if ($('#contentInner').height() < fillH) $('#contentInner').css({ 'height': fillH });
+
+        filterUI.handleRetina();
+
+        
+        $(window).one('scroll', function() {
+            $("#footerContainer")[0].style.cssText += ';-webkit-transform:rotateZ(360deg)';
+            $("#footerContainer")[0].style.cssText += ';-webkit-transform:rotateZ(0deg)';
+        });
+
+        
+        if (!$.cookie("suppressLocalizationPrompt")) {
+            
+            var localizationCookie = $.cookie("_localization");
+            if (localizationCookie) {
+                var localizationPrompt = JSON.parse(localizationCookie);
+                if(localizationPrompt.PromptIsVisible){
+                    showLocationMessage(localizationPrompt.CurrentLocaleName, localizationPrompt.LocaleSwitchHost);
+                }
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/json/localization/getlocalizationprompt",
+                    success: function (data) {
+                        $.cookie("_localization", JSON.stringify(data), { expires: 365, path: '/' });
+                        if (data.PromptIsVisible) {
+                            showLocationMessage(data.CurrentLocaleName, data.LocaleSwitchHost);
+                        }
+                    }
+                });
+            }
+        }
+    });
+
+    
+    $('.submit-once').submit(function() {
+        $('.submit-once').submit(function(e) {
+            e.preventDefault();
+        });
+    });
+
+
+
+  $(document).ready(function () {
+    $('.header-search-input').autocomplete({
+      delay: "125",
+      source: "/ajax/quickdealersearch.aspx?maxItems=7",
+      minLength: 2,
+      position: {
+        my: 'right+33 top+5',
+        of: '.header-search-submit',
+      },
+      create: function(){$(this).data("uiAutocomplete").menu.element.addClass("dealerAutocomplete");},
+       renderItem: function (ul, item) {
+         return $("<li><a><table cellspacing='0' cellpadding='0'><tr><td width='40' rowspan='2' align='bottom'><img src='" + (item.isCertified == 1 ? "/images/badge-certified-dealer.png" : "/images/spacer.gif") + "' width='35' height='45' /><td valign='bottom' class='bold notranslate'>" + item.dealerName + "</td></tr><tr><td valign='top' class='notranslate'>" + item.city + ", " + item.state + "</td></table></a></li>").appendTo(ul);
+       },
+       renderFooter: function (ul) {
+         return $("<li><a href='#'><div width='100%' align='center'>View More</div></a></li>").appendTo(ul);
+       },
+       select: function (event, ui) { 
+    if (ui.item == null) {
+    location.href = '/search/?q=' + escape($('#' + $(this).context.id).val());
+    } else {
+    // track ga event
+    recordEvent('Global-Header', 'dealer-search-autocomplete_click', location.href, null, false);
+    location.href = '/d/' + ui.item.id;
+    } },
+    });
+  });
+
+
+  $(document).ready(function () {
+    $('.header-mobile-search-input').autocomplete({
+      delay: "125",
+      source: "/ajax/quickdealersearch.aspx?maxItems=7",
+      minLength: 2,
+      position: {
+        my: 'right+28 top+10',
+        of: '.header-mobile-search-submit',
+      },
+      create: function(){$(this).data("uiAutocomplete").menu.element.addClass("dealerAutocomplete");},
+       renderItem: function (ul, item) {
+         return $("<li><a><table cellspacing='0' cellpadding='0'><tr><td width='40' rowspan='2' align='bottom'><img src='" + (item.isCertified == 1 ? "/images/badge-certified-dealer.png" : "/images/spacer.gif") + "' width='35' height='45' /><td valign='bottom' class='bold notranslate'>" + item.dealerName + "</td></tr><tr><td valign='top' class='notranslate'>" + item.city + ", " + item.state + "</td></table></a></li>").appendTo(ul);
+       },
+       renderFooter: function (ul) {
+         return $("<li><a href='#'><div width='100%' align='center'>View More</div></a></li>").appendTo(ul);
+       },
+       select: function (event, ui) { 
+    if (ui.item == null) {
+    location.href = '/search/?q=' + escape($('#' + $(this).context.id).val());
+    } else {
+    // track ga event
+    recordEvent('Global-Header', 'dealer-search-autocomplete_click', location.href, null, false);
+    location.href = '/d/' + ui.item.id;
+    } },
+    });
+  });
+
+
+        (function (i, s, o, g, r, a, m) {
+            i['RoxanneObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://ref.dealerinspire.com/site/98263/code', 'roxanne');
+    
+
+function getCookie(cname) {
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for (var i=0;i<ca.length;i++) {
+var c = ca[i];
+while(c.charAt(0) == '') c = c.substring(1);
+if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+}
+return "";
+}
+var mfRate = 0;
+if (window.location.pathname.indexOf('/dp/') == -1) {
+var mfRate = parseInt((Math.random() * 100)) % 10;
+}
+if (mfRate == 0 || getCookie('mf_user')) {
+window._mfq = window._mfq || [];
+(function() {
+var mf = document.createElement("script"); mf.type="text/javascript"; mf.async = true;
+mf.src = "//cdn.mouseflow.com/projects/.js";
+document.getElementsByTagName("head")[0].appendChild(mf);
+})();
+}
+

@@ -1,0 +1,82 @@
+
+    (function(doc) {
+		if(window.innerWidth > 500){
+			var viewport = document.getElementById('viewport');
+			viewport.setAttribute("content", "width=1024");
+		}        
+    }(document));
+
+
+	var serialNumber 	= "0001245790";
+	var storeId 		= "*1201fea48ac2076d8e50f2";
+	var baseCgiUrl 	= "https://www.wdmusic.com/cgi-wdmusic/sb";
+	var baseSecureUrl = "https://www.wdmusic.com";
+	var baseUrl 		= "https://www.wdmusic.com";
+
+
+    var ss_jQuery = jQuery.noConflict(true);
+
+ 
+
+            var cookies=document.cookie;
+            var start = cookies.indexOf("ss_reg_0001245790=");
+            var signed_in = -1;
+
+            if (start != -1) {
+                start = cookies.indexOf("=", start) +1;
+                var end = cookies.indexOf("|", start);
+
+                userName = cookies.substring(start, end);
+
+                var group = cookies.substring(end + 1);
+                group = group.substring(0, group.indexOf("|"));
+
+                if (end != -1) {
+                    signed_in = cookies.indexOf("|yes", start);
+                }
+
+            }
+            if (signed_in == -1) {
+                document.write('<ul><li><a href="https://www.wdmusic.com/cgi-wdmusic/sb/order.cgi?func=2&storeid=*1201fea48ac2076d8e50f2&html_reg=html">Sign-in</a></li>');
+                document.write('<li><a href="https://www.wdmusic.com/cgi-wdmusic/sb/order.cgi?func=1&storeid=*1201fea48ac2076d8e50f2&html_reg=html">Register</a></li></ul>');
+                group = "Retail";
+            }else{
+                group = unescape(group);
+                if(group == "<none>"){
+                    group = "Retail";
+                }
+                document.write('<ul class="active"><li><a href="https://www.wdmusic.com/cgi-wdmusic/sb/order.cgi?func=3&storeid=*1201fea48ac2076d8e50f2&html_reg=html">' + unescape( userName ) + ' (' + group + ')</a></li>');
+                document.write('<li><a href="https://www.wdmusic.com/cgi-wdmusic/sb/order.cgi?func=4&storeid=*1201fea48ac2076d8e50f2&html_reg=html">Logout</a></li></ul>');
+            }
+        
+showCart("cart", 'Shopping cart ({items})');
+var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-westflorida.bbb.org' + unescape('%2Flogo%2Fwd-music-products-41001293.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();
+document.write((new Date()).getFullYear());
+var sb_rev_path='https://www.wdmusic.com/cgi-wdmusic/sb'; 
+var min_length=0; 
+var max_length=1000; 
+var max_stars = 5; 
+var t_working='Working...'; 
+var t_your_rating='Your rating'; 
+var t_email_required = 'Please enter your email'; 
+var t_email_wrong = 'Please enter a valid email'; 
+var t_name_required = 'Please enter your name'; 
+var t_title_required = 'Please enter review title'; 
+var t_rating_required = 'Please enter product rating'; 
+var t_review_length = 'Please write a longer review, at least '; 
+var t_characters = ' characters'; 
+
+
+!function(d,s,i,c){var j,f=d.getElementsByTagName(s)[0];if(!d.getElementById(i)){j=d.createElement(s);j.type='text/javascript';j.async=true;j.id=i;j.src=c;f.parentNode.insertBefore(j,f)}}(document,"script","wishlist_script_tag","https://www.wdmusic.com/publish/wishlist.js");
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-26088249-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+

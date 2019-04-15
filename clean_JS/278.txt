@@ -1,0 +1,533 @@
+
+//<![CDATA[
+  var number_format_dec = '.'; var number_format_th = ''; var number_format_point = '2'; var store_language = 'en'; var xcart_web_dir = ""; var images_dir = "/skin/common_files/images"; var alt_images_dir = "/skin/ultra/images"; var lbl_no_items_have_been_selected = 'No items have been selected'; var current_area = 'C';  var currency_format = "$x";  var default_currency = "$"; var dynamic_search_prices = "1"; var lbl_product_minquantity_error = "Sorry, the minimum order quantity for this product is {{min}}."; var lbl_product_maxquantity_error = "Sorry, the maximum order quantity for this product is {{max}}."; var txt_out_of_stock = "Out of stock"; var lbl_product_quantity_type_error = "You can specify a number from {{min}} to {{max}}."; var is_limit = true; var lbl_required_field_is_empty = "The required field \'~~field~~\' is empty!"; var lbl_field_required = "Field is required"; var lbl_field_format_is_invalid = "The format of the \'~~field~~\' field is invalid."; var txt_required_fields_not_completed = "The following required fields have not been completed: {{fields}} Do you wish to submit the form with these fields empty?"; var lbl_blockui_default_message = "Please wait..."; var lbl_error = 'Error'; var lbl_warning = 'Warning'; var lbl_information = 'Information'; var lbl_ok = 'OK'; var lbl_yes = 'Yes'; var lbl_no = 'No'; var txt_minicart_total_note = 'Order subtotal does not cover discounts and extra costs like shipping charges, etc. The final cost of the order will be calculated at the checkout page.'; var txt_ajax_error_note = 'An error occurred while processing a request. Please <a href=\"javascript:void(0);\" onclick=\"javascript:window.location.reload();\">refresh the page.<\/a><br /><br />If the problem still persists after refreshing the page please <a href=\"javascript:void(0);\" onclick=\"javascript:self.location=\'help.php?section=contactus&amp;mode=update\'\">contact us<\/a> on the matter.';  var txt_email_invalid = "Email address is invalid! Please correct"; var email_validation_regexp = new RegExp("^[a-z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z](?:[a-z0-9-]*[a-z0-9])$", "gi");  var is_admin_editor = false; var is_responsive_skin = "Y"; var  topMessageDelay = []; topMessageDelay['i'] = 10*1000; topMessageDelay['w'] = 60*1000; topMessageDelay['e'] = 0*1000; 
+
+
+
+//<![CDATA[
+ function initDropOutButton() { if ($(this).hasClass('activated-widget')) return; $(this).addClass('activated-widget'); var dropOutBoxObj = $(this).parent().find('.dropout-box'); /* Process the onclick event on a dropout button  */ $(this).click( function(e) { e.stopPropagation(); $('.dropout-box').removeClass('current'); dropOutBoxObj .toggle() .addClass('current'); $('.dropout-box').not('.current').hide(); if (dropOutBoxObj.offset().top + dropOutBoxObj.height() - $('#center-main').offset().top - $('#center-main').height() > 0) { dropOutBoxObj.css('bottom', '-2px'); } } ); /* Click on a dropout layer keeps the dropout content opened */ $(this).parent().click( function(e) { e.stopPropagation(); } ); /* shift the dropout layer from the right hand side  */ /* if it's out of the main area */ var borderDistance = ($("#center-main").offset().left + $("#center-main").outerWidth()) - ($(this).offset().left + dropOutBoxObj.outerWidth()); if (!isNaN(borderDistance) && borderDistance < 0) { dropOutBoxObj.css('left', borderDistance+'px'); } } $(document).ready( function() { $('body').click( function() { $('.dropout-box') .filter(function() { return $(this).css('display') != 'none'; } ) .hide(); } ); $('div.dropout-container div.drop-out-button').each(initDropOutButton); } ); $(document).ready( function() { $('form').not('.skip-auto-validation').each(function() { applyCheckOnSubmit(this); }); $(document).on( 'click','a.toggle-link', function(e) { $('#' + $(this).attr('id').replace('link', 'box')).toggle(); } ); }); if (products_data == undefined) { var products_data = []; }  var txt_are_you_sure = 'Are you sure?'; 
+
+
+
+//<![CDATA[
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1142702-1 ', 'auto');
+ga('send', 'pageview');
+
+
+/*Send search phrase*/
+
+
+
+
+//<![CDATA[
+ var lbl_error = 'Error'; var lbl_are_you_sure = 'Are you sure?'; 
+
+
+
+//<![CDATA[
+var has_sidebar = 1;
+
+
+
+
+//<![CDATA[
+products_data[3661] = {};
+
+
+
+//<![CDATA[
+products_data[4024] = {};
+
+
+
+//<![CDATA[
+products_data[4059] = {};
+
+
+
+//<![CDATA[
+products_data[3588] = {};
+
+
+
+//<![CDATA[
+products_data[4022] = {};
+
+
+
+//<![CDATA[
+products_data[3706] = {};
+
+
+
+//<![CDATA[
+products_data[424] = {};
+
+
+
+//<![CDATA[
+products_data[2511] = {};
+
+
+
+//<![CDATA[
+products_data[3699] = {};
+
+
+
+//<![CDATA[
+products_data[2508] = {};
+
+
+
+//<![CDATA[
+products_data[3868] = {};
+
+
+
+//<![CDATA[
+products_data[2350] = {};
+
+
+
+//<![CDATA[
+products_data[2412] = {};
+
+
+
+//<![CDATA[
+products_data[1398] = {};
+
+
+
+//<![CDATA[
+products_data[1349] = {};
+
+
+
+//<![CDATA[
+products_data[3855] = {};
+
+
+
+//<![CDATA[
+products_data[3860] = {};
+
+
+
+//<![CDATA[
+products_data[3856] = {};
+
+
+
+//<![CDATA[
+products_data[3858] = {};
+
+
+
+//<![CDATA[
+products_data[409] = {};
+
+
+
+//<![CDATA[
+products_data[3704] = {};
+
+
+
+//<![CDATA[
+products_data[3539] = {};
+
+
+
+//<![CDATA[
+products_data[3540] = {};
+
+
+
+//<![CDATA[
+products_data[3570] = {};
+
+
+
+//<![CDATA[
+products_data[3528] = {};
+
+
+
+//<![CDATA[
+products_data[1265] = {};
+
+
+
+//<![CDATA[
+products_data[2469] = {};
+
+
+
+//<![CDATA[
+products_data[2458] = {};
+
+
+
+//<![CDATA[
+products_data[1258] = {};
+
+
+
+//<![CDATA[
+products_data[2493] = {};
+
+
+
+//<![CDATA[
+products_data[2497] = {};
+
+
+
+//<![CDATA[
+products_data[3709] = {};
+
+
+
+//<![CDATA[
+products_data[2505] = {};
+
+
+
+//<![CDATA[
+products_data[3712] = {};
+
+
+
+//<![CDATA[
+products_data[3710] = {};
+
+
+
+//<![CDATA[
+products_data[2439] = {};
+
+
+
+//<![CDATA[
+products_data[1198] = {};
+
+
+
+//<![CDATA[
+products_data[3645] = {};
+
+
+
+//<![CDATA[
+products_data[2410] = {};
+
+
+
+//<![CDATA[
+products_data[2413] = {};
+
+
+
+//<![CDATA[
+products_data[1378] = {};
+
+
+
+//<![CDATA[
+products_data[3662] = {};
+
+
+
+//<![CDATA[
+products_data[3697] = {};
+
+
+
+//<![CDATA[
+products_data[3702] = {};
+
+
+
+//<![CDATA[
+products_data[2415] = {};
+
+
+
+//<![CDATA[
+products_data[1352] = {};
+
+
+
+//<![CDATA[
+products_data[1532] = {};
+
+
+
+//<![CDATA[
+products_data[2411] = {};
+
+
+
+//<![CDATA[
+products_data[1374] = {};
+
+
+
+//<![CDATA[
+products_data[2104] = {};
+
+
+
+//<![CDATA[
+products_data[1373] = {};
+
+
+
+//<![CDATA[
+products_data[2078] = {};
+
+
+
+//<![CDATA[
+products_data[643] = {};
+
+
+
+//<![CDATA[
+products_data[1350] = {};
+
+
+
+//<![CDATA[
+products_data[1368] = {};
+
+
+
+//<![CDATA[
+products_data[1394] = {};
+
+
+
+//<![CDATA[
+products_data[2518] = {};
+
+
+
+//<![CDATA[
+products_data[3861] = {};
+
+
+
+//<![CDATA[
+products_data[2436] = {};
+
+
+
+//<![CDATA[
+products_data[424] = {};
+
+
+
+//<![CDATA[
+products_data[3539] = {};
+
+
+
+//<![CDATA[
+products_data[539] = {};
+
+
+
+//<![CDATA[
+products_data[3432] = {};
+
+
+
+//<![CDATA[
+products_data[1124] = {};
+
+
+
+//<![CDATA[
+products_data[2078] = {};
+
+
+
+//<![CDATA[
+products_data[1619] = {};
+
+
+
+//<![CDATA[
+products_data[2125] = {};
+
+
+
+//<![CDATA[
+products_data[3818] = {};
+
+
+
+//<![CDATA[
+products_data[1331] = {};
+
+
+
+//<![CDATA[
+products_data[2359] = {};
+
+
+
+//<![CDATA[
+products_data[3412] = {};
+
+
+
+//<![CDATA[
+products_data[2432] = {};
+
+
+
+//<![CDATA[
+products_data[3895] = {};
+
+
+
+//<![CDATA[
+products_data[2503] = {};
+
+
+
+//<![CDATA[
+products_data[3878] = {};
+
+
+
+//<![CDATA[
+products_data[3409] = {};
+
+
+
+//<![CDATA[
+products_data[3689] = {};
+
+
+
+//<![CDATA[
+products_data[337] = {};
+
+
+
+//<![CDATA[
+products_data[2450] = {};
+
+
+
+//<![CDATA[
+products_data[3600] = {};
+
+
+
+//<![CDATA[
+products_data[3623] = {};
+
+
+
+//<![CDATA[
+products_data[3410] = {};
+
+
+
+//<![CDATA[
+products_data[3670] = {};
+
+
+
+//<![CDATA[
+products_data[1407] = {};
+
+
+
+//<![CDATA[
+products_data[1556] = {};
+
+
+
+//<![CDATA[
+products_data[3664] = {};
+
+
+
+//<![CDATA[
+products_data[3758] = {};
+
+
+
+//<![CDATA[
+products_data[3654] = {};
+
+
+
+//<![CDATA[
+products_data[3469] = {};
+
+
+
+//<![CDATA[
+products_data[1070] = {};
+
+
+
+//<![CDATA[
+products_data[3671] = {};
+
+
+
+//<![CDATA[
+products_data[1398] = {};
+
+
+
+//<![CDATA[
+products_data[2005] = {};
+
+
+
+//<![CDATA[
+products_data[3853] = {};
+
+
+
+//<![CDATA[
+products_data[2502] = {};
+
+
+
+//<![CDATA[
+products_data[3477] = {};
+
+
+
+//<![CDATA[
+products_data[1486] = {};
+
+
+
+//<![CDATA[
+products_data[660] = {};
+
+
+
+//<![CDATA[
+var has_sidebar = 1;
+
+
+

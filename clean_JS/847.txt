@@ -1,0 +1,102 @@
+var par = 1;
+jQuery(document).ready(function() { jQuery.post('/includes/cookie.php', { bpsessid: 'SU5TRVJUIElOVE8gc2Vzc2lvbnMgVkFMVUVTIChOVUxMLCAnZjdkOWJiMzFhMjI1YzcxOGU5NjRkMGJiZWJiZmY4MGMnLCAxNTU1MjUyNDY0LCAnMjEyLjkwLjYzLjE3OCcsICcyMTIuOTAuNjMuMTc4JywgMCwgMCwgMCwgMCwgTlVMTCwgJycsICcnLCAnJywgMTU1NTI1MjQ2NCwgMCwgJycsICcnLCAnJywgJycsIDEsICcnLCAnaW5kZXgnLCAwKQ==' }); });
+
+jQuery(document).ready(function() { hookBasket(); });
+jQuery(window).load(function() { hookBasket(); });
+function hookBasket() { jQuery('div#sea input[type=text]').css('width', (jQuery('div#acc').outerWidth() - 50) + 'px'); }
+
+
+jQuery(window).load(function()
+{
+    jQuery('#slides36').css('height', jQuery('#slides36').outerHeight());
+    jQuery('#slides36').cycle({ fx: 'scrollHorz', reverse: false, speed: 1000, timeout: 5000, pauseOnHover: true, loader: true, progressive: slides36, centerHorz: true, centerVert: true, next: '#next36', prev: '#prev36' });
+    jQuery('#slideshow36').hoverIntent(function() { jQuery('#nextss36').fadeTo('fast', 0.5); jQuery('#prevss36').fadeTo('fast', 0.5); }, function() { jQuery('#nextss36').fadeOut('fast'); jQuery('#prevss36').fadeOut('fast'); });
+    jQuery('#nextss36, #prevss36').css('top', ((jQuery('#slides36').outerHeight() - 40) / 2) + 'px');
+    setTimeout(function() { jQuery('#slides36').css('height', 'auto'); }, 1000);
+});
+var slides36 = ["<img src=\"/user/banners/home-astronomy-scopes.jpg\" style=\"max-width: 850px; max-height: 250px; width: 100%; height: auto; box-shadow: 0px 0px; cursor: pointer;\" alt=\"\" onclick=\"window.location.href = '/telescopes.html';\">","<img src=\"/user/banners/home-fitplus.jpg\" style=\"max-width: 850px; max-height: 250px; width: 100%; height: auto; box-shadow: 0px 0px; cursor: pointer;\" alt=\"\" onclick=\"window.location.href = '/search/for/Samsung+FIT+Plus+USB+3.1+Flash+Drive/';\">","<img src=\"/user/banners/home-proendurance.jpg\" style=\"max-width: 850px; max-height: 250px; width: 100%; height: auto; box-shadow: 0px 0px; cursor: pointer;\" alt=\"\" onclick=\"window.location.href = '/search/for/Samsung+PRO+Endurance/';\">"];
+
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-316529-2');
+
+menu_attach("par2", "chi2");
+menu_attach("par3", "chi3");
+menu_attach("par4", "chi4");
+menu_attach("par5", "chi5");
+menu_attach("par6", "chi6");
+
+      var ecomm_prodid= '';
+      var ecomm_pagetype= '';
+      var ecomm_totalvalue= 0;
+      var pathnameVal=window.location.pathname;
+      var hrefVal=window.location.href;
+
+      if(jQuery('#product_images').length == 1) /*  product page */
+      {
+
+       var productId = jQuery('#part_number').text();
+       var price= jQuery('#price_selling .selling_price b').text().replace(/[^0-9.]/g,'');
+        
+        ecomm_prodid= productId; 
+        ecomm_pagetype= 'product';
+        ecomm_totalvalue=price;
+        
+         var google_tag_params = {
+        ecomm_prodid:  ecomm_prodid, 
+        ecomm_pagetype: ecomm_pagetype,
+        ecomm_totalvalue: parseFloat(ecomm_totalvalue)
+      }; 
+      }
+      else if(pathnameVal=='/')/* for home page */
+      {
+        ecomm_pagetype= 'home';
+        
+         var google_tag_params = {
+        ecomm_pagetype: ecomm_pagetype
+      }; 
+      }else if(jQuery('#product_list').length > 0)/* for category page */
+      {
+        ecomm_pagetype= 'category';
+         var google_tag_params = {
+        ecomm_pagetype: ecomm_pagetype
+      }; 
+      }else if(pathnameVal == "/index/action/basket/") /*  product page */
+      {   
+        var ids = new Array();
+        jQuery('.basket tr .gap:contains("Part Number")').each(function(){
+           ids.push(jQuery(this).text().split(":")[1].trim());
+        })
+
+        var price = jQuery('td h3:contains("Total")').parent().next('td').text().replace(/[^0-9.]/g,'');
+        ecomm_prodid= ids; 
+        ecomm_pagetype= 'cart';
+        ecomm_totalvalue=price;
+        
+         var google_tag_params = {
+        ecomm_prodid:  ecomm_prodid, 
+        ecomm_pagetype: ecomm_pagetype,
+        ecomm_totalvalue: parseFloat(ecomm_totalvalue)
+      }; 
+      }
+       else {
+        ecomm_pagetype= 'other'; /* for other page */
+         var google_tag_params = {
+        ecomm_pagetype: ecomm_pagetype
+      }; 
+        }
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 880375110;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+ var _d_site = _d_site || '7AD9E6226ED4C16DC3E5D266'; 
+!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});

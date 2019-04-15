@@ -1,0 +1,31 @@
+window.digitalData = window.digitalData || {};
+"use strict";
+
+/* eslint-disable no-console */
+try {
+  var useServiceWorker = true;
+  var supportsServiceWorker = useServiceWorker && window && typeof navigator.serviceWorker !== 'undefined' && typeof navigator.serviceWorker.getRegistrations === 'function';
+
+  if (supportsServiceWorker) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+        console.log('Service Worker Registered', registration);
+      }).catch(function (err) {
+        /**
+         * If you're seeing this message, try:
+         * /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure="http://local.ftd.com:3000" --user-data-dir=~/chrome-data --allow-insecure-localhost
+         * https://deanhume.com/testing-service-workers-locally-with-self-signed-certificates/
+         */
+        console.log('Service Worker Failed to Register', err);
+        var message = err.message;
+        var name = message.name;
+        var code = message.code;
+        console.log('%s(%s): %s', name, code, message);
+      });
+    });
+  } else {
+    console.log('service worker not supported');
+  }
+} catch (err) {
+  console.warn('Error attempting to register the service worker', err);
+}

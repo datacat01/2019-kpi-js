@@ -1,0 +1,126 @@
+
+        var _vwo_code = (function () {
+            var account_id = 49817,
+                settings_tolerance = 2000,
+                library_tolerance = 2500,
+                use_existing_jquery = false,
+                // DO NOT EDIT BELOW THIS LINE
+                f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); return settings_timer; } };
+        }()); _vwo_settings_timer = _vwo_code.init();
+    
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form1', ['tctl00$ContentPlaceHolder1$update1','ContentPlaceHolder1_update1'], [], [], 3600, 'ctl00');
+//]]>
+
+
+
+        $(document).ready(function () {
+
+
+
+        });
+
+        function loadCF() {
+
+            $('#catfish').catfish({
+                animation: 'slide',   //This can be set to slide, fade or none
+                closeLink: '#catfish-close',
+            });
+        }
+
+        if (typeof $.cookie('empopup') === 'undefined') {
+
+            $.cookie('empopup', 'Y', { expires: 365, path: '/' });
+
+                $("#modal").iziModal({
+                autoOpen: 10000,
+                title: 'Sign Up for our Newsletter'
+            });
+
+        } else {
+
+            $("#modal").iziModal();
+        }
+
+        $('#btnSubmitEmail').on('click', function () {
+
+            var email = document.getElementById("txtEmailAddress");
+
+            if (!email.checkValidity()) {
+                document.getElementById("lblemailMsg").innerHTML = 'Please enter a valid email';
+
+            }
+            else {
+
+                $('#modal').iziModal('startLoading');
+
+                var email = $('#txtEmailAddress').val();
+
+                $.ajax({
+                    type: 'POST',
+                    async: false,
+                    url: 'controller/modal.ashx?email=' + email,
+                    success: function (response) {
+
+                        $('#modal').iziModal('stopLoading');
+
+                        $('#modal').iziModal('setContent', response);
+
+                    },
+                    error: function (result) { //On Error
+                        console.log(result.responseText);
+                    }
+                });
+            }
+
+        });
+
+
+        
+        _ltk.SCA.CaptureEmail('txtEmailAddress');
+
+       
+    
+
+_ltk.Activity.AddPageBrowse();
+_ltk.Activity.Submit();
+
+
+_ltk.SCA.CaptureEmail('txtEmailSignup');
+
+
+        (function () {
+            var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+            se.src = '//storage.googleapis.com/code.snapengage.com/js/cf44474e-7d2e-4820-9f4f-e89d4117ee49.js';
+            var done = false;
+            se.onload = se.onreadystatechange = function () {
+                if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+                    done = true;
+                    /* Place your SnapEngage JS API code below */
+                    /* SnapEngage.allowChatSound(true); Example JS API: Enable sounds for Visitors. */
+                }
+            };
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+        })();
+    

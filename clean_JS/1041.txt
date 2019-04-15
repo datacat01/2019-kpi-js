@@ -1,0 +1,30 @@
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-69583-77', 'auto');ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+
+      $(document).ready(function () {
+          $('#PopulatedCartMini').css('display', 'none').css('visibility', 'hidden');
+      });
+  
+
+    $("#playVid").click(function () {
+        $(this).toggleClass("startVidActive");
+        document.getElementById("videoBg1").play();
+    });
+
+$(document).ready(function() {$('#mycarousel68').jcarousel({itemFallbackDimension: 300}); });
+$(document).ready(function() {$('#mycarousel68').jcarousel({itemFallbackDimension: 300}); });
+$(document).ready(function() {$('#mycarousel68').jcarousel({itemFallbackDimension: 300}); });
+
+	Mousetrap.bind('t o u g h', function () {
+		var flashvars = {};
+		var params = {};
+		params.wmode = "transparent";
+		swfobject.embedSWF("/Content/video/BillandBob.swf", "BillandBob", "270", "210", "8.0.0", '', flashvars, params); 
+	});
+	

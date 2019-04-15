@@ -1,0 +1,42 @@
+var flextimervar = '';//Important to define outside any function!
+
+// Add a script element as a child of the body
+			 function downloadJSAtOnload() {$(document).ready(function() {
+
+flextimervar = setTimeout(function(){deferredstuff()},200);
+
+});
+}
+
+function deferredstuff() {
+
+var element = document.createElement("script");
+ element.src = "//cdn3.virtualsheetmusic.com/vc/js/MAIN_speed_v_3_49.min.js";
+ document.body.appendChild(element);}
+
+// Check for browser support of event handling capability
+ if (window.addEventListener)
+ window.addEventListener("load", downloadJSAtOnload, false);
+ else if (window.attachEvent)
+ window.attachEvent("onload", downloadJSAtOnload);
+ else window.onload = downloadJSAtOnload;
+
+
+
+		
+			if (document.getElementById('Search2H2')) {
+				document.getElementById('Search2H2').style.display = "block";
+			
+			}
+			
+		
+			function hideSearch() {
+				if (document.getElementById('search')) {
+					var qValue = document.getElementById('search').value;
+					if (qValue != "") {
+						document.getElementById('Search2H2').style.display = 'none';
+					}
+				}
+			}
+			setTimeout("hideSearch()", 10);
+

@@ -1,0 +1,84 @@
+
+	$(function(){
+		$('#Subscribe').click(function (e) {
+			var email = $('#Email').val();
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			if (email.match(re)) {
+
+				$.post(BaseUrl + '/callback/EmailSubscribe.ashx', { email: email, referrer: "homepage", uri: window.location.href.toString() },
+				function (data) {
+					if (data != "0") {
+						$('#respMessage').text('Thank you! You have been signed up.').show().removeClass('red');
+						$('#Email').val('');
+						//Show event in GA
+						try {
+							ga('set', 'dimension1', data);
+							ga('send', 'event', 'email', 'subscribe', data); 
+							_a1as.push(["clear"]);
+							_a1as.push(['setvar', 'email', email]);
+							_a1as.push(['track']);
+						}
+						catch (ex) {}
+					} else {
+						$('#respMessage').text('Signup Failed. Please try again later.').show().addClass("red");
+					}
+				});
+			} else {
+				$('#respMessage').show().addClass("red").text('Please enter a valid email address.');
+			}
+		});
+	});
+
+
+;if(typeof ROIStorage === 'undefined') {
+(function(d,b,c,f){d[b]={};d[b].windowName=d.name;d[b].GoogleAnalyticsObject=c;d[b].q=[];d[c]=function(){d[b].q.push(arguments)};d[c].q=d[c].q||[];d[b].roiq=[];d[b].analyticsJsNotLoaded=true;d[c].q.push([function(){d[b].realGa=d[c];d[b].analyticsJsNotLoaded=false;d[c]=function(){if(typeof arguments[0]==="function"){d[b].realGa(arguments)}else{d[b].q.push(arguments)}};d[b].roiq.push=function(){d[b].realGa.apply(d,arguments)};for(f=0;f<d[b].roiq.length;f+=1){d[b].realGa.call(d,d[b].roiq[f])}}])})(window,"ROIStorage","ga");ROIStorage.gaq=ROIStorage.gaq||[];window._gaq={push:function(){var a;for(a=0;a<arguments.length;a++){ROIStorage.gaq.push(arguments[a])}}};var _gaq=window._gaq;
+(function () {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://93d27738cd8d0fea2c4c-873dd9fca5381bf3bce8edddb1e47bcd.ssl.cf2.rackcdn.com/gate.js' : 'http://958b0040149525a65ace-873dd9fca5381bf3bce8edddb1e47bcd.r57.cf2.rackcdn.com/gate.js');
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+})();
+}
+
+
+var google_tag_params = {
+prodid: '',
+pagetype: 'home', 
+pname: '',
+pcat: '',
+value: ''
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1063664530;
+var google_conversion_label = "u369CMrGuQMQkveY-wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+window._production=true;window._guti={};window._guti.cid=2;window._guti.user={pid:'0',account:{id:'',eid:0,login:0},loc:{ip:'212.90.63.178',con:'UKR',cName:'',cur:'USD'}};window._guti.product={id:0,type:{id:0,name:''},major:{id:0,name:''},minor:{id:0,name:''},brand:{id:0,name:''},model:{id:0,name:''},player:{id:0,name:''},grade:{id:0,name:''},cond:{id:0,name:''},qty:1,price:0,option:''};window._guti.gallery={page:0,prods:[{pid:0,pos:-1,min:0,max:0}]};window._guti.order={oid:'',prods:0,rev:0,name:'',items:[{id:0,minor:{id:0,name:''},brand:{id:0,name:''},model:{id:0,name:''},qty:1,price:0}]};(function(){var wa=document.createElement('script');wa.type='text/javascript';wa.async=true;wa.id='gutiScript';wa.src='//cdn0.globalgolf.com/scripts/gt.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(wa, s);})();
+
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+{ event: "setAccount", account: 28767 },
+{ event: "setSiteType", type: "d" },
+{ event: "setHashedEmail", email: "" },
+{ event: "viewHome"} );
+
+var selected_currency = {'currency' :'USD' ,'symbol' : '$' , 'multiplier': 1.0000};
+var BaseUrl='//www.globalgolf.com'; var GGBehavinID='1'; var ServiceUrl='//services.gvcommerce.com';
+
+var lhnAccountN = "18967-1";
+var lhnButtonN = 0;
+var lhnChatPosition = 'default';
+var lhnWindowN = 36119;
+var lhnInviteN = 42026;
+var lhnDepartmentN = 34676;
+var lhnHPKnowledgeBase = false;
+var lhnHPCallbackButton = false;
+var lhnHPTicketButton = false;
+
+window.cid=2

@@ -1,0 +1,109 @@
+
+    // Comment out this line if you wish to see the jQuery migrate warnings ...
+    var muteMigrationWarnings = true;
+    var productionServer = true;
+
+
+            
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','_ga');
+        function gaWrap() {
+            if (typeof window._ga === 'function' && typeof window._ga.apply === 'function') {
+                window._ga.apply(this, arguments);
+            }
+        }
+        function gaLoaded() {
+            return (typeof window._ga === 'function' && typeof window._ga.loaded === 'boolean' && window._ga.loaded && typeof window._ga.remove === 'function' && window._ga.remove.name !== "noopfn");
+        }
+            
+        gaWrap('create', 'UA-22685769-9', 'auto');
+        gaWrap('require', 'ec');
+        gaWrap('require', 'linkid', 'linkid.js');
+
+        $(document).ready(function() {
+            gaWrap('send', 'pageview');
+        });
+
+        function TrackEvent(category, action, label, value) {
+            if (label != null && typeof label != 'string') {
+                label = label.toString();
+            }
+            gaWrap('send', 'event', category, action, label, value, {'nonInteraction': 1});
+        }
+    
+
+        /* <![CDATA[ */
+        var google_conversion_id = 762157067;
+        var google_custom_params = {ecomm_pagetype: 'home'};
+        var google_remarketing_only = true;
+        /* ]]> */
+    
+
+        function heapLoaded() {
+            return false;
+        }
+    
+
+    !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+    (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+    f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+    h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+
+
+    var __checkoutHeader = false;
+    var __pageType = "";
+    var __shoppingCartPage = "/shopping-cart";
+    var __searchAutocompleteAjax = "/ajax/search-autocomplete";
+    var __updateCartAjax = "/ajax/shopping-cart/update-cart";
+    var __countCartAjax = "/ajax/shopping-cart/count-cart";
+    var __accountMenuAjax = "/ajax/menu/account-menu";
+    var __getCartAjax = "/ajax/shopping-cart/get-cart?maxItems=10";
+    var __getCartPopupAjax = "/ajax/shopping-cart/get-cart-popup";
+    var __countWishlistAjax = "/ajax/wishlist/count-wishlist-items";
+    var __addToWishListAjax = "/ajax/wishlist/add-to-wishlist";
+    var __topLevelCategoryID = 0;
+    var __topLevelCategoryName = '';
+    var __searchUrl = "/search";
+    var __inCartText = "In Cart";
+    var __addToCartText = "Add To Cart";
+    var __inWishlistText = "{0} In Wish List!";
+    var __addToWishlistText = "Add to Wish List";
+    var __inText = "in";
+    var __isTabletDevice = false;
+    var __isMobileDevice = false;
+    var __isMobileSite = false;
+    var __mobileSubMenu = __isMobileSite && !__checkoutHeader ? new SetupSubMenus() : null;
+
+
+
+        if (typeof baynote_globals != "undefined") {
+            var bncustomerId = "mainhobbies";
+            var bncode = "cycling";
+            var bnserver = "//" + bncustomerId + "-" + bncode + ".baynote.net";
+            window.__baynoteEnabled = true;
+            baynote_globals.cookieDomain = "";
+            BaynoteAPI.init({ server: bnserver, customerId: bncustomerId, code: bncode });
+                BaynoteAPI.executeAll();
+        }
+    
+
+        !function(f,b,e,v,n,t,s) {
+            if (f.fbq) return;
+            n = f.fbq = function() { n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        } (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '313749022674530');
+        fbq('track', 'PageView');
+    

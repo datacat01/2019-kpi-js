@@ -1,0 +1,6 @@
+var environment="PRODUCTION";document.domain="orientaltrading.com";
+if(typeof jQuery=='undefined'){document.write(unescape("%3Cscript src='/assets/dist/legacy/js/jquery-3.3.1.min_032119.js' type='text/javascript'%3E%3C/script%3E"));}
+if(typeof jQuery.migrateWarnings=='undefined'){document.write(unescape("%3Cscript src='/assets/dist/legacy/js/jquery-migrate-3.0.1.min.min_032119.js' type='text/javascript'%3E%3C/script%3E"));}
+var utag_data={page_name:"HOME PAGE",page_type:"MAIN",cell_name:"CELL_B",brand:"OTC",category_id:"MAIN",server_name:"OTCprodBcluster01server05",remarketing_page_type:"home",request_uri:"homePage",customer_id:"",customer_username:"",customer_type:"GUEST",cm_prefix:"OTD",visitor_id:"9045214763",}
+(function(a,b,c,d){a='//tags.tiqcdn.com/utag/otc/orientaltrading/prod/utag.js';b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);})();
+function HDRpopit(url){newwindow=window.open(url,'name','height=768,width=960');if(window.focus){newwindow.focus()}return false;}

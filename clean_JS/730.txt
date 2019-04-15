@@ -1,0 +1,141 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.paradestore.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+enUS = {"m":{"wide":["January","February","March","April","May","June","July","August","September","October","November","December"],"abbr":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}}; // en_US locale reference
+Calendar._DN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; // full day names
+Calendar._SDN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; // short day names
+Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
+Calendar._MN = ["January","February","March","April","May","June","July","August","September","October","November","December"]; // full month names
+Calendar._SMN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; // short month names
+Calendar._am = "AM"; // am/pm
+Calendar._pm = "PM";
+
+// tooltips
+Calendar._TT = {};
+Calendar._TT["INFO"] = "About the calendar";
+
+Calendar._TT["ABOUT"] =
+"DHTML Date/Time Selector\n" +
+"(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
+"For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
+"Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details." +
+"\n\n" +
+"Date selection:\n" +
+"- Use the \xab, \xbb buttons to select year\n" +
+"- Use the " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " buttons to select month\n" +
+"- Hold mouse button on any of the above buttons for faster selection.";
+Calendar._TT["ABOUT_TIME"] = "\n\n" +
+"Time selection:\n" +
+"- Click on any of the time parts to increase it\n" +
+"- or Shift-click to decrease it\n" +
+"- or click and drag for faster selection.";
+
+Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
+Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
+Calendar._TT["GO_TODAY"] = "Go Today";
+Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
+Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
+Calendar._TT["SEL_DATE"] = "Select date";
+Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
+Calendar._TT["PART_TODAY"] = ' (' + "Today" + ')';
+
+// the following is to inform that "%s" is to be the first day of week
+Calendar._TT["DAY_FIRST"] = "Display %s first";
+
+// This may be locale-dependent. It specifies the week-end days, as an array
+// of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
+// means Monday, etc.
+Calendar._TT["WEEKEND"] = "0,6";
+
+Calendar._TT["CLOSE"] = "Close";
+Calendar._TT["TODAY"] = "Today";
+Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
+
+// date formats
+Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
+Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
+
+Calendar._TT["WK"] = "Week";
+Calendar._TT["TIME"] = "Time:";
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+function newPopup(url) {
+popupWindow = window.open(url,'popUpWindow','height=500,width=560,resizable=yes,scrollbars=yes,toolbar=yes,location=yes,status=yes')}
+
+ var google_tag_params = { ecomm_prodid:'', ecomm_pagetype:'home', ecomm_totalvalue:'', }; 
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('https://www.paradestore.com/index.php/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+// <![CDATA[
+function changePic(i,t) {
+document.getElementById("homephoto").style.backgroundImage="url(https://www.paradestore.com/media/wysiwyg/" + i + ".png)";
+document.getElementById("homephototext").innerHTML=t;}
+
+var text = ['<p id="homebanner"><a href="https://www.paradestore.com/index.php/replica-rifles.html"><div id="homelink">DrillAmerica<sup>&reg;</sup>: The finest drill rifles available<br><div class="shopnow">SHOP NOW</div></div><img id="homephoto" src="https://paradestore.com/images/home0.jpg" alt="" /></a></p>','<p id="homebanner"><a href="https://www.paradestore.com/index.php/flags-accessories.html""><div id="homelink">Largest selection of flags and accessories<br><div class="shopnow">SHOP NOW</div></div><img id="homephoto" src="https://paradestore.com/images/home1.jpg" alt="" /></a></p>'];
+
+function changehomeBanner(i) {
+if (i==2) { i=0; }
+document.getElementById("homebanner").innerHTML=text[i];
+i=i+1;
+setTimeout(function() { changehomeBanner(i) }, 10000); }
+window.onload = setTimeout(function() { changehomeBanner(0) }, 1);
+
+function changehomePic(i) {
+if (i==1) { txt="<a class='homeblock3' href='https://www.paradestore.com/index.php/about-us/newsletter.html' style='background-image:url(https://www.paradestore.com/media/wysiwyg/homeblock3_1.png)'>Subscribe to The<br />Bugler, our free<br />e-newsletter with<br />interesting facts,<br />coupons, and<br />product alerts.</a>"; i=2; }
+else { txt="<a class='homeblock3' href='https://www.paradestore.com/index.php/gifts-gift-cards.html' style='background-image:url(https://www.paradestore.com/media/wysiwyg/giftcards.png)'>Glendale Parade<br />Store now<br />offers gift<br />cards for<br />every<br />occasion!</a>"; i=1; }
+document.getElementById("homeblock").innerHTML=txt;
+setTimeout(function() { changehomePic(i) }, 6000); }
+window.onload = setTimeout(function() { changehomePic(1) }, 6000);
+
+document.getElementsByClassName("main")[0].style.backgroundColor="transparent";
+document.getElementsByClassName("main-container")[0].style.backgroundImage="none";
+document.getElementsByClassName("main")[0].style.padding="0";
+
+function readmore() {
+document.getElementById("hometext").style.display="block";
+document.getElementById("readmore").style.display="none";
+}
+
+homepage=true;
+// ]]>
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+// <![CDATA[
+if (homepage==true) { document.getElementsByClassName("footer-container")[0].style.backgroundImage="none"; document.getElementsByClassName("breadcrumbs")[0].style.display="none"; }
+// ]]>
+// <![CDATA[
+var google_conversion_id = 1006770828;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+// ]]>
+// <![CDATA[
+	var ATRK_CLIENT_ID="F77321E1" ;
+	var ATRK_PROTOCOL=(("https:" == document.location.protocol) ? "https://" : "http://");
+	document.write(unescape("%3Cscript type='text/javascript' src='" + ATRK_PROTOCOL + "js.acq.io/ATRK_" + ATRK_CLIENT_ID + "_min.js' %3E%3C/script%3E" ));
+// ]]>
+// <![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4005543-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+// ]]>

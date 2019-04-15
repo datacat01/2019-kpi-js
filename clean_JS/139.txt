@@ -1,0 +1,78 @@
+function googleTranslateElementInit() {new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');}
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ContentPlaceHolder1_ctl01"));
+var Page_Validators =  new Array(document.getElementById("ContentPlaceHolder1_RequiredFieldValidator1"), document.getElementById("ContentPlaceHolder1_RequiredFieldValidator4"), document.getElementById("ContentPlaceHolder1_RegularExpressionValidator1"));
+//]]>
+
+
+//<![CDATA[
+var ContentPlaceHolder1_ctl01 = document.all ? document.all["ContentPlaceHolder1_ctl01"] : document.getElementById("ContentPlaceHolder1_ctl01");
+ContentPlaceHolder1_ctl01.headertext = "Please correct the errors highlighted below.";
+ContentPlaceHolder1_ctl01.validationGroup = "NewsletterBottom";
+var ContentPlaceHolder1_RequiredFieldValidator1 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator1"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator1");
+ContentPlaceHolder1_RequiredFieldValidator1.controltovalidate = "ContentPlaceHolder1_txtNewsletterName";
+ContentPlaceHolder1_RequiredFieldValidator1.display = "Dynamic";
+ContentPlaceHolder1_RequiredFieldValidator1.validationGroup = "NewsletterBottom";
+ContentPlaceHolder1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ContentPlaceHolder1_RequiredFieldValidator1.initialvalue = "";
+var ContentPlaceHolder1_RequiredFieldValidator4 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator4"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator4");
+ContentPlaceHolder1_RequiredFieldValidator4.controltovalidate = "ContentPlaceHolder1_txtNewsletterEmail";
+ContentPlaceHolder1_RequiredFieldValidator4.display = "Dynamic";
+ContentPlaceHolder1_RequiredFieldValidator4.validationGroup = "NewsletterBottom";
+ContentPlaceHolder1_RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ContentPlaceHolder1_RequiredFieldValidator4.initialvalue = "";
+var ContentPlaceHolder1_RegularExpressionValidator1 = document.all ? document.all["ContentPlaceHolder1_RegularExpressionValidator1"] : document.getElementById("ContentPlaceHolder1_RegularExpressionValidator1");
+ContentPlaceHolder1_RegularExpressionValidator1.controltovalidate = "ContentPlaceHolder1_txtNewsletterEmail";
+ContentPlaceHolder1_RegularExpressionValidator1.display = "Dynamic";
+ContentPlaceHolder1_RegularExpressionValidator1.validationGroup = "NewsletterBottom";
+ContentPlaceHolder1_RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ContentPlaceHolder1_RegularExpressionValidator1.validationexpression = "\\S+@\\S+\\.\\S+";
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+
+
+        $(document).ready(function() {$('.navbar-brand').svgmagic({handleBackgroundImages: true});$('.simple-ajax-popup-align-top').magnificPopup({type: 'iframe',alignTop: true,midClick: true});});
+        $('#power-tab').on('shown.bs.tab', function (e) {document.getElementById('powerSailTile').innerHTML = 'View all power boat manufacturers';document.getElementById("powerSailTile").href = "/boats/power-boats/";})
+        $('#sail-tab').on('shown.bs.tab', function (e) {document.getElementById('powerSailTile').innerHTML = 'View all sail boat manufacturers';document.getElementById("powerSailTile").href = "/boats/sailing-boats/";})
+    

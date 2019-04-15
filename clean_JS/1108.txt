@@ -1,0 +1,2869 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+    var splitEnabled = new Object();
+    splitEnabled = "";
+      
+  if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+  }
+
+  dynamicSettingsObj.controller="index";
+  dynamicSettingsObj.action="index";
+  dynamicSettingsObj.jsDomain="//img.apwcontent.com/sites/apw-migration/includes/js/prd";
+  dynamicSettingsObj.jsDomain="//img.apwcontent.com/sites/apw-migration/includes/js/prd";
+  dynamicSettingsObj.cssDomain="//img.apwcontent.com/sites/apw-migration/includes/css/prd";
+  dynamicSettingsObj.appVersion="8.24.0";
+  dynamicSettingsObj.partfinderSort="ymm";
+  dynamicSettingsObj.tealiumEnable=1;
+  dynamicSettingsObj.isTire=0;
+  dynamicSettingsObj.isCart="1";
+  dynamicSettingsObj.hostName="https://www.autopartswarehouse.com";
+  dynamicSettingsObj.homePage="https://www.autopartswarehouse.com";
+  dynamicSettingsObj.autoSubmitVSKillswitch="";
+  dynamicSettingsObj.myAccountHostName="https://account.autopartswarehouse.com";
+  dynamicSettingsObj.cartHostName="https://cart.autopartswarehouse.com";
+  dynamicSettingsObj.checkoutHostName="https://checkout.autopartswarehouse.com";
+  dynamicSettingsObj.customerId="CUSTOMERID";
+  dynamicSettingsObj.customerFName="FIRSTNAME";
+  dynamicSettingsObj.imagesDomain="https://img.apwcontent.com/sites/apw-migration/design";
+  dynamicSettingsObj.selectedVehicleCookieName="activeVehicleKey";
+  dynamicSettingsObj.selectedVehicleTextCookieName="activeVehicleText";
+  dynamicSettingsObj.vehicleListsCookieName="user_save_vehicles";
+  dynamicSettingsObj.orderId="apwORDERID";
+  dynamicSettingsObj.isUnbxd="1";
+
+    dynamicSettingsObj.atccookie = "apw30days";
+  
+  
+    dynamicSettingsObj.marketingCookies={"affiliate":"affiliate_tracking_code","ppc":"ppc_code","email":"ref_email","scpm":"s_cpm"};
+
+  
+  var blockedBrowser = new Array();
+  var blockedBrowserName = new Array();
+  
+  var PAGE_SECTION = "index";
+  
+  // Google ReCaptcha 2.0 variables
+  var inventoryLbIds = new Array();
+  dynamicSettingsObj.recaptchaSiteKey = "6LePbhATAAAAAPt0BvKNGgyGjya-OiZb-VCvAdXE";
+
+  dynamicSettingsObj.isOOS = true;
+  dynamicSettingsObj.isJsonLd = false;
+  
+  
+      
+  
+  blockedBrowser[0]="MSIE 6";
+  blockedBrowserName[0]="Microsoft Internet Explorer 6";
+       
+
+ 
+
+var MSG_STRIKETHROUGH_PRICING = "We compare the prices of our products to the prices of comparable Original Equipment Manufacturer (OEM) products or the prices of comparable products offered by other retailers and suppliers (collectively, \u201cThird Party Suppliers\u201d). We use the median % price variance by product category between products we carry and the respective comparable products offered by Third Party Suppliers to determine the strike through price on any product listing. We check our prices against prices offered by these Third Party Suppliers on a semi-annual basis.";
+
+var MSG_STRIKETHROUGH_KILLSWITCH = "1";
+
+var MSG_CORE_PRICING = "The \u201ccore\u201d is your old part. Send us your old part and the core deposit will be refunded to you upon inspection. <a href='\/customer\/returnpolicy\/'>Core return<\/a> instructions will come with your order";
+
+var MSG_COREPRICE_KILLSWITCH = 0;
+
+
+
+    var objSomniture = []; //use for selenium test script
+
+    
+var COHORT_TEST_OBJECT = {"enable":"1","ab_test_config":{"cohorts_test":{"traffic":"1","name":"bundle_20160203"}}};
+var SMARTFIT_TEST_OBJECT = {"enable":"","ab_test_config":{"smart_fit":{"traffic":"1","name":"smart_fit_11042015"}}};
+var AFFIRM_TEST_OBJECT = {"enable":"","ab_test_config":{"affirm":{"traffic":"1","name":"affirm_20170315"}}};
+var GRIDVIEW_TEST_OBJECT = {"enable":"1","ab_test_config":{"cohorts_test":{"traffic":"1","name":"gridview_20170914"}}};
+
+
+
+
+    jQuery(function($) {
+
+        // Affiliate Params
+        var oAffiliateParams = {}, oUrlParams = {};
+                        oAffiliateParams[0] = "JCW_SRC";
+                                oAffiliateParams[1] = "cj";
+                                oAffiliateParams[2] = "gan";
+                                oAffiliateParams[3] = "TID";
+                                oAffiliateParams[4] = "jcw";
+                
+        oUrlParams = getUrlParams();
+
+        $.each(oAffiliateParams, function(i, val) {
+            if (typeof oUrlParams[val] != 'undefined') {
+                $.cookie(val, oUrlParams[val], "/");
+            }
+        });
+    });
+
+
+
+
+    var affiliate_no = $.cookie("affiliate_tracking_code");
+    var sid_no       = $.cookie("sid");
+    var email_ref    = $.cookie("ref_email");
+
+    if (affiliate_no == null || sid_no == null || ref_email == null)
+    {
+        var dynamic_pricing = $.cookie("DP");
+        if(dynamic_pricing != null && typeof dynamic_pricing != 'undefined')
+        {
+            var dp_data = eval('('+Base64.decode(dynamic_pricing)+')');
+        }
+    }
+    //array to set affiliate toll number
+    var affKey = 'a';
+    var affnumbers  = new Array();
+    affnumbers['a'] = new Array("one",   "1.800.913.6119", "1-800-913-6119", "blank", "6119", "1-312-431-6258", "1.312.431.6258");
+    affnumbers['b'] = new Array("two",   "1.800.913.6027", "1-800-913-6027", "blank", "6027", "1-312-431-6294", "1.312.431.6294");
+
+
+    if(PAGE_SECTION == 'sempdp'){
+        affnumbers['b'] = new Array("two",   "1.888.913.3133", "1-888-913-3133", "sempdp", "3133", "1-312-431-6294", "1.312.431.6294");
+    } else if(dynamicSettingsObj.seattleEnabled == true ||  ( getCookie("mvtAco") !== null && 'b' == getCookie('mvtAco').substring(0,1)) ) {
+        if (PAGE_SECTION == 'sempdp') {
+            affnumbers['b'] = new Array("two",   "1.888.267.1847", "1-888-267-1847", "sempdp", "6119", "1-312-542-1443", "1.312.542.1443");
+        } else {
+            affnumbers['b'] = new Array("two",   "1.800.411.6076", "1-800-411-6076", "", "6076");
+        }
+    } else if( dynamicSettingsObj.isUnbxd == true ) {
+
+    	affnumbers['b'] = new Array("two",   "1-855-299-4347", "1-855-299-4347", "blank", "6119", "1-312-431-6294", "1.312.431.6294");
+    	
+    }
+
+
+    affnumbers['c'] = new Array("three", "1.888.913.3133", "1-888-913-3133", "sem",   "3133");
+    affnumbers['d'] = new Array("four",  "1.800.913.6027", "1-800-913-6027", "rep",   "6027");
+    affnumbers['e'] = new Array("five",  "1.866.789.3624", "1-866-789-3624", "",      "3624");
+    affnumbers['f'] = new Array("six",   "1.866.895.0440", "1-866-895-0440", ""); // delete new SEM
+    affnumbers['g'] = new Array("", "", "", "");
+//dynamicSettingsObj.seattleEnabled
+    var url = window.location.href;
+    if ((url.indexOf('om_u=') != -1 && url.indexOf('om_i=') != -1) || $.cookie('ref_email')) {
+        var altTollNumber = '1-312-431-6258';
+    }
+    else if (PAGE_SECTION == 'semserp') {
+        if (dynamicSettingsObj.seattleEnabled) {
+            var altTollNumber = '1-312-542-1415';
+        } else {
+            var altTollNumber = '1-312-431-6274';
+        }
+        $(".tollNumberDashed").attr("data-phonenum", altTollNumber);
+    }
+    else {
+        var altTollNumber = '1-801-214-2997';
+    }
+
+    if( typeof dp_data != 'undefined' )
+    {
+        affnumbers['h'] = new Array("four",   dp_data.phone_number.replace(/-/g,"."), dp_data.phone_number, "rep",   "0864");
+    }
+    else {
+        affnumbers['h'] = new Array("four",   "1.888.279.0864", "1-888-279-0864", "rep",   "0864");// for CJ PPC
+    }
+    var ppcpnClass = '';
+    //this will select what affiliate toll number to be used
+    if(affiliate_no == null && sid_no == null){
+        if(email_ref == 'true'){
+            // Traffic from email
+            affKey = 'a';
+        }
+        else{
+            affKey = 'b';
+            // SEM TollFree No
+            if (typeof componentsContents != 'undefined' && typeof componentsContents['component'] != 'undefined' ) {
+                if ( typeof componentsContents['component']['TollFreeSEM'] != 'undefined' ) {
+                    if ( componentsContents['component']['TollFreeSEM'] == 'Old' ) {
+                        affKey = 'e';
+                    }
+                }
+            }
+            if( typeof dp_data != 'undefined' )
+            {
+                affKey = 'h';
+            }
+            if (PAGE_SECTION == 'semserp') {
+                if (dynamicSettingsObj.seattleEnabled) {
+                    affnumbers['b'][2] = '1-800-481-2635';
+                } else {
+                    affnumbers['b'][2] = '1-888-279-0864';
+                }
+            }
+        }
+    }
+    else{
+        if(affiliate_no != null &&  affiliate_no == 'V1230948606W495ec8fec53c4'){
+            affKey = 'g';
+        }
+        else if(affiliate_no != null && (affiliate_no == 'I1242172961W4a0a0e2192802' || affiliate_no == 'Y1246404150W4a4a9e36d7b9d' || affiliate_no == 'C1246404235W4a4a9e8bad0d7')){
+            affKey = 'c';
+        }
+        else if(affiliate_no != null && (affiliate_no == 'A1154013966W44c8db0e4c70a' || affiliate_no == 'E1209090014W48113fdeed4c3' || affiliate_no == 'I1209692992W481a73408bff5'  || affiliate_no == 'G1225939187W491258f3acead'  )){
+            affKey = 'h';
+            ppcpnClass = 'class="promoNumber"';
+        }
+        else{
+            affKey = 'd';
+            if( typeof dp_data != 'undefined' )
+            {
+                affKey = 'h';
+            }
+        }
+    }
+
+    // this will change the affiliate toll number
+    if (affKey != 'g') {
+        $(document).ready(function () {
+            if (affKey == 'h') {
+                $('#h-letstalk-tollfree').addClass('promoNumber');
+                $('#h-letstalk-tollfree').text(affnumbers[affKey][2]);
+                $('#gf-primary-toll-number strong').css("background-position","0 -160px");
+
+                // for checkout footer
+                $('#checkoutFooterTollFree').text(affnumbers[affKey][2]);
+
+                //$('.tollletstalk').text(affnumbers[affKey][2]);
+            } else {
+                        if (affKey != 'b') {
+                    $('#h-letstalk-tollfree').text(affnumbers[affKey][2] );
+                } else if (PAGE_SECTION == 'semserp') {
+                            $('#h-letstalk-tollfree').text(affnumbers[affKey][2]);
+                            $('#h-letstalk-toll').text(altTollNumber).attr('data-phonenum', altTollNumber);
+                        }
+
+                $('.tollletstalk').text(affnumbers[affKey][2]);
+
+                // for checkout footer
+                $('#checkoutFooterTollFree').text(affnumbers[affKey][2]);
+            }
+            if( affKey == 'a' ){
+                $('#h-letstalk-toll').text(affnumbers[affKey][5] );
+                $('#h-alternative-toll').text(affnumbers[affKey][6]);
+
+                // for checkout footer
+                $('#gf-primary-toll-number strong').css("background-position","0 -118px");
+            }
+
+
+            if (affKey != 'b') {
+                // For generic tollfree container
+                $(".tollfreeNumberDashed").text(affnumbers[affKey][2]);
+
+                // apw specific
+                $(".tollNumberDashed").html(altTollNumber);
+            }
+
+
+            // Convert the phone numbers into links when using ios/android device
+            var convertToTel = false;
+            // iOS devices
+            if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                convertToTel = true;
+            } else {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.indexOf("android") > -1) {
+                    convertToTel = true;
+                }
+            }
+
+            if (convertToTel) {
+                var tollfreeHtml = '<a href="tel:' + affnumbers[affKey][2] + '">' + affnumbers[affKey][2] + '</a>';
+                // var tollfreeHtml = affnumbers[affKey][2];
+                $(".tollfreeNumberDashed").html(tollfreeHtml);
+
+            if (PAGE_SECTION == 'semserp') {
+                var nonTollFreeNum = altTollNumber;
+            } else {
+                var nonTollFreeNum = $(".tollNumberDashed").attr("data-phonenum");
+            }
+                var nonTollFreeHtml = '<a href="tel:' + nonTollFreeNum + '">' + nonTollFreeNum + '</a>';
+                $(".tollNumberDashed").html(nonTollFreeHtml);
+            }
+
+            // 3 ways on home page only
+            $("#tollfree-hp-3ways").text(affnumbers[affKey][2]);
+            /* right image with toll free number */
+            $("#three-ways p").html('Three ways to order:\
+            <br/>\
+            Online: autopartswarehouse.com\
+            <br/>\
+            Order toll-free:\
+            <br/>\
+            ' + affnumbers[affKey][2] + '\
+            <br/>\
+            Live Chat:\
+            <br/>\
+            ');
+            if (affnumbers[affKey][3] == "") {
+                if (affKey == 'e') {
+                    $("#three-ways").attr('style','background: url(/images/right-3ways-old.gif);');
+                } else {
+                    $("#three-ways").attr('style','');
+                }
+                /* how to shop page */
+                $("#step1").attr('style','');
+                $("#step3").attr('style','');
+                $("#info").attr('style','');
+                $('img#howtoshop-tollfree').attr('src',dynamicSettingsObj.imagesDomain+'/migration/howtoshop/' + affnumbers[affKey][2] + '.jpg');
+            } else {
+                if (affKey == 'h') {
+                    $("#three-ways").html('<span ' + ppcpnClass + ' style="font-family: Arial, sands-serif; font-size: 22px; color: #970f0f; font-weight: bold; display: block; padding-top: 100px;">' + affnumbers[affKey][2] + '</span>');
+                    $("#three-ways").attr('style','background: url(/images/affiliatetollnumber/tollnumber_right-3ways.gif) no-repeat; width: 160px; height: 171px; margin: 0;');
+                } else {
+                    $("#three-ways").attr('style','background: url(/images/affiliate/right-3ways-' + affnumbers[affKey][3] + '.gif);background-repeat:no-repeat;background-position:left top;background-color:transparent;background-attachment:scroll');
+                }
+                /* how to shop page */
+                $("#step1").attr('style','background-image:url(/images/affiliate/step1-' + affnumbers[affKey][3] + '.jpg)');
+                $("#step3").attr('style','background-image:url(/images/affiliate/step3-' + affnumbers[affKey][3] + '.jpg)');
+                $('img#howtoshop-tollfree').attr('src',dynamicSettingsObj.imagesDomain+'/migration/howtoshop/' + affnumbers[affKey][2] + '.jpg');
+                $("#info").attr('style','background-image:url(/images/affiliate/other-information-' + affnumbers[affKey][3] + '.jpg)');
+            }
+            if (affKey == 'h') {
+                /* matchbeat page */
+                $("#affiliate-matchbeat").html('If you have any questions, please do not hesitate to call us anytime at <label ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</label>, 24 hours a day, 7 days a week.');
+                $("#howtoshop_affiliate").html('<p><span class="heading">Still having difficulty shopping?</span></p><p><a href="/contact_the_warehouse.html#contactus" style="* cursor:pointer"><strong>Email us</strong></a> or give our representatives a call <strong ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</strong> and they will be glad to help out.</p>');
+                /* details */
+                $("#affiliate-details").html('If you don\'t see your model here, call us at <label ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</label>, or ');
+                /* affiliate fax */
+                $("#affiliate-fax").html('<b><u>Questions</u></b><br>If you have any questions about this process please call <label ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</label>.');
+                $("#affiliate-privacy").html('<b>Toll-Free Calling for AutoPartsWarehouse Customers</b><p  style="margin-bottom:10px;margin-top:10px">Every customer of AutoPartsWarehouse has the unique privilege of accessing our toll-free number at <label ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</label>. We also have an alternative toll number: ' + altTollNumber + '. Waiting on the other end are AutoPartsWarehouse\'s highly-trained Auto Accessory Specialists, ready with a wealth of information on every product we sell. Auto Parts Specialists are here to solve your problems and answer questions.</span>');
+            } else {
+                /* matchbeat page */
+                $("#affiliate-matchbeat").html('If you have any questions, please do not hesitate to call us anytime at ' + affnumbers[affKey][2] + ', 24 hours a day, 7 days a week.');
+                $("#howtoshop_affiliate").html('<p><span class="heading">Still having difficulty shopping?</span></p><p><a href="/contact_the_warehouse.html#contactus" style="* cursor:pointer"><strong>Email us</strong></a> or give our representatives a call <strong>' + affnumbers[affKey][2] + '</strong> and they will be glad to help out.</p>');
+                /* details */
+                $("#affiliate-details").html('If you don\'t see your model here, call us at ' + affnumbers[affKey][2] + ', or ');
+                /* affiliate fax */
+                $("#affiliate-fax").html('<b><u>Questions</u></b><br>If you have any questions about this process please call ' + affnumbers[affKey][2] + '.');
+                $("#affiliate-privacy").html('<b>Toll-Free Calling for AutoPartsWarehouse Customers</b><p  style="margin-bottom:10px;margin-top:10px">Every customer of AutoPartsWarehouse has the unique privilege of accessing our toll-free number at ' + affnumbers[affKey][2] + '. We also have an alternative toll number: ' + altTollNumber + '. Waiting on the other end are AutoPartsWarehouse\'s highly-trained Auto Accessory Specialists, ready with a wealth of information on every product we sell. Auto Parts Specialists are here to solve your problems and answer questions.</span>');
+            }
+
+
+            if (affKey == 'a' || affKey == 'c') {
+                $("#aff-toll-help-center-img").html('');
+            } else if (affKey == 'b') {
+                $("#aff-toll-help-center-img").html('<img src="/images/help/footer-help-center-img.jpg" width="139" height="31" border="0" class="help-center-img" />');
+            } else {
+                $("#aff-toll-help-center-img").html('<img src="/images/help/footer-help-center-img2.jpg" width="139" height="31" border="0" class="help-center-img" />');
+            }
+            //sem partsearch
+            $("#sem-partsearch-tollfree").attr('src', '/images/right_widget/sem-toll-free-146x30-' + affnumbers[affKey][4] + '.gif');
+            $("#sem-partsearch-tollfree").attr('alt', 'Order Toll Free - ' + affnumbers[affKey][1]);
+            //new footer
+            $("#gf-primary-toll-number strong").addClass(affnumbers[affKey][0]).html('Call ' + affnumbers[affKey][1]);
+
+            // Dynamic Toll Number
+            //details page
+            $("div#rightWidget").html('');
+            $("#rightWidget").html('<span style="font-family: Arial, sands-serif; font-size: 22px; color: #be0000; font-weight: bold; display: block; padding: 25px 5px 0 0;"><label ' + ppcpnClass + '>' + affnumbers[affKey][2] + '</label></span>');
+            $("#rightWidget").attr('style', 'background:url(/images/affiliatetollnumber/tollnumber_right_widget.gif) no-repeat; width: 300px; height: 55px; margin: 0;text-align:center');
+            //about us contact information
+            $('#contactInformation').addClass('promoNumber');
+            $('#contactInformation').html(affnumbers[affKey][2]);
+            // Dynamic Toll Number
+
+            // Help center pages
+            $(".text-tollfree-number").text(affnumbers[affKey][2]);
+
+             if (affKey == 'a') {
+                $("#ThirdFooter .lets-talk ul li.fone strong.two").css({"background-position": "0 -118px"});
+            }
+
+            // added dynamic tollfree number for seo
+            $("#ymmp_need_help").find('span.with-toll-text').text('or Call our auto parts experts at');
+            $("#ymmp_need_help").find('strong.tollfree').html(affnumbers[affKey][2]);
+
+
+
+            if (PAGE_SECTION == 'sempdp') {
+                if (dynamicSettingsObj.seattleEnabled)
+                    $('#LowPriceGuarantee').find('span.lowpricetollfree').html('<strong>Call us to claim: 1-888-267-1847</strong>');
+                else
+                    $('#LowPriceGuarantee').find('span.lowpricetollfree').html('<strong>Call us to claim: 1-888-913-3133</strong>');
+            }else
+                $('#LowPriceGuarantee').find('span.lowpricetollfree').html('<strong>Call us to claim: '+affnumbers[affKey][1]+'</strong>');
+        });
+
+        $(function(){
+            $(".tollfreeNumberDashed").html(affnumbers[affKey][2]);
+            var contactToMob = '<a href="tel:' + affnumbers[affKey][2] + '">' + affnumbers[affKey][2] + '</a>';
+            var boolIsMobile = false;
+            if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                boolIsMobile = true;
+            } else {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.indexOf("android") > -1) {
+                    boolIsMobile = true;
+                }
+            }
+
+            if (boolIsMobile){
+                $(".tollfreeNumberDashed").html(contactToMob);
+            }
+        });
+    } else {
+        $(document).ready(function () {
+            // header
+            $('#customer-help > div.phone .letstalk').attr('style','cursor:auto; text-decoration:none;');
+            $('#h-letstalk-tollfree').remove();
+            $('#h-letstalk-tollfree-or').remove();
+            $('.tollAmp').remove();
+            /* right image with toll free number */
+            $("#three-ways, #three-ways-hp-only").attr('style','display:none');
+            /* matchbeat page */
+            $("#affiliate-matchbeat").html('');
+            /* details */
+            $("#affiliate-details").html('');
+            /* how to shop page */
+            $("#step1").attr('style','background-image:url(/images/affiliate/step1-blank.jpg)');
+            $("#step3").attr('style','background-image:url(/images/affiliate/step3-blank.jpg)');
+            $("#info").attr('style','background-image:url(/images/affiliate/other-information-blank.jpg)');
+            $("#howtoshop_affiliate").html('');
+            /* affiliate fax */
+            $("#affiliate-fax").html('');
+            $("#affiliate-privacy").html('<b>Call AutoPartsWarehouse</b><p  style="margin-bottom:10px;margin-top:10px">Every customer of AutoPartsWarehouse can call us at ' + altTollNumber + '. Waiting on the other end are AutoPartsWarehouse\'s highly-trained Auto Accessory Specialists, ready with a wealth of information on every product we sell. Auto Parts Specialists are here to solve your problems and answer questions.</span>');
+            $("#aff-toll-help-center-img").html('');
+            //sem partsearch
+            $("#sem-partsearch-tollfree").attr('style', 'display: none;');
+            $("#sem-partsearch-tollfree").attr('src', '');
+            $("#sem-partsearch-tollfree").attr('alt', '');
+            //new footer
+            $(".lets-talk ul").addClass("no-toll");
+            $("#gf-primary-toll-number").css("display","none");
+            $(".tollFreeSupport").css("display","none");
+            // Dynamic Toll Number
+            //details page
+            $("#rightWidgetImg").attr('src', '');
+            //about us contact information
+            $('#contactInformation').html('');
+            // Dynamic Toll Number
+            $('img#howtoshop-tollfree').attr('src',dynamicSettingsObj.imagesDomain+'/migration/howtoshop/1-801-214-2997.jpg');
+            // Help center pages
+            $(".text-tollfree-number, .text-toll-or").hide();
+
+            // added dynamic tollfree number for seo
+            $("#ymmp_need_help").find('span.with-toll-text').text('');
+            $("#ymmp_need_help").find('strong.tollfree').html('');
+
+            $('#LowPriceGuarantee').find('span.lowpricetollfree').html('');
+
+            // For generic tollfree container
+            $(".tollfreeNumberDashed").remove();
+            $(".tollfreeNumberSeparator").remove();
+
+            // Convert the phone numbers into links when using ios/android device
+            var convertToTel = false;
+            // iOS devices
+            if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                convertToTel = true;
+            } else {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.indexOf("android") > -1) {
+                    convertToTel = true;
+                }
+            }
+            if (convertToTel) {
+                var nonTollFreeNum = $(".tollNumberDashed").attr("data-phonenum");
+                var nonTollFreeHtml = '<a href="tel:' + nonTollFreeNum + '">' + nonTollFreeNum + '</a>';
+                $(".tollNumberDashed").html(nonTollFreeHtml);
+            }
+
+        });
+    }
+
+
+
+    if(typeof $.cookie("activeVehicleText") != 'undefined' && $.cookie("activeVehicleText") != null){
+    var vehicle = JSON.parse($.cookie('activeVehicleText'));
+    if(typeof vehicle[0] != 'undefined' && vehicle[0] != null){
+        dynamicSettingsObj.yearTxt = vehicle[0];
+    }
+
+    if(typeof vehicle[1] != 'undefined' && vehicle[1] != null){
+        dynamicSettingsObj.makeTxt = decodeURIComponent(vehicle[1]).replace(/\+/g,' ');
+    }
+
+    if(typeof vehicle[2] != 'undefined' && vehicle[2] != null){
+        dynamicSettingsObj.modelTxt = decodeURIComponent(vehicle[2]).replace(/\+/g,' ');
+    }
+
+    if(typeof vehicle[3] != 'undefined' && vehicle[3] != null){
+        dynamicSettingsObj.subModelTxt = decodeURIComponent(vehicle[3]).replace(/\+/g,' ');
+    }
+
+    if(typeof vehicle[4] != 'undefined' && vehicle[4] != null){
+        dynamicSettingsObj.engineTxt = decodeURIComponent(vehicle[4]).replace(/\+/g,' ');
+    }
+}
+
+
+        if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+    }
+    dynamicSettingsObj.myAccountEnable=1;
+    dynamicSettingsObj.nonsecure="https://www.autopartswarehouse.com";
+    dynamicSettingsObj.myAccountLogoutUrl="https://account.autopartswarehouse.com/myaccount/logout";
+    dynamicSettingsObj.myAccountLoginUrl="https://account.autopartswarehouse.com/myaccount/login";
+    dynamicSettingsObj.myAccountRegisterUrl="https://account.autopartswarehouse.com/myaccount/register";
+    dynamicSettingsObj.myAccountTrackingUrl="https://account.autopartswarehouse.com/myaccount/trackorder";
+    dynamicSettingsObj.myAccountIndex="https://account.autopartswarehouse.com/myaccount";
+   
+
+
+		
+
+if (typeof dynamicSettingsObj == 'undefined') {
+    var dynamicSettingsObj = {};
+}
+dynamicSettingsObj.searchTextDefault='';
+dynamicSettingsObj.typeAheadEnabled = "1";
+dynamicSettingsObj.typeAheadServer = "tahserver.autopartswarehouse.com";
+dynamicSettingsObj.typeAheadCid = "c4eb40673c20e1";
+dynamicSettingsObj.typeAheadTextBoxId = "search_text";
+
+
+dynamicSettingsObj.unbxdEnabled = 1
+dynamicSettingsObj.unbxdJsLibrary =   "https://d21gpk1vhmjuf5.cloudfront.net/apw_prod_autoSuggest.js";
+dynamicSettingsObj.webDomain =  "https://www.autopartswarehouse.com";
+    
+
+$(window).ready(function() {
+    if (typeof dynamicSettingsObj != 'undefined' 
+        && dynamicSettingsObj.controller != 'undefined'
+        && dynamicSettingsObj.controller == 'vehicle') {
+            dynamicSettingsObj.getParameterByName = function(name) {
+                var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+                return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+            }
+
+            $('#SiteSearch #Search #search_text').val(dynamicSettingsObj.getParameterByName('Ntt'));
+    }
+});
+		
+
+    // USAGE:
+    // map can contain multiple links and coords nodes
+    // otherwise, set it to empty array, ex: "links": []
+    // Also set dates in this format: "yyyy-mm-dd hh:mm:mm" where time is in
+    // military time format
+    // All dates are based on server time
+
+
+    // General heroshot config 3.264.0
+
+    window.HeroshotConfig = [
+        {
+            "startdate": "2014-11-01 00:00:00",
+            "enddate": "2014-12-31 23:59:00",
+            "image": "2014-12/procomp/apw-1230x350-procomp.jpg?04.26.2018",
+            "imageset": [
+                {
+                    "media": "(min-width: 769px)",
+                    "srcset": "2014-12/procomp/apw-1230x350-procomp.jpg?04.26.2018",
+                    "type": "image/webp",
+                    "class": "linkDesktop",
+                    "coords" :[
+                        "height: 14%; width: 15%; top: 82%; left: 2%;",
+                        "height: 14%; width: 15%; top: 82%; left: 18%;"
+                    ]
+                },
+                {
+                    "media": "(min-width: 481px)",
+                    "srcset": "2014-12/procomp/apw-procomp-768x219.jpg?04.26.2018",
+                    "type": "",
+                    "class": "linkTablet",
+                    "coords" :[
+                        "height: 14%; width: 17%; top: 84%; left: 2%;",
+                        "height: 14%; width: 15%; top: 84%; left: 20%;"
+                    ]
+                },
+                {
+                    "media": "(min-width: 321px)",
+                    "srcset": "2014-12/procomp/apw-procomp-480x137.jpg?04.26.2018",
+                    "type": "",
+                    "class": "linkMobileLargeScreen",
+                    "coords" :[
+                        "height: 22%; width: 30%; top: 76%; left: 11%;",
+                        ""
+                    ]
+                },
+                {
+                    "media": "(min-width: 320px)",
+                    "srcset": "2014-12/procomp/apw-320x91-procomp.jpg?04.26.2018",
+                    "type": "",
+                    "class": "linkMobileScreen",
+                    "coords" :[
+                        "height: 25%; width: 34%; top: 60%; left: 63%;",
+                        ""
+                    ]
+                }
+            ],
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Pro+Comp,part:Wheel,D_attr_Material:Aluminum+alloy)",
+                    "//images.apw21.com/Merchandising/ProCompRebate2014.pdf"
+                ],
+                "coords": [
+                    "height: 14%; width: 15%; top: 82%; left: 2%;",
+                    "height: 14%; width: 15%; top: 82%; left: 18%;"
+                ]
+            }
+        },
+
+        /* ==========================================================================
+                           Heroshot Slides
+        ========================================================================== */
+
+        /*--------- 1st Slides ------------*/ 
+
+
+        {   // APW DiabloSport Photo Contest
+            "startdate": "2019-01-09 00:00:00",
+            "enddate": "2019-01-20 23:59:00",
+            "image": "2019/01082019/apw-diablosport-photo-contest.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "https://woobox.com/kramek?intcmpid=apwdiab01"
+                ],
+                "coords": [
+                    "height: 16.6%; width: 33.2%; top: 75.4%; left: 64.7%;"
+                ]
+            }
+        },     
+
+        {   // APW Rewards January
+            "startdate": "2019-01-21 00:00:00",
+            "enddate": "2019-01-25 23:59:00",
+            "image": "2019/01162019/apw-rewards-january.jpg?01.16.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/myaccount/login?intcmpid=apwrewardsjan01"
+                ],
+                "coords": [
+                    "height: 15.1%; width: 31.0%; top: 71.4%; left: 53.2%;"
+                ]
+            }
+        },       
+
+        {   // Curt Gooseneck Hitches Rebate
+            "startdate": "2019-01-26 00:00:00",
+            "enddate": "2019-01-31 23:59:00",
+            "image": "2019/01162019/apw-curt-gooseneck-hitches.jpg?01.23.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Curt,part:Gooseneck+Hitch)&intcmpid=apwcurtjan01",
+                    "//images.apw21.com/Merchandising/CURT_Gooseneck_Jan2019.pdf?intcmpid=apwcurtjan02"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 20%; top: 73.4%; left: 1.5%;",
+                    "height: 12.9%; width: 20%; top: 73.4%; left: 22.3%;"
+                ]
+            }
+        },
+
+        {   // APW Deals Super Bowl
+            "startdate": "2019-02-01 00:00:00",
+            "enddate": "2019-02-08 23:59:00",
+            "image": "2019/02072019/apw-deals-super-bowl.jpg?02.08.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwsuperbowl01"
+                ],
+                "coords": [
+                    "height: 14.3%; width: 32.1%; top: 72.3%; left: 56.5%;"
+                ]
+            }
+        },
+
+        {   // APW Deals Valentine's Day
+            "startdate": "2019-02-09 00:00:00",
+            "enddate": "2019-02-14 23:59:00",
+            "image": "2019/02072019/apw-deals-valentines-day.jpg?02.08.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwvalentines01"
+                ],
+                "coords": [
+                    "height: 16.0%; width: 31.5%; top: 77.1%; left: 59.0%;"
+                ]
+            }
+        },
+
+        {   // APW Deals Tax Day
+            "startdate": "2019-02-15 00:00:00",
+            "enddate": "2019-03-03 23:59:00",
+            "image": "2019/02132019/apw-deals-tax-day.jpg?02.19.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwtax01"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 21.5%; top: 55.5%; left: 75.8%;"
+                ]
+            }
+        },
+
+        {   // APW Deals Spring Essentials
+            "startdate": "2019-03-04 00:00:00",
+            "enddate": "2019-03-14 23:59:00",
+            "image": "2019/02272019/apw-deals-spring-essentials.jpg?02.27.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwspring01"
+                ],
+                "coords": [
+                    "height: 15.0%; width: 20.8%; top: 61.0%; left: 55.9%;"
+                ]
+            }
+        },
+
+        {   // APW Deals St. Patrick's
+            "startdate": "2019-03-15 00:00:00",
+            "enddate": "2019-03-23 23:59:00",
+            "image": "2019/03132019/apw-deals-st-patricks.jpg?03.13.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwpats01"
+                ],
+                "coords": [
+                    "height: 14.0%; width: 20.7%; top: 75.5%; left: 65.9%;"
+                ]
+            }
+        },
+
+        {   // APW Deals March Madness
+            "startdate": "2019-03-24 00:00:00",
+            "enddate": "2019-03-30 23:59:00",
+            "image": "2019/03212019/apw-deals-march-madness.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwmarch01"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 16.8%; top: 76.5%; left: 41.3%;"
+                ]
+            }
+        },
+
+        {   // APW Deals Car Care Month
+            "startdate": "2019-03-31 00:00:00",
+            "enddate": "2019-04-25 23:59:00",
+            "image": "2019/03282019/apw-deals-car-care-month.jpg?04.24.2019",
+            "map": {
+                "links": [
+                    "deals?intcmpid=apwcarcare01"
+                ],
+                "coords": [
+                    "height: 14.0%; width: 20.3%; top: 61.0%; left: 71.8%;"
+                ]
+            }
+        },       
+
+
+        /*--------- 2nd Slides ------------*/ 
+
+
+        {   // Featured Product: Holley
+            "startdate": "2019-01-09 00:00:00",
+            "enddate": "2019-01-14 23:59:00",
+            "image": "2019/01082019/apw-featured-product-holley.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Holley,part:Fuel+Injection+Kit)&intcmpid=apwfeatholley01"
+                ],
+                "coords": [
+                    "height: 12.6%; width: 21.2%; top: 75.4%; left: 65.7%;"
+                ]
+            }
+        },
+
+        {   // Featured Brand: AEM Air
+            "startdate": "2019-01-15 00:00:00",
+            "enddate": "2019-01-20 23:59:00",
+            "image": "2019/01082019/apw-featured-brand-aem-air.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:AEM+Air)&intcmpid=apwfeataem01"
+                ],
+                "coords": [
+                    "height: 12.3%; width: 20.5%; top: 71.9%; left: 13.1%;"
+                ]
+            }
+        },      
+
+        {   // Luverne Side Entry Step Kit Rebate
+            "startdate": "2019-01-21 00:00:00",
+            "enddate": "2019-01-27 23:59:00",
+            "image": "2019/01162019/apw-luverne-side-entry-step-kit-rebate.jpg?01.16.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Luverne,part:Running+Boards,D_attr_Series:Luverne+Side+Entry+7+in.)&intcmpid=apwluvboard01",
+                    "//images.apw21.com/Merchandising/Luverne_SideEntryStepKIT_Jan19.pdf?intcmpid=apwluvboard02"
+                ],
+                "coords": [
+                    "height: 12.6%; width: 18.3%; top: 67.1%; left: 59.6%;",
+                    "height: 12.6%; width: 18.3%; top: 67.1%; left: 78.5%;"
+                ]
+            }
+        },      
+
+        {   // UWS Secure Lock Tool Box Rebate
+            "startdate": "2019-01-28 00:00:00",
+            "enddate": "2019-02-03 23:59:00",
+            "image": "2019/01232019/apw-uws-secure-lock-tool-box-rebate.jpg?01.23.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:UWS,D_attr_Series:UWS+Secure+Lock)&intcmpid=apwuwssecure01",
+                    "//images.apw21.com/Merchandising/UWS_SecureLock_Jan2019.pdf?intcmpid=apwuwssecure02"
+                ],
+                "coords": [
+                    "height: 12%; width: 20%; top: 75.1%; left: 52%;",
+                    "height: 12%; width: 20%; top: 75.1%; left: 72.5%;"
+                ]
+            }
+        },      
+
+        {   // Luverne Slim Grip Steps Rebate
+            "startdate": "2019-02-04 00:00:00",
+            "enddate": "2019-02-10 23:59:00",
+            "image": "2019/01292019/apw-luverne-slim-grip-steps-rebate.jpg?01.29.2019",
+            "map": {
+                "links": [
+                "search/?Nr=AND(brand:Luverne,part:Running+Boards,D_attr_Series:Luverne+5+in.+SlimGrip)&intcmpid=apwluvsteps01",
+                "//images.apw21.com/Merchandising/Luverne_SlimGrip_Jan2019.pdf?intcmpid=apwluvsteps02"
+                ],
+                "coords": [
+                    "height: 12.6%; width: 18.4%; top: 65.7%; left: 59.2%;",
+                    "height: 12.6%; width: 18.4%; top: 65.7%; left: 78.3%;"
+                ]
+            }
+        },
+
+        {   // Omix 2019 Year Long Rebate Program
+            "startdate": "2019-02-11 00:00:00",
+            "enddate": "2019-02-17 23:59:00",
+            "image": "2019/01292019/apw-omix-2019-year-long-rebate-program.jpg?01.29.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Omix)&intcmpid=apwomix01",
+                    "//images.apw21.com/Merchandising/Omix_2019_RebateProgram.pdf?intcmpid=apwomix02"
+                ],
+                "coords": [
+                    "height: 12.6%; width: 20.9%; top: 65.7%; left: 55.7%;",
+                    "height: 12.6%; width: 20.9%; top: 65.7%; left: 77.2%;"
+                ]
+            }
+        },
+
+        {   // AFE President's Day Sale
+            "startdate": "2019-02-18 00:00:00",
+            "enddate": "2019-02-24 23:59:00",
+            "image": "2019/02132019/apw-afe-presidents-day-sale.jpg?02.19.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:aFe)&intcmpid=apwafepres01"
+                ],
+                "coords": [
+                    "height: 13.5%; width: 18.7%; top: 81.3%; left: 68.8%;"
+                ]
+            }
+        },
+
+        {   // Featured Product: Weiand
+            "startdate": "2019-02-25 00:00:00",
+            "enddate": "2019-03-03 23:59:00",
+            "image": "2019/02212019/apw-featured-product-weiand.jpg?02.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Weiand,part:Oil+Pan)&intcmpid=apwfeatweiand01"
+                ],
+                "coords": [
+                    "height: 14.3%; width: 19.3%; top: 77.0%; left: 18.8%;"
+                ]
+            }
+        },
+
+        {   // Powerstop March Promo
+            "startdate": "2019-03-04 00:00:00",
+            "enddate": "2019-03-10 23:59:00",
+            "image": "2019/02272019/apw-powerstop-march-promo.jpg?02.27.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Powerstop,part:Brake+Disc+and+Pad+Kit)&intcmpid=apwpstopmar01"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 18.7%; top: 63.0%; left: 12.4%;"
+                ]
+            }
+        },
+
+        {   // A1 Cardone Hot Rod Giveaway
+            "startdate": "2019-03-11 00:00:00",
+            "enddate": "2019-03-17 23:59:00",
+            "image": "2019/03062019/apw-a1-cardone-hot-rod-giveaway.jpg?03.06.201901",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:A1+Cardone)&intcmpid=apwa1cardone01",
+                    "https://cardonehotrodgiveaway.com/?intcmpid=apwa1cardone02"
+                ],
+                "coords": [
+                    "height: 11.0%; width: 18.6%; top: 67.0%; left: 22.3%;",
+                    "height: 11.0%; width: 18.6%; top: 67.0%; left: 3.2%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Steals - Rear Bumpers
+            "startdate": "2019-03-18 00:00:00",
+            "enddate": "2019-03-22 23:59:00",
+            "image": "2019/03132019/apw-go-rhino-spring-steals-rear-bumpers.jpg?03.13.201901",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino,part:Bumper,D_attr_Series:Go+Rhino+BR,D_attr_Location:Rear)&intcmpid=apwrhinorb01",
+                    "//images.apw21.com/Merchandising/GoBigeRewardsQ1Mar2019.pdf?intcmpid=apwrhinorb02"
+                ],
+                "coords": [
+                    "height: 12.8%; width: 18.0%; top: 79.0%; left: 2.9%;",
+                    "height: 12.8%; width: 18.0%; top: 79.0%; left: 21.5%;"
+                ]
+            }
+        },
+
+        {   // JW March Madness Promo
+            "startdate": "2019-03-23 00:00:00",
+            "enddate": "2019-03-28 23:59:00",
+            "image": "2019/03212019/apw-jw-march-madness-promo.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:JW+Speaker)&intcmpid=apwjwmar01"
+                ],
+                "coords": [
+                    "height: 11.3%; width: 14.9%; top: 81.5%; left: 75.6%;"
+                ]
+            }
+        },
+
+        {   // Bosal Spring Exhaust Sale
+            "startdate": "2019-03-29 00:00:00",
+            "enddate": "2019-03-31 23:59:00",
+            "image": "2019/03212019/apw-bosal-spring-exhaust-sale.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bosal)&intcmpid=apwbosspr01"
+                ],
+                "coords": [
+                    "height: 10.8%; width: 15.5%; top: 65.0%; left: 11.6%;"
+                ]
+            }
+        },
+
+        {   // Extang March Rebate
+            "startdate": "2019-04-01 00:00:00",
+            "enddate": "2019-04-07 23:59:00",
+            "image": "2019/03282019/apw-extang-march-rebate.jpg?03.28.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Extang,part:Tonneau+Cover,D_attr_Series:Extang+Solid+Fold+2.0)&intcmpid=apwextmar01",
+                    "//images.apw21.com/Merchandising/EXTANG_SolidFold_Mar19.pdf?intcmpid=apwextmar02"
+                ],
+                "coords": [
+                    "height: 12.5%; width: 18.5%; top: 83.8%; left: 60.8%;",
+                    "height: 12.5%; width: 18.5%; top: 83.8%; left: 79.8%;"
+                ]
+            }
+        },
+
+        {   // Walker Products Spring Sale
+            "startdate": "2019-04-08 00:00:00",
+            "enddate": "2019-04-14 23:59:00",
+            "image": "2019/04032019/apw-walker-products-spring-sale.jpg?04.03.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Walker+Products)&intcmpid=apwwalkapr01"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 18.2%; top: 81.0%; left: 24.8%;"
+                ]
+            }
+        },
+
+        {   // A1 Cardone Hot Rod Giveaway
+            "startdate": "2019-04-15 00:00:00",
+            "enddate": "2019-04-19 23:59:00",
+            "image": "2019/03062019/apw-a1-cardone-hot-rod-giveaway.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:A1+Cardone)&intcmpid=apwa1cardone01",
+                    "https://cardonehotrodgiveaway.com/?intcmpid=apwa1cardone02"
+                ],
+                "coords": [
+                    "height: 11.0%; width: 18.6%; top: 67.0%; left: 22.3%;",
+                    "height: 11.0%; width: 18.6%; top: 67.0%; left: 3.2%;"
+                ]
+            }
+        },
+
+        {   // Bestop $100 Back Promo
+            "startdate": "2019-04-20 00:00:00",
+            "enddate": "2019-04-25 23:59:00",
+            "image": "2019/04052019/apw-bestop-$100-back-promo.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bestop,part:Soft+Top)&intcmpid=apwbestb01",
+                    "//images.apw21.com/Merchandising/Bestop_JEEP100_Rebate_APR19.pdf?intcmpid=apwbestb02"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 18.5%; top: 73.5%; left: 2.4%;",
+                    "height: 13.0%; width: 18.5%; top: 73.5%; left: 21.5%;"
+                ]
+            }
+        },                                
+
+        /*--------- 3rd Slides ------------*/  
+
+
+        {   // Featured Brand: Crown Automotive
+            "startdate": "2019-01-09 00:00:00",
+            "enddate": "2019-01-14 23:59:00",
+            "image": "2019/01082019/apw-featured-brand-crown-automotive.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Crown)&intcmpid=apwfeatcrown01"
+                ],
+                "coords": [
+                    "height: 11.7%; width: 20.5%; top: 77.1%; left: 7.4%;"
+                ]
+            }
+        },
+
+
+        {   // Featured Product: K&N
+            "startdate": "2019-01-15 00:00:00",
+            "enddate": "2019-01-20 23:59:00",
+            "image": "2019/01082019/apw-featured-product-k-and-n.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:K%26N,part:Cold+Air+Intake)&intcmpid=apwfeatkn01"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 20.5%; top: 70.9%; left: 12.8%;"
+                ]
+            }
+        },    
+
+        {   // Featured Brand: Spectre
+            "startdate": "2019-01-21 00:00:00",
+            "enddate": "2019-01-27 23:59:00",
+            "image": "2019/01162019/apw-featured-brand-spectre.jpg?01.16.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Spectre,part:Cold+Air+Intake)&intcmpid=apwfeatspec01"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 20%; top: 66.3%; left: 40%;"
+                ]
+            }
+        },    
+
+        {   // Aries StyleGuard XD Rebate - Extended
+            "startdate": "2019-01-28 00:00:00",
+            "enddate": "2019-02-02 23:59:00",
+            "image": "2019/01232019/apw-aries-styleguard-xd-rebate-extended.jpg?01.23.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Aries,part:Floor+Mats,D_attr_Series:Aries+StyleGuard+XD)&intcmpid=apwariesjan01",
+                    "//images.apw21.com/Merchandising/ARIES_StyleGuard_Ext_Jan19.pdf?intcmpid=apwariesjan02"
+                ],
+                "coords": [
+                    "height: 12%; width: 20.5%; top: 75.4%; left: 51.5%;",
+                    "height: 12%; width: 20.5%; top: 75.4%; left: 72.8%;"
+                ]
+            }
+        },  
+
+        {   // APW Rewards Feb
+            "startdate": "2019-02-03 00:00:00",
+            "enddate": "2019-02-09 23:59:00",
+            "image": "2019/02072019/apw-rewards-feb.jpg?02.08.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/myaccount/login?intcmpid=apwrewardsfeb01"
+                ],
+                "coords": [
+                    "height: 13.4%; width: 31.8%; top: 71.7%; left: 53.6%;"
+                ]
+            }
+        },      
+
+        {   // Aries AdvantEdge Bull Bars Rebate
+            "startdate": "2019-02-10 00:00:00",
+            "enddate": "2019-02-17 23:59:00",
+            "image": "2019/02132019/apw-aries-advantedge-bull-bars-rebate.jpg?02.13.2019",
+            "map": {
+                "links": [
+                "search/?Nr=AND(brand:Aries,part:Bull+Bar,D_attr_Series:Aries+AdvantEDGE)&intcmpid=apwadvantedge01",
+                "//images.apw21.com/Merchandising/ARIES_BullBar_Jan2019.pdf?intcmpid=apwadvantedge02"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 20.2%; top: 74.1%; left: 52.5%;",
+                    "height: 12.0%; width: 20.2%; top: 74.1%; left: 73.3%;"
+                ]
+            }
+        },      
+
+        {   // UWS Side Mount Tool Box Rebate
+            "startdate": "2019-02-18 00:00:00",
+            "enddate": "2019-02-24 23:59:00",
+            "image": "2019/02132019/apw-uws-side-mount-tool-box-rebate.jpg?02.19.2019",
+            "map": {
+                "links": [
+                "search/?Nr=AND(brand:UWS,D_attr_Series:UWS+Truck+Side)&intcmpid=apwuwsside01",
+                "//images.apw21.com/Merchandising/UWS_SideMount_Jan2019.pdf?intcmpid=apwuwsside02"
+                ],
+                "coords": [
+                    "height: 11.3%; width: 15.0%; top: 83.8%; left: 67.9%;",
+                    "height: 11.3%; width: 15.0%; top: 83.8%; left: 83.4%;"
+                ]
+            }
+        },
+
+        {   // Featured Product: ReadyLift
+            "startdate": "2019-02-25 00:00:00",
+            "enddate": "2019-03-03 23:59:00",
+            "image": "2019/02212019/apw-featured-product-readylift.jpg?02.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:ReadyLift,part:Suspension+Lift+Kit,D_attr_Series:ReadyLift+SST)&intcmpid=apwfeatreadylift01"
+                ],
+                "coords": [
+                    "height: 11.0%; width: 15.3%; top: 73.0%; left: 29.5%;"
+                ]
+            }
+        },
+
+        {   // Liland Mar. - Apr. Promo
+            "startdate": "2019-03-04 00:00:00",
+            "enddate": "2019-03-10 23:59:00",
+            "image": "2019/02272019/apw-liland-mar-apr-promo.jpg?02.27.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Liland)&intcmpid=apwlilandmar01"
+                ],
+                "coords": [
+                    "height: 13.5%; width: 17.8%; top: 82.8%; left: 13.1%;"
+                ]
+            }
+        },
+
+        {   // Husky Liners Tax Refund Promo
+            "startdate": "2019-03-11 00:00:00",
+            "enddate": "2019-03-17 23:59:00",
+            "image": "2019/03062019/apw-husky-liners-tax-refund-promo.jpg?03.06.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Husky+Liners)&intcmpid=apwhuskytax01"
+                ],
+                "coords": [
+                    "height: 13.5%; width: 18.3%; top: 55.8%; left: 74.0%;"
+                ]
+            }
+        },
+
+        {   // APW Rewards March 2019
+            "startdate": "2019-03-18 00:00:00",
+            "enddate": "2019-03-23 23:59:00",
+            "image": "2019/03132019/apw-rewards-march-2019.jpg?03.13.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/myaccount/login?intcmpid=apwrewardsmar01"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 25.7%; top: 74.0%; left: 62.0%;"
+                ]
+            }
+        },
+
+        {   // Newark Spring Sale
+            "startdate": "2019-03-24 00:00:00",
+            "enddate": "2019-03-25 23:59:00",
+            "image": "2019/03212019/apw-newark-spring-sale.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Newark+Auto+Products)&intcmpid=apwnewmar01"
+                ],
+                "coords": [
+                    "height: 14.5%; width: 20.0%; top: 78.8%; left: 19.3%;"
+                ]
+            }
+        },
+
+        {   // APW Rewards March Madness
+            "startdate": "2019-03-26 00:00:00",
+            "enddate": "2019-03-30 23:59:00",
+            "image": "2019/03212019/apw-rewards-march-madness.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/login?intcmpid=apwrewmarch01"
+                ],
+                "coords": [
+                    "height: 12.5%; width: 26.0%; top: 77.0%; left: 58.8%;"
+                ]
+            }
+        },
+
+        {   // Newark Spring Sale
+            "startdate": "2019-03-31 00:00:00",
+            "enddate": "2019-04-04 23:59:00",
+            "image": "2019/03212019/apw-newark-spring-sale.jpg?03.28.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Newark+Auto+Products)&intcmpid=apwnewmar01"
+                ],
+                "coords": [
+                    "height: 14.5%; width: 20.0%; top: 78.8%; left: 19.3%;"
+                ]
+            }
+        },
+
+        {   // Quality-Built Spring Sale
+            "startdate": "2019-04-05 00:00:00",
+            "enddate": "2019-04-09 23:59:00",
+            "image": "2019/03282019/apw-quality-built-spring-sale.jpg?03.28.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Quality-Built)&intcmpid=apwqbspr01"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 22.0%; top: 69.3%; left: 14.1%;",
+                ]
+            }
+        },
+
+        {   // APW Rewards
+            "startdate": "2019-04-10 00:00:00",
+            "enddate": "2019-04-12 23:59:00",
+            "image": "2019/04032019/apw-rewards.jpg?04.03.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/login?intcmpid=apwrewapr01"
+                ],
+                "coords": [
+                    "height: 15.3%; width: 26.0%; top: 62.3%; left: 66.5%;"
+                ]
+            }
+        },
+
+        {   // Quality-Built Spring Sale
+            "startdate": "2019-04-13 00:00:00",
+            "enddate": "2019-04-14 23:59:00",
+            "image": "2019/03282019/apw-quality-built-spring-sale.jpg?04.03.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Quality-Built)&intcmpid=apwqbspr01"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 22.0%; top: 69.3%; left: 14.1%;",
+                ]
+            }
+        },
+
+        {   // APW Rewards Default
+          "startdate": "2019-04-15 00:00:00",
+          "enddate": "2019-04-22 23:59:00",
+          "image": "default/slider3.jpg?04.05.2019",
+          "map": {
+              "links": [
+                  "//account.autopartswarehouse.com/myaccount/login"
+              ],
+              "coords": [
+                  "height: 15.5%; width: 33.7%; top: 70.8%; left: 61.4%;"
+              ]
+          }
+        },
+
+        {   // APW Rewards Earth Day
+            "startdate": "2019-04-23 00:00:00",
+            "enddate": "2019-04-25 23:59:00",
+            "image": "2019/04052019/apw-rewards-earth-day.jpg?04.10.2019",
+            "map": {
+                "links": [
+                    "https://account.autopartswarehouse.com/login?intcmpid=apwrewards01"
+                ],
+                "coords": [
+                    "height: 14.5%; width: 20.7%; top: 77.3%; left: 19.7%;",
+                ]
+            }
+        },      
+
+        /*--------- 4th Slides ------------*/
+
+        {   // Featured Product: Centric Parts
+            "startdate": "2019-01-09 00:00:00",
+            "enddate": "2019-01-14 23:59:00",
+            "image": "2019/01082019/apw-featured-product-centric-parts.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Centric,part:Brake+Pad+Set)&intcmpid=apwfeatcentric01"
+                ],
+                "coords": [
+                    "height: 11%; width: 20.9%; top: 84.9%; left: 12.7%;"
+                ]
+            }
+        },
+
+
+        {   // Featured Product: Airaid
+            "startdate": "2019-01-15 00:00:00",
+            "enddate": "2019-01-20 23:59:00",
+            "image": "2019/01082019/apw-featured-product-airaid.jpg?01.08.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Airaid,part:Cold+Air+Intake)&intcmpid=apwfeatairaid01"
+                ],
+                "coords": [
+                    "height: 12.3%; width: 20.5%; top: 76.9%; left: 7.1%;"
+                ]
+            }
+        },     
+
+        {   // New Brand: Razor
+            "startdate": "2019-01-21 00:00:00",
+            "enddate": "2019-01-27 23:59:00",
+            "image": "2019/01162019/apw-new-brand-razor.jpg?01.16.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Razor)&intcmpid=apwnewrazor01"
+                ],
+                "coords": [
+                    "height: 12%; width: 20.5%; top: 78.9%; left: 73.4%;"
+                ]
+            }
+        },     
+
+        {   // Featured Brand: K&N
+            "startdate": "2019-01-28 00:00:00",
+            "enddate": "2019-02-03 23:59:00",
+            "image": "2019/01232019/apw-featured-brand-k-and-n.jpg?01.23.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:K%26N)&intcmpid=apwfeatkn01"
+                ],
+                "coords": [
+                    "height: 14%; width: 21%; top: 71.7%; left: 39.7%;"
+                ]
+            }
+        },      
+
+        {   // Husky Liners Winter Promotion 2019
+            "startdate": "2019-02-04 00:00:00",
+            "enddate": "2019-02-10 23:59:00",
+            "image": "2019/01292019/apw-husky-liners-winter-promotion-2019.jpg?01.29.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Husky+Liners)&intcmpid=apwhuskywinter01"
+                ],
+                "coords": [
+                    "height: 12%; width: 20.3%; top: 75.1%; left: 39.2%;"
+                ]
+            }
+        },     
+
+        {   // Featured Product: Airaid Intakes
+            "startdate": "2019-02-11 00:00:00",
+            "enddate": "2019-02-17 23:59:00",
+            "image": "2019/01292019/apw-featured-product-airaid-intakes.jpg?01.29.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Airaid,part:Cold+Air+Intake,D_attr_Series:Airaid+Jr.+Kit)&intcmpid=apwfeatairintake01"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 21.0%; top: 76.0%; left: 39.8%;"
+                ]
+            }
+        },     
+
+        {   // Featured Product: MSD
+            "startdate": "2019-02-18 00:00:00",
+            "enddate": "2019-02-24 23:59:00",
+            "image": "2019/02132019/apw-featured-product-msd.jpg?02.19.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:MSD,part:Distributor)&intcmpid=apwfeatmsd01"
+                ],
+                "coords": [
+                    "height: 14.0%; width: 18.5%; top: 82.8%; left: 10.7%;"
+                ]
+            }
+        },
+
+        {   // Featured Product: Hooker BlackHeart
+            "startdate": "2019-02-25 00:00:00",
+            "enddate": "2019-03-03 23:59:00",
+            "image": "2019/02212019/apw-featured-product-hooker-blackheart.jpg?02.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Hooker,part:Headers,D_attr_Series:Hooker+BlackHeart)&intcmpid=apwfeatheader01"
+                ],
+                "coords": [
+                    "height: 12.5%; width: 15.0%; top:80.0%; left: 61.5%;"
+                ]
+            }
+        },
+
+        {   // OES Genuine Mar. - Apr. Promo
+            "startdate": "2019-03-04 00:00:00",
+            "enddate": "2019-03-10 23:59:00",
+            "image": "2019/02272019/apw-oes-genuine-mar-apr-promo.jpg?02.27.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:OES+Genuine)&intcmpid=apwoesmar01"
+                ],
+                "coords": [
+                    "height: 13.3%; width: 20.0%; top: 73.3%; left: 24.2%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Steals - Jeep Fender Flares
+            "startdate": "2019-03-11 00:00:00",
+            "enddate": "2019-03-17 23:59:00",
+            "image": "2019/03062019/apw-go-rhino-spring-steals-jeep-fender-flares.jpg?03.06.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino,part:Fender+Flares)&intcmpid=apwrhinoff01",
+                    "//images.apw21.com/Merchandising/GoBigeRewardsQ1Mar2019.pdf?intcmpid=apwrhinoff02"
+                ],
+                "coords": [
+                    "height: 12.8%; width: 18.0%; top: 84.5%; left: 61.1%;",
+                    "height: 12.8%; width: 18.0%; top: 84.5%; left: 79.6%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Steals - Jeep Spare Tire Relocator
+            "startdate": "2019-03-18 00:00:00",
+            "enddate": "2019-03-22 23:59:00",
+            "image": "2019/03132019/apw-go-rhino-spring-steals-jeep-spare-tire-relocator.jpg?03.13.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino,part:Spare+Tire+Relocator)&intcmpid=apwrhinost01",
+                    "//images.apw21.com/Merchandising/GoBigeRewardsQ1Mar2019.pdf?intcmpid=apwrhinost02"
+                ],
+                "coords": [
+                    "height: 12.8%; width: 18.0%; top: 81.3%; left: 1.1%;",
+                    "height: 12.8%; width: 18.0%; top: 81.3%; left: 19.8%;"
+                ]
+            }
+        },
+
+        {   // Bosal Spring Exhaust Sale
+            "startdate": "2019-03-23 00:00:00",
+            "enddate": "2019-03-25 23:59:00",
+            "image": "2019/03212019/apw-bosal-spring-exhaust-sale.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bosal)&intcmpid=apwbosspr01"
+                ],
+                "coords": [
+                    "height: 10.8%; width: 15.5%; top: 65.0%; left: 11.6%;"
+                ]
+            }
+        },
+
+        {   // Featured Brand: OSC Automotive
+            "startdate": "2019-03-26 00:00:00",
+            "enddate": "2019-03-31 23:59:00",
+            "image": "2019/03212019/apw-featured-brand-osc-automotive.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:OSC+Automotive)&intcmpid=apwfeatosc01"
+                ],
+                "coords": [
+                    "height: 14.0%; width: 18.5%; top: 63.5%; left: 74.0%;"
+                ]
+            }
+        },
+
+        {   // Unity Mar. - Apr. Promo
+            "startdate": "2019-04-01 00:00:00",
+            "enddate": "2019-04-07 23:59:00",
+            "image": "2019/03282019/apw-unity-mar-apr-promo.jpg?03.28.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Unity,part:Shock+Absorber+and+Strut+Assembly)&intcmpid=apwunimar01"
+                ],
+                "coords": [
+                    "height: 13.3%; width: 19.0%; top: 79.5%; left: 60.9%;"
+                ]
+            }
+        },
+
+        {   // APEX Spring Sale
+            "startdate": "2019-04-08 00:00:00",
+            "enddate": "2019-04-14 23:59:00",
+            "image": "2019/04032019/apw-apex-spring-sale.jpg?04.04.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:APEX)&intcmpid=apwapexapr01"
+                ],
+                "coords": [
+                    "height: 13.5%; width: 18.5%; top: 80.5%; left: 65.8%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Fever Deals
+            "startdate": "2019-04-15 00:00:00",
+            "enddate": "2019-04-19 23:59:00",
+            "image": "2019/04052019/apw-go-rhino-spring-fever-deals.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino)&intcmpid=apwrhinospr01",
+                    "//images.apw21.com/Merchandising/GoRhino_Spring2019.pdf?intcmpid=apwrhinospr02"
+                ],
+                "coords": [
+                    "height: 12.3%; width: 18.0%; top: 81.5%; left: 1.3%;",
+                    "height: 12.3%; width: 18.0%; top: 81.5%; left: 19.9%;"
+                ]
+            }
+        },      
+
+        {   // Aries Apr. Rebate
+            "startdate": "2019-04-20 00:00:00",
+            "enddate": "2019-04-25 23:59:00",
+            "image": "2019/04052019/apw-aries-april-rebate.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Aries,part:Rock+Door)&intcmpid=apwariesapr01",
+                    "//images.apw21.com/Merchandising/Aries_APR2019.pdf?intcmpid=apwariesapr02"
+                ],
+                "coords": [
+                    "height: 11.8%; width: 16.7%; top: 79.8%; left: 61.6%;",
+                    "height: 11.8%; width: 16.7%; top: 79.8%; left: 78.9%;"
+                ]
+            }
+        },         
+
+        /*--------- 5th Slides ------------*/  
+
+        {   // Featured Product: Corsa
+            "startdate": "2019-01-21 00:00:00",
+            "enddate": "2019-01-27 23:59:00",
+            "image": "2019/01162019/apw-featured-product-corsa.jpg?01.16.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Corsa,part:Exhaust+System)&intcmpid=apwfeatcorsa01"
+                ],
+                "coords": [
+                    "height: 12%; width: 20%; top: 79.1%; left: 10.8%;"
+                ]
+            }
+        },     
+
+        {   // Featured Brand: Borla
+            "startdate": "2019-01-28 00:00:00",
+            "enddate": "2019-02-03 23:59:00",
+            "image": "2019/01232019/apw-featured-brand-borla.jpg?01.23.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Borla,part:Exhaust+System)&intcmpid=apwfeatborla01"
+                ],
+                "coords": [
+                    "height: 12.9%; width: 20%; top: 62%; left: 19.6%;"
+                ]
+            }
+        },         
+        
+        {   // Bedrug Impact Bed Mats Rebate
+            "startdate": "2019-02-04 00:00:00",
+            "enddate": "2019-02-10 23:59:00",
+            "image": "2019/01292019/apw-bedrug-impact-bed-mats-rebate.jpg?01.29.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bedrug,part:Bed+Mat,D_attr_Series:BedRug+Impact)&intcmpid=apwimpact01",
+                    "//images.apw21.com/Merchandising/BR_IMPACTLINER_Feb2019.pdf?intcmpid=apwimpact02"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 20.4%; top: 74.6%; left: 49.2%;",
+                    "height: 12.0%; width: 20.4%; top: 74.6%; left: 70.3%;"
+                ]
+            }
+        },         
+        
+        {   // Featured Brand: Superchips
+            "startdate": "2019-02-11 00:00:00",
+            "enddate": "2019-02-17 23:59:00",
+            "image": "2019/01292019/apw-featured-brand-superchips.jpg?01.29.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Superchips,part:Tuner)&intcmpid=apwfeatchips01",
+                    "//images.apw21.com/Merchandising/Superchips2019_18JL.pdf?intcmpid=apwfeatchips02"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 20.5%; top: 73.4%; left: 4.2%;",
+                    "height: 12.0%; width: 20.5%; top: 73.4%; left: 25.4%;"
+                ]
+            }
+        },     
+
+        {   // Featured Brand: Rancho
+            "startdate": "2019-02-18 00:00:00",
+            "enddate": "2019-02-24 23:59:00",
+            "image": "2019/02132019/apw-featured-brand-rancho.jpg?02.19.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Rancho,part:Suspension+Lift+Kit)&intcmpid=apwfeatrancho01"
+                ],
+                "coords": [
+                    "height: 14.5%; width: 19.8%; top: 74.3%; left: 15.7%;"
+                ]
+            }
+        },
+
+        {   // Featured Product: Bilstein
+            "startdate": "2019-02-25 00:00:00",
+            "enddate": "2019-03-03 23:59:00",
+            "image": "2019/02212019/apw-featured-product-bilstein.jpg?02.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bilstein,part:Shock+Absorber+and+Strut+Assembly)&intcmpid=apwfeatbilstein01"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 18.3%; top:79.8%; left: 7.1%;"
+                ]
+            }
+        },
+
+        {   // Featured Product: Hooker BlackHeart Engine Mount
+            "startdate": "2019-03-04 00:00:00",
+            "enddate": "2019-03-10 23:59:00",
+            "image": "2019/02272019/apw-featured-product-hooker-blackheart-engine-mount.jpg?02.27.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Hooker)&intcmpid=apwfeatengine01"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 15.4%; top: 79.3%; left: 61.3%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Steals - Front Bumpers
+            "startdate": "2019-03-11 00:00:00",
+            "enddate": "2019-03-17 23:59:00",
+            "image": "2019/03062019/apw-go-rhino-spring-steals-front-bumpers.jpg?03.06.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino,part:Bumper,D_attr_Series:Go+Rhino+BR)&intcmpid=apwrhinobr01",
+                    "//images.apw21.com/Merchandising/GoBigeRewardsQ1Mar2019.pdf?intcmpid=apwrhinobr02"
+                ],
+                "coords": [
+                    "height: 13.8%; width: 18.6%; top: 83.5%; left: 61.1%;",
+                    "height: 13.8%; width: 18.6%; top: 83.5%; left: 80.4%;"
+                ]
+            }
+        },
+
+        {   // Go Rhino Spring Steals - Jeep Fender Liners
+            "startdate": "2019-03-18 00:00:00",
+            "enddate": "2019-03-24 23:59:00",
+            "image": "2019/03132019/apw-go-rhino-spring-steals-jeep-fender-liners.jpg?03.13.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Go+Rhino,part:Fender+Liner)&intcmpid=apwrhinofl01",
+                    "//images.apw21.com/Merchandising/GoBigeRewardsQ1Mar2019.pdf?intcmpid=apwrhinofl02"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 18.0%; top: 81.0%; left: 1.3%;",
+                    "height: 13.0%; width: 18.0%; top: 81.0%; left: 19.9%;"
+                ]
+            }
+        },
+
+        {   // Featured Brand: Yukon Gear
+            "startdate": "2019-03-25 00:00:00",
+            "enddate": "2019-03-31 23:59:00",
+            "image": "2019/03212019/apw-featured-brand-yukon-gear.jpg?03.21.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Yukon+Gear+%26+Axle)&intcmpid=apwfeatyukon01"
+                ],
+                "coords": [
+                    "height: 13.3%; width: 18.5%; top: 69.8%; left: 3.5%;"
+                ]
+            }
+        },
+
+        {   // Featured Brand: AEM Air
+            "startdate": "2019-04-01 00:00:00",
+            "enddate": "2019-04-07 23:59:00",
+            "image": "2019/03282019/apw-featured-brand-aem-air.jpg?03.28.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:AEM+Air,part:Cold+Air+Intake)&intcmpid=apwfeataem01"
+                ],
+                "coords": [
+                    "height: 12.0%; width: 19.0%; top: 77.3%; left: 64.0%;"
+                ]
+            }
+        },
+
+        {   // Unity Spring Suspension Sale
+            "startdate": "2019-04-08 00:00:00",
+            "enddate": "2019-04-14 23:59:00",
+            "image": "2019/04032019/apw-unity-spring-suspension-sale.jpg?04.03.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Unity)&intcmpid=apwuniapr01"
+                ],
+                "coords": [
+                    "height: 12.8%; width: 18.5%; top: 82.0%; left: 61.8%;"
+                ]
+            }
+        },
+
+        {   // Bestop $50 Back Promo
+            "startdate": "2019-04-15 00:00:00",
+            "enddate": "2019-04-19 23:59:00",
+            "image": "2019/04052019/apw-bestop-$50-back-promo.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Bestop,part:Soft+Top)&intcmpid=apwbesta01",
+                    "//images.apw21.com/Merchandising/Bestop_JEEP50_APR19.pdf?intcmpid=apwbesta02"
+                ],
+                "coords": [
+                    "height: 12.3%; width: 18.5%; top: 64.8%; left: 55.0%;",
+                    "height: 12.3%; width: 18.5%; top: 64.8%; left: 74.1%;"
+                ]
+            }
+        },
+
+        {   // Autometer Tachs Season Rebate
+            "startdate": "2019-04-20 00:00:00",
+            "enddate": "2019-04-25 23:59:00",
+            "image": "2019/04052019/apw-autometer-tachs-season-rebate.jpg?04.05.2019",
+            "map": {
+                "links": [
+                    "search/?Nr=AND(brand:Autometer,part:Tachometer)&intcmpid=apwautomapr01",
+                    "//images.apw21.com/Merchandising/Autometer-Tachseason2019.pdf?intcmpid=apwautomapr02"
+                ],
+                "coords": [
+                    "height: 13.0%; width: 18.0%; top: 70%; left: 51.6%;",
+                    "height: 13.0%; width: 18.0%; top: 70%; left: 70.2%;"
+                ]
+            }
+        }             
+    ];
+
+    // Configuration for other campaigns
+    window.HeroshotOtherCampaignConfig = [
+
+        {
+            "startdate": "2017-09-06 00:00:00",
+            "enddate": "2017-09-09 23:59:00",
+            "image": "default/slider-1.jpg",
+            "map": {
+                "links": [
+                    "deals"
+                ],
+                "coords": [
+                    "height: 22%; width: 37%; top: 59%; left: 3%;"
+                ]
+            }
+        },
+        {
+            "startdate": "2014-09-06 00:00:00",
+            "enddate": "2014-09-09 23:59:00",
+            "image": "default/slider2.jpg?09.27.2018",
+            "map": {
+                "links": [
+                    "deals"
+                ],
+                "coords": [
+                    "height: 11.1%; width: 20.4%; top: 80.3%; left: 14.2%;"
+                ]
+            }
+        }
+
+    ];
+
+    // Fallback / default heroshot
+    window.HeroshotDefaultConfig = [
+
+        // {  Deals Page
+        //   "startdate": "2017-09-01 00:00:00",
+        //   "enddate": "2017-09-02 23:59:00",
+        //   "image": "default/slider2.jpg?09.27.2018",
+        //   "map": {
+        //       "links": [
+        //           "//www.autopartswarehouse.com/deals"
+        //       ],
+        //       "coords": [
+        //           "height: 11.1%; width: 20.4%; top: 80.3%; left: 14.2%;"
+        //       ]
+        //   }
+        // },
+
+        {   // APW Rewards
+          "startdate": "2017-09-01 00:00:00",
+          "enddate": "2017-09-02 23:59:00",
+          "image": "default/slider3.jpg?02.19.2019",
+          "map": {
+              "links": [
+                  "//account.autopartswarehouse.com/myaccount/login"
+              ],
+              "coords": [
+                  "height: 15.5%; width: 33.7%; top: 70.8%; left: 61.4%;"
+              ]
+          }
+        }
+
+    ];
+
+
+    /**
+     * Create a heroshot slide html string based on given node data
+     *
+     * @param  Integer index
+     * @param  Object  data
+     * @return String
+     */
+    function createHeroshotSlide(index, data) {
+        var h1 = "HeroSlide" + index;
+        var h2 = "HeroSlideImage" + index;
+        var img = window.dynamicSettingsObj.heroshotBaseUrl + data["image"];
+
+        var s = "";
+        s +=
+        s +=    '<div id="' + h1 + '" class="heroSlide">';
+
+//        s +=    '    <picture>';
+//        s +=    '        <!--[if IE 9]><video style="display: none;"><![endif]-->';
+
+        for (var i in data["imageset"]) {
+            if (data["imageset"].hasOwnProperty(i)) {
+                var imgdata = data["imageset"][i];
+                var type = "";
+                if (imgdata.type) {
+                    type=' type="' + imgdata.type + '"';
+                }
+//        s +=    '        <source media="' + imgdata.media + '" srcset="' + window.dynamicSettingsObj.heroshotBaseUrl + imgdata.srcset + '"' + type + '>';
+            }
+        }
+//        s +=    '        <!--[if IE 9]></video><![endif]-->';
+        s +=    '        <img src="' + img + '" alt="">';
+//        s +=    '    </picture>';
+
+        s +=    '    <div class="heroshotClickSpots">';
+
+        var linksLen = data["map"]["links"].length;
+        if (linksLen) {
+            for (var i=0; i<linksLen; i++) {
+
+                // Each links should match to a clickable coordinate
+                var l = data["map"]["links"][i];
+
+                if (l.indexOf("search") != -1) {
+                    l = window.dynamicSettingsObj.hostName + "/" + l;
+                }
+                var c = data["map"]["coords"][i];
+
+
+                // See if we have custom links per snap
+                var imgSetLinks = [];
+                if (typeof data["imageset"] !== "undefined" && data["imageset"]) {
+                    for (var imgx in data["imageset"]) {
+                        if (data["imageset"].hasOwnProperty(imgx)) {
+                            var imgdata = data["imageset"][imgx];
+                            if (typeof imgdata["coords"] !== "undefined" && imgdata["coords"].length) {
+                                // Sometimes, coords can be an empty string
+                                if (imgdata["coords"][i].length) {
+                                    var isl = '<div class="heroshotClickOverlay ' + imgdata["class"] + '"><a href="' + l + '" target="_blank" style="' + imgdata["coords"][i] + '">&nbsp;</a></div>';
+                                    imgSetLinks.push(isl);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // As long as picture tag is supported, lets do this
+                if (imgSetLinks.length && typeof window.HTMLPictureElement == "function") {
+        s +=    '           ' + imgSetLinks.join(" ");
+                } else {
+                      if(i==0){
+        s +=    '       <div class="heroshotClickOverlay">';
+        s +=    '           <a href="' + l + '" target="_self" style="' + c + '">&nbsp;</a>';
+        s +=    '       </div>';
+                      } else {
+        s +=    '       <div class="heroshotClickOverlay">';
+        s +=    '           <a href="' + l + '" target="_blank" style="' + c + '">&nbsp;</a>';
+        s +=    '       </div>';
+
+                      }
+                }
+
+
+            }
+        }
+
+        s +=    '    </div>';
+        s +=    '</div>';
+
+        return s;
+    }
+
+    /**
+     * Creates a date object based on given array of parameters
+     *
+     * @param  String strDate
+     * @return Date
+     */
+    function createDateObject(strDate) {
+        var chunks = strDate.split(" ");
+        var d = null;
+        if (chunks.length == 2) {
+            var dChunks = chunks[0].split("-");
+            var tChunks = chunks[1].split(":");
+
+            if (dChunks.length == 3 && tChunks.length == 3) {
+                d = new Date(dChunks[0], dChunks[1] - 1, dChunks[2], tChunks[0], tChunks[1], tChunks[2]);
+            }
+        }
+        return d;
+    }
+
+    /**
+     * Returns an array of active heroshots from the specified list
+     * where date range falls on the current date
+     *
+     * @return Object
+     */
+    function getActiveHeroshots(data, timestamp) {
+        var ret = [];
+        for (var i in data) {
+            if (data.hasOwnProperty(i)) {
+                var node = data[i];
+                var startDate = createDateObject(node["startdate"]);
+                if (startDate) {
+                    startDate = Math.round(startDate.getTime()/1000);
+                }
+
+                var endDate = null;
+                if (node["enddate"]) {
+                    endDate = endDate = createDateObject(node["enddate"]);
+                    if (endDate) {
+                        endDate = Math.round(endDate.getTime()/1000);
+                    }
+                }
+
+                var isActive = false;
+
+                // At minimum, there must be a start date
+                if (startDate && startDate <= timestamp) {
+                    // If there is a defined end date, check if current falls within date range
+                    if (endDate) {
+                        if (endDate >= timestamp) {
+                            // Current date is within range
+                            isActive = true;
+                        }
+                    } else {
+                        // Current date is past start date and has no end date
+                        isActive = true;
+                    }
+                }
+
+                if (isActive) {
+                    ret.push(node);
+                }
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * Loads the heroshot html contents info the page
+     * using the active heroshots based on current date
+     * and current parameters (if any)
+     *
+     * @param  String timestamp
+     * @return void
+     */
+    function loadExtHeroshots(timestamp) {
+        // Determine which configuration to use:
+        // Available configs
+        //
+        //      HeroshotConfig
+        //      HeroshotOtherCampaignConfig
+        //      HeroshotDefaultConfig
+        //
+        // Currently using only 2 sets of config, modify anytime
+        var data = getActiveHeroshots(window.HeroshotConfig, parseInt(timestamp));
+        if (data.length == 0) {
+            data = window.HeroshotDefaultConfig;
+        }
+
+        for (var i in data) {
+            if (data.hasOwnProperty(i)) {
+                var node = data[i];
+                var s = createHeroshotSlide(i, node);
+                $("#HeroshotContainer").append(s);
+            }
+        }
+    }
+
+
+
+        if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+    }
+
+    
+    dynamicSettingsObj.heroshotBaseUrl = "https://img2.apwcontent.com/sites/autopartswarehouse.com/heroshot/default/images/";
+
+
+    if ( 'function' === typeof showCohortsTest) {
+        showCohortsTest();
+    } else {
+        $('.cohorts-ab-test-control').show();
+    }
+    
+    
+    if ( 'function' === typeof showSmartFitTest) {
+        showSmartFitTest();
+    } else {
+        $('.smart-fit-test-control').show();
+    }
+
+    if ( 'function' === typeof showAffirmTest) {
+        showAffirmTest();
+    } else {
+        $('.affirm-as-low-as').show();
+    }
+
+    if ( 'function' === typeof showGridviewTest) {
+        showGridviewTest();
+    }
+
+
+
+    var utag_data={
+    site_name:"AutoPartsWarehouse",
+page_name:"Home Page",
+section_name:"Home Page",
+page_type:"Home Page",
+user_status:"logged out",
+tclip:"MTguMjE3LjE1OS4xNzQ="    };
+    
+
+
+var s_account  = "usautopartswh"
+var sc_domain  = "autopartswarehouse"
+var sc_cid     = "scid" //apwcid
+var sc_cj      = "A1154013966W44c8db0e4c70a" //A1154013966W44c8db0e4c70a
+var sc_gan     = "D1203533282W47bc75e2bd0dd" //D1203533282W47bc75e2bd0dd
+var sc_cidkwd  = "scid,emcid,affcid,ppcid,chcid,tid,apwcid" //apwcid,apwkw
+var sc_cidkwdsec  = "APW_SRC" //JCW_SRC
+var sc_tracksrv = "www2.autopartswarehouse.com" //
+var sc_tracksrvsecure = "www2s.autopartswarehouse.com" //
+var sc_mcorgid = "FE49103A53220D4B0A490D4D@AdobeOrg";
+var sc_visitorNamespace = "usautoparts";
+
+var dcmsCookieName = "apwdcms"
+/* Affiliate Code */
+var affCodes = Array(
+"A1154013966W44c8db0e4c70a","D1203533282W47bc75e2bd0dd","I1209692992W481a73408bff5","E1209090014W48113fdeed4c3","I1204594883W47cca8c3e1d5e","V1201565613W479e6fadc9fce","B1216110463W487c5f7f8f826"
+);
+
+
+s.pageName = "Home Page"; 
+s.channel = "Home Page"; 
+s.pageType = "Home Page"; 
+s.prop3 = "Home Page"; 
+s.prop6 = "Home Page"; 
+s.eVar2 = "browse"; 
+s.eVar49 = "No"; 
+        // Cookie based tagging
+    // Includes mostly vehicle related since
+    // page is cached by akamai
+    (function(){
+        var hasVehicle = false;
+        var vehicle = {
+            "year": "",
+            "make": "",
+            "model": "",
+            "submodel": "",
+            "engine": ""
+        };
+        var vehicleText = [];
+
+        if (typeof dynamicSettingsObj.selectedVehicleTextCookieName !== "undefined") {
+            var vcookie = getCookie(dynamicSettingsObj.selectedVehicleTextCookieName);
+            if (vcookie) {
+                vcookie = vcookie.replace(/\+/g, " ");
+                vcookie = JSON.parse(vcookie);
+                if (typeof vcookie[0] !== "undefined") {
+                    vehicle["year"] = vcookie[0];
+                    vehicle["make"] = vcookie[1];
+                    vehicle["model"] = vcookie[2];
+
+                    vehicleText.push(vcookie[0]);
+                    vehicleText.push(vcookie[1]);
+                    vehicleText.push(vcookie[2]);
+                    hasVehicle = true;
+
+                    if (typeof vcookie[3] !== "undefined" && vcookie[3]) {
+                        vehicle["submodel"] = vcookie[3];
+                        vehicleText.push(vcookie[3]);
+                        if (typeof vcookie[3] !== "undefined" && vcookie[4]) {
+                            vehicle["engine"] = vcookie[4];
+                            vehicleText.push(vcookie[4]);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Override if vehicle is present
+        if (hasVehicle) {
+            // Override omniture tagging
+            var vtxt = vehicleText.join(":");
+            window.s.eVar11 = vtxt;
+            window.s.eVar38 = "Yes";
+
+            window.s.prop4 = vtxt;
+            window.s.prop11 = vehicle["year"];
+            window.s.prop12 = vehicle["make"];
+            window.s.prop13 = vehicle["model"];
+            window.s.prop19 = "Yes";
+
+            if (vehicle["submodel"]) {
+                window.s.prop25 = vehicle["submodel"];
+                if (vehicle["engine"]) {
+                    window.s.prop26 = vehicle["engine"];
+                }
+            }
+        }
+
+        //SEM PDP - if vehicle available in params - Overwirite tagging
+               
+    })();
+
+    //Tagging for Smartfit
+    //omniture tagging for a/b test
+//due to the cohorts is creating a cookie in the client side we need to do the omniture tagging in the client side also
+
+    if ( 'undefined' != typeof SMARTFIT_TEST_OBJECT && 'undefined' != typeof SMARTFIT_TEST_OBJECT.enable && SMARTFIT_TEST_OBJECT.enable ) {
+        if ( 'undefined' != typeof smart_fit_test ) {
+            if ( smart_fit_test.inTest() ) {
+                _evar41 = 'without SmartFit'; 
+               
+               if ( 'test' == smart_fit_test.getCohort() ) {
+                   _evar41 = 'with SmartFit'; 
+               }
+               
+               s.eVar41 = _evar41;
+            } else if ( Number(smart_fit_test.options.sample) < 1 ) {
+                s.eVar41 = "Control";
+            }
+        }
+    }
+
+
+(function(){
+    var apwsess = CookieGroupHandler.getCookieInstance("apwsession");
+    var recentAddVehicleSERP = 0;
+    var currentVid = getCookie("activeVehicleKey");
+
+    if (currentVid && currentVid == apwsess.getValue("serp_add_v")) {
+        recentAddVehicleSERP = 1;
+    }
+
+    if (PAGE_SECTION == "vehicle") {
+        fireVLPPreloadTagging();
+    } else if (PAGE_SECTION == "search") {
+
+        var sfStatus = deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.status');
+if (sfStatus && sfStatus !== "Disabled") {
+
+    cleanupSmartfitVehicle();
+
+    // Tagging when filters are suddenly removed
+    if (!dynamicSettingsObj.selectedPartId || !dynamicSettingsObj.hasSelectedRefinement) {
+        if (apwsess.getValue('smartfit_show_partfinder_lb') == "1" || (apwsess.getValue('smartfit_event93_flag') == "1" && !isCurrentVehicleSmartfit())) {
+            if (apwsess.getValue('isEvent91Triggered') == "1" && !recentAddVehicleSERP) {
+
+                var sfPart = ( null != apwsess.getValue('smartfit_partname') ) ? apwsess.getValue('smartfit_partname').replace(/\+/g," ") : '';
+                var _keys =  ['pageName', 'channel', 'prop3', 'events', 'eVar34', 'eVar40', 'eVar60'];
+                var _values = [s.pageName, s.channel, s.prop3, 'event93', sfPart, s.eVar40, sfPart];
+
+                setAnalyticsByOnclick(_keys, _values);
+                
+                if (!isCurrentVehicleSmartfit()) {
+                    apwsess.removeValue('lb_smartfit_engaged');
+                    apwsess.removeValue('left_nav_engaged');
+                    apwsess.writeGroup();
+                }
+
+                apwsess.removeValue('isEvent91Triggered');
+            }
+        }
+    }
+
+    // Part was changed or was first time set
+    if (dynamicSettingsObj.selectedPart) {
+        var sfPart = dynamicSettingsObj.selectedPart;
+        if (apwsess.getValue('smartfit_partname') != null && sfPart != apwsess.getValue('smartfit_partname').replace(/\+/g," ") ) {
+            apwsess.removeValue('smartfit_evar66_properties');
+        }
+        
+        apwsess.setValue('smartfit_partname', sfPart);
+        apwsess.writeGroup();
+
+    } else {
+        apwsess.removeValue('smartfit_partname');
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.writeGroup();
+    }
+
+    // There is a part selected and it is a smartfit enabled part
+    if (deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.part') && dynamicSettingsObj.isPartnameSmartfit) {
+
+        // #nofilter yet selected (left nav or smartfit)
+        if (!dynamicSettingsObj.hasSelectedRefinement) {
+            if (isCurrentVehicleSmartfit()) {
+                apwsess.removeValue('smartfit_evar66_properties');
+                // Make it YMM as the first engaged smartfit section
+                smartfitFlagForEvar66('YMM');
+            }
+        }
+
+        // Set tracking cookie to tell analytics that visitor filtered by left nav
+        $('.smartfit-tracking-evar66').on('click', function(){
+            smartfitFlagForEvar66('LN+Filters');
+            apwsess.setValue('left_nav_engaged', 1).writeGroup();
+        });
+        
+        // Set tracking cookie to track vehicle widget engagement
+        $('#PartfinderFilter').on('click', '.smartfit-tracking-evar66-sbvw', function(){
+            apwsess.setValue('smartfit_ymm_flag', 1).writeGroup();
+        });
+        
+        // Set tracking cookie to track vehicle widget engagement
+        $('#SerpPartfinder').on('click', '.smartfit-tracking-evar66-sbvw', function(){
+            apwsess.setValue('smartfit_ymm_flag', 1).writeGroup();
+        });
+
+        // If selected part is not smartfit, then no engagement
+        var sfSegment = deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.segment');
+        if (sfSegment !== "master" && sfSegment !== "test") {
+            // Not a smartfit partname, clear flags
+            apwsess.removeValue('lb_smartfit_engaged').removeValue('left_nav_engaged').writeGroup();
+        }
+
+        // If user engaged in left nav or lightbox, engagement will carry over
+        // only to the next landing page as long as user does not change partname
+        // However, if current vehicle is added from SERP, engagement is 
+        // carried over even on other partnames (as long as they are smartfit enabled)
+        if (isSmartfitEngaged() || isCurrentVehicleSmartfit()) {
+            
+            if (apwsess.getValue('smartfit_evar66_flag') == '1') {
+                if (apwsess.getValue('smartfit_evar66_properties') != null && validateEvar66Flag()) {
+
+                    var _sortedEvar66Properties = sortObject(apwsess.getValue('smartfit_evar66_properties'));
+                    var joinSortedEvarProperties = '';
+                    
+                    for ( var i in _sortedEvar66Properties ) {
+                        joinSortedEvarProperties = joinSortedEvarProperties+'|'+i;
+                    }
+                    
+                    s.eVar66 = joinSortedEvarProperties.substring(1).replace(/\+/g," ");
+                }
+
+                s.eVar60 = dynamicSettingsObj.selectedPart;
+            
+                s.events = setNewEvent('event91',s.events);
+                apwsess.setValue('isEvent91Triggered', 1);
+            }
+            
+            // Track clicks to sku pages
+            $('.smartfit-tracking-sku').click(function(){
+                apwsess.setValue('smartfit_sku', 1);
+                apwsess.setValue('smartfit_pl_sku', (dynamicSettingsObj.hasBrandSelected ? 0: 1));
+                apwsess.writeGroup();
+            });
+
+            // Track clicks to add-to-cart flow
+            $('input[class=add-to-cart-big], a.add-to-cart, a.add-special-price, .formHolder .btn-primary').click(function(){
+                apwsess.setValue('event_92_tag', true).writeGroup();
+            });
+            
+            apwsess.writeGroup();
+        }
+        
+        $('.edit-filtered-attribute').click(function(){
+            apwsess.removeValue('smartfit_event93_flag').writeGroup();
+        })
+        
+        $('.remove-filtered-attribute').click(function(){
+            apwsess.setValue('smartfit_event93_flag', 1).writeGroup();
+        });
+        
+        $('.smartfit-tracking-click').click(function(){
+            apwsess.removeValue('lb_smartfit_engaged');
+            apwsess.removeValue('left_nav_engaged');
+            apwsess.writeGroup();
+        });
+        
+        $('.smartfit-tracking-submit').submit(function(){
+            apwsess.removeValue('lb_smartfit_engaged');
+            apwsess.removeValue('left_nav_engaged');
+            apwsess.writeGroup();
+        });
+
+    } else {
+        // Reset if there is no smartfit question active
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.removeValue('lb_smartfit_engaged');
+        apwsess.removeValue('left_nav_engaged');
+    }
+} else {
+    // Either smartfit is disabled or no partname is selected yet
+    fireSERPPreloadTagging();
+}
+
+    } else if (PAGE_SECTION == "compare") {
+
+        userObject = apwsess.getValue('users');
+var skuLinks = $('.smartfit-tracking-sku');
+
+// Track branded and pl sku
+$('.smartfit-tracking-sku').each(function(i, obj){
+    $(this).click(function(){
+        var smarfit_sku = smartfit_pl_sku = 0;
+    
+        if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)] ) {
+            
+            if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)][2] ) {
+                smarfit_sku = userObject.selectedSku[obj.id.substring(2)][2];
+            }
+            
+            if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)][3] ) {
+                smartfit_pl_sku = userObject.selectedSku[obj.id.substring(2)][3];
+            }
+        }
+    
+        apwsess.setValue('smartfit_sku', smarfit_sku);
+        apwsess.setValue('smartfit_pl_sku', smartfit_pl_sku);
+        apwsess.writeGroup();
+    });
+});
+
+// Track add-to-cart
+$(".add-to-cart-compare").click(function(){
+    var p_id_val = encode($(this).siblings('form').children('input[name=productId]').val());
+
+    if ( p_id_val.indexOf('-semmi-') != -1 ) {
+      p_id_val = decode(p_id_val); 
+    }
+    if ( null != userObject && 'undefined' !=  typeof userObject.selectedSku[p_id_val][2] && userObject.selectedSku[p_id_val][2]) {
+        apwsess.setValue('event_92_tag', true).writeGroup();
+    }
+
+});
+
+apwsess.removeValue('lb_smartfit_engaged');
+apwsess.removeValue('left_nav_engaged');
+apwsess.removeValue('smartfit_evar66_properties');
+apwsess.removeValue('isEvent91Triggered');
+apwsess.writeGroup();
+
+    } else {
+
+        apwsess.removeValue('lb_smartfit_engaged');
+        apwsess.removeValue('left_nav_engaged');
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.writeGroup();
+    }
+ })();
+    //Tagging for Bundles
+    /**
+ * omniture tagging for a/b test
+ * due to the cohorts is creating a cookie in the client side we need to
+ * do the omniture tagging in the client side also delete the cookie of 
+ * mobile a/b test if the value is invalid 
+ * 
+ */
+
+if ( 'undefined' != typeof COHORT_TEST_OBJECT && 'undefined' != typeof COHORT_TEST_OBJECT.enable && COHORT_TEST_OBJECT.enable ) {
+    if ( 'undefined' != typeof cohorts_ab_test ) {
+        if ( cohorts_ab_test.inTest() ) {
+            _evar58 = 'with bundles with WorldPAC';
+
+            if ( 'test' == cohorts_ab_test.getCohort() ) {
+                _evar58 = 'without bundles with WorldPAC';
+            }
+
+            if ( 'test2' == cohorts_ab_test.getCohort() ) {
+                _evar58 = 'with bundles with WorldPAC';
+            }
+
+            s.eVar58 = _evar58;
+        } else if ( Number(cohorts_ab_test.options.sample) < 1 ) {
+            s.eVar58 = "Control";
+        }
+    }
+}
+    
+
+    //Tagging for Customer ID
+    $(function(){
+	var om_u = getQueryString('om_u');
+	if(om_u) {
+		s.eVar12 = om_u;
+	}
+});
+    //Tagging for Private label
+    /*
+
+Ominture tagging logic for Private label sku, due to the page caching we need to track the sku by creating a flag in cookie session and fire the corresponding event in their corresponding page ang scenario
+
+*/
+
+function setPlEventFlag(flag){
+    CookieGroupHandler.getCookieInstance('apwsession').setValue(flag, true).writeGroup();
+}
+
+function removePlEventFlag(objFlag){
+    
+    for ( var i in objFlag ) {
+        CookieGroupHandler.getCookieInstance('apwsession').removeValue(objFlag[i]).writeGroup();
+    }
+}
+    
+if ( CookieGroupHandler.getCookieInstance('apwsession').getValue('event_52_flag') ) {
+    s.events = setNewEvent("event52",s.events);
+    
+    $('.add-to-cart-sku').bind('click',function(){
+        setPlEventFlag('event_53_flag');
+    });
+}
+
+
+removePlEventFlag(['event_52_flag','event_53_flag']);
+
+    //for Unbxd A/B Test
+    var abtestCookieName = null;
+    var pairs = document.cookie.split(";");
+
+    for (var i=0; i<pairs.length; i++){
+      var pair = pairs[i].split("=");
+      if(pair[0].trim().indexOf("unbxdtest-") == 0){
+        abtestCookieName = pair[0];
+        break;
+      }
+    }
+ 
+    if ( null != getCookie(abtestCookieName) ) {
+        console.log(getCookie(abtestCookieName));
+        switch(getCookie(abtestCookieName).substring(0,1)){
+            case('a'): s.eVar40 = 'without Unbxd'; break;
+            case('b'): s.eVar40 = 'with Unbxd'; break;
+        }
+    }
+
+if( getQueryString('auto_suggest') != null ) {
+    s.eVar68 = getQueryString('auto_suggest');
+    
+    
+}
+
+    if ( $.cookie("mvt") != null && $.cookie("mvt_split") != null ) {
+        if ( $.cookie("mvt") == "a" ) {
+            s.eVar23 = "a."+$.cookie("mvt_split");
+        }
+        else if ( $.cookie("mvt") == "b" ) {
+            s.eVar23 = "b."+$.cookie("mvt_split");
+        }
+        else if ( $.cookie("mvt") == "c" ) {
+            s.eVar23 = "c."+$.cookie("mvt_split");
+        }
+    }
+
+    cookieV48 = null;
+    cookieV67 = null;
+    var eVar48Fires = false;
+    var eVar67Fires = false;
+    var query_params = {};
+        $.each(document.location.search.substr(1).split('&'),function(c,q){
+            var i = q.split('=');
+            if(typeof i[0] !='undefined' && typeof i[1] != 'undefined'){
+                query_params[i[0].toString()] = i[1].toString();
+            }
+    });
+
+    if (typeof PAGE_SECTION !== "undefined" && PAGE_SECTION && PAGE_SECTION != "compare") {
+        eVar48Fires = true;
+    }
+    if (typeof PAGE_SECTION !== "undefined" && PAGE_SECTION && PAGE_SECTION == "sku") {
+        eVar67Fires = true;
+    }
+
+    if (eVar48Fires) {
+        cookieV48 = $.cookie("evar48");
+    }
+    if(eVar67Fires) {
+        cookieV67 = $.cookie("evar67");
+    }
+    cookieV56 = $.cookie("evar56");
+    cookieV57 = $.cookie("evar57");
+    cookieP17 = $.cookie("prop17");
+    cookieP18 = $.cookie("prop18");
+
+    if ( (cookieV48!=null) && (cookieV56!=null) && (cookieV57!=null) && (cookieP17!=null) && (cookieP18!=null) && (cookieV48!=null)) {
+        s.eVar48 = cookieV48;
+        s.eVar56 = cookieV56;
+        s.eVar57 = cookieV57;
+        s.prop17 = cookieP17;
+        s.prop18 = cookieP18;
+        $.cookie('evar48', '',{expires:-1, path:'/'});
+        $.cookie('evar56', '',{expires:-1, path:'/'});
+        $.cookie('evar57', '',{expires:-1, path:'/'});
+        $.cookie('prop17', '',{expires:-1, path:'/'});
+        $.cookie('prop18', '',{expires:-1, path:'/'});
+    }
+
+    if(cookieV67!=null) {
+        s.eVar67 = cookieV67;
+        $.cookie('evar67', '',{expires:-1, path:'/',domain: getDomain()});
+    }
+
+    if(query_params['auto_suggest'] != "" && query_params['auto_suggest'] != undefined ) {
+        s.eVar68 = decodeURI(query_params['auto_suggest']);
+    }
+
+    cookieE83 = $.cookie("cmmEvent");
+    if(typeof(cookieE83) != "undefined" && cookieE83 !== null) {
+        if(typeof(s.events) != "undefined" && s.events !== null) {
+            s.events = s.events+","+cookieE83;
+        } else {
+            s.events = cookieE83;
+        }
+        $.cookie('cmmEvent', '',{expires:-1, path:'/'});
+    }
+
+    if(typeof(yt_event81) != "undefined" && yt_event81 !== null) {
+        s.events = s.events+",event81";
+    }
+
+    cookie_continue_link = $.cookie("continueLink");
+    if(typeof(cookie_continue_link ) != "undefined" && cookie_continue_link  !== null) {
+        var event54 = "event54";
+        if( s.events != 'undefined' && s.events != null && s.events != '' ) {
+            event54 = s.events + ",event54";
+        }
+        $.cookie('continueLink', '',{expires:-1, path:'/', domain: getDomain()});
+        s.events = event54;
+    }
+
+
+
+
+    cookieOldPagename = $.cookie("oldPageName");
+        if(typeof(cookieOldPagename ) != "undefined" && cookieOldPagename  !== null) {
+        s.prop6 = cookieOldPagename;
+                $.cookie('cookieOldPagename', '',{expires:-1, path:'/', domain: getDomain()});
+        }
+
+
+
+    if ( typeof componentsContents != 'undefined' && typeof componentsContents['component'] != 'undefined' && typeof componentsContents['component'].Analytics != 'undefined' ) {
+        for ( var key in componentsContents['component'].Analytics[1] ) {
+            if ( componentsContents['component'].Analytics[1][key] != '' && componentsContents['component'].Analytics[1][key] != null ) {
+                eval("s."+key+" = componentsContents['component'].Analytics[1]."+key+"; \n");
+            }
+        }
+    }
+
+    cookieV48 = $.cookie("v48");
+    if (cookieV48!=null && eVar48Fires) {
+        s.eVar48 = cookieV48;
+        $.cookie('v48', '',{expires:-1, path:'/'});
+    }
+
+    // apw set eVar48 :: page where user selected vehicle year
+    if($.cookie('eVar48') && eVar48Fires) {
+        s.eVar48 = decodeURIComponent($.cookie('eVar48'));
+    }
+
+    if ($.cookie("isSetSplit") == null) {
+        if ( splitEnabled ) {
+            if ($.cookie("splitb") != null) {
+                var evarvalue = $.cookie("splitb");
+                s.eVar49 = "b."+evarvalue;
+                var s_code=s.t();
+                if(s_code) {
+                    document.write(s_code);
+                }
+                $.cookie("isSetSplit", "true", {path:"/"});
+            }
+        }
+    }
+         $(window).load(function() {
+            if (typeof PAGE_SECTION !== typeof undefined && 
+                (PAGE_SECTION.toLowerCase() === 'search' || PAGE_SECTION.toLowerCase() === 'sku')) {
+                    /**
+                     * Set eVar60 onload for Selected Part
+                     * 
+                     */
+                    if (typeof dynamicSettingsObj.selectedPart !== typeof undefined) {
+                        // SERP
+                        s.eVar60 = dynamicSettingsObj.selectedPart;
+                    }
+                    if (typeof dynamicSettingsObj.selectedSkuPart !== typeof undefined) {
+                        // PDP
+                        s.eVar60 = dynamicSettingsObj.selectedSkuPart;
+                    }
+            }
+
+            var s_code=s.t();
+        });
+    
+    $('#SocialMediaFixed > ul > li').click(function(){
+        var arrTrackVars = ['events','eVar25'];
+        var arrTrackValues = ['event64',$(this).attr('socialmedianame')];
+        setOnloadAnalytics('socialmediaOmniture',arrTrackVars,arrTrackValues);
+    });
+
+
+    function setCheckoutCreateAccountFailedOmni(eventValue, evarValue) {
+
+        if ( evarValue == 'Failed' ) {
+            var sc_events = '';
+
+            if ( s.events != '' ) {
+                sc_events = s.events;
+            }
+            if ( sc_events.search(/evarValue/i) < 0 ){
+                if(sc_events != ''){sc_events += ',';}
+                sc_events += eventValue;
+            }
+
+            s.events =  sc_events;
+            s.eVar61 = evarValue;
+            var s_code=s.t();
+            if(s_code){
+                document.write(s_code);
+            }
+        }
+    }
+
+    function changePageName(pageName) {
+        s.pageName = pageName;
+        var s_code=s.t();
+        if(s_code){
+            document.write(s_code);
+        }
+    }
+
+    $(document).ready(function() {
+        /*
+         * @desc: Get Query str
+         */
+        var queries = {};
+        $.each(document.location.search.substr(1).split('&'),function(c,q){
+            var i = q.split('=');
+            if(typeof i[0] !='undefined' && typeof i[1] != 'undefined'){
+                queries[i[0].toString()] = i[1].toString();
+            }
+        });
+
+        var nomatch = queries['M'];
+        if(typeof nomatch != 'undefined'){
+            s.prop1 = base64_decode(nomatch);
+            s.prop2 = '0';
+            s.eVar1 = base64_decode(nomatch);
+            s.eVar2 = 'search';
+            s.events = 'event14';
+            // var s_code=s.t();
+        }
+    });
+
+/*AMP Redirect Override Referrer */
+if (document.referrer.indexOf("www-autopartswarehouse-com.cdn.ampproject.org") >= 0){
+    var new_referrer = document.referrer.replace('www-autopartswarehouse-com.cdn.ampproject.org/v/s/','');
+    if(new_referrer != "" && new_referrer != undefined) {
+        s.referrer = new_referrer;
+    }
+}
+
+<!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//-->
+
+
+
+
+  var UnbxdSiteName = "prod-autopartswarehouse-com700941507122288";
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var ubx = document.createElement('script'); ubx.type = 'text/javascript'; ubx.async = true;
+  ubx.src = "//img.apwcontent.com/sites/apw-migration/includes/js/prd/unbxdAnalytics.js?8.24.0";
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ubx);
+  })();
+  
+	
+	$(document).ready(function () {
+		/* Unbxd Analytics */
+		/* For Product Click Event */
+		/* PDP */
+		$('.unbxd-product-tracking').click(function () {
+
+		    var productId = $(this).parent().children('.product-id').val();
+		    var pRank = $(this).parent().children('.prank').val();
+		    
+		    Unbxd.track("click", {"pid":productId,"prank":pRank});
+
+		});
+
+		/* SERP */
+	    $('.unbxd-tracking').click(function() {   
+
+	        var productId = $(this).parent().parent().parent().prev().find("input[name=product_id]").val()
+	        var elemname  = $(this).attr('data-elemname');
+
+	        if($(this).hasClass('btn__primary')) { 
+	        	var prank     = elemname.substr(elemname.indexOf("more_info_button_") + 17);
+	        } else if( $(this).find('img').length > 0) {
+	        	var prank     = elemname.substr(elemname.indexOf("item_image_link_") + 16);
+	        }
+	        else {
+	        	var prank     = elemname.substr(elemname.indexOf("item_name_link_") + 15);
+	    	}
+
+	    	
+	        Unbxd.track("click",{"pid":productId,"prank":prank});
+	    
+	    });
+
+	    $('.unbxd-search-tracking').click(function() {   
+
+	        var query = $(this).text();
+	        Unbxd.track("search", {"query":query});
+	    
+	    });
+
+	    $('.unbxd-search-tracking-spec').click(function() {   
+
+	        var query = $(this).parent().find('h5').children().first().text();
+	        Unbxd.track("search", {"query":query});
+	    
+	    }); 
+           
+	    
+	});
+
+
+
+		$(window).load(function(){
+		//reseller rating
+        $(document.createElement("img")).attr({ src: '//seals.resellerratings.com/seal.php?seller=9224',
+                                                border: '0',
+                                                onclick: "alert('Copying Prohibited by Law - ResellerRatings seal is a Trademark of All Enthusiast, Inc.'); return false;"
+                                                }).appendTo('.anchorResselerRating');
+		});
+	
+
+		// BEGIN: Google Trusted Stores
+		var gts = gts || [];
+		gts.push(['id', '15677']); // TS_MERCHANT_ID //required
+		gts.push(['google_base_offer_id', '']); //ITEM_GOOGLE_SHOPPING_ID //optional
+		gts.push(['google_base_subaccount_id', '15677']); //ITEM_GOOGLE_SHOPPING_ACCOUNT_ID //optional
+
+		$(window).load(function(){
+			var scheme = (("https:" == document.location.protocol) ? "https://" :
+			"http://");
+			var gtscript = document.createElement('script');
+			gtscript.type = 'text/javascript';
+			gtscript.async = true;
+			gtscript.src = scheme + "www.googlecommerce.com/trustedstores/api/js";
+
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(gtscript, s);
+		});
+		// END: Google Trusted Stores
+	
+
+    var talCustProp = "PageName=Home Page";
+
+    var isProactiveEnable = 0;
+
+
+
+
+
+var thirdparty_deprioritize=true;
+var thirdparty_deprioritize_dart=false;
+var tealiumfile ='//tags.tiqcdn.com/utag/usautoparts/autopartswarehouse/prod/utag.js';
+var pgaction = 'index';
+
+$(window).load(function(){
+    var utagscript = document.createElement('script');
+    utagscript.type ='text/javascript';
+    utagscript.async = true;
+    utagscript.src = tealiumfile;
+    document.body.appendChild(utagscript);
+});
+
+
+
+var analyticsChannel = "Home Page";
+
+
+
+// New WebIQ survey
+
+
+
+
+//Proactive chat moxie js library
+var proActiveVars = {"PageName":"Home Page"};
+
+if (PAGE_SECTION != 'brandpart' && PAGE_SECTION != 'shopbrandindex') {
+    if(typeof dynamicSettingsObj.yearTxt != 'undefined' && dynamicSettingsObj.yearTxt != null){
+        proActiveVars.Year = vehicle[0];
+    }
+
+    if(typeof dynamicSettingsObj.makeTxt != 'undefined' && dynamicSettingsObj.makeTxt != null){
+        proActiveVars.Make = decodeURIComponent(vehicle[1]);
+    }
+
+    if(typeof dynamicSettingsObj.modelTxt != 'undefined' &&  dynamicSettingsObj.modelTxt != null){
+        proActiveVars.Model = decodeURIComponent(vehicle[2]);
+    }
+}
+
+if(PAGE_SECTION == 'nomatch'){
+    proActiveVars.NullResult = s.prop1;
+}
+if (isProactiveEnable) {    
+    ProactiveChat.init(proActiveVars, [], []).writeCookie().writeTag();
+}
+// this is used to reset serp buybox to list view if user navigates to other pages
+    $.cookie('serpview','',{path:'/'});
+
+// removed cookie to avoid eVar36 for firing and disk caching issue
+$(window).load(function(){
+    if ( typeof s.getCookie("anlytxpt") != 'undefined' ) {
+        setCookie('anlytxpt', '', -3600);
+    }
+});
+
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"55916a94dc","applicationID":"89493046","transactionName":"Zl0HNRNXCkEDAUBaDV8XJAIVXwtcTQZRVQNEVBFOCFgAVxpNXV0GVEA=","queueTime":0,"applicationTime":171,"atts":"ShoEQ1tNGU8=","errorBeacon":"bam.nr-data.net","agent":""}

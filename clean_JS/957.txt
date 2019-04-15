@@ -1,0 +1,63 @@
+
+    var CCM_DISPATCHER_FILENAME = "/index.php";
+    var CCM_CID = 1;
+    var CCM_EDIT_MODE = false;
+    var CCM_ARRANGE_MODE = false;
+    var CCM_IMAGE_PATH = "/updates/concrete5-8.3.2/concrete/images";
+    var CCM_TOOLS_PATH = "/index.php/tools/required";
+    var CCM_APPLICATION_URL = "https://www.exrx.net";
+    var CCM_REL = "";
+    var CCM_ACTIVE_LOCALE = "en_US";
+
+
+$( document ).ready(function() {
+   $('.ccm-responsive-navigation.original ul li').has('ul').one("touchstart", function(e) {
+      $(this).one('click', function(e) {
+         e.preventDefault();
+      });
+   });
+});
+
+
+function selectAPlace(form){
+var formIndex = form.select1.selectedIndex;
+window.location = form.select1.options[formIndex].value;
+}
+
+
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,bg,bs,cs,da,de,el,en,es,fa,fi,fr,hi,hr,ht,hu,id,it,iw,ja,ko,ku,lt,lv,mn,my,ne,nl,no,pl,pt,ro,ru,sk,sl,sv,th,tl,tr,uk,vi,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-19549167-1'}, 'google_translate_element');
+	}
+	(function() {
+		var googleTranslateScript = document.createElement('script');
+		googleTranslateScript.type = 'text/javascript';
+		googleTranslateScript.async = true;
+		googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+		( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( googleTranslateScript );
+	})();
+
+
+
+// Removed this line on 12 April '18
+//TranslateThis();
+
+$(document).ready(function(){
+$("#mainNav").clone().prependTo($("body")).attr("id","mobileNav").addClass("visible-xs-block visible-sm-block").removeClass("hidden-xs hidden-sm");
+$("#icoMobileNav").click(function(){
+$(".ccm-page, #mobileNav").toggleClass("slideOver");	
+});	
+});//doc.ready
+
+// Start SFCHANGE1 - ExRx app pre-release email prompt 11/3/2018
+(function() {
+      var timeout = 10000;
+      setTimeout(function(){
+        var showBtns = window.localStorage.getItem('show_app_waitlist');
+        var popupGroup = window.localStorage.getItem('app_popup_group');
+        if((showBtns === null || Date.now().valueOf() >= Number(showBtns)) && popupGroup == 'c') {
+          $('#inline-app-prompt').fadeIn(1000);
+        }
+      },timeout);
+})();
+// End SFCHANGE1 - ExRx app pre-release email prompt 11/3/2018
+

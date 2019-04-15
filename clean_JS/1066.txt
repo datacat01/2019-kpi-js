@@ -1,0 +1,28 @@
+
+var deviceType =
+/iPad/.test(navigator.userAgent) ? "t" :
+/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)
+? "m" : "d";
+      window.criteo_q = window.criteo_q || [];
+      window.criteo_q.push(
+        { event: "setAccount", account: 26175},
+        { event: "setSiteType", type: deviceType });
+    
+
+          window.criteo_q.push(
+            { event: "viewHome"}
+          );
+        
+
+!function(e){if(!window.pintrk){window.pintrk = function () {
+window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+  
+pintrk('load','2614817548587'
+       
+      );
+pintrk('page');
+

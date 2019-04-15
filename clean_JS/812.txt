@@ -1,0 +1,139 @@
+try{Typekit.load();}catch(e){}
+
+(function(d) {
+    d.addEventListener("DOMContentLoaded", function(e) {
+        var h = d.getElementsByTagName("head"), s = d.createElement('script');
+        s.setAttribute("type", "text/javascript");
+        s.setAttribute("src", "https://apps.minibc.com/bootstrap/58f926bc27faa");
+        h[0].appendChild(s);
+});
+})(document);
+
+
+    // console.log(moment().format());
+    var now = moment();
+    var dayNum = Number(now.format('d'));
+    var hourNow = Number(now.format('H'));
+    console.log("DAY: " + dayNum + '. HOUR: ' + hourNow);
+
+    var isWedThurs = dayNum === 3 || dayNum === 4; // if it is wednesday OR thursday
+    var isNotBetweenHours = !(hourNow >= 9 && hourNow <= 15); // if it is not between 9am and 3pm on those days
+    var shippingOptionsToHide;
+
+    // check 2018 exceptions: Don't show on July 3,4 2018
+    var shouldHide2018 = false;
+    var dayOfMonth = Number(now.format('D'));
+    var monthNum = Number(now.format('M'));
+    var yearNum = Number(now.format('YYYY'));
+
+    // console.log('Day of Month:', dayOfMonth);
+    // console.log('Month Num:', monthNum);
+    // console.log('Year Num:', yearNum);
+
+    if ((dayOfMonth === 3 ||dayOfMonth === 4) && monthNum === 7 && yearNum === 2018) {
+        shouldHide2018 = true;
+    }
+
+
+    if (isWedThurs && isNotBetweenHours || shouldHide2018) { // then HIDE
+        // console.log('decided to hide');
+
+        window.onload = function () {
+            var doesListContainItems;
+            // hide the forth .ExpressCheckoutContent
+            var shippingDetailsContentContainer = document.querySelectorAll('.ExpressCheckoutContent')[3];
+            shippingDetailsContentContainer.style.display = 'none !important';
+
+            // var didItRunOnce = false;
+            var shippingItemListTimer = setInterval(function() {
+                doesListContainItems = document.querySelectorAll('.ShippingProviderList li').length;
+                // console.log('DOES LIST CONTAIN ITEMS LENGTH: '+doesListContainItems);
+                
+                if (doesListContainItems > 0) {
+                    // if (!didItRunOnce) {
+                        shippingDetailsContentContainer.style.display = 'none';
+                    
+                        // shippingDetailsContentContainer.style.display = 'none';
+                        shippingOptionsToHide = document.querySelectorAll('.ShippingProviderList li');
+                        shippingOptionsToHide.forEach(function (li, index) {
+                            if (index >= 2) {
+                                li.style.display = 'none';
+                            }
+                        });
+                    // }
+                    // if (!didItRunOnce) {
+                        shippingDetailsContentContainer.style.display = 'block';
+                        // didItRunOnce = true;
+                    // }
+                    clearInterval(shippingItemListTimer);
+                    // shippingDetailsContentContainer.style.display = 'block';
+                }
+            }, 800)
+         }
+    }
+
+
+  var _support = _support || { 'ui': {}, 'user': {} };
+  _support['account'] = 'flukerfarms';
+  _support['ui']['anonymousMode'] = 'mixed';
+  _support['ui']['enableKb'] = 'true';
+  _support['ui']['styles'] = {
+    widgetColor: 'rgba(108, 174, 78, 0.87)',
+  };
+  _support['ui']['widget'] = {
+    label: {
+      text: 'Let us know if you have any questions!',
+      mode: "notification",
+      delay: 3,
+      duration: 30,
+    },
+    position: {
+      bottom: '70px',
+      right: '22px'
+    }
+  };
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".flukerfarms.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"692dffb797a6f69f481d38879824e7cf7a811839","type":"ANONYMOUS","visit_id":"ee4dfb64-5233-4bcf-8182-f07aa58f1225","visitor_id":"45b010b1-2672-4a76-a03e-68c02c71d1e9"},"referer":{"url":""},"request":{"url":"https:\/\/flukerfarms.com\/"}}, '', 2898558, "other", {"customer":{"id":"anonymous"}}, 'ee4dfb64-5233-4bcf-8182-f07aa58f1225', '45b010b1-2672-4a76-a03e-68c02c71d1e9');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"3175d01baefaf85312386b97eaf2ed66841dd209dbd0dc6eb37fcb2dbd746083"};
+
+
+window.renderBadge = function() {
+    if ("BOTTOM_RIGHT" === "INLINE") {
+        var ratingBadgeContainer = document.getElementById("");
+    } else {
+        var ratingBadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingBadgeContainer);
+    }
+
+    window.gapi.load('ratingbadge', function() {
+        window.gapi.ratingbadge.render(
+            ratingBadgeContainer, {
+                "merchant_id": 1538758,
+                "position": "BOTTOM_RIGHT"
+        });
+    });
+}
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 827001924;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+  var _support = _support || { 'ui': {}, 'user': {} };
+  _support['user'] = {
+    email: '',
+    name: '',
+  };
+  

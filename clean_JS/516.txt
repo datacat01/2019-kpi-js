@@ -1,0 +1,1655 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.stuckonyou.com.au';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-25362776-1']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+        var awAfptcPopupObj = new awAfptcPopup({
+            el: 'aw-afptc-popup',
+            overlay: 'aw-afptc-overlay',
+            decline: 'aw-afptc-decline',
+            declineCheck: 'aw-afptc-decline-rule',
+            cookie: 'decline_cookie_name',
+            requestUrl: "https:\/\/www.stuckonyou.com.au\/awafptc\/cart\/getPopupHtml\/",
+            cookie_lifetime: 86400        });
+        Event.observe(document, 'dom:loaded', function(){
+            awAfptcPopupObj.init();
+        });
+        Event.observe(document, 'aw_ajaxcartpro_cart_update', function(){
+            awAfptcPopupObj.init();
+        });
+    
+
+    window.jQuery || document.write('<script src="https://cdn.stuckonyou.media/skin/frontend/base/default/afterpay/js/jquery-1.11.2.min.js?v=2.0.3"><\/script>');
+
+    jQuery.noConflict();
+
+    if (!window.jQuery.fn.fancybox) {
+        document.write('<script src="https://cdn.stuckonyou.media/skin/frontend/base/default/afterpay/js/fancybox2/jquery.fancybox.pack.js?v=2.0.3"><\/script>');        document.write('<link rel="stylesheet" type="text/css" media="all" href="https://cdn.stuckonyou.media/skin/frontend/base/default/afterpay/js/fancybox2/jquery.fancybox.css?v=2.0.3" />');
+    }
+
+
+        (function(){
+            var regionPrefix = "r1-";
+            var connector = document.createElement('script');
+            connector.type = 'text/javascript';
+            connector.src = '//' + regionPrefix + 't.trackedlink.net/_dmpt.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(connector, s);
+        })();
+    
+
+    //Email Capture For Quote
+
+    var emailCapture = Class.create();
+    emailCapture.prototype = {
+        initialize: function(options) {
+            this.options = Object.extend({
+                elements: "input[name='billing[email]']"
+            }, options || {} );
+
+            // Observe blur on email field
+            $$(this.options.elements).each(function(email) {
+                Event.observe(email,'blur',this.captureEmail.bindAsEventListener(this));
+            }.bind(this));
+        },
+
+        //capture email
+        captureEmail: function(event) {
+            var el = $(Event.element(event));
+            //validate email
+            if(el.value && this.validateEmail(el.value)){
+                //ajax call
+                new Ajax.Request('https://www.stuckonyou.com.au/' + 'connector/ajax/emailcapture', {
+                    method: 'post',
+                    parameters:{
+                        email:el.value
+                    }
+                });
+            }
+        },
+
+        //email validation
+        validateEmail: function (email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+    };
+
+    //Email Capture For Newsletter
+
+    var newsletterEmailCapture = Class.create();
+    newsletterEmailCapture.prototype = {
+        initialize: function(options) {
+            this.options = Object.extend({
+                elements: "input[name='email']"
+            }, options || {} );
+
+            // Observe blur on email field
+            $$(this.options.elements).each(function(email) {
+                Event.observe(email,'blur',this.captureEmail.bindAsEventListener(this));
+            }.bind(this));
+        },
+
+        //capture email
+        captureEmail: function(event) {
+            var el = $(Event.element(event));
+            //validate email
+            if(el.value && this.validateEmail(el.value)){
+                //ajax call
+                new Ajax.Request('https://www.stuckonyou.com.au/' + 'connector/ajax/emailcapture', {
+                    method: 'post',
+                    parameters:{
+                        email:el.value
+                    }
+                });
+            }
+        },
+
+        //email validation
+        validateEmail: function (email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+    };
+
+
+        (function(window) {
+            window.sweettooth = window.sweettooth || {};
+
+            sweettooth._server = sweettooth._server || {};
+            sweettooth._server.social = sweettooth._server.social || {};
+            sweettooth._server.social.urls = sweettooth._server.social.urls || {};
+
+                        sweettooth._server.social.urls.registerEvent = 'https://www.stuckonyou.com.au/rewardssocial2/social/registerEvent/';
+            sweettooth._server.social.urls.socialIntegrationJs = '//cdn.sweettoothrewards.com/assets/social-integration.js';
+            
+            sweettooth._server.social.forceActionType = false;
+            sweettooth._server.social.forceActionData = false;
+            
+            sweettooth._server.social.points = {
+                facebook_like: '',
+                facebook_share: '',
+                twitter_follow: '',
+                twitter_tweet: '',
+                google_plusone: '',
+                pinterest_pin: '',
+                facebook_share_purchase: '',
+                twitter_tweet_purchase: '',
+                facebook_share_referral: '',
+                twitter_tweet_referral: ''
+            },
+            sweettooth._server.social.messages = {
+                facebook_like: 'Earn <strong>{points_amount}</strong> for liking this on Facebook!',
+                facebook_share: 'Earn <strong>{points_amount}</strong> for sharing this on Facebook!',
+                twitter_follow: 'Earn <strong>{points_amount}</strong> for following us on Twitter!',
+                twitter_tweet: 'Earn <strong>{points_amount}</strong> for tweeting this on Twitter!',
+                google_plusone: 'Earn <strong>{points_amount}</strong> for +1&#39;ing this on Google+!',
+                pinterest_pin: 'Earn <strong>{points_amount}</strong> for pinning this on Pinterest!',
+                facebook_share_purchase: 'Earn <strong>{points_amount}</strong> for sharing this purchase on Facebook!',
+                twitter_tweet_purchase: 'Earn <strong>{points_amount}</strong> for tweeting about this purchase on Twitter!',
+                facebook_share_referral: 'Earn <strong>{points_amount}</strong> for sharing your referral link on Facebook!',
+                twitter_tweet_referral: 'Earn <strong>{points_amount}</strong> for tweeting your referral link on Twitter!'
+            };
+
+            var _oldContents = null;
+
+            sweettooth.social = {
+                registerEvent: function(action, data) {
+                    
+                    if (sweettooth._server.social.forceActionType) {
+                        action = sweettooth._server.social.forceActionType;
+                        data = sweettooth._server.social.forceActionData;
+                        
+                        sweettooth._server.social.forceActionType = false;
+                        sweettooth._server.social.forceActionData = false;
+                    }
+                    
+                    console.log('Registering ST Social Event: ' + action);
+                    
+                    if (!sweettooth._server.social.points.hasOwnProperty(action)) {
+                        return false;
+                    }
+
+                    new Ajax.Request(sweettooth._server.social.urls.registerEvent, {
+                        method: 'post',
+                        parameters: {
+                            action: action,
+                            data: JSON.stringify(data)
+                        },
+                        onComplete: function(response) {
+                            var message = response.responseText;
+                            var code = response.status;
+
+                            if (code === 400 || code === 401 || code === 429) {                            
+                                setTimeout(function() {
+                                    var htmlMessage = '<ul class="messages sweettooth-messages"><li class="error-msg"><ul><li>' 
+                                        + message 
+                                        + '</li></ul></li></ul>';
+
+                                    $$('.sweettooth-messages').invoke('remove');
+                                    $$('.col-main').first().insert({top: htmlMessage});
+                                }, 3000);
+                            }
+                        }
+                    });
+                },
+                showEarningMessage: function(action, target) {
+                    target = target || '.sweettooth-social-messages';
+                    var elements = document.querySelectorAll(target);
+
+                    if (!sweettooth._server.social.points[action]) {
+                        return false;
+                    }
+
+                    for (var i = 0; i < elements.length; i++) {
+                        var element = Element.extend(elements[i]);
+
+                        if (_oldContents === null) {
+                            _oldContents = element.innerHTML;
+                        }
+
+                        var message = sweettooth._server.social.messages[action];
+                        message = message.replace('{points_amount}', sweettooth._server.social.points[action]);
+
+                        element.update(message);
+                    }
+                },
+                clearEarningMessage: function(target) {
+                    if (_oldContents === null) {
+                        return false;
+                    }
+
+                    target = target || '.sweettooth-social-messages';
+                    var elements = document.querySelectorAll(target);
+
+                    for (var i = 0; i < elements.length; i++) {
+                        var element = Element.extend(elements[i]);
+                        element.update(_oldContents);
+                    }
+
+                    _oldContents = null;
+                },
+                openModal: function(modal) {
+                    if (modal === 'refer-friends') {
+                        $('sweettooth-refer-friends').setStyle({visibility: 'visible'});
+                        return true;
+                    }
+
+                    return false;
+                },
+                doAction: function(action, data) {
+                    switch (action) {
+                        case ('facebook_like'):
+                            $('facebook-like-modal').removeClassName('hidden');
+                            break;
+                        case ('facebook_share'):
+                            var url = 'http://www.facebook.com/sharer.php?s=100&p[url]=' + 'https://www.stuckonyou.com.au/';
+                            this.openPopup(url, 'Facebook Share');
+                            break;
+                        case ('twitter_follow'):
+                            var url = 'https://twitter.com/intent/user?screen_name=' + encodeURIComponent('');
+                            this.openPopup(url, 'Twitter Follow');
+                            break;
+                        case ('twitter_tweet'):
+                            var url = 'http://twitter.com/share?text=' + encodeURIComponent('Check this out!');
+                            this.openPopup(url, 'Twitter Tweet');
+                            break;
+                        case ('google_plusone'):
+                            var url = 'https://plus.google.com/share?url=' + 'https://www.stuckonyou.com.au/';
+                            this.openPopup(url, 'Google Plus');
+                            break;
+                        case ('pinterest_pin'):
+                            var url = 'http://pinterest.com/pin/create/bookmarklet/?url=' + 'https://www.stuckonyou.com.au/' + '&media=' + encodeURIComponent(data);
+                            this.openPopup(url, 'Pinterest Pin');
+                            break;
+                        case ('facebook_share_referral'):
+                            sweettooth._server.social.forceActionType = 'facebook_share_referral';
+                            
+                            var url = 'http://www.facebook.com/sharer.php?s=100&p[url]=' + 'https://www.stuckonyou.com.au/rewardsref/index/refer/';
+                            this.openPopup(url, 'Facebook Share Referral');
+                            
+                            break;
+                        case ('twitter_tweet_referral'):
+                            sweettooth._server.social.forceActionType = 'twitter_tweet_referral';
+                            
+                            var url = 'http://twitter.com/share?text=' + encodeURIComponent('Check this out!') + '&url=' + 'https://www.stuckonyou.com.au/rewardsref/index/refer/';
+                            this.openPopup(url, 'Twitter Tweet Referral');
+
+                            break;
+                        case ('facebook_share_purchase'):
+                            sweettooth._server.social.forceActionType = 'facebook_share_purchase';
+                            sweettooth._server.social.forceActionData = data;
+                            
+                            var url = 'http://www.facebook.com/sharer.php?s=100&p[url]=' + 'https://www.stuckonyou.com.au/';
+                            this.openPopup(url, 'Facebook Share Purchase');
+                            
+                            break;
+                        case ('twitter_tweet_purchase'):
+                            sweettooth._server.social.forceActionType = 'twitter_tweet_purchase';
+                            sweettooth._server.social.forceActionData = data;
+                            
+                            var url = 'http://twitter.com/share?text=' + encodeURIComponent('Check this out!') + '&url=' + 'https://www.stuckonyou.com.au/';
+                            this.openPopup(url, 'Twitter Tweet Purchase');
+                            
+                            break;
+                    }
+                },
+                openPopup: function(url, title) {
+                    var width  = 575;
+                    var height = 400;
+                    
+                    var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                    var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                    
+                    var left = (windowWidth - width)  / 2;
+                    var top = (windowHeight - height) / 2;
+                    var opts = 'status=1' + ',width=' + width + ',height=' + height + ',top=' + top  +',left=' + left;
+                    
+                    window.open(url, title, opts);
+                }
+            };
+        })(window);
+    
+
+            Event.observe(document, 'dom:loaded', function() {
+                if (sweettooth._server.social.urls.socialIntegrationJs) {
+                    (function(d, t) {
+                        var g = d.createElement(t),
+                            s = d.getElementsByTagName(t)[0];
+                        g.src = sweettooth._server.social.urls.socialIntegrationJs;
+                        s.parentNode.insertBefore(g, s);
+                    }(document, 'script'));
+                }
+            });
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+            jQuery(window).on('load',
+                function () {
+                    var request = jQuery.ajax(
+                        {
+                            type: 'post',
+                            url: 'https://www.stuckonyou.com.au/ontic_affiliate/customer/supported',
+                            datatype: 'json',
+                            cache: false
+                        }
+                    );
+
+                    request.done(function (data, textStatus, jqXHR) {
+                            var response = data.result;
+
+                            if (response && response.affiliateProfileName) {
+                                jQuery('.ontic-affiliate-widget.widget-5cafda88caedd .widget-value').text(response.affiliateProfileName);
+                                jQuery('.ontic-affiliate-widget.widget-5cafda88caedd').removeClass('hidden');
+                            }
+                        }
+                    );
+                }
+            );
+        
+
+	//<![CDATA[
+
+
+
+		var MegaMenu = {
+
+			mobileMenuThreshold: 960			, bar: jQuery('#nav')
+			, panels: null
+			, mobnavTriggerWrapper: null
+			, itemSelector: 'li'
+			, panelSelector: '.nav-panel'
+			, openerSelector: '.opener'
+			, isTouchDevice: ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0)
+			, ddDelayIn: 50
+			, ddDelayOut: 200
+			, ddAnimationDurationIn: 50
+			, ddAnimationDurationOut: 200
+
+			, init : function()
+			{
+				MegaMenu.panels = MegaMenu.bar.find(MegaMenu.panelSelector);
+				MegaMenu.mobnavTriggerWrapper = jQuery('.mobnav-trigger-wrapper');
+			}
+
+			, initDualMode : function()
+			{
+				MegaMenu.init();
+
+				if (jQuery('#nav-holders-wrapper-mobile').length)
+				{
+					MegaMenu.hookToModeChange(); //Hook to events only if necessary (if holders wrapper exists)
+				}
+
+				MegaMenu.bar.accordion(MegaMenu.panelSelector, MegaMenu.openerSelector, MegaMenu.itemSelector);
+				if (jQuery(window).width() >= MegaMenu.mobileMenuThreshold)
+				{
+					MegaMenu.cleanUpAfterMobileMenu(); //Required for IE8
+				}
+
+				enquire
+					.register('screen and (max-width: ' + (MegaMenu.mobileMenuThreshold - 1) + 'px)', {
+						match: MegaMenu.activateMobileMenu,
+						unmatch: MegaMenu.cleanUpAfterMobileMenu
+					})
+					.register('screen and (min-width: ' + MegaMenu.mobileMenuThreshold + 'px)', {
+						deferSetup: true,
+						setup: MegaMenu.cleanUpAfterMobileMenu,
+						match: MegaMenu.activateRegularMenu,
+						unmatch: MegaMenu.prepareMobileMenu
+					});
+			}
+
+			, initMobileMode : function()
+			{
+				MegaMenu.init();
+				MegaMenu.bar.accordion(MegaMenu.panelSelector, MegaMenu.openerSelector, MegaMenu.itemSelector);
+				MegaMenu.activateMobileMenu();
+			}
+
+			, activateMobileMenu : function()
+			{
+				MegaMenu.mobnavTriggerWrapper.show();
+				MegaMenu.bar.addClass('nav-mobile acco').removeClass('nav-regular');
+
+				jQuery(document).trigger("activate-mobile-menu"); ///
+			}
+
+			, activateRegularMenu : function() //Default state
+			{
+				MegaMenu.bar.addClass('nav-regular').removeClass('nav-mobile acco');
+				MegaMenu.mobnavTriggerWrapper.hide();
+
+				jQuery(document).trigger("activate-regular-menu"); ///
+			}
+
+			, cleanUpAfterMobileMenu : function()
+			{
+								MegaMenu.panels.css('display', '');
+			}
+
+			, prepareMobileMenu : function()
+			{
+								MegaMenu.panels.hide();
+
+								MegaMenu.bar.find('.item-active').each( function() {
+					jQuery(this).children('.nav-panel').show();
+				});
+			}
+
+			, hookToModeChange : function()
+			{
+				//Move holders to temporary container
+				jQuery(document).on('activate-mobile-menu', function(e, data) {
+
+					//Important: move in inverted order
+					jQuery('#nav-holders-wrapper-mobile').prepend(jQuery('#nav-holder1, #nav-holder2, #nav-holder3'));
+
+				}); //end: on event
+
+				//Move holders back to the menu bar
+				jQuery(document).on('activate-regular-menu', function(e, data) {
+
+					//Move holders back to the menu only if holders are NOT in the menu yet.
+					//Important: needed on initialization of the menu in regular mode.
+					if (jQuery('#nav-holder1').parent().is('#nav') === false)
+					{
+						//Important: move in inverted order
+						jQuery('#nav').prepend(jQuery('#nav-holder1, #nav-holder2, #nav-holder3'));
+					}
+
+				}); //end: on event
+			}
+
+		}; //end: MegaMenu
+
+
+
+		
+					MegaMenu.initDualMode();
+		
+		//Toggle mobile menu
+		jQuery('a.mobnav-trigger').on('click', function(e) {
+			e.preventDefault();
+			if (jQuery(this).hasClass('active'))
+			{
+				MegaMenu.bar.removeClass('show');
+				jQuery(this).removeClass('active');
+			}
+			else
+			{
+				MegaMenu.bar.addClass('show');
+				jQuery(this).addClass('active');					
+			}
+		});
+
+	
+
+
+		
+		jQuery(function($) {
+
+			var menubar = MegaMenu.bar;
+
+						menubar.on('click', '.no-click', function(e) {
+				e.preventDefault();
+			});
+
+						menubar.on('mouseenter', 'li.parent.level0', function() {
+				
+				if (false === menubar.hasClass('nav-mobile'))
+				{
+					var item = $(this);
+					var dd = item.children('.nav-panel');
+
+					var itemPos = item.position();
+					var ddPos = { left: itemPos.left, top: itemPos.top + item.height() };
+					if (dd.hasClass('full-width')) { ddPos.left = 0; }
+
+															dd.removeClass('tmp-full-width');
+
+									var ddConOffset = 0;
+					var outermostCon = menubar;
+				
+					var outermostContainerWidth = outermostCon.width();
+					var ddOffset = ddConOffset + ddPos.left;
+					var ddWidth = dd.outerWidth();
+
+										if ((ddOffset + ddWidth) > outermostContainerWidth)
+					{
+												var diff = (ddOffset + ddWidth) - outermostContainerWidth;
+						var ddPosLeft_NEW = ddPos.left - diff;
+
+												var ddOffset_NEW = ddOffset - diff;
+
+												if (ddOffset_NEW < 0)
+						{
+														dd.addClass('tmp-full-width');
+							ddPos.left = 0;
+						}
+						else
+						{
+														ddPos.left = ddPosLeft_NEW;
+						}
+					}
+					
+					dd
+						.css({
+							'left' : ddPos.left + 'px',
+							'top'  : ddPos.top + 'px'
+						})
+						.stop(true, true).delay(MegaMenu.ddDelayIn).fadeIn(MegaMenu.ddAnimationDurationIn, "easeOutCubic");
+				}
+
+			}).on('mouseleave', 'li.parent.level0', function() {
+				
+				if (false === menubar.hasClass('nav-mobile'))
+				{
+					$(this).children(".nav-panel")
+					.stop(true, true).delay(MegaMenu.ddDelayOut).fadeOut(MegaMenu.ddAnimationDurationOut, "easeInCubic");
+				}
+
+			}); //end: menu top-level dropdowns
+
+		}); //end: on document ready
+
+		jQuery(window).on("load", function() {
+
+			var menubar = MegaMenu.bar;
+
+			if (MegaMenu.isTouchDevice)
+			{
+				menubar.on('click', 'a', function(e) {
+
+					link = jQuery(this);
+					if (!menubar.hasClass('nav-mobile') && link.parent().hasClass('nav-item--parent'))
+					{
+						if (!link.hasClass('ready'))
+						{
+							e.preventDefault();
+							menubar.find('.ready').removeClass('ready');
+							link.parents('li').children('a').addClass('ready');
+						}
+					}
+
+				}); //end: on click
+			} //end: if isTouchDevice
+
+		}); //end: on load
+
+	
+
+
+	//]]>
+	
+
+//<![CDATA[
+
+		
+		var SmartHeader = {
+
+			mobileHeaderThreshold : 770
+			, rootContainer : jQuery('.header-container')
+
+			, init : function()
+			{
+				enquire.register('(max-width: ' + (SmartHeader.mobileHeaderThreshold - 1) + 'px)', {
+					match: SmartHeader.moveElementsToMobilePosition,
+					unmatch: SmartHeader.moveElementsToRegularPosition
+				});
+			}
+
+			, activateMobileHeader : function()
+			{
+				SmartHeader.rootContainer.addClass('header-mobile').removeClass('header-regular');
+			}
+
+			, activateRegularHeader : function()
+			{
+				SmartHeader.rootContainer.addClass('header-regular').removeClass('header-mobile');
+			}
+
+			, moveElementsToMobilePosition : function()
+			{
+				SmartHeader.activateMobileHeader();
+
+				//Move cart
+				jQuery('#mini-cart-wrapper-mobile').prepend(jQuery('#mini-cart'));
+
+			
+							//Move User Menu
+				jQuery('#user-menu-wrapper-mobile').prepend(jQuery('#user-menu'));
+			
+			
+				//Reset active state
+				jQuery('.skip-active').removeClass('skip-active');
+				
+				//Disable dropdowns
+				jQuery('#mini-cart').removeClass('dropdown');
+				jQuery('#mini-compare').removeClass('dropdown');
+
+				//Clean up after dropdowns: reset the "display" property
+				jQuery('#header-cart').css('display', '');
+				jQuery('#header-compare').css('display', '');
+
+			}
+
+			, moveElementsToRegularPosition : function()
+			{
+				SmartHeader.activateRegularHeader();
+
+				//Move cart
+				jQuery('#mini-cart-wrapper-regular').prepend(jQuery('#mini-cart'));
+
+			
+							//Move User Menu
+				jQuery('#user-menu-wrapper-regular').prepend(jQuery('#user-menu'));
+			
+			
+				//Reset active state
+				jQuery('.skip-active').removeClass('skip-active');
+
+				//Enable dropdowns
+				jQuery('#mini-cart').addClass('dropdown');
+				jQuery('#mini-compare').addClass('dropdown');
+			}
+
+		}; //end: SmartHeader
+
+		//Important: mobile header code must be executed before sticky header code
+		SmartHeader.init();
+
+		jQuery(function($) {
+
+			//Skip Links
+			var skipContents = $('.skip-content');
+			var skipLinks = $('.skip-link');
+
+			skipLinks.on('click', function (e) {
+				e.preventDefault();
+
+				var self = $(this);
+				var target = self.attr('href');
+
+				//Get target element
+				var elem = $(target);
+
+				//Check if stub is open
+				var isSkipContentOpen = elem.hasClass('skip-active') ? 1 : 0;
+
+				//Hide all stubs
+				skipLinks.removeClass('skip-active');
+				skipContents.removeClass('skip-active');
+
+				//Toggle stubs
+				if (isSkipContentOpen) {
+					self.removeClass('skip-active');
+				} else {
+					self.addClass('skip-active');
+					elem.addClass('skip-active');
+				}
+			});
+
+		}); //end: on document ready
+
+	
+
+
+		
+		jQuery(function($) {
+
+			var StickyHeader = {
+
+				stickyThreshold : 960 
+				, isSticky : false
+				, isSuspended : false
+				, headerContainer : $('.header-container')
+				, stickyContainer : $('.sticky-container')	//.nav-container
+				, stickyContainerOffsetTop : 55 //Position of the bottom edge of the sticky container relative to the viewport
+				, requiredRecalculation : false //Flag: required recalculation of the position of the bottom edge of the sticky container
+
+				, calculateStickyContainerOffsetTop : function()
+				{
+					//Calculate the position of the bottom edge of the sticky container relative to the viewport
+					StickyHeader.stickyContainerOffsetTop = 
+						StickyHeader.stickyContainer.offset().top + StickyHeader.stickyContainer.outerHeight();
+
+					//Important: disable flag
+					StickyHeader.requiredRecalculation = false;
+				}
+
+				, init : function()
+				{
+					StickyHeader.hookToActivatedDeactivated(); //Important: call before activateSticky is called
+					StickyHeader.calculateStickyContainerOffsetTop();
+					StickyHeader.applySticky();
+					StickyHeader.hookToScroll();
+					StickyHeader.hookToResize();
+
+					if (StickyHeader.stickyThreshold > 0)
+					{
+						enquire.register('(max-width: ' + (StickyHeader.stickyThreshold - 1) + 'px)', {
+							match: StickyHeader.suspendSticky,
+							unmatch: StickyHeader.unsuspendSticky
+						});
+					}
+				}
+
+				, applySticky : function()
+				{
+					if (StickyHeader.isSuspended) return;
+
+					//If recalculation required
+					if (StickyHeader.requiredRecalculation)
+					{
+						//Important: recalculate only when header is not sticky
+						if (!StickyHeader.isSticky)
+						{
+							StickyHeader.calculateStickyContainerOffsetTop();
+						}
+					}
+
+					var viewportOffsetTop = $(window).scrollTop();
+					if (viewportOffsetTop > StickyHeader.stickyContainerOffsetTop)
+					{
+						if (!StickyHeader.isSticky)
+						{
+							StickyHeader.activateSticky();
+						}
+					}
+					else
+					{
+						if (StickyHeader.isSticky)
+						{
+							StickyHeader.deactivateSticky();
+						}
+					}
+				}
+
+				, activateSticky : function()
+				{
+					var stickyContainerHeight = StickyHeader.stickyContainer.outerHeight();
+					var originalHeaderHeight = StickyHeader.headerContainer.css('height');
+
+					//Compensate the change of the header height after the sticky container was removed from its normal position
+					StickyHeader.headerContainer.css('height', originalHeaderHeight);
+
+					//Trigger even just before making the header sticky
+					$(document).trigger("sticky-header-before-activated");
+
+					//Make the header sticky
+					StickyHeader.headerContainer.addClass('sticky-header');
+					StickyHeader.isSticky = true;
+
+					//Effect
+					StickyHeader.stickyContainer.css('margin-top', '-' + stickyContainerHeight + 'px').animate({'margin-top': '0'}, 200, 'easeOutCubic');
+					//StickyHeader.stickyContainer.css('opacity', '0').animate({'opacity': '1'}, 300, 'easeOutCubic');
+				}
+
+				, deactivateSticky : function()
+				{
+					//Remove the compensation of the header height change
+					StickyHeader.headerContainer.css('height', '');
+
+					StickyHeader.headerContainer.removeClass('sticky-header');
+					StickyHeader.isSticky = false;
+
+					$(document).trigger("sticky-header-deactivated");
+				}
+
+				, suspendSticky : function()
+				{
+					StickyHeader.isSuspended = true;
+
+					//Deactivate sticky header.
+					//Important: call method only when sticky header is actually active.
+					if (StickyHeader.isSticky)
+					{
+						StickyHeader.deactivateSticky();
+					}
+				}
+
+				, unsuspendSticky : function()
+				{
+					StickyHeader.isSuspended = false;
+
+					//Activate sticky header.
+					//Important: call applySticky instead of activateSticky to check if activation is needed.
+					StickyHeader.applySticky();
+				}
+
+				, hookToScroll : function()
+				{
+					$(window).on("scroll", StickyHeader.applySticky);
+				}
+
+				, hookToScrollDeferred : function()
+				{
+					var windowScrollTimeout;
+					$(window).on("scroll", function() {
+						clearTimeout(windowScrollTimeout);
+						windowScrollTimeout = setTimeout(function() {
+							StickyHeader.applySticky();
+						}, 50);
+					});
+				}
+
+				, hookToResize : function()
+				{
+					$(window).on('themeResize', function(e) {
+
+						//Require recalculation
+						StickyHeader.requiredRecalculation = true;
+
+						//Remove the compensation of the header height change
+						StickyHeader.headerContainer.css('height', '');
+					});
+				}
+
+				, hookToActivatedDeactivated : function()
+				{
+					//Move elements to sticky header
+					$(document).on('sticky-header-before-activated', function(e, data) {
+
+						//Move mini cart to sticky header but only if mini cart is NOT yet inside the holder
+						//(if parent of parent doesn't have class "nav-holder").
+						if (jQuery('#mini-cart').parent().parent().hasClass('nav-holder') === false)
+						{
+							jQuery('#nav-holder1').prepend(jQuery('#mini-cart'));
+						}
+
+						//Move mini compare to sticky header but only if mini compare is NOT yet inside the holder
+						//(if parent of parent doesn't have class "nav-holder").
+						if (jQuery('#mini-compare').parent().parent().hasClass('nav-holder') === false)
+						{
+							jQuery('#nav-holder2').prepend(jQuery('#mini-compare'));
+						}
+
+					}); //end: on event
+
+					//Move elements from sticky header to normal position
+					$(document).on('sticky-header-deactivated', function(e, data) {
+
+						//Move mini cart back to the regular container but only if mini cart is directly inside the holder
+						if (jQuery('#mini-cart').parent().hasClass('nav-holder'))
+						{
+							jQuery('#mini-cart-wrapper-regular').prepend(jQuery('#mini-cart'));
+						}
+
+						//Move mini compare back to the regular container but only if mini compare is directly inside the holder
+						if (jQuery('#mini-compare').parent().hasClass('nav-holder'))
+						{
+							jQuery('#mini-compare-wrapper-regular').prepend(jQuery('#mini-compare'));
+						}
+
+					}); //end: on event
+				}
+
+			}; //end: StickyHeader
+
+			StickyHeader.init();
+
+		}); //end: on document ready
+
+	
+//]]>
+
+
+	//use Ajax to call the banners 
+	jQuery(document).ready(function($){
+		$.ajax({
+			type: "POST",
+			url: "https://www.stuckonyou.com.au/" + "stuckonyou_banner/banner/get",
+			data:{
+				store_id : 1			},
+			beforeSend:function (xhr){
+				$('.image-loading-progress').css('display','block');
+			}
+		}).done(function(data){
+			if(data.avaliable_banners > 0)
+			{
+				var banners = data.banners;
+				var banner_template = '';
+				for(var i = 0;i < banners.length ;i++ )
+				{
+					banner_template += '<div class="item slide">';
+					banner_template += banners[i].content;
+					banner_template +='</div>'
+				}
+			
+				
+				//add banners to template
+				$('div.slides #slideshow').html(banner_template);
+				
+				$('.slides').addClass('the-slideshow');
+				var owl = $('#slideshow');
+				owl.owlCarousel({
+					
+					singleItem: true,
+					
+										slideSpeed: 1000,
+										
+										paginationSpeed: 500,
+										
+										autoPlay: 4000,
+										
+										stopOnHover: true,
+										
+										rewindNav: true,
+					rewindSpeed: 600,
+										
+										autoHeight: true,
+										
+										
+					navigation: true,
+					navigationText: false
+				}); //end: owl
+				
+			}
+			$('.image-loading-progress').css('display','none');
+		});
+	});
+
+
+    document.observe('dom:loaded', function () {
+        var ajaxUrl = 'https://www.stuckonyou.com.au/popup/index/ajax/page/home/';
+        if (window.location.href.match('https://') && !ajaxUrl.match('https://')) {
+            ajaxUrl = ajaxUrl.replace('http://', 'https://');
+        }
+        Popup.init(ajaxUrl + 'rand/' + Math.round(Math.random() * 1000000));
+    });
+
+
+                            //<![CDATA[
+                            var dataForm = new VarienForm('login-form', true);
+                            //]]>
+                        
+
+        //<![CDATA[
+           jQuery(window).load(function(){
+                jQuery().youamaAjaxLogin({
+                    redirection : '0',
+                    profileUrl : 'https://www.stuckonyou.com.au/customer/account/',
+                    autoShowUp : 'no',
+                    controllerUrl : 'https://www.stuckonyou.com.au/ajaxlogin/ajax/index/'
+                });
+            });
+        //]]>
+    
+
+        (function() {
+            Event.observe(document, 'dom:loaded', function() {
+                var modalCloseButton = $$('#sweettooth-refer-friends .head .btn-remove')[0];
+                var modalMask = $('rewards_modal_mask');
+                var modal = $('sweettooth-refer-friends');
+
+                var closeModal = function() {
+                    modal.setStyle({visibility: 'hidden'});
+                };
+
+                Event.observe(window, 'keydown', function(e) {
+                    if (!e) { var e = window.event; }
+
+                    // Escape key is pressed
+                    if (e.keyCode == 27) {
+                        closeModal();
+                    }
+                });
+
+                Event.observe(modalCloseButton, 'click', function() {
+                    closeModal();
+                });
+
+                Event.observe(modalMask, 'click', function() {
+                    closeModal();
+                });
+            });
+        })();
+    
+
+//<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    new Varien.searchForm('newsletter-validate-detail', 'newsletter', 'Enter your email address');
+//]]>
+
+
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	
+	fbq('init', '1084837668194606');
+	fbq('track', "PageView");
+
+
+
+	//<![CDATA[
+
+			var gridItemsEqualHeightApplied = false;
+	function setGridItemsEqualHeight($)
+	{
+		var $list = $('.category-products-grid');
+		var $listItems = $list.children();
+
+		var centered = $list.hasClass('centered');
+		var gridItemMaxHeight = 0;
+		$listItems.each(function() {
+			
+			$(this).css("height", "auto"); 			var $object = $(this).find('.actions');
+
+						if (centered)
+			{
+				var objectWidth = $object.width();
+				var availableWidth = $(this).width();
+				var space = availableWidth - objectWidth;
+				var leftOffset = space / 2;
+				$object.css("padding-left", leftOffset + "px"); 			}
+
+						var bottomOffset = parseInt($(this).css("padding-top"));
+			if (centered) bottomOffset += 10;
+			$object.css("bottom", bottomOffset + "px");
+
+						if ($object.is(":visible"))
+			{
+								var objectHeight = $object.height();
+				$(this).css("padding-bottom", (objectHeight + bottomOffset) + "px");
+			}
+
+						
+			gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
+		});
+
+		//Apply max height
+		$listItems.css("height", gridItemMaxHeight + "px");
+		gridItemsEqualHeightApplied = true;
+
+	}
+	
+
+
+	jQuery(function($) {
+
+				var ddOpenTimeout;
+		var dMenuPosTimeout;
+		var DD_DELAY_IN = 200;
+		var DD_DELAY_OUT = 0;
+		var DD_ANIMATION_IN = 0;
+		var DD_ANIMATION_OUT = 0;
+
+		$('.clickable-dropdown > .dropdown-heading').click(function() {
+			$(this).parent().addClass('open');
+			$(this).parent().trigger('mouseenter');
+		});
+
+		//$('.dropdown-heading').on('click', function(e) {
+		$(document).on('click', '.dropdown-heading', function(e) {
+			e.preventDefault();
+		});
+
+		$(document).on('mouseenter', '.dropdown', function() {
+			
+			var ddToggle = $(this).children('.dropdown-heading');
+			var ddMenu = $(this).children('.dropdown-content');
+			var ddWrapper = ddMenu.parent(); 			
+						ddMenu.css("left", "");
+			ddMenu.css("right", "");
+			
+						if ($(this).hasClass('clickable-dropdown'))
+			{
+								if ($(this).hasClass('open'))
+				{
+					$(this).children('.dropdown-content').stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+				}
+			}
+			else
+			{
+								clearTimeout(ddOpenTimeout);
+				ddOpenTimeout = setTimeout(function() {
+					
+					ddWrapper.addClass('open');
+					
+				}, DD_DELAY_IN);
+				
+				//$(this).addClass('open');
+				$(this).children('.dropdown-content').stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+			}
+			
+						clearTimeout(dMenuPosTimeout);
+			dMenuPosTimeout = setTimeout(function() {
+
+				if (ddMenu.offset().left < 0)
+				{
+					var space = ddWrapper.offset().left; 					ddMenu.css("left", (-1)*space);
+					ddMenu.css("right", "auto");
+				}
+			
+			}, DD_DELAY_IN);
+
+		}).on('mouseleave', '.dropdown', function() {
+			
+			var ddMenu = $(this).children('.dropdown-content');
+			clearTimeout(ddOpenTimeout); 			ddMenu.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+			if (ddMenu.is(":hidden"))
+			{
+				ddMenu.hide();
+			}
+			$(this).removeClass('open');
+		});
+		
+		
+		
+				var windowScroll_t;
+		$(window).scroll(function(){
+			
+			clearTimeout(windowScroll_t);
+			windowScroll_t = setTimeout(function() {
+										
+				if ($(this).scrollTop() > 100)
+				{
+					$('#scroll-to-top').fadeIn();
+				}
+				else
+				{
+					$('#scroll-to-top').fadeOut();
+				}
+			
+			}, 500);
+			
+		});
+		
+		$('#scroll-to-top').click(function(){
+			$("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+			return false;
+		});
+		
+		
+		
+				
+			var startHeight;
+			var bpad;
+			$('.category-products-grid').on('mouseenter', '.item', function() {
+
+														if ($(window).width() >= 320)
+					{
+				
+											if (gridItemsEqualHeightApplied === false)
+						{
+							return false;
+						}
+					
+					startHeight = $(this).height();
+					$(this).css("height", "auto"); //Release height
+					$(this).find(".display-onhover").fadeIn(400, "easeOutCubic"); //Show elements visible on hover
+					var h2 = $(this).height();
+					
+										////////////////////////////////////////////////////////////////
+					var addtocartHeight = 0;
+					var addtolinksHeight = 0;
+					
+										
+										
+											var diff = 0;
+						if (h2 < startHeight)
+						{
+							$(this).height(startHeight);
+						}
+						else
+						{
+							$(this).height(h2);
+							diff = h2 - startHeight;
+						}
+										////////////////////////////////////////////////////////////////
+
+					$(this).css("margin-bottom", "-" + diff + "px"); 
+									} 								
+			}).on('mouseleave', '.item', function() {
+
+													if ($(window).width() >= 320)
+					{
+				
+					//Clean up
+					$(this).find(".display-onhover").stop(true).hide();
+					$(this).css("margin-bottom", "");
+
+																$(this).height(startHeight);
+					
+									} 								
+			});
+		
+		
+
+
+				$('.products-grid, .products-list').on('mouseenter', '.product-image-wrapper', function() {
+			$(this).find(".alt-img").fadeIn(400, "easeOutCubic");
+		}).on('mouseleave', '.product-image-wrapper', function() {
+			$(this).find(".alt-img").stop(true).fadeOut(400, "easeOutCubic");
+		});
+
+
+
+				$('.fade-on-hover').on('mouseenter', function() {
+			$(this).animate({opacity: 0.75}, 300, 'easeInOutCubic');
+		}).on('mouseleave', function() {
+			$(this).stop(true).animate({opacity: 1}, 300, 'easeInOutCubic');
+		});
+
+
+
+				var dResize = {
+
+			winWidth : 0
+			, winHeight : 0
+			, windowResizeTimeout : null
+
+			, init : function()
+			{
+				dResize.winWidth = $(window).width();
+				dResize.winHeight = $(window).height();
+				dResize.windowResizeTimeout;
+
+				$(window).on('resize', function(e) {
+					clearTimeout(dResize.windowResizeTimeout);
+					dResize.windowResizeTimeout = setTimeout(function() {
+						dResize.onEventResize(e);
+					}, 50);
+				});
+			}
+
+			, onEventResize : function(e)
+			{
+				//Prevent from executing the code in IE when the window wasn't actually resized
+				var winNewWidth = $(window).width();
+				var winNewHeight = $(window).height();
+
+				//Code in this condition will be executed only if window was actually resized
+				if (dResize.winWidth != winNewWidth || dResize.winHeight != winNewHeight)
+				{
+					//Trigger deferred resize event
+					$(window).trigger("themeResize", e);
+
+					//Additional code executed on deferred resize
+					dResize.onEventDeferredResize();
+				}
+
+				//Update window size variables
+				dResize.winWidth = winNewWidth;
+				dResize.winHeight = winNewHeight;
+			}
+
+			, onEventDeferredResize : function() //Additional code, execute after window was actually resized
+			{
+				//Products grid: equal height of items
+									setGridItemsEqualHeight($);
+				
+			}
+
+		}; //end: dResize
+
+		dResize.init();
+
+
+
+	}); //end: on document ready
+	
+	
+
+	jQuery(window).load(function(){
+		
+							setGridItemsEqualHeight(jQuery);
+		
+	}); //end: jQuery(window).load(){...}
+
+	// Category JS
+	
+	(function($) {
+		/**
+		 * Added by Adam.
+		 * 
+		 * If you see the same code in the ready callback, updating the height will never be
+		 * correct when images are involved, because the ready event does not wait for them to load.
+		 * Hence the need for using the load method.
+		 **/
+		$(window).load(function() {
+			// Height product on list
+			var max_height = 0;
+			var max_height_img = 0;
+			$('.category-products .products-grid .item .product-info').css('cssText','height: "" !important;');
+			$('.category-products .products-grid .item .product-image-wrapper').css('cssText','height: "" !important');
+			if($('.category-products .products-grid .item').length)
+			{
+				$('.category-products .products-grid .item .product-info').each(function(){
+					var height = $(this).height();
+					if(height > max_height)
+					{
+						max_height = height;
+					}
+				});
+				$('.category-products .products-grid .item .product-info').each(function(){
+					$(this).css('cssText','height: '+max_height+'px !important;');
+				});
+				$('.category-products .products-grid .item .product-image-wrapper').each(function(){
+					var height1 = $(this).height();
+					if(height1 > max_height_img)
+					{
+						max_height_img = height1;
+					}
+				});
+				$('.category-products .products-grid .item .product-image-wrapper').each(function(){
+					$(this).css('cssText','height: '+max_height_img+'px !important;');
+				});
+			}
+		});
+	})(jQuery);
+	
+	
+	// Height product on list
+	jQuery(document).ready(
+		function($)
+		{
+			//Check if MAC
+			if(navigator.userAgent.indexOf('Mac')>1){
+				jQuery('body').addClass('mac'); 
+			}
+			
+			var max_height = 0;
+			var max_height_img = 0;
+			if(jQuery('.category-products .products-grid .item').length)
+			{
+				jQuery('.category-products .products-grid .item .product-info').each(function(){
+					var height = jQuery(this).height();
+					if(height > max_height)
+					{
+						max_height = height;
+					}
+				});
+				jQuery('.category-products .products-grid .item .product-info').each(function(){
+					jQuery(this).css('cssText','height: '+max_height+'px !important;');
+				});
+				jQuery('.category-products .products-grid .item .product-image-wrapper').each(function(){
+					var height1 = jQuery(this).height();
+					if(height1 > max_height_img)
+					{
+						max_height_img = height1;
+					}
+				});
+				jQuery('.category-products .products-grid .item .product-image-wrapper').each(function(){
+					jQuery(this).css('cssText','height: '+max_height_img+'px !important;');
+				});
+			}
+			// More option mobile
+			$('.col-main .choose-a-different-size .choose-different-size-label').click(function(){
+				if($('.col-main .choose-a-different-size .choose-different-size-label.active').length)
+				{
+					$(this).text('View more size options');
+				}
+				else
+				{
+					$(this).text('View less size options');
+				}
+				$(this).toggleClass('active');
+				$('.col-main .choose-a-different-size .label-shapes').toggleClass('active');
+			})
+			var width = $(window).width();
+			if(width < 639)
+			{
+				$('.choose-a-different-size ul.label-shapes li a').hover(function(){
+					var url = $(this).attr('href');
+					window.location.href = url;
+				})
+			}
+		});
+	jQuery(window).resize(function(){
+		// Height product on list
+		var max_height = 0;
+		var max_height_img = 0;
+		jQuery('.category-products .products-grid .item .product-info').css('cssText','height: "" !important;');
+		jQuery('.category-products .products-grid .item .product-image-wrapper').css('cssText','height: "" !important');
+		if(jQuery('.category-products .products-grid .item').length)
+		{
+			jQuery('.category-products .products-grid .item .product-info').each(function(){
+				var height = jQuery(this).height();
+				if(height > max_height)
+				{
+					max_height = height;
+				}
+			});
+			jQuery('.category-products .products-grid .item .product-info').each(function(){
+				jQuery(this).css('cssText','height: '+max_height+'px !important;');
+			});
+			jQuery('.category-products .products-grid .item .product-image-wrapper').each(function(){
+				var height1 = jQuery(this).height();
+				if(height1 > max_height_img)
+				{
+					max_height_img = height1;
+				}
+			});
+			jQuery('.category-products .products-grid .item .product-image-wrapper').each(function(){
+				jQuery(this).css('cssText','height: '+max_height_img+'px !important;');
+			});
+		}
+	}); 
+	
+	//End Category JS
+	
+	/*Product JS*/
+	
+	jQuery(document).ready(function($){
+		$('.add-to-cart .qty-wrapper .plus').click(function(){
+			
+			var qtyInput = $(this).closest('.qty-wrapper').find('input[name="qty"]');
+			var qtyValue = parseInt(qtyInput.val());
+			
+			$('input[name="qty"]').each(function()
+				{
+					$(this).val(qtyValue + 1);
+				}
+			);
+		});
+		$('.add-to-cart .qty-wrapper .minus').click(function(){
+			
+			var qtyInput = $(this).closest('.qty-wrapper').find('input[name="qty"]');
+			var qtyValue = parseInt(qtyInput.val());
+			
+			if (qtyValue > 1)
+			{
+				$('input[name="qty"]').each(function()
+					{
+						$(this).val(qtyValue - 1);
+					}
+				);
+			}
+		});
+		var enableAfterPayProductList = true;
+		if(enableAfterPayProductList && $('#itemslider-upsell .item').length)
+		{
+			$('#itemslider-upsell .item').each(function(){
+				$(this).find('.regular-price').prepend("<span class='price-label'>From</span>");
+				if($(this).find('.price-box > span > .price').length)
+				{
+					var price = $(this).find('.regular-price .price').text();
+					var price1 = parseInt(price.replace('$',''));
+					var text = $(this).find('.afterpay-installments-amount').html();
+					var new_text = text.replace('{price_here}','$'+parseFloat(price1/4).toFixed(2));
+					$(this).find('.afterpay-installments-amount').html(new_text);
+				}
+				else
+				{
+					var price = $(this).find('.price-box .price').text();
+					var price1 = parseInt(price.replace('$',''));
+					var text = $(this).find('.afterpay-installments-amount').html();
+					var new_text = text.replace('{price_here}','$'+parseFloat(price1/4).toFixed(2));
+					$(this).find('.afterpay-installments-amount').html(new_text);
+				}
+				
+			});
+		}
+		//Height upsell products
+		var max_height_upsell = 0;
+		if($('#itemslider-upsell .owl-item').length)
+		{
+			$('#itemslider-upsell .owl-item').each(function(){
+				
+				var height = $(this).find('.product_info').height();
+				if(height>max_height_upsell)
+				{
+					max_height_upsell = height;
+				}
+			})
+			$('#itemslider-upsell .owl-item').each(function(){
+				$(this).find('.product_info').css('cssText','height: '+max_height_upsell+'px !important;');
+			});
+		}
+		$('.product-view #product-tabs .acctab').click(function(){
+			$(this).toggleClass('active');
+		})
+	})
+	jQuery(window).resize(function(){
+		//Height upsell products
+		var max_height_upsell = 0;
+		if(jQuery('#itemslider-upsell .owl-item').length)
+		{
+			jQuery('#itemslider-upsell .owl-item').each(function(){
+				
+				var height = jQuery(this).find('.product_info').height();
+				if(height>max_height_upsell)
+				{
+					max_height_upsell = height;
+				}
+			})
+			jQuery('#itemslider-upsell .owl-item').each(function(){
+				jQuery(this).find('.product_info').css('cssText','height: '+max_height_upsell+'px !important;');
+			});
+		}
+		jQuery('.product-view #product-tabs .acctab').click(function(){
+			jQuery(this).toggleClass('active');
+		})
+	})
+	
+	
+	/*End Product JS*/
+	
+	/*Cart JS*/
+		
+	jQuery(document).ready(function($){
+		var width = jQuery(window).width();
+		if(width<768)
+		{
+			jQuery('#discount-coupon-form .discount h2').click(function(){
+				jQuery('#discount-coupon-form .discount').toggleClass('active');
+			})
+			jQuery('.cart .cart-points-spender h2').click(function(){
+				jQuery('.cart .cart-points-spender').toggleClass('active');
+			})
+			jQuery('#shopping-cart-table tbody tr').each(function(){
+				var height = jQuery(this).height();
+				jQuery(this).find('td.col-img').height(height);
+			})
+		}
+		
+	});
+	jQuery(window).resize(function($){
+		var width = jQuery(window).width();
+		if(width<768)
+		{
+			jQuery('#discount-coupon-form .discount h2').click(function(){
+				jQuery('#discount-coupon-form .discount').toggleClass('active');
+			})
+			jQuery('.cart .cart-points-spender h2').click(function(){
+				jQuery('.cart .cart-points-spender').toggleClass('active');
+			})
+		}
+	});
+	
+	/*End Cart JS*/
+	
+	//]]>
+
+
+        var freeProductsCheckFlag = false;
+        var selectAllfreeProducts = function(txt){
+            if (freeProductsCheckFlag == false) {
+                $$('.free-product-checkbox').each(function(elem){
+                    elem.checked = true;
+                });
+                freeProductsCheckFlag = true;
+                txt.innerHTML= "unselect all";
+            } else {
+                $$('.free-product-checkbox').each(function(elem){
+                    elem.checked = false;
+                });
+                freeProductsCheckFlag = false;
+                txt.innerHTML= "select all";
+            }
+        }
+
+        var initForm = function() {
+            var freeProductToCartForm = new VarienForm('free-product-form');
+            freeProductToCartForm.submit = function(){
+                if (this.validator && this.validator.validate()) {
+                    this.form.submit();
+                }
+            }.bind(freeProductToCartForm);
+            return freeProductToCartForm;
+        }
+    
+
+    document.observe('dom:loaded', function () {
+        var bannerConfig = {"selector":[".header-container"],"className":"afterpay-banner"},
+            bannerAfterBlock = Prototype.Selector.select(bannerConfig.selector, document),
+            bannerClassName = bannerConfig.className;
+
+        try {
+            var bannerBlocks = $$('.' + bannerClassName);
+            if (bannerAfterBlock[0] && bannerBlocks[0]) {
+                bannerAfterBlock[0].insert({after: bannerBlocks[0]});
+            }
+        } catch (e) {
+            window.console && console.log('Afterpay: Error on processing banner block element: ', e);
+        }
+    });
+
+
+        EsNewsSubscribers.setCookieLiveTime(999);
+            EsNewsSubscribers.setCookieName('es_newssubscribers_au');
+        EsNewsSubscribers.setBaseUrl('https://www.stuckonyou.com.au/');
+
+
+jQuery(document).ready(
+	function($)
+	{
+		$('div#esns_box_no_thanks_btn a').live('click',
+				function()
+				{
+					$('div#esns_box_close').click();
+				}
+			);
+		
+	}
+);
+

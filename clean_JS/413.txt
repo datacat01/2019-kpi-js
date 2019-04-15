@@ -1,0 +1,7 @@
+var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-1160170-1']); _gaq.push(['_setSiteSpeedSampleRate', 20]); _gaq.push(['_trackPageview']);
+    (function () { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+
+                            $(document).ready(function() {
+                                initialiseQuickProductFinder('HomepageQuickProductFinder','HomepageQuickProductFinderDropdownType','HomepageQuickProductFinderDropdownStyle','HomepageQuickProductFinderDropdownBudget','HomepageQuickProductFinderButtonSubmit','homepage-finder__results','HomepageQuickProductFinderResultsAnchor','HomepageQuickProductFinderResultsWait','HomepageQuickProductFinderResultsList','HomepageQuickProductFinderResultsNoResults','Homepage-QuickProductFinder');
+                            });
+                        

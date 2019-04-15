@@ -1,0 +1,192 @@
+
+        var RocConfig = {
+            api: {
+                baseRocApiUrl: 'https://api.artbeads.com',
+                rocApiVersion: '1.0'
+            },
+            assetManager: {
+                rocAssetsDomain: 'assets.artbeads.com'
+            },
+            cms: {
+                packagePath: '/ResourcePackages/Roc'
+            },
+            google: {
+                analyticsTrackingId: 'UA-610468-1',
+                isEnhancedCommerce: true,
+                IsGADebug: false,
+                mapsApiKey: 'AIzaSyD_4AoLUwSkd2b9p7Sx5ghj1Bj83qaon5w',
+                enableAnalyticsTracking: true,
+                enableAddressAutocomplete: true
+            },
+            time: {
+                timezone: 'America/Los_Angeles'
+            },
+            logging : {
+                threshold: 'ERROR'
+            },
+            shipping: {
+                enableInternationalShipping: true,
+            },
+            defaultCountryCode: 'US',
+            isCrawler: false
+        };
+    
+
+        var _vwo_code = (function () {
+            var account_id = 38249,
+                settings_tolerance = 2000,
+                library_tolerance = 2500,
+                use_existing_jquery = false,
+                // DO NOT EDIT BELOW THIS LINE
+                f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };
+        }()); _vwo_settings_timer = _vwo_code.init();
+    
+
+    /* <![CDATA[ */
+    (function (HawkSearch, undefined) {
+        HawkSearch.SearchUrl = "/search/";
+        HawkSearch.BaseUrl = "/ajax/search";
+        HawkSearch.HawkUrl = "https://searchapi.roccommerce.com/sites/artbeads";
+        HawkSearch.TrackingUrl = "https://tracking.hawksearch.com";
+        HawkSearch.RecommenderUrl = "https://recs.hawksearch.com";
+        HawkSearch.ClientGuid = "50c6ff0e403143a6b7d172e12de3d53c";
+
+    }(window.HawkSearch = window.HawkSearch || {}));
+
+    require(['RocInit'], function () {
+        require(['global/all', 'modules/product/all', HawkSearch.HawkUrl + '/includes/hawksearch.min.js?v=1.1'], function (Roc, Product) {
+            Roc.Logger.debug('Initializing HawkSearch');
+
+            // call to bind logic to hawksearch events
+            Product.initHawksearchHighjack();
+
+            require(['modules/RocSearch/RocSearchTracking'], function () {
+                require(['modules/RocSearch/RocSearchTracking.AEscript']);
+            });
+        });        
+    });
+    /* ]]> */
+
+var sf_appPath='/';
+
+    /* <![CDATA[ */
+    require(['RocInit'], function () {
+        require(['jquery', 'global/all', 'global/PinterestPixel', 'global/FacebookPixel', HawkSearch.HawkUrl + '/includes/hawksearch.min.js?v=1.1'], function ($, Roc, PinterestPixel, FacebookPixel) {
+            Roc.Logger.debug('Initializing HawkSearch');
+
+            HawkSearch.initAutoSuggest = function () {
+                HawkSearch.suggestInit('#txtSearch', {
+                    lookupUrlPrefix: HawkSearch.HawkUrl + '/ajax.aspx?f=GetSuggestions',
+                    hiddenDivName: '',
+                    isAutoWidth: false
+                });
+            };
+
+            var jewelryUrl = "/shop-jewelry-supplies/";
+
+            function hasEmptyValue($elem) {
+                return $.trim($elem.val()).length === 0;
+            };
+
+
+            $('#btnSearch').on('click', function (e) {
+                e.preventDefault();
+                var $txtSearch = $('#txtSearch');
+                if (hasEmptyValue($txtSearch)) {
+                    window.location.replace(jewelryUrl);
+                    return;
+                }
+                PinterestPixel.recordSearch($txtSearch.val()); // project customization
+                FacebookPixel.recordSearch(); // project customization - record facebook pixel search event
+                window.location.replace(HawkSearch.SearchUrl + "?" + $txtSearch.attr('name') + "=" + encodeURIComponent($txtSearch.val()));
+            });
+
+            $('#txtSearch').on('keypress', function (e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    var $txtSearch = $('#txtSearch');
+                    if (hasEmptyValue($txtSearch)) {
+                        window.location.replace(jewelryUrl);
+                        return;
+                    }
+                    PinterestPixel.recordSearch($txtSearch.val()); // project customization
+                    FacebookPixel.recordSearch(); // project customization - record facebook pixel search event
+                    window.location.replace(HawkSearch.SearchUrl + "?" + $txtSearch.attr('name') + "=" + encodeURIComponent($txtSearch.val()));
+                }
+            });
+        });
+    });
+    /* ]]> */
+    
+
+    /* <![CDATA[ */
+    require(['RocInit'], function () {
+        require(['global/all', HawkSearch.HawkUrl + '/includes/hawksearch.min.js?v=1.1'], function (Roc) {
+            Roc.Logger.debug('HawkSearch loaded.');
+
+            HawkSearch.initAutoSuggest = function () {
+
+               HawkSearch.suggestInit('#txtSearch', {
+                    lookupUrlPrefix: HawkSearch.HawkUrl + '/ajax.aspx?f=GetSuggestions',
+                    hiddenDivName: '',
+                    isAutoWidth: false
+               });               
+
+                HawkSearch.suggestInit('#txtSearchMobile', {
+                    lookupUrlPrefix: HawkSearch.HawkUrl + '/ajax.aspx?f=GetSuggestions',
+                    hiddenDivName: '',
+                    isAutoWidth: false
+                });
+            };
+
+            require(['jquery'], function ($) {
+                $('#btnSearchMobile').on("click", function (e) {
+                    e.preventDefault();
+                    window.location.replace(HawkSearch.DefaultSearchUrl + "?" + $('#txtSearchMobile').attr('name') + "=" + encodeURIComponent($("#txtSearchMobile").val()));
+                });
+
+                $('#txtSearchMobile').on("keypress", function (e) {
+                    if (e.which === 13) {
+                        e.preventDefault();
+                        window.location.replace(HawkSearch.DefaultSearchUrl + "?" + $('#txtSearchMobile').attr('name') + "=" + encodeURIComponent($("#txtSearchMobile").val()));
+                    }
+                });
+            });
+        });
+    });
+    /* ]]> */
+
+
+var bccbId = Math.random(); document.write(unescape('%3Cdiv id=' + bccbId + '%3E%3C/div%3E'));
+  window._bcvma = window._bcvma || [];
+  _bcvma.push(["setAccountID", "666406008908398214"]);
+  _bcvma.push(["addText", {type: "chat", window: "4564098130411030759", available: "Live Chat", unavailable: "Live Chat Unavailable", id: bccbId}]);
+  var bcLoad = function(){
+    if(window.bcLoaded) return; window.bcLoaded = true;
+    var vms = document.createElement("script"); vms.type = "text/javascript"; vms.async = true;
+    vms.src = ('https:'==document.location.protocol?'https://':'http://') + "vmss.boldchat.com/aid/666406008908398214/bc.vms4/vms.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vms, s);
+  };
+  if(window.pageViewer && pageViewer.load) pageViewer.load();
+  else if(document.readyState=="complete") bcLoad();
+  else if(window.addEventListener) window.addEventListener('load', bcLoad, false);
+  else window.attachEvent('onload', bcLoad);
+
+
+            var _bsw = _bsw || [];
+            _bsw.push(['_bswId', 'ae78016054a583d05c3d0e260f96dfb5216fa248814fe95ba204c9993fe6c854']);
+            (function() {
+                var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+                bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/aodj5o09gg7nyrtv0jwb5i3n4r4rnxrom6f9r1neyssvjjn2on/ae78016054a583d05c3d0e260f96dfb5216fa248814fe95ba204c9993fe6c854/s/b.min.js';
+                var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+            })();
+        
+
+            (function(){
+                var a = window.attachEvent || window.addEventListener; a(((window.attachEvent) ? "on" : "") + "load", function(){
+                    var s = document.createElement('script'), p = document.getElementsByTagName('script')[0];
+                    s.async = s.src = ('https:' == location.protocol ? "https" : "http") + "://sitevibes1-thanxmedia.netdna-ssl.com/sv_core/sv_master.min.js?clientId=artbeads";
+                    p.parentNode.insertBefore(s, p);
+                },false);
+            })();
+        

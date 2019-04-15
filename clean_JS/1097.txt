@@ -1,0 +1,21 @@
+
+		// The list this item came from, sent to google
+		var resultPageType = 'homepage';
+	
+
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     document.getElementById("navbar-header-personal").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("GET", "/nocache/personalized_header?nocache=true", true);
+	  xhttp.send();
+  
+
+	    (function() {
+	      var qtm = document.createElement('script'); qtm.type = 'text/javascript'; qtm.async = 1;
+	      qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-quadratec.js';
+	      var d = document.getElementsByTagName('script')[0]; !window.QuantumMetricAPI && d.parentNode.insertBefore(qtm, d);
+	    })();
+	

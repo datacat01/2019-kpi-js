@@ -1,0 +1,418 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+    var CCM_DISPATCHER_FILENAME = '';var CCM_CID = 1;var CCM_EDIT_MODE = false;var CCM_ARRANGE_MODE = false;
+    var CCM_IMAGE_PATH        = "/concrete/images";
+    var CCM_TOOLS_PATH        = "/tools/required";
+    var CCM_BASE_URL          = "https://www.cambridge.org";
+    var CCM_REL               = "";
+    var KK_MINI_CART          = "//www.cambridge.org/wm-ecommerce-web/ws/getItems";
+    var VISTA_SERVICE_REGION  = "C";
+    var IS_KK_ASIA            = "1";
+    var IS_KK_AUS             = "0";
+    var CURRENT_SITE          = "corporate";
+    var VYRE_BASKET           = "//www.cambridge.org/wm-ecommerce-web/academic/cart";
+    var IS_KK_ACS_ENABLED     = "0";
+
+        var CWS_ECOMMERCE_ENABLED = false;
+
+
+var meta = document.createElement('meta');
+meta.name = "google-site-verification";
+meta.content= "8L7zqoyV5N0cVcM7rvywzCh0D1p-VHcxLm89hWMYb6g";
+document.getElementsByTagName('head')[0].prepend(meta);
+
+(function(t,e,s,o){var n,a,c;t.SMCX=t.SMCX||[],e.getElementById(o)||(n=e.getElementsByTagName(s),a=n[n.length-1],c=e.createElement(s),c.type="text/javascript",c.async=!0,c.id=o,c.src=["https:"===location.protocol?"https://":"http://","widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd6W7rN_2BRALnpd7wUroDU614qvtDoTw_2F4jhUa6koPMnr6.js"].join(""),a.parentNode.insertBefore(c,a))})(window,document,"script","smcx-sdk");
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0023/2529.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39106122-2', 'auto');
+  ga('send', 'pageview');
+
+
+
+        var CCP_ENABLED = 1;
+    
+
+    var academic_url='/search';
+    var academic_theme_handle='Academic_v1';
+    var education_url='/search';
+    var education_theme_handle='Education';
+    var education_input_text_name='query';
+    var country_seg_method='post';
+    var input_text_name='searchText';
+    var cambridge_english_url = '/search';
+    var cambridge_english_method='get';
+    var dictionary_url="https://dictionary.cambridge.org/search/british/direct/?utm_source=widget_searchbox_source&utm_medium=widget_searchbox&utm_campaign=widget_tracking";
+    var dictionary_method="post";
+    var dictionary_input_name="q";
+
+
+
+            var addthis_config = {"data_track_addressbar":false};
+            var addthis_share =
+            {
+                templates: {
+                               twitter: '{{title}} {{url}} via @CUPAcademic',
+                           }
+            }
+            
+
+    $(function () {
+        if (window.location.href.indexOf('/academic/subjects') >= 0) {
+            $.each($('.relatedItemsWrap .relatedItem a[href^="//journals.cambridge.org"]'), function () { 
+                $(this).attr('href', 'http://' + this.href.substring(this.href.indexOf('journals')));
+            });
+        }
+    });
+
+
+    if (!CWS_ECOMMERCE_ENABLED
+        && window.location.pathname.indexOf('/academic/conferences') > -1
+        && $('.addToCartBtn').length > 0) {
+
+        $(function () {
+            $('.addToCartBtn').removeClass('addToCartBtn').addClass('addToCartBtnPatch');
+
+            if ((VISTA_SERVICE_REGION === 'A' && IS_KK_AUS === '0') || (VISTA_SERVICE_REGION === 'E' && IS_KK_ASIA === '0')) {
+                if (IS_KK_ACS_ENABLED > 0) {
+                    getVyreServicePatch();
+                }
+            } else {
+                getKonakartServicePatch();
+            }
+
+            function getKonakartServicePatch() {
+                jQuery('.addToCartBtnPatch').live('click', addToCartEventPatch);
+
+                // send request to cart WS
+                jQuery.ajax({
+                    url: KK_MINI_CART,
+                    dataType: 'xml',
+                    success: mini_cart_successful_patch,
+                    error: function () {
+                        jQuery('#miniCartDetail .qty').show();
+                        jQuery('#cartQty').html('(' + jQuery('#qtyValue').html() + ')');
+                    },
+                    // https://jira.cambridge.org/browse/KEP-453
+                    cache: false
+                });
+            }
+
+            function getVyreServicePatch() {
+                // GAW-2570
+                if (jQuery('.addToCartBtnPatch.konakartLink').length > 0) {
+                    jQuery('.addToCartBtnPatch.konakartLink').live('click', addToCartEventPatch);
+                }
+
+                $.ajax({
+                    url: "/tools/packages/cambridge_themes/miniCart",
+                    data: {
+                        source: "Academic_v1"
+                    },
+                    success: function (data) {
+                        if ($('#qtyValue').html() == 0) {
+                            jQuery('#cartQty').html('');
+                            var cartOpt = {
+                                url: KK_MINI_CART,
+                                dataType: 'xml',
+                                success: mini_cart_successful_patch,
+                                error: function () {
+                                    jQuery('#miniCartDetail .qty').show();
+                                    jQuery('#cartQty').html('(' + jQuery('#qtyValue').html() + ')');
+                                },
+                                // https://jira.cambridge.org/browse/KEP-453
+                                cache: false
+                            };
+
+                            // send request to cart WS
+                            jQuery.ajax(cartOpt);
+                            jQuery("a.viewCart").attr("href", VYRE_BASKET);
+                            jQuery("a.academicCheckout").attr("href", VYRE_BASKET);
+
+                            var minicartDetail = '<p class="qty">You have <span id="qtyString"><span id="qtyValue">0</span>&nbsp;items</span> in your cart.</p>' +
+                                '<div id="miniCartItems"></div>' +
+                                '<div class="withItems" style="display:none;">' +
+                                '<div id="subtotal"><h4>Subtotal: <span id="subtotalValue">0.0</span></h4></div>' +
+                                '<div class="clearfix"></div>' +
+                                '<div id="buttons">' +
+                                '<a href="' + VYRE_BASKET + '" class="button blue large viewCart">View cart <span class="viewCartCountAcademic_v1" style="display:none;">(0)</span></a>' +
+                                '<a href="' + VYRE_BASKET + '" class="button orange large checkout academicCheckout">Checkout</a>' +
+                                '</div>' +
+                                '</div>';
+
+                            $("#miniCartDetail").html(minicartDetail);
+                        } else {
+                            hasAsp = true;
+                        }
+                    }
+                });
+            }
+        });
+
+        var errorCallBackPatch = function () {
+            // hide the view cart
+            if (cartItemCount < 1) {
+                jQuery('.viewCart').hide();
+            }
+
+            jQuery('#itemAddedMessage').text("There was a problem getting your cart information.");
+            jQuery('#itemAddedModal').reveal();
+        };
+
+        var completeCallBackPatch = function () {
+            alreadyClicked = false;
+            countryChange = true;
+            jQuery('body').css('cursor', 'auto');
+        };
+
+        var addToCartEventPatch = function (event) {
+            event.preventDefault();
+
+            // check first if the user hasn't clicked on the link to prevent multiple
+            // AJAX requests
+            if (alreadyClicked == false) {
+                alreadyClicked = true;
+
+                // make the body to show wait cursor while processing
+                jQuery('body').css('cursor', 'wait');
+                addToCartPatch(jQuery(this).data());
+            }
+        };
+
+        /**
+         * upon success of calling add to cart WS
+         * @param data xml returned data from ecom
+         * @param textStatus test status
+         * @param isbn string added isbn
+         */
+        var add_to_cart_successful_patch = function (data, textStatus, isbn) {
+            var $cartData = jQuery(data);
+            // hack to get HTML content in XML
+            var cartErrorMessage = $cartData.find('errorMessage').text().trim();
+            var cartInfoMessage = $cartData.find('infoMessage').text().trim();
+
+            // get cart lines in the cart WS
+            var cartLines = processCartDataPatch(data);
+            refresh_cart_patch(cartLines);
+
+            // check first if we have error message then display it instead of item added message
+            if (cartErrorMessage !== '') {
+                jQuery('#addToCartCustom h4').html(cartErrorMessage);
+                jQuery('#addToCartCustom h4').css('text-transform', 'none');
+                jQuery('#addToCartCustom').reveal();
+            } else if (cartInfoMessage !== '') {
+                jQuery('#addToCartCustom h4').html(cartInfoMessage);
+                jQuery('#addToCartCustom h4').css('text-transform', 'none');
+                jQuery('#addToCartCustom').reveal();
+            } else {
+                // hide the view cart
+                if (cartItemCount < 1) {
+                    jQuery('.viewCart').hide();
+                }
+
+                jQuery('#itemAddedMessage').text("Item added to your cart!");
+                jQuery('#itemAddedModal').reveal();
+                googleTagManagerPatch(isbn);
+            }
+        };
+
+        // upon success of calling cart WS
+        var mini_cart_successful_patch = function (data, textStatus) {
+            // get cart lines in the cart WS
+            var cartLines = processCartDataPatch(data);
+            refresh_cart_patch(cartLines);
+        };
+
+        /**
+         * Convert data collected from the cart WS and traverse and store it in array
+         * @param  {XML} xml Expected XML cart data
+         * @return {Array}     Array list of lines (products) in the cart
+         */
+        var processCartDataPatch = function (xml) {
+            // reset
+            cartItemCount = 0;
+            currency = '$';
+            subTotal = 0;
+
+            var $cartData = jQuery(xml);
+            var cartLines = [];
+
+            currency = $cartData.find('symbol').text();
+            subTotal = $cartData.find('totalValueOverride').text();
+
+            // traverse the orderline
+            $cartData.find('orderLines').find('orderLine').each(function () {
+                var data = [];
+                data['availabilityLegend'] = getXMLValuePatch("availabilityLegend", this);
+
+                cartItemCount += getXMLValuePatch('quantity', this) ? parseInt(getXMLValuePatch('quantity', this)) : 1;
+                data['title'] = getXMLValuePatch('title', this);
+                data['author'] = getXMLValuePatch('author', this);
+                var price = getXMLValuePatch('publishedPriceOverride', this);
+                data['price'] = price.length > 0 ? price : getXMLValuePatch('originalValue', this);
+                data['price'] = data['price'].replace(',', '');
+
+                data['discountPrice'] = getXMLValuePatch('publishedPriceOverride', this);
+                data['discountPrice'] = data['discountPrice'].replace(',', '');
+                data['ean'] = getXMLValuePatch('ean', this);
+                data['quantity'] = getXMLValuePatch('quantity', this).replace(',', '');
+                data['format'] = getXMLValuePatch('format', this);
+
+                var volumeNumber = getXMLValuePatch('volumeNumber', this);
+                data['volume'] = volumeNumber.length > 0 && volumeNumber != '0' ? 'Volume ' + volumeNumber : '';
+
+                var partNumber = getXMLValuePatch('partNumber', this);
+                data['part'] = partNumber.length > 0 && partNumber != '0' ? 'Part ' + partNumber : '';
+
+                var edition = getXMLValuePatch('edition', this);
+                data['edition'] = edition.length > 0 ? edition + ' Edition' : '';
+
+                var lastModified = new Date(getXMLValuePatch('lastModified', this));
+                data['lastModified'] = lastModified.getTime();
+
+                cartLines.push(data);
+            });
+
+            cartLines.sort(function (a, b) {
+                return a['lastModified'] - b['lastModified'];
+            });
+
+            return cartLines;
+        };
+
+        var getXMLValuePatch = function (key, container) {
+            return jQuery(container).find(key).text();
+        };
+
+        var refresh_cart_patch = function (cartLines) {
+            if (cartLines.length > 0) {
+                var $miniCartDetail = jQuery('#miniCartDetail');
+                var $learningQty = jQuery('p.qty #qtyString', $miniCartDetail);
+                var $miniCartItems = jQuery('#miniCartItems');
+                var $subTotal = jQuery('#subtotalValue');
+
+                var cartItemString = '<span id="qtyValue">' + cartItemCount + '</span>' +
+                    (cartItemCount == 0 || cartItemCount > 1 ? ' items' : ' item');
+
+                $learningQty.html(cartItemString);
+
+                var cartItems = '';
+
+                var itemDisplayCount = 1;
+                for (var i = 0; i < cartLines.length; i++) {
+                    cartItems += '<h4><a href="/' + cartLines[i]['ean'] + '">' + cartLines[i]['title'] + '</a></h4>';
+                    cartItems += '<p>' + cartLines[i]['volume'] + ' ' + cartLines[i]['part'] + ' ' + cartLines[i]['edition'] + '<span>' + ' ' + cartLines[i]['author'] + '</span></p>';
+                    cartItems += '<p>' + cartLines[i]['format'] + '</p>';
+                    cartItems += '<p>' + cartLines[i]['availabilityLegend'] + ' | Qty: ' + cartLines[i]['quantity'] + ' | Price: ' + currency + (parseFloat(cartLines[i]['quantity']) * parseFloat(cartLines[i]['price'])).toFixed(2) + '</p>';
+                    itemDisplayCount++;
+
+                    if (itemDisplayCount > 3 && CURRENT_SITE === 'cambridgeenglish') {
+                        break;
+                    }
+                }
+
+                $miniCartItems.html(cartItems);
+                $subTotal.html(currency + subTotal);
+                jQuery('#mobileCartQty').html('(' + jQuery('#qtyValue').html() + ')');
+
+                jQuery('.withItems').show();
+            }
+            else {
+                if (jQuery('#miniCartItems > h4').length == 0) {
+                    jQuery('.withItems').hide();
+                }
+                jQuery('#miniCartDetail .qty').show();
+            }
+
+            jQuery('#cartQty').html('(' + jQuery('#qtyValue').html() + ')');
+        };
+
+        var addToCartPatch = function (data) {
+            var params = {
+                isbn: isbn = typeof data.isbn !== 'undefined' ? data.isbn : '',
+                country: typeof data.country !== 'undefined' ? data.country : '',
+                page: typeof data.page !== 'undefined' ? data.page : '',
+                discountCode: typeof data.discountcode !== 'undefined' ? data.discountcode : ''
+            };
+
+            if (params.page === "schools") {
+                params['institutiononly'] = typeof data.institutiononly !== 'undefined' ? data.institutiononly : 0;
+                params['qty'] = typeof data.qty !== 'undefined' ? data.qty : '';
+            }
+
+            var urlTarget = location.protocol + "//" + location.host
+                          + "/wm-ecommerce-web/" + params.page + "/addtocart?" + $.param(params);
+
+            jQuery.ajax({
+                url: urlTarget,
+                dataType: 'xml',
+                success: function (data, textStatus) {
+                    add_to_cart_successful_patch(data, textStatus, isbn)
+                },
+                error: errorCallBackPatch,
+                complete: completeCallBackPatch,
+                cache: false
+            });
+        };
+
+        /**
+         * firing google tag manager after adding to cart
+         * the try catch block will take care of the logic for firing GTM if applicable, which is for ELT ATM.
+         * @param isbn string
+         */
+        function googleTagManagerPatch(isbn) {
+            try {
+               var gtm = new GoogleTagManager();
+
+               if ($.isFunction(gtm.addToCart)) {
+                   $.post(
+                       '/tools/packages/cambridge_core/titleService',
+                       {"isbn": isbn, "data": "gtm_data"},
+                       function (data, status) {
+                           gtm.addToCart(data);
+                       }
+                   );
+               }
+            } catch (err) {
+                // Google Tag Manager is not loaded.
+                return;
+            }
+        }
+    }
+
+
+        var LOCALE = "uk_UA";
+    
+
+        $('.close').click(function() {
+            $('.disclosure-container').slideUp();
+            $('#content').css("padding-top","0");
+                    });
+                $('#content').before($('#cookieNotice'));
+        $(document).ready(function () {
+            setTimeout(function(){
+                $('#cookieNotice').fadeIn(500);
+            }, 1000);
+        });
+
+        $( "#cookieNotice .dismiss").click(function() {
+            $("#cookieNotice").toggleClass("off");
+        });
+
+        
+            
+
+            $(document).ready(function () {
+                $('.ccm-page-status-bar-buttons > a').remove(':contains("Compare")');
+            });
+        
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5648947972","applicationID":"188665667","transactionName":"bl0DMBQAWhEDBkQMWVcXNBYPTl0MBgBIS0ZRSA==","queueTime":0,"applicationTime":3930,"atts":"QhoARlwaSR8=","errorBeacon":"bam.nr-data.net","agent":""}

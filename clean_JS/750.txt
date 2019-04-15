@@ -1,0 +1,22 @@
+
+cssdropdown.startchrome("chromemenu");
+
+
+document.write(unescape("%3Cscript id='pap_x2s6df8d' src='" + (("https:" == document.location.protocol) ? "https://" : "http://") +
+"www.redrivercatalog.com/pap/scripts/trackjs.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+PostAffTracker.setAccountId('default1');
+try {
+PostAffTracker.track();
+} catch (err) { }
+
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', 'c99fdecb8da8397503d8721f648c33a65122b13ba815938e06238d28a6b24173']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/am4955yr6pdqiov6yo56unzirh56a13knho0wf5lzeta6dg9yl/c99fdecb8da8397503d8721f648c33a65122b13ba815938e06238d28a6b24173/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+

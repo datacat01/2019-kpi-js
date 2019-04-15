@@ -1,0 +1,166 @@
+
+!function(e){if(!window.pintrk){window.pintrk=function()
+{window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+n=window.pintrk;n.queue=[],n.version="3.0";var
+t=document.createElement("script");t.async=!0,t.src=e;var
+r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}
+("https://s.pinimg.com/ct/core.js"); 
+
+pintrk('load','2612775090865', { em: '', });
+pintrk('page');
+
+
+
+  
+    Currency.format = 'money_format';
+  
+
+  var shopCurrency = 'USD';
+
+  /* Sometimes merchants change their shop currency, let's tell our JavaScript file */
+  Currency.money_with_currency_format[shopCurrency] = "${{amount}} USD";
+  Currency.money_format[shopCurrency] = "${{amount}}";
+
+  /* Default currency */
+  var defaultCurrency = 'USD' || shopCurrency;
+  
+  if ($(window).width() >= 768) {
+    var $currencySelector = $(".top_bar .currencies");
+  } else {
+    var $currencySelector = $("#mobile_menu .currencies");
+  }
+  
+  /* Cookie currency */
+  var cookieCurrency = Currency.cookie.read();
+
+  /* Fix for customer account pages */
+  $('span.money span.money').each(function() {
+    $(this).parents('span.money').removeClass('money');
+  });
+
+  /* Saving the current price */
+  $('span.money').each(function() {
+    $(this).attr('data-currency-USD', $(this).html());
+  });
+
+  // If there's no cookie.
+  if (cookieCurrency == null) {
+    if (shopCurrency !== defaultCurrency) {
+      Currency.convertAll(shopCurrency, defaultCurrency);
+    }
+    else {
+      Currency.currentCurrency = defaultCurrency;
+    }
+  }
+  // If the cookie value does not correspond to any value in the currency dropdown.
+  else if ($currencySelector.length && $currencySelector.find('option[value=' + cookieCurrency + ']').length === 0) {
+    Currency.currentCurrency = shopCurrency;
+    Currency.cookie.write(shopCurrency);
+  }
+  else if (cookieCurrency === shopCurrency) {
+    Currency.currentCurrency = shopCurrency;
+  }
+  else {
+    Currency.convertAll(shopCurrency, cookieCurrency);
+  }
+
+  $currencySelector.val(Currency.currentCurrency).change(function() {
+    var newCurrency = $(this).val();
+    Currency.convertAll(Currency.currentCurrency, newCurrency);
+    jQuery('.selected-currency').text(Currency.currentCurrency);
+  });
+
+  var original_selectCallback = window.selectCallback;
+  var selectCallback = function(variant, selector) {
+    original_selectCallback(variant, selector);
+    Currency.convertAll(shopCurrency, $currencySelector.val());
+    jQuery('.selected-currency').text(Currency.currentCurrency);
+      if (variant) {
+         jQuery('.option_title').html('Color - ' + variant.title);
+        
+          if (variant.inventory_management == "shopify" && variant.inventory_policy != "continue") {
+              if (variant.inventory_quantity > 10) {
+                  jQuery('#variant-inventory').html('<i class=' + '"fa fa-check-circle"' + 'aria-hidden=' + '"true"' + '></i> ' + 'In Stock').css('color', 'green');
+              } else if(variant.inventory_quantity <= 10 && variant.inventory_quantity > 0) {
+                  jQuery('#variant-inventory').html('<i class=' + '"fa fa-exclamation-circle"' + 'aria-hidden=' + '"true"' + '></i> ' + 'Only ' + variant.inventory_quantity + ' left in stock.').css('color', 'darkorange');
+              } else {
+                  jQuery('#variant-inventory').text("- This product is sold out").css('color', 'red');
+              }
+          } else {
+              jQuery('#variant-inventory').text("- This product is available");
+          }
+      } else {
+          jQuery('#variant-inventory').text("");
+      }
+  };
+
+  function convertCurrencies() {
+    if($currencySelector.val() && $currencySelector.val() != $currencySelector.data('default-shop-currency')) {
+      Currency.convertAll($currencySelector.data('default-shop-currency'), $currencySelector.val());
+      jQuery('.selected-currency').text(Currency.currentCurrency);
+    }
+  }
+
+
+
+  window.zESettings = {
+   webWidget: {
+    color: {
+     launcherText: '#FFFFFF'
+    }
+   }
+  };
+
+/* <![CDATA[ */
+var google_conversion_id = 1042677772;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+        var ctoken = (document.cookie.match('(^|; )cart=([^;]*)')||0)[2];
+        if (ctoken) {
+            document.getElementsByClassName('nosto_external_visit_ref')[0].textContent = ctoken;
+        }
+
+
+
+        _dmSetDomain("pacificabeauty.com");
+      
+_dmTrack("CheckOutAmount", "");
+
+	var strm_data_layer = {
+	'template' : "index",
+	'collection_id' : null,
+	'collection_name' : null,
+	'cart_items' : [],
+	'product' : {
+		'product_price': null,
+		'product_id': null,
+		'product_variante_id': null,
+		'product_images' : null,
+		'product_title' : null,
+		'product_type' : null,
+		'collections' : null,
+		}
+	};
+
+
+    adroll_adv_id = "J3WLUFKHGFDVDALEYMIEIF";
+    adroll_pix_id = "QK75PKDEJ5HUBBWWAJJQIZ";
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+

@@ -1,0 +1,14 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.theglassbabybottle.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.theglassbabybottle.com\/mm5\/json.mvc\u003F";
+var Store_Code = "tgbb";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.theglassbabybottle.com\/SRCH.shtml\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+window.__lc = window.__lc || {};window.__lc.license = 10672457;(function() {var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);})();

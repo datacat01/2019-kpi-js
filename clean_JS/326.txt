@@ -1,0 +1,101 @@
+(function (a) {
+    a.$base = 'https://finale-cdn.uk'; a.$version = '1.6.10'; a.lang = {}; a.lang.locale = ['en-GB', 'en']; a.lang.hour12 = Boolean(true); a.$debug = 'false'.toLowerCase() === 'true'; }((window.LTD = [], window.LTD)));
+
+        window.dataLayer = [];
+                function AddDataLayerVariable(n, v) { if (typeof window.dataLayer[0] === 'undefined') { window.dataLayer = [ {} ]; } window.dataLayer[0][n] = v; }
+    
+
+        
+        AddDataLayerVariable('visitorLoginState', 'Anonymous');
+
+        
+    
+
+//<![CDATA[
+var theForm = document.forms['mainForm'];
+if (!theForm) {
+    theForm = document.mainForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+        dataLayer.push({
+            'ecommerce': {
+                'currencyCode': 'GBP',
+                'impressions': [
+                    
+                            {'name': 'The Lion King','id': '9','brand': 'Lyceum Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 1},
+                            {'name': 'Aladdin','id': '1742','brand': 'Prince Edward Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 2},
+                            {'name': 'Matilda The Musical','id': '1010','brand': 'Cambridge Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 3},
+                            {'name': 'Mamma Mia!','id': '1017','brand': 'Novello Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 4},
+                            {'name': 'Phantom of the Opera','id': '13','brand': 'Her Majesty\u0027s Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 5},
+                            {'name': 'Les Miserables','id': '197','brand': 'Queens Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 6},
+                            {'name': 'Thriller Live','id': '666','brand': 'Lyric Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 7},
+                            {'name': 'School of Rock','id': '2208','brand': 'Gillian Lynne Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 8},
+                            {'name': 'Wicked','id': '384','brand': 'Apollo Victoria Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 9},
+                            {'name': 'The Book of Mormon','id': '990','brand': 'Prince of Wales Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 10},
+                            {'name': 'Waitress','id': '3309','brand': 'Adelphi Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 11},
+                            {'name': 'The Mousetrap','id': '27','brand': 'St Martins Theatre','category': 'Play','list': 'Homepage - Most Popular','position': 12},
+                            {'name': 'The Play That Goes Wrong','id': '1520','brand': 'Duchess Theatre','category': 'Play','list': 'Homepage - Most Popular','position': 13},
+                            {'name': 'TINA: The Tina Turner Musical','id': '2589','brand': 'Aldwych Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 14},
+                            {'name': 'Betrayal','id': '170','brand': 'Harold Pinter Theatre','category': 'Play','list': 'Homepage - Most Popular','position': 15},
+                            {'name': 'The Curious Incident of the Dog in the Night-Time','id': '1172','brand': 'Piccadilly Theatre','category': 'Play','list': 'Homepage - Most Popular','position': 16},
+                            {'name': 'The Comedy About a Bank Robbery','id': '2195','brand': 'Criterion Theatre','category': 'Play','list': 'Homepage - Most Popular','position': 17},
+                            {'name': 'Witness for the Prosecution','id': '2741','brand': 'London County Hall','category': 'Play','list': 'Homepage - Most Popular','position': 18},
+                            {'name': 'Motown: The Musical','id': '1490','brand': 'Shaftesbury Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 19},
+                            {'name': 'Fiddler on the Roof','id': '487','brand': 'Playhouse Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 20},
+                            {'name': 'Come From Away','id': '3235','brand': 'Phoenix Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 21},
+                            {'name': 'Everybody\u0027s Talking About Jamie','id': '2756','brand': 'Apollo Theatre','category': 'Musical','list': 'Homepage - Most Popular','position': 22},
+                            {'name': 'Joseph','id': '129','brand': 'London Palladium','category': 'Musical','list': 'Homepage - Most Popular','position': 23},
+                            {'name': 'Only Fools And Horses','id': '3233','brand': 'Theatre Royal Haymarket','category': 'Musical','list': 'Homepage - Most Popular','position': 24}
+                ]
+            }
+        });
+    
+
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+
+
+            try {
+                new SmartBanner({
+                    daysHidden: 0,   // Duration to hide the banner after being closed (0 = always show banner)
+                    daysReminder: 0, // Duration to hide the banner after "VIEW" is clicked (0 = always show banner)
+                    appStoreLanguage: 'us', // language code for the App Store (defaults to us)
+                    title: 'London Theatre Direct Tickets',
+                    author: 'London Theatre Direct',
+                    button: 'VIEW',
+                    store: {
+                        ios: 'On the App Store',
+                        android: 'In Google Play',
+                        windows: 'In Windows store'
+                    },
+                    price: {
+                        ios: 'FREE',
+                        android: 'FREE',
+                        windows: 'FREE'
+                    }
+                    // , force: 'ios' // Uncomment for platform emulation
+                });
+            } catch (e) {}
+        
+
+        var google_tag_params = {
+            ecomm_prodid: '',
+            ecomm_pagetype: 'home',
+            ecomm_totalvalue: 0,
+        };
+

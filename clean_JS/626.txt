@@ -1,0 +1,676 @@
+
+	var __hic = __hic || {};
+	(function() {
+		try {
+			
+			__hic.data = JSON.parse(decodeURIComponent('%7B%22geo%22%3A%7B%22city%22%3A%22Kyiv%22%2C%22countryCode%22%3A%22UA%22%2C%22lat%22%3A50.4547%2C%22lon%22%3A30.5238%2C%22metroCode%22%3A%220%22%2C%22postalCode%22%3A%2202152%22%2C%22regionCode%22%3A%2230%22%2C%22regionName%22%3A%22Kyiv%20City%22%7D%2C%22user%22%3A%7B%22id%22%3A%22abAey4W0ZhWkF3aUNh1vIrAWEl%22%2C%22auth%22%3Afalse%2C%22aov%22%3Anull%2C%22lod%22%3Anull%2C%22ocnt%22%3Anull%2C%22ov%22%3Anull%2C%22vmo%22%3Anull%2C%22vyr%22%3Anull%2C%22cg%22%3A%5B%22Everyone%22%2C%22NonArchive_Customer%22%2C%22Unregistered%22%5D%2C%22nv%22%3Atrue%2C%22sid%22%3A%22pi38iS26u7buLaMBZrMInSvI3NPZB1AsivM%3D%22%7D%2C%22cart%22%3A%7B%22tt%22%3A0%2C%22st%22%3A0%2C%22qt%22%3A0%2C%22sh%22%3A0%2C%22sd%22%3A0%2C%22tx%22%3A0%2C%22ds%22%3A0%2C%22lds%22%3A0%2C%22li%22%3A%5B%5D%7D%2C%22page%22%3A%7B%22pl%22%3A%22Home-Show%22%2C%22cname%22%3A%22%22%2C%22cstep%22%3A%22%22%2C%22ord%22%3A1%2C%22cat%22%3A%22%22%2C%22q%22%3A%22%22%7D%2C%22ab%22%3A%7B%22tname%22%3A%22%22%2C%22sgmnt%22%3A%22%22%7D%2C%22env%22%3A%22prod%22%2C%22version%22%3A%221.0%22%2C%22platform%22%3A%22demandware%22%2C%22pid%22%3A%22myGKT85D%22%7D'));
+			__hic.version = '16.1.0';
+			__hic.hicTagLocation = '//h30-deploy.hiconversion.com/origin/tag/';
+			
+		
+			if ('null' != 'null' &&
+				'null'.length > 0) {
+				__hic.hicTagLocation = 'null';
+			} else if ('myGKT85D' != 'null' &&
+				'myGKT85D'.length > 0) {
+				__hic.hicTagLocation += 'myGKT85D';
+			}
+		
+			var s = document.createElement('script');
+			s.id = "hiconversion_30";
+			s.async = "async";
+			s.type = "text/javascript";
+			s.src = __hic.hicTagLocation;
+			var nodes = document.getElementsByTagName("script");
+			if (nodes.length > 0) {
+			 	nodes[0].parentNode.insertBefore(s, nodes[0]);
+			}
+		} catch (e) {
+		
+		}
+	})();
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbdm-timexus';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-timexus-Site/en_US/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-timexus-Site/en_US/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+var certona = window.certona || {};
+certona.scheme = "home1_rr";
+certona.maxrecommendations = "20";
+
+
+
+certona.callback = "certonaHomePageCallBack";
+
+
+
+var certona = window.certona || {};
+certona.pagetype = "HOME";
+certona.devicetype = "DESKTOP";
+
+callCertona();
+
+
+var utag_data = {
+  "page_name": "Sites-timexus-Site",
+  "page_type": "content",
+  "page_context_type": "storefront",
+  "page_context_title": "storefront",
+  "user_anonymous": "true",
+  "user_authenticated": "false",
+  "user_registered": "false",
+  "customer_id": "abAey4W0ZhWkF3aUNh1vIrAWEl",
+  "locale": "en_US"
+};
+
+
+		// jQuery is not available yet but will be when the events fire 
+		function elementInViewport( el )
+		{
+			var top = el.offsetTop;
+			var left = el.offsetLeft;
+			var width = el.offsetWidth;
+			var height = el.offsetHeight;
+			while ( el.offsetParent )
+			{
+				el = el.offsetParent;
+				top += el.offsetTop;
+				left += el.offsetLeft;
+			}
+			
+			return (
+				top >= window.pageYOffset &&
+				left >= window.pageXOffset &&
+				( top + height ) <= ( window.pageYOffset + window.innerHeight ) &&
+				( left + width ) <= ( window.pageXOffset + window.innerWidth )
+			);
+		}
+		
+		function eventHook( t, e, h )
+		{
+			if ( t.addEventListener )
+			{
+				t.addEventListener( e, h, 'passive' );
+			}
+			else if ( t.attachEvent )
+			{
+				e = "on" + e;
+				t.attachEvent( e, h );
+			}
+			else
+			{
+				t[ "on" + e ] = h;
+			}
+		}
+		
+		
+		
+		<!-- Tealium Universal Tag -->
+		var tealiumPromise = new Promise(
+			function ( resolve, reject )
+			{
+				var newScript   = document.createElement('script'); 
+
+				// Important success and error for the promise
+				newScript.onload  = function() { resolve('Success'); };
+				newScript.onerror = function() { reject('Failure');  };
+
+				newScript.src   = '//tags.tiqcdn.com/utag/timex/tmx-dw-us/prod/utag.js'; 
+				newScript.type  = 'text/javascript'; 
+				newScript.async = true;	
+				
+				var firstScriptTag   = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore( newScript, firstScriptTag );
+				
+			}
+		);
+
+		
+		
+		
+			// Usage:  Load different file types with one callback
+			tealiumPromise.
+			then( 
+				function() { 
+					if ( typeof doEnh_action !== 'undefined' )
+					{
+						console.log('Promised Tealium script Loaded!');
+						doEnh_action();
+					}
+				}
+			)
+			.catch(
+				function() {
+					console.log('Promised Tealium script did not load!');
+				}
+			);		
+
+
+
+		/// --------------------------------------------------------------------------------------
+		function pliData(str)
+		{
+			if ( typeof str == "string" )
+			{
+				if ( str.indexOf('|') >= 0 )
+				{
+					return str.split('|');
+				}
+				else 
+				{
+					return ["'"+str+"'"]; 
+				}
+			}
+			else
+			{
+				return [str];
+			}
+		}
+		
+		function enhCheckout(data, step, option)
+		{
+			var ids    = pliData( data.liIds    );
+			var skus   = pliData( data.liSkus   );
+			var names  = pliData( data.liNames  );
+			var brands = pliData( data.liBrands );
+			var cats   = pliData( data.liCats   );
+			var prices = pliData( data.liPrices );
+			var qtys   = pliData( data.liQtys   );
+			
+			console.log("enhCheckout step " + step);
+			
+			utag.link(
+				{	'enh_action'      : 'checkout',
+					'checkout_step'   :       step,
+					'checkout_option' :     option,
+					'product_id'      :        ids,
+					'product_sku'     :       skus,
+					'product_name'    :      names,
+					'product_brand'   :     brands,
+					'product_category':       cats,
+					'product_price'   :     prices,
+					'product_quantity':       qtys
+				}
+			);
+		}
+		
+		var gridTileClickHandler = function ( e )
+		{
+			var anch = e.target.closest('a');
+			
+			var btn  = e.target.closest('button');
+			
+			// only trigger when an anchor is clicked
+			if ( anch )
+			{
+				var data = $(this).find('param').data();
+				var utagLinkData = {	"product_id":[data.prdId],
+										"product_sku":[data.prdSku],
+										"product_name":[data.prdName],
+										"product_brand":[data.prdBrand],
+										"product_category":[data.prdCat],
+										"product_price":[parseFloat(data.prdPrice)]
+				};
+				
+			    if ( data.prdList == '' ) {
+			    }else{
+					utagLinkData.product_list = [data.prdList];    
+				}
+				
+				if ( anch.id == 'quickviewbutton' ) // Quick view link clicked
+				{
+					utagLinkData.enh_action = "product_quickview";
+				}
+				else // PDP link clicked
+				{
+					utagLinkData.enh_action = "product_click";
+					utagLinkData.product_position = [parseInt(data.prdPos)];
+				}
+				
+				utag.link( utagLinkData );
+			}
+			// certona recomendation add to bag shortcut
+			else if ( btn )
+			{
+				if ( btn.title == 'Add to Bag' )
+				{
+					var data = $(this).find('param').data();
+					var utagLinkData = {	"enh_action": "add",
+											"product_id":[data.prdId],
+											"product_sku":[data.prdSku],
+											"product_name":[data.prdName],
+											"product_brand":[data.prdBrand],
+											"product_category":[data.prdCat],
+											"product_price":[parseFloat(data.prdPrice)],
+											"product_quantity":[1]
+					};
+					utag.link( utagLinkData );
+				}
+			}
+		}
+		
+		// -- product impressions ----------------------------------------------------
+		var scrollWatcher = function ( e ) 
+		{
+			last_known_scroll_position = window.scrollY;
+			
+			if ( !processing )
+			{
+				window.requestAnimationFrame(
+					function()
+					{
+						var utagData_pageCatagory    = 'null';
+						var utagLinkData = {};
+						
+						utagLinkData.enh_impression_id       = [];
+						utagLinkData.enh_impression_sku      = [];
+						utagLinkData.enh_impression_name     = [];
+						utagLinkData.enh_impression_brand    = [];
+						utagLinkData.enh_impression_category = []; // assigned primary category of the product
+						utagLinkData.enh_impression_list     = []; // viewing category
+						utagLinkData.enh_impression_price    = [];
+						utagLinkData.enh_impression_position = [];
+						
+						// (product list) product impression and product click only, do not pass anywhere else
+						
+						var count = 0;
+						// get all grid tiles that have not alreay been impressioned
+						var scrolledTargets = $('#search-result-items li.grid-tile').not('.processed').each(
+							function()
+							{	// only impression the ones that are currently on screen
+								if ( elementInViewport( this ) )
+								{
+									$( this ).addClass( 'processed' ); // dont impression this again
+									var data = $( this ).find( 'param' ).data(); // fetch product data
+									
+									      utagLinkData.enh_impression_id.push( ''  + data.prdId );
+									     utagLinkData.enh_impression_sku.push( ''  + data.prdSku );
+									    utagLinkData.enh_impression_name.push( ''  + data.prdName );
+									   utagLinkData.enh_impression_brand.push( ''  + data.prdBrand );
+								    utagLinkData.enh_impression_category.push( ''  + data.prdCat );
+			
+		    if ( data.prdList == '' ) {
+		    }else{
+				utagLinkData.enh_impression_list.push( ''  + data.prdList );    
+			}
+									   utagLinkData.enh_impression_price.push( 0.0 + parseFloat(data.prdPrice) );
+									utagLinkData.enh_impression_position.push( 0   + parseInt(data.prdPos) );
+									
+									count++;
+								}
+							}
+						);
+						
+if ( utagLinkData.enh_impression_list.length == 0 )
+{
+	delete utagLinkData.enh_impression_list;
+}
+						
+						if ( count ) {
+							utagLinkData.enh_action = "product_impression";
+							
+							tealiumPromise.then( function(){utag.link( utagLinkData )} );
+						}
+						
+						processing = false;
+					}
+				);
+				
+				processing = true;
+			}
+		}
+		
+		var last_known_scroll_position = 0;
+		
+		var processing = false;
+		
+		eventHook( document, "scroll", scrollWatcher );
+		
+		var clickWatcher = 
+			function ( e )
+			{
+				var utagLinkData = {};
+				
+				// == PLP product clicks =====================================================
+				if ( e.target.closest('.grid-tile') )
+				{
+					var newContext = e.target.closest('li.grid-tile');
+					gridTileClickHandler.call( newContext, e );
+				}
+				// ===========================================================================
+				// == add to cart link =======================================================
+				else if ( e.target.id == 'add-to-cart' )
+				{
+					var data = $(e.target).data();
+
+					if ( e.target.closest('.hic-floater') ){
+						data = $('#product-content button#add-to-cart').data();
+					}
+					
+					var qty = $('#Quantity')[0].value;
+					utag.link(
+						{	'enh_action'      :'add',
+							'product_id'      :[data.prdId],
+							'product_sku'     :[data.prdSku],
+							'product_name'    :[data.prdName],
+							'product_brand'   :[data.prdBrand],
+							'product_category':[data.prdCat],
+							'product_price'   :[parseFloat(data.prdPrice)],
+							'product_quantity':[qty]
+						}
+					);
+				}
+				// ===========================================================================
+				// == remove from cart =======================================================
+				else if (e.target.innerText == 'REMOVE')
+				{	
+					var data = $(e.target.closest('button.cta-link')).data();
+					utag.link(
+						{	'enh_action'      :'remove',
+							'product_id'      :[data.prdId],
+							'product_sku'     :[data.prdSku],
+							'product_name'    :[data.prdName],
+							'product_brand'   :[data.prdBrand],
+							'product_category':[data.prdCat],
+							'product_price'   :[parseFloat(data.prdPrice)],
+							'product_quantity':[data.prdQyt]
+						}
+					);
+				}
+				// ===========================================================================
+				// == checkout step 1 = my bag ===============================================
+				else if ( e.target.closest('a.mini-cart-link') )
+				{ // svg link in page header
+					var data = $('.mini-cart-link').data();
+					enhCheckout(data, '1', 'viewed');
+				}
+				else if ( e.target.closest('.mini-cart-link-cart') )
+				{	// className:"button mini-cart-link-cart" goes to cart page
+					var data = $('.mini-cart-link-cart').data();
+					enhCheckout(data, '1', 'viewed')
+				}
+				else if ( e.target.className == 'mini-cart-link-checkout' )
+				{	//className:"mini-cart-link-checkout" > skip cart page and start checkout
+					var data = $('.mini-cart-link-checkout').data();
+					enhCheckout(data, '1', 'skipped');
+				}
+				// ===========================================================================
+				// == checkout step 2 - my bag ===============================================
+				else if ( e.target.closest('form.cart-action-checkout') )
+				{	// cart page, checkout 2 viewed (anonymous) | skipped (authenticated)  (site checkout|paypal|skipped)
+					var data = $('#checkout-form-params').data();
+					if( e.target.value == "Checkout" )
+					{
+						
+							enhCheckout(data, '2', 'site checkout');
+						
+					}
+					else if (e.target.tagName == "IMG" ){
+						enhCheckout(data, '2', 'paypal');
+					}
+				}
+				// ===========================================================================
+				// == checkout step 3 - customer type ========================================
+				else if ( e.target.parentElement.value == "Checkout as Guest" )
+				{
+					var data = $('#checkout-form-params').data();
+					enhCheckout(data, '3', 'guest');
+				}
+				else if ( e.target.parentElement.value == "Create An Account" )
+				{
+					var data = $('#checkout-form-params').data();
+					enhCheckout(data, '3', 'create account');
+				}
+				else if ( e.target.parentElement.innerText == "SIGN IN" )
+				{
+					var data = $('#checkout-form-params').data();
+					enhCheckout(data, '3', 'sign in');
+				}
+				// ===========================================================================
+				// == checkout step 4 - shipping =============================================
+				else if ( 
+					e.target.closest("button") &&
+					e.target.closest("button").type == 'submit' && 
+					e.target.closest("button").value == "Continue" && 
+					e.target.closest('form.checkout-shipping')
+				)
+				{
+					var data = $('#checkout-form-params').data();
+					var method = $('#shipping-method-list .checked input')[0].value;
+					enhCheckout(data, '4', method);
+				}	
+				// ===========================================================================
+				// == checkout step 5 ========================================================
+				else if ( e.target.closest("button").type == 'submit' && e.target.closest('form.checkout-billing') )
+				{
+					var data = $('#checkout-form-params').data();
+					var method = $('.payment-method-expanded').data().method;
+					enhCheckout(data, '5', method);
+				}
+				// ===========================================================================
+				// == checkout step 6 ========================================================
+				else if ( e.target.closest('form.submit-order') )
+				{
+					var data = $('#checkout-form-params').data();
+					enhCheckout(data, '6', 'place order');
+				}
+				// ===========================================================================
+				else
+				{
+					console.log(e);
+				}
+			}
+			
+		eventHook( document, "click", clickWatcher );
+
+
+	var bta = new __bta("NZCMClYCdF9avGKm1VjdUg");
+	bta.setHost("app.bronto.com");
+
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', 'cb4358409ae9c2ea0ec1d1601e8efeb35b6693ee891b88223c1552f913ce2c2b']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/ckm52rj94w8x3tgu26u0g8kkpzz1zflkxkzz8yau7ngfjwpvnk/cb4358409ae9c2ea0ec1d1601e8efeb35b6693ee891b88223c1552f913ce2c2b/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","DONT_FORGET_TO_CHECKOUT":"DON'T FORGET TO CHECKOUT","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","ADD_TO_CART":"Add to Bag","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to bag","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","INVALID_PASSWORD_LENGTH":"Please make sure your password contains a minimum of one letter, one number and is at least 8 characters long","INVALID_PASSWORD_MATCH":"Does not match the current password","INVALID_ADDRESS_POBOX":"Shipping to PO Box is not allowed.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"Out of Stock","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECT_YOUR_COUNTRY":"Select Your Country","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","VALIDATE_POBOX":"validate.pobox","VALIDATE_COUNTRY":"validate.country","VIEW_FRONT":"View Front","VIEW_BACK":"View Back","START_OVER":"Are you sure you want to start over?","YES":"Yes","NO":"No","TIMEX_COOKIE_NAME":"timexus_cookie_accept","TIMEX_COOKIE_VALUE":"yes","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"Out of Stock","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-timexus-Site/en_US/Resources-Load","pageInclude":"/on/demandware.store/Sites-timexus-Site/en_US/Page-Include","continueUrl":"https://www.timex.com/home?dwcont=C1541635741","staticPath":"/on/demandware.static/Sites-timexus-Site/-/en_US/v1555215363131/","addGiftCert":"/on/demandware.store/Sites-timexus-Site/en_US/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-timexus-Site/en_US/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-timexus-Site/en_US/Cart-AddProduct","minicart":"/on/demandware.store/Sites-timexus-Site/en_US/Cart-MiniAddProduct","cartShow":"/cart","cartRecoveryURL":"/on/demandware.store/Sites-timexus-Site/en_US/Cart-SetSessionFlag","giftRegAdd":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/Address-GetAddressDetails?addressID=","paymentsList":"https://www.timex.com/saved-cards","addressesList":"https://www.timex.com/addressbook","wishlistAddress":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-timexus-Site/en_US/Address-Delete","getProductUrl":"/on/demandware.store/Sites-timexus-Site/en_US/Product-Show","getBonusProducts":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-timexus-Site/en_US/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-timexus-Site/en_US/Product-Detail","getAvailability":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-timexus-Site/-/default/dwc8e53f09/images/icon_remove.gif","floaterDesktopCss":"/on/demandware.static/Sites-timexus-Site/-/en_US/v1555215363131/css/floaterDesktopSyles.css","floaterMobileCss":"/on/demandware.static/Sites-timexus-Site/-/en_US/v1555215363131/css/floaterMobileStyles.css","searchsuggest":"/on/demandware.store/Sites-timexus-Site/en_US/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-timexus-Site/en_US/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-timexus-Site/en_US/COBilling-UpdateSummary","billingSelectCC":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COBilling-SelectCreditCard","updateAddressDetails":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-timexus-Site/en_US/COBilling-ResetPaymentForms","compareShow":"/compare","compareAdd":"/on/demandware.store/Sites-timexus-Site/en_US/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-timexus-Site/en_US/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-timexus-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-timexus-Site/en_US/StoreInventory-GetZipCode","billing":"/billing","setSessionCurrency":"/on/demandware.store/Sites-timexus-Site/en_US/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-timexus-Site/en_US/COShippingMultiple-AddEditAddressJSON","cookieHint":"/cookie_hint.html","redirectPopUpURL":"/on/demandware.store/Sites-timexus-Site/en_US/Home-SetSessionFlag","brontoEmailSignUpResponse":"/on/demandware.store/Sites-timexus-Site/en_US/Page-Show","rateLimiterReset":"/on/demandware.store/Sites-timexus-Site/en_US/RateLimiter-HideCaptcha","imagesShow":"/on/demandware.store/Sites-timexus-Site/en_US/Images-Show","resetPassword":"https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/Account-PasswordResetDialog","getCompositeProducts":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetAllCompositeProducts","searchComponents":"/on/demandware.store/Sites-timexus-Site/en_US/Product-SearchComponents","getComposite":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetComposite","getCertonaRecsOrderConf":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-Confirmation","getCertonaRecsNoHits":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-NoHits","getCertonaRecsCart":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-Cart","getCertonaRecsPDP1":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-PDP1","getCertonaRecsPDP2":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-PDPStrap","getProductSpecs":"/on/demandware.store/Sites-timexus-Site/en_US/Product-GetProductSpecs","getCertonaRecsHP":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-Homepage","getCertonaStrapFinder":"/on/demandware.store/Sites-timexus-Site/en_US/GetRecommendations-StrapFinderGrid"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":false,"COOKIE_HINT":false,"CHECK_TLS":false,"BTT_DESKTOP":200,"BTT_MOBILE":200,"REFINEMENT_TIMEOUT":500,"GOOGLE_MAPS_API_KEY":null,"LANDSCAPE_OVERLAY_WIDTH":"1200","LANDSCAPE_OVERLAY_HEIGHT":"767","COUNTRY_REDIRECT_ENABLED":true,"ZMAGS_CHANNEL_SNIPPET":false};
+window.Variables = {"legacyCustomer":null,"currentPage":null};
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+
+
+function sticky_ready() {
+	var persistingEl = $('#persistent-nav-banner');
+	
+	var prevScroll = 0;
+	var currScroll = 0;
+	
+	var width  = 0;
+    var height = $(".header-banner").height() * -1;
+
+    var desktopSpacing = 0;
+    var mobileSpacing = 0;
+    
+	var sticker = function(event) {
+		width = persistingEl.width();
+		
+    	currScroll = $(this).scrollTop();
+		offset = currScroll * -1;
+
+		
+		//console.log({width, height, offset, currScroll, prevScroll});
+		
+		if ( offset <= height ) {
+			if ( width > 1024 )
+				persistingEl.sticky({ topSpacing: desktopSpacing });
+			else
+				persistingEl.sticky({ topSpacing: mobileSpacing });
+			persistingEl.sticky('update');
+		}
+		else
+		{
+			persistingEl.unstick();
+		}
+		
+		prevScroll = currScroll;
+    }
+    
+    
+    
+    
+    
+    sticker();
+    $(window).resize(sticker);
+	$(window).scroll(sticker);
+
+}
+
+$(window).ready( sticky_ready() );
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.timex.com/on/demandware.store/Sites-timexus-Site/en_US/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

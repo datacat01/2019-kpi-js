@@ -1,0 +1,9 @@
+
+    window._mfq = window._mfq || [];
+    (function() {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/fb45c46d-f62b-4877-8543-4157e36da8b7.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+

@@ -1,0 +1,609 @@
+
+    var s7Server="";
+
+
+function loadMonetate() {
+  var monetateT = new Date().getTime();
+  var p = document.location.protocol;
+  if (p == "http:" || p == "https:") {
+    var element = document.createElement("script");
+    element.type = "text/javascript";
+    element.async = true;
+    element.src = (p == "https:" ? "https://s" : "http://") + "e.monetate.net/js/2/a-906b916f/p/davidsbridal.com/custom.js";
+    document.body.appendChild(element);
+  }
+}
+
+if (window.addEventListener)
+  window.addEventListener("load", loadMonetate, false);
+else if (window.attachEvent)
+  window.attachEvent("onload", loadMonetate);
+else window.onload = loadMonetate;
+
+
+
+    
+    
+
+var docTitle = document.title;
+var pageNameValue = docTitle.replace(/'/g, "");
+var storeIdentifierForTaging = 'DBI';
+
+
+    var L1 = [''];
+    var L2 = [''];
+    var L3 = [''];
+    var page_type = 'Other';
+
+
+
+       utag_data['L1'] = L1;
+       utag_data['L2'] = L2;
+       utag_data['L3'] = L3;
+       utag_data['page_type'] = page_type;
+   
+
+
+var utagUrl = "//tags.tiqcdn.com/utag/davidsbridal/v7/prod/utag.js";
+
+
+var modalRegRole;
+function invokeRoleModal() {
+
+    //load in espots via ajax and launch modal
+    require(["dojo/request", "dijit/Dialog", "dojo/dom-construct", "dojo/ready"], function(request, dialog, domConst, ready){
+        ready(function(){
+
+            request("https://www.davidsbridal.com/DBIRoleModalView?catalogId=10051&langId=-1&storeId=10052",
+                {
+                    method: "GET",
+                    handleAs: "text"
+                }
+            ).then(function(data) {
+                // do something with handled data
+
+                modalRegRole = new dialog({
+                    content: "<a href='#close' class='close_control tlignore' onclick='modalRegRole.hide();return false;'><img src='/wcsstore/AuroraPlusStorefrontAssetStore/DBIUILayer/styleguide/images/header/close.svg' alt='Close' /></a>" + data,
+                    "class": "regPathModal"
+                });
+                jQuery(modalRegRole.domNode).bind('DOMNodeInserted', function(e) {
+                    jQuery("#"+modalRegRole.id).find("img").one("load", function() {
+                      modalRegRole.resize();
+                    }).each(function() {
+                      if(this.complete) jQuery(this).load();
+                    });
+                });
+                modalRegRole.show();
+                window.picturefill();
+                modalRegRole.onBlur = function() {
+                    modalRegRole.hide();
+                   dojo._dialogFlag = false;
+                }
+            }, function(err) {
+                // handle an error condition
+                console.log(err);
+            }, function(evt) {
+                // handle a progress event
+                console.log(evt);
+            });
+
+        });
+
+
+    });
+
+
+ }
+
+function invokeRoleModalForNewUser() {
+    if (getCookie("HM-REG") == null && !dojo._dialogFlag) {
+        dojo._dialogFlag = true;
+        invokeRoleModal();
+          var date = new Date();
+          date.setTime(date.getTime()+(30*24*60*60*1000));
+          var expires = "; expires="+date.toGMTString();
+          document.cookie = "HM-REG"+"="+"true"+expires+"; path=/";
+    }
+ }
+
+
+var deviceTypes={
+    mobile: {
+        name: "small",
+        minSize: 0,
+        maxSize: 767
+    },
+    tablet: {
+        name: "medium",
+        minSize: 768,
+        maxSize: 1024
+    },
+    desktop: {
+        name: "large",
+        minSize: 1025
+    }
+};
+
+//function to determine the device type based solely on the screen size
+function getDeviceType(deviceTypes){
+    var sw = screen.width, typeInUse, dtn, dt;
+
+    for (dtn in deviceTypes){
+        dt = deviceTypes[dtn];
+        if( (sw >= dt.minSize && !dt.maxSize) || (sw >= dt.minSize && sw <= dt.maxSize) ){
+            typeInUse = dt.name;
+            break;
+        }
+    }
+    return typeInUse;
+}
+
+function createCookie(name,value,days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+  }
+  
+(function (){
+   createCookie("device_type",getDeviceType(deviceTypes));
+})();
+
+
+ document.addEventListener("DOMContentLoaded", function(event) {
+     if (readCookie("db_detected_country") == null && readCookie("db_intl_cou") == null ) {
+         var script = document.createElement('script');
+         script.src ='/webapp/wcs/stores/CountryLocator?storeId=10052&catalogId=10051&langId=-1';
+         document.head.appendChild(script);
+     }
+ });
+ function readCookie(name) {
+
+     var nameEQ = name + "=";
+     var ca = document.cookie.split(';');
+     for(var i=0;i < ca.length;i++) {
+         var c = ca[i];
+         while (c.charAt(0)==' ') c = c.substring(1,c.length);
+         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+     }
+     return null;
+ }
+ 
+
+        var currencyCode = 'USD';
+        var visitorSelectedCountry = 'US';
+
+        if (readCookie("db_intl_cou") !== null) {
+            currencyCode = readCookie("db_intl_cur");
+            visitorSelectedCountry = readCookie("db_intl_cou");
+        }
+        utag_data = typeof utag_data !== 'undefined' ? utag_data : {};
+
+        utag_data['cart_value'] =  '0.00';
+        utag_data['cart_units'] = '0';
+        utag_data['currency_code'] = currencyCode;
+        utag_data['page_breadcrumb'] = 'no breadcrumb';
+        if (utag_data['page_type'] == 'Landing Page') {
+            utag_data['page_breadcrumb'] = "Home|" + utag_data['L1'];
+        }
+        utag_data['site_type'] = 'large';
+        utag_data['visitor_device'] = 'desktop';
+        utag_data['visitor_selected_country'] = visitorSelectedCountry;
+  
+
+    dojo.addOnLoad(function() {
+        analyticsJS.storeId=10052;
+        analyticsJS.catalogId=10051;
+        analyticsJS.loadShopCartHandler();
+        analyticsJS.loadPagingHandler();
+        analyticsJS.loadProductQuickInfoHandler('productIdQuickInfo');
+        analyticsJS.loadStoreLocatorPageViews();
+        analyticsJS.loadWishlistHandler();
+        dojo.require("wc.analytics.CoremetricsEventListener");
+            (new wc.analytics.CoremetricsEventListener()).load(true);
+            });
+    
+
+                     dojo.addOnLoad(function(){
+                         SearchJS.init();
+                         SearchJS.setCachedSuggestionsURL('SearchComponentCachedSuggestionsView?langId=-1&amp;storeId=10052&amp;catalogId=10051');
+                         SearchJS.setAutoSuggestURL('SearchComponentAutoSuggestView?coreName=MC_10001_CatalogEntry_en_US&amp;serverURL=https%3a%2f%2fdbprod8.davidsbridal.com%3a9444%2fsolr%2fMC_10001_CatalogEntry_en_US&amp;langId=-1&amp;storeId=10052&amp;catalogId=10051');
+                     });
+     
+                     // The primary Array to hold all static search suggestions
+                     var staticContent = new Array();
+     
+                     // The titles of each search grouping
+                     var staticContentHeaders = new Array();
+             
+
+    dojo.addOnLoad(function() {
+        updateBagCount();
+    });
+
+
+	var ShoppingCartAURL="https://www.davidsbridal.com/OrderCalculate?calculationUsageId=-1&updatePrices=1&catalogId=10051&errorViewName=AjaxOrderItemDisplayView&orderId=.&langId=-1&storeId=10052&URL=https%3A%2F%2Fwww.davidsbridal.com%2FAjaxOrderItemDisplayView";
+	var ShoppingCartBURL="https://www.davidsbridal.com/OrderCalculate?calculationUsageId=-1&updatePrices=1&catalogId=10051&errorViewName=DBIShopCartDisplayView&orderId=.&langId=-1&storeId=10052&URL=https%3A%2F%2Fwww.davidsbridal.com%2FDBIShopCartDisplayView";
+	
+    function headerGoToCart(){
+        utag.link({
+                   "EventCategory": "Floater Click",
+                   "EventAction": "Shopping Bag",
+                   "EventLabel": "Checkout",
+                   "Manual_cm_sp": "FloatingMenu-_-ShoppingBag-_-Checkout",
+                   "EventPage": pageNameValue
+               });
+
+        }
+
+    function orderItemOnClick(){
+        utag.link({
+               "EventCategory": "Floater Click",
+               "EventAction": "Shopping Bag",
+               "EventLabel": "View Shopping Bag",
+               "Manual_cm_sp": "FloatingMenu-_-ShoppingBag-_-ViewBag",
+               "EventPage": pageNameValue
+           });
+
+        }
+    
+
+  dojo.addOnLoad(function() {
+        setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10052&catalogId=10051&langId=-1');
+        wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10052&catalogId=10051&langId=-1&page_view=dropdown';
+    });
+
+
+  dojo.addOnLoad(function() {
+        if(typeof enquire !== "undefined"){
+        var queryDesktop = "screen and (min-width: " + window_large + "px";
+          enquire.register(queryDesktop, {
+            match: function(){
+                 handleMiniCartHover();
+            }
+          });
+        }
+    });
+
+
+                     dojo.addOnLoad(function(){
+                         SearchJS.init();
+                         SearchJS.setCachedSuggestionsURL('SearchComponentCachedSuggestionsView?langId=-1&amp;storeId=10052&amp;catalogId=10051');
+                         SearchJS.setAutoSuggestURL('SearchComponentAutoSuggestView?coreName=MC_10001_CatalogEntry_en_US&amp;serverURL=https%3a%2f%2fdbprod8.davidsbridal.com%3a9444%2fsolr%2fMC_10001_CatalogEntry_en_US&amp;langId=-1&amp;storeId=10052&amp;catalogId=10051');
+                     });
+     
+                     // The primary Array to hold all static search suggestions
+                     var staticContent = new Array();
+     
+                     // The titles of each search grouping
+                     var staticContentHeaders = new Array();
+             
+
+
+    function headerClickEvent(topCat, L1Cat, L2Cat){
+        window.name = "";
+        var eventLable = "";
+        var manualCMSP = "";
+        if(undefined != L2Cat){
+            eventLable = L1Cat+"|"+L2Cat;
+            manualCMSP = "Header-_-"+topCat+"-_-"+eventLable;
+        }
+        else{
+            manualCMSP = "Header-_-"+topCat+"-_-"+topCat+"|"+topCat;
+        }
+        manualCMSP = manualCMSP.replace(/ /g,'');
+         utag.link({
+           "EventCategory": "Header",
+           "EventAction" : topCat,
+           "EventLabel" : eventLable,
+           "EventPage": pageNameValue,
+           "Manual_cm_sp" : manualCMSP
+       });
+     }
+    
+
+
+    function headerClickEvent(topCat, L1Cat, L2Cat){
+        window.name = "";
+        var eventLable = "";
+        var manualCMSP = "";
+        if(undefined != L2Cat){
+            eventLable = L1Cat+"|"+L2Cat;
+            manualCMSP = "Header-_-"+topCat+"-_-"+eventLable;
+        }
+        else{
+            manualCMSP = "Header-_-"+topCat+"-_-"+topCat+"|"+topCat;
+        }
+        manualCMSP = manualCMSP.replace(/ /g,'');
+         utag.link({
+           "EventCategory": "Header",
+           "EventAction" : topCat,
+           "EventLabel" : eventLable,
+           "EventPage": pageNameValue,
+           "Manual_cm_sp" : manualCMSP
+       });
+     }
+    
+
+        var headerCatalogMainMenu = "Main Menu";
+        var homePageString = "Homepage";
+        jQuery(document).ready(function(){
+            var htmlString = []
+                , menuTitleString = [];
+            for(var i in businessNavJSONData){
+                htmlString.push("<li class=\"header__main-nav-topic header__main-nav-topic-business\" data-menu-topic=\""+i+"\" data-topic-status=\"closed\" role=\"menuitem\">");
+                htmlString.push("<div class=\"header__main-nav-topic-heading\">")
+                    htmlString.push("<a onclick=\"headerClickEvent(\""+i+"\");\" class=\"header__main-nav-topic-heading-link sans-bold-uppercase\">");
+                       htmlString.push(i);
+                    htmlString.push("</a>");
+                htmlString.push("</div>");
+
+
+                for(var j = 0; j < businessNavJSONData[i]['data'].length ; j++){
+                   if(j == 0){
+                       htmlString.push("<ul class=\"header__main-nav-topic-section-list\">");
+                       htmlString.push("<li class=\"hide-at-large\">");
+                           htmlString.push("<a class=\"header__main-nav-topic-section-link--main sans-bold-uppercase\" href=\"#\" data-menu-back=\"\">"+headerCatalogMainMenu+"</a>");
+                       htmlString.push("</li>");
+                       htmlString.push("<li class=\"header__main-nav-topic-section-link--all sans-bold-uppercase hide-at-large\">");
+                       htmlString.push("<a onclick=\"businessNavClickEvent(\""+i+"\");\" class=\"sans-bold-uppercase\" href=\""+businessNavJSONData[i]['targetURL']+"\" >");
+                           htmlString.push(i + "&nbsp;" + homePageString);
+                           htmlString.push("</a>");
+                       htmlString.push("</li>");
+                       menuTitleString.push("<span class=\"header__main-nav-trigger-text-topic\" data-trigger-topic=\""+i+"\">"+i+"</span>");
+                       htmlString.push("<li class=\"header__main-nav-topic-section spacing-half\">");
+                       htmlString.push("<div class=\"header__main-nav-topic-section-heading serif-m-italic--main-nav-topic-section-heading serif-xs-italic\">");
+                       htmlString.push("<a class=\"header__main-nav-topic-section-heading-link\">"+i+"</a>");
+                       htmlString.push("</div>");
+                       htmlString.push("<ul class=\"header__main-nav-topic-business-section-item-list\">");
+                   }
+                   var currentItem = businessNavJSONData[i]['data'][j];
+                   htmlString.push("<li class=\"header__main-nav-topic-section-item\">");
+                      htmlString.push("<a onclick=\"headerClickEvent(\""+i+"\", \""+currentItem['item']+"\");\" class=\"header__main-nav-topic-section-item-link sans-xs\" href='"+currentItem['url']+"'>"+currentItem['item']+"</a>");
+                   htmlString.push("</li>");
+                }
+                htmlString.push("</ul>");
+                htmlString.push("<p class=\"header__main-nav-topic-section-paragraph\" espot-name=\"ES_SWIMLANE_BOTTOMLINK_"+i+"_1\">");
+                htmlString.push("</p>");
+                htmlString.push("</li>");
+                htmlString.push("</ul>");
+                htmlString.push("</li>");
+            }
+            $(".header__main-nav-topic-list").append(htmlString.join(''));
+            $(".header__main-nav-trigger-text.header__main-nav-trigger-text--topic").append(menuTitleString.join(''));
+            switchMobileMenuStatus();
+
+        });
+        
+
+        function businessNavClickEvent(mainMenu, menuItem){
+            var menuItemVal = "";
+            var manualCMSP = "";
+            if(undefined != menuItem){
+                menuItemVal = menuItem;
+                manualCMSP = "BusinessNavMenu-_-"+mainMenu+"-_-"+menuItemVal;
+            }
+            else{
+                manualCMSP = "BusinessNavMenu-_-"+mainMenu+"-_-"+mainMenu;
+            }
+            manualCMSP = manualCMSP.replace(/ /g,'');
+             utag.link({
+               "EventCategory": "Business Navigation Click",
+               "EventAction" : mainMenu,
+               "EventLabel" : menuItemVal,
+               "EventPage": pageNameValue,
+               "Manual_cm_sp" : manualCMSP
+           });
+         }
+    
+
+   require(["dojo/ready", "dojo/on"], function(ready, on) {
+       ready(110, function(){
+           on(document.getElementById("Header_MakeAnAppointmentLink"), "click", function() {
+               utag.link({
+                   "EventCategory": "Floater Click",
+                   "EventAction": "Book Appointment",
+                   "Manual_cm_sp": "FloatingMenu-_-Appointment-_-MakeAppointment",
+                   "EventPage": pageNameValue
+               });
+           });
+       });
+   });
+
+   require(["dojo/ready", "dojo/on"], function(ready, on) {
+       ready(110, function(){
+           on(document.getElementById("Header_StoreLocatorLink"), "click", function() {
+               utag.link({
+                   "EventCategory": "Floater Click",
+                   "EventAction": "Find a Store",
+                   "Manual_cm_sp": "FloatingMenu-_-FindStore-_-FindStore",
+                   "EventPage": pageNameValue
+               });
+           });
+       });
+   });
+
+   require(["dojo/ready", "dojo/on"], function(ready, on) {
+       ready(110, function(){
+           on(document.getElementById("Header_ShoppingCartLink"), "click", function() {
+               utag.link({
+                   "EventCategory": "Floater Click",
+                   "EventAction": "Shopping Bag",
+                   "Manual_cm_sp": "FloatingMenu-_-ShoppingBag-_-ShippingBag",
+                   "EventPage": pageNameValue
+               });
+           });
+       });
+   });
+ 
+
+    dojo.addOnLoad(function() {
+        MonetateJS.storeId=10052;
+        MonetateJS.catalogId=10051;
+        require(["dojo/ready"], function(ready){
+              ready(110, function(){
+                  MonetateJS.registerCartView();
+              });
+          });
+    });
+
+
+        (function($) {
+
+            // document ready
+            $(window).on('load', function() {
+                console.log('Window Load');
+
+                // create deferred object
+                var YTdeferred = $.Deferred();
+                window.onYouTubeIframeAPIReady = function() {
+                    console.log('API ready');
+                    // resolve when youtube callback is called
+                    // passing YT as a parameter
+                    YTdeferred.resolve(window.YT);
+                };
+
+                // embedding youtube iframe api
+                // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                var player;
+                // whenever youtube callback was called = deferred resolved
+                // your custom function will be executed with YT as an argument
+                YTdeferred.done(function(YT) {
+                    console.log('Player ready');
+                    // creating a player
+                    player = new YT.Player('veraWangVideoDesktop', {
+                        height: '390',
+                        width: '640',
+                        videoId: 'e85-4cn7NUE',
+                        playerVars: {
+                            autoplay: 1,
+                            controls: 0,
+                            loop: 1,
+                            mute: 1,
+                            modestbranding: 1,
+                            rel: 0,
+                            showinfo: 0,
+                            playlist: 'e85-4cn7NUE'
+                        }
+                    });
+                });
+            });
+        })(jQuery);
+    
+
+(function($) {
+  $(document).ready(function() {
+    function scrollFunction() {
+      var scrollTop = $(window).scrollTop();
+      var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+      if (scrollTop >= 100 && scrollBottom !== 0) {
+        $('#scrollToTop').css({'bottom': '10px'}).attr('aria-hidden', 'false');
+      } else if (scrollTop >= 100 && scrollBottom <= 1000) {
+        $('#scrollToTop').css({'bottom': '80px'});
+      } else {
+        $('#scrollToTop').css({'bottom': ''}).attr('aria-hidden', 'true');
+      }
+    }
+    $(window).on('scroll', function() {
+      scrollFunction();
+    });
+    $('#scrollToTop a').on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 1000, function() {
+        $('a[href]:visible, area[href]:visible, input[type!="hidden"]:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])').eq(0).focus();
+      });
+    });
+  });
+}(jQuery));
+
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+        dojo.addOnLoad(function() {
+            var footer = document.getElementById("WC_Footer_UI_Links_3");
+            if(footer != null){
+                footer.className = footer.className + " right_border";
+            }
+        });
+    
+
+	dojo.addOnLoad(function() {
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		requestSubmitted = false;
+
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+
+        // Commented out because the dojo config in EnvironmentSetup.jspf has parseOnLoad: true. Both of these should not be enabled at the same time. When only the below was enabled, certain widgets no longer worked, such as MiniShopCart.
+        //
+		// dojo.query('div[dojoType]').forEach(function(node, index, arr){
+		// 	console.debug("Parse "+node.id);
+		// 	addToWidgetsList(node.id);
+		// });
+		// parseAllWidgets();
+	});
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/public/99556a31621185b527b04e19e1554']);

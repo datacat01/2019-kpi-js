@@ -1,0 +1,68 @@
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+ga('create', 'UA-3026101-1', 'auto',{'legacyCookieDomain': 'fragrancenet.com'});
+
+
+ga('set', 'dimension1', '');
+
+ga('set','dimension2','1651A');
+
+ga('set','dimension3','No');
+
+ga('set','dimension4','No');
+
+ga('set','dimension5','Retail');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ga('require', 'adfeatures');
+ga('require', 'displayfeatures');
+
+ga('require','ec')
+
+
+
+function gEvent(a){ 
+  a.unshift('send','event');
+  ga.apply(window,a);
+}
+
+
+  var google_tag_params = {"prodid":"","value":"","pagetype":"home","pname":"","pcat":""};
+  
+
+  /* <![CDATA[ */
+  var google_conversion_id = 1072734120;
+  var google_conversion_label = "bCGaCKDQnwIQqL_C_wM";
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  
+ <!--
+        var google_conversion_id = 1072734120;
+        var google_conversion_language = "en";
+        var google_conversion_format = "1";
+        var google_conversion_color = "666666";
+        var google_conversion_label = "UkxFCJjfqQEQqL_C_wM";
+        var google_conversion_value = 0;
+    //--> 
+  window._loq = window._loq || []; window._loq.push(['custom', {"customerID":"af869a903ca6a27dc71d713ccc54effe9ce06bad","sessionID":"MVRsRUfHMXDWPa6U","abTestCode":"1651A"}]);     window.__wtw_lucky_site_id = 42818;   (function() {     var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;     wa.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://cdn') + '.luckyorange.com/w.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);   })(); 
+ var __lc = {}; __lc.license = 5638081; (function() { var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true; lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s); })(); 

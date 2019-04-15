@@ -1,0 +1,72 @@
+ 
+ <!-- 
+ (new Image).src="https://www.executivegiftshoppe.com/cgi-bin/refsd?cd=.executivegiftshoppe.com&e=http://www.executivegiftshoppe.com/&h=www.executivegiftshoppe.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+var script = document.createElement("script");
+script.async = true; script.type = "text/javascript";
+var target = 'https://www.clickcease.com/monitor/stat.js';
+script.src = target;
+var elem = document.head;
+elem.appendChild(script);
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: '###PAGE-TYPE###',
+ecomm_totalvalue: '###PRODUCT-VALUE###'
+}
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072665819;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+ _linkedin_data_partner_id = "39119"; 
+ (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); 
+$('.rotator').wmuSlider({touch: true,animation: 'slide'});
+
+function pdInit() {
+
+	var productIdList = new Array();
+	var productId = "";
+	var queryStringLength = 0;
+	var i = 0;
+	jQuery.each(jQuery('[productId]'), function() { 
+		productId = encodeURIComponent(jQuery(this).attr('productId') + ",");
+		queryStringLength += productId.length;
+		if(queryStringLength < 6000) productIdList[i] = productId;
+		else return false;
+		i++;
+	});
+	var productIdListCsv = productIdList.join(",");
+	if(productIdListCsv.length > 3) productIdListCsv = productIdListCsv.slice(0, -3);
+
+	var cb = (new Date()).getTime();
+    var scriptUrl = "https://executivegiftshoppe.practicaldatacore.com//mod_yahooMerchantSolutions/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListCsv=" + productIdListCsv;
+    try {scriptUrl += "&pdSpecialAccessList=" + encodeURIComponent(pdSpecialAccessList);} catch(e) {}
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+
+}
+pdInit();
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'secure.executivegiftshoppe.com';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/71be064196437b2df8a3bf5d70536de5?id=ee2f8623616b'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

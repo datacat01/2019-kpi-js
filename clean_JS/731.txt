@@ -1,0 +1,8 @@
+
+    //<![CDATA[
+    // Including api.jquery.js conditionnally.
+    if (typeof Shopify.resizeImage === 'undefined') {
+      document.write("\u003cscript src=\"\/\/cdn.shopify.com\/s\/assets\/themes_support\/api.jquery-e94e010e92e659b566dbc436fdfe5242764380e00398907a14955ba301a4749f.js\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");
+    }
+    //]]>
+  

@@ -1,0 +1,62 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".ergoprise.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"4f4e1e1129945e3bf5f307a2b6628efb1852c114","type":"ANONYMOUS","visit_id":"3dbf3202-64a6-4a89-a097-1df50d1fb05e","visitor_id":"1aca7c82-0e55-43a6-a607-8a43425383c7"},"referer":{"url":""},"request":{"url":"https:\/\/www.ergoprise.com\/"}}, '', 1369280, "other", {"customer":{"id":"anonymous"}}, '3dbf3202-64a6-4a89-a097-1df50d1fb05e', '1aca7c82-0e55-43a6-a607-8a43425383c7');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"35f487a6b86380b6fa97418421e94eb47829ddb70c1aaafd240dcbeb6c3c6b91"};
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?URQkeCwbPgsTajUVt7rq8TeLnOkmXPUI';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+
+    
+    //var header = document.querySelector('');
+   // var img = document.createElement("img");
+    //img.src = "https://www.ergoprise.com/content/GeoTrust.jpg";
+    //document.getElementsByClassName("checkoutHeader-heading").appendChild(img);
+    /*
+    img.setAttribute('src', 'https://www.ergoprise.com/content/GeoTrust.jpg');
+    img.appendAfter(header);
+    */
+    
+    
+
+//<![CDATA[ 
+var div = document.createElement("div"); 
+div.setAttribute('id', 'stamped-badge-widget'); 
+div.setAttribute('class', 'stamped-product-reviews-badge stamped-main-badge'); 
+div.setAttribute('data-id',""); 
+    div.setAttribute('onclick',"window.location.hash = '#write_review';");
+document.querySelectorAll('.product-title')[0].appendChild(div) 
+//]]>
+
+    /*
+    //<![CDATA[ 
+var div = document.createElement("div"); 
+div.setAttribute('id', 'stamped-badge-widget'); 
+div.setAttribute('class', 'stamped-product-reviews-badge stamped-main-badge'); 
+div.setAttribute('data-id',""); 
+document.querySelectorAll('.productView-price')[0].appendChild(div) 
+//]]>
+*/
+
+
+    /*
+    //<![CDATA[ 
+var div = document.createElement("div"); 
+div.setAttribute('id', 'stamped-main-widget'); 
+div.setAttribute('class', 'stamped-main-widget stamped-style-borderless'); 
+div.setAttribute('data-product-id',""); 
+div.setAttribute('data-name',""); 
+div.setAttribute('data-url', ""); 
+div.setAttribute('data-image-url', "[object Object]"); 
+document.querySelectorAll('.productView')[0].appendChild(div);
+//]]>
+*/
+

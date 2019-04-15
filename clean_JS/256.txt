@@ -1,0 +1,653 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$sm1', 'aspnetForm', ['tctl00$cphMain$ctl00$UpdatePanel1',''], [], [], 90, 'ctl00');
+//]]>
+
+ 
+                
+                jQuery(window).load(function () {
+                    if (jQuery("#dvSuperHeader").find("img").height() > 0) {
+                        jQuery("#dvSuperHeader").height(jQuery("#dvSuperHeader").find("img").height());
+                        jQuery("#dvSuperHeader").find("div").height(jQuery("#dvSuperHeader").find("img").height());
+                    }
+                    else {
+                        jQuery("#dvSuperHeader").height(0);
+                    }
+                });
+            
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Supplies').css('visibility', 'visible');
+                                                                $('#Supplies').hugeMenu({
+                                                                    rowItems: '2',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Designs').css('visibility', 'visible');
+                                                                $('#Designs').hugeMenu({
+                                                                    rowItems: '2',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Digitizing').css('visibility', 'visible');
+                                                                $('#Digitizing').hugeMenu({
+                                                                    rowItems: '1',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Membership').css('visibility', 'visible');
+                                                                $('#Membership').hugeMenu({
+                                                                    rowItems: '1',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Software').css('visibility', 'visible');
+                                                                $('#Software').hugeMenu({
+                                                                    rowItems: '1',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Specials').css('visibility', 'visible');
+                                                                $('#Specials').hugeMenu({
+                                                                    rowItems: '1',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                            jQuery(document).ready(function ($) {
+                                                                $('#Community').css('visibility', 'visible');
+                                                                $('#Community').hugeMenu({
+                                                                    rowItems: '1',
+                                                                    speed: 'fast',
+                                                                    effect: 'show',
+                                                                    direction: 'bottom'
+                                                                });
+                                                            });
+                                                        
+
+                                                var LC_API = LC_API || {};
+                                                LC_API.on_chat_state_changed = function (data) {
+
+                                                    if (data.state == "offline") {
+
+                                                        document.getElementById('imagemain').src = 'images/balloons.gif';
+                                                        if (typeof (image) != 'undefined' && image != null) {
+                                                            document.getElementById('image').src = 'https://www.annthegran.com/images/icons/live_chat_offline.gif';
+                                                        }
+                                                    }
+                                                    else {
+                                                        document.getElementById('imagemain').src = 'images/balloons.gif';
+                                                        if (typeof (image) != 'undefined' && image != null) {
+                                                            document.getElementById('image').src = 'https://www.annthegran.com/images/icons/live_chat_online.gif';
+                                                        }
+                                                    }
+                                                };
+                                            
+
+                                                window.__lc = window.__lc || {};
+                                                window.__lc.license = 7170371;
+                                                window.__lc.chat_between_groups = false;
+                                                (function () {
+                                                    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+                                                    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+                                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+                                                })();
+
+                                            
+
+                                                var LC_API = LC_API || {};
+                                                LC_API.on_prechat_survey_submitted = function (data) {
+                                                    var alertText = data.form_data.map(function (formData) {
+                                                        return formData.label + ',' + formData.value;
+                                                    }).join(',')
+
+
+                                                    jQuery.ajax({
+                                                        type: "POST",
+                                                        url: ResolveUrlForJSScripts("Internal/Services.asmx/Svcs_UpdateChatActivity"),
+                                                        data: "{'st':" + JSON.stringify(alertText) + "}",
+                                                        contentType: "application/json; charset=utf-8",
+                                                        dataType: "json"
+                                                    });
+
+                                                };
+                                            
+
+            jQuery('#txtSignUpModal').blur(function () {
+                jQuery(this).mailcheck({
+                    suggested: function (element, suggestion) {
+                        jQuery('#ancSignUpEmailSuggestion').text(suggestion.full);
+                        jQuery('#ctl00_trSuggestedSignUpEmail').fadeIn("slow");
+                    },
+                    empty: function (element) {
+                        jQuery('#ctl00_trSuggestedSignUpEmail').css("display", "none");
+                    }
+                });
+            });
+
+            jQuery('#ancSignUpEmailSuggestion').click(function () {
+                var CorrectEmail = jQuery('#ancSignUpEmailSuggestion').text();
+                jQuery('#txtSignUpModal').val(CorrectEmail);
+                      jQuery('#ctl00_trSuggestedSignUpEmail').fadeOut("fast");
+            });
+
+            function closeSignupPopup() {
+                jQuery("#divSignUp").hide();
+                jQuery("#newLargeImageOverlay").hide();
+            }
+
+            jQuery(window).resize(function () {
+                try {
+                    if (jQuery('#hdnSignUpCookie').val() == 1) {
+                        var windowHeight = jQuery(window).height();
+                        var windowWidth = jQuery(window).width();
+                        var ScrollPos = jQuery(window).scrollTop();
+                        var currentDivHeight = jQuery(".signUpFlyIn").height();
+                        var currentDivWidth = jQuery(".signUpFlyIn").width();
+                        jQuery(".signUpFlyIn").css("top", ((windowHeight / 2) - (currentDivHeight / 2)) + ScrollPos);
+                        jQuery(".signUpFlyIn").css("left", ((windowWidth / 2) - (currentDivWidth / 2) + 150));
+                    }
+                } catch (err) { }
+            });
+
+            function SignUpConfirmClick() {
+                var isValid = Page_ClientValidate('SignUpModal');
+                if (isValid) {
+                    __pageTracker('send', 'event', 'Sign-Up-FlyIn', 'Submit');
+                    var signup = jQuery('#txtSignUpModal').val();
+                    try {
+                        var options = {
+                            type: "POST",
+                            url: '/Internal/Services.asmx/SignUpConfirm',
+                            data: "{'email':'" + signup + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (msg) {
+                                if (msg.d == "success") {
+                                    jQuery(".signUpFlyIn").css("height", "405px");
+                                    jQuery("#lblSignUpModalEmail").text(signup);
+                                    jQuery("#txtSignUpModal").val('');
+                                    jQuery("#divSignUpInfo").css("display", "none");
+                                    jQuery("#divSignUpBenefits").css("display", "none");
+                                    jQuery("#tdlSignUpSuccess").css("display", "block");
+                                    jQuery("#divSignUp").css("height", "235px");
+                                    jQuery("#divSignUp").css("background-color", "#F5F5F5");
+                                    var windowHeight = jQuery(window).height();
+                                    var windowWidth = jQuery(window).width();
+                                    var ScrollPos = jQuery(window).scrollTop();
+                                    var currentDivHeight = jQuery(".signUpFlyIn").height();
+                                    var currentDivWidth = jQuery(".signUpFlyIn").width();
+                                    jQuery(".signUpFlyIn").css("top", ((windowHeight / 2) - (currentDivHeight / 2)) + ScrollPos);
+                                    jQuery(".signUpFlyIn").css("left", ((windowWidth / 2) - (currentDivWidth / 2) + 150));
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) { throw "error"; }
+                        };
+                        jQuery.ajax(options);
+                        return false;
+                    }
+                    catch (ajxEr) { return true; }
+                }
+
+            }
+        
+
+    function ShowSignUpEmailNotification() {
+        if (!jQuery('#SUchkOptIn').is(':checked')) {
+            jQuery('#SUEmailNotification').css('display', 'block');
+            jQuery('#SUchkGenSales').attr('checked', true);
+            jQuery('#SUchkProjects').attr('checked', true);
+            jQuery('#SUchkThirdParty').attr('checked', true);
+        }
+        else
+            jQuery('#SUEmailNotification').css('display', 'none');
+    }
+    jQuery(document).ready(function ($) {
+        $('#ctl00_cphMain_ctl00_txtSignUp').blur(function () {
+            $(this).mailcheck({
+                suggested: function (element, suggestion) {
+                    $('#AncSuggestedSignUpEmail').text(suggestion.full);
+                    $('#ctl00_cphMain_ctl00_trSuggestedSignUpEmail').fadeIn("slow");
+                },
+                empty: function (element) {
+                    $('#ctl00_cphMain_ctl00_trSuggestedSignUpEmail').css("display", "none");
+                }
+            });
+        });
+
+        jQuery.get("\Internal\\ATG_HomePageAdBanners.xml", {}, function (xml) {
+            var isAdSet = false;
+            var minimum = 0;
+            var maximum = xml.firstElementChild.children.length;
+            var randomnumber = 1;
+            while (!isAdSet) {
+                randomnumber = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+                if (jQuery(xml).find('adImgLink').eq(randomnumber).text() != '' && jQuery(xml).find('adImgLink').eq(randomnumber).text() != undefined) {
+                    jQuery('#imgAdBanner').attr('src', jQuery(xml).find('adImgLink').eq(randomnumber).text());
+                    jQuery('#ancAdBanner').attr('href', jQuery(xml).find('adLink').eq(randomnumber).text());
+                    isAdSet = true;
+                }
+            }
+        });
+
+    });
+
+        jQuery('#AncSuggestedSignUpEmail').click(function () {
+            var CorrectEmail = jQuery('#AncSuggestedSignUpEmail').text();
+            jQuery('#ctl00_cphMain_ctl00_txtSignUp').val(CorrectEmail);
+            jQuery('#ctl00_cphMain_ctl00_trSuggestedSignUpEmail').fadeOut("fast");
+        });
+
+
+        /*** Fix for IE  ***/
+        jQuery(document).ready(function () {
+            jQuery("#td1TopAd1").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+            jQuery("#td2TopAd2").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+            jQuery("#td3TopAd3").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+            jQuery("#td4BottomAd1").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+            jQuery("#td5BottomAd2").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+            jQuery("#td6BottomAd3").click(function () {
+                window.location = jQuery(this).children("a:first").attr('href');
+            });
+        });
+
+
+
+    jQuery(document).ready(function () {
+        jQuery('#divHomePageProducts').parents('table:first').width("100%");
+    });
+
+
+
+            //<![CDATA[
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', '__pageTracker');
+            //]]>
+        
+
+            //<![CDATA[
+            var _userID = readCookieRegex();
+            try {
+                if (_userID.indexOf("{") != -1 && _userID.indexOf("}") != -1)
+                    _userID = _userID.substring(_userID.indexOf("{"), _userID.indexOf("}") + 1);
+            } catch (err) { _userID = null; }
+            __pageTracker('create', 'UA-1457734-1', { 'userId': _userID });
+            __pageTracker('require', 'displayfeatures'); //for display advertising.
+            __pageTracker('set', 'dimension2', _userID);
+            __pageTracker('send', 'pageview');
+            var addthis_config = { data_ga_property: 'UA-1457734-1', data_track_clickback: true, data_ga_social: true }
+            var addthis_share = { url_transforms: { clean: true } }
+            if (jQuery) { jQuery(document).ready(function () { addthis.init(); }); }
+            //]]>
+        
+
+            var hdnCurrencyExchangeRates = jQuery('#hdnCurrencyExchangeRates').val();
+            function GetQueryStringValueByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            function ProcessReEngagementClick() {
+                try {
+                    var cntcId = Number(GetQueryStringValueByName('cntc'));
+                    if (cntcId > 0) {
+                        var options = {
+                            type: "POST",
+                            url: '/Internal/Services.asmx/ReEngagement_ProcessUserClick',
+                            data: { contactId: cntcId },
+                            success: function (msg) { },
+                            error: function (jqXHR, textStatus, errorThrown) { }
+                        }; jQuery.ajax(options);
+                    }
+                }
+                catch (ajxEr) {
+                }
+            }
+            jQuery(document).ready(function () {
+                ProcessReEngagementClick();
+                /* Search Button selected style*/
+                jQuery('#ctl00_cmbxCategories_TextBox').css('font-size', '11px');
+                CalculateSizes();
+            });
+            jQuery(window).resize(function () {
+                CalculateSizes();
+            });
+            function CalculateSizes() {
+                var docWidth = jQuery(window).width();
+                if (docWidth > 982) {
+                    var sides = (docWidth - 981) / 2;
+                    jQuery(".SideBurns").width(sides);
+
+                    //                if (jQuery(".SideBurns").height() < jQuery(window).height())
+                    //                    jQuery(".SideBurns").height(jQuery(window).height());
+                }
+                else {
+                    jQuery(".SideBurns").width(0);
+                }
+            }
+
+            function acceptEU() {
+                jQuery('#divEU').slideToggle(200);
+                setDomainCookie('euc', '1', 87600);
+            }
+
+            function ReSetZindex() {
+                jQuery("#dvTopNavZindex").css("z-index", "110");
+            }
+
+            //Resolve URL from Links on Scripts.js Page
+            function ResolveUrlForJSScripts(url) {
+                var baseUrl = "/";
+                url = baseUrl + url;
+                return url;
+            }
+
+            jQuery(window).load(function () {
+                if (document.cookie.indexOf("FirstTimeATGUser") < 0 && getCookie("CurrencyConverterEnabled") == "") {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                    document.cookie = "FirstTimeATGUser=false" + expires + "; path=/";
+                    setTimeout(function () {
+                        jQuery('#divSignUpModal').show();
+                        jQuery('#newLargeImageOverlay').show();
+                    }, 2000);
+                    jQuery('#hdnSignUpCookie').val(1);
+                    var windowHeight = jQuery(window).height();
+                    var windowWidth = jQuery(window).width();
+                    var ScrollPos = jQuery(window).scrollTop();
+                    var currentDivHeight = jQuery(".signUpFlyIn").height();
+                    var currentDivWidth = jQuery(".signUpFlyIn").width();
+                    jQuery(".signUpFlyIn").css("top", ((windowHeight / 2) - (currentDivHeight / 2)) + ScrollPos);
+                    jQuery(".signUpFlyIn").css("left", ((windowWidth / 2) - (currentDivWidth / 2) + 150));
+                }
+                else if (document.cookie.indexOf("FirstTimeATGUser") < 0) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                    document.cookie = "FirstTimeATGUser=false" + expires + "; path=/";
+                }
+                if (window.location.href.match(/\/profile\//i) || (BrowserDetect.browser == 'Explorer' && BrowserDetect.version <= 8) || getCookie("CurrencyConverterEnabled") == 'false' || currentToCountryCode == 'US') {
+                    // These clients are not supported for the Geo Currency System.
+                }
+                else {
+                    setTimeout(LoadCurrencyExchangeRateInfo(), 200); // Initialize the data.
+
+                    if (getCookie("CurrencyConverterEnabled") == '') // First time visitor
+                    {
+                        var hours = (24 * 365);
+
+                        // If country is not supported
+                        if (ReturnExRateData == null || ReturnExRateData == '' || ReturnExRateData.IsSupported == 'false' || ReturnExRateData.CountryCode == 'US') {
+                            setCookie('CurrencyConverterEnabled', 'false', hours);
+                            setCookie('Country_Code', ReturnExRateData.CountryCode, hours);
+                            setCookie('AutomaticCurrencyConverting', 'false', hours);
+                        }
+                        else {
+                            setCookie('CurrencyConverterEnabled', 'true', hours);
+                            setCookie('Country_Code', ReturnExRateData.CountryCode, hours);
+                            setCookie('AutomaticCurrencyConverting', 'false', hours);
+
+                            jQuery('#spnConvertCurrency').text('Convert to ' + ReturnExRateData.CurrencySymbol + ' (' + ReturnExRateData.CurrencyCode + ')');
+                            jQuery('#spnConvertCurrencyTutorial').text('Convert to ' + ReturnExRateData.CurrencySymbol + ' (' + ReturnExRateData.CurrencyCode + ')');
+                            jQuery('#spnCvrtCurrBtnHint').text('Convert to ' + ReturnExRateData.CurrencySymbol + ' (' + ReturnExRateData.CurrencyCode + ')');
+                            jQuery('#spnCurrCvtTutCountry').text(ReturnExRateData.CountryName);
+                            jQuery('#divConvertCurrency').css('display', 'block');
+
+                            HideShowCurrencyTutorial();
+                        }
+                    }
+                    else if (getCookie("CurrencyConverterEnabled") == 'true') {
+                        if (getCookie("AutomaticCurrencyConverting") == 'true') {
+                            ConvertAllCurrency();
+                        }
+                        else {
+                            jQuery('#spnConvertCurrencyTutorial').text('Convert to ' + ReturnExRateData.CurrencySymbol + ' (' + ReturnExRateData.CurrencyCode + ')');
+                            jQuery('#spnConvertCurrency').text('Convert to ' + ReturnExRateData.CurrencySymbol + ' (' + ReturnExRateData.CurrencyCode + ')');
+                        }
+                        jQuery('#divConvertCurrency').css('display', 'block');
+                    }
+                    if (getCookie('Country_Code') != '' && getCookie('Country_Code').toLowerCase() != 'us' && getCookie('Country_Code').toLowerCase() != 'ca' && getCookie('euc') != '1') {
+                        setTimeout(function () {
+                            jQuery('#divEU').slideToggle(300);
+                        }, 2000);
+                    }
+                }
+            });
+        
+
+            jQuery(document).ready(function () {
+                jQuery("#ancscrollTop").hide();
+                jQuery.ShowScrollTopButton = function () {
+                    jQuery(window).scroll(function () {
+                        if (jQuery(window).scrollTop() > 0) {
+                            jQuery("#ancscrollTop").show();
+                        }
+                        else
+                            jQuery("#ancscrollTop").hide();
+                    });
+                    jQuery("#ancscrollTop").click(function () {
+                        jQuery(window).scrollTop(0);
+                        jQuery("#ancscrollTop").hide();
+                    });
+                }
+                jQuery.ShowScrollTopButton();
+            });
+
+            jQuery('#newLargeImageOverlay').click(function () {
+                closeSignupPopup();
+            });
+
+            jQuery('#spnNoFreeStuff').click(function () {
+                closeSignupPopup();
+            });
+
+        
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("RFVSignUp"), document.getElementById("REVSignUp"), document.getElementById("ctl00_cphMain_ctl00_rfvSignUp"), document.getElementById("ctl00_cphMain_ctl00_revSignUp"), document.getElementById("RFVreEmail"), document.getElementById("REVreEmail"), document.getElementById("CvEmail"));
+//]]>
+
+
+//<![CDATA[
+var RFVSignUp = document.all ? document.all["RFVSignUp"] : document.getElementById("RFVSignUp");
+RFVSignUp.controltovalidate = "txtSignUpModal";
+RFVSignUp.focusOnError = "t";
+RFVSignUp.errormessage = "Email Address is required.";
+RFVSignUp.display = "Dynamic";
+RFVSignUp.validationGroup = "SignUpModal";
+RFVSignUp.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFVSignUp.initialvalue = "";
+var REVSignUp = document.all ? document.all["REVSignUp"] : document.getElementById("REVSignUp");
+REVSignUp.controltovalidate = "txtSignUpModal";
+REVSignUp.focusOnError = "t";
+REVSignUp.errormessage = "Email Address is Invalid";
+REVSignUp.display = "Dynamic";
+REVSignUp.validationGroup = "SignUpModal";
+REVSignUp.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+REVSignUp.validationexpression = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var ctl00_cphMain_ctl00_rfvSignUp = document.all ? document.all["ctl00_cphMain_ctl00_rfvSignUp"] : document.getElementById("ctl00_cphMain_ctl00_rfvSignUp");
+ctl00_cphMain_ctl00_rfvSignUp.controltovalidate = "ctl00_cphMain_ctl00_txtSignUp";
+ctl00_cphMain_ctl00_rfvSignUp.focusOnError = "t";
+ctl00_cphMain_ctl00_rfvSignUp.errormessage = "Email Address is required";
+ctl00_cphMain_ctl00_rfvSignUp.display = "Dynamic";
+ctl00_cphMain_ctl00_rfvSignUp.validationGroup = "Subscribe";
+ctl00_cphMain_ctl00_rfvSignUp.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphMain_ctl00_rfvSignUp.initialvalue = "";
+var ctl00_cphMain_ctl00_revSignUp = document.all ? document.all["ctl00_cphMain_ctl00_revSignUp"] : document.getElementById("ctl00_cphMain_ctl00_revSignUp");
+ctl00_cphMain_ctl00_revSignUp.controltovalidate = "ctl00_cphMain_ctl00_txtSignUp";
+ctl00_cphMain_ctl00_revSignUp.focusOnError = "t";
+ctl00_cphMain_ctl00_revSignUp.errormessage = "Email Address is Invalid";
+ctl00_cphMain_ctl00_revSignUp.display = "Dynamic";
+ctl00_cphMain_ctl00_revSignUp.validationGroup = "Subscribe";
+ctl00_cphMain_ctl00_revSignUp.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_cphMain_ctl00_revSignUp.validationexpression = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var RFVreEmail = document.all ? document.all["RFVreEmail"] : document.getElementById("RFVreEmail");
+RFVreEmail.controltovalidate = "txtReEnterEmail";
+RFVreEmail.focusOnError = "t";
+RFVreEmail.errormessage = "Email Address is required";
+RFVreEmail.display = "Dynamic";
+RFVreEmail.validationGroup = "Subscribe";
+RFVreEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFVreEmail.initialvalue = "";
+var REVreEmail = document.all ? document.all["REVreEmail"] : document.getElementById("REVreEmail");
+REVreEmail.controltovalidate = "txtReEnterEmail";
+REVreEmail.focusOnError = "t";
+REVreEmail.errormessage = "Email Address is Invalid.";
+REVreEmail.display = "Dynamic";
+REVreEmail.validationGroup = "Subscribe";
+REVreEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+REVreEmail.validationexpression = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var CvEmail = document.all ? document.all["CvEmail"] : document.getElementById("CvEmail");
+CvEmail.controltovalidate = "txtReEnterEmail";
+CvEmail.focusOnError = "t";
+CvEmail.errormessage = "The Email Address fields do not match";
+CvEmail.display = "Dynamic";
+CvEmail.validationGroup = "Subscribe";
+CvEmail.evaluationfunction = "CompareValidatorEvaluateIsValid";
+CvEmail.controltocompare = "ctl00_cphMain_ctl00_txtSignUp";
+CvEmail.controlhookup = "ctl00_cphMain_ctl00_txtSignUp";
+//]]>
+
+
+//<![CDATA[
+javascript:ReSetZindex();(function() {var fn = function() {$get("ctl00_sm1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('RFVSignUp').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RFVSignUp'));
+}
+
+document.getElementById('REVSignUp').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('REVSignUp'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_vce1_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_vce1","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("RFVSignUp"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_vce2_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_vce2","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("REVSignUp"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"watermark","OkControlID":"DivSignUp","PopupControlID":"ctl00_cphMain_ctl00_pnlSuccess","dynamicServicePath":"/default.aspx","id":"bhvSubscribe"}, null, null, $get("ctl00_cphMain_ctl00_ancDummy"));
+});
+
+document.getElementById('ctl00_cphMain_ctl00_rfvSignUp').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_cphMain_ctl00_rfvSignUp'));
+}
+
+document.getElementById('ctl00_cphMain_ctl00_revSignUp').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_cphMain_ctl00_revSignUp'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_cphMain_ctl00_vce1_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_cphMain_ctl00_vce1","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("ctl00_cphMain_ctl00_rfvSignUp"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_cphMain_ctl00_vce2_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_cphMain_ctl00_vce2","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("ctl00_cphMain_ctl00_revSignUp"));
+});
+
+document.getElementById('RFVreEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RFVreEmail'));
+}
+
+document.getElementById('REVreEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('REVreEmail'));
+}
+
+document.getElementById('CvEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('CvEmail'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_cphMain_ctl00_vce3_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_cphMain_ctl00_vce3","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("RFVreEmail"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_cphMain_ctl00_vce4_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_cphMain_ctl00_vce4","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("REVreEmail"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ValidatorCalloutBehavior, {"ClientStateFieldID":"ctl00_cphMain_ctl00_vce5_ClientState","closeImageUrl":"/WebResource.axd?d=hJWqH0HYIH8ZPryvReGR0ww2M7Zr0tZXP56FPpIHEJheN27Ci3E3X9wY8b4trd3_lcXkZcljyjvgCdbQVhKrHedLIdFFqKGm47hGvR7stTULL9VOggZ6G8yAMzPmSjRdoel_lw2\u0026t=634570501180000000","id":"ctl00_cphMain_ctl00_vce5","warningIconImageUrl":"/WebResource.axd?d=o7zJruB4mTrntn6Z-j2oZIx9Z74EMJoEQUY0kyRr3ne2dX58iLcwPEi3oboiO1tsD5473B_IuhmnDT9Ww3Pt7KfUgl6_NtRvb0pdUIp17gVmhgc2K8WWPumPMrQu5DrPFLO2hQ2\u0026t=634570501180000000","width":"200px"}, null, null, $get("CvEmail"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"MdalPopupBackgroundStyle","PopupControlID":"ctl00_pnlProcessing","dynamicServicePath":"/default.aspx","id":"bhvIDProcessing"}, null, null, $get("ctl00_a6"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"MdalPopupBackgroundStyle","OkControlID":"DivModalCloseLogin","PopupControlID":"ctl00_pnlLogin","dynamicServicePath":"/default.aspx","id":"bhvIDLogin"}, null, null, $get("ctl00_ancLogin"));
+});
+//]]>
+

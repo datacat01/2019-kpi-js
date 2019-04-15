@@ -1,0 +1,12 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".petswarehouse.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"c83e8f8b0e2ac6ad11257f5018327cc598667346","type":"ANONYMOUS","visit_id":"3eb79a69-3319-4f2e-a31a-91255110df7c","visitor_id":"e685aadb-59fc-4b5c-afba-1c4797009d96"},"referer":{"url":""},"request":{"url":"https:\/\/www.petswarehouse.com\/"}}, '', 1441157, "other", {"customer":{"id":"anonymous"}}, '3eb79a69-3319-4f2e-a31a-91255110df7c', 'e685aadb-59fc-4b5c-afba-1c4797009d96');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"5127b0e10ada736310ac38c239df0c681fa844a83e1c0c5887298e64b50b72d4"};
+
+
+                        document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+                    

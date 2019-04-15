@@ -1,0 +1,55 @@
+
+if(typeof(testAndTarget)!='undefined') testAndTarget();
+
+
+//must wait until the globalHeader.js has loaded since it has jQuery
+/*********************
+* FIRE CUSTOM HEADER JS - once the header script and flyoutmenu DOM has loaded
+*********************/
+if (!window.MFI) {
+window.MFI = {};
+}
+$(document).trigger('headerInit');
+//make sure this page isn't loading into mobile site via ajax
+$(document).trigger('preDesktopJavascriptIncludes');
+//convert magic links now that the DOM has loaded
+//header specific magicLinks are converted as part of global_site.js and header_v2.js
+magicSpanLinks();
+var captureOnLoad = false;
+function initPostLoad(){
+captureOnLoad = true;
+}
+if(window.addEventListener) {
+window.addEventListener('load', initPostLoad, false);
+}else if(window.attachEvent){
+window.attachEvent('onload', initPostLoad);
+}
+//initialize a new ScriptLoader object to load the main JS include files and functions
+MFI.GlobalScriptLoader = new ScriptLoader;
+MFI.GlobalScriptLoader.push("https://static.wwbw.com/cmn/productionJs/global.js?vId=ecmd-2019.4.1-0e&cb=2", true);
+
+MFI.GlobalScriptLoader.push("https://static.wwbw.com/cmn/productionJs/wwbwhome.js?vId=ecmd-2019.4.1-0e&cb=2", true);
+
+MFI.GlobalScriptLoader.push(function() {
+function loadScript(){
+$.ajax({
+url: 'https://static.wwbw.com/cmn/productionJs/3rdPartyGlobalPostLoadWWBW.js?vId=ecmd-2019.4.1-0e&cb=2',
+dataType: "script",
+cache: true
+});
+}
+if(captureOnLoad){
+loadScript();
+}else{
+if(window.addEventListener) {
+window.addEventListener('load', loadScript, false);
+}else if(window.attachEvent){
+window.attachEvent('onload', loadScript);
+}
+}
+}, false);
+
+MFI.GlobalScriptLoader.loadAndRunScriptsInOrder();
+//Adobe Dynamic Tag Management - Footer Embed
+_satellite.pageBottom();
+

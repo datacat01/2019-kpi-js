@@ -1,0 +1,845 @@
+
+var _vwo_code=(function(){
+var account_id=356123,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+
+function searchcheck()
+{
+	
+	if(document.getElementById('sbox').value == 'Find What You Are Looking For!')
+	{
+		document.getElementById('fdc_search_help').style.display = 'block';
+		return false;
+	}
+	else
+	{
+		document.getElementById('fdc_search_help').style.display = 'none';
+		return true;
+	}
+}
+
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: 'home',
+ecomm_totalvalue: '',
+};
+
+/* <![CDATA[ */
+var google_conversion_id = 1068175435;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+		
+	window.dataLayer = window.dataLayer || []
+ 		dataLayer.push({
+        'page_name': 'Home',
+        'page_category': '',
+		'ipaddress' : '212.90.63.178'
+    	});
+
+	
+
+function loadpin(){}
+
+$("#mainimagelink").click(function(){try{var a=document.getElementsByName('ppselect')[mainimageindex].click();}
+catch(errorval){return false;}
+return false;
+});
+
+$(document).ready(function($){
+$('.megamenu').megaMenuCompleteSet({menu_speed_show :300,menu_speed_hide :200,menu_speed_delay :200,menu_effect :'hover_fade',menu_click_outside :1,menu_show_onload :0,menu_responsive:0});
+});
+
+$(document).ready(function($){
+$("a[rel^='prettyPhoto']").prettyPhoto({show_title:true,theme:'light_square',deeplinking:false});
+});
+
+var as_ghtime=4;
+var as_htime=as_ghtime;
+var as_hover=false;
+var as_fader=false;
+
+var cd_ghtime=3;
+var cd_htime=cd_ghtime;
+var cd_hover=false;
+var cd_fader=false;
+
+$("#cartshow").hoverIntent(function(){cdhover();$('#bcontents').slideToggle(600);},function(){cdhoverout()});
+
+function cdanim(){
+if(cd_hover==false){
+	cd_htime=cd_htime-1;
+	if(cd_htime <=0){	
+	$('#bcontents').slideToggle(600);
+	cd_fader=false;
+	}else{
+	cd_fader=true;
+	setTimeout(function(){cdanim()},1000);
+	}
+}else{
+	cd_fader=false;
+}
+}
+
+function cdhover(){
+cd_htime=cd_ghtime;
+cd_hover=true;
+}
+
+function cdhoverout(){
+cd_hover=false;
+	
+if(cd_fader==false){
+cdanim();
+}
+	
+}
+
+function emailsub(){
+	
+	$.ajax({
+ 	type:"POST",
+	url:"/email_signup.php",
+	data:{ emailsignup:document.getElementById('emailsignupval').value.replace("&",""), ajaxflag:1},
+	cache:false
+	}).done(function( html ){
+		if(html=="1"){
+		$("#emailsub").html('Thank You For Subscribing!');
+		document.getElementById('emailsub').style.display="";
+		document.getElementById('emailsignupval').value='';
+		
+		window._conv_q = window._conv_q || [];
+ 		_conv_q.push(["triggerConversion","10009977"]);
+		
+		}
+		else if(html=="2"){
+			$("#emailsub").html('You are already subscribed! If you are having issues, check your spam folder.');
+			document.getElementById('emailsub').style.display="";
+			document.getElementById('emailsignupval').value='';
+		}
+	}
+	);
+	
+	window.dataLayer = window.dataLayer || []
+	dataLayer.push({
+   'event': 'emailSubmit'
+	});
+	
+	return false;
+}
+
+function emailsub_bounce(){
+	
+	$.ajax({
+ 	type:"POST",
+	url:"/email_signup.php",
+	data:{ emailsignup:document.getElementById('emailsignupval_bounce').value.replace("&",""), ajaxflag:1, bounce:1},
+	cache:false
+	}).done(function( html ){
+		if(html !="0"){
+			$("#bounce_cont").html(html);
+			document.getElementById('ouibounce_close').innerHTML='<span style="color:#FFF;background-color:#d44510;padding:6px;">Close and Continue Shopping!</span>';
+			document.getElementById('ouititle').innerHTML="Congratulations!";
+		}
+		else
+		{
+			document.getElementById('ouibounce_valid').style.display='';
+		}
+	}
+	);
+	
+	window.dataLayer = window.dataLayer || []
+	dataLayer.push({
+   'event': 'emailSubmit'
+	});
+	return false;
+}
+
+	try
+	{
+   		var _ouiBounce=ouibounce(document.getElementById('ouibounce-modal'),{
+        cookieExpire:30,
+		timer:0,
+		sitewide:true
+      });
+	}
+	catch(err)
+	{
+		
+	}
+
+      $('.underlay').on('click', function(){
+        $('#ouibounce-modal').hide();
+        _ouiBounce.disable({ cookieExpire:30, sitewide:true });
+        
+      });
+
+      $('#ouibounce-modal .modal-footer').on('click', function(){
+        $('#ouibounce-modal').hide();
+        _ouiBounce.disable({ cookieExpire:30, sitewide:true });
+      });
+
+      $('#ouibounce-modal .modal').on('click', function(e){
+        e.stopPropagation();
+      });
+
+function getauto(){
+	
+	try
+	{
+		var searchelp = document.getElementById('fdc_search_help');
+		if(searchelp.style.display != 'none')
+		{
+			searchelp.style.display = 'none'
+		}
+		
+		$.ajax({
+		type:"POST",
+		url:"/suggest_new.php",
+		data:{ searchq:document.getElementById('sbox').value.replace("&","")},
+		cache:false
+		}).done(function( html ){
+			if(html.length > 0){
+			results=true;
+			$("#as_c").html(html).fadeIn(1000);
+			as_htime=as_ghtime;
+		
+				if(as_fader==false){	
+					autofade();
+				}
+			}
+		}
+		);
+	}
+	catch(err)
+	{
+		// Don't care
+	}
+	
+}
+
+$("#as_c").hover(function(){ashover()},function(){ashoverout()});
+
+function searchset(newval){
+	document.getElementById('sbox').value=newval;
+	document.getElementById('asholder').submit();
+}
+
+function autofade(){
+
+	if(as_hover==false){
+		
+	as_htime=as_htime-1;
+
+		if(as_htime <=0){	
+			$("#as_c").fadeOut(1000);
+			as_fader=false;
+		}
+		else
+		{
+		as_fader=true;
+		setTimeout(function(){autofade()},1000);
+		}
+	}
+	else
+	{
+		as_fader=false;
+	}
+}
+
+function ashover(){
+	as_htime=as_ghtime;
+	as_hover=true;
+}
+
+function ashoverout(){
+	as_hover=false;
+	
+	if(as_fader==false){
+	autofade();
+	}
+	
+}
+
+$(function(){
+	$(window).scroll(function(){
+		if($(this).scrollTop() !=0){
+			$('#toTop').fadeIn();	
+		} else {
+			$('#toTop').fadeOut();
+		}
+	});
+	
+	function showtabscroll(tabnum){
+		
+			$('#tabs').each(function(){
+			var mainDiv=$(this);
+			var tabs=mainDiv.children('ul').children('li');
+			var panels=mainDiv.children('div');
+			var selectedTab=panels[(tabnum-1)];
+			var selectedtabobject=tabs[(tabnum-1)];
+			
+			mainDiv.addClass('tabsLite-mainDiv');
+			tabs
+				.addClass('tabsLite-tab')
+				.removeClass('tabsLite-tab-selected')
+			panels
+				.addClass('tabsLite-panel')
+				.hide();
+			$(selectedtabobject)
+			.addClass('tabsLite-tab-selected');
+			$(selectedTab)
+					.show()
+					.addClass('tabsLite-panel-selected');
+				});
+		$('body,html').animate({scrollTop:$('#tab-'+tabnum).offset().top-30},800);
+	}
+	
+	$('#readdesc').click(function(){
+	showtabscroll(1);	
+	});
+	
+	$('#ratingslink').click(function(event){
+		
+	showtabscroll(2);
+	event.preventDefault();
+	});
+	
+});
+
+(function( $ ){
+	$.fn.tabsLite=function(){
+		
+		this.each(function(){
+			var mainDiv=$(this);
+			var tabs=mainDiv.children('ul').children('li');
+			var panels=mainDiv.children('div');
+			var selectedTab=panels.first();
+			
+			mainDiv.addClass('tabsLite-mainDiv');
+			tabs
+				.addClass('tabsLite-tab')
+				.first()
+				.addClass('tabsLite-tab-selected');
+			panels
+				.addClass('tabsLite-panel')
+				.hide()
+				.first()
+				.show()
+				.addClass('tabsLite-panel-selected');
+			
+			tabs.click(function(){
+				selectedTab=$(this).children('a').attr('href');
+				selectedTab=selectedTab.split("#");
+				selectedTab="#"+selectedTab.slice(-1)[0];
+				
+				tabs.removeClass('tabsLite-tab-selected');
+				panels
+					.hide()
+					.removeClass('tabsLite-panel-selected');
+				
+				$(this).addClass('tabsLite-tab-selected');
+				$(selectedTab)
+					.show()
+					.addClass('tabsLite-panel-selected');
+				
+			}).children('a').click(function(event){
+				event.preventDefault();
+			});
+		});
+		
+		return this;
+	
+	};
+})( jQuery );
+
+	$(function(){
+		try
+		{
+			$('#tabs').tabsLite();
+		}
+		catch(exce)
+		{
+			
+		}
+	});
+			
+function updatecartinfo(responseval){
+var responsesplit=responseval.split('|||');
+document.getElementById('ctotup').innerHTML=responsesplit[0];
+document.getElementById('ctotprice').innerHTML=responsesplit[1];
+document.getElementById('bcontents').innerHTML=responsesplit[2];
+document.getElementById('flagimage').innerHTML=responsesplit[3];
+document.getElementById('loginfo').innerHTML=responsesplit[4];
+}
+
+$(document).ready(function($){
+if(typeof(isblog) !="undefined"){
+	updateallinfo();
+}
+});
+  
+function updateallinfo(){
+var loadUrl="/catalog/cart_load.php";
+$.ajax({type:"POST",url:loadUrl,data:{},cache:false}).done(function( html ){
+if(html.length > 0){
+	updatecartinfo(html);
+}
+});  
+}
+	
+function rvote(rating_updownval, prodcont, revid){
+var loadUrl="/catalog/quickview_cart_submit.php"; 
+       
+$.ajax({
+type:"POST",url:loadUrl,data:{action:"rating_vote",rating_updown:rating_updownval, rev_id:revid},cache:false}).done(function(html){
+	document.getElementById('votesuccess_'+prodcont).innerHTML="Thanks for voting!";
+});  
+}	
+	
+	
+function quickviewcartadd_wl(formelem){
+	var quickvcont=document.getElementById('quickview');
+	var xmlhttp_qvc;
+	var cartupdate=formelem.cart_quantity.value;
+	var carttext=document.getElementById('ctotup');
+	globalprodid=formelem.products_id.value;
+					
+	var params="products_id="+globalprodid+"&cart_quantity="+cartupdate;
+	
+	if(quickvflag!=1){
+	quickvcont.style.display='block';
+	var quickvbg=document.getElementById('quickviewbg');
+	quickvbg.style.display='block';
+	centerelem('quickview',false,false);
+	centerelem('quickviewbg',true,false);
+	quickvflag=1;
+	quickvcont.innerHTML=quickvloading;
+	}
+
+	if(window.XMLHttpRequest){
+	xmlhttp_qvc=new XMLHttpRequest();
+	}else{
+	xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/quickview_cart_submit.php?action="+'add_product_wl'+"&rev=1&products_id="+globalprodid+'&wlf=1',true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function(){
+
+	if(xmlhttp_qvc.readyState==4 && xmlhttp_qvc.status==200){			
+	var xmlhttp_qvcart;
+
+	if(window.XMLHttpRequest){
+	xmlhttp_qvcart=new XMLHttpRequest();
+	}else{
+	xmlhttp_qvcart=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp_qvcart.open("GET","/catalog/quickview_cart.php?prod_id="+globalprodid+"&cart_quant="+cartupdate+'&wlf=1'+"&nocache="+Math.random(),true);
+	xmlhttp_qvcart.send();
+	xmlhttp_qvcart.onreadystatechange=function(){
+	if(xmlhttp_qvcart.readyState==4 && xmlhttp_qvcart.status==200){
+	var responsetext=xmlhttp_qvcart.responseText.split("delimiterval")
+	quickvcont.innerHTML=responsetext[0];
+	}
+	}
+	}
+	}
+return false;
+}			
+
+
+function quickviewWishList(formelem)
+{
+	var quickvcont=document.getElementById('quickview');
+	var xmlhttp_qvc;
+					
+	var params="products_id="+formelem.products_id.value;
+	
+	if(quickvflag!=1)
+	{
+		quickvcont.style.display='block';
+		var quickvbg=document.getElementById('quickviewbg');
+		quickvbg.style.display='block';
+		centerelem('quickview',false,false);
+		centerelem('quickviewbg',true,false);
+		quickvflag=1;
+		quickvcont.innerHTML=quickvloading;
+	}
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+		if(xmlhttp_qvc.readyState==4 && xmlhttp_qvc.status==200)
+		{
+			quickvcont.innerHTML=xmlhttp_qvc.responseText;
+		}
+	}
+	
+	return false;
+}
+
+
+function quickviewWishList_add(listid, prodidval)
+{
+	var fbnotes = document.getElementById("fbnotes").value;
+	var xmlhttp_qvc;
+					
+	var params="products_id="+prodidval+"&listid="+listid+"&listcomment="+fbnotes.replace("&", "");
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=1",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+	
+	dataLayer.push({'event': 'addToExistingFavoritesBoard'});
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+	}
+	quickviewclose();
+	return false;
+}
+
+function quickviewWishList_addCreate(prodidval)
+{
+	var fbnotes = document.getElementById("fbnotes").value;
+	var bname = document.getElementById("fb_addcreate_name").value;
+	
+	if(bnameCheck(bname))
+	{
+		var radios = document.getElementsByName("fbpubpriv");
+		
+		var boardpub = 1;
+		for(var i = 0, length = radios.length; i < length; i++)
+		{
+			if(radios[i].checked)
+			{
+				boardpub = radios[i].value;
+				break;
+			}
+		}
+		
+		var xmlhttp_qvc;
+						
+		var params="products_id="+prodidval+"&listcomment="+fbnotes.replace("&", "")+"&bname="+bname.replace("&", "")+"&bpublic="+boardpub;
+		
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp_qvc=new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			
+		xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=2",true);
+		xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp_qvc.send(params);
+		
+		dataLayer.push({'event': 'createFavoritesBoard'});
+	
+		xmlhttp_qvc.onreadystatechange=function()
+		{
+		}
+		quickviewclose();
+	}
+	
+	return false;
+}
+
+function delhide()
+{
+	delb = document.getElementById("fb_del");
+	
+	if(delb.checked == true)
+	{
+		document.getElementById("favdelhide").style.display = "none";	
+		document.getElementById("favdelsubmit").style.display = "";	
+	}
+	else
+	{
+		document.getElementById("favdelhide").style.display = "";	
+		document.getElementById("favdelsubmit").style.display = "none";	
+	}
+		
+}
+
+function bnameCheck(fieldValue)
+{
+	if(fieldValue.length <= 1)
+	{
+		document.getElementById("fberror").innerHTML = "Name must be greater than 2 characters";
+		return false;
+	}
+	else
+	{
+		return true;	
+	}
+}
+
+function quickviewWishList_addCreateEdit(listid)
+{
+	var bname = document.getElementById("fb_addcreate_name").value;
+	var radios = document.getElementsByName("fbpubpriv");
+	var delb = document.getElementById("fb_del");
+	
+	if(bnameCheck(bname))
+	{
+		var boardpub = 1;
+		for(var i = 0, length = radios.length; i < length; i++)
+		{
+			if(radios[i].checked)
+			{
+				boardpub = radios[i].value;
+				break;
+			}
+		}
+		
+		var delboard = 0;
+		if(delb.checked)
+		{
+			delboard = 1;
+		}
+		
+		var params="listid="+listid+"&bname="+bname.replace("&", "")+"&bpublic="+boardpub+"&delboard="+delboard;
+		
+		var xmlhttp_qvc;
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp_qvc=new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			
+		xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=7",true);
+		xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp_qvc.send(params);
+	
+		xmlhttp_qvc.onreadystatechange=function()
+		{
+			if(xmlhttp_qvc.readyState==4 && xmlhttp_qvc.status==200)
+			{
+				location.reload(true);
+			}
+			
+		}
+	}
+	
+	return false;
+}
+
+
+function quickviewWishList_viewComments(listid)
+{
+	var quickvcont=document.getElementById('quickview');
+	var xmlhttp_qvc;
+					
+	var params="list_item_id="+listid;
+	
+	quickvcont.style.display='block';
+	
+	var quickvbg=document.getElementById('quickviewbg');
+	quickvbg.style.display='block';
+	centerelem('quickview',false,false);
+	centerelem('quickviewbg',true,false);
+	quickvcont.innerHTML=quickvloading;
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=3",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+		if(xmlhttp_qvc.readyState==4 && xmlhttp_qvc.status==200)
+		{
+			quickvcont.innerHTML=xmlhttp_qvc.responseText;
+		}
+	}
+	
+	return false;
+}
+
+function quickviewWishList_AddComment(listid)
+{
+	var xmlhttp_qvc;
+	
+	var fbnotes = document.getElementById("fbnotes").value;			
+	var params="list_item_id="+listid+"&listcomment="+fbnotes.replace("&", "");
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=4",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+	
+	}
+	quickviewclose();
+	return false;
+}
+
+
+function quickviewWishList_ShareView(listid)
+{
+	var quickvcont=document.getElementById('quickview');
+	var xmlhttp_qvc;
+					
+	var params="listid="+listid;
+	
+	if(quickvflag!=1)
+	{
+		quickvcont.style.display='block';
+		var quickvbg=document.getElementById('quickviewbg');
+		quickvbg.style.display='block';
+		centerelem('quickview',false,false);
+		centerelem('quickviewbg',true,false);
+		quickvflag=1;
+		quickvcont.innerHTML=quickvloading;
+	}
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=6",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+		if(xmlhttp_qvc.readyState==4 && xmlhttp_qvc.status==200)
+		{
+			quickvcont.innerHTML=xmlhttp_qvc.responseText;
+		}
+	}
+	
+	return false;
+}
+
+function quickviewWishList_Share(listid)
+{
+	var xmlhttp_qvc;
+	
+	var shareemail = document.getElementById("shareemail").value;			
+	var params="listid="+listid+"&shareemail="+shareemail.replace("&", "");
+
+	if(window.XMLHttpRequest)
+	{
+		xmlhttp_qvc=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp_qvc=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		
+	xmlhttp_qvc.open("POST","https://factorydirectcraft.com/catalog/wishlist_submit.php?action=5",true);
+	xmlhttp_qvc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp_qvc.send(params);
+
+	xmlhttp_qvc.onreadystatechange=function()
+	{
+	
+	}
+	quickviewclose();
+	return false;
+}
+
+$(document).ready(function($){
+	
+	var getquantobjs = document.getElementsByName('cart_quantity');
+	for(var x=0; x < getquantobjs.length; x++)
+	{
+		getquantobjs[x].onclick=function(x)
+		{};
+		getquantobjs[x].onmouseup=function()
+		{};
+	}
+});
+
+
+_atrk_opts={ atrk_acct:"5h4rg1aAQ700iu", domain:"factorydirectcraft.com",dynamic:true};
+(function(){ var as=document.createElement('script');as.type='text/javascript';as.async=true;as.src="https://d31qbv1cthcecs.cloudfront.net/atrk.js";var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s);})();
+
+
+(function (){
+window._maCookieDays=30;
+if(/zmam=/i.test(location.search)){
+var ma=document.createElement('script');
+ma.type='text/javascript';
+ma.async=true;
+ma.src=(document.location.protocol=='https:' ? 'https://secure':'http://chanalytics')+'.merchantadvantage.com/inchannel/maclick.js';
+var s=document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ma,s);
+}
+})();
+
+$( document ).ready(function()
+{
+
+				$("img.lazy").lazyload({
+				effect:"fadeIn"
+				});
+
+
+
+}); 
+

@@ -1,0 +1,1118 @@
+
+		    
+		    var domainNamesMap=new Object();domainNamesMap["FD1_18B_P"]="www1.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW42"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW44"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW45"]="www.1800flowers.com";domainNamesMap["FD4_18F_PWA_WWW"]="pwa.www.1800flowers.com";domainNamesMap["FD4_SYB_WW42"]="business.stockyards.com";domainNamesMap["FD4_TPF_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_SY_P_WW42"]="www.stockyards.com";domainNamesMap["FD4_18F_NC"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW51"]="www.1800flowers.com";domainNamesMap["FD4_TPF_WW44"]="www.thepopcornfactory.com";domainNamesMap["FD4_HDB_WW42"]="business.harryanddavid.com";domainNamesMap["FD4_CCOB_WW42"]="business.cheryls.com";domainNamesMap["FD4_18F_MVWB_WW54"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW55"]="www.1800flowers.com";domainNamesMap["FD4_CCO_MV_T_WW42"]="t4.www.cheryls.com";domainNamesMap["FD4_HLB_WW42"]="business.harrylondon.com";domainNamesMap["FD4_CLB_TMISC_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_18BB_WW42"]="business.1800baskets.com";domainNamesMap["FD4_HL_MSTG_WW42"]="mstage3.www3.harrylondon.com";domainNamesMap["FD4_18B_MV_T_WW42"]="t.www.1800baskets.com";domainNamesMap["FD4_CLB_MSTG_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HL_MV_ML_WW42"]="mlocal.www3.harrylondon.com";domainNamesMap["FD4_CCO_MV_MS_WW42"]="mstage4.www.cheryls.com";domainNamesMap["FD4_TPF_WW51"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_WW53"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_WW54"]="www.thepopcornfactory.com";domainNamesMap["FD4_SYCR_WW42"]="corporate.stockyards.com";domainNamesMap["FD4_PZU_T_WW42"]="akamai.personalizationuniverse.com";domainNamesMap["FD4_FMC_WW42"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW44"]="www.fanniemay.com";domainNamesMap["FD4_TPF_TSTG_WW42"]="tstage.www.thepopcornfactory.com";domainNamesMap["FD4_18F_T_WW42"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_MV_T_WW42"]="t5.www.fanniemay.com";domainNamesMap["FD4_18F_T_WW44"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_T_WW42"]="www.fanniemay.com";domainNamesMap["FD4_FMC_T_WW44"]="www.fanniemay.com";domainNamesMap["FD4_18B_P_WW42"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW44"]="m.www.1800baskets.com";domainNamesMap["FD4_FB_MV_T_WW42"]="t.www.fruitbouquets.com";domainNamesMap["FD4_18F_TMISC_WW42"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_WW51"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW53"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW54"]="www.fanniemay.com";domainNamesMap["FD4_18F_MLCL_WW42"]="mlocal.www.1800flowers.com";domainNamesMap["FD4_18F_T_WW51"]="t.www.1800flowers.com";domainNamesMap["FD4_18F_T_WW53"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_T_WW51"]="www.fanniemay.com";domainNamesMap["FD4_18F_T_WW54"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_MV_TS_WW42"]="tstage5.www.fanniemay.com";domainNamesMap["FD4_18F_T_WW55"]="t.www.1800flowers.com";domainNamesMap["CLASSIC_T_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_18B_MV_TS_WW42"]="tstage.www.1800baskets.com";domainNamesMap["FD4_FMC_T_WW53"]="www.fanniemay.com";domainNamesMap["FD4_FMC_T_WW54"]="www.fanniemay.com";domainNamesMap["FD4_18B_P_WW51"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW53"]="m.www.1800baskets.com";domainNamesMap["FD4_PZU_WW42"]="www.personalizationuniverse.com";domainNamesMap["FD4_18B_P_WW54"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW55"]="m.www.1800baskets.com";domainNamesMap["FD4_18BCR_WW42"]="corporate.1800baskets.com";domainNamesMap["FD4_WLF_P_WW42"]="www.wolfermans.com";domainNamesMap["FD4_HL_NC"]="www3.harrylondon.com";domainNamesMap["FD4_HL_MV_MS_WW42"]="mstage3.www3.harrylondon.com";domainNamesMap["FD4_CLB_MV_ML_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_CCO_WW42"]="www.cheryls.com";domainNamesMap["FD4_SY_T_WW42"]="www.stockyards.com";domainNamesMap["FD4_CCO_WW44"]="www.cheryls.com";domainNamesMap["FD4_CLB_P_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_18B_NC"]="www.1800baskets.com";domainNamesMap["FD4_FB_MV_TS_WW42"]="tstage.www.fruitbouquets.com";domainNamesMap["FD4_WLF_P_WW51"]="www.wolfermans.com";domainNamesMap["FD4_WLFCR_WW42"]="corporate.wolfermans.com";domainNamesMap["FD4_HL_MV_T_WW42"]="t3.www3.harrylondon.com";domainNamesMap["FD4_CLB_MV_T_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_CCO_TSTG_WW42"]="tstage.www.cheryls.com";domainNamesMap["FD4_CCO_WW51"]="www.cheryls.com";domainNamesMap["FD4_CCO_WW53"]="www.cheryls.com";domainNamesMap["FD4_HD_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_CCO_WW54"]="www.cheryls.com";domainNamesMap["FD4_18F_MSTG_WW42"]="mstage.www.1800flowers.com";domainNamesMap["FD4_PZUB_WW42"]="business.personalizationuniverse.com";domainNamesMap["FD4_18B_TSTG_WW42"]="tstage.www.1800baskets.com";domainNamesMap["FD4_NPI_WW42"]="www.napcoimports.com";domainNamesMap["FD4_HD_P_MVWB_WW42"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW42"]="www.cheryls.com";domainNamesMap["FD4_HD_P_MVWB_WW44"]="m.www.harryanddavid.com";domainNamesMap["FD4_HD_P_MVWB_WW45"]="m.www.harryanddavid.com";domainNamesMap["FD4_WLFB_WW42"]="business.wolfermans.com";domainNamesMap["FD4_CCO_WCS_M_WW44"]="www.cheryls.com";domainNamesMap["FD4_CCO_WCS_M_WW45"]="www.cheryls.com";domainNamesMap["CLASSIC_WLF"]="origin.wolfermans.com";domainNamesMap["FD4_TPF_MV_TS_WW42"]="tstage6.www.thepopcornfactory.com";domainNamesMap["FD4_HD_P_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_FMCB_WW42"]="business.fanniemay.com";domainNamesMap["FD4_18F_MV_ML_WW42"]="mlocal.www3.1800flowers.com";domainNamesMap["FD4_18B_T_WW42"]="www.1800baskets.com";domainNamesMap["FD4_18B_T_WW44"]="www.1800baskets.com";domainNamesMap["FD4_HD_P_MVWB_WW51"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW51"]="www.cheryls.com";domainNamesMap["FD4_FMC_TSTG_WW42"]="tstage.www.fanniemay.com";domainNamesMap["FD4_HD_P_MVWB_WW54"]="m.www.harryanddavid.com";domainNamesMap["FD4_HD_P_MVWB_WW55"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW54"]="www.cheryls.com";domainNamesMap["FD4_CCO_WCS_M_WW55"]="www.cheryls.com";domainNamesMap["FD4_HD_P_WW51"]="www.harryanddavid.com";domainNamesMap["FD4_CCO_P_WW41"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW42"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW44"]="m.www.cheryls.com";domainNamesMap["FD4_HDCR_WW42"]="corporate.harryanddavid.com";domainNamesMap["FD4_FMC_TMISC_WW42"]="www.fanniemay.com";domainNamesMap["FD4_18B_TMISC_WW42"]="www.1800baskets.com";domainNamesMap["FD4_CLB_MV_MS_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_FB_TSTG_WW42"]="tstage.www.fruitbouquets.com";domainNamesMap["FD4_18B_T_WW51"]="www.1800baskets.com";domainNamesMap["FD4_18B_T_WW53"]="www.1800baskets.com";domainNamesMap["FD4_TPF_MLCL_WW42"]="mlocal.www.thepopcornfactory.com";domainNamesMap["FD4_18B_T_WW54"]="www.1800baskets.com";domainNamesMap["FD4_FB_WW42"]="www.fruitbouquets.com";domainNamesMap["CLASSIC_P_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_FB_WW44"]="www.fruitbouquets.com";domainNamesMap["FD4_WLF_T_WW42"]="www.wolfermans.com";domainNamesMap["FD4_CCO_MV_TS_WW42"]="tstage4.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW51"]="m.www.cheryls.com";domainNamesMap["FD1_18F_P"]="www1.1800flowers.com";domainNamesMap["FD4_CCO_P_WW52"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW53"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW54"]="m.www.cheryls.com";domainNamesMap["FD4_FB_P_WW42"]="m.www.fruitbouquets.com";domainNamesMap["FD4_CCO_P_WW55"]="m.www.cheryls.com";domainNamesMap["FD4_CCOCR_WW42"]="corporate.cheryls.com";domainNamesMap["FD1_18F_T"]="www1.1800flowers.com";domainNamesMap["FD4_18F_TMV_WW42"]="t.www.1800flowers.com";domainNamesMap["FD4_FB_P_WW44"]="m.www.fruitbouquets.com";domainNamesMap["FD4_18B_WW42"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW42"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18B_WW44"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW44"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18F_PWA_WW45"]="pwa.www.1800flowers.com";domainNamesMap["FD4_FB_WW51"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_TMISC_WW42"]="www.fruitbouquets.com";domainNamesMap["FD4_CLB_T_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_FB_WW53"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_WW54"]="www.fruitbouquets.com";domainNamesMap["FD1_FB_P"]="m.www.1800flowers.com";domainNamesMap["FD1_18F_UBU"]="ww11.1800flowers.com";domainNamesMap["FD4_FB_P_WW51"]="m.www.fruitbouquets.com";domainNamesMap["FD4_TM_T_WW42"]="www.goodsey.com";domainNamesMap["FD4_FB_P_WW53"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FB_P_WW54"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FB_P_WW55"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FBCR_WW42"]="corporate.fruitbouquets.com";domainNamesMap["FD4_18B_WW51"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW51"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18F_MV_MS_WW42"]="mstage3.www3.1800flowers.com";domainNamesMap["FD4_TPF_P_WW41"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18F_TMV_WW55"]="t.www.1800flowers.com";domainNamesMap["FD4_TPF_P_WW42"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18B_WW53"]="www.1800baskets.com";domainNamesMap["FD4_18B_WW54"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW54"]="pwa.www.1800flowers.com";domainNamesMap["FD4_TPF_P_WW44"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18F_PWA_WW55"]="pwa.www.1800flowers.com";domainNamesMap["FD4_CCO_NC"]="www.cheryls.com";domainNamesMap["FD4_18FB_WW42"]="business.1800flowers.com";domainNamesMap["FD4_18F_MV_T_WW42"]="t3.www3.1800flowers.com";domainNamesMap["FD4_HL_TSTG_WW42"]="tstage.www3.harrylondon.com";domainNamesMap["FD4_TPF_TMISC_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPFB_WW42"]="business.thepopcornfactory.com";domainNamesMap["FD4_CLB_TSTG_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HD_T_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_TPF_MSTG_WW42"]="mstage.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW51"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW52"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW53"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW54"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW55"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPFCR_WW42"]="corporate.thepopcornfactory.com";domainNamesMap["FD4_FMC_MV_ML_WW42"]="mlocal.www.fanniemay.com";domainNamesMap["FD4_18B_MV_ML_WW42"]="mlocal.www.1800baskets.com";domainNamesMap["FD4_HL_MV_TS_WW42"]="tstage3.www3.harrylondon.com";domainNamesMap["FD4_TM_WW42"]="www.goodsey.com";domainNamesMap["FD4_CCO_MLCL_WW42"]="mlocal.www.cheryls.com";domainNamesMap["FD4_CCO_T_WW42"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW44"]="www.cheryls.com";domainNamesMap["FD4_TPF_MV_M_WW42"]="m6.www.thepopcornfactory.com";domainNamesMap["FD4_18B_MLCL_WW42"]="mlocal.www.1800baskets.com";domainNamesMap["FD4_CCO_TMISC_WW42"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW51"]="www.cheryls.com";domainNamesMap["FD4_FB_MV_ML_WW42"]="mlocal.www.fruitbouquets.com";domainNamesMap["FD4_CCO_T_WW53"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW54"]="www.cheryls.com";domainNamesMap["FD4_FB_T_WW42"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW44"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_WW42"]="www.1800flowers.com";domainNamesMap["FD4_FMC_MLCL_WW42"]="mlocal.www.fanniemay.com";domainNamesMap["FD4_18F_WW44"]="www.1800flowers.com";domainNamesMap["FD4_NPI_T_WW42"]="www.napcoimports.com";domainNamesMap["FD4_SY_WW42"]="www.stockyards.com";domainNamesMap["FD4_HD_NC"]="www.harryanddavid.com";domainNamesMap["CLASSIC_P_WLF"]="origin.wolfermans.com";domainNamesMap["CLASSIC_T_WLF"]="origin.wolfermans.com";domainNamesMap["FD4_FB_MLCL_WW42"]="mlocal.www.fruitbouquets.com";domainNamesMap["FD4_FMC_NC"]="www.fanniemay.com";domainNamesMap["FD4_FB_T_WW51"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW53"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW54"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_WW51"]="www.1800flowers.com";domainNamesMap["FD4_TPF_MV_ML_WW42"]="mlocal.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_18F_WW53"]="www.1800flowers.com";domainNamesMap["FD4_18F_WW54"]="www.1800flowers.com";domainNamesMap["FD4_TPF_T_WW44"]="www.thepopcornfactory.com";domainNamesMap["FD4_CCO_MSTG_WW42"]="mstage.www.cheryls.com";domainNamesMap["FD4_FMC_MV_MS_WW42"]="mstage5.www.fanniemay.com";domainNamesMap["FD4_18B_MV_MS_WW42"]="mstage.www.1800baskets.com";domainNamesMap["FD4_HL_WW42"]="www3.harrylondon.com";domainNamesMap["FD4_WLF_WW42"]="www.wolfermans.com";domainNamesMap["FD4_18B_MSTG_WW42"]="mstage.www.1800baskets.com";domainNamesMap["FD4_CLB_MV_TS_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HL_P_WW42"]="m.www.harrylondon.com";domainNamesMap["FD4_TPF_MV_T_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_18F_TSTG_WW42"]="tstage.www.1800flowers.com";domainNamesMap["FD4_TPF_T_WW51"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW53"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW54"]="www.thepopcornfactory.com";domainNamesMap["FD4_PZU_P_WW42"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_WLF_NC"]="www.wolfermans.com";domainNamesMap["FD4_PZU_P_WW44"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_CCO_MV_M_WW42"]="m4.www.cheryls.com";domainNamesMap["FD4_CLB_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_PZU_P_WW45"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_FB_NC"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_P_WW42"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_MSTG_WW42"]="mstage.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW41"]="m.www.fanniemay.com";domainNamesMap["FD4_18F_P_WW44"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_P_WW42"]="m.www.fanniemay.com";domainNamesMap["FD4_FB_MV_MS_WW42"]="mstage.www.fruitbouquets.com";domainNamesMap["FD4_FMC_P_WW44"]="m.www.fanniemay.com";domainNamesMap["FD4_FBB_WW42"]="business.fruitbouquets.com";domainNamesMap["FD4_CCO_MV_ML_WW42"]="mlocal.www.cheryls.com";domainNamesMap["FD4_HLCR_WW42"]="corporate.harrylondon.com";domainNamesMap["FD4_HL_MLCL_WW42"]="mlocal.www3.harrylondon.com";domainNamesMap["FD4_SY_NC"]="www.stockyards.com";domainNamesMap["FD4_CLB_MLCL_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_PZU_P_WW51"]="m.www.personalizationuniverse.com";domainNamesMap["CLASSIC_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_FB_MSTG_WW42"]="mstage.www.fruitbouquets.com";domainNamesMap["FD4_PZU_P_WW54"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_PZUCR_WW42"]="corporate.personalizationuniverse.com";domainNamesMap["FD4_PZU_P_WW55"]="m.www.personalizationuniverse.com";domainNamesMap["FD1_18B"]="www1.1800baskets.com";domainNamesMap["FD4_18F_MV_TS_WW42"]="tstage3.www3.1800flowers.com";domainNamesMap["FD4_TPF_NC"]="www.thepopcornfactory.com";domainNamesMap["FD1_18F"]="www1.1800flowers.com";domainNamesMap["FD4_18F_P_WW51"]="m.www.1800flowers.com";domainNamesMap["FD4_18F_P_WW53"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_P_WW51"]="m.www.fanniemay.com";domainNamesMap["FD4_18F_P_WW54"]="m.www.1800flowers.com";domainNamesMap["FD4_18F_P_WW55"]="m.www.1800flowers.com";domainNamesMap["FD4_18FCR_WW42"]="corporate.1800flowers.com";domainNamesMap["FD4_FMC_P_WW52"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW53"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_MV_M_WW42"]="m5.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW54"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW55"]="m.www.fanniemay.com";domainNamesMap["FD4_FMCCR_WW42"]="corporate.fanniemay.com";domainNamesMap["FD4_TPF_MV_MS_WW42"]="mstage6.www.thepopcornfactory.com";function getCookie(e){var n,o,i,t=document.cookie.split(";");for(n=0;n<t.length;n++)if(o=t[n].substr(0,t[n].indexOf("=")),i=t[n].substr(t[n].indexOf("=")+1),o=o.replace(/^\s+|\s+$/g,""),o==e)return unescape(i)}
+		    function setMobileURL(){
+		        var o=window.location.href,e=window.location.host,i="",n=getCookie("destination");
+		        if (("undefined"!=typeof n) && (n in domainNamesMap))
+		        {
+		            (i=domainNamesMap[n], e!=i && (o=o.replace(e,i), window.location.href=o))
+		        } else {}
+		    }
+		
+
+				var mobileDomain = 'm.www.harryanddavid.com';
+				var subDomain    = 'www';
+				var mobileStartDomain = 'm';				
+				setMobileURL();
+			
+
+			var seoUrlForHomeColProdPage = '';
+			setUpSEOUrlForHomeColProdPage(seoUrlForHomeColProdPage);
+		
+
+	djConfig = { isDebug: false, parseWidgets:false, searchIds:[]};
+	
+
+if (self === top) {
+   var antiClickjack = document.getElementById("antiClickjack");
+   if(null != antiClickjack){
+   	antiClickjack.parentNode.removeChild(antiClickjack);
+   }
+}else{
+	top.location = self.location;
+}
+
+
+	var partnerCookie = getCookie("ADV_ATTR_COOKIE");
+	if(partnerCookie == 'undefined' || partnerCookie == null || partnerCookie == "" || partnerCookie == "defaultPartner")
+	{
+    	var partnerImage = getCookie("partnerbanner");
+    	var bannerCookie = getCookie("FuneralHomeBannerContext");
+	    if(bannerCookie == 'true')
+	    {
+	    	$("div#FuneralBanner").show();
+	    }
+		else if(partnerImage != undefined && partnerImage != null && partnerImage != "")
+		{
+			$("div#eyebrow img").attr("src","//cdn2.1800flowers.com/wcsstore/Flowers/images/banners/"+partnerImage+"");
+			$("div#eyebrow").show();
+		}
+	}
+
+
+    
+     
+     var utag_data = {
+	"brand_current": "HD",
+	"brand_entering": ["1001"],
+	"cellid": "WW42",
+	"country_code": "US",
+	"page_language": "en",
+	"page_name": "TopCategory",
+	"page_type": "topCategory"
+};
+     
+     
+
+
+	$(function () {
+		if (urlParam('priceFilter').length && !$('#clubsEspot').length && !$('#deptFeatA').length) {
+
+			if ($('.Product').length == 200) {
+				$('.pagination-row1').hide();
+			}
+
+			var range = UX.urlParam('priceFilter').split('-'),
+				high = parseInt(range[1]);
+			console.log('range (arr) is: ' + range);
+			console.log('threshold is: ' + high);
+
+			$('.Product').each(function () {
+				var $product = $(this);
+					var cost = parseFloat($product.find('[itemprop="price"]').html().split('$')[1]);
+				console.log('cost is: '+cost);
+					if (cost > high) 
+						$product.remove();
+			})
+			if ($('#Sort').length) {
+				$('#Sort option').each(function () {
+					$(this).attr('value', $(this).attr('value') + '&priceFilter=' + UX.urlParam('priceFilter'));
+				})
+			}
+			updateCount();
+		}
+
+		function updateCount() {
+			$('.nbr-items strong').html($('.Product').length);
+			$('.bd-responsive .pagination-row1').show();
+			window.scroll(0,1);
+		}
+
+		function urlParam(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+	});
+
+
+var B2B = B2B || {};
+
+B2B.cms = {
+	init: function () {
+		B2B.cms.scanPage();
+	},
+	scanPage: function () {
+		$('*[data-b2bcms]').each(function () {
+			$(this).html(B2B.cmsStore[$(this).data('b2bcms')]);
+		})
+	},
+}
+
+B2B.cmsStore = {
+	customerServiceNumber: '1-844-743-4300'
+}
+
+$(function () {
+	var isB2B = window.location.host.split('.')[0];
+	if (isB2B == 'corporate' || isB2B == 'business')
+		B2B.cms.init();
+})
+
+
+    var VideoModal2 = {
+        launch: function (youtubeid, vidtitle, autoplay) {
+            var play = autoplay.length ? 1 : 0,
+                link = '//www.youtube.com/embed/' + youtubeid + '?rel=0&autoplay=' + play,
+                title = vidtitle.length ? vidtitle : 'Share with your friends';
+            $('<div style="padding:20px;"></div>').append($('<iframe />').attr({
+                src: link,
+                width: '555',
+                height: '300',
+	    allowfullscreen: 'true'
+            })).dialog({
+                modal: true,
+                position: {
+                    my: 'center top',
+                    at: 'center top',
+                    of: window
+                },
+                title: title,
+                close: function () {
+                    $(this).dialog('destroy').remove();
+                }
+            });
+        }
+    };
+
+
+    var UXB = {
+
+    showLeftNav: function() {
+        UXB.findDepartment();
+    },
+
+    applyLeftNavStyles: function() {
+        var $pageType = $('#pagetype').attr('data-pagetype'),
+            $banner = $('#CategoryESpot4')
+
+        // Modify existing stylesheets when project is greenlighted
+        $('#Co-LeftColumn').css({
+            width: '220px',
+            display: 'inline'
+        });
+
+        $('#Co-RightColumn').css({
+            width: '75%'
+        });
+
+        $('.Co-pagination, .Co-pagination2').css({
+            padding: '0 !important'
+        });
+
+        $('.pagination-row1').css({
+            padding: '19px 0px 9px 13px',
+            margin: '0px 0 5px 3px',
+            background: '#ebebde',
+            width: '714px'
+        });
+
+        $('.pagination-row1 > div.sort').css({
+            width: 'auto'
+        });
+
+        $('#LeftNavigation > li.header > a').css({
+            background: '#324765',
+            width: '200px',
+            padding: '17px 30px 10px 10px',
+            position: 'relative'
+        });
+
+
+        // move header somewhere out of the way
+        var $headerV1 = $('.headerEspot'),
+            $headerV2 = $('#categoryHeader');
+        if ($headerV1.length || $headerV2.length) {
+            var $header = $headerV1.length ? $headerV1 : $headerV2;
+            if ($header.html().length) {
+                $header.css({
+                    display: 'block',
+                    width: '100%',
+                    margin: '0 auto'
+                }).detach().prependTo($('#Co-Wrap'));
+            }
+        }
+        $('#Co-LeftColumn').css({
+            marginTop: '20px'
+        });
+    },
+
+    shiftForHeader: function(header) {
+
+
+        header.css({
+            margin: '0 0 10px -245px'
+        });
+    },
+
+    createTaxonomy: function(sitemap) {
+
+        UXB.applyLeftNavStyles();
+
+        var taxonomy = [],
+            $nav = $('#main-navigation > li');
+
+        $nav.each(function(i) { // Iterate over DEPARTMENTS
+
+            var $lvl_1 = $(this),
+                l1_index = i,
+                $l1_anchor = $lvl_1.find('a'),
+                l_1 = {},
+                $l1_href = $l1_anchor.attr('href').split('/')[2].split('?'),
+                href = $l1_href[0],
+                params = $l1_href[1],
+                name = $l1_anchor.html(),
+                isHidden = $lvl_1.parent().attr('css'),
+                inSeason = name === 'Seasonal' ? true : false;
+
+
+            l_1.href = href;
+            l_1.params = params;
+            l_1.name = name;
+
+            l_1.categories = [];
+            taxonomy.push(l_1);
+
+
+            $lvl_1.find('.submenu > .column > ul > li').each(function(j) { // iterate over CATEGORIES
+                var $lvl_2 = $(this),
+                    l2_index = j,
+                    $l2_anchor = $lvl_2.find('a'),
+                    l_2 = {},
+                    $l2_href = $l2_anchor.attr('href').split('?')[0],
+                    href = $l2_href,
+                    params = $l2_anchor.attr('href').split('?')[1],
+                    name = $l2_anchor.html(),
+                    isHidden = $lvl_2.hasClass('hidden') ? true : false;
+
+                l_2.href = href;
+                l_2.params = params;
+                l_2.name = name;
+                l_2.subcategory = [];
+                l_2.isHidden = isHidden;
+                if (!inSeason && !sitemap)
+                    taxonomy[l1_index].categories.push(l_2);
+
+
+                $lvl_2.find('>ul>li>a').each(function(k) { // iterate over SUBCATEGORIES
+
+                    var $lvl_3 = $(this),
+                        l_3 = {},
+                        l3_index = k,
+                        $l3_href = $lvl_3.attr('href').split('?'),
+                        href = $l3_href[0],
+                        params = $l3_href[1],
+                        name = $lvl_3.html(),
+                        isHidden = $lvl_3.closest('ul').hasClass('hidden') ? true : false;
+
+                    l_3.href = href;
+                    l_3.params = params;
+                    l_3.name = name;
+                    l_3.subcategory = [];
+                    l_3.isHidden = isHidden;
+
+                    taxonomy[l1_index].categories[l2_index].subcategory.push(l_3);
+
+
+                    $lvl_3.siblings('ul').find('a').each(function() { // iterate over SUB...SUBCATEGORIES
+
+                        var $lvl_4 = $(this),
+                            l_4 = {},
+                            $l4_href = $lvl_4.attr('href').split('?'),
+                            href = $l4_href[0],
+                            params = $l4_href[1],
+                            name = $lvl_4.html(),
+                            isHidden = $lvl_4.closest('ul').hasClass('hidden') ? true : false;
+
+                        l_4.href = href;
+                        l_4.params = params;
+                        l_4.name = name;
+                        l_4.isHidden = isHidden;
+                        taxonomy[l1_index].categories[l2_index].subcategory[l3_index].subcategory.push(l_4);
+
+                    });
+
+                });
+            });
+
+        });
+        return taxonomy;
+    },
+
+    findDepartment: function(param) {
+        var url = window.location.pathname,
+            lander = url.split('/').pop(),
+            currentCategory = url.split('/')[2].length ? url.split('/')[2] : '',
+            deptRef = UXB.urlParam('deptref'),
+            isHolidaysAndOccasions = deptRef == 'holidays' ? true : false,
+            taxonomy = UXB.createTaxonomy(),
+            dept, cat, subcat,
+            currentSubCategory, createNavFired;
+
+
+
+        $('#Co-RightColumn').css({
+            width: '740px'
+        });
+
+        this.createNav = function() {
+            UXB.createLeftNav(taxonomy[dept]);
+            return false;
+        }
+
+
+        for (var dept in taxonomy) {
+
+            if (deptRef === taxonomy[dept].params.split('=').pop()) {
+
+                if (lander === taxonomy[dept].href) {
+                    this.createNav();
+                    return;
+                }
+
+                for (var cat in taxonomy[dept].categories) {
+                    var category = taxonomy[dept].categories[cat];
+                    if (currentCategory == taxonomy[dept].href || currentCategory == category.href.split('/')[2]) {
+                        var path = category.href.split('/');
+                        for (var i in path) {
+                            if (lander == path[i] || lander === path[i] && !taxonomy[dept].href.split('/').pop() == 'all') {
+                                taxonomy[dept].categories[cat].active = true;
+                                createNavFired = true;
+                                this.createNav();
+                                return;
+                            }
+                        }
+                    }
+
+                    for (var subcat in taxonomy[dept].categories[cat].subcategory) {
+                        var subCategory = taxonomy[dept].categories[cat].subcategory[subcat];
+                        if ((!isHolidaysAndOccasions && currentCategory == taxonomy[dept].href) || (isHolidaysAndOccasions && currentCategory == subCategory.href.split('/')[2])) {
+                            if (lander === subCategory.href.split('/').pop()) {
+                                taxonomy[dept].active = true;
+                                taxonomy[dept].categories[cat].active = true;
+                                subCategory.active = true;
+                                createNavFired = true;
+                                this.createNav();
+                                return;
+                            }
+                        }
+
+                        for (var i = 0; i < taxonomy[dept].categories[cat].subcategory[subcat].subcategory.length; i++) {
+                            var subSub = taxonomy[dept].categories[cat].subcategory[subcat].subcategory[i];
+                            if (lander == subSub.href.split('/').pop()) {
+                                taxonomy[dept].active = true;
+                                taxonomy[dept].categories[cat].active = true;
+                                taxonomy[dept].categories[cat].subcategory[subcat].active = true;
+                                subSub.active = true;
+                                createNavFired = true;
+                                this.createNav();
+                                return;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+        if (!createNavFired) {
+            for (var i in taxonomy) {
+                if (currentCategory == taxonomy[i].href) {
+                    UXB.createLeftNav(taxonomy[i]);
+                    createNavFired = true;
+                    return;
+                }
+            }
+        }
+
+        if (!createNavFired) {
+            $('#Co-RightColumn, .pagination-row1').css({
+                width: '100%'
+            });
+            $('#Co-Wrap').show();
+        }
+
+    },
+
+    appendUrlParamToFilter: function() {
+        var dept = UXB.urlParam('deptref');
+        $('.sortdrop option').each(function(i) {
+            if (i > 0)
+                $(this).attr('value', $(this).attr('value') + '&deptref=' + dept);
+        })
+    },
+
+    urlParam: function(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    },
+
+    getDeptRef: function(params, bool) {
+        var dept = params.split('deptref=')[1].split('&')[0].length ? params.split('deptref=')[1].split('&')[0] : '';
+        if (bool) {
+            if (UXB.urlParam('deptref') === dept)
+                return true;
+            else
+                return false;
+        } else
+            return dept.length ? dept : null;
+    },
+
+    createLeftNav: function(data) {
+
+        var brand = window.location.pathname.split('/')[1];
+
+        $('<ul>', {
+                id: 'LeftNavigation'
+            }).attr('data-ga_eventaction', 'HDCollectionLeftNav')
+            .insertAfter('#Co-MOC-aboveleftnav');
+
+
+
+        if (data.href === 'holidays-gifts-occasions')
+            UXB.buildHolidaysAndOccasionsLeftNav(data, brand);
+        else
+            UXB.buildOtherLeftNav(data, brand);
+
+
+        //UXB.addMCPromo();
+            UXB.assortmentLeftNav_sticky();
+            UXB.appendUrlParamToFilter();
+        },
+        addMCPromo: function() {
+            $('<li>').addClass('master20').appendTo('#LeftNavigation');
+            $('<a>').css({
+                background: 'none',
+                padding: '10px 0',
+                textAlign: 'center',
+                height:'300px'
+            }).attr('onclick', "javascript:UX.uiDialog('MASTER20','Details for Coupon Code: MASTER20','h'); event.cancelBubble=true;event.stopPropagation();return false;").appendTo('.master20');
+            $('<img>').attr('src', 'https://cdn1.harryanddavid.com/wcsstore/HarryAndDavid/images/cat/leftnav/171117-Masterpass_CatA.jpg').appendTo('.master20 a');
+
+        },
+    buildHolidaysAndOccasionsLeftNav: function(data, brand) {
+
+        var $leftNav = $('#LeftNavigation'),
+            header = {},
+            newCat, lvl4 = false;
+
+
+        for (var cat in data.categories) {
+            if (data.categories[cat].active)
+                newCat = data.categories[cat];
+        }
+        if (newCat !== undefined) {
+            header = {
+                name: newCat.name,
+                href: newCat.href,
+                params: newCat.params
+            };
+
+            $leftNav.hide();
+
+            $('<li class="header"><a href="' + header.href + '?' + header.params + '" >' +
+                    header.name + '</a><ul></ul></li>')
+                .appendTo('#LeftNavigation');
+
+
+            $(newCat.subcategory).each(function() {
+
+                var $this = $(this)[0],
+                    category = $(this)[0].href,
+                    catExpand = $(this)[0].active ? 'expand' : '',
+                    catActive = $(this)[0].active ? true : false;
+
+                $('<li/>', {
+                    html: '<a href="' + category + '?' + data.params + '" data-ga_eventlabel="' + category.split("/").pop() + '">' +
+                        $(this)[0].name + '</a><ul class="sub"></ul>'
+                }).addClass(catExpand + ' category').appendTo('#LeftNavigation > .header > ul');
+
+                if (catActive) {
+                    $($(this)[0].subcategory).each(function() {
+                        var $this = $(this)[0],
+                            subActive = $this.active ? true : false,
+                            isActive = subActive ? 'active' : '',
+                            isHidden = $this.isHidden,
+                            $parentId = $this.href.split('/')[3];
+                        $('<li class="subcategory"><a href="' + $this.href + '?' + data.params + '" class="' + isActive + '"  data-ga_eventlabel="' + $this.href.split("/").pop() + '"  >' + $this.name + '</a></li>').appendTo('.category.expand > ul');
+                    })
+                }
+
+                $('#Co-Wrap').fadeIn(100);
+                $leftNav.fadeIn('fast');
+
+            })
+        } else {
+            $('#Co-Wrap').fadeIn(100);
+            $('#Co-LeftColumn').hide();
+            $('#Co-RightColumn').css({ width: '100%' });
+            $('.pagination-row1').css({ width: '967px', margin: '0px 0px 15px 0' });
+        }
+    },
+
+    buildOtherLeftNav: function(data, brand) {
+
+        var $leftNav = $('#LeftNavigation');
+        $leftNav.hide();
+        $('<li class="header"><a href="/' + brand + '/' + data.href + '?' + data.params + '" data-ga_eventlabel="' + data.href.split("/").pop() + '" >' +
+                data.name + '</a><ul></ul></li>')
+            .appendTo('#LeftNavigation');
+
+        $(data.categories).each(function() {
+            var $this = $(this)[0],
+                category = $this.href,
+                catExpand = $this.active ? 'expand' : '',
+                catActive = $this.active ? 'active' : '';
+
+
+            $('<li/>', {
+                id: $this.href.split('/')[2],
+                html: '<a href="' + category + '?' + data.params + '" data-ga_eventlabel="' + category.split("/").pop() + '">' +
+                    $this.name + '</a><ul class="sub"></ul>'
+            }).addClass(catExpand + ' category').appendTo('#LeftNavigation >.header > ul');
+
+
+            $($(this)[0].subcategory).each(function() {
+                var $this = $(this)[0],
+                    subActive = $this.active ? 'active' : '',
+                    $parentId = $this.href.split('/')[2];
+
+                if (catExpand.length)
+                    $('<li class="subcategory"><a href="' + $this.href + '?' + data.params + '" class="' + subActive + '" data-ga_eventlabel="' + $this.href.split("/").pop() + '">' + $this.name + '</a></li>').appendTo($('.expand').find('.sub'));
+
+            })
+
+            $('#Co-Wrap').fadeIn(100);
+            $leftNav.fadeIn('fast');
+
+        })
+
+    },
+    assortmentLeftNav_sticky: function() {
+
+        var $pageType = $('#pagetype').attr('data-pagetype'),
+            $summary = $('#LeftNavigation'),
+            fix = $('#categoryHeader').length ? 'fixLeftNavTall' : 'fixLeftNav',
+            fromTop = $summary.offset().top,
+            offsetHero = $pageType === 'Category' ? 280 : 0,
+            $seoCopyHeight = $('#contentRecommendationWidget_Co-WrapBtm').height() + 50,
+            $parentHeight = $('#Co-RightColumn').height() - $seoCopyHeight;
+
+        $('#Co-LeftColumn').css({
+            height: $parentHeight
+        })
+
+        $(window).scroll(function() {
+
+            if (($summary.height() + 20) <= $(window).height() && $(window).width() >= 980) {
+                var $ww = ($(window).width() - 980) / 2 + 'px',
+                    $wh = ($(window).height() - 980) / 2 + 'px',
+                    $dh = $(document).height(),
+                    $fh = $('#footer').height(),
+                    $sh = $summary.height(),
+                    $scrollPos = $(this).scrollTop();
+
+                if ($scrollPos > fromTop) {
+                    $summary.addClass(fix).css({
+                        left: $ww
+                    });
+
+                    var offsetTop = $scrollPos;
+
+                    if (($dh - $(window).scrollTop() - $fh - $seoCopyHeight - 46) < $sh) {
+                        $summary.removeClass(fix);
+                        $summary.removeAttr('style');
+                        $summary.css({
+                            bottom: $seoCopyHeight + 'px',
+                            top: 'inherit',
+                            position: 'absolute'
+                        });
+                    } else {
+                        $summary.removeAttr('style');
+                    }
+                } else {
+                    $summary.removeClass(fix);
+                    $summary.removeAttr('style');
+                }
+            };
+
+        });
+
+
+    }
+
+}
+
+
+var SiteMap = {
+    mainSitemap: function() {
+        var taxonomy = UXB.createTaxonomy(true);
+
+        $('body').append(
+            $('<ul/>').css({
+                position: 'absolute',
+                background: '#fff',
+                padding: '20px',
+                top: '20px',
+                width: '500px',
+                minHeight: '100px',
+                zIndex: '99999',
+                left: '200px',
+                boxShadow: '0 0 70px rgba(0,0,0,.8)',
+                border: 'solid 3px #666'
+            }).attr('id', 'SiteMap')
+        );
+
+        for (var i in taxonomy) {
+            $('<li/>')
+                .attr('id', 'l_' + i)
+                .html('<a href="' + taxonomy[i].href + '">' + taxonomy[i].name + '</a><ul></ul>')
+                .appendTo($('#SiteMap'));
+
+            for (var ii in taxonomy[i].categories) {
+                $('<li/>')
+                    .attr('id', 'l_' + i + '_' + ii)
+                    .html('<a href="' + taxonomy[i].categories[ii].href + '">' + taxonomy[i].categories[ii].name + '</a><ul></ul>')
+                    .appendTo($('#' + 'l_' + i + ' > ul'));
+
+                for (var iii in taxonomy[i].categories[ii].subcategory) {
+                    $('<li/>')
+                        .attr('id', 'l_' + i + '_' + ii + '_' + iii)
+                        .html('<a href="' + taxonomy[i].categories[ii].subcategory[iii].href + '">' + taxonomy[i].categories[ii].subcategory[iii].name + '</a>')
+                        .appendTo($('#' + 'l_' + i + '_' + ii + ' > ul'));
+
+
+                }
+            }
+        }
+
+        $('#SiteMap ul').each(function() {
+            if (!$(this).html().length) $(this).remove()
+        })
+
+        $('#LeftNavigation').detach().appendTo($('#SiteMap'));
+        $('#LeftNavigation > li').unwrap();
+        $('#SiteMap ul, #SiteMap li').each(function() {
+            $(this).removeAttr('id')
+        });
+        $('#SiteMap a').each(function() {
+            $(this).removeAttr('style')
+        });
+        $('#SiteMap li').each(function() {
+            $(this).removeAttr('class')
+        });
+
+        $('<style>#SiteMap ul, #SiteMap li{text-align:left;}#SiteMap li{margin-left:15px;}</style>').insertBefore($('#SiteMap'));
+
+    }
+
+
+}
+
+$(function () {
+
+	var exceptions = ['bd-searchresult', 'bd-template', 'bd-Biz'], //<body> only class attributes
+		nonBodyClassExceptions = ['#BirthdayGiftGuide', '.fwFeat', '#GN-container', '#FallCollectionLander', 'link[rel="canonical"][href*="passport-promotions"]'],
+		launchLeftNav = true, // assume safe to launch unless exception found
+		filtersOff;
+	if ($('#categoryPageFilter') !== null) {
+		filtersOff = $('#categoryPageFilter').val() === "Y" || $('#searchPageFilter').val() === "Y" ? false : true;
+	}
+
+
+	for (var i in nonBodyClassExceptions) {
+		if ($(nonBodyClassExceptions[i]).length) {
+			$('body').addClass('leftNavException')
+			exceptions.push('leftNavException')
+		}
+	}
+
+	for (var i in exceptions) {
+		if ($('body').hasClass(exceptions[i]))
+			launchLeftNav = false;
+	}
+	if ($('body').hasClass('bd-category'))
+		$('#Co-Wrap').fadeIn(100);
+
+	     $('#contentRecommendationWidget_CategoryESpot4').css({width:'100%'}).insertBefore('#Co-Wrap')
+
+
+})
+
+
+    var AccountConditionalReconfig = {
+        init: function() {
+            var $placeholder = $('body.bd-register:not(.bd-Biz) .consumer-acct-create'),
+                content = $placeholder.html();
+            $placeholder.html('');
+            if (AccountConditionalReconfig.urlParam()) {
+                AccountConditionalReconfig.loadAltContent($placeholder);
+                AccountConditionalReconfig.modifyRegisterButton();
+                AccountConditionalReconfig.addHeader();
+                AccountConditionalReconfig.movePrivacyStatement();
+            } else
+                $placeholder.html(content).show();
+        },
+        urlParam: function(name) {
+            var url = window.location.href,
+                regexp = /(_HD_GL_NA_|_HD_GL_B2B_NA_)/g;
+            if (url.match(regexp))
+                return true;
+        },
+        loadAltContent: function($a) {
+            $a.load('/wcsstore/HarryAndDavid/images/html/accountCreationAlt2.html').show();
+        },
+        modifyRegisterButton: function() {
+            $('#default').removeAttr('src')
+                .addClass('btn CTA-primary accessGiftList')
+                .attr('alt', 'Access Your Gift List');
+        },
+        movePrivacyStatement: function() {
+            $('.RegisterContentSignUp+p').insertAfter('.accessGiftList').addClass('privacy');
+        },
+        addHeader: function() {
+            $('<h3>').addClass('regHead').html('Create your account to access your gift list').insertBefore('.RegisterContentSignUp');
+        }
+
+
+    }
+    $(function() {
+        AccountConditionalReconfig.init();
+    })
+
+
+    var showSignInWidgetForMs = 0;
+    var showNewSignInWidget = 'N';
+    try {
+        showNewSignInWidget = 'N';
+        showSignInWidgetForMs = '5000';
+        showSignInWidgetForMs = parseInt(showSignInWidgetForMs);
+        if( ! showNewSignInWidget || ( showNewSignInWidget != 'Y' && showNewSignInWidget != 'Y' )){
+	        showSignInWidgetForMs = 0;
+	    }
+	} catch(err) {
+	   console.log('Exceptpion occured while showing new signin widget:'+err);
+	}
+
+
+             try{        
+                  if (document.addEventListener)
+                    document.addEventListener("DOMContentLoaded", function() {
+                        if (/iPad/i.test(navigator.userAgent))
+                            $("body").addClass("ipad")
+                    }, false);        
+                }
+                catch (e){} 
+    
+ 
+    MainJS.HomePageURL = 'TopCategoriesDisplay?storeId=21051&amp;catalogId=16802&amp;langId=-1';
+    MainJS.pageIdentifier = '';
+    MainJS.FDFaceBookLogon = 'FDFaceBookLogon?langId=-1&amp;storeId=21051&amp;catalogId=16802';
+    MainJS.isMDMAuthEnabled = 'AB';
+    MainJS.isSocialABTestingEnabled = 'N';
+
+
+                        var bloomEndPoint = 'http://brm-core-0.brsrvr.com/api/v1/core/?';
+                        var environment = bloomEndPoint.indexOf('staging') > 0 ? 'staging' : 'prod';
+                        bloomReach = true;
+                        var autosuggestConfig = 
+                        {
+                            accountId: 5027,
+                            authKey: '3usrhaoo4j20bl1z',
+                            domainKey: '1800flowers_com',
+                            environment: environment,
+                            view_id: "Harry & David Brand",
+                            resultContainer: '.brm-autosuggest-menu',
+                            responseCallback: function(items) { },
+                            searchCallback: function(searchUrl, searchData) 
+                            {
+                                var currentValue = $('#SearchBox').val();
+                                var clickValue = searchData.parameters.query;
+                                var arrowValue = $('#brm-autosuggest-menu .autosuggest-selected').text();
+                                var value = currentValue;
+                                if (currentValue != clickValue)
+                                {
+                                	value = clickValue;	
+                                }
+                                else if (arrowValue)
+                                {
+                                	value = arrowValue;
+                                }
+                                
+                                $('#SearchBox').val(value);
+                                
+                                submitSearchForm();
+                                
+                            },
+                            onFocusCallback: function(e)
+                            {
+                            }
+                        };
+                        
+                        $(document).ready(function()
+                        {
+                        	 // change autosuggest view_id
+                            $('input:radio[name=multiBrand]').click(function(radio){
+                                var viewId = 'all';
+                                if (radio.id == 'domainBrand')
+                                {
+                                    viewId = "Harry & David Brand";
+                                }
+                                
+                                autosuggestConfig.view_id = viewId;
+                                $('#SearchBox').removeData();
+                                $('#SearchBox').unbind();
+                                $('#brm-autosuggest-menu').empty();
+                                $('#SearchBox').brm_suggest(autosuggestConfig);
+                                
+                            });
+                        	
+                        	try{$('#SearchBox').brm_suggest(autosuggestConfig);}catch(e){console.error(e);}
+                        	
+                        	window.displayBoxIndex = -1;
+						    
+						    var Navigate = function (diff) {
+						        displayBoxIndex += diff;
+						        var oBoxCollection = $("#brm-autosuggest-menu ul li a");
+						        if (displayBoxIndex >= oBoxCollection.length) {
+						            displayBoxIndex = 0;
+						        }
+						        if (displayBoxIndex < 0) {
+						            displayBoxIndex = oBoxCollection.length - 1;
+						        }
+						        var cssClass = "autosuggest-selected";
+						        oBoxCollection.removeClass(cssClass).eq(displayBoxIndex).addClass(cssClass);
+						    }
+						    $('#SearchBox').on('keypress keyup', function (e) {
+						        if (e.keyCode == 40) {
+						            //down arrow
+						            Navigate(1);
+						            return;
+						        }
+						        if (e.keyCode == 38) {
+						            //up arrow
+						            Navigate(-1);
+						            return;
+						        }
+						       
+						        window.displayBoxIndex = -1;
+                        	 }); 
+                        	 
+                        	$("body").click(function(e) {
+							      if(e.target.id !== 'brm-autosuggest-menu'){
+							        $("#brm-autosuggest-menu").hide();
+							      }      
+							    });
+                        });                   
+                     
+ 
+       decodeSearchWord('Enter Keyword or Product Number');
+    
+ 
+                googleSignInDataJSON = new Object();
+                googleSignInDataJSON.googleSigInEnabled = 'N';
+                googleSignInDataJSON.gplusClientId = '420182500441-m0t5ei6no0tp9javq3vkjp9lgcvuj28p.apps.googleusercontent.com';
+                googleSignInDataJSON.gplusstoreId = '21051';
+                googleSignInDataJSON.gpluscatId = '16802';
+                window.trackOrderSwitch = 'y';
+                window.switchForFBConnect = 'N';
+                window.newSignInWidget = 'N';
+                window.authDebug = 'N';                
+                showAndHideGlobalHeaderEspot();
+                window.mmoLinkEnabled = 'N'; 
+            
+
+                if( ! RememberMe.isSilentAuthSuccessful) {
+                    if(RememberMe.isRememberMeEnabled) {
+                    
+	                    RememberMe.contactIdCookieVal = getCookie("cont.id");
+	                    
+	                    if(RememberMe.isRememberedUser()){
+	                       RememberMe.executeOnThisWindow = true;
+	                    }
+	                    
+	                } else {
+	                    console.log("Remember-Me appears to be disabled");
+	                }
+                } else {
+                    console.log("Remember-Me disabled as silent-auth logged in the user");
+                }
+            
+
+    var GHcreateAccount = "/webapp/wcs/stores/servlet/AjaxUserRegistrationForm?catalogId=" + catalogId + "&langId=-1&storeId=" + storeId + "&new=Y";
+    var GHtrackOrder = "/webapp/wcs/stores/servlet/OrderTrackingSearch?userAction=OrderTrackingByEmail&catalogId=" + catalogId + "&langId=-1&storeId=" + storeId + "";
+  
+  
+
+$(function () {
+		var UX = UX || {};
+		UX.GA = {
+			init: function (e) {
+				//e.preventDefault(); // testing
+				var gaLabel = this.attributes['data-ga_eventlabel'].value,
+					gaAction = this.attributes['data-ga_eventaction'];
+				if (gaAction === undefined)
+					gaAction = UX.GA.getAction(e)
+				UX.GA.fire(String(gaAction), String(gaLabel));
+			},
+			getAction: function (e) {
+				var $this = e.currentTarget,
+				    taggedParent = $this.closest('[data-ga_eventaction]');
+				return taggedParent.attributes['data-ga_eventaction'].value;
+			},
+			fire: function (gaAction, gaLabel) {
+				//console.log("ga('send', 'event', 'eSpot', "+gaAction+", "+gaLabel+");");//testing
+				ga('fd_mbp.send', 'event', 'eSpot', gaAction, gaLabel);
+			}
+		}
+		$(document).on('click', '*[data-ga_eventlabel]', UX.GA.init);
+	})
+
+
+!function(e){"use strict";"function"==typeof define&&define.amd?define(["jquery"],e):jQuery&&!jQuery.fn.hoverIntent&&e(jQuery)}(function(e){"use strict";var t,n,i={interval:100,sensitivity:6,timeout:0},o=0,r=function(e){t=e.pageX,n=e.pageY},a=function(e,i,o,u){if(Math.sqrt((o.pX-t)*(o.pX-t)+(o.pY-n)*(o.pY-n))<u.sensitivity)return i.off(o.event,r),delete o.timeoutId,o.isActive=!0,e.pageX=t,e.pageY=n,delete o.pX,delete o.pY,u.over.apply(i[0],[e]);o.pX=t,o.pY=n,o.timeoutId=setTimeout(function(){a(e,i,o,u)},u.interval)},u=function(e,t,n,i){return delete t.data("hoverIntent")[n.id],i.apply(t[0],[e])};e.fn.hoverIntent=function(t,n,v){var s=o++,d=e.extend({},i);e.isPlainObject(t)?(d=e.extend(d,t),e.isFunction(d.out)||(d.out=d.over)):d=e.isFunction(n)?e.extend(d,{over:t,out:n,selector:v}):e.extend(d,{over:t,out:t,selector:n});var m=function(t){var n=e.extend({},t),i=e(this),o=i.data("hoverIntent");o||i.data("hoverIntent",o={});var v=o[s];v||(o[s]=v={id:s}),v.timeoutId&&(v.timeoutId=clearTimeout(v.timeoutId));var m=v.event="mousemove.hoverIntent.hoverIntent"+s;if("mouseenter"===t.type){if(v.isActive)return;v.pX=n.pageX,v.pY=n.pageY,i.off(m,r).on(m,r),v.timeoutId=setTimeout(function(){a(n,i,v,d)},d.interval)}else{if(!v.isActive)return;i.off(m,r),v.timeoutId=setTimeout(function(){u(n,i,v,d.out)},d.timeout)}};return this.on({"mouseenter.hoverIntent":m,"mouseleave.hoverIntent":m},d.selector)}});var MegaMenu={init:function(){$("#main-navigation").css({zIndex:"9998!important"}),$("#main-navigation li").hoverIntent({over:MegaMenu.showSubmenu,out:MegaMenu.hideSubmenu}),$(document).on("mouseenter",".mmoverlay , #TemplateHeader",MegaMenu.destroyOverlay)},manageResizing:function(){$(".navOverlay").css({width:window.innerWidth()+"px"})},createOverlay:function(){var e=$("#TemplateHeader").outerHeight();$("<div>").addClass("mmoverlay").insertAfter("#main-navigation-wrapper").css({position:"absolute",background:"rgba(0,0,0,0.4)",top:e+$(".pre-nav").outerHeight()+$("#main-navigation-wrapper").outerHeight()+"px",width:window.innerWidth+"px",height:window.innerHeight-e+"px"})},destroyOverlay:function(){var e=$(".mmoverlay");e.fadeOut(300,function(){e.remove()})},showSubmenu:function(e){$(".mmoverlay").length||MegaMenu.createOverlay();var t="#"+this.id;$(t).addClass("hov")},hideSubmenu:function(e){$("#"+this.id).removeClass("hov")}};$(function(){MegaMenu.init()});
+
+dropdown('nav', 'hover', 0);
+
+window.espotBrand = "HD_";
+
+
+	$('.SubProductThumb').wrapAll($('<ul>').addClass('wrapUl')).wrap($('<li>').addClass('wrapLi'));
+
+	$('.wrapUl').wrapAll($('<div>').addClass('wrapper')).wrapAll($('<div>').addClass('wrap-carousel'));
+
+	$('.wrapper').prepend('<a href="#" class="prev"></a>'), $('.wrapper').append('<a href="#" class="next"></a>');
+
+
+	$(".wrap-carousel").jCarouselLite({
+		btnNext: ".wrapper .next",
+		btnPrev: ".wrapper .prev",
+		visible: 4,
+		scroll: 4,
+		speed: 800
+	});
+
+	$(function () {
+		$('.wrap-carousel li').each(function () {
+			var $a = $(this).find('a'),
+				itemNumbers = $a.attr('href').split('/').pop().split('?')[0];
+			$a.attr('data-ga_eventlabel', itemNumbers);
+		})
+		$('#RightNav').attr('data-ga_eventaction', 'hdHomepage07BestSellers');
+		$('div[id*="BestSellersTitle"], #RightNav').wrapAll('<div data-widget="BestSellers"></div>');
+	})
+
+
+	$(function () {
+	
+
+		var BestSellers = {
+			init: function () {
+				var domain = 'https://www.harryanddavid.com/h/',
+					urls = ['gift-baskets-tower-boxes/gift-baskets', 'fruit-gift/all', 'chocolates-sweets-candy/chocolate', 'bakery/all', 'gourmet-foods/all'];
+
+				$(document).on('click', '.bestSellers>ul>li', function (e) {
+					var i = $(this).index();
+					$('.bestSellers>ul>li').removeClass('active');
+					$(this).addClass('active');
+					$('.bestSellers>.listings>div').removeClass('op1');
+					$('.bestSellers>.listings>div:nth-child(' + (i + 1) + ')').addClass('op1');
+					if($('.bestSellers>.listings>div:nth-child(' + (i + 1) + '):empty'))
+					BestSellers.populateTab(domain, urls, i);
+				})
+
+				BestSellers.createContentPlaceholders(urls);
+				BestSellers.populateTab(domain, urls, 0);
+				BestSellers.activateFirstTab();
+			},
+			populateTab: function (domain, urls, i) {
+
+				var valSplit = urls[i].split('/')[0];
+				$('.' + valSplit).load(domain + urls[i] + ' .Co-Products:nth-child(-n+11)', function (response, status, xhr) {
+
+					$('.bestSellers > .listings > div').each(function (i, v) {
+						var newAttr = $(this).attr('class').split('-')[0];
+						$(this).attr('data-ga_eventaction', 'hdTileHomepage08BestSellers' + newAttr);
+					})
+
+					$('.bestSellers .Co-Products').each(function () {
+						$(this).removeAttr('id');
+						var $product = $(this).find('.Co-product'),
+							newAttr = $product.attr('id').split('-')[2];
+						$(this).attr('data-ga_eventlabel', String(newAttr));
+					})
+
+				});
+
+			},
+			createContentPlaceholders: function (urls) {
+				for (name in urls) {
+					var valSplit = urls[name].split('/')[0]
+					$('<div>').addClass(valSplit).attr('data-ga_eventaction', 'hdTileHomepage07BestSellers' + valSplit.replace('-', '')).appendTo($('.bestSellers > .listings'));
+				}
+			},
+			activateFirstTab: function () {
+				$('.bestSellers>.listings>div:first-child').addClass('op1');
+				$('.bestSellers>ul>li:first-child').addClass('active');
+			}
+
+		}
+		
+		BestSellers.init();
+
+
+		//just for you
+
+		$('div[id*="JustForYou"] .row').load('https://www.harryanddavid.com/h/best-sellers?deptref=promotions .Co-Products:nth-child(-n+23)', function () {
+
+			//Create groups of 4 products
+			var $products = $('div[id*="JustForYou"] .Co-Products');
+			for (var i = 0; i < $products.length; i += 4) {
+				$products.slice(i, i + 4).wrapAll('<div class="group"></div>');
+			}
+
+			//Add data attr to last group child for CSS to identify and use (hides scrollR button)
+			$('div[id*="JustForYou"] .group:last-child').attr('data-last', 'last');
+
+			//Create indicator
+			$('<ul>').addClass('indicator').appendTo('div[id*="JustForYou"] .row');
+			for (var i = 0; i < 5; i++) {
+				$('<li>').appendTo('ul.indicator');
+			}
+
+			//Add GA tracking
+			$('div[id*="JustForYou"] .Co-Products').each(function () {
+				$(this).removeAttr('id');
+				var $product = $(this).find('.Co-product'),
+					newAttr = $product.attr('id').split('-')[2];
+				$(this).attr('data-ga_eventlabel', String(newAttr));
+			})
+
+
+			$('div[id*="JustForYou"] .row .group:first-child').addClass('active');
+			$('div[id*="JustForYou"] .indicator li:first-child').addClass('active');
+
+			$('<div>').addClass('scrollL').appendTo($('div[id*="JustForYou"] .row'));
+			$('<div>').addClass('scrollR').appendTo($('div[id*="JustForYou"] .row'));
+		})
+
+		$(document).on('click', 'div[id*="JustForYou"] .row div[class*="scroll"]', function (e) {
+			var scrollDir = this.className === "scrollL" ? 0 : 1,
+				active = $('div[id*="JustForYou"] .group.active').index(),
+				groups = $('div[id*="JustForYou"] .group').length;
+
+			$('div[id*="JustForYou"] .group').removeClass('active');
+			$('div[id*="JustForYou"] .indicator li').removeClass('active');
+
+			if (scrollDir) {
+				$('div[id*="JustForYou"] .group').eq(++active).addClass('active');
+				$('div[id*="JustForYou"] .indicator li').eq(active).addClass('active');
+			} else {
+				$('div[id*="JustForYou"] .group').eq(active - 1).addClass('active');
+				$('div[id*="JustForYou"] .indicator li').eq(active - 1).addClass('active');
+			}
+
+		})
+
+
+
+	})
+
+
+			setUpNaturalSearchCookie();
+		
+
+			var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
+			eventer = window[eventMethod],
+			messageEvent = "attachEvent" == eventMethod ? "onmessage" : "message";
+			eventer(messageEvent, function(t) {
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $( "#mm_sync_back_ground" ).attr('title','MediaMath tag frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $( ".ACS_" ).attr('title','Foresee customer experience frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $('[id^=oauth2relay]').attr('title','Google authorization frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $('[id^=xpcpeer]').attr('title','Google trusted stores frame'))
+		}, !1);
+		

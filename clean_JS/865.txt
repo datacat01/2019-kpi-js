@@ -1,0 +1,54 @@
+
+<!--
+	document.domain = 'alibris.com';
+//-->
+
+
+var GRANIFY_SITE_ID=1205;
+!function(e,t,o){var n,r,i;try{i=new RegExp("(?:^|\\W)_gr_ep=([^;]*)"),r=document.cookie.match(i),r||(document.cookie="_gr_ep_sent=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/",document.cookie="_gr_er_sent=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/",window.location.origin||(window.location.port?port=":"+window.location.port:port="",window.location.origin=window.location.protocol+"//"+window.location.hostname+port),path=window.location.toString().replace(window.location.origin,""),referrer=document.referrer,n=new Date(+new Date+18e5),document.cookie="_gr_ep="+path+";expires="+n.toGMTString()+";path=/",document.cookie="_gr_er="+referrer+";expires="+n.toGMTString()+";path=/")}catch(a){}a=new Date,a=""+a.getUTCFullYear()+(a.getUTCMonth()+1)+a.getUTCDate(),e=e+"?id="+t+"&v="+a,window.Granify=o,o._stack=[],o.init=function(e,t,n){function r(e,t){e[t]=function(){Granify._stack.push([t].concat(Array.prototype.slice.call(arguments,0)))}}var i=o;for(h=["on","identify","addTag","trackPageView","trackCart","trackOrder"],a=0;a<h.length;a++)r(i,h[a])},o.init();var c,p=document.createElement("script");p.src=e,p.async=!0,c=document.getElementsByTagName("script"),c=c[c.length-1],c.parentNode.insertBefore(p,c)}("//cdn.granify.com/assets/javascript.js",GRANIFY_SITE_ID,[]);
+Granify.trackPageView({
+	page_type: "home"
+});
+
+
+Granify.trackCart({
+"items": [
+ ],
+ "total_display_price": "$0.00"
+});
+
+
+	function selectMtype(mtype) {var mtypeMenu = document.getElementById("mtypeMenu");
+		for (i = 0; i < mtypeMenu.length; i++) {if (mtypeMenu[i].value == mtype) {mtypeMenu.selectedIndex = i;}}
+		setMtype(mtype);
+	}
+	function horizMtype(sel) {return setMtype(sel.options[sel.selectedIndex].value);}
+	function setMtype(mtype) {
+		var searchBox = document.getElementById("searchBox");
+		mtype = mtype.substring(0, 1);
+		if (mtype == "B") { document.searchHorizForm.action = "/booksearch"; initTxt = "Search by Title, Author, or ISBN"; }
+		else if (mtype == "A") { document.searchHorizForm.action = "/allsearch"; initTxt = "Search by Title, Author, or ISBN"; }
+		
+		else if (mtype == "V") { document.searchHorizForm.action = "/moviesearch";  initTxt = "Search by Title, Actor, or Director"; }
+		else if (mtype == "M") { document.searchHorizForm.action = "/musicsearch";  initTxt = "Search by Title, Artist, or Composer"; }
+		else if (mtype == "C") { document.searchHorizForm.action = "/classicalsearch";  initTxt = "Search by Title, Artist, or Composer"; }
+		else if (mtype == "S") { document.searchHorizForm.action = "/findSeller";  initTxt = "Find a Seller by Name"; }
+		
+		searchBox.placeholder = initTxt;
+		return true;
+	}	
+ 
+
+$(document).ready( function(){
+	if($.cookie('prepare') != 'seen'){
+	    $.cookie('prepare', 'seen', { expires: 60, path: '/' }); // Set it 60 days.
+	    setTimeout(function(){
+	         $('#nl-signup-modal').modal('show');
+	        }, 3000);
+	    $('.close').click(function() // You are clicking the close button
+	    {
+	        $('#nl-signup-modal').modal('hide'); // Now the pop up is hiden.
+	    });
+	};
+});
+

@@ -1,0 +1,126 @@
+//<![CDATA[
+        (function(){
+            // this happens before external dependencies (and dom ready) to reduce page flicker
+            var node, i;
+            for (i = window.document.childNodes.length; i--;) {
+                node = window.document.childNodes[i];
+                if (node.nodeName == 'HTML') {
+                    node.className += ' javascript';
+                }
+            }
+        })();
+    //]]>
+
+    //<![CDATA[
+    config.ShopPath = 'https://www.cubancrafters.com';
+    config.AppPath = '';
+    config.FastCart = 1;
+    var ThumbImageWidth = 160;
+    var ThumbImageHeight = 160;
+    //]]>
+    
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".cubancrafters.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"4737867026f6e07072580ad19d4d654fdb911d17","type":"ANONYMOUS","visit_id":"a6df5ebb-e208-406a-8e2c-2e6d6c9f4d82","visitor_id":"6a59a9e7-9091-4172-a1cd-d039313e8d50"},"referer":{"url":""},"request":{"url":"https:\/\/www.cubancrafters.com\/"}}, '', 1350517, "other", {"customer":{"id":"anonymous"}}, 'a6df5ebb-e208-406a-8e2c-2e6d6c9f4d82', '6a59a9e7-9091-4172-a1cd-d039313e8d50');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn4.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	
+	function loadQuickView() {
+		$(".QuickView").quickview({
+			buttonText: "Quick View",
+			buttonColor: "#f7f7f7",
+			gradientColor: "#dcdbdb",
+			textColor: "#000000"
+		});
+	}
+
+	$(document).on('SearchReload', function() {
+		loadQuickView();
+	});
+
+	loadQuickView();
+});
+
+
+var BCData = {"csrf_token":"75f99d165d445aea2e1deb9e5e0bb716d8e902d2e0963239216439239c157695"};
+
+ //<![CDATA[ 
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+
+
+(function(d, w) {
+  var x = d.getElementsByTagName('SCRIPT')[0];
+  var g = d.createElement('SCRIPT');
+  g.type = 'text/javascript';
+  g.async = true;
+  g.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  x.parentNode.insertBefore(g, x);
+  var f = function () {
+    var s = d.createElement('SCRIPT');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = "//np.lexity.com/03cd7a1d";
+    x.parentNode.insertBefore(s, x);
+  };
+  w.attachEvent ? w.attachEvent('onload', f) : w.addEventListener('load', f, false);
+}(document, window));
+
+
+                var QuickSearchAlignment = 'left';
+                var QuickSearchWidth = '200px';
+                lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+            
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-35517570-1'}, 'google_translate_element');
+}
+
+(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
+window.lpTag=window.lpTag||{},'undefined'==typeof window.lpTag._tagCount?(window.lpTag={wl:lpTag.wl||null,scp:lpTag.scp||null,site:'25768783'||'',section:lpTag.section||'',tagletSection:lpTag.tagletSection||null,autoStart:lpTag.autoStart!==!1,ovr:lpTag.ovr||{},_v:'1.10.0',_tagCount:1,protocol:'https:',events:{bind:function(t,e,i){lpTag.defer(function(){lpTag.events.bind(t,e,i)},0)},trigger:function(t,e,i){lpTag.defer(function(){lpTag.events.trigger(t,e,i)},1)}},defer:function(t,e){0===e?(this._defB=this._defB||[],this._defB.push(t)):1===e?(this._defT=this._defT||[],this._defT.push(t)):(this._defL=this._defL||[],this._defL.push(t))},load:function(t,e,i){var n=this;setTimeout(function(){n._load(t,e,i)},0)},_load:function(t,e,i){var n=t;t||(n=this.protocol+'//'+(this.ovr&&this.ovr.domain?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site);var o=document.createElement('script');o.setAttribute('charset',e?e:'UTF-8'),i&&o.setAttribute('id',i),o.setAttribute('src',n),document.getElementsByTagName('head').item(0).appendChild(o)},init:function(){this._timing=this._timing||{},this._timing.start=(new Date).getTime();var t=this;window.attachEvent?window.attachEvent('onload',function(){t._domReady('domReady')}):(window.addEventListener('DOMContentLoaded',function(){t._domReady('contReady')},!1),window.addEventListener('load',function(){t._domReady('domReady')},!1)),'undefined'===typeof window._lptStop&&this.load()},start:function(){this.autoStart=!0},_domReady:function(t){this.isDom||(this.isDom=!0,this.events.trigger('LPT','DOM_READY',{t:t})),this._timing[t]=(new Date).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],hooks:lpTag.hooks||[],identities:lpTag.identities||[],ev:lpTag.ev||[]},lpTag.init()):window.lpTag._tagCount+=1;
+
+	$(window).load(function() {
+		$('.slide-show').flexslider({
+			slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+			animation: "slide",
+			pauseOnHover: true,
+			controlNav: false,
+			directionNav: true
+		});
+	});
+
+(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
+var ANS_customer_id="1c932a7e-9291-430a-8c9a-46b484205701";
+
+        var google_tag_params = {
+        ecomm_prodid: 'REPLACE_WITH_VALUE',
+        ecomm_pagetype: 'REPLACE_WITH_VALUE',
+        ecomm_totalvalue: 'REPLACE_WITH_VALUE',
+        };
+    
+
+        /* <![CDATA[ */
+var google_conversion_id = 973455495;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+    
+
+    
+
+window.addEventListener('DOMContentLoaded', function () { window.initDataTags([], [], window.analytics); })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+

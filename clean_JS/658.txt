@@ -1,0 +1,29 @@
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var isMobileDevice=false;var isIPad=false;var shoppingCartSubTotal=0;var wishlistTotal=0;var shoppingCartItems='';var userName='';//]]>
+
+ var selectedHeaderMenuSection = 'menuNone'; 
+
+        var isLocalXvandUser = 'False';var avgRating = 4.80;var faceBookAppId = 143426252383128;var apkey = 'pk_live_PQSYXgA40YaJY484GcZFpf0S';      
+    
+
+    var externalcdnscripts = 'https://files.whiteflash.com/bundles/js/external_cdn?v=WRMEFTRd8uPqzcVXuzhUUTdSd6OBIgAezH1RQ0JCyOM1';var webpSupport = false;
+
+
+    /* <![CDATA[ */var google_conversion_id=990085650,google_custom_params=window.google_tag_params,google_remarketing_only=!0;/* ]]> */
+

@@ -1,0 +1,249 @@
+
+WebFontConfig = {
+google: { families: [ 'Lato:100,300,700,100italic,300italic:latin', 'Crete+Round:400,400italic:latin' ] }
+};
+(function() {
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aayc-dwr';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home?lang=en_US" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-dwr-Site/en_US/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-dwr-Site/en_US/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+var monetateT = new Date().getTime();
+
+    	/*
+    	*	Global Monetate array for tracking
+    	*/
+    	window.monetateQ = window.monetateQ || [];
+    	
+    	/*
+    	*	Temporary storage for data: cartrows, breadcrumbs, products on the plp/clp/search pages
+    	*/
+    	window.monetateData = window.monetateData || {};
+    	window.monetateData.setPageType = "unknown";
+    
+
+        var collectMID = '10979192';
+        var customerID = '';
+
+        
+    
+
+            _etmc.push(["setOrgId", collectMID]);
+            if (customerID) { 
+            	_etmc.push(["setUserInfo",{"email": customerID}]);            	
+           	 }
+            _etmc.push(["trackPageView"]);
+        
+
+var br_data = {};
+
+/* --- Begin parameters section: fill in below --- */
+br_data.acct_id = "5401";
+br_data.ptype = "homepage";
+br_data.cat_id = "";
+br_data.cat = "";
+br_data.prod_id = "";
+
+
+	br_data.prod_name = "";
+
+
+br_data.sku = "";
+br_data.search_term = "";
+br_data.is_conversion = "0";
+br_data.basket_value = "";
+br_data.order_id ="";
+br_data.basket = {};
+/* --- End parameter section --- */
+(function() {
+var brtrk = document.createElement('script');
+brtrk.type = 'text/javascript';
+brtrk.async = true;
+brtrk.src = 'https:' == document.location.protocol ? "https://cdns.brsrvr.com/v1/br-trk-5401.js" : "http://cdn.brcdn.com/v1/br-trk-5401.js";
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(brtrk, s);
+})();
+
+
+    		monetateData.setPageType = "main";
+    
+    		window.monetateQ.push(["setPageType", monetateData.setPageType]);
+    
+    		if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+    		if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+    
+    		window.monetateQ.push(["trackData"]);
+    	
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No Thanks","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","CONTINUE_CREDIT_CARD":"Continue","CONTINUE_TO_PAYPAL":"Continue to PayPal","REG_ADDR_ERROR":"Couldn't Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Product(s)","SELECT_BONUS_PRODUCTS":"Select Bonus Product(s)","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","CURRENCY_CODE":"USD","MISSINGVAL":"Please Enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response, Parser error","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"QTY","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added to compare.  Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid Gift Certificate Code","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","GIFT_CARD_MESSAGE_INVALID":"Special characters are not accepted at this time","INVALID_OWNER":"This appears to be a credit card number.  Please enter the name of the credit card owner.","COUPON_CODE_MISSING":"<span class=\"error\">Please Enter a Coupon Code</span>","GIFT_CARD_MISSING":"Please Enter Gift Card Number and PIN","COOKIES_DISABLED":"Your browser currently is not set to accept Cookies. Please turn it on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter Zip Code","INVALID_ZIP":"Please enter a valid Zip Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Less Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_EMAIL_CONFIRM":"Email address mismatch.","VALIDATE_EMAIL_IS_REQUIRED":"Please enter your email","VALIDATE_MESSAGE_IS_REQUIRED":"Please enter your message","VALIDATE_MYCONCERN_IS_REQUIRED":"Please select your comment / question concerns","VALIDATE_ADDRESS":"P.O. Boxes are not allowed. Please enter a valid address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","VALIDATE_COUPON_CODE":"Please enter a valid Coupon code.","VALIDATE_COUPON_CODE_GIFT":"It appears you’ve entered a Gift Card number in the Promotional Code field. Please enter your Gift Card number in the appropriate Gift Card field.","VALIDATE_SHIP_FIRSTLAST_NAME":"First & Last Name combined cannot exceed 40 characters.","VALIDATE_EVENT_DATE":"Please enter a future date.","VALIDATE_FIRSTNAME_IS_REQUIRED":"validate.firstname.isrequired","VALIDATE_LASTNAME_IS_REQUIRED":"validate.last.isrequired","VALIDATE_EMAIL_FORM_IS_REQUIRED":"Please enter your email","VALIDATE_MYCONCERNS_IS_REQUIRED":"validate.myconcerns.isrequired","SWATCHES_LIMIT_ERROR":"Please choose no more than five swatches.","RECAPTCHA_ERROR":"ReCaptcha validation failed.","SITE_NAME":"Design Within Reach","INVALID_SERVICE":"Problem in service","INVALID_CREDITCARD":"Invalid credit card. Please check your credit card details.","POPUP_CONTENT_START":"pop-up content starts","POPUP_CONTENT_END":"pop-up content ends","NEW_WINDOW":"Opens in a new window","ADDRESS_VERIFY_TITLE":"Address Verification ","AVAILABILITY_IN_STOCK":"In stock and ready to ship!","AVAILABILITY_IN_STOCK_DATE":"{0} week{1}","AVAILABILITY_NOT_AVAILABLE":"We regret this item is currently not available. Please call 1.800.944.2233 or visit a local Studio for more information.","ADA_SLIDE_CONTROLS":"Slide controls:","SEARCH_NORESULTS":"No results found","SEARCH_RESULTS":"Search results added below","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) In Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back Order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-dwr-Site/en_US/Resources-Load","pageInclude":"/on/demandware.store/Sites-dwr-Site/en_US/Page-Include","continueUrl":"https://www.dwr.com/home?dwcont=C391363160&lang=en_US","staticPath":"/on/demandware.static/Sites-dwr-Site/-/en_US/v1555236130192/","addGiftCert":"/giftcertpurchase?lang=en_US","minicartGC":"/on/demandware.store/Sites-dwr-Site/en_US/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-dwr-Site/en_US/Cart-AddProduct","minicart":"/on/demandware.store/Sites-dwr-Site/en_US/Cart-MiniAddProduct","cartShow":"/cart?lang=en_US","giftRegAdd":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/Address-GetAddressDetails?addressID=","paymentsList":"https://www.dwr.com/wallet?lang=en_US","addressesList":"https://www.dwr.com/addressbook?lang=en_US","wishlistAddress":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-dwr-Site/en_US/Address-Delete","getProductUrl":"/on/demandware.store/Sites-dwr-Site/en_US/Product-Show","getBonusProducts":"/on/demandware.store/Sites-dwr-Site/en_US/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-dwr-Site/en_US/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-dwr-Site/en_US/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-dwr-Site/en_US/Product-Detail","getAvailability":"/on/demandware.store/Sites-dwr-Site/en_US/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-dwr-Site/-/default/dwc8e53f09/images/interface/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-dwr-Site/en_US/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-dwr-Site/en_US/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-dwr-Site/en_US/COBilling-UpdateSummary","ocSummaryRefreshURL":"/on/demandware.store/Sites-dwr-Site/en_US/OrderConsolidation-UpdateSummary","ocShippingMethodsJSON":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/OrderConsolidation-GetApplicableShippingMethodsJSON","ocShippingMethodsList":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/OrderConsolidation-UpdateShippingMethodList","ocSelectShippingMethodsList":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/OrderConsolidation-SelectShippingMethod","billingSelectCC":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COBilling-SelectCreditCard","updateAddressDetails":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-dwr-Site/en_US/COBilling-ResetPaymentForms","compareShow":"/compare?lang=en_US","compareAdd":"/on/demandware.store/Sites-dwr-Site/en_US/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-dwr-Site/en_US/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-dwr-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-dwr-Site/en_US/StoreInventory-GetZipCode","billing":"/billing?lang=en_US","setSessionCurrency":"/on/demandware.store/Sites-dwr-Site/en_US/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-dwr-Site/en_US/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-dwr-Site/en_US/Page-Include?cid=cookie_hint","checkSVSBalanceGiftCard":"/on/demandware.store/Sites-dwr-Site/en_US/SVS-CheckBalance","redeemSVSGiftCert":"/on/demandware.store/Sites-dwr-Site/en_US/SVS-RedeemGiftCertificateJson","getApptAvailablity":"/on/demandware.store/Sites-dwr-Site/en_US/Appointment-Getavailablity","googleMapMarkerIcon":"/on/demandware.static/Sites-dwr-Site/-/default/dw19469f4d/images/Map_Pin.png","productGetMeterialDetails":"/on/demandware.store/Sites-dwr-Site/en_US/Product-GetMeterialDetails","silentpost":"https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/SECURE_ACCEPTANCE-GetRequestDataForSilentPost","setEmailFlag":"/on/demandware.store/Sites-dwr-Site/en_US/COSummary-SetEmailFlag","requestSwatches":"/request-swatches?lang=en_US","contactUs":"https://www.dwr.com/contactus?lang=en_US","pageAjaxInclude":"/on/demandware.store/Sites-dwr-Site/en_US/Page-AjaxInclude","avalaraValidateAccountAddress":"/on/demandware.store/Sites-dwr-Site/en_US/HAYAvatax-AccountAJAX","avalaraValidateShippingAddress":"/on/demandware.store/Sites-dwr-Site/en_US/HAYAvatax-ShippingAJAX","avalaraValidateBillingAddress":"/on/demandware.store/Sites-dwr-Site/en_US/HAYAvatax-BillingAJAX"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":true,"LISTING_REFINE_SORT":true,"LISTING_SEARCHSUGGEST_LEGACY":false,"STORE_PICKUP":false,"ORDER_CONSOLIDATION_ENABLED":true,"COOKIE_HINT":false,"TOKENIZATION_ENABLED":false,"SA_CARDMAP":{"Visa":"001","Amex":"003","MasterCard":"002","Discover":"004","Maestro":"042"},"SALESFORCE_CATALOG_OPT_OUT_CUSTOMER_CATALOG_ID":"00N2A00000DoTbq","RECAPTCHA_ENABLED":true,"AVS_ENABLED":true,"MYREGISTRY_ENABLED":false,"AVS_BILLING_ENABLED":false,"POBOX_VALIDATION_ARRAY":"[  \n   \"PO Box\",\n   \"po box\",\n   \"POBox\",\n   \"POBOX\",\n   \"PO BOX\",\n   \"PO box\",\n   \"P.O.Box\",\n   \"p.o. box\",\n   \"P.O.Box\",\n   \"P.O.BOX\",\n   \"P.O. BOX\",\n   \"P.O. box\",\n   \"P. O. Box\",\n   \"P. O.Box\",\n   \"P. O. BOX\",\n   \"POB\",\n   \"P.O.B\",\n   \"P. O. B\",\n   \"P.O.B.\",\n   \"P. O. B.\",\n   \"Post Box\",\n   \"PostBox\",\n   \"PostOfficeBox\",\n   \"Post Office Box\",\n   \"PostOffice Box\",\n   \"Post OfficeBox\",\n   \"PostOfficeBin\",\n   \"Post Office Bin\",\n   \"Post OfficeBin\",\n   \"PostOffice Bin\",\n   \"Post Box#\",\n   \"PostBox#\",\n   \"PostBox #\",\n   \"Post Box\"\n]"};
+window.User = {"zip":null,"storeId":null};
+}());
+
+
+liveagent.init('https://d.la1c1.salesforceliveagent.com/chat', '572F0000000Cbi4', '00DA0000000L9e8');
+
+
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('573F0000000CaZr', document.getElementById('liveagent_button_online_573F0000000CaZr'));
+liveagent.showWhenOffline('573F0000000CaZr', document.getElementById('liveagent_button_offline_573F0000000CaZr'));
+});
+
+liveagent.setChatWindowHeight(700);
+liveagent.setChatWindowWidth(500);
+
+
+    	if(monetateData.setPageType == "unknown") {
+    		monetateData.trackUnknownPage = function() {
+    			window.monetateQ.push(["setPageType", monetateData.setPageType]);
+    			
+    			if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+    			if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+    	
+    			window.monetateQ.push(["trackData"]);
+    		};
+    		monetateData.trackUnknownPage();
+    	}
+    
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.dwr.com/on/demandware.store/Sites-dwr-Site/en_US/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

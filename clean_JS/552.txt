@@ -1,0 +1,113 @@
+var smarty_vars = {"divinity":{"page":"index","action":"index"},"html_url":"https:\/\/www.tipsyelves.com\/","secure_html_url":"https:\/\/www.tipsyelves.com\/","rel_html_url":"\/","rel_assets_url":"\/mas_assets\/","return_url":"YToyOntzOjM6InVybCI7czoyNzoiaHR0cHM6Ly93d3cudGlwc3llbHZlcy5jb20vIjtzOjQ6ImhtYWMiO3M6NDA6ImIxNjU3MjgwNzM5YTIyZmIzYjYwNWQ2NjEzOWJjYzgyN2NkNWQzNjgiO30=","request_uri":"https:\/\/www.tipsyelves.com\/","relative_request_uri":"\/","company":"Tipsy Elves","currency":"USD","currency_symbol":"$","selected_currency":"USD","selected_currency_symbol":"$","cart_behavior":"ajax","mas_id":null,"gdpr_required":false,"theme":"tipsy_elves","theme_assets_url":"\/mas_assets\/theme\/tipsy_elves\/","id":""};
+
+
+    !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(
+    Array.prototype.slice.call(arguments))};var
+    n=window.pintrk;n.queue=[],n.version="3.0";var
+    t=document.createElement("script");t.async=!0,t.src=e;var
+    r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}
+    ("https://s.pinimg.com/ct/core.js"); 
+    pintrk('load', '2617849875193'); 
+    pintrk('page');
+    pintrk('track', 'pagevisit');
+  
+divinity.email_acquisition_popup_delay = 0;
+var _learnq = _learnq || [];
+			_learnq.push(['account', "eKD767"]);
+
+			//if users have the ability to create accounts on the site we'd want to also do this (see if they're logged in, if so track them)
+
+			var user = "";
+			if (user){
+				_learnq.push(['identify', {
+					email: "",
+					first_name: "",
+					last_name: "",
+				}]);
+			}
+
+			(function () {
+				var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+				b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+				var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+			})();
+smarty_vars.frontend_autocomplete_category = true;
+
+            
+                
+                jQuery(document).ready(function(){
+                    KlaviyoSubscribe.attachToForms('#email_signup',{ 
+                        hide_form_on_success: true,
+                        success: function($form){
+                            $form.find('.fieldset').hide();
+                        }
+                    });
+                    KlaviyoSubscribe.attachToForms('#email_signup_hp',{ 
+                        hide_form_on_success: true,
+                        success: function($form){
+                            $form.find('.fieldset').hide();
+                        }
+                    });
+                    KlaviyoSubscribe.attachToForms('#email_signup_page',{ 
+                        hide_form_on_success: true,
+                        success: function($form){
+                            $form.find('.fieldset').hide();
+                        }
+                    });
+                    KlaviyoSubscribe.attachToForms('#email_tracking_page',{ 
+                        hide_form_on_success: true,
+                        success: function($form){
+                            $form.find('.fieldset, .section-title, .section-text').hide();
+                        }
+                    });
+
+                    jQuery('body').on('blur change', '#k_id_email, #k_id_email_hp, #k_id_email_page, #k_id_email_tracking_page', function(){
+                        var k_email = jQuery(this).val();
+                        _learnq.push(['identify', {$email: k_email}]);
+
+                        jQuery.ajax({
+                            "async": true,
+                            "crossDomain": true,
+                            "url": "https://manage.kmail-lists.com/subscriptions/external/subscribe",
+                            "method": "POST",
+                            "headers": {
+                              "content-type": "application/x-www-form-urlencoded",
+                              "cache-control": "no-cache"
+                            },
+                            "data": {
+                                "g": 'auQtHP', 
+                                "$fields": "$source",
+                                "email": k_email,
+                                "$source": "Mi9"
+                            }
+                        }).done(function (response) {
+                            console.log(response);
+                        });
+                    });
+                    jQuery('body').on('blur change', '#k_id_email_popup', function(){
+                        var k_email = jQuery(this).val();
+                        _learnq.push(['identify', {$email: k_email}]);
+
+                        jQuery.ajax({
+                            "async": true,
+                            "crossDomain": true,
+                            "url": "https://manage.kmail-lists.com/subscriptions/external/subscribe",
+                            "method": "POST",
+                            "headers": {
+                              "content-type": "application/x-www-form-urlencoded",
+                              "cache-control": "no-cache"
+                            },
+                            "data": {
+                                "g": 'dTYiYa', 
+                                "$fields": "$source",
+                                "email": k_email,
+                                "$source": "Mi9"
+                            }
+                        }).done(function (response) {
+                            console.log(response);
+                        });
+                    });
+                });
+                
+            
+        

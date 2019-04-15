@@ -1,0 +1,54 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.cobbtuning.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["GU","GG","HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-10202068-1']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        //ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        // enable additional features
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+        if (!AFFIRM_AFFIRM.promos.getIsInitialized()) {
+            AFFIRM_AFFIRM.promos.initialize("GEMPP29U24FIZ70F","https://cdn1.affirm.com/js/v2/affirm.js");
+        }
+        if (!AFFIRM_AFFIRM.promos.getIsScriptLoaded()) {
+            AFFIRM_AFFIRM.promos.loadScript();
+        }
+        
+
+/* <![CDATA[ */
+var google_conversion_id = 968271869;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+    // collect.js
+    _etmc.push(["setOrgId", "7217088"]);
+    _etmc.push(["trackPageView"]);
+
+
+var triggermail=triggermail||[];triggermail.load=function(a){var b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===document.location.protocol?"https://":"http://")+"www.bluecore.com/triggermail.js/"+a+".js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)};triggermail.load("cobb_tuning");window.triggermail=triggermail;
+

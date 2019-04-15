@@ -1,0 +1,60 @@
+
+  breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+  if(breakpoint != "wide" && breakpoint != "mobile") {
+    res = breakpoint=='small' ? 11: 8;
+  } else {
+    res = 11;
+  }
+  searchoptions = {
+    serviceUrl: "/advanced_search_result.php?x=0&y=0&json=1&aws=1&res="+res+"&lang=en&currency=EUR",
+    width: breakpoint == 'wide' ? 1020 : 810,
+    maxHeight: breakpoint != 'mobile' ? 880: 1280,
+    nocache: true
+  };
+  $(function() {
+    a = $("#field_keywords_global").autocomplete(searchoptions);
+    if(window.location.hash.match(/#es\|/)) {
+      aParts = window.location.hash.split("|");
+      $('#field_keywords_global').focus();
+      $('#field_keywords_global').val(aParts[1]);
+      $('#field_keywords_global').keyup();
+
+    }
+    if(window.location.hash.match(/#es%7C/)) {
+      aParts = window.location.hash.split("%7C");
+      $('#field_keywords_global').focus();
+      $('#field_keywords_global').val(aParts[1]);
+      $('#field_keywords_global').keyup();
+
+    }
+  });
+
+
+
+	if (matchMedia('only screen and (min-width: 1000px)').matches) {
+		var __lc = {};
+		__lc.license = 1876562;
+		__lc.group = 2;
+		__lc.params = [
+						{ name: 'store', value: 'ERZ' }
+					];
+
+		(function() {var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true; lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s); })();
+	}
+
+
+var google_tag_params = {
+  ecomm_pagetype: 'home'
+};
+
+
+/* <![CDATA[ */ var google_conversion_id = 1065648472; var google_custom_params = window.google_tag_params; var google_remarketing_only = true; /* ]]> */
+
+
+/* <![CDATA[ */ var google_conversion_id = 836425576; var google_custom_params = window.google_tag_params; var google_remarketing_only = true; /* ]]> */
+
+
+    (function () {var _tsid = 'X2A8BB7732D32F5AE836D8D7FBC71743C'; _tsConfig = {'yOffset': '0', 'variant': 'reviews', 'customElementId': '', 'trustcardDirection': '', 'customBadgeWidth': '', 'customBadgeHeight': '', 'disableResponsive': 'false', 'disableTrustbadge': 'false', 'trustCardTrigger': 'mouseenter'};
+      var _ts = document.createElement('script'); _ts.type = 'text/javascript'; _ts.charset = 'utf-8'; _ts.async = true; _ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js'; var __ts = document.getElementsByTagName('script')[0]; __ts.parentNode.insertBefore(_ts, __ts);
+    })();
+  

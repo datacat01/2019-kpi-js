@@ -1,0 +1,44 @@
+
+//<![CDATA[
+
+var _gaq = _gaq || [];
+_gaq.push(["_setAccount", "394945"]);
+_gaq.push(["_trackPageview"]);
+
+
+
+//]]>
+
+
+var popupsSettings = [];
+
+
+// Grab the product SKU / Code
+var trpdSKU = '{SKU}';
+
+var video; var product;
+function initTreepodia() { product = Treepodia.getProduct('UA-2CD9681019FDD800', trpdSKU); product.requestVideo(handleVideo); }
+function handleVideo(vid) { video = vid; trpdAddGACallBack(video, '{CATEGORY}', '{SKU}', 0); if (vid.hasVideos()) { video.setPlayer("compact"); video.setChromeless(false);  video.addShareItem("facebook"); video.addShareItem("twitter"); video.setAllowFullScreen(true); video.setLoop(false); video.setAutoplay(true); video.setMute(true);   video.show('video-location'); } }
+
+
+//<![CDATA[
+
+(function (d, t) {
+"use strict";
+var s = d.getElementsByTagName(t)[0], n = d.createElement(t);
+n.src = "//paypal.adtag.where.com/merchant.js";
+s.parentNode.insertBefore(n, s);
+}(document, "script"));
+
+//]]>
+
+
+var __lc = {};
+__lc.license = 6451241;
+
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+

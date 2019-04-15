@@ -1,0 +1,262 @@
+
+    if (typeof console == 'undefined' || (window.console && !window.console.clear)) {
+        console = {
+            log: function() {},
+            info: function() {},
+            error: function() {}
+        };
+    }
+
+
+var monetateT = new Date().getTime();
+(function() {
+    var p = document.location.protocol;
+    if (p == "http:" || p == "https:") {
+        var m = document.createElement("script"); m.type = "text/javascript"; m.src = (p == "https:" ? "https://s" : "http://") + "e.monetate.net/js/2/a-a7864dc0/p/burpee.com/entry.js";
+        var e = document.createElement("div"); e.appendChild(m); document.write(e.innerHTML);
+    }
+})();
+
+
+	/*
+	*	Global Monetate array for tracking
+	*/
+	window.monetateQ = window.monetateQ || [];
+	
+	/*
+	*	Temporary storage for data: cartrows, breadcrumbs, products on the plp/clp/search pages
+	*/
+	window.monetateData = window.monetateData || {};
+	window.monetateData.setPageType = "unknown";
+
+
+		var configData = {};
+		
+	    
+		
+	    $BV.configure("global", configData);
+	
+
+window.adobeCatalyst = {};
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'abaq-BURPEE';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-BURPEE-Site/default/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-BURPEE-Site/default/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+var isPDP = false;
+
+
+		monetateData.setPageType = "main";
+
+		window.monetateQ.push(["setPageType", monetateData.setPageType]);
+
+		if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+		if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+
+		window.monetateQ.push(["trackData"]);
+	
+
+	if(monetateData.setPageType == "unknown") {
+		monetateData.trackUnknownPage = function() {
+			window.monetateQ.push(["setPageType", monetateData.setPageType]);
+			
+			if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+			if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+	
+			window.monetateQ.push(["trackData"]);
+		};
+		monetateData.trackUnknownPage();
+	}
+
+
+	var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+	//document.write(unescape("%3Cscript src='" + biJsHost + "cdn.listrakbi.com/scripts/script.js?m=SrWgHeeigIZ9&v=1' type='text/javascript'%3E%3C/script%3E"));
+	
+
+
+	jQuery.ajax({
+		  url: '/on/demandware.store/Sites-BURPEE-Site/default/ltkClickTracking-Start' + '?' + document.location.search,
+		  context: document,
+		  success: function(trkt){
+			  var start = trkt.indexOf('[');
+			  var end = trkt.indexOf(']');
+			  var token = trkt.substring(start+1, end);
+			  setCookie("_trkt", token, 365, null, '/');
+			  }
+		});
+
+	function setCookie(c_name,value,exdays, domain, path, secure)
+	{
+		if (value != '' && value != undefined)
+		{
+			var exd = new Date();
+			exd.setDate(exd.getDate() + exdays);
+			document.cookie =
+				c_name + "=" + encodeURIComponent(value) +
+		        ((exdays == null) ? "" : "; expires=" + exd.toGMTString()) +
+		        ((domain == null && domain != "") ? "" : "; domain=" + domain) +
+		        ((path == null) ? "" : "; path=" + path) +
+		        ((secure) ? "; secure" : "");
+		}
+	}
+
+
+	var path = '/on/demandware.store/Sites-BURPEE-Site/default/ltkActivityTracker-StartActivity';
+	jQuery.ajax({
+		  url: path.concat('?path=' + document.location.href),
+		  context: document,
+		  success: function(){}
+		});
+
+
+		if(typeof bvProdIds !== "undefined") {
+			$BV.ui( 'rr', 'inline_ratings', {
+				productIds : bvProdIds,
+				containerPrefix : 'BVRRInlineRating'
+			});
+		}
+	
+
+adobeCatalyst.adobe.onload();
+_satellite.setDebug(true);
+_satellite.pageBottom();
+
+
+(function(W,i,s,e,P,o,p){W['WisePopsObject']=P;W[P]=W[P]||function()
+
+{ (W[P].q=W[P].q||[]).push(arguments)}
+,W[P].l=1*new Date();o=i.createElement(s),
+p=i.getElementsByTagName(s)[0];o.async=1;o.src=e;p.parentNode.insertBefore(o,p)
+})(window,document,'script','//loader.wisepops.com/get-loader.js?v=1&site=xKA9PQ7pHS','wisepops');
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.burpee.com/on/demandware.store/Sites-BURPEE-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

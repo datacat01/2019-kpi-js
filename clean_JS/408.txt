@@ -1,0 +1,11 @@
+
+						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+						})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-96539169-8', 'auto', { 'allowLinker': true, 'name': '4f1d7f20b8e51ffc43bac7d186c9e737'});
+ga('4f1d7f20b8e51ffc43bac7d186c9e737.require', 'linker');
+ga('4f1d7f20b8e51ffc43bac7d186c9e737.linker:autoLink', ['www.kuhnflowers.com']);
+ga('4f1d7f20b8e51ffc43bac7d186c9e737.send', 'pageview');
+ga('4f1d7f20b8e51ffc43bac7d186c9e737.send', 'event', 'Visitor Variant', 'b', '', { nonInteraction: true });
+

@@ -1,0 +1,539 @@
+
+			  				ga('ec:addImpression', {
+				  'id': '223',
+				  'name': 'PSI Pressure Gauge Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '189.00',
+				  'list': 'Watches',
+				  'position': '1'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '222',
+				  'name': 'Shower LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '2'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '218',
+				  'name': 'Train Line LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '179.00',
+				  'list': 'Watches',
+				  'position': '3'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '220',
+				  'name': 'F-Turbo LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '4'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '217',
+				  'name': 'Radar LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '199.00',
+				  'list': 'Watches',
+				  'position': '5'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '206',
+				  'name': 'Geomesh LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '179.00',
+				  'list': 'Watches',
+				  'position': '6'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '76',
+				  'name': 'Rogue Touch LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '209.00',
+				  'list': 'Watches',
+				  'position': '7'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '75',
+				  'name': 'Radioactive LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '179.00',
+				  'list': 'Watches',
+				  'position': '8'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '83',
+				  'name': 'Seven LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '9'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '214',
+				  'name': 'Blade Carbon Fiber LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '10'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '188',
+				  'name': 'C Version Gunmetal LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '11'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '187',
+				  'name': 'Q Version LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '12'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '195',
+				  'name': 'Speedometer Analog Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '189.00',
+				  'list': 'Watches',
+				  'position': '13'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '57',
+				  'name': 'Clone LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '14'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '91',
+				  'name': 'Vortex LCD Pocket Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '189.00',
+				  'list': 'Watches',
+				  'position': '15'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '55',
+				  'name': 'Adjust LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '16'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '186',
+				  'name': 'C Version LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '179.00',
+				  'list': 'Watches',
+				  'position': '17'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '65',
+				  'name': 'Maze LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '18'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '200',
+				  'name': 'Sequence Wood Mesh LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '19'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '72',
+				  'name': 'Polygon LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '20'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '61',
+				  'name': 'Kaidoku Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '21'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '64',
+				  'name': 'Maru LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '22'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '203',
+				  'name': 'Xtal Wood Mesh LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '23'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '66',
+				  'name': 'Maze Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '24'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '63',
+				  'name': 'Logo LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '25'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '60',
+				  'name': 'Intoxicated Silicone LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '26'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '202',
+				  'name': 'Spider Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '27'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '70',
+				  'name': 'Optical Illusion LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '199.00',
+				  'list': 'Watches',
+				  'position': '28'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '62',
+				  'name': 'Keisan Silver LED Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '189.00',
+				  'list': 'Watches',
+				  'position': '29'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '140',
+				  'name': 'Tenmetsu LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '189.00',
+				  'list': 'Watches',
+				  'position': '30'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '80',
+				  'name': 'Satellite X LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '31'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '56',
+				  'name': 'Adjust Wood LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '32'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '86',
+				  'name': 'Spider Acetate LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '33'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '84',
+				  'name': 'Space Digits LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '34'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '71',
+				  'name': 'OTO LCD Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '35'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '138',
+				  'name': 'Katana Analog Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '36'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '88',
+				  'name': 'Stencil LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '37'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '87',
+				  'name': 'Stencil Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '38'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '85',
+				  'name': 'Space Digits Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '39'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '73',
+				  'name': 'Quasar LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '179.00',
+				  'list': 'Watches',
+				  'position': '40'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '90',
+				  'name': 'Upload Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '41'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '59',
+				  'name': 'Console Wood LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '42'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '74',
+				  'name': 'Quasar Silicone LCD Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '43'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '79',
+				  'name': 'Satellite X Wood LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '44'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '82',
+				  'name': 'Sequence LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '169.00',
+				  'list': 'Watches',
+				  'position': '45'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '54',
+				  'name': 'Logo Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '46'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '89',
+				  'name': 'Upload LCD Watch',
+				  'category': 'Watches',
+				  'brand': 'Kisai',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '47'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '137',
+				  'name': 'Radioactive Wood LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '48'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '69',
+				  'name': 'Online Wood LCD Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '49'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '93',
+				  'name': 'X Acetate LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '159.00',
+				  'list': 'Watches',
+				  'position': '50'
+				});
+			  				ga('ec:addImpression', {
+				  'id': '81',
+				  'name': 'Satellite X Acetate LED Watch',
+				  'category': 'Watches',
+				  'brand': '',
+				  'price': '149.00',
+				  'list': 'Watches',
+				  'position': '51'
+				});
+			  			  ga('send', 'event', 'category', 'impression', {'nonInteraction': true});
+			
+
+$('#newsletterFooterModule0 #button-subsribe').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=module/awesomenewsletter/addsubscribe',
+		type: 'post',
+		data: $('#newsletterFooterModule0 #subsribe input[type=\'text\']'),
+		dataType: 'json',
+		beforeSend: function(){
+// 			$('#newsletterFooterModule0 #button-subsribe').button('loading');
+		},
+		complete: function(){
+// 			$('#newsletterFooterModule0 #button-subsribe').button('reset');
+		},
+		success: function(json){
+			$('.text-danger').parent().removeClass('has-error');
+			$('.alert, .text-danger').remove();
+			$('#newsletterFooterModule0 #successmsg').html('');
+			
+			if(json['error']) {
+				if(json['error']['email']) {
+					$('#newsletterFooterModule0 #input-newsletter-email').parent().after('<div class="text-left text-danger">' + json['error']['email'] + '</div>');
+					
+					$('.text-danger').parent().addClass('has-error');
+				}
+				
+				if(json['error']['name']) {
+					$('#newsletterFooterModule0 #input-newsletter-name').parent().after('<div class="text-left text-danger">' + json['error']['name'] + '</div>');
+					$('.text-danger').parent().addClass('has-error');
+				}
+			}
+			
+			if(json['success']){
+				$('#newsletterFooterModule0 #input-newsletter-email').parent().after('<div class="text-left text-success">' +  json['success'] + '</div>');	
+				setTimeout(function(){
+					$('.text-success').remove();
+				}, 2000);
+				
+				$('#newsletterFooterModule0 #subsribe input[type=\'text\']').val('');
+			}
+			
+			if(json['warring']) {
+				$('#newsletterFooterModule0 #successmsg').html('<div class="alert alert-danger">' + json['warring'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+			}
+			
+		}
+	});
+});
+
+
+$(document).ready(function(){
+/*
+    $('.variable-width').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  //centerMode: true,
+  variableWidth: true,
+  autoplay: true
+});
+*/
+
+
+//Disable non-english characters in Payment/Shipping addresses during checkout.
+$('#payment_address, #shipping_address, .account-register').on('change keyup paste','input[type="text"]', function(){
+	var str = $(this).val();
+	str = str.replace(/[^\x00-\x7F]/g, "");
+/*
+	if (str !=  $(this).val()){
+		alert('Sorry, only english characters are allowed.');
+	}
+*/
+// 	$(this).val(str);
+});
+
+});
+  

@@ -1,0 +1,236 @@
+
+    var qaSettings = {"QA16924":false,"QA17089":true,"QA17006":true,"QA17621":true,"QA360Events":true,"GunsOnlineLive":false};
+
+    function isQAEnabled(qa) {
+        var setting = qaSettings[qa];
+        if (setting != undefined) {
+            return setting;
+        }
+        else {
+            return true;
+        }
+    }
+
+
+function yo_loader(url){ 
+ 
+ try{(new Image()).src = url;}catch(e){ } 
+ }
+
+
+yo_loader("https://www.brownells.com/yo-app-sequencer.png?v=Or4n-JyfEuowW6lNoiUzZD1zDncl7BizoeCH3VNuLam2bsRmgLLic4kbJkZ9TeuPWW4NigMCHjzDBeKukcuymA==&t=vvBBQSnKZNM35jdnpUU6Ug==&s=e9c6dbc11b13648c2dbc7bc26feb5379");
+
+
+pname = 'homelanding';
+
+    window.emEvent = function(eventName, eventData) {
+        var data = eventData || {};
+        data.event = eventName;
+        window.dataLayer.push(data);
+        for (key in eventData) {
+            emDatalayer[key] = eventData[key];
+        }
+        if(typeof Bootstrapper != "undefined") {
+            Bootstrapper.ensEvent.trigger(eventName);
+        }
+    }
+    
+    
+    if(localStorage.getItem("Google360UserLoginSuccess")){
+        localStorage.removeItem("Google360UserLoginSuccess");
+    }
+    
+
+
+window.emDatalayer = {
+'userID': '',
+'loggedIn': 'No',
+'trafficType': 'External Traffic',
+'userSegment': '',
+'marketoToken': '',
+'screenBreakPoint': (function(){ var name = "Desktop"; var breakpoints = [{"Width":767,"Name":"Mobile"},{"Width":1000,"Name":"Tablet"}]; for (var i = 0; i < breakpoints.length; i++) { var bp = breakpoints[i]; if (window.innerWidth <= bp.Width) { name = bp.Name; break; } } return name; })(),
+'buyerType': 'New Buyer',
+'contentGroupSite': '',
+'contentGroupManufacturer': '',
+'contentGroupPageType': '',
+'pricingLevel': 'Retail',
+'schematicName': '',
+'schematicID': '',
+'emailAddress': '',
+'firstName': '',
+'lastName': '',
+'categoryName': '',
+'categoryHierarchy': '',
+'categoryID': '',
+'listName': ''
+};
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push(emDatalayer);
+
+
+    if(typeof Analytics !== 'undefined' && typeof Analytics.ReturnedEvent !== 'undefined'){
+        Analytics.ReturnedEvent.Events = [];
+    }
+
+
+    if (window.location.pathname.toLowerCase() !== '/aspx/ffllocator/locator.aspx'.toLowerCase()) {
+        var outLink = document.createElement("a");
+        try {
+            if (window.self !== window.top) {
+                outLink.href = window.location.href;
+                outLink.target = "_parent";
+                outLink.click();
+            }
+        } catch (e) {
+            outLink.href = window.location.href;
+            outLink.target = "_parent";
+            outLink.click();
+        }
+    }
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+S_T = '67b7e45e-ea3b-4abe-9316-73371a9e1a04'; K_M = 'd2pq5os2z';LoadMenuAll();//]]>
+
+
+		    $(document).ready(function () {
+		        //Create initial slider
+		        Carousel.IntializeCarousel("#bxProductSlider");
+		    });
+		
+
+		    var brandSlider = null;
+
+		    var BrandSlideCounts = {
+		        settings: [
+                    { ScreenWidth: 1060, MaxSlideCount: 5, MinSlideCount: 5 },
+                    { ScreenWidth: 860, MaxSlideCount: 4, MinSlideCount: 4 },
+                    { ScreenWidth: 500, MaxSlideCount: 3, MinSlideCount: 3 },
+                    { ScreenWidth: 0, MaxSlideCount: 2, MinSlideCount: 2 }
+		        ],
+		        get CurrentWidth(){
+		            return window.innerWidth;
+		        },
+		        get MaxSlides() {
+		            for (var i = 0; i < this.settings.length; i++) {
+		                if (this.settings[i].ScreenWidth <= window.innerWidth) {
+		                    return this.settings[i].MaxSlideCount;
+		                }
+		            }
+		            return 0;
+		        },
+		        get MinSlides() {
+		            for (var i = 0; i < this.settings.length; i++) {
+		                if (this.settings[i].ScreenWidth <= window.innerWidth) {
+		                    return this.settings[i].MinSlideCount;
+		                }
+		            }
+		            return 0;
+		        }
+		    }
+
+            $(document).ready(function () {
+                var element = $('.bxBrandSlider');
+
+                if (element[0].children.length > 0) {
+                    element.parent().parent().show();
+                    if (BrandSlideCounts.CurrentWidth < 350) {
+                        brandSlider = $('.bxBrandSlider').bxSlider({
+                            slideWidth: 75,
+                            minSlides: BrandSlideCounts.MinSlides,
+                            maxSlides: BrandSlideCounts.MaxSlides,
+                            slideMargin: 10,
+                            pager: false
+                        });
+                    } else {
+                        brandSlider = $('.bxBrandSlider').bxSlider({
+                            slideWidth: 150,
+                            minSlides: BrandSlideCounts.MinSlides,
+                            maxSlides: BrandSlideCounts.MaxSlides,
+                            slideMargin: 25,
+                            pager: false
+                        });
+
+                    }
+                    window.addEventListener("resize", function () {
+
+                        if (BrandSlideCounts.CurrentWidth < 350) {
+                            brandSlider.reloadSlider({
+                                slideWidth: 75,
+                                minSlides: BrandSlideCounts.MinSlides,
+                                maxSlides: BrandSlideCounts.MaxSlides,
+                                slideMargin: 10,
+                                pager: false
+                            });
+                        }
+                        else {
+                            brandSlider.reloadSlider({
+                                slideWidth: 150,
+                                minSlides: BrandSlideCounts.MinSlides,
+                                maxSlides: BrandSlideCounts.MaxSlides,
+                                slideMargin: 25,
+                                pager: false
+                            });
+
+                        }
+                    })
+                }
+                else {
+                    element.parent().parent().hide();
+                }
+		    });
+
+		
+<!-- s.pageURL="www.brownells.com/" s.pageName="br| homepage" s.server="www.brownells.com" s.prop1="br| homepage" s.prop5="homepage" s.eVar13="Not Logged In" s.eVar24="Retail" 
+
+                var txtChat = document.getElementById("chat-message");
+
+                txtChat.onkeyup = function (e) {
+                    e = e || event;
+                    if (e.keyCode === 13 && !e.ctrlKey) {
+                        $("#btnSendMessage").trigger("click");
+                    }
+                    return true;
+                }
+            
+
+//<![CDATA[
+window.onload = function() { window.emEvent('promotion-impression', {
+  "impression": [
+    {
+      "id": "3155000",
+      "name": "Slide-3155",
+      "creative": "https://www.brownells.com/userdocs/HomepageFlash/Thumbnails/101212LeupoldRebateBox2Final.jpg",
+      "position": "Home_Slider"
+    },
+    {
+      "id": "3154000",
+      "name": "Slide-3154",
+      "creative": "https://www.brownells.com/userdocs/HomepageFlash/Thumbnails/101212LeupoldRebateBox2Final.jpg",
+      "position": "Home_Slider"
+    },
+    {
+      "id": "3149000",
+      "name": "Slide-3149",
+      "creative": "https://www.brownells.com/userdocs/HomepageFlash/Thumbnails/101212LeupoldRebateBox2Final.jpg",
+      "position": "Home_Slider"
+    }
+  ]
+});
+ }//]]>
+

@@ -1,0 +1,131 @@
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.14113628062646708cf7eaeae61e525d');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".christmascentral.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"521952008d106aead529dedd722277ed114f093d","type":"ANONYMOUS","visit_id":"65f6ae38-907d-4074-8e75-93d37a2dbd6c","visitor_id":"c18cb624-3819-471d-bde5-c804ffc88176"},"referer":{"url":""},"request":{"url":"https:\/\/www.christmascentral.com\/"}}, '', 2621022, "other", {"customer":{"id":"anonymous"}}, '65f6ae38-907d-4074-8e75-93d37a2dbd6c', 'c18cb624-3819-471d-bde5-c804ffc88176');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"fb18ddbb8ae2bbf8987a96d79bbcb35ca3940c7189d4dc0c17ba7d4c8b406ee1"};
+
+
+                window.criteo_q = window.criteo_q || [];
+                var deviceType= /iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator. userAgent)?"m":"d";
+                window.criteo_q.push(
+                { event: "setAccount", account: 22638},
+                { event: "setSiteType", type: deviceType},
+                { event: "setEmail", email: [""]}, { event: "viewHome"});
+            
+
+if ('default' == 'default') {
+var GOOG_PAGETYPE = 'home';
+var GOOG_PRODID = null;
+var GOOG_VALUE = null;
+var google_tag_params = {
+ecomm_pagetype: GOOG_PAGETYPE
+};
+}
+else if ('default' == 'cart') {
+var GOOG_PAGETYPE = 'default';
+var GOOG_PRODID = [];
+    
+var GOOG_VALUE = parseFloat('0');
+var google_tag_params = {
+ecomm_prodid: GOOG_PRODID,
+ecomm_pagetype: GOOG_PAGETYPE,
+ecomm_totalvalue: GOOG_VALUE
+};
+}
+else if ('default' == 'product') {
+var GOOG_PAGETYPE = 'default';
+var GOOG_PRODID = '';
+var GOOG_VALUE = parseFloat('');
+var google_tag_params = {
+ecomm_prodid: GOOG_PRODID,
+ecomm_pagetype: GOOG_PAGETYPE,
+ecomm_totalvalue: GOOG_VALUE
+};}
+else if ('default' == 'category') {
+var GOOG_PAGETYPE = 'default';
+var GOOG_CATEGORY = '';
+var google_tag_params = {
+ecomm_pagetype: GOOG_PAGETYPE,
+ecomm_category: GOOG_CATEGORY
+};
+} 
+
+ 
+else {}    
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1069413025;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+ 
+$('body').on('click', '#modalCheckoutButton', function () {
+     window.criteo_q = window.criteo_q || [];
+                var deviceType= /iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator. userAgent)?"m":"d";
+                window.criteo_q.push(
+                { event: "setAccount", account: 22638},
+                { event: "setSiteType", type: deviceType},
+                { event: "setEmail", email: [""]}, { event: "viewBasket", item: [
+                ]}
+                ); 
+    
+ });
+
+    var _caq = _caq || [];
+    var ca = document.createElement("script");
+    ca.type = "text/javascript";
+    ca.async = true;
+    ca.id = "_casrc";
+    ca.src = "//t.channeladvisor.com/v2/22001048.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(ca, s);
+
+
+fetch('/api/storefront/order/', {credentials: 'include'})
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+console.log(myJson);
+var customerObject = myJson;
+    
+var orderLineItems = myJson['lineItems']['physicalItems'];
+var arrayLength = orderLineItems.length;   
+    
+var itemsArray = []
+
+for (var i = 0; i < arrayLength; i++) {
+var temp_dict = { id: orderLineItems[i]['sku'], price: orderLineItems[i]['listPrice'], quantity: orderLineItems[i]['quantity'] };
+itemsArray.push(temp_dict);
+}  
+
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+{ event: "setAccount", account: 22638 },
+{ event: "setEmail", email: customerObject['billingAddress']['email'] },
+{ event: "setSiteType", type: "d" },
+{ event: "trackTransaction", id: "", item: itemsArray}
+
+);
+    
+});
+
+
+
+
+
+

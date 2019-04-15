@@ -1,0 +1,30 @@
+var pyrClock = [2019,4,14,10,37,30];
+
+var needleParam = needleParam || {};
+Needle = {onload: window.onload};
+window.onload = function() {
+    var e = document.createElement("script");
+    e.type = "text/javascript";
+    e.async = true;
+    e.src = "https://pyramydair.needle.com/needle_service.js";
+    document.body.appendChild(e);
+    if (typeof Needle.onload != "undefined" && Needle.onload !== null) Needle.onload();
+};
+
+
+(function(d) { if(document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+else{e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange',function(e) {
+if (e.propertyName == 'ltkAsyncProperty'){d();}});}})
+(function() {
+_ltk.Click.Submit();
+});
+
+
+var biJsHost = (("https:"== document.location.protocol) ? "https://" : "http://");
+(function(d, s, id, tid, vid) {
+var js, ljs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m="+ tid + "&v=" + vid;
+ljs.parentNode.insertBefore(js, ljs);
+})(document,'script','ltkSDK','YAdGm5upelss','1');
+

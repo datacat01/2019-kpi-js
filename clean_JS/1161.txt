@@ -1,0 +1,98 @@
+document.documentElement.className = document.documentElement.className + ' yes-js js_active js'
+
+				var yith_wcwl_plugin_ajax_web_url = 'https://www.clearwaterbutterfly.com/wp-admin/admin-ajax.php';
+			
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.clearwaterbutterfly.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.5"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View Cart","cart_url":"https:\/\/www.clearwaterbutterfly.com\/cart\/","is_cart":"","cart_redirect_after_add":"yes"};
+/* ]]> */
+
+
+            var view_mode_default = 'grid-layout';
+            var cap_sticky_default = 'yes';
+        
+jQuery(document).ready(function(){
+					jQuery(".ult_modal-body iframe").each(function(index, element) {
+						var w = jQuery(this).attr("width");
+						var h = jQuery(this).attr("height");
+						var st = '<style type="text/css" id="modal-css">';
+							st += "#"+jQuery(this).closest(".ult-overlay").attr("id")+" iframe{width:"+w+"px !important;height:"+h+"px !important;}";
+							st += ".fluid-width-video-wrapper{padding: 0 !important;}";
+							st += "</style>";
+						jQuery("head").append(st);
+					});
+				});
+var lsjQuery = jQuery;
+ lsjQuery(document).ready(function() { if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_1_1555253214_1_1','jquery'); } else { lsjQuery("#layerslider_1_1555253214_1_1").layerSlider({skinsPath: 'https://www.clearwaterbutterfly.com/wp-content/plugins/LayerSlider/static/skins/'}) } }); 
+
+
+	jQuery(document).ready(function($) {
+
+		$("#owlslider_1643552799").owlCarousel({
+			items : 1,
+			lazyLoad : true,
+			navigation : false,
+			pagination: true,
+			slideSpeed: 500, 
+			autoPlay: 5000,
+			singleItem: true,
+		}); 
+	});
+
+	
+
+
+	jQuery(document).ready(function($) {
+
+		$("#owlslider_1664358571").owlCarousel({
+			items : 3,
+			lazyLoad : true,
+			navigation : true,
+			pagination: false,
+			rewindNav: false,
+			slideSpeed: 500,
+			navigationText: [
+		  	"<i class='fa fa-angle-left'></i>",
+		  	"<i class='fa fa-angle-right'></i>"
+		  	]
+		}); 
+	});
+
+	
+
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"https:\/\/www.clearwaterbutterfly.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var yith_wcwl_l10n = {"ajax_url":"https:\/\/www.clearwaterbutterfly.com\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/www.clearwaterbutterfly.com\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}};
+/* ]]> */
+
+
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":0,"isRTL":false});});
+
+
+/* <![CDATA[ */
+var sv_wc_payment_gateway_payment_form_params = {"card_number_missing":"Card number is missing","card_number_invalid":"Card number is invalid","card_number_digits_invalid":"Card number is invalid (only digits allowed)","card_number_length_invalid":"Card number is invalid (wrong length)","cvv_missing":"Card security code is missing","cvv_digits_invalid":"Card security code is invalid (only digits are allowed)","cvv_length_invalid":"Card security code is invalid (must be 3 or 4 digits)","card_exp_date_invalid":"Card expiration date is invalid","check_number_digits_invalid":"Check Number is invalid (only digits are allowed)","check_number_missing":"Check Number is missing","drivers_license_state_missing":"Drivers license state is missing","drivers_license_number_missing":"Drivers license number is missing","drivers_license_number_invalid":"Drivers license number is invalid","account_number_missing":"Account Number is missing","account_number_invalid":"Account Number is invalid (only digits are allowed)","account_number_length_invalid":"Account number is invalid (must be between 5 and 17 digits)","routing_number_missing":"Routing Number is missing","routing_number_digits_invalid":"Routing Number is invalid (only digits are allowed)","routing_number_length_invalid":"Routing number is invalid (must be 9 digits)"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var angelleye_frontend = {"is_product":"no","is_cart":"no","is_checkout":"no","three_digits":"3 digits usually found on the signature strip.","four_digits":"4 digits usually found on the front of the card."};
+/* ]]> */
+

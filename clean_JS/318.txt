@@ -1,0 +1,408 @@
+
+        var tabOrder;
+        var filterDefault = '1';
+        if (sessionStorage.getItem('filterOpen') === null) {
+            sessionStorage.setItem('filterOpen', filterDefault);
+        }
+        function handleSpecialKeys(event, keyCode) {
+            if (!(event.ctrlKey || event.metaKey)) {
+                event.preventDefault();
+                switch (keyCode) {//handle special keys
+                    case 40: //down arrow
+                        $('#searchliste table tr:first-child').focus().select();
+                        break;
+                    case 38: //down arrow
+                        $('#searchliste table tr:last-child').focus().select();
+                        break;
+                    case  9: //tab doesnt work because of keyUP event fetched, tab does work on keydown;
+                        $('#searchliste table tr:first-child').focus().select();
+                        break;
+                }
+            }
+        }
+        $(document).ready(function () {
+            if (sessionStorage.getItem('filterOpen') === null) {
+                sessionStorage.setItem('filterOpen', filterDefault);
+            }
+            $(this).unbind('scroll').bind('scroll', function () {
+                sessionStorage.setItem(top.document.location.pathname, $(top.document).scrollTop());
+            });
+            $('#ftAutocomplete').focus().val('');
+            $('#searchliste', top.document).slideUp();
+            $('a').not('.noMod').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                if (xhr) {
+                    xhr.abort();
+                    xhr = false;
+                }
+                $('#searchliste').html('').slideUp();
+                sessionStorage.removeItem($(this).attr('href'));
+                sessionStorage.removeItem('/' + $(this).attr('href'));
+                sessionStorage.removeItem('/' + $(this).attr('href') + 'sm_News');
+                $('#myIframe').attr('src', '/content.php?param=' + $(this).attr('href'));
+                return false;
+            });
+            //collapsable elements left sidebar
+            $('.collapsable h3').unbind('click').bind('click', function () {
+                var state = $(this).parent().hasClass('open');
+                $('.collapsable.open div').slideUp().parent().removeClass('open');
+                if (!state) {
+                    $(this).parent().find('div').slideDown().parent().addClass('open');
+                }
+            });
+            //initialize man navigation styles
+            $('nav').find('a').click(function () {
+                $('nav').find('a').removeClass('active').removeClass('init');
+                $(this).addClass('active').addClass('init');
+            });
+            //live search
+            var xhr = false;
+            var searchVal;
+            var lastSearch;
+            $('#ftAutocomplete', top.document).keyup(function (event) {
+                event.preventDefault();
+                var keyCode = (event.which || event.keyCode);
+                lastKey = keyCode;
+                var evt = event;
+                var el = $(this);
+                //$(this).val($(this).val().replace(/ +(?= )/g, ''));
+                if ($(this).val().length >= 2 && $(this).val().length <= 150) {
+                    if (keyCode == 13) {
+                        $('#searchliste').html('').slideUp();
+                        $('.open').removeClass('open');
+                        $('.logo .titel a').focus();
+                        if ($(this).val().replace("/\s+/g", '').trim().length >= 2) {
+                            $('#ftForm').submit();
+                        }
+                    } else {
+                        searchVal = $(this).val().replace("/\s+/g", '').trim();
+                        if (!xhr || keyCode == 32) {
+                            if (searchVal != lastSearch || keyCode == 32) {
+                                clearTimeout($.data(el, 'timer'));
+                                if (xhr) {
+                                    xhr.abort();
+                                    xhr = false;
+                                }
+                                lastSearch = searchVal;
+                                xhr = $.ajax({
+                                    type: 'GET',
+                                    url: 'ajaxHelper/autoCompleteSearch.php',
+                                    data: {id: el.attr('id'), term: searchVal},
+                                    success: function (data) {
+                                        if (data.length > 0) {
+                                            var position = el.position();
+                                            $('#searchliste').css('top', (position.top + el.height()) + 'px').html(data).slideDown();
+                                            $('#search').unbind('blur').bind('blur', function () {
+                                                $('#searchliste').html('').slideUp();
+                                            });
+                                        } else {
+                                            $('#searchliste').html('').slideUp();
+                                        }
+                                        xhr = false;
+                                        if (keyCode != 32) {
+                                            $(el).data('timer', setTimeout(function () {
+                                                var ev = $.Event('keyup');
+                                                ev.keyCode = 32;
+                                                ev.which = 32;
+                                                $(el).trigger(ev);
+                                            }, 20));
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                } else {
+                    $('#searchliste').html('').slideUp();
+                    if (xhr) {
+                        xhr.abort();
+                        xhr = false;
+                    }
+                }
+                handleSpecialKeys(event, lastKey);
+                if (typeof (updLieferDat) === "function") {
+                    updLieferDat();
+                }
+            }).unbind('focus').bind('focus', function () {
+                $('#search #searchliste', top.document).css('width', ($('#ftAutocomplete', top.document).outerWidth() - 2) + 'px');
+                if ($(this).val() == 'Search ') {
+                    $(this).val('');
+                } else {
+                    if ($(this).val().trim() != '' && $('#searchliste', top.document).css('display') != 'block') {
+                        var el = $(this);
+                        xhr = $.ajax({
+                            type: 'GET',
+                            url: 'ajaxHelper/autoCompleteSearch.php',
+                            data: {id: el.attr('id'), term: el.val().trim()},
+                            success: function (data) {
+                                el.select();
+                                var position = el.position();
+                                $('#searchliste', top.document).css({top: (position.top + el.height()) + 'px', height: 'auto', 'padding-top': ($('#ftAutocomplete', top.document).outerHeight() / 2) + 'px'}).html(data).slideDown();
+                                $('#search').unbind('blur').bind('blur', function () {
+                                    $('#searchliste', top.document).html('').slideUp();
+                                });
+                                xhr = false;
+                            }
+                        });
+                    }
+                }
+            }).blur(function () {
+                if ($(this).val().trim() == '') {
+                    $(this).val('Search ');
+                }
+            });
+            var currentHash = "" + document.location.hash;
+            if (currentHash.length > 3) {
+                if (currentHash.substr(0, 1) == "/") {
+                    currentHash = currentHash.substr(1);
+                }
+                if (currentHash.substr(0, 1) == "#") {
+                    currentHash = currentHash.substr(1);
+                }
+                if (currentHash.substr(0, 1) == "/") {
+                    currentHash = currentHash.substr(1);
+                }
+                window.frames.myIframe.location.href = '/content.php?param=' + currentHash;
+            }
+            $('.cartpreview .menge').unbind('change keyup').bind('change keyup', function () {
+                $('#searchliste').html('').slideUp();
+                updateCart(this);
+            }).blur(function () {
+                if ($(this).val() == '') {
+                    $(this).val(0);
+                    updateCart(this, document);
+                }
+            });
+            $('.cartpreview .delete').click(function () {
+                $('#searchliste').html('').slideUp();
+                updateCart(this, document);
+            });
+            $('.buy').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $('#searchliste').html('').slideUp();
+                addToCart(this, 1, '', document);
+                return false;
+            });
+
+            $('#versandvorbutton').click(function (event) {
+                event.preventDefault();
+                $('html, body, iframe').scrollTop($('#versandvorbereitung').scrollTop());
+                return false;
+            });
+
+            $('#miniPlaylist').load('ajaxHelper/playlist.php', {act: 'showPL'});
+            $('.play, .stop').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $('#searchliste').html('').slideUp();
+                playItem(this, document);
+                return false;
+            });
+            initPlayer();
+            $('.smartphone #playerDiv', top.document).not('initialized').unbind('swipe').swipe({
+                swipe: function (e, dir) {
+                    //swipe close on whole player
+                    if (dir == 'down') {
+                        hideMobilePlayer(e);
+                    } else if (dir == 'up') {
+                        showMobilePlayer(e);
+                    }
+                },
+                threshold: 10,
+                fingers: 'all',
+                excludedElements: '',
+                allowPageScroll: 'none',
+                fallbackToMouseEvents: false,
+                triggerOnTouchLeave: false
+            });
+            $('.smartphone #playerDiv', top.document).unbind('click').bind('click', function (e) {
+                if (!$(e.target).closest('#playerDivhtml5').length > 0 && $(e.target).closest('#playerDivhtml5').not(':animated')) { //click handle only on transparent bar
+                    if ($('.smartphone #playerDiv #playerDivhtml5', top.document).css('display') == 'block') {
+                        hideMobilePlayer(e);
+                    } else {
+                        showMobilePlayer(e);
+                    }
+                }
+            });
+            initPaypalButton();
+        }).ajaxComplete(function () {
+            if (sessionStorage.getItem('filterOpen') === null) {
+                sessionStorage.setItem('filterOpen', filterDefault);
+            }
+            $('a').not('.noMod').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                if (xhr) {
+                    xhr.abort();
+                    xhr = false;
+                }
+                slideOutMainMenu();
+                $('#searchliste').html('').slideUp();
+                sessionStorage.removeItem($(this).attr('href'));
+                sessionStorage.removeItem('/' + $(this).attr('href'));
+                sessionStorage.removeItem('/' + $(this).attr('href') + 'sm_News');
+                $('#myIframe').attr('src', '/content.php?param=' + $(this).attr('href'));
+                return false;
+            });
+            //watchList Buttons
+            $('.watchIt').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                var el = $(this);
+                var split = el.attr('href').split('/');
+                var action = split[0];
+                var id = split[1];
+                if (!isNaN(id.replace('__', ''))) {
+                    var note = $('#o_' + id.replace('__', '')).val();
+                }
+                $.post('ajaxHelper/merker.php',
+                        {toggle: 'true',
+                            state: el.hasClass('aktiv') * 1,
+                            type: action,
+                            id: id,
+                            note: note
+                        }, function () {
+
+                    if ($('[href="' + el.attr('href') + '"]').hasClass('aktiv')) {
+                        $('[href="' + el.attr('href') + '"]').removeClass('aktiv').attr('title', $('[href="' + el.attr('href') + '"]').attr('data-title-watch'));
+                        $('[href="' + el.attr('href').replace('watchArticle', 'stockMail') + '"]').removeClass('aktiv');
+                        $('[href="' + el.attr('href') + '"]', $('#myIframe').contents()).removeClass('aktiv').attr('title', $('[href="' + el.attr('href') + '"]').attr('data-title-watch'));
+                        $('[href="' + el.attr('href').replace('watchArticle', 'stockMail') + '"]', $('#myIframe').contents()).removeClass('aktiv');
+                    } else {
+                        $('[href="' + el.attr('href') + '"]').addClass('aktiv').attr('title', $('[href="' + el.attr('href') + '"]').attr('data-title-unwatch'));
+                        $('[href="' + el.attr('href').replace('watchArticle', 'stockMail') + '"]').addClass('aktiv');
+                        $('[href="' + el.attr('href') + '"]', $('#myIframe').contents()).addClass('aktiv').attr('title', $('[href="' + el.attr('href') + '"]').attr('data-title-unwatch'));
+                        $('[href="' + el.attr('href').replace('watchArticle', 'stockMail') + '"]', $('#myIframe').contents()).addClass('aktiv');
+                    }
+                });
+                return false;
+            });
+            $('.smartphone .logo a,.smartphone #cart .fullview,.smartphone #cart .cartinfos').bind('click', function () {
+                if ($('#mainNav').css('right') != '100%') {
+                    slideOutMainMenu();
+                }
+            });
+
+            $('#innerMain ul li a').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $('#innerMain .open,#innerMain .active').removeClass('active').removeClass('open');
+
+                $(this).addClass('active');
+                $(this).not('.direct').not('ul li ul li a').addClass('open');
+                $(this).closest('ul').addClass('open');
+                $(this).closest('ul').closest('li').find('a').not('ul li ul li a').addClass('open').addClass('active');
+
+                $('#searchliste').html('').slideUp();
+                for (key in sessionStorage) {
+                    if (key != top.document.location.pathname && key != 'filterOpen' && key != 'History.store') {
+                        sessionStorage.removeItem(key);
+                    }
+                }
+                slideOutMainMenu();
+                if (!$(this).hasClass('noMod')) {
+                    $('#myIframe').attr('src', '/content.php?param=' + $(this).attr('href'));
+                } else {
+                    self.location.href = $(this).attr('href');
+                }
+
+                return false;
+            });
+
+            $('#innerMain ul li:not(.direct) a').not('ul li ul li a').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                if ($(this).hasClass('open')) {
+                    $(this).parent().find('ul').removeClass('open');
+                    $(this).removeClass('open');
+                } else {
+                    $('#innerMain .open').removeClass('open');
+                    $(this).parent().find('ul').addClass('open');
+                    $(this).addClass('open');
+                }
+                $('#myIframe, #wrapwrapper').css({height: ($('#innerMain').outerHeight() + 50) + 'px'});
+                return false;
+            });
+
+            $('#mydeejay a').not('.noMod').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $(this).closest('.subnavi').removeClass('highlight');
+                sessionStorage.removeItem($(this).attr('href'));
+                $('#myIframe').attr('src', 'content.php?param=' + $(this).attr('href'));
+                return false;
+            });
+
+            $('.buy').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $('#searchliste').html('').slideUp();
+                addToCart(this, 1, '', document);
+                return false;
+            });
+
+            $('.play, .stop').unbind('click').bind('click', function (e) {
+                e.preventDefault();
+                $('#searchliste').html('').slideUp();
+                playItem(this, document);
+                return false;
+            });
+
+            $('.cartpreview .menge').unbind('keyup change').bind('keyup change', function () {
+                updateCart(this, document);
+            }).unbind('blur').bind('blur', function () {
+                if ($(this).val() == '') {
+                    $(this).val(0);
+                    updateCart(this, document);
+                }
+            });
+
+            $('.cartpreview .delete').unbind('click').bind('click', function () {
+                $('#searchliste').html('').slideUp();
+                updateCart(this, document);
+            });
+
+            $('.collapsable h3').unbind('click').bind('click', function () {
+                var state = $(this).parent().hasClass('open');
+                $('.collapsable.open div').slideUp().parent().removeClass('open');
+                if (!state) {
+                    $(this).parent().find('div').slideDown().parent().addClass('open');
+                }
+            });
+
+            $('.playlist').unbind('click').bind('click', function () {
+                $('#searchliste').html('').slideUp();
+                $('.tracks').toggleClass('highlight');
+                $('.playlist').toggleClass('highlight');
+            });
+            initPaypalButton();
+        }).keydown(function (e) {
+            var keyCode = (e.which || e.keyCode);
+            if (keyCode == 27) {
+                $('#searchliste', top.document).html('').slideUp();
+                $('#ftAutocomplete').blur();
+            }
+        }).click(function (e) {
+            if (!$(e.target).isChildOf('#search')) {
+                $('#searchliste', top.document).html('').slideUp();
+            }
+        }).unbind('blur').bind('blur', function (e) {
+            e.preventDefault();
+            if (($(':focus').length == 0 || !$(':focus').isChildOf('#search')) && $('#searchliste').html() != '') {
+                $('#searchliste').html('').slideUp();
+            }
+            return false;
+        });
+        $(window).resize(function () {
+            if ($('#mainNav').css('right') == '0%') {
+                $('#myIframe, #wrapwrapper').css({height: ($('#innerMain', top.document).outerHeight() + 50) + 'px'});
+            } else {
+                $('#myIframe', top.document).height($('#myIframe', top.document).contents().find('body').height());
+                if ($('.smartphone').length == 0) {
+                    $('#myIframe, #wrapwrapper').css({width: ($('#wrapwrapper', top.document).innerWidth() - 200) + 'px'})
+                }
+            }
+            if ($('.smartphone').length > 0) {
+                $('#myIframe', top.document).contents().find('body').css('width', $(this).width() + 'px');
+                $('#playerSpacer', top.document).css('width', $(this).width() + 'px');
+                $('#playerDiv', top.document).css('width', $(this).width() + 'px');
+                $('#playerDivhtml5', top.document).css('width', $(this).width() + 'px');
+                if (typeof measure == 'function') {
+                    measure();
+                }
+            }
+        });
+    

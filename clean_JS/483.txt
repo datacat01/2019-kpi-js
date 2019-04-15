@@ -1,0 +1,174 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbng-buildabear-us';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-buildabear-us-Site/default/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-buildabear-us-Site/default/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","ERROR":"Error","SUBMIT":"Submit","ADDED":"Added","SELECTED":"Selected","SELECT":"Select","ADD":"Add","BACK":"Back","NEXT":"Next","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","INVALID_POSTALCODE":"Please specify a valid postal code.","INVALID_GIFT_MESSAGE":"Please enter valid characters.","INVALID_ADDRESS":"Please enter valid characters.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code or pin.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code and pin.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"Expected Ship Date: {0}","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","SEARCH_NO_RESULTS":"We're sorry, no products were found for your search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","ERROR_OCCURED":"An Error Occurred!","MAYBE_LATER":"Maybe Later","SAVE_AND_CONTINUE":"Save & Continue","REMOVE_FURRY_FRIEND":"Yes, Remove Furry Friend","CANCEL":"Cancel","REMOVE_FURRY_FRIEND_TITLE":"Remove Furry Friend?","CHOOSE_NEW_FURRY_FRIEND":"Yes, Choose a New Furry Friend","CHOOSE_NEW_FURRY_FRIEND_TITLE":"Choose a New Furry Friend?","QUADRUPED_SHOE_MESSAGE":"Your Furry Friend walks on 4 legs, so we added another pair of shoes for it!","RESTRICTION_FURRY_FRIEND_TITLE":"Furry Friend License Restriction","SAVE_TO_WISHLIST":"Save to Wish List","LEAVE":"Leave","CONTINUE_EDIT":"Continue Editing","LEAVE_ACCOUNT_EDIT":"Leaving Edit Account?","LEAVE_MAKE_YOUR_OWN":"Leave The Bear Builder?","ADD_TO_CART":"Add to Bag","MC_SUBSCRIBE_SUCCESS":"Thank you for joining!","MC_SUBSCRIBE_ERROR":"Error!","MC_SUBSCRIBE_SYSTEMERROR":"General error, please try again later.","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","VALIDATE_AGE":"We’re sorry, but you must be 18 years or older to enter.","VALIDATE_EMAIL_MATCH":"Email Addresses do not match","STORE_DETAILS":"Store Details","VIEW_STORE_DETAILS":"View Store Details","STORE_DIRECTIONS":"Get Directions","STORE_NO_RESULTS":"Sorry, no stores were found matching your search criteria.","STORE_NO_RESULTS_GEO":"Sorry, there are no stores in your area.","STORE_PREFERRED":"My Store","STORE_BUILD_A_PARTY":"Build-A-Party","STORE_MAKEMY":"Make This My Workshop","STORE_MAKEMYACTIVE":"My Preferred Workshop","STORE_SET_PREFERRED":"Make My Store","STORE_RESULTS_POSTAL_CODE":"postal code","STORE_RESULTS_MULT":"There are {storeCount} stores within {milesAround} {distanceUnits} of {addressMessage}.","STORE_RESULTS_ONE":"There is {storeCount} store within {milesAround} {distanceUnits} of {addressMessage}.","STORE_RESULTS_MILES":"miles","STORE_RESULTS_KILOMETERS":"kilometers","QTY_LIMIT_REACHED":"Selected quantity exceeds quantity purchase restriction of","WEB_NOT_AVAILABLE":"Not available for purchase online. Please check in store availability.","SVDOT_URL_ERROR":"We're sorry but we cannot handle this request. This probably happened due to temporary connection errors. Please try again later. If you have further questions, please contact us.","CHECKOUT_TECH_ERROR":"We're sorry that your order could not be placed. This probably happened due to a high order volume or temporary connection errors. Please wait a few minutes and resubmit your order. We won't process your payment until you successfully place your order. If you have further questions, please contact us.","CRM_EXISTING_ACCOUNT_HEADER":"Existing Account","CRM_RESET_PASSWORD":"Verify Account","CRM_EXISTING_REWARDS":"Existing Bonus Club Account","CRM_GDPR_OPT_OUT_ALERT":"Are You Sure? Signing Up for Our E-Mails Is the Best Way to Get Special Offers and Announcements. Don’t Miss Any of the Fun!\n\nClick OK to confirm opt-out, or Cancel to review your choices.","CRM_EDIT_CONSENT_ALERT":"Are You Sure? You must consent to our Terms of Use and Privacy Policy in order to participate in the Bonus Club.\n\nClick OK to confirm opt-out, or Cancel to review your choices.","SITE_CODE":"us","PARTY_GS_CONFIRM_LESS_QTY":"Are you sure? You may choose a quantity of products equal to the number of guests in your party.","PARTY_GS_ALERT_MORE_QTY":"You cannot select a quantity of products that is greater than the number of guests in your party.","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"This item is available for pre-order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-buildabear-us-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-buildabear-us-Site/default/Page-Include","continueUrl":"https://www.buildabear.com/home","staticPath":"/on/demandware.static/Sites-buildabear-us-Site/-/default/v1555221704279/","addGiftCert":"/on/demandware.store/Sites-buildabear-us-Site/default/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-buildabear-us-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-AddProduct","minicart":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-MiniAddProduct","cartShow":"/cart","giftRegAdd":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/PaymentInstruments-List","addressesList":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/Address-List","wishlistAddress":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-buildabear-us-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-Show","getBonusProducts":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-Detail","productHitTile":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-HitTile","getAvailability":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-buildabear-us-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-buildabear-us-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-buildabear-us-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-UpdateSummary","paymentMethodsRefreshURL":"/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-UpdatePaymentMethods","billingRewardsRefreshURL":"/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-UpdateRewardsBilling","billingSelectCC":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-ResetPaymentForms","compareShow":"/on/demandware.store/Sites-buildabear-us-Site/default/Compare-Show","compareAdd":"/on/demandware.store/Sites-buildabear-us-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-buildabear-us-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-buildabear-us-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"/on/demandware.store/Sites-buildabear-us-Site/default/SVDotCOBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/SVDotCOBilling-RedeemGiftCertificateJson","addCoupon":"https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-GetZipCode","billing":"/on/demandware.store/Sites-buildabear-us-Site/default/COBilling-Start","setSessionCurrency":"/on/demandware.store/Sites-buildabear-us-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-buildabear-us-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"/cookie_hint.html","newSessionLightbox":"/on/demandware.store/Sites-buildabear-us-Site/default/NewSessionLightbox-Show","rateLimiterReset":"/on/demandware.store/Sites-buildabear-us-Site/default/RateLimiter-HideCaptcha","csrffailed":"/on/demandware.store/Sites-buildabear-us-Site/default/CSRF-Failed","autocompleteAddress":"/on/demandware.store/Sites-buildabear-us-Site/default/FedEx-AutoCompleteAddress","validateAddress":"/on/demandware.store/Sites-buildabear-us-Site/default/FedEx-ValidateAddress","updateAddress":"/on/demandware.store/Sites-buildabear-us-Site/default/FedEx-UpdateAddress","getReadies":"/on/demandware.store/Sites-buildabear-us-Site/default/Melco-GetReadies","setInstanceToken":"/on/demandware.store/Sites-buildabear-us-Site/default/Melco-SetInstanceToken","setSessionInstanceToken":"/on/demandware.store/Sites-buildabear-us-Site/default/Melco-SetSessionInstanceToken","addBearBuilderItem":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-AddItem","removeBearBuilderItem":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-RemoveItem","setPackagingOption":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-SetPackagingOption","setDressingOption":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-SetDressingOption","setDressedIn":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-SetDressedIn","saveBearBuilderToWishlist":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-AddToWishlist","getFurryFriendID":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-GetFurryFriendID","getEmbroideryDisplay":"/on/demandware.store/Sites-buildabear-us-Site/default/Melco-GetEmbroideryDisplay","birthCertificate":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-BirthCertificateDialog","projectName":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-ProjectNameDialog","productSetAddSoundsAndScents":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-StartCustomizingSet","checkAgeRegistration":"/check-age-registration.html","checkAgeCheckout":"/check-age-checkout.html","errorCallout":"/error-callout.html","getPartyTimes":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-GetTimes","searchPartyStore":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-FindStores","getStoreBookingHours":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-GetStoreBookingHours","searchPartyGuest":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-FindGuests","searchAdminPartyStore":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-SearchStores","loginAuthenticate":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-Authenticate","getStoresAvailability":"/on/demandware.store/Sites-buildabear-us-Site/default/Stores-GetStoresAvailability","removeFurryFriend":"/remove-furry-friend.html","chooseNewFurryFriend":"/choose-new-furry-friend.html","restrictionFurryFriend":"/restriction-furry-friend.html","leaveMakeYourOwn":"/leave-make-your-own.html","leaveEditAccount":"/leave-edit-account.html","addDonation":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-AddDonation","setAgeSession":"/on/demandware.store/Sites-buildabear-us-Site/default/COCustomer-CheckAgeRestriction","searchPartyStoreCalendar":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-FindStoreCalendar","partyAdminLogin":"/partyadmin","partyAdminSearch":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-Search","selectLocation":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-Location","cancelParty":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-CancelParty","restoreParty":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-RestoreParty","partyChoices":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-PartyChoices","partyAdminDetail":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-PartyAdminDetail","partyAdminCalendar":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-PartyAdminCalendar","printDetail":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-PrintDetail","printCalendar":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyAdmin-PrintCalendar","girlScoutsMerchSubmit":"/on/demandware.store/Sites-buildabear-us-Site/default/GirlScoutsForm-Submit","getStoreChoices":"/on/demandware.store/Sites-buildabear-us-Site/default/PartyData-PartyChoices","newParty":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-New","marketingCloudSubscribe":"/on/demandware.store/Sites-buildabear-us-Site/default/MarketingCloud-Subscribe","firstTimePasswordReset":"/on/demandware.store/Sites-buildabear-us-Site/default/Account-FirstTimePasswordResetDialog","existingRewardsAccount":"/on/demandware.store/Sites-buildabear-us-Site/default/Account-ExistingRewardsVerificationDialog","home":"/home","loginShow":"/login","cartClear":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-Clear","getStoreHours":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-GetStoreHours","addGiftBoxProduct":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-AddGiftBoxProduct","removeGiftBoxProduct":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-RemoveGiftBoxProduct","svdotCheckActiveURLs":"/on/demandware.store/Sites-buildabear-us-Site/default/SVDotCOBilling-CheckActiveURLs","editParty":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-Edit","setEditSession":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-SetEditSession","setNewSession":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-SetNewSession","ageGate":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-AgeGate","auth":"/on/demandware.store/Sites-buildabear-us-Site/default/Party-Auth","cartUpdateProductOption":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-UpdateProductOption","bearBuilderProductOption":"/on/demandware.store/Sites-buildabear-us-Site/default/BearBuilder-UpdateProductOptions","cartRemoveDeferredCoupon":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-RemoveDeferredCoupon","oauthLogin":"/on/demandware.store/Sites-buildabear-us-Site/default/Login-LoginForm","logout":"/on/demandware.store/Sites-buildabear-us-Site/default/Login-Logout","suppressPromoModalLaunch":"/on/demandware.store/Sites-buildabear-us-Site/default/Cart-SuppressPromoModalLaunch"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":true,"LISTING_REFINE_SORT":true,"STORE_PICKUP":true,"COOKIE_HINT":false,"COOKIE_LIGHTBOX":true,"CHECK_TLS":false,"TOKENIZATION_ENABLED":true,"FEDEX_ENABLE":false,"STORE_LOOKUP_UNIT":"mi","AGE_GATE_YEARS":18,"ADTM_ENABLED":true,"GSPARTY_DAYSOUT":7,"CART_QTY_LIMIT":499,"SVDOT_ENABLED":true,"FB_LOGIN_ENABLED":true,"ENABLE_HEART_CEREMONY":true,"ENABLE_AGE_GATE":true};
+window.Iconography = {"GIFT_BOX":"<svg class=\"icon gift-box svg-gift-box-dims header-icons\"><use xlink:href=\"/on/demandware.store/Sites-buildabear-us-Site/default/Images-Show#gift-box\"/></svg>","PREV_ARROW":"<svg class=\"icon right-arrow svg-right-arrow-dims flipped slick-prev \"><use xlink:href=\"/on/demandware.store/Sites-buildabear-us-Site/default/Images-Show#right-arrow\"/></svg>","NEXT_ARROW":"<svg class=\"icon right-arrow svg-right-arrow-dims slick-next \"><use xlink:href=\"/on/demandware.store/Sites-buildabear-us-Site/default/Images-Show#right-arrow\"/></svg>","BACK_TO_TOP":"<svg class=\"icon back-to-top-rocket svg-back-to-top-rocket-dims\"><use xlink:href=\"/on/demandware.store/Sites-buildabear-us-Site/default/Images-Show#back-to-top-rocket\"/></svg>"};
+window.User = {"zip":null,"storeId":null,"geolocation":{"city":"Northridge","countryCode":"US","countryName":"United States","latitude":34.236,"longitude":-118.5235,"postalCode":"91325","regionCode":"CA","regionName":"California"},"externallyAuthenticated":false,"authenticated":false,"registered":false};
+window.Scripts = {"storeLocator":{"vars":{"zoomradius":"{\"0\": 600000,\"1\": 600000,\"2\": 10000,\"3\": 6000,\"4\": 3000,\"5\": 1600,\"6\": 800,\"7\": 300,\"8\": 150,\"9\": 100,\"10\": 70,\"11\": 40,\"12\": 20,\"13\": 10,\"14\": 5,\"15\": 3,\"16\": 3,\"17\": 3,\"18\": 3,\"19\": 3,\"20\": 3}","storeurl":"/locations?StoreID=","preferredurl":"/on/demandware.store/Sites-buildabear-us-Site/default/StoreInventory-SetPreferredStore?storeId=","markerurl":"https://www.buildabear.com/on/demandware.static/Sites-buildabear-us-Site/-/default/dw4f559092/images/svg-icons/pin.svg","markerdetailurl":"https://www.buildabear.com/on/demandware.static/Sites-buildabear-us-Site/-/default/dw4f559092/images/svg-icons/pin.svg","queryurl":"/on/demandware.store/Sites-buildabear-us-Site/default/Stores-GetNearestStores","cookieurl":"/on/demandware.store/Sites-buildabear-us-Site/default/Stores-SetGeoLocation","cookiename":"CustomerLocation","defaultlocation":"39.9502843, -74.9521867","maptype":"ROADMAP"}}};
+}());
+
+
+
+(function( DW ){
+DW.googleAnalytics = {
+config: {"accountID":"UA-5146644-1","currency":"USD"}
+};
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+}(window.DW = window.DW || {}));
+
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null,"AGE_GATE_VERIFIED":null};
+window.User = {"zip":null,"storeId":null,"geolocation":{"city":"Kyiv","countryCode":"UA","countryName":"Ukraine","latitude":50.4547,"longitude":30.5238,"postalCode":"02152","regionCode":"30","regionName":"Kyiv City"},"externallyAuthenticated":false,"authenticated":false,"registered":false};
+}());
+
+_satellite.pageBottom();
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.buildabear.com/on/demandware.store/Sites-buildabear-us-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ */
+if (!window.dw) dw = {};
+dw.applepay = {"action":{"cancel":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-Cancel","getRequest":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-GetRequest","onshippingcontactselected":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-ShippingContactSelected","onpaymentmethodselected":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-PaymentMethodSelected","onvalidatemerchant":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-ValidateMerchant","onpaymentauthorized":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-PaymentAuthorized","prepareBasket":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-PrepareBasket","onshippingmethodselected":"https:\/\/www.buildabear.com\/on\/demandware.store\/Sites-buildabear-us-Site\/default\/__SYSTEM__ApplePay-ShippingMethodSelected"},"inject":{"directives":[{"css":"dw-apple-pay-button","query":"ISAPPLEPAY","action":"replace","copy":true}]}};
+/* ]]> */
+// -->
+

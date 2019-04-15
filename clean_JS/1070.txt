@@ -1,0 +1,127 @@
+
+        $(document).ready(function () {
+
+            $("a[rel^='prettyPhoto']").prettyPhoto({ social_tools: '', quicktime_markup: '', deeplinking: false });
+        });
+    
+
+//<![CDATA[
+var Anthem_FormID = "aspnetForm";
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+    adroll_adv_id = "PLPIFZS5DBGQVC4OOTNYWF";
+    adroll_pix_id = "M7WBOAVZVNAS7JC5XDL73F";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+(function($) {
+    $.fn.equalize = function() {
+        var els = $(this),
+            heighest = 0;
+        els.each(function(i, el) {
+            el = $(el);
+            var h = el.height() + parseInt(el.css('paddingTop'), 10) + parseInt(el.css('paddingBottom'), 10);
+            if (h > heighest) heighest = h;
+            if (i + 1 == els.length) els.height(heighest);
+        });
+    };
+})(window.jQuery);
+
+
+function HomePageGrid(){
+//$(".prod-name").css("height","auto");
+//$(".prod-img").css("height","auto");
+//$(".prod-img").css("min-height","auto");
+$(".product-box").css("height","auto");
+$(".product-box").css("border-bottom","1px solid #eaeaea");
+$(".product-box").css("margin-bottom","10px");
+$(".prod-name").equalize();
+$(".product-box").equalize();
+}
+
+$(function(){HomePageGrid();});
+$( window ).resize(function() {
+  HomePageGrid();
+});
+
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_Header1_rfvEmail"), document.getElementById("ctl00_Header1_valEmail"));
+//]]>
+
+
+//<![CDATA[
+var ctl00_Header1_rfvEmail = document.all ? document.all["ctl00_Header1_rfvEmail"] : document.getElementById("ctl00_Header1_rfvEmail");
+ctl00_Header1_rfvEmail.controltovalidate = "ctl00_Header1_SubscribeField";
+ctl00_Header1_rfvEmail.errormessage = "Please enter a valid email address";
+ctl00_Header1_rfvEmail.display = "Dynamic";
+ctl00_Header1_rfvEmail.validationGroup = "vg";
+ctl00_Header1_rfvEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_Header1_rfvEmail.initialvalue = "";
+var ctl00_Header1_valEmail = document.all ? document.all["ctl00_Header1_valEmail"] : document.getElementById("ctl00_Header1_valEmail");
+ctl00_Header1_valEmail.controltovalidate = "ctl00_Header1_SubscribeField";
+ctl00_Header1_valEmail.errormessage = "Please enter a valid email address";
+ctl00_Header1_valEmail.display = "Dynamic";
+ctl00_Header1_valEmail.validationGroup = "vg";
+ctl00_Header1_valEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_Header1_valEmail.validationexpression = "^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\\-+)|([A-Za-z0-9]+\\.+)|([A-Za-z0-9]+\\++))*[A-Za-z0-9]+@((\\w+\\-+)|(\\w+\\.))*\\w{1,63}\\.[a-zA-Z]{2,6}$";
+//]]>
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+

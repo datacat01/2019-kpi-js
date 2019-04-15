@@ -1,0 +1,53 @@
+
+  (function() {
+  var avm = document.createElement('script'); avm.type = 'text/javascript'; avm.async = true;
+  avm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.avmws.com/1017145/';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(avm, s);
+  })();
+
+ 
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/HsBaxnmSeU525jbbQCOCi9bs8ppIBDmcsvtQFqbG/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+  $( function () {
+      CartJS.init({"token":"0adc11ec964bba5af2279a1298dfca2f","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]}, {
+            "dataAPI": true,
+            "debug": true,
+            "currency": "USD",
+            "moneyFormat": "${{ amount }}",
+            "moneyWithCurrencyFormat": "${{ amount }} USD"
+      });
+    });
+
+
+console.log("kissmetrics is initalized");
+ // kissmetrics 
+ var _kmq = _kmq || [];
+var _kmk = _kmk || 'ce1223ccca9d30136e28c04d7d8a12bd82153d2b';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
+
+// Klaviyo 
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'h4CLJm']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+
+
+  KlaviyoSubscribe.attachToForms('#email_signup', {
+    hide_form_on_success: true
+  });
+

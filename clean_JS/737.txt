@@ -1,0 +1,29 @@
+
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'McJ78z']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+
+
+  var site_type = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+  window.criteo_q = window.criteo_q || [];
+  window.criteo_q.push(
+    { event: "setAccount", account: 41323 },
+    { event: "setSiteType", type: site_type},
+    { event: "setEmail", email: "d41d8cd98f00b204e9800998ecf8427e"});
+
+
+      window.criteo_q.push(
+        { event: "viewHome", ecpplugin: "shopify"}
+      );
+    
+
+    $(function() {
+    CartJS.init({"token":"4ecef43b0cfdb0b4a05c79eb030a949a","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]});
+    });
+  

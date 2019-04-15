@@ -1,0 +1,33 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+		var gts = gts || [];
+
+		gts.push(["id", "16187"]);
+		gts.push(["badge_position", "BOTTOM_RIGHT"]);
+		gts.push(["locale", "en_US"]);
+		gts.push(["google_base_offer_id", "ITEM_PRODUCT_SEARCH_ID"]);
+		gts.push(["google_base_subaccount_id", "ITEM_PRODUCT_SEARCH_ACCOUNT_ID"]);
+
+		(function () {
+			var gts = document.createElement("script");
+			gts.type = "text/javascript";
+			gts.async = true;
+			gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(gts, s);
+		})();
+	

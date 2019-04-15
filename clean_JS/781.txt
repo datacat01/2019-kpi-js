@@ -1,0 +1,69 @@
+ var vNotAvaliable = "";
+        var vAvaliable = "";
+ vNotAvaliable = "<img src='//cms-resources.coleparmer.com/a/btn_livechatOFF.png' alt='email-us' title='email-us' border='0;'>";
+        vAvaliable = "<img src='//cms-resources.coleparmer.com/a/btn_livechatON.png' alt='live-chat' title='live-chat' border='0;'>";
+   
+
+    var bccbId = Math.random(); document.write(unescape('%3Cdiv id=' + bccbId + '%3E%3C/div%3E'));
+    window._bcvma = window._bcvma || [];
+    _bcvma.push(["setAccountID", "3454673712453819773"]);
+    _bcvma.push(["setParameter", "WebsiteID", "3480086117925049250"])
+    _bcvma.push(["addText", { type: "chat", department: "1397282695360970116", window: "1466460158077267709", available: vAvaliable, unavailable: vNotAvaliable, id: bccbId }]);
+    var bcLoad = function(){
+        if(window.bcLoaded) return; window.bcLoaded = true;
+        var vms = document.createElement("script"); vms.type = "text/javascript"; vms.async = true;
+        vms.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + "vmss.boldchat.com/aid/3454673712453819773/bc.vms4/vms.js";
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vms, s);
+    };
+    if(window.pageViewer && pageViewer.load) pageViewer.load();
+    else if(document.readyState=="complete") bcLoad();
+    else if(window.addEventListener) window.addEventListener('load', bcLoad, false);
+    else window.attachEvent('onload', bcLoad);
+
+ var _elqQ = _elqQ || [];
+    _elqQ.push(['elqSetSiteId', '713815']);
+    _elqQ.push(['elqTrackPageView']);
+    
+    (function () {
+        function async_load() {
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+            s.src = '//img03.en25.com/i/elqCfg.min.js';
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        }
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load); 
+    })();
+
+ var _elqQ = _elqQ || [];
+    _elqQ.push(['elqSetSiteId', '713815']);
+    _elqQ.push(['elqTrackPageView']);
+    
+    (function () {
+        function async_load() {
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+            s.src = '//img03.en25.com/i/elqCfg.min.js';
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        }
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load); 
+    })();
+
+ var DefaultQuickOrderItemQty = 1;
+        var ItemRequired = "Item# required";
+        var insite = insite || {};
+
+        insite.core.generalErrorText = "An error has occurred. We apologize for the inconvenience.";
+        insite.core.languageCode = "en-US";
+        insite.core.dateTimeFormat = "M/d/yyyy";
+        insite.core.cartPopupTimeout = 3000;
+        insite.wishlistPopup.addToWishListSuccessPopupTimeout = 10000;
+                            insite.core.checkForIFrame(); 
+ var powerReviewsAsyncLoad = true;
+    jQuery(function () {
+        insite.endecaAsync.setup();
+    }); 
+ $(document).ready(function () {
+            if (typeof powerReviewsAsyncLoad === 'undefined' || !powerReviewsAsyncLoad) {
+                executePowerReviewsScript();
+            }
+        }); 

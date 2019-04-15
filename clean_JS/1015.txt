@@ -1,0 +1,91 @@
+
+        window.__lo_site_id = 74068;
+
+        (function () {
+            var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+            wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+        })();
+    
+
+        window.criteo_q = window.criteo_q || []; window.criteo_q.push(
+            { event: "setAccount", account: 14550 },
+            { event: "setSiteType", type: "d" },
+            { event: "viewHome" }
+        );
+    
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+window.WebForm_PostBackOptions||document.write('<script type="text/javascript" src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZNxuRW5PvEUzJEBn6JsAp9FspVe2AZCeodjyk_FQ7LNfzoB-FRoUs8X9ZcYOnVWICA2&amp;t=636765319264470882"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvpNNDr8jZW7MU8ENeZSHsC-PGGdKn7bDk4r4wvxy7E7JSKM8_tbkAyiglpMuPHujJHaxSCKTpf8ergAgHPavky3q1pFtMHRSGBEuOfursbVVPfHzvF12HZd-Vq5TQp8BKpOoAVbzLcVHqaYqFWOFMiU1&t=ffffffff999c3159"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys.WebForms)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OAUgkp2kaCSq6LQRRcaL8-N6RAQQcxg14_g66uJvgQDz69_AcNfKEMrC4zmFWe0aYvrPJcg61hqps33j0A9GSTclZ-v4HVsRLxUb5qBOjFd7Ho55DS8Q89DaIy9UKlTWAhFSEFyZBmoR7C7pxViN5Kw1&t=ffffffff999c3159"><\/script>');//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$radScriptManager1', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+
+var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fjacks-small-engines-and-generator-service-23011967.js') + "' type='text/javascript'%3E%3C/script%3E"));
+
+
+        $(document).ready(function () {
+
+            $('div.list').each(function () {
+                var $dropdown = $(this);
+
+                $("a.catmenu", $dropdown).click(function (e) {
+                    e.preventDefault();
+                    $div = $("div.catmenu-container", $dropdown);
+                    $div.toggle(200);
+                    $("div.catmenu-container").not($div).hide();
+                    return false;
+                });
+
+            });
+
+        });
+    
+
+//<![CDATA[
+var searchApiEndpoint =  "https://api.jackssmallengines.com/search/";window.__TsmHiddenField = $get('radScriptManager1_TSM');//]]>
+
+
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxLoadingPanel, {"initialDelayTime":0,"isSticky":false,"minDisplayTime":10,"skin":"WebBlue","uniqueID":"ctl00$ralpSearchRedirect","zIndex":1000000}, null, null, $get("ralpSearchRedirect"));
+});
+//]]>
+
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-927255-1', { 'cookieDomain': 'jackssmallengines.com' });
+        ga('send', 'pageview');
+        ga('require', 'ecommerce');
+    

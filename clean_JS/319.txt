@@ -1,0 +1,138 @@
+
+function OptanonWrapper() { }
+
+
+
+    	var top_banner_cookie_name = 'atg_top_banner_' + "".hashCode();
+        var today 			= new Date();
+        var nextyear		= new Date(today.getFullYear()+1, today.getMonth(), today.getDate());
+	  	var atg_top_banner 	= Cookie.get(top_banner_cookie_name);
+
+		jQuery(function(){
+			$.ajax({
+			  url: "/call/banner/?url=",
+			  type: 'post',
+			  data: {},
+			  success: function(res){
+			  	jQuery("#top-banner-container").html(res.message);
+			  	if(res.show){
+			  		jQuery("#top-banner-section").show();
+			  	}
+
+			  	if(res.auto && atg_top_banner !== 'closed') {
+			  		if(atg_top_banner == 'opened'){
+						jQuery("#top-banner-section .sliding").siblings('.top-banner').show();
+						jQuery("#top-banner-section .sliding").addClass('slide-up');
+			  		}else{
+						jQuery("#top-banner-section .sliding").siblings('.top-banner').slideDown();
+						jQuery("#top-banner-section .sliding").addClass('slide-up');
+
+						Cookie.set(top_banner_cookie_name, 'opened', nextyear, "/");
+			  		}
+			  	}
+			  },
+			  dataType: 'json'
+			});
+
+			jQuery("#top-banner-section .sliding").on('click', function(e){
+				e.preventDefault();
+				if(jQuery(this).hasClass('slide-up')){
+					jQuery(this).siblings('.top-banner').slideUp();
+					jQuery(this).removeClass('slide-up');
+
+					Cookie.set(top_banner_cookie_name, 'closed', nextyear, "/");
+				}else{
+					jQuery(this).siblings('.top-banner').slideDown();
+					jQuery(this).addClass('slide-up');
+
+					Cookie.set(top_banner_cookie_name, 'opened', nextyear, "/");
+
+				}
+			});
+		});
+
+    
+
+
+	var page_popup = {
+		data: {},
+		container: null,
+
+		init: function(){
+			page_popup.pull();
+
+			page_popup.container = jQuery('#page_top_popup');
+
+		},
+
+		pull: function(){
+			$.ajax({
+			  url: "/call/popup/?id=1&type=page",
+			  success: function(res){
+			  	page_popup.data = res;
+			  	page_popup.bind();
+			  },
+			  dataType: 'json'
+			});
+		},
+
+		bind: function(){
+
+			if(page_popup.data.contents == undefined || page_popup.data.contents == '') {
+				return;
+			}
+
+			if(page_popup.data.cookie && Cookie.get(page_popup.data.cookie) !== null) {
+				return;
+			}
+
+			page_popup.container.addClass(page_popup.data.class);
+			if(page_popup.data.is_modal) {
+				page_popup.container.addClass('modal');
+				page_popup.container.find('.page_top_popup-overlay').addClass('active');
+				page_popup.container.find('.page_top_popup-overlay').css({opacity: page_popup.data.modal_opacity});
+			}
+
+			page_popup.container.find('.page_top_popup-contents').html(page_popup.data.contents);
+			page_popup.container.css({'opacity': 0});
+			page_popup.container.show();
+
+			
+			page_popup.container.find('.page_top_popup-close-button').on('click', page_popup.close);
+			page_popup.container.find('.page_top_popup-contents').on('click', page_popup.setcookie);
+
+				var page_height = window.innerHeight;
+				var page_width  = window.innerWidth;
+				var c_height 	= page_popup.container.find('.page_top_popup-contents').height();
+				var c_width 	= page_popup.container.find('.page_top_popup-contents').width();
+				var marginTop 	= c_height > page_height ? 0 : (page_height/2)  - c_height/2;
+
+				var marginLeft 	= 300 / 2;
+				jQuery('#page_top_popup:not(.modal) .page_top_popup-wrapper').css({'left': 'calc(50% - ' + marginLeft + 'px)'});
+			
+				page_popup.container.css({'opacity': 1});
+
+		},
+
+		close: function(){
+			page_popup.container.hide();
+
+			page_popup.setcookie();
+		},
+
+		setcookie: function(){
+
+			if(page_popup.data.cookie) {
+				var today = new Date();
+	            var nextyear= new Date(today.getFullYear()+1, today.getMonth(), today.getDate());
+	            Cookie.set(page_popup.data.cookie, "yes", nextyear, "/" );
+			}
+		}
+
+	};
+
+	jQuery(function(){
+		page_popup.init();
+	});
+
+

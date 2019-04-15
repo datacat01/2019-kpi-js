@@ -1,0 +1,13 @@
+
+            //<![CDATA[
+            ga('create', 'UA-2533404-2', 'glassesusa.com', {"allowLinker":true,"siteSpeedSampleRate":5});
+            ga('require', 'linkid');
+            ga('require', 'linker');
+            ga('linker:autoLink', ['glassesusa1.zendesk.com']);
+            ga(function (tracker) {
+                ga('set', 'dimension6', tracker.get('clientId'));
+            });
+            window.optimizely = window.optimizely || [];
+            window.optimizely.push('activateUniversalAnalytics');
+            //]]>
+        

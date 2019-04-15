@@ -1,0 +1,157 @@
+
+		    
+		    var domainNamesMap=new Object();domainNamesMap["FD1_18B_P"]="www1.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW42"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW44"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW45"]="www.1800flowers.com";domainNamesMap["FD4_18F_PWA_WWW"]="pwa.www.1800flowers.com";domainNamesMap["FD4_SYB_WW42"]="business.stockyards.com";domainNamesMap["FD4_TPF_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_SY_P_WW42"]="www.stockyards.com";domainNamesMap["FD4_18F_NC"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW51"]="www.1800flowers.com";domainNamesMap["FD4_TPF_WW44"]="www.thepopcornfactory.com";domainNamesMap["FD4_HDB_WW42"]="business.harryanddavid.com";domainNamesMap["FD4_CCOB_WW42"]="business.cheryls.com";domainNamesMap["FD4_18F_MVWB_WW54"]="www.1800flowers.com";domainNamesMap["FD4_18F_MVWB_WW55"]="www.1800flowers.com";domainNamesMap["FD4_CCO_MV_T_WW42"]="t4.www.cheryls.com";domainNamesMap["FD4_HLB_WW42"]="business.harrylondon.com";domainNamesMap["FD4_CLB_TMISC_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_18BB_WW42"]="business.1800baskets.com";domainNamesMap["FD4_HL_MSTG_WW42"]="mstage3.www3.harrylondon.com";domainNamesMap["FD4_18B_MV_T_WW42"]="t.www.1800baskets.com";domainNamesMap["FD4_CLB_MSTG_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HL_MV_ML_WW42"]="mlocal.www3.harrylondon.com";domainNamesMap["FD4_CCO_MV_MS_WW42"]="mstage4.www.cheryls.com";domainNamesMap["FD4_TPF_WW51"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_WW53"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_WW54"]="www.thepopcornfactory.com";domainNamesMap["FD4_SYCR_WW42"]="corporate.stockyards.com";domainNamesMap["FD4_PZU_T_WW42"]="akamai.personalizationuniverse.com";domainNamesMap["FD4_FMC_WW42"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW44"]="www.fanniemay.com";domainNamesMap["FD4_TPF_TSTG_WW42"]="tstage.www.thepopcornfactory.com";domainNamesMap["FD4_18F_T_WW42"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_MV_T_WW42"]="t5.www.fanniemay.com";domainNamesMap["FD4_18F_T_WW44"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_T_WW42"]="www.fanniemay.com";domainNamesMap["FD4_FMC_T_WW44"]="www.fanniemay.com";domainNamesMap["FD4_18B_P_WW42"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW44"]="m.www.1800baskets.com";domainNamesMap["FD4_FB_MV_T_WW42"]="t.www.fruitbouquets.com";domainNamesMap["FD4_18F_TMISC_WW42"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_WW51"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW53"]="www.fanniemay.com";domainNamesMap["FD4_FMC_WW54"]="www.fanniemay.com";domainNamesMap["FD4_18F_MLCL_WW42"]="mlocal.www.1800flowers.com";domainNamesMap["FD4_18F_T_WW51"]="t.www.1800flowers.com";domainNamesMap["FD4_18F_T_WW53"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_T_WW51"]="www.fanniemay.com";domainNamesMap["FD4_18F_T_WW54"]="t.www.1800flowers.com";domainNamesMap["FD4_FMC_MV_TS_WW42"]="tstage5.www.fanniemay.com";domainNamesMap["FD4_18F_T_WW55"]="t.www.1800flowers.com";domainNamesMap["CLASSIC_T_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_18B_MV_TS_WW42"]="tstage.www.1800baskets.com";domainNamesMap["FD4_FMC_T_WW53"]="www.fanniemay.com";domainNamesMap["FD4_FMC_T_WW54"]="www.fanniemay.com";domainNamesMap["FD4_18B_P_WW51"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW53"]="m.www.1800baskets.com";domainNamesMap["FD4_PZU_WW42"]="www.personalizationuniverse.com";domainNamesMap["FD4_18B_P_WW54"]="m.www.1800baskets.com";domainNamesMap["FD4_18B_P_WW55"]="m.www.1800baskets.com";domainNamesMap["FD4_18BCR_WW42"]="corporate.1800baskets.com";domainNamesMap["FD4_WLF_P_WW42"]="www.wolfermans.com";domainNamesMap["FD4_HL_NC"]="www3.harrylondon.com";domainNamesMap["FD4_HL_MV_MS_WW42"]="mstage3.www3.harrylondon.com";domainNamesMap["FD4_CLB_MV_ML_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_CCO_WW42"]="www.cheryls.com";domainNamesMap["FD4_SY_T_WW42"]="www.stockyards.com";domainNamesMap["FD4_CCO_WW44"]="www.cheryls.com";domainNamesMap["FD4_CLB_P_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_18B_NC"]="www.1800baskets.com";domainNamesMap["FD4_FB_MV_TS_WW42"]="tstage.www.fruitbouquets.com";domainNamesMap["FD4_WLF_P_WW51"]="www.wolfermans.com";domainNamesMap["FD4_WLFCR_WW42"]="corporate.wolfermans.com";domainNamesMap["FD4_HL_MV_T_WW42"]="t3.www3.harrylondon.com";domainNamesMap["FD4_CLB_MV_T_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_CCO_TSTG_WW42"]="tstage.www.cheryls.com";domainNamesMap["FD4_CCO_WW51"]="www.cheryls.com";domainNamesMap["FD4_CCO_WW53"]="www.cheryls.com";domainNamesMap["FD4_HD_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_CCO_WW54"]="www.cheryls.com";domainNamesMap["FD4_18F_MSTG_WW42"]="mstage.www.1800flowers.com";domainNamesMap["FD4_PZUB_WW42"]="business.personalizationuniverse.com";domainNamesMap["FD4_18B_TSTG_WW42"]="tstage.www.1800baskets.com";domainNamesMap["FD4_NPI_WW42"]="www.napcoimports.com";domainNamesMap["FD4_HD_P_MVWB_WW42"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW42"]="www.cheryls.com";domainNamesMap["FD4_HD_P_MVWB_WW44"]="m.www.harryanddavid.com";domainNamesMap["FD4_HD_P_MVWB_WW45"]="m.www.harryanddavid.com";domainNamesMap["FD4_WLFB_WW42"]="business.wolfermans.com";domainNamesMap["FD4_CCO_WCS_M_WW44"]="www.cheryls.com";domainNamesMap["FD4_CCO_WCS_M_WW45"]="www.cheryls.com";domainNamesMap["CLASSIC_WLF"]="origin.wolfermans.com";domainNamesMap["FD4_TPF_MV_TS_WW42"]="tstage6.www.thepopcornfactory.com";domainNamesMap["FD4_HD_P_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_FMCB_WW42"]="business.fanniemay.com";domainNamesMap["FD4_18F_MV_ML_WW42"]="mlocal.www3.1800flowers.com";domainNamesMap["FD4_18B_T_WW42"]="www.1800baskets.com";domainNamesMap["FD4_18B_T_WW44"]="www.1800baskets.com";domainNamesMap["FD4_HD_P_MVWB_WW51"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW51"]="www.cheryls.com";domainNamesMap["FD4_FMC_TSTG_WW42"]="tstage.www.fanniemay.com";domainNamesMap["FD4_HD_P_MVWB_WW54"]="m.www.harryanddavid.com";domainNamesMap["FD4_HD_P_MVWB_WW55"]="m.www.harryanddavid.com";domainNamesMap["FD4_CCO_WCS_M_WW54"]="www.cheryls.com";domainNamesMap["FD4_CCO_WCS_M_WW55"]="www.cheryls.com";domainNamesMap["FD4_HD_P_WW51"]="www.harryanddavid.com";domainNamesMap["FD4_CCO_P_WW41"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW42"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW44"]="m.www.cheryls.com";domainNamesMap["FD4_HDCR_WW42"]="corporate.harryanddavid.com";domainNamesMap["FD4_FMC_TMISC_WW42"]="www.fanniemay.com";domainNamesMap["FD4_18B_TMISC_WW42"]="www.1800baskets.com";domainNamesMap["FD4_CLB_MV_MS_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_FB_TSTG_WW42"]="tstage.www.fruitbouquets.com";domainNamesMap["FD4_18B_T_WW51"]="www.1800baskets.com";domainNamesMap["FD4_18B_T_WW53"]="www.1800baskets.com";domainNamesMap["FD4_TPF_MLCL_WW42"]="mlocal.www.thepopcornfactory.com";domainNamesMap["FD4_18B_T_WW54"]="www.1800baskets.com";domainNamesMap["FD4_FB_WW42"]="www.fruitbouquets.com";domainNamesMap["CLASSIC_P_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_FB_WW44"]="www.fruitbouquets.com";domainNamesMap["FD4_WLF_T_WW42"]="www.wolfermans.com";domainNamesMap["FD4_CCO_MV_TS_WW42"]="tstage4.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW51"]="m.www.cheryls.com";domainNamesMap["FD1_18F_P"]="www1.1800flowers.com";domainNamesMap["FD4_CCO_P_WW52"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW53"]="m.www.cheryls.com";domainNamesMap["FD4_CCO_P_WW54"]="m.www.cheryls.com";domainNamesMap["FD4_FB_P_WW42"]="m.www.fruitbouquets.com";domainNamesMap["FD4_CCO_P_WW55"]="m.www.cheryls.com";domainNamesMap["FD4_CCOCR_WW42"]="corporate.cheryls.com";domainNamesMap["FD1_18F_T"]="www1.1800flowers.com";domainNamesMap["FD4_18F_TMV_WW42"]="t.www.1800flowers.com";domainNamesMap["FD4_FB_P_WW44"]="m.www.fruitbouquets.com";domainNamesMap["FD4_18B_WW42"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW42"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18B_WW44"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW44"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18F_PWA_WW45"]="pwa.www.1800flowers.com";domainNamesMap["FD4_FB_WW51"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_TMISC_WW42"]="www.fruitbouquets.com";domainNamesMap["FD4_CLB_T_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_FB_WW53"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_WW54"]="www.fruitbouquets.com";domainNamesMap["FD1_FB_P"]="m.www.1800flowers.com";domainNamesMap["FD1_18F_UBU"]="ww11.1800flowers.com";domainNamesMap["FD4_FB_P_WW51"]="m.www.fruitbouquets.com";domainNamesMap["FD4_TM_T_WW42"]="www.goodsey.com";domainNamesMap["FD4_FB_P_WW53"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FB_P_WW54"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FB_P_WW55"]="m.www.fruitbouquets.com";domainNamesMap["FD4_FBCR_WW42"]="corporate.fruitbouquets.com";domainNamesMap["FD4_18B_WW51"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW51"]="pwa.www.1800flowers.com";domainNamesMap["FD4_18F_MV_MS_WW42"]="mstage3.www3.1800flowers.com";domainNamesMap["FD4_TPF_P_WW41"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18F_TMV_WW55"]="t.www.1800flowers.com";domainNamesMap["FD4_TPF_P_WW42"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18B_WW53"]="www.1800baskets.com";domainNamesMap["FD4_18B_WW54"]="www.1800baskets.com";domainNamesMap["FD4_18F_PWA_WW54"]="pwa.www.1800flowers.com";domainNamesMap["FD4_TPF_P_WW44"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_18F_PWA_WW55"]="pwa.www.1800flowers.com";domainNamesMap["FD4_CCO_NC"]="www.cheryls.com";domainNamesMap["FD4_18FB_WW42"]="business.1800flowers.com";domainNamesMap["FD4_18F_MV_T_WW42"]="t3.www3.1800flowers.com";domainNamesMap["FD4_HL_TSTG_WW42"]="tstage.www3.harrylondon.com";domainNamesMap["FD4_TPF_TMISC_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPFB_WW42"]="business.thepopcornfactory.com";domainNamesMap["FD4_CLB_TSTG_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HD_T_WW42"]="www.harryanddavid.com";domainNamesMap["FD4_TPF_MSTG_WW42"]="mstage.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW51"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW52"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW53"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW54"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_P_WW55"]="m.www.thepopcornfactory.com";domainNamesMap["FD4_TPFCR_WW42"]="corporate.thepopcornfactory.com";domainNamesMap["FD4_FMC_MV_ML_WW42"]="mlocal.www.fanniemay.com";domainNamesMap["FD4_18B_MV_ML_WW42"]="mlocal.www.1800baskets.com";domainNamesMap["FD4_HL_MV_TS_WW42"]="tstage3.www3.harrylondon.com";domainNamesMap["FD4_TM_WW42"]="www.goodsey.com";domainNamesMap["FD4_CCO_MLCL_WW42"]="mlocal.www.cheryls.com";domainNamesMap["FD4_CCO_T_WW42"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW44"]="www.cheryls.com";domainNamesMap["FD4_TPF_MV_M_WW42"]="m6.www.thepopcornfactory.com";domainNamesMap["FD4_18B_MLCL_WW42"]="mlocal.www.1800baskets.com";domainNamesMap["FD4_CCO_TMISC_WW42"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW51"]="www.cheryls.com";domainNamesMap["FD4_FB_MV_ML_WW42"]="mlocal.www.fruitbouquets.com";domainNamesMap["FD4_CCO_T_WW53"]="www.cheryls.com";domainNamesMap["FD4_CCO_T_WW54"]="www.cheryls.com";domainNamesMap["FD4_FB_T_WW42"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW44"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_WW42"]="www.1800flowers.com";domainNamesMap["FD4_FMC_MLCL_WW42"]="mlocal.www.fanniemay.com";domainNamesMap["FD4_18F_WW44"]="www.1800flowers.com";domainNamesMap["FD4_NPI_T_WW42"]="www.napcoimports.com";domainNamesMap["FD4_SY_WW42"]="www.stockyards.com";domainNamesMap["FD4_HD_NC"]="www.harryanddavid.com";domainNamesMap["CLASSIC_P_WLF"]="origin.wolfermans.com";domainNamesMap["CLASSIC_T_WLF"]="origin.wolfermans.com";domainNamesMap["FD4_FB_MLCL_WW42"]="mlocal.www.fruitbouquets.com";domainNamesMap["FD4_FMC_NC"]="www.fanniemay.com";domainNamesMap["FD4_FB_T_WW51"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW53"]="www.fruitbouquets.com";domainNamesMap["FD4_FB_T_WW54"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_WW51"]="www.1800flowers.com";domainNamesMap["FD4_TPF_MV_ML_WW42"]="mlocal.www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_18F_WW53"]="www.1800flowers.com";domainNamesMap["FD4_18F_WW54"]="www.1800flowers.com";domainNamesMap["FD4_TPF_T_WW44"]="www.thepopcornfactory.com";domainNamesMap["FD4_CCO_MSTG_WW42"]="mstage.www.cheryls.com";domainNamesMap["FD4_FMC_MV_MS_WW42"]="mstage5.www.fanniemay.com";domainNamesMap["FD4_18B_MV_MS_WW42"]="mstage.www.1800baskets.com";domainNamesMap["FD4_HL_WW42"]="www3.harrylondon.com";domainNamesMap["FD4_WLF_WW42"]="www.wolfermans.com";domainNamesMap["FD4_18B_MSTG_WW42"]="mstage.www.1800baskets.com";domainNamesMap["FD4_CLB_MV_TS_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_HL_P_WW42"]="m.www.harrylondon.com";domainNamesMap["FD4_TPF_MV_T_WW42"]="www.thepopcornfactory.com";domainNamesMap["FD4_18F_TSTG_WW42"]="tstage.www.1800flowers.com";domainNamesMap["FD4_TPF_T_WW51"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW53"]="www.thepopcornfactory.com";domainNamesMap["FD4_TPF_T_WW54"]="www.thepopcornfactory.com";domainNamesMap["FD4_PZU_P_WW42"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_WLF_NC"]="www.wolfermans.com";domainNamesMap["FD4_PZU_P_WW44"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_CCO_MV_M_WW42"]="m4.www.cheryls.com";domainNamesMap["FD4_CLB_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_PZU_P_WW45"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_FB_NC"]="www.fruitbouquets.com";domainNamesMap["FD4_18F_P_WW42"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_MSTG_WW42"]="mstage.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW41"]="m.www.fanniemay.com";domainNamesMap["FD4_18F_P_WW44"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_P_WW42"]="m.www.fanniemay.com";domainNamesMap["FD4_FB_MV_MS_WW42"]="mstage.www.fruitbouquets.com";domainNamesMap["FD4_FMC_P_WW44"]="m.www.fanniemay.com";domainNamesMap["FD4_FBB_WW42"]="business.fruitbouquets.com";domainNamesMap["FD4_CCO_MV_ML_WW42"]="mlocal.www.cheryls.com";domainNamesMap["FD4_HLCR_WW42"]="corporate.harrylondon.com";domainNamesMap["FD4_HL_MLCL_WW42"]="mlocal.www3.harrylondon.com";domainNamesMap["FD4_SY_NC"]="www.stockyards.com";domainNamesMap["FD4_CLB_MLCL_WW42"]="corporate.ww42.celebrations.com";domainNamesMap["FD4_PZU_P_WW51"]="m.www.personalizationuniverse.com";domainNamesMap["CLASSIC_HD"]="origin.harryanddavid.com";domainNamesMap["FD4_FB_MSTG_WW42"]="mstage.www.fruitbouquets.com";domainNamesMap["FD4_PZU_P_WW54"]="m.www.personalizationuniverse.com";domainNamesMap["FD4_PZUCR_WW42"]="corporate.personalizationuniverse.com";domainNamesMap["FD4_PZU_P_WW55"]="m.www.personalizationuniverse.com";domainNamesMap["FD1_18B"]="www1.1800baskets.com";domainNamesMap["FD4_18F_MV_TS_WW42"]="tstage3.www3.1800flowers.com";domainNamesMap["FD4_TPF_NC"]="www.thepopcornfactory.com";domainNamesMap["FD1_18F"]="www1.1800flowers.com";domainNamesMap["FD4_18F_P_WW51"]="m.www.1800flowers.com";domainNamesMap["FD4_18F_P_WW53"]="m.www.1800flowers.com";domainNamesMap["FD4_FMC_P_WW51"]="m.www.fanniemay.com";domainNamesMap["FD4_18F_P_WW54"]="m.www.1800flowers.com";domainNamesMap["FD4_18F_P_WW55"]="m.www.1800flowers.com";domainNamesMap["FD4_18FCR_WW42"]="corporate.1800flowers.com";domainNamesMap["FD4_FMC_P_WW52"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW53"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_MV_M_WW42"]="m5.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW54"]="m.www.fanniemay.com";domainNamesMap["FD4_FMC_P_WW55"]="m.www.fanniemay.com";domainNamesMap["FD4_FMCCR_WW42"]="corporate.fanniemay.com";domainNamesMap["FD4_TPF_MV_MS_WW42"]="mstage6.www.thepopcornfactory.com";function getCookie(e){var n,o,i,t=document.cookie.split(";");for(n=0;n<t.length;n++)if(o=t[n].substr(0,t[n].indexOf("=")),i=t[n].substr(t[n].indexOf("=")+1),o=o.replace(/^\s+|\s+$/g,""),o==e)return unescape(i)}
+		    function setMobileURL(){
+		        var o=window.location.href,e=window.location.host,i="",n=getCookie("destination");
+		        if (("undefined"!=typeof n) && (n in domainNamesMap))
+		        {
+		            (i=domainNamesMap[n], e!=i && (o=o.replace(e,i), window.location.href=o))
+		        } else {}
+		    }
+		
+
+				var mobileDomain = 'm.www.cheryls.com';
+				var subDomain    = 'www';
+				var mobileStartDomain = 'm.';				
+				setMobileURL();
+			
+
+			var seoUrlForHomeColProdPage = '';
+			setUpSEOUrlForHomeColProdPage(seoUrlForHomeColProdPage);
+		
+
+	djConfig = { isDebug: false, parseWidgets:false, searchIds:[]};
+	
+
+if (self === top) {
+   var antiClickjack = document.getElementById("antiClickjack");
+   if(null != antiClickjack){
+   	antiClickjack.parentNode.removeChild(antiClickjack);
+   }
+}else{
+	top.location = self.location;
+}
+
+
+	var partnerCookie = getCookie("ADV_ATTR_COOKIE");
+	if(partnerCookie == 'undefined' || partnerCookie == null || partnerCookie == "" || partnerCookie == "defaultPartner")
+	{
+    	var partnerImage = getCookie("partnerbanner");
+    	var bannerCookie = getCookie("FuneralHomeBannerContext");
+	    if(bannerCookie == 'true')
+	    {
+	    	$("div#FuneralBanner").show();
+	    }
+		else if(partnerImage != undefined && partnerImage != null && partnerImage != "")
+		{
+			$("div#eyebrow img").attr("src","//cdn2.1800flowers.com/wcsstore/Flowers/images/banners/"+partnerImage+"");
+			$("div#eyebrow").show();
+		}
+	}
+
+
+    
+     
+     var utag_data = {
+	"brand_current": "CCO",
+	"brand_entering": ["1012"],
+	"cellid": "WW42",
+	"country_code": "US",
+	"page_language": "en",
+	"page_name": "TopCategory",
+	"page_type": "topCategory"
+};
+     
+     
+
+
+    var showSignInWidgetForMs = 0;
+    var showNewSignInWidget = 'N';
+    try {
+        showNewSignInWidget = 'N';
+        showSignInWidgetForMs = '5000';
+        showSignInWidgetForMs = parseInt(showSignInWidgetForMs);
+        if( ! showNewSignInWidget || ( showNewSignInWidget != 'Y' && showNewSignInWidget != 'Y' )){
+	        showSignInWidgetForMs = 0;
+	    }
+	} catch(err) {
+	   console.log('Exceptpion occured while showing new signin widget:'+err);
+	}
+
+
+             try{        
+                  if (document.addEventListener)
+                    document.addEventListener("DOMContentLoaded", function() {
+                        if (/iPad/i.test(navigator.userAgent))
+                            $("body").addClass("ipad")
+                    }, false);        
+                }
+                catch (e){} 
+    
+ 
+    MainJS.HomePageURL = 'TopCategoriesDisplay?storeId=10202&amp;catalogId=11102&amp;langId=-1';
+    MainJS.pageIdentifier = '';
+    MainJS.FDFaceBookLogon = 'FDFaceBookLogon?langId=-1&amp;storeId=10202&amp;catalogId=11102';
+    MainJS.isMDMAuthEnabled = 'AB';
+    MainJS.isSocialABTestingEnabled = 'N';
+
+ 
+       decodeSearchWord('Enter Keyword or Product Number');
+    
+ 
+                googleSignInDataJSON = new Object();
+                googleSignInDataJSON.googleSigInEnabled = '';
+                googleSignInDataJSON.gplusClientId = '420182500441-m0t5ei6no0tp9javq3vkjp9lgcvuj28p.apps.googleusercontent.com';
+                googleSignInDataJSON.gplusstoreId = '10202';
+                googleSignInDataJSON.gpluscatId = '11102';
+                window.trackOrderSwitch = 'y';
+                window.switchForFBConnect = 'N';
+                window.newSignInWidget = 'N';
+                window.authDebug = 'N';                
+                showAndHideGlobalHeaderEspot();
+                window.mmoLinkEnabled = 'N'; 
+            
+
+                if( ! RememberMe.isSilentAuthSuccessful) {
+                    if(RememberMe.isRememberMeEnabled) {
+                    
+	                    RememberMe.contactIdCookieVal = getCookie("cont.id");
+	                    
+	                    if(RememberMe.isRememberedUser()){
+	                       RememberMe.executeOnThisWindow = true;
+	                    }
+	                    
+	                } else {
+	                    console.log("Remember-Me appears to be disabled");
+	                }
+                } else {
+                    console.log("Remember-Me disabled as silent-auth logged in the user");
+                }
+            
+
+  var GHcreateAccount = "/webapp/wcs/stores/servlet/AjaxUserRegistrationForm?langId=-1&storeId="+storeId+"&catalogId="+catalogId+"&new=Y";
+  var GHtrackOrder = "/webapp/wcs/stores/servlet/OrderTrackingSearch?userAction=OrderTrackingByEmail&catalogId="+catalogId+"&langId=-1&storeId="+storeId+"";
+  
+dropdown('nav', 'hover', 0);
+
+window.espotBrand = "CCO_";
+
+
+jQuery(document).ready(function() {
+    jQuery('#mycarousel2').jcarousel();
+});
+
+
+			setUpNaturalSearchCookie();
+		
+
+			var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
+			eventer = window[eventMethod],
+			messageEvent = "attachEvent" == eventMethod ? "onmessage" : "message";
+			eventer(messageEvent, function(t) {
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $( "#mm_sync_back_ground" ).attr('title','MediaMath tag frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $( ".ACS_" ).attr('title','Foresee customer experience frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $('[id^=oauth2relay]').attr('title','Google authorization frame'))
+			"undefined" != typeof t.data && (t.data, "string" == typeof t.data && $('[id^=xpcpeer]').attr('title','Google trusted stores frame'))
+		}, !1);
+		

@@ -1,0 +1,207 @@
+
+	var mi_version         = '7.4.2';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-70033830-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-70033830-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'linkid', 'linkid.js');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+
+
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"[]","home_url":"https:\/\/www.havanahouse.co.uk","hash_tracking":"false"};
+/* ]]> */
+
+
+    WebFontConfig = {
+      google: { families: [ "Lato:regular,700","Lato:regular,400","Lato:regular,700","Dancing+Script", ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); 
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */
+var yith_wcwl_l10n = {"ajax_url":"\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/www.havanahouse.co.uk\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.havanahouse.co.uk\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View basket","cart_url":"https:\/\/www.havanahouse.co.uk\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_e4f05bae7214cb6ccf88177fa23b51d0","fragment_name":"wc_fragments_e4f05bae7214cb6ccf88177fa23b51d0"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var newsletter = {"messages":{"email_error":"The email is not correct","name_error":"The name is not correct","surname_error":"The last name is not correct","privacy_error":"You must accept the privacy statement"},"profile_max":"20"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var pum_vars = {"version":"1.8.3","ajaxurl":"https:\/\/www.havanahouse.co.uk\/wp-admin\/admin-ajax.php","restapi":"https:\/\/www.havanahouse.co.uk\/wp-json\/pum\/v1","rest_nonce":null,"default_theme":"46070","debug_mode":"","disable_tracking":"","home_url":"\/","message_position":"top","core_sub_forms_enabled":"1","popups":[]};
+var ajaxurl = "https:\/\/www.havanahouse.co.uk\/wp-admin\/admin-ajax.php";
+var pum_debug_vars = {"debug_mode_enabled":"Popup Maker: Debug Mode Enabled","debug_started_at":"Debug started at:","debug_more_info":"For more information on how to use this information visit https:\/\/docs.wppopupmaker.com\/?utm_medium=js-debug-info&utm_campaign=ContextualHelp&utm_source=browser-console&utm_content=more-info","global_info":"Global Information","localized_vars":"Localized variables","popups_initializing":"Popups Initializing","popups_initialized":"Popups Initialized","single_popup_label":"Popup: #","theme_id":"Theme ID: ","label_method_call":"Method Call:","label_method_args":"Method Arguments:","label_popup_settings":"Settings","label_triggers":"Triggers","label_cookies":"Cookies","label_delay":"Delay:","label_conditions":"Conditions","label_cookie":"Cookie:","label_settings":"Settings:","label_selector":"Selector:","label_mobile_disabled":"Mobile Disabled:","label_tablet_disabled":"Tablet Disabled:","label_event":"Event: %s","triggers":{"click_open":"Click Open","auto_open":"Time Delay \/ Auto Open"},"cookies":{"on_popup_close":"On Popup Close","on_popup_open":"On Popup Open","pum_sub_form_success":"Subscription Form: Successful","pum_sub_form_already_subscribed":"Subscription Form: Already Subscribed","manual":"Manual JavaScript","cf7_form_success":"Contact Form 7 Success"}};
+var pum_sub_vars = {"ajaxurl":"https:\/\/www.havanahouse.co.uk\/wp-admin\/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-46076":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"auto_open","settings":{"cookie_name":["pum-46076"],"delay":"500"}}],"cookies":[{"event":"on_popup_close","settings":{"name":"pum-46076","key":"","session":false,"time":"1 day","path":"1"}}],"theme_id":"46070","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"none","animation_speed":"350","animation_origin":"center top","location":"center","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","theme_slug":"default-theme","id":46076,"slug":"age-verification"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var flatsomeVars = {"ajaxurl":"https:\/\/www.havanahouse.co.uk\/wp-admin\/admin-ajax.php","rtl":"","sticky_height":"70"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var megamenu = {"timeout":"300","interval":"100"};
+/* ]]> */
+
+
+var metaslider_46088 = function($) {$('#metaslider_46088').addClass('flexslider');
+            $('#metaslider_46088').flexslider({ 
+                slideshowSpeed:3200,
+                animation:"slide",
+                controlNav:false,
+                directionNav:true,
+                pauseOnHover:false,
+                direction:"horizontal",
+                reverse:false,
+                animationSpeed:600,
+                prevText:"Previous",
+                nextText:"Next",
+                fadeFirstSlide:true,
+                easing:"linear",
+                slideshow:true
+            });
+            $(document).trigger('metaslider/initialized', '#metaslider_46088');
+        };
+        var timer_metaslider_46088 = function() {
+            var slider = !window.jQuery ? window.setTimeout(timer_metaslider_46088, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_46088, 1) : metaslider_46088(window.jQuery);
+        };
+        timer_metaslider_46088();
+
+
+/* <![CDATA[ */
+var _zxcvbnSettings = {"src":"https:\/\/www.havanahouse.co.uk\/wp-includes\/js\/zxcvbn.min.js"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var pwsL10n = {"unknown":"Password strength unknown","short":"Very weak","bad":"Weak","good":"Medium","strong":"Strong","mismatch":"Mismatch"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_password_strength_meter_params = {"min_password_strength":"3","i18n_password_error":"Please enter a stronger password.","i18n_password_hint":"Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ & )."};
+/* ]]> */
+
+
+	(function () {
+	var _tsid = 'XB09C6458695CD0A331E13DB0A5A80231'; 
+	_tsConfig = {
+		'yOffset': '0', /* offset from page bottom */
+		'variant': 'reviews', /* reviews, default, custom, custom_reviews */
+		'customElementId': '', /* required for variants custom and custom_reviews */
+		'trustcardDirection': '', /* for custom variants: topRight, topLeft, bottomRight, bottomLeft */ 'customBadgeWidth': '', /* for custom variants: 40 - 90 (in pixels) */
+		'customBadgeHeight': '', /* for custom variants: 40 - 90 (in pixels) */
+		'disableResponsive': 'false', /* deactivate responsive behaviour */
+		'disableTrustbadge': 'false', /* deactivate trustbadge */
+		'trustCardTrigger': 'mouseenter', /* set to 'click' if you want the trustcard to be opened on click instead */ 'customCheckoutElementId': ''/* required for custom trustcard */
+	};
+	var _ts = document.createElement('script');
+	_ts.type = 'text/javascript';
+	_ts.charset = 'utf-8';
+	_ts.async = true;
+	_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js'; var __ts = document.getElementsByTagName('script')[0]; __ts.parentNode.insertBefore(_ts, __ts);
+})();

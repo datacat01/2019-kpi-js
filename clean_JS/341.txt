@@ -1,0 +1,123 @@
+try{Typekit.load({ async: true });}catch(e){}
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.rods.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+  ;if(typeof ROIStorage === 'undefined') {
+    (function(d,b,c,f){d[b]={};d[b].windowName=d.name;d[b].GoogleAnalyticsObject=c;d[b].q=[];d[c]=function(){d[b].q.push(arguments)};d[c].q=d[c].q||[];d[b].roiq=[];d[b].analyticsJsNotLoaded=true;d[c].q.push([function(){d[b].realGa=d[c];d[b].analyticsJsNotLoaded=false;d[c]=function(){if(typeof arguments[0]==="function"){d[b].realGa(arguments)}else{d[b].q.push(arguments)}};d[b].roiq.push=function(){d[b].realGa.apply(d,arguments)};for(f=0;f<d[b].roiq.length;f+=1){d[b].realGa.call(d,d[b].roiq[f])}}])})(window,"ROIStorage","ga");ROIStorage.gaq=ROIStorage.gaq||[];window._gaq={push:function(){var a;for(a=0;a<arguments.length;a++){ROIStorage.gaq.push(arguments[a])}}};var _gaq=window._gaq;ROIStorage.gaq=ROIStorage.gaq||[];window._gat={trackingObjects:{},_createTracker:function(a,b){return new _gat.Tracker(a,b)},_getTracker:function(a){return _gat._createTracker(a)},_getTrackerByName:function(a){var a=a||"";if(_gat.trackingObjects.hasOwnProperty(a)){return _gat.trackingObjects[a]}return _gat._createTracker("UA-XXXXX-X",a)},_anonymizeIp:function(){ROIStorage.gaq.push("_gat._anonymizeIp")},_forceSSL:function(){ROIStorage.gaq.push("_gat._forceSSL")},_getPlugin:function(){ROIStorage.gaq.push("_gat._getPlugin")},Tracker:function(a,g){var c,h,e=["_addDevId","_addEventListener","_addIgnoredOrganic","_addIgnoredRef","_addItem","_addOrganic","_addTrans","_clearIgnoredOrganic","_clearIgnoredRef","_clearOrganic","_clearTrans","_clearXKey","_clearXValue","_cookiePathCopy","_createEventTracker","_createXObj","_deleteCustomVar","_get","_getAccount","_getClientInfo","_getDetectFlash","_getDetectTitle","_getLocalGifPath","_getName","_getPlugin","_getServiceMode","_getVersion","_getVisitorCustomVar","_getXKey","_getXValue","_initData","_linkByPost","_removeEventListener","_sendXEvent","_set","_setAccount","_setAllowAnchor","_setAllowHash","_setAllowLinker","_setAutoTrackOutbound","_setCampCIdKey","_setCampContentKey","_setCampIdKey","_setCampMediumKey","_setCampNOKey","_setCampNameKey","_setCampSourceKey","_setCampTermKey","_setCampaignCookieTimeout","_setCampaignTrack","_setClientInfo","_setCookiePath","_setCookiePersistence","_setCookieTimeout","_setCustomVar","_setDetectFlash","_setDetectTitle","_setDomainName","_setHrefExamineLimit","_setLocalGifPath","_setLocalRemoteServerMode","_setLocalServerMode","_setMaxCustomVariables","_setNamespace","_setPageGroup","_setReferrerOverride","_setRemoteServerMode","_setSampleRate","_setSessionCookieTimeout","_setSessionTimeout","_setSiteSpeedSampleRate","_setTrackOutboundSubdomains","_setTrans","_setTransactionDelim","_setVar","_setVisitorCookieTimeout","_setXKey","_setXValue","_trackEvent","_trackPageLoadTime","_trackPageview","_trackSocial","_trackTiming","_trackTrans","_visitCode"];var b=g||"";var f=a||"UA-XXXXX-X";function d(i){return function(){if(b){i=b+"."+i}var j=Array.prototype.slice.call(arguments,0);j.unshift(i);ROIStorage.gaq.push(j)}}for(c=0;c<e.length;c++){h=e[c];this[h]=d(h)}this["_getLinkerUrl"]=function(i){return i};this["_link"]=function(i){ROIStorage.gaq.push(function(){location.href=i})};_gat.trackingObjects[b]=this}};var _gat=window._gat;
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://eafeba9e1e847f1d5df8-91daa6918ef2760b0505bd3f618bccb3.ssl.cf2.rackcdn.com/gate.js' : 'http://93372fdca6e47094ab9d-91daa6918ef2760b0505bd3f618bccb3.r3.cf2.rackcdn.com/gate.js');
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+  }
+
+Mibew.ChatPopup.init({"id":"5a303243b2178992","url":"https:\/\/chat2.rods.com\/chat?locale=en","preferIFrame":true,"modSecurity":false,"forceSecure":false,"width":640,"height":480,"resizable":true,"styleLoader":"https:\/\/chat2.rods.com\/chat\/style\/popup"});
+Mibew.Widget.init({"inviteStyle":"https:\/\/chat2.rods.com\/styles\/invitations\/default\/invite.css","requestTimeout":10000,"requestURL":"https:\/\/chat2.rods.com\/widget","locale":"en","visitorCookieName":"MIBEW_VisitorID"})
+
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        
+_gaq.push(['_setAccount', 'UA-15017158-1']);
+
+_gaq.push(['_trackPageview']);
+        
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        //]]>
+    
+
+var donations = new Donations(
+     3,
+    'https://www.rods.com/checkout/cart/',
+    'https://www.rods.com/donations/cart/',
+    'https://www.rods.com/donations/cart/remove/',
+    'https://www.rods.com/donations/cart/roundamount/',
+    0);
+
+
+                    //<![CDATA[
+                    // @TODO: Define a way to define settings for the current page and set this initialization script.
+                    var searchForm = new Varien.searchForm('search-form', 'search', '');
+
+                    //]]>
+                
+
+//<![CDATA[
+	var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: "home",
+ecomm_totalvalue: ''};
+
+
+
+function fbAddToCart() {
+
+}
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070975282;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+if (window._GUARANTEE && _GUARANTEE.Loaded) {
+  _GUARANTEE.Hash = "V6E3Ah1OporYG6jRZYYzYJJp38cLiYqBhC4aNr64JVEZeaEIWyjSzjpM2ZeJoOyAMPAt7xaqyExRdHSsoHubjw%3D%3D";
+  _GUARANTEE.WriteSeal();
+}
+
+
+    Listrak_Remarketing = new function() {
+        this.updateCart = function() {
+            new Ajax.Request('https://www.rods.com/remarketing/ajax/cart/');        };
+
+        this.track = function() {
+            new Ajax.Request('https://www.rods.com/remarketing/ajax/track/');        };
+    };
+
+
+    (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+    else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+    if (e.propertyName == 'ltkAsyncProperty' && typeof _ltk !== 'undefined'){d();}});}})(function() {
+_ltk.SCA.CaptureEmail('newsletter');
+        _ltk.SCA.CaptureEmail('ltkmodal-email');
+        _ltk.SCA.CaptureEmail('email');
+        _ltk.Activity.AddPageBrowse(location.href);
+        _ltk.Activity.Submit();_ltk.Recommender.AddField("Onsale");
+_ltk.Recommender.AddField("SalePrice");
+_ltk.Recommender.Render();
+    });
+
+
+    (function (d, s, id, url) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'https://cdn.listrakbi.com/scripts/script.js?m=YqhsU4IayjmQ&v=1');
+
+
+    donations.initPopup();
+    var donationForm = new VarienForm('donation_add_form');
+

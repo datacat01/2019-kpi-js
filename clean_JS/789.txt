@@ -1,0 +1,237 @@
+ 
+ <!-- 
+ (new Image).src="https://www.entirelypets.com/cgi-bin/refsd?cd=secure.entirelypets.com&e=http://www.entirelypets.com/&h=www.entirelypets.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+  var monitus = monitus || {};
+  monitus.callback = function(trigger) {
+    switch (trigger) {
+      case "tracker_before_tracking":
+        ga('require', 'displayfeatures');
+        break;
+    }
+  };
+  monitus.id = 1248;
+  monitus.ga_mode = 2;
+
+
+  var _a1as = _a1as || [];
+  _a1as.push(["init","72517"]);
+
+
+  (function() {
+      var a1s = document.createElement('script'); a1s.type = 'text/javascript'; a1s.async = true;
+      a1s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'tr-1.agilone.com/tr-as.js';
+      var a1ss = document.getElementsByTagName('script')[0]; a1ss.parentNode.insertBefore(a1s, a1ss);
+   })();
+
+
+
+	var cstCookieEmail = "";
+var editorCheck = document.domain;
+	if (readJCookie("pdUserInfo")) {
+		var pdUserInfoRaw = readJCookie("pdUserInfo");
+		var pdUserInfoExists = decodeURI(pdUserInfoRaw);
+		
+		var pdBananaSplits = pdUserInfoExists.split("|");
+		
+		for (var i = 0; i < pdBananaSplits.length; i++) {
+			if (pdBananaSplits[i].indexOf("@") > 0 && pdBananaSplits[i].indexOf(".") > pdBananaSplits[i].indexOf("@")) {
+				cstCookieEmail = pdBananaSplits[i];
+			}
+		}
+	} 
+	if (readJCookie("pdRememberMe")) {
+		var pdRememberMeRaw = readJCookie("pdRememberMe");
+		var pdRememberMeExists = decodeURI(pdRememberMeRaw);
+		var pdBananaSplitsRemembers = pdRememberMeExists.split("|");
+		
+		for (var i = 0; i < pdBananaSplitsRemembers.length; i++) {
+			if (pdBananaSplitsRemembers[i].indexOf("@") > 0 && pdBananaSplitsRemembers[i].indexOf(".") > pdBananaSplitsRemembers[i].indexOf("@")) {
+				cstCookieEmail = pdBananaSplitsRemembers[i];
+			}
+		}
+	} 
+	if (readJCookie("epnewsletter")) {
+		var newslettersubscriber = readJCookie("epnewsletter");
+		cstCookieEmail = newslettersubscriber;
+	}
+if(cstCookieEmail != "") {
+	_a1as.push(["setvar","email",cstCookieEmail]);
+} else if(!readJCookie("nopopforyou") && (editorCheck == "www.entirelypets.com" || editorCheck == "entirelypets.com")) {
+jQuery(window).load(function(){
+	var bodysize = jQuery(document).height();
+	var browserwindowsize = jQuery(window).height();
+	var windowsize = bodysize - browserwindowsize;
+	jQuery(window).scroll(function() {
+		var windowposition = jQuery(window).scrollTop();
+		var scrollPercent = Math.round((windowposition/windowsize)*100);
+		if(scrollPercent > 25) {
+			floorPopUp();	
+		}
+	});
+	jQuery('.go-away').click(function() {
+		createJCookie("nopopforyou", "1");
+		jQuery(this).parent().remove();
+	});
+});
+function floorPopUp() {
+	/*jQuery("#signup-box").animate({
+		marginBottom: "10px"
+		}, {
+		duration: 2000,
+		specialEasing: {	
+		}, 
+		complete: function() {
+		}
+	});*/	
+   }
+}
+
+
+_a1as.push(["setvar","categoryid_view","index"]);
+_a1as.push(["track"]);
+
+window.zESettings = {
+  webWidget: {
+    color: { theme: '#1697EF' }
+  }
+};
+
+
+    function ajaxsearchsubmit(form) {
+        var search = encodeURIComponent(form.w.value);
+        window.location = "//search.entirelypets.com/search?w=" + search
+        return false;
+    }
+
+
+equalheight = function(container){
+
+var currentTallest = 0,
+     currentRowStart = 0,
+     rowDivs = new Array(),
+     $el,
+     topPosition = 0;
+ $(container).each(function() {
+
+   $el = $(this);
+   $($el).height('auto')
+   topPostion = $el.position().top;
+
+   if (currentRowStart != topPostion) {
+     for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+       rowDivs[currentDiv].height(currentTallest + 30);
+     }
+     rowDivs.length = 0; // empty the array
+     currentRowStart = topPostion;
+     currentTallest = $el.height();
+     rowDivs.push($el);
+   } else {
+     rowDivs.push($el);
+     currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+  }
+   for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+     rowDivs[currentDiv].height(currentTallest + 30);
+   }
+ });
+}
+
+$(window).load(function() {
+  equalheight('.row .equal-height');
+});
+
+
+$(window).resize(function(){
+  equalheight('.row .equal-height');
+});
+
+
+<!--
+	mr_merchantID = "HealthyPets";
+	mr_Track();
+// -->
+
+
+var deviceType = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" :
+/iPad/.test(navigator.userAgent) ? "t" : "d";
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+{ event: "setAccount", account: 5072},
+{ event: "setSiteType", type: deviceType},
+{ event: "viewHome"}
+);
+
+function addtoCartAdRoll() { agilonetoCart(); }
+
+function agilonetoCart() {
+_a1as.push(["setvar","productid_cart",""]);
+_a1as.push(["track"]);}
+
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/0737.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+function pdInit() {
+
+	var productIdList = new Array();
+	var productIdListCsv = "";
+	var productId = "";
+	var queryStringLength = 0;
+	var i = 0;
+	jQuery.each(jQuery('[productId]'), function() { 
+		productId = encodeURIComponent(jQuery(this).attr('productId') + ",");
+		queryStringLength += productId.length;
+		if(queryStringLength < 6000) productIdListCsv += productId;
+		else return false;
+		i++;
+	});
+	if(productIdListCsv.length > 3) productIdListCsv = productIdListCsv.slice(0, -3);
+
+	var cb = (new Date()).getTime();
+    var scriptUrl = "https://myaccount.entirelypets.com//mod_yahooMerchantSolutions/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListCsv=" + productIdListCsv;
+    try {scriptUrl += "&orderable=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("orderable"));} catch(e) {}
+    try {scriptUrl += "&pdSpecialAccessList=" + encodeURIComponent(pdSpecialAccessList);} catch(e) {}
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+
+}
+pdInit();
+
+ var google_tag_params = {ecomm_prodid: '',ecomm_pagetype: 'home',ecomm_totalvalue: ''}; 
+
+/* <![CDATA[ */
+var google_conversion_id = 1072528799;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+var _urq = _urq || [];
+_urq.push(['initSite', 'f16a50de-71e4-4f0e-9ea4-a0b70f8413d4']);
+(function() {
+var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+ur.src = ('https:' == document.location.protocol ? 'https://sep.yimg.com/ty/cdn/entirelypets/userreport.min.js' : 'http://ep.yimg.com/ty/cdn/entirelypets/userreport.min.js');
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+})();
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'secure.entirelypets.com';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/1c9a75b45d48ccae6106d3a890cfd2d3?id=73ec821878d0'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

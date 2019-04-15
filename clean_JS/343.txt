@@ -1,0 +1,236 @@
+ //<![CDATA[ 
+    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+    document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+    //]]>
+    
+
+function showDiv(divid){
+  
+    $('#'+divid).show().removeClass('hiddendiv');
+
+}
+
+function toggleDivClass(divid){
+    $('#'+divid).toggleClass("hiddendiv showndiv");
+}
+
+
+
+    		$(function(){
+        		$(".dropdown").mouseenter(
+               		 function() {
+                    	var el = this;
+                    	var timeoutId = setTimeout(function() {
+                    		$('.dropdown-menu', el).stop(true, true).fadeIn("fast");
+                      	$(el).addClass('open');
+                    		$('b', el).toggleClass("caret caret-up");
+                    	}, 125);
+                    	$(this).data("timeoutId", timeoutId);
+        			}).mouseleave(
+                		function() {
+                    		clearTimeout($(this).data("timeoutId"));
+                    			$('.dropdown-menu', this).stop(true, true).fadeOut("fast");
+                    			$(this).removeClass('open');
+                    			$('b', this).toggleClass("caret caret-up");
+        		});
+			});
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+    	
+
+
+//Show newsletter popup once per session 
+$(function(){
+    if (sessionStorage.getItem('popcontainer') !== 'true') {
+        var msec=9000;
+        function popLoad(){
+            var hasShown = getCookie("emailpopup");
+            if (hasShown != 'shown')  {
+                $('#npfade').show();
+                $('#popcontainer').fadeIn(1000);
+                setCookie('emailpopup', 'shown', 180 * 24 * 60 * 60 * 1000);
+                msec = 9000;
+            } else {
+                msec = 0;
+            }
+            console.log("msec="+msec);
+            $('#close, #npfade, #go').click(closeOverlay);
+        };
+        setTimeout(popLoad, msec);
+        sessionStorage.setItem('popcontainer','true');        
+    }
+    function closeOverlay() {
+        $('#popcontainer').fadeOut(1000, function(){
+            $('#npfade').hide();
+        });
+    }
+});
+
+
+
+$("#search_keyword").on("click", function() {
+    $(this).val("");
+    $(this).removeAttr('placeholder');
+});
+
+$("#email-input").on("click", function() {
+	$(this).val("");
+    $(this).removeAttr('placeholder');
+});
+
+ 
+	function addQty(id, min) {
+        // console.log(id);
+        var currVal = parseInt($("#qty_"+ id).val());
+        // console.log(currVal);
+        if (!isNaN(currVal) && currVal >= 0){
+            $("#qty_"+ id).val(currVal+1);
+        } else if (isNaN(currVal)) {
+            $("#qty_"+ id).val(1);
+        }
+        };
+        function decQty(id, min) {
+        
+        var currVal = parseInt($("#qty_"+ id).val());
+        // console.log(currVal);
+        if (!isNaN(currVal) && currVal >= 1){
+            $("#qty_"+ id).val(currVal-1);
+		}
+	};
+
+
+$(document).ready(function () {
+	$(".carousel-fade .carousel-inner div").removeClass("active");
+	$(".carousel-indicators li").removeClass("active");
+	$('#Carousel').find('.item').first().addClass('active');
+	$(".carousel-indicators li").first().addClass("active");
+});
+
+
+
+        $(function() {
+                    $('.carousel').carousel();
+        });
+    
+
+  function slideSearch() {
+    if ($('#mobile-search').css('display') == 'none') {
+    	$('#mobile-search').slideDown(600);
+    } else {
+    	$('#mobile-search').slideUp(600);
+    }
+  }
+  $('nav#menu').mmenu();
+
+
+$("#promo_code").on("click", function() {
+    $(this).val("");
+    $(this).removeAttr('placeholder');
+});
+
+
+        $(function(){
+
+            $('.addtocart_button').click(function(e) {
+                if (optionCheck2($(this).closest('form')[0])) {
+                    var prod_id = $(this).closest('form').find('input[name=prod_id]').val();
+                    $(this).closest('form').append('<input type="hidden" id="action_input_' + prod_id + '" name="action_forward" value="/floating_cart" />');
+                    $.post('/', $(this).closest('form').serialize(),
+                            function(data) {
+                                buildFloatingCart(data);
+
+       
+                                $('#action_input_' + prod_id).remove();
+                                location.href = "#minicart_a";
+        }, 'json');
+        }
+                return false;
+        });
+
+            $('.minicart_exit').click(function(e){
+                e.preventDefault();
+                $('#minicart_overlay_box').fadeOut('fast');
+                return false;
+        });
+
+        });
+
+        function buildFloatingCart(data) {
+            var minicart_count = 0;
+            var show_prods = '';
+            $.each(data.cart, function(index, prod){
+                show_prods += "<div class='minicart_product'>";
+                show_prods += "  <img src='" + prod.web_image + " ' width='65' border='0' align='left' />";
+                show_prods += "  <div style='margin-left: 65px; margin-bottom: 5px; padding-left:10px' class='overlay_info'>";
+                show_prods += "    <div><strong>" + prod.name + " " + prod.att_list + "</strong></div>";
+                show_prods += "    <div>$" + prod.price + "</div>";
+                show_prods += "    <div>Qty: " + prod.qty + "</div>";
+                show_prods += "    <div>Item No. " + prod.sku + "</div>";
+                show_prods += "  </div>";
+                show_prods += "</div>";
+        });
+            $('#minicart_products').html(show_prods);
+            $('.minicart_total_price').html(data.totals.total_price);
+            $('.minicart_total_qty').html(data.totals.total_qty);
+            $('#minicart_overlay_box').slideDown();
+            
+            
+            
+            $.getJSON('/services/scripts/getRelatedProducts.php?num=3', function(data){
+                var items = [];
+        
+                $.each(data, function(prod_id, product){
+                  items.push('<li><a href="/product/'+product.prod_id+'"><img src="'+product.web_image+'" />'+product.prod_name+'</a></li>');
+                });
+        
+                // Truncate to 3 products
+                items.length = 3;
+        
+                $('<ul/>', {html: items.join('')}).appendTo('#minicart_related_products');
+
+      		});
+  
+            
+            
+        }
+
+        function optionCheck2(theForm) {
+            for (i = 0; i < theForm.elements.length; i++) {
+                 if( ( theForm.elements[i].type == "select-one" ) && ( theForm.elements[i].selectedIndex == 0 ) && (theForm.elements[i].name != 'custom_field1') && (theForm.elements[i].name != 'recipient_mapping') && (theForm.elements[i].name != 'recurring_interval') ) {
+
+                    var option_len = theForm.elements[i].options[0].text.length;
+                    var option_name = theForm.elements[i].options[0].text.substring(9, option_len);
+                    var message = "Please choose an option before adding to cart.";
+                    alert(message);
+                    return false;
+        }
+        }
+            return true;
+        }
+
+    
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: 'home',
+ecomm_totalvalue: ''};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1068036075;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+	document.write(unescape("%3Cscript src='"
+		+ ((document.location.protocol == "https:") ? "https:" : "http:")
+		+ "//p.bm23.com/bta.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+	var bta = new __bta('aqkmboqszjzzvtuqpvnyowrebqzgbci');
+	bta.setHost("email.serrv.org");
+

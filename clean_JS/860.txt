@@ -1,0 +1,59 @@
+
+        document.write(unescape("%3Cscript id='pap_x2s6df8d' src='" + (("https:" == document.location.protocol) ? "https://" : "http://") +
+                "manning.postaffiliatepro.com/scripts/trackjs.js' type='text/javascript'%3E%3C/script%3E"));
+    
+
+        PostAffTracker.setAccountId('default1');
+        try {
+            PostAffTracker.track();
+        } catch (err) { }
+    
+
+
+        var searchServerVars = {
+            deploymentType: "production",
+            coverImage: "\u002fassets\u002fcover-c0e554e9d065ae2e5b8b43d622fb8b95.png",
+            livebookId: "",
+            videoId: ""
+        }
+    
+
+
+
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1940497162877014');
+        fbq('track', 'PageView');
+    
+
+
+    (function(d) {
+        if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+        else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+            if (e.propertyName == 'ltkAsyncProperty'){d();}});}
+    })
+    (function() {
+        _ltk.Click.Submit();
+    });
+    var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+    (function (d, s, id, tid, vid) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+        js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'oSRPiytUPTkk', '1');
+
+
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+            a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o04cl');
+    twq('track','PageView');
+

@@ -1,0 +1,21 @@
+
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
+
+
+
+    if(false) {
+        document.getElementById("skipNavigationLink").onclick =function skipElement () {
+            var element = document.getElementById('');
+            if(element == null || element == undefined) {
+                element = document.getElementsByClassName('').item(0);
+            }
+            element.setAttribute('tabindex','0');
+            element.focus();
+
+        }
+
+    }
+
+

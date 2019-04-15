@@ -1,0 +1,125 @@
+
+        if (typeof jQuery == 'undefined') {
+            document.write("<script type=\"text/javascript\" src=\"/assets/templates/common-html5/js/jquery.min.js?vcart=8.3.9\"></" + "script>");
+        }
+    
+
+var _vwo_code=(function(){
+var account_id=259205,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+ function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } saLoadScript('//www.shopperapproved.com/widgets/group2.0/12216.js'); 
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+                        jQuery(document).ready(function(e) {
+                            jQuery('#mob-Search').removeAttr('style');
+                        });
+                    
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+                      jQuery(document).ready(function(e) {
+                            jQuery('#mob-Cart').removeAttr('style');
+                        });
+                    
+var sa_interval = 5000;function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } if (typeof(shopper_first) == 'undefined') saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/12216.js'); shopper_first = true; 
+
+                jQuery(document).ready(function () {
+                    jQuery('#homeCarousel').flexslider({
+                        animation: "fade",
+                        slideshowSpeed: 5000,
+                        controlNav: true,
+                        keyboard: false
+                    });
+                });
+            
+if (typeof _3d_items_collection === "undefined") { window._3d_items_collection = {}; }
+
+(function( $ ) {
+  if(typeof ga === "function"){
+    var page_is_scrolling = false,
+    hit_bottom = false,
+    document_height = $('body').outerHeight(),
+    window_height = $(window).height(),
+    positions = [
+      {'type':'px','value':1,'passed':false},
+      {'type':'%','value':10,'passed':false},
+      {'type':'%','value':20,'passed':false},
+      {'type':'%','value':30,'passed':false},
+      {'type':'%','value':40,'passed':false},
+      {'type':'%','value':50,'passed':false},
+      {'type':'%','value':60,'passed':false},
+      {'type':'%','value':70,'passed':false},
+      {'type':'%','value':80,'passed':false},
+      {'type':'%','value':90,'passed':false},
+      {'type':'%','value':100,'passed':false}
+    ];
+    $(window).on('scroll',function(e){
+      if(page_is_scrolling === false){
+        page_is_scrolling = true;
+        if(!hit_bottom){
+          var scoll_position = $(this).scrollTop();
+          var scroll_position_percent = Math.ceil( ( scoll_position / (document_height - window_height) ) * 100 );
+          $.each(positions,function(index,position){
+            if(position.passed==false && position.type=='px' && scoll_position > position.value){
+              ga('send', 'event', 'page', 'scroll', position.value+''+position.type, position.value);
+              //console.log(position.value+''+position.type);
+              positions[index].passed = true;
+            }else if( position.passed==false && position.type=='%' && scroll_position_percent > position.value ){
+              ga('send', 'event', 'page', 'scroll', position.value+''+position.type, position.value);
+              positions[index].passed = true;
+              //console.log(position.value+''+position.type);
+            }
+          });
+        }
+        setTimeout(function(){page_is_scrolling=false;},50);
+      }
+    });
+  }
+})( jQuery );
+
+var date = new Date(); document.write(date.getFullYear())
+
+    jQuery(function() {
+      jQuery('#searchlight').searchlight('/search_quick.asp');
+    });
+    
+
+        //<![CDATA[
+        var file='/stats/count.asp';
+
+        var stats_d=new Date();
+        var stats_s=stats_d.getSeconds();
+        var stats_m=stats_d.getMinutes();
+        var stats_x=stats_s*stats_m;
+        var prdID = '[catalogid]';
+        var catID = '[catid]';
+
+        stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+        if (navigator.appName=='Netscape'){stats_b='NS';}
+        if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';}
+        if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+        stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.height;
+        stats_v=navigator.appName;
+        stats_fs = window.screen.fontSmoothingEnabled;
+        if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+        else {stats_c=screen.pixelDepth;}
+        stats_j=navigator.javaEnabled();
+        info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+        document.write('<img src="' + file + '?'+info+ '" width="1" height="1" border="0" alt="stats" />');
+        //]]>
+        
+
+window.__lc = window.__lc || {};
+window.__lc.license = 9866450;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+
+var _cart_secure_url = "https://www.trutechtools.com"

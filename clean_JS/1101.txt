@@ -1,0 +1,148 @@
+
+    var common = common || {},
+        mbFuncs = [],
+        grmq = grmq || [],
+        _AvantMetrics = _AvantMetrics || [];
+        
+    common.mq = common.mq || [];
+    //TO DO -- Possibly add a custom GTM event here
+
+
+    function merfkleFunction() {
+        try { merklesearch.sendAdSid("jpcycles"); } catch (e) { }
+    }
+
+
+    $(document).ready(function () {
+        "use strict";
+
+        window.buildSectionStyleClass = function (groupType, hasMotorcycle) {
+            var prefix = "fitment-callout-box ";
+
+            switch (groupType) {
+                case "Default":
+                    return prefix + (hasMotorcycle ? "fits fitment-status" : "fitment-na fitment-status");
+                case "ExactFitWithoutMotorcycle":
+                    return prefix + "pick-fit fitment-status";
+                case "ExactFitWithWrongMotorcycle":
+                    return prefix + "no-fit fitment-status fitment-message-fail";
+                case "CannotShipForMotorcycle":
+                case "CannotShipToLocation":
+                case "CannotShipAllMotorcycles":
+                    return prefix + "cannot-ship fitment-status fitment-message-fail";
+                case "RestrictedNeedMotorcycle":
+                case "RestrictedNeedLocation":
+                    return prefix + "restricted fitment-status fitment-message-fail";
+                default:
+                    JP && JP.log("Invalid groupType: " + groupType);
+                    return prefix;
+            }
+        };
+    });
+
+
+    $('.quickAddForm').submit(function (evt) {
+        if (!($(".mobile-only").is(":visible")) && $(this).attr("data-group") === "simplecart") {
+            var button = $(this).find(".important-button");
+            evt.preventDefault();
+            var data = { productSku: $("#productSku").val(), quantity: $("#quantity").val() };
+            addItemToCart(data, button);
+        }
+    });
+
+
+    $(document).ready(function () {
+        $("#divShopByMotorcycle").append('<div id="loader" class="processing"><span class="fa-align-helper"></span><i class="fas fa-2x fa-spinner fa-spin"></i></div>');
+        $("#loader").hide();
+    });
+    function goGetFitment() {
+        "use strict";
+        // Element IDs are set in JavaScript.
+        var yearElement,
+            makeElement,
+            modelElement = document.getElementById("ddModel"),
+            getSelectedText = function (element) {
+                return element.options[element.selectedIndex].text;
+            };
+
+        if (modelElement) {
+            DropDownSubmit(modelElement.value);
+            //TO DO -- Possibly add a custom GTM event here
+
+            yearElement = document.getElementById("dd_year");
+            makeElement = document.getElementById("ddMake");
+
+            if (yearElement && makeElement) {
+                common.mq.push(["bikeSelector.Add", getSelectedText(yearElement) + ":" + getSelectedText(makeElement) + ":" + getSelectedText(modelElement)]);
+            }
+        }
+    }
+
+
+        $(document).ready(function () {
+            $(".lazy").lazyLoadXT();
+            $('.make-list a').click(function (e) {
+                $('.make-list a').parent('li').removeClass('add-wrap');
+                $(this).css('outline', 'none').parent().addClass('add-wrap');
+                var selection = "'." + $(this).attr('rel') + "'";
+                $('.category-list .category-list-box').fadeOut("fast");
+                $('.category-list div' + selection).fadeIn("fast");
+                e.preventDefault();
+                e.stopPropagation();
+            });
+            
+        });
+        function CE_READY() {
+            var elements = ['hero-wrapper', 'promo-wrapper', 'home-picker'];
+
+            $.each(elements, function (index, value) {
+                var element = document.getElementById(value);
+                CE2.listen(element, "click", function (event) {
+                    CE2.click(element, event);
+                });
+            });
+        }
+
+        var JPC = JPC || {};
+        JPC.ViewData = {
+            PresentAllSelectedBikeOptions: false,
+            PageInitModel: {"ClearFitment":false,"MotorcycleFromNavigationState":null,"HasMotorcycleFromNavigationState":false,"QueryDataWithoutMotorcycle":{"Nao":null,"Nu":null,"CurrentSearchTerm":null,"ClearFitment":null,"NoRedirect":null,"RedirectUrl":null,"All":null,"SessionMotorcycleDimensionValueId":null,"Context":null,"SearchTerm":"","N":"","Ne":0,"Ntt":null,"Ntk":"All","Ns":null,"Nf":null,"results":24,"V":null},"BreadcrumbDimensionValueIds":null,"ReturnPath":"/"}
+        };
+    
+function richRelevanceJS () { 
+  if (typeof r3_common !== 'undefined') {
+  window.R3_COMMON = new r3_common();
+  R3_COMMON.setApiKey('b5c752ca7987bc59');
+  R3_COMMON.setBaseUrl('https://recs.richrelevance.com/rrserver/');
+  R3_COMMON.setSessionId('7bQcp8Tu9kWEnv2svS-k4w');
+  R3_COMMON.addPlacementType('home_page.homepage');
+  R3_COMMON.addPlacementType('home_page.homepage2');
+  window.R3_HOME = new r3_home();
+  DisplayRichRelevance();
+}
+}
+
+var grmq=grmq||[];grmq.push({ecomm_pagetype: 'home'});
+gtag('event', 'conversion', {'allow_custom_scripts': true,'u1': 'Homepage','u5': '0','send_to': 'DC-8962465/allpg/homepage+unique'});
+window.criteo_q = window.criteo_q || [];var deviceType = / iPad /.test(navigator.userAgent) ? "t" : / Mobile | iP(hone | od) | Android | BlackBerry | IEMobile | Silk /.test(navigator.userAgent) ? "m" : "d";window.criteo_q.push({ event: "setAccount", account: 4725},{ event: "setEmail", email: "" },{ event: "setSiteType", type: deviceType },{ event: "viewHome"});
+
+    
+    common.mq.push(['page.Loaded', {"PageName":"Home","PageType":"Home Page","Channel":"Home Page","Breadcrumb":"Home","ContentType":"Home Page","IsGoldClub":false,"CustomerID":null,"Country":null,"IsMotorcycleSelected":false,"Brand":null}]);
+    
+
+
+    //TO DO -- Possibly add a custom GTM event here
+
+
+    (function() {
+        var avm = document.createElement('script');
+        avm.type = 'text/javascript';
+        avm.async = true;
+        avm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.avmws.com/1012565/';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(avm, s);
+    })();
+
+
+    (typeof _satellite !== 'undefined') && _satellite.pageBottom();
+

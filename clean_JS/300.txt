@@ -1,0 +1,71 @@
+
+		document.createElement("section");
+	
+
+		var smtId = "af42c7add";
+		var smtDefaultStyles = true; // set to false to use your own css 
+		var smtRedirect = true; 	
+		var smtProt = (("https:" == document.location.protocol) ? "https://" : "http://");
+		document.write(unescape("%3Cscript src='" + smtProt + "cdn01.smartling.com/ls/"+ smtId +".js' type='text/javascript'%3E%3C/script%3E"));
+	
+
+function OptanonWrapper() { }
+
+
+    	function PageEvents() 
+    	{
+    		
+    	}
+    	$(document).ready(function(){
+    	    //add stylesheets to accommodate page if it contains reskin header
+    	    if($('#bottombar-buttons').length){
+				$('head').append('<link href="/CSS/redesign-transitional.css" rel="stylesheet" type="text/css" /><link href="/CSS/redesign-transitional-mobilenav.css" rel="stylesheet" type="text/css" /> <style type="text/css">	 #nav-container{margin-top: 15px; margin-left: -15px;} body{background-color: #D8D2C7;}</style>');
+    	    }
+    	})
+    
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+
+
+		// $(document).ready(function () {
+		//	document.createElement("section")
+		//	loadScroll();
+		//	$.scrollDepth();
+
+		//	//fix for safari
+		//	var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+		//	if (isSafari) {
+		//		$("#home-hero2").css("-webkit-transform", "translate3d(0,0,0)");
+		//	}
+		//	if (!document.addEventListener) {
+		//		setTimeout(loadScroll, 1000);
+		//	}
+		//});
+	
+
+		
+
+        (function(c,a,p,j,s) {
+          p=c.createElement(a);j=!c.URL.indexOf('https:')?'s':'';
+          p.type='text/java'+a;
+          p.src='http'+j+'://dlut3lsiqvb0g.cloudfront.net/apps/18602/capture.js';
+          s=c.getElementsByTagName(a)[0];s.parentNode.insertBefore(p,s);
+        }(document,'script'));
+    

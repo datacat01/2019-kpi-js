@@ -1,0 +1,53 @@
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		
+		
+
+        ga('create', 'UA-1909306-1', 'www.patrolstore.com');
+		ga('send', 'pageview');
+		
+
+
+/* <![CDATA[ */
+
+var google_conversion_id = 1059194568;
+
+var google_conversion_label = "K08fCKCfvlYQyI2I-QM";
+
+var google_custom_params = window.google_tag_params;
+
+var google_remarketing_only = true;
+
+/* ]]> */
+
+
+
+
+
+
+var gts = gts || [];
+gts.push(["id", "647320"]);
+gts.push(["badge_position", "BOTTOM_RIGHT"]); 
+gts.push(["locale", "en_GB"]); 
+gts.push(["google_base_offer_id", "10000"]);
+gts.push(["google_base_subaccount_id", "7937223"]);
+
+(function() {
+	var gts = document.createElement("script");
+	gts.type = "text/javascript";
+	gts.async = true;
+	gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(gts, s);
+	})();
+
+
+if (window._GUARANTEE && _GUARANTEE.Loaded) {
+_GUARANTEE.Hash = "TG5d4ZFLQp6xna%2Bpu75y1uOCtnAGmwT08BxsMbmG2UAhLJAxO8xALuIq%2BTP7tcpyWP0nKY5Q76yaMd9rLY1Vbg%3D%3D";
+_GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+}
+

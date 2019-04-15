@@ -1,0 +1,339 @@
+var appInsights=window.appInsights||function(config){function t(config){i[config]=function(){var t=arguments;i.queue.push(function(){i[config].apply(i,t)})}}var i={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",r,f;setTimeout(function(){var t=u.createElement(o);t.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(t)});try{i.cookie=u.cookie}catch(y){}for(i.queue=[],r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)t("track"+r.pop());return t("set"+s),t("clear"+s),t(h+a),t(c+a),t(h+v),t(c+v),t("flush"),config.disableExceptionTracking||(r="onerror",t("_"+r),f=e[r],e[r]=function(config,t,u,e,o){var s=f&&f(config,t,u,e,o);return s!==!0&&i["_"+r](config,t,u,e,o),s}),i}({instrumentationKey:"5c262020-8cbd-434f-8282-856b8cf2bf7a",sdkExtension:"a"});window.appInsights=appInsights;appInsights.queue&&appInsights.queue.length===0&&appInsights.trackPageView();
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$pageSpecificBody$ScriptManager1', 'form1', ['tctl00$pageSpecificBody$UpdatePanel1','UpdatePanel1'], [], [], 90, 'ctl00');
+//]]>
+
+
+
+	$(document).ready(
+		function () {
+		    $('#btnGuidantPreq').click(function () {
+                console.log('validating...')
+                var validation = Page_ClientValidate('prequalify')
+                console.log('validated')
+			if (validation) {
+				var txtFirstName = $('#txtPQFirstName').val();
+				var txtLastName = $('#txtPQLastName').val();
+				var txtEmail = $('#txtPQEmail').val();
+				var txtPhone = $('#txtPQPhone').val();
+				var ddlCreditScore = $('#ddlCreditScore option:selected').text();
+				var ddlTotalFunds = $('#ddlTotalFunds').val();
+
+				guidantlead(txtFirstName, txtLastName, txtEmail, txtPhone, undefined, ddlCreditScore, ddlTotalFunds);
+
+			}
+		});
+
+		$("#txtPQPhone").keyup(function () {
+
+			var country = "US";
+
+			this.value = formatLocal(country, this.value);
+		});
+	});
+
+
+	function pageLoad(sender, args) {
+		$("#txtPQPhone").keyup(function () {
+
+			var country = "US";
+			this.value = formatLocal(country, this.value);
+
+		});
+	}
+
+	function valPQPhoneFormat_ClientValidate(oSrc, args) {
+		args.IsValid = true;
+		return
+
+		var country = "US";
+		var isValidNumberOrNot = isValidNumber(args.Value, country);
+		alert(isValidNumberOrNot)
+		args.IsValid = isValidNumberOrNot;
+
+	};
+
+
+
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("valSummaryGuidantPopUp1"));
+var Page_Validators =  new Array(document.getElementById("valPQFirstNameRequired"), document.getElementById("valPQLastNameRequired"), document.getElementById("valPQEmailRequired"), document.getElementById("RegularExpressionPQEmailAddress"), document.getElementById("valPQPhoneRequired"), document.getElementById("valPQPhone"), document.getElementById("valCreditScore"), document.getElementById("valTotalFunds"), document.getElementById("cvBasicPriceRange"));
+//]]>
+
+
+//<![CDATA[
+var valSummaryGuidantPopUp1 = document.all ? document.all["valSummaryGuidantPopUp1"] : document.getElementById("valSummaryGuidantPopUp1");
+valSummaryGuidantPopUp1.headertext = "Please correct these errors before you continue:";
+valSummaryGuidantPopUp1.validationGroup = "prequalify";
+var valPQFirstNameRequired = document.all ? document.all["valPQFirstNameRequired"] : document.getElementById("valPQFirstNameRequired");
+valPQFirstNameRequired.controltovalidate = "txtPQFirstName";
+valPQFirstNameRequired.errormessage = "First Name is Required";
+valPQFirstNameRequired.display = "None";
+valPQFirstNameRequired.validationGroup = "prequalify";
+valPQFirstNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valPQFirstNameRequired.initialvalue = "";
+var valPQLastNameRequired = document.all ? document.all["valPQLastNameRequired"] : document.getElementById("valPQLastNameRequired");
+valPQLastNameRequired.controltovalidate = "txtPQLastName";
+valPQLastNameRequired.errormessage = "Last Name is Required";
+valPQLastNameRequired.display = "None";
+valPQLastNameRequired.validationGroup = "prequalify";
+valPQLastNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valPQLastNameRequired.initialvalue = "";
+var valPQEmailRequired = document.all ? document.all["valPQEmailRequired"] : document.getElementById("valPQEmailRequired");
+valPQEmailRequired.controltovalidate = "txtPQEmail";
+valPQEmailRequired.errormessage = "Email is Required";
+valPQEmailRequired.display = "None";
+valPQEmailRequired.validationGroup = "prequalify";
+valPQEmailRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valPQEmailRequired.initialvalue = "";
+var RegularExpressionPQEmailAddress = document.all ? document.all["RegularExpressionPQEmailAddress"] : document.getElementById("RegularExpressionPQEmailAddress");
+RegularExpressionPQEmailAddress.controltovalidate = "txtPQEmail";
+RegularExpressionPQEmailAddress.errormessage = "Please enter a valid Email Address";
+RegularExpressionPQEmailAddress.display = "None";
+RegularExpressionPQEmailAddress.validationGroup = "prequalify";
+RegularExpressionPQEmailAddress.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionPQEmailAddress.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var valPQPhoneRequired = document.all ? document.all["valPQPhoneRequired"] : document.getElementById("valPQPhoneRequired");
+valPQPhoneRequired.controltovalidate = "txtPQPhone";
+valPQPhoneRequired.errormessage = "Phone Number is Required";
+valPQPhoneRequired.display = "None";
+valPQPhoneRequired.validationGroup = "prequalify";
+valPQPhoneRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valPQPhoneRequired.initialvalue = "";
+var valPQPhone = document.all ? document.all["valPQPhone"] : document.getElementById("valPQPhone");
+valPQPhone.controltovalidate = "txtPQPhone";
+valPQPhone.errormessage = "A Valid Phone Number Is Required.";
+valPQPhone.display = "None";
+valPQPhone.validationGroup = "prequalify";
+valPQPhone.evaluationfunction = "CustomValidatorEvaluateIsValid";
+valPQPhone.clientvalidationfunction = "valPQPhoneFormat_ClientValidate";
+var valCreditScore = document.all ? document.all["valCreditScore"] : document.getElementById("valCreditScore");
+valCreditScore.controltovalidate = "ddlCreditScore";
+valCreditScore.errormessage = "A Credit Score range is Required";
+valCreditScore.display = "None";
+valCreditScore.validationGroup = "prequalify";
+valCreditScore.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valCreditScore.initialvalue = "";
+var valTotalFunds = document.all ? document.all["valTotalFunds"] : document.getElementById("valTotalFunds");
+valTotalFunds.controltovalidate = "ddlTotalFunds";
+valTotalFunds.errormessage = "Total Retirement Funds is Required";
+valTotalFunds.display = "None";
+valTotalFunds.validationGroup = "prequalify";
+valTotalFunds.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+valTotalFunds.initialvalue = "";
+var cvBasicPriceRange = document.all ? document.all["cvBasicPriceRange"] : document.getElementById("cvBasicPriceRange");
+cvBasicPriceRange.controltovalidate = "ddlPriceMax";
+cvBasicPriceRange.errormessage = "Max price must be greater than min price.";
+cvBasicPriceRange.type = "Integer";
+cvBasicPriceRange.evaluationfunction = "CompareValidatorEvaluateIsValid";
+cvBasicPriceRange.controltocompare = "ddlPriceMin";
+cvBasicPriceRange.controlhookup = "ddlPriceMin";
+cvBasicPriceRange.operator = "GreaterThanEqual";
+//]]>
+
+
+//<![CDATA[
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('valSummaryGuidantPopUp1');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('valPQFirstNameRequired').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valPQFirstNameRequired'));
+}
+
+document.getElementById('valPQLastNameRequired').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valPQLastNameRequired'));
+}
+
+document.getElementById('valPQEmailRequired').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valPQEmailRequired'));
+}
+
+document.getElementById('RegularExpressionPQEmailAddress').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RegularExpressionPQEmailAddress'));
+}
+
+document.getElementById('valPQPhoneRequired').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valPQPhoneRequired'));
+}
+
+document.getElementById('valPQPhone').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valPQPhone'));
+}
+
+document.getElementById('valCreditScore').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valCreditScore'));
+}
+
+document.getElementById('valTotalFunds').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('valTotalFunds'));
+}
+
+document.getElementById('cvBasicPriceRange').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('cvBasicPriceRange'));
+}
+//]]>
+
+
+        $(window).load(function() {
+            //Google Code for Remarketing
+            window.google_trackConversion({
+                google_conversion_id: 1064425968,
+                google_custom_params:  window.google_tag_params,
+                google_remarketing_only: true
+            });
+            //End Google Code for Remarketing
+
+            //Begin code for Bing UET
+            (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5012803"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+            //End code for Bing UET
+
+            $("textarea").blur(function (e) {
+                /*
+                 * strip HTML tags from textareas
+                 */
+                var txt = $(e.target);
+                var contents = $(txt).val();
+                try {
+                    var rg1 = new RegExp(/<(.*?)>/gi); // html tags
+                    var rg2 = new RegExp(/[ ]{2,}/gi); // repeating spaces
+
+                    if (rg1.test(contents)) {
+                        contents = contents.replace(rg1, " ");
+                        contents = contents.replace(rg2, " ");
+                        $(txt).val(contents);
+                    }
+                } catch (e) {
+                    try {
+                        var dv = document.createElement("div");
+	                    dv.innerHTML = contents;
+                        $(txt).val(dv.innerText);
+                    } catch (e) {}
+                }
+            });
+        });
+
+	
+<!--
+/* You may give each page an identifying name, server, and channel on the next lines. */
+s.pageName="bbn: bbn: home page"
+s.server=""
+s.channel="bbn: bbn: home page"
+s.pageType=""
+s.prop1="businessbroker.net"
+s.prop2="businessbroker.net"
+s.prop3=""
+s.prop4=""
+s.prop5=""
+s.prop6=""
+s.prop7=""
+s.prop8=""
+s.prop9=""
+s.prop10=""
+s.prop11=""
+s.prop12=""
+s.prop13=""
+s.prop14=""
+s.prop15=""
+s.prop16=""
+s.prop17=""
+s.prop18=""
+s.prop19=""
+s.prop20=""
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2="businessbroker.net"
+s.eVar3="businessbroker.net"
+s.eVar4=""
+s.eVar5=""
+s.eVar6=""
+s.eVar7=""
+s.eVar8=""
+s.eVar9=""
+s.eVar10=""
+s.eVar11=""
+s.eVar12=""
+s.eVar13=""
+s.eVar14=""
+s.eVar15=""
+s.eVar16=""
+s.eVar17=""
+s.eVar18=" 152.195.103.226"
+s.eVar19=""
+s.eVar20=""
+s.eVar28=""
+/* Hierarchy Variables */
+s.hier1=""
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//-->
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '234088274128903');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'home page'});
+
+
+    _linkedin_data_partner_id = "57892";
+    
+
+    (function(){var s = document.getElementsByTagName("script")[0];
+    var b = document.createElement("script");
+    b.type = "text/javascript";b.async = true;
+    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+    s.parentNode.insertBefore(b, s);})();
+    

@@ -1,0 +1,137 @@
+
+	(function(i,s,o,g,r,a,m){i[r]=i[r]||function(){
+	(i[r].a=i[r].a||[]).push(arguments)};i[r].t=1;a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//tricktools.resultspage.com/js/sli-spark.js', 'sliSpark');
+
+	sliSpark('send', 'pageview');
+
+   
+    SLI = window.SLI || {};  
+    SLI.searchSubmit = function(event, caller) {  
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;  
+        var keyword = '';  
+        if (caller.nodeName.match(/form/i)) {  
+            keyword = caller.w.value;  
+        } else {  
+            return false;  
+        }  
+        keyword = keyword.replace(/^\s+|\s+$/g, '');  
+        if (keyword == '') {  
+            return false;  
+        }  
+        keyword = encodeURIComponent(keyword);  
+        window.location = window.location.protocol + "//www.trick-tools.com/search/go?w=" + keyword;  
+        return false;  
+    };  
+
+
+$(document).ready(function() {
+	// Search Box
+	$("#freetext_search_box").attr("value","Search Keywords");
+	$("#freetext_search_box").click(function () {
+		$(this).attr("value","");
+	});
+
+	// Join Email List Box
+	$(".emailbar .newsletter input[type='text']").attr("value","Enter Email Here to Join");
+	$(".emailbar .newsletter input[type='text']").click(function () { 
+		$(this).attr("value","");
+	});
+
+	// Fix featured products header
+	$("span.featured_products_header").each(function() {
+		if ($(this).parent().children().size() > 1) {
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
+	});
+        
+        /************* Shopping cart - hide city ************/
+        if ($("input#shipping_contact_information_city").length && $("table#shopping_cart_shipping_calc_table").length) { 
+	    	$("input#shipping_contact_information_city").val(" ");
+		$("a#link_shipping_contact_information_city").parent().parent().hide();
+	    
+        }
+});
+
+
+  (function() {
+    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+    se.src = '//storage.googleapis.com/code.snapengage.com/js/efffccc4-79d1-40e2-b2bc-fa1ac1e2021d.js';
+    var done = false;
+    se.onload = se.onreadystatechange = function() {
+      if (!done&&(!this.readyState||this.readyState==='loaded'||this.readyState==='complete')) {
+        done = true;
+        /* Place your SnapEngage JS API code below */
+        /* SnapEngage.allowChatSound(true); Example JS API: Enable sounds for Visitors. */
+      }
+    };
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+  })();
+
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+$(document).ready(function() {
+	
+	$('#thumbFeatures').jshowoff({ 
+		cssClass: 'thumbFeatures',
+		effect: 'fade',
+		controls:true,
+		links:false,
+		speed:6000,
+		changeSpeed:500,
+		hoverPause:false
+	});
+    
+	$("#thumbFeatures").removeClass("absolute").addClass("relative");
+	// jshowoff script shows FOUC for slideshow before loading completely and hiding everything but first div.
+	// CSS sets all except first div to position absolute.  Once jshowoff loads, jQuery sets everything to position relative by changing the class on #thumbFeatures.
+});
+
+
+    $(document).ready(function(){
+        $('.search_category').on("click", "h3", function() {
+            $(this).toggleClass('minus');
+            $(this).next(".search_terms").slideToggle();
+			
+        });
+    });
+
+
+   $(function() {
+		$('#mobilemenu').mmenu({
+			slidingSubmenus: false    // submenus must open below parent	
+		});
+	});
+
+
+						(function(d) { if (document.addEventListener) document.addEventListener("ltkAsyncListener", d);
+						else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent("onpropertychange", function (e) {
+						if (e.propertyName == "ltkAsyncProperty"){d();}});}})(function() {
+							_ltk.Click.Submit();
+							_ltk.Activity.AddPageBrowse();
+							_ltk.Activity.Submit();
+					
+						});
+					
+
+							(function(d) { if (document.addEventListener) document.addEventListener("ltkAsyncListener", d);
+							else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent("onpropertychange", function (e) {
+							if (e.propertyName == "ltkAsyncProperty"){d();}});}})(function() {
+								_ltk.SCA.CaptureEmail('email');
+								_ltk.SCA.CaptureEmail('username');
+								_ltk.SCA.CaptureEmail('input[email]');
+								_ltk.SCA.CaptureEmail('billing_contact_information_email');
+							});
+						
+
+						 var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+						 (function (d, s, id, tid, vid) {
+						 var js, ljs = d.getElementsByTagName(s)[0];
+						 if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+						 js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+						 ljs.parentNode.insertBefore(js, ljs);
+						 })(document, "script", "ltkSDK", "Dr3iUSQB3nXU", "1");
+					

@@ -1,0 +1,44 @@
+
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "https://ssl.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+try{
+var pageTracker = _gat._getTracker("UA-17918193-1");
+pageTracker._trackPageview();
+} catch(err) {}
+
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".busybeetools.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"723bec0fcd0ddcc507b8f1739c9e69766c66c3c9","type":"ANONYMOUS","visit_id":"68e7eef3-cc30-4301-a0d9-a3edf521e07f","visitor_id":"6456aac9-f67c-4175-8bc9-d1be0bd6bad5"},"referer":{"url":""},"request":{"url":"https:\/\/www.busybeetools.com\/"}}, '', 1548233, "other", {"customer":{"id":"anonymous"}}, '68e7eef3-cc30-4301-a0d9-a3edf521e07f', '6456aac9-f67c-4175-8bc9-d1be0bd6bad5');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"7256d2a661b811a01a9b91bd2a23829aa21b584060a26f00cfa22793afd95b5c"};
+
+
+(function(d, w) {
+  var x = d.getElementsByTagName('SCRIPT')[0];
+  var g = d.createElement('SCRIPT');
+  g.type = 'text/javascript';
+  g.async = true;
+  g.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  x.parentNode.insertBefore(g, x);
+  var f = function () {
+    var x = d.getElementsByTagName('SCRIPT')[0];
+    var s = d.createElement('SCRIPT');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = "//np.lexity.com/b6e4e943";
+    x.parentNode.insertBefore(s, x);
+  };
+  w.attachEvent ? w.attachEvent('onload', f) : w.addEventListener('load', f, false);
+}(document, window));
+
+
+                        document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+                    

@@ -1,0 +1,109 @@
+ 
+ <!-- 
+ (new Image).src="https://www.autogeek.net/cgi-bin/refsd?cd=.autogeek.net&e=http://www.autogeek.net/&h=www.autogeek.net&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+//<![CDATA[
+window.clock = "04/14/2019 23:59:59";//]]>
+
+$(document).ready(function(){$('.home-tab').responsiveTabs({startCollapsed: 'accordion'});});
+
+function pdInit() {
+
+    //***** REVIEWS IMPLEMENTATION ***********
+	var elements = document.getElementsByClassName("pdRatingStars");
+    var productIdList = new Array();
+    for(var i=0;i<elements.length;i++) {
+        productIdList[i] = elements[i].getAttribute("productId");
+    }
+    var productIdListCsv = productIdList.join(",");
+	
+	//***** REWARDS IMPLEMENTATION ******
+	var productIdListRewardsElements = document.getElementsByClassName("pdRewardsPromoMessage");
+    var productIdListRewards = new Array();
+    for(var i=0;i<productIdListRewardsElements.length;i++) {
+        productIdListRewards[i] = productIdListRewardsElements[i].getAttribute("productId");
+    }
+    var productIdListRewardsCsv = productIdListRewards.join(",");
+	
+	//****** CONSTRUCT SCRIPT URL WITH CACHE BUSTING ********************
+	var cb = (new Date()).getTime();
+    var scriptUrl = "https://myaccount.autogeek.net//mod_yahooMerchantSolutions/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListRewardsCsv=" + encodeURIComponent(productIdListRewardsCsv);
+    scriptUrl += "&productIdListCsv=" + encodeURIComponent(productIdListCsv);
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+
+}
+pdInit();
+
+
+window.GA_GLOBALS={};
+GA_GLOBALS["dont_track_add_to_cart"]=false;
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072732698;
+var google_conversion_label = "KLiBCNryuAUQmrTC_wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072732698;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+//<![CDATA[
+var RESOURCE_PATH="https://cfd7d358a332f6e081d3-f16251c5720d0a86fc2d97121bdf4efc.ssl.cf5.rackcdn.com/ag/site/1/";var pageId="index";var isProduct=false;var isCategory=true;//]]>
+
+
+//<![CDATA[
+var criteoConfig={account:47340,fake_email_domain:'pd-autogeek-users.com'};//]]>
+
+
+//<![CDATA[
+var nakListrakConfig={account:'Wr0AixFOCFfq',domain:'www.autogeek.net',trackProduct:true,trackPage:true};//]]>
+
+;(function($) {    $(document).ready(function(){        $('.flexslider').responsiveSlides('.slide', {            sizes : [                {name:'large',  width:736},            ]        });    });    $(window).load(function(){        $('.flexslider').flexslider({            animation: 'slide',            directionNav: false,            useCSS:false        });    });})(jQuery);
+  $('#clock').countdown(window.clock).on('update.countdown', function(event) {
+        var format = '%H:%M:%S';
+        if(event.offset.days > 0) {
+            format = '%-d D%!d ' + format;
+        }
+        if(event.offset.weeks > 0) {
+             format = '%-w W%!w ' + format;
+        }
+        $(this).html(event.strftime(format));
+        })
+        .on('update.countdown', function(event) {    
+            $(".promo-area").addClass("enabled");
+        })
+        .on('finish.countdown', function(event) {    
+            $(".promo-area").remove();
+    });
+
+
+var fpAccount='e4e908453d';
+if (window.fpTrackLanding!=undefined) fpTrackLanding();
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'secure.autogeek.net';
+

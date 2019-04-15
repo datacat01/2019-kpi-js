@@ -1,0 +1,19 @@
+function changePic(){var img = $('#homeBanner .live_buttons a').eq($('#homeBanner img.live').data('imageScrolling').nextIndex);if(++($('#homeBanner img.live').data('imageScrolling').nextIndex) >= $('#homeBanner .live_buttons a').length)$('#homeBanner img.live').data('imageScrolling').nextIndex = 0;$("#homeBanner img.live").fadeOut(200, function(){$(this).attr("src", img.data('imageSource')).fadeIn(200);$("#homeBanner > a").attr("href", img.attr('href'));});if($('#homeBanner img.live').data('imageScrolling').isFrozen == 0)$('#homeBanner img.live').data('imageScrolling').timeoutId = setTimeout('changePic()',5000);}$(document).ready(function(){var images = [["/common/sgraphics/PTC/Orange-Potty--Box.jpg", "/CTGY/Potty-Training-Tips.html"], ["/common/sgraphics/PTC/Woman-green-box.jpg", "/CTGY/Potty-Training-Problems-Advice.html"], ["/common/sgraphics/PTC/Potty-Training-Box.jpg", "/CTGY/All-Products.html"]];$("#homeBanner img.live").attr('src', images[0][0]);$("#homeBanner > a").attr('href', images[0][1]);$("#homeBanner .live_buttons").empty();for(var i=0; i<images.length; i++){var temp = new Image(); temp.src = images[i][0];temp = $("#homeBanner .live_buttons").append('<a href="' + images[i][1] + '">' + (i+1) + '</a>');$('#homeBanner .live_buttons a').eq(i).data('imageSource', images[i][0]);}$('#homeBanner img.live').data('imageScrolling', {isFrozen: 0,nextIndex: (images.length>1)?1:0,timeoutId: setTimeout('changePic()',5000)});$('#homeBanner .live_buttons a').mouseover(function(){clearTimeout($('#homeBanner img.live').data('imageScrolling').timeoutId);$('#homeBanner img.live').data('imageScrolling').timeoutId = 0;$('#homeBanner img.live').stop(false, true);$('#homeBanner img.live').data('imageScrolling').nextIndex = $(this).index();$('#homeBanner img.live').data('imageScrolling').isFrozen = 1;changePic();}).mouseout(function(){$('#homeBanner img.live').data('imageScrolling').isFrozen = 0;$('#homeBanner img.live').data('imageScrolling').timeoutId = setTimeout('changePic()',5000);});});
+var a2a_config = a2a_config || {};a2a_config.onclick = 1;
+$(function(){if((diff = $(window).height() - $("html").height()) > 0){$("#frame").css("min-height",$("#frame").height()+diff+($("#frame").outerHeight() - $("#frame").height())+"px");}$('img').error(function(){$(this).attr("data-src",this.src);this.src='/common/css/PTC2/sgraphics/default.png';}).each(function(){this.src=this.src;});$('.fancybox').fancybox();$(".event.ad").click(function(){try {if($(this).data("eventName")){_gaq.push(['_trackEvent', $(this).data("eventCategory"), 'Ad Click', $(this).data("eventName")]);setTimeout('document.location = "' + link.href + '"', 100);}else{_gaq.push(['_trackEvent', $(this).data("eventCategory"), 'Ad Click', $(this).attr("name")]);setTimeout('document.location = "' + link.href + '"', 100);}}catch(err){}});$(".filters input").change(function(){$.fancybox.helpers.overlay.open({parent:$('body')});$.fancybox.showLoading();$(this).closest("form").submit();});	});
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+
+(function(){
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-445413-1']);
+_gaq.push(['_trackPageview', '\/SFNT.html' ]);
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/551177ed9be93ba403a1c021/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();

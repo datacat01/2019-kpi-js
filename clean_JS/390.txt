@@ -1,0 +1,525 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".flyboynaturals.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"22984f983f0582541ad1d588455100ef866a1773","type":"ANONYMOUS","visit_id":"78e8ba4d-fcfe-4bd5-ab66-0712f28706d2","visitor_id":"ec59f854-b308-45fa-9612-d4bb4e081ce6"},"referer":{"url":""},"request":{"url":"https:\/\/flyboynaturals.com\/"}}, '', 1368429, "other", {"customer":{"id":"anonymous"}}, '78e8ba4d-fcfe-4bd5-ab66-0712f28706d2', 'ec59f854-b308-45fa-9612-d4bb4e081ce6');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	$(".QuickView").quickview({
+		buttonText: "Quick View",
+		buttonColor: "#f7f7f7",
+		gradientColor: "#dcdbdb",
+		textColor: "#000000"
+	});
+});
+
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.1b46122f672d40dc844f1f567b523b2d');
+    };
+
+
+
+var BCData = {"csrf_token":"89df16d3a3f920a4c10b8559848ff53858987e60d486138625ce828904589b11"};
+
+
+        $(document).ready(function(){
+            $('.TopMenu li.account').each(function(){
+                var text_login = $(this).find('a:first-child').text();
+                $(this).find('a:first-child').text(text_login.replace('Sign in','Login'));
+
+                var text_register = $(this).find('a:last-child').text();
+                $(this).find('a:last-child').text(text_register.replace('Create an account','Register'));
+            })
+        })
+    
+
+        function ENV_labels()
+        {
+            var option={
+                        'get':'.ProductList > li,.ProductList .owl-item > div',
+                        'label':['new','sale_current'],
+                        'insert_div':'',
+                        'insert_type':'append',
+                        'home':false,
+                        };
+            Envora.BC_label(option);
+        }
+
+        $(document).ready(function(){
+            ENV_labels();
+        })
+    
+
+// Mega Menu Styles 1: Code Mega menu has column right image
+var megamenu_colright = [2];
+    
+var colright = ['<a href="/put-link-for-image/"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/image-megamenu-1.jpg"/></a>'];
+    
+// Mega Menu Styles 2: Code Mega menu has column right image + brands in bottom
+var megamenu_colright2 = [3];
+    
+var colright2 = ['<div class="style2-top"><div class="left"><p><a href="/put-link-for-image/"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle2-1.jpg"/></a></p><p><a href="/put-link-for-image/"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle2-2.jpg"/></a></p></div><div class="right"><a href="/put-link-for-image/"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle2-3.jpg"/></a></div></div><div class="style2-bottom menu-brands"><h4>Shop by to Brands</h4><ul><li><a href=""><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/brand1.png" alt="Loremous"/></a></li><li><a href=""><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/brand2.png" alt="Loremous"/></a></li><li><a href=""><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/brand3.png" alt="Loremous"/></a></li></ul></div>'];
+
+//Mega Menu Styles 3 Code Mega menu have 4 image on top
+var megamenu_imagetop = [5];
+
+var imagemenu_5 = [
+    "<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle3-1.jpg' /></a>",
+    "<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle3-2.jpg' /></a>",
+    "<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle3-3.jpg' /></a>",
+    "<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle3-4.jpg' /></a>",
+    "<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menustyle3-5.jpg' /></a>"];
+
+var array_imagetop = [imagemenu_5];
+
+// Mega Menu Styles 4: Code Mega menu has column right image + category 3col + banner bottom
+var megamenu_colright4 = [4];
+    
+var colright4 = ['<div class="have-featured"><h4 class="title">Featured Categories</h4><div class="Product-list"><div class="item"><p class="ProductImage"><a href="#"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menu-product-1.png"></a></p><p class="p-name"><a href="#" title="Cosmopolis">Cosmopolis</a></p><p class="des"> Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom</p><p class="btn"><a href="#" title="Shop now">Shop now</a></p></div><div class="item"><p class="ProductImage"><a href="#"><img src="https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menu-product-2.png"></a></p><p class="p-name"><a href="#" title="Cosmopolis">Cosmopolis</a></p><p class="des"> Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom</p><p class="btn"><a href="#" title="Shop now">Shop now</a></p></div><div class="item"><p class="ProductImage"><a href="#"><img src="http://cdn3.bigcommerce.com/s-p1x9c/products/39/images/659/pDSP1-19261952v750__98984.1469335511.190.250.jpg?c=2"></a></p><p class="p-name"><a href="#" title="Cosmopolis">Cosmopolis</a></p><p class="des"> Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom</p><p class="btn"><a href="#" title="Shop now">Shop now</a></p></div><div class="item"><p class="ProductImage"><a href="#"><img src="http://cdn3.bigcommerce.com/s-p1x9c/products/32/images/533/pDSP1-18448905dt__82524.1469332741.190.250.jpg?c=2"></a></p><p class="p-name"><a href="#" title="Cosmopolis">Cosmopolis</a></p><p class="des"> Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom</p><p class="btn"><a href="#" title="Shop now">Shop now</a></p></div></div></div>'];
+
+    var bottom_area = ["<a href='/put-link-for-image/'><img src='https://cdn2.bigcommerce.com/server2200/h2ndx0vf/product_images/uploaded_images/img-menu-bottom.jpg' /></a>"];
+
+
+
+
+
+    // Mega Menu Styles 1: Code Mega menu two column (left categories + right image)
+    function hlmegamenuColRight (num_menu, $_colRight){
+        var countLi = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul > li").length;
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+")").addClass("HL-HasMegamenu hlmegamenuColRight");
+        var $_Dropdownmenu = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").html();
+        var $_imageColRight = "<li class='MegaMenuColRight'>"+$_colRight+"</li>";
+
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").wrap('<li class="WrapperCategory"></li>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .WrapperCategory").wrap('<ul class="Wrapper-Megamenu StylesMegamenu-1 menu-container-level-1"></ul>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .Wrapper-Megamenu").append($_imageColRight);
+        jQuery("#DrawerMenu #SideCategoryList ul.sf-menu > li:nth-child("+num_menu+") > .drawer-subcat").append($_imageColRight);
+    }
+
+   jQuery(document).ready(function(){
+      for (var i = 0; i < megamenu_colright.length; i++) {
+         hlmegamenuColRight(megamenu_colright[i], colright[i]);
+         jQuery(".PageMenu ul.sf-menu:first-child > li:nth-child("+megamenu_colright[0]+")").addClass('menucolright1');
+      }
+   });// End Mega Menu Styles 1
+
+   // Mega Menu Styles 2: Code Mega menu has column right + brand bottom - full width
+   function hlmegamenuColRight2 (num_menu, $_colRight){
+        var countLi = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul > li").length;
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+")").addClass("HL-HasMegamenu hlmegamenuColRight");
+        var $_Dropdownmenu = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").html();
+        var $_imageColRight = "<li class='MegaMenuColRight'>"+$_colRight+"</li>";
+
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").wrap('<li class="WrapperCategory"></li>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .WrapperCategory").wrap('<ul class="Wrapper-Megamenu StylesMegamenu-2 menu-container-level-1"></ul>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .Wrapper-Megamenu").append($_imageColRight);
+        jQuery("#DrawerMenu #SideCategoryList ul.sf-menu > li:nth-child("+num_menu+") > .drawer-subcat").append($_imageColRight);
+
+    }
+
+    jQuery(document).ready(function(){
+        for (var i = 0; i < megamenu_colright2.length; i++) {
+            hlmegamenuColRight2(megamenu_colright2[i], colright2[i]);
+     jQuery(".PageMenu  ul.sf-menu:first-child > li:nth-child("+megamenu_colright2[0]+")").addClass('menucolright2');
+        }
+    });// End Mega Menu Styles 2
+
+    // Mega Menu Styles 3: Code Mega menu have 4 image on top
+
+   function hlmegamenuimagetop (num_menu, $_imagemenu_array,$_Images_Menu){
+        var countLi = jQuery("#SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul > li").length;
+        jQuery("#SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+")").addClass("HL-HasMegamenu hlmegamenuimagetop");
+        var $_Dropdownmenu = jQuery("#SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").html();
+
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").wrap('<li class="WrapperCategory"></li>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .WrapperCategory").wrap('<ul class="Wrapper-Megamenu StylesMegamenu-3 menu-container-level-1"></ul>');
+        var j = 0;
+        for (var i = 0; i < $_imagemenu_array.length; i++) {
+            j = i + 1;
+            var $_Image_Top = "<li class='image_top'>"+$_imagemenu_array[i]+"</li>";
+            jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .Wrapper-Megamenu > .WrapperCategory > ul > li:nth-child("+j+") > ul").prepend($_Image_Top);
+
+            jQuery("#DrawerMenu #SideCategoryList ul.sf-menu > li:nth-child("+num_menu+") > .drawer-subcat > li:nth-child("+j+") > .drawer-subcat").prepend($_Image_Top);
+        }
+    }
+
+    jQuery(document).ready(function(){
+        for (var i = 0; i < megamenu_imagetop.length; i++) {
+            hlmegamenuimagetop(megamenu_imagetop[i], array_imagetop[i]);
+        }
+    });
+    // End Mega Menu Styles 3
+
+   // Mega Menu Styles 4: Code Mega menu has column right + with 3col + banner bottom - full width
+   function hlmegamenuColRight4 (num_menu, $_colRight,$_bottom){
+        var countLi = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul > li").length;
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+")").addClass("HL-HasMegamenu hlmegamenuColRight");
+        var $_Dropdownmenu = jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").html();
+        var $_imageColRight = "<li class='MegaMenuColRight'>"+$_colRight+"</li>";
+
+        var $_bottomArea = "<li class='MegaMenuBottom'>"+$_bottom+"</li>";
+
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") > ul").wrap('<li class="WrapperCategory"></li>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .WrapperCategory").wrap('<ul class="Wrapper-Megamenu StylesMegamenu-4 menu-container-level-1"></ul>');
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .Wrapper-Megamenu").append($_imageColRight);
+
+        jQuery("#DrawerMenu #SideCategoryList ul.sf-menu > li:nth-child("+num_menu+") > .drawer-subcat").append($_imageColRight);
+
+        jQuery(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+num_menu+") .Wrapper-Megamenu .WrapperCategory > ul").append($_bottomArea);
+    }
+
+    jQuery(document).ready(function(){
+        for (var i = 0; i < megamenu_colright4.length; i++) {
+            hlmegamenuColRight4(megamenu_colright4[i], colright4[i], bottom_area[i]);
+     jQuery(".PageMenu  ul.sf-menu:first-child > li:nth-child("+megamenu_colright4[0]+")").addClass('menucolright4');
+        }
+    });// End Mega Menu Styles 4
+
+
+
+    function fixMegaMenuOverflow() {
+        function fix($container, $nav) {
+            var pad = $nav.offset().left + $nav.outerWidth() - ($container.offset().left + $container.outerWidth());
+            var pad2 = $container.offset().left + pad - $nav.offset().left;
+            if (pad2 < 0) pad = pad - pad2;
+            if (pad < 0){
+                $container.css('left', pad+'px');
+            }
+        }
+
+        jQuery('.PageMenu .CategoryList > div > div > ul > li.menu-parent > ul.menu-container-level-1').parent().hover(function() {
+            var $container = jQuery(this).children('ul.menu-container-level-1');
+            if(jQuery(this).hasClass('menu-parent'))
+                $container.css('left',0);
+            var $nav = jQuery(this).parents('.PageMenu .CategoryList > div > div').first();
+            fix($container, $nav);
+        }, function() {
+            jQuery(this).children('ul.menu-container-level-1').css('left', '');
+        });
+    };
+
+    function fixMegaMenuOverflowMega() {
+        function fix($container, $nav) {
+            var pad = $nav.offset().left + $nav.outerWidth() - ($container.offset().left + $container.outerWidth());
+            var pad2 = $container.offset().left + pad - $nav.offset().left;
+            if (pad2 < 0) pad = pad - pad2;
+            if (pad < 0){
+                $container.css('left', pad+'px');
+            }
+        }
+
+        jQuery('.PageMenu .CategoryList > div > div > ul > li.menu-parent > .Wrapper-Megamenu.menu-container-level-1').parent().hover(function() {
+            var $container = jQuery(this).children('ul.Wrapper-Megamenu.menu-container-level-1');
+            if(jQuery(this).hasClass('menu-parent'))
+                $container.css('left',0);
+            var $nav = jQuery(this).parents('.PageMenu .CategoryList > div > div').first();
+            fix($container, $nav);
+        }, function() {
+            jQuery(this).children('ul.Wrapper-Megamenu.menu-container-level-1').css('left', '');
+        });
+    };
+
+    jQuery(document).ready(function() {
+        jQuery('.PageMenu .CategoryList > div > div > ul > li').has('ul').addClass('menu-parent');
+        jQuery('.PageMenu .CategoryList > div > div > ul > li').children('ul').addClass('menu-container-level-1');
+
+    });
+
+    jQuery(window).load(function(){
+        fixMegaMenuOverflow();
+        fixMegaMenuOverflowMega();
+    });
+
+
+    $(document).ready(function(){
+        var countLi = $('.PageMenu #SideCategoryList ul.sf-menu:first-child > li').length;
+        if ($(window).width() >= 1200) {
+          var max = 6;
+        }
+        else if($(window).width() >= 1070 && $(window).width() < 1200) {            
+          var max = 4;
+        }
+        else if($(window).width() >= 768 && $(window).width() < 1070){
+          var max = 6;
+        }        
+        var i = max + 1;
+        if( countLi > max ){
+          var html = '';
+          var j = 0;
+          for(i; i <= countLi ; i++){
+            html += '<li>';
+            html += $(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+ (i - j) +")").html();
+            html += '</li>';
+            $(".PageMenu #SideCategoryList ul.sf-menu:first-child > li:nth-child("+ (i - j) +")").remove();
+            j++;
+          }
+          $('.PageMenu #SideCategoryList .menu-page > div').append('<ul class="new-more"><li class="more"><span>More...</span></li></ul>');
+          $('.PageMenu #SideCategoryList .menu-page > div > ul.new-more > li.more').append('<ul>'+html+'</ul>');
+        }
+
+        $("#SideCategoryList .MegaMenuColRight .Product-list").owlCarousel({
+            // Most important owl features
+            items : 2,
+            itemsCustom : false,
+            itemsDesktop : [1199,2],
+            itemsDesktopSmall : [991,1],
+            itemsTablet: [767,1],
+            itemsTabletSmall: false,
+            itemsMobile : [400,1],
+            singleItem : false,
+            itemsScaleUp : false,
+             
+            //Basic Speeds
+            slideSpeed : 200,
+            paginationSpeed : 800,
+            rewindSpeed : 1000,
+             
+            // Navigation
+            navigation : true,
+            navigationText : ["prev","next"],
+             
+            //Pagination
+            pagination : false
+                
+        });
+    })
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], select').not('.UniApplied').uniform();
+	});
+
+
+    // Enable/Disable Lazy Loading Effect
+window.lazy_load = true;
+    // Enable/Disable Swap Image Effect
+window.image_swap = true;
+    // Enable/Disable Popup Newsletter
+window.newsletter_display = true;
+    // Change the time of the popup newsletter show
+window.newsletter_delay = 800;
+
+
+    $(document).on('ready', function() {
+      $(".regular").slick({
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    });
+  
+
+           var userFeed = new Instafeed({
+                      get: 'user',
+                      userId: 203584279,
+                      accessToken: '203584279.1677ed0.2c4b265c35744a22898c37c04ed73eec',
+              resolution: "low_resolution",
+              limit: "20",
+                      after: function() {
+                      jQuery("#instafeed").owlCarousel({
+                          items : 5,
+                          itemsCustom : false,
+                          scrollPerPage: true,
+                          slideSpeed: 500,
+                          stopOnHover: true,
+                          itemsDesktop : [1199,5],
+                          itemsDesktopSmall : [980,4],
+                          itemsTablet: [768,3],
+                          itemsTabletSmall: false,
+                          itemsMobile : [479,2],
+                          singleItem : false,
+                          itemsScaleUp : false,
+                          navigation : true,
+                          navigationText : ["prev","next"]
+                          });
+                    }
+              });
+              userFeed.run();
+      
+
+  function ENV_top_scroll()
+   {
+      var x=$('.product-nav').eq(0).offset().top-170;
+      $('html,body').stop().animate({scrollTop:x+'px'},1000);
+   }
+  function Envora_color() {
+      Envora.colorVarian({'max':5,'hover_image':'.ProductImage img','get':'.ProductImage','typeadd':'prepend'});
+
+      var hlimg=jQuery(".ProductImage img")[0];
+      var hlheight=hlimg.height;
+      var hlwidth=hlimg.width;
+
+      /*
+        $( ".ProductList > li").each(function() {
+          $(this).find(".ProductImage img").css("width",hlwidth+"px").css("height",hlheight+"px");
+        });
+     */
+  }
+  $(document).ready(function(){
+      var ob=$('.ProductList .ProductImage img').eq( 0 );
+      var s="";
+      s+="<style>.ProductList .ProductImage img {width:"+ThumbImageWidth+"px;max-height:"+ThumbImageHeight+"px;} .ProductList .ProductImage{height:"+ThumbImageHeight+"px;}</style>";
+      $('head').append(s);
+    })
+    $(window).load(function(){
+      Envora_color()
+  })
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+    var i = 1;
+    $('.footer .BrandList ul li').not(':last-child').each(function(){
+        if(i > 8){
+            $(this).remove();
+        }
+        ++ i;
+    });
+
+
+(function(d,s,id){var z=d.createElement(s);z.type="text/javascript";z.id=id;z.async=true;z.src="//static.zotabox.com/2/2/229bd338482087442f4270b7d50f9d84/widgets.js";var sz=d.getElementsByTagName(s)[0];sz.parentNode.insertBefore(z,sz)}(document,"script","zb-embed-code"));
+
+// <![CDATA[
+jQuery(document).ready(function($) {
+if(window.newsletter_display == true){
+    var $modalParent        = $('div.wrapper'),
+        modalWindow         = $('#email-modal'),
+        emailModal          = $('#email-modal');
+
+    modalWindow = modalWindow.html();
+    modalWindow = '<div id="email-modal">' + modalWindow + '</div>';
+    $modalParent.css({'position':'relative'});
+    //
+    // remove 'original' modal
+    $('.widget #email-modal').remove();
+    // append modal to .wrapper
+    $modalParent.append(modalWindow);
+    function closeEmailModalWindow () {
+        $('#email-modal .modal-window').fadeOut(600, function() {
+            $('#email-modal .modal-overlay').fadeOut(600, function() {
+                $('#email-modal').css({'display':'none'});
+                $.cookie('emailSubcribeModal', 'closed', {expires:7, path:'/'});
+            });
+        })
+    }
+    function openEmailModalWindow () {         
+        $('#email-modal').delay(800).fadeIn(600, function() {
+           $('#email-modal .modal-window').fadeIn(600);
+        });
+    }
+    
+    if ($.cookie('emailSubcribeModal') != 'closed') {
+        openEmailModalWindow();
+    };
+     
+    //
+    // Modal Window Close Events - 'X' Close Button & 'esc' Key Press
+    $('#email-modal .btn.close').click(function(e) {
+        e.preventDefault();
+        closeEmailModalWindow();
+    });
+
+    
+    $('.HL_check #HL_checked').click(function(e) {
+        e.preventDefault();
+        closeEmailModalWindow();
+    });
+
+    $('body').keydown(function(e) {
+        // console.log('KEY : '+e.which);
+        if( e.which == 27) {
+            closeEmailModalWindow();
+            $('body').unbind('keydown');
+        }
+    });
+
+    $('#embed-newsletter .email').keydown(function(e) {
+        if( e.which == 13) {
+            $('#embed-newsletter .button').trigger('click');            
+        }
+    });
+    
+    $('#embed-newsletter .button').click(function() {
+        if ($('#embed-newsletter .email').val() == '') {
+            alert('You forgot to type in your email address.');
+            $('#embed-newsletter .email').focus();
+            return false;            
+        }
+        if($('#embed-newsletter .email').val().indexOf('@') == -1 || $('#embed-newsletter .email').val().indexOf('.') == -1) {
+            alert('Please enter a valid email address, such as john@example.com.');
+            $('#embed-newsletter .email').focus();
+            $('#embed-newsletter .email').select();
+            return false;
+        }        
+        $.cookie('emailSubcribeModal', 'closed', {expires:100, path:'/'});
+        $('#nl_email').val($('#embed-newsletter .email').val());
+        $('#subscribe_form').submit();
+    }); 
+
+}
+$('#embed-newsletter > span input').click(
+    function(){
+        $(this).val('');
+    });
+    
+});
+
+// ]]
+// ]]>
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 100,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+

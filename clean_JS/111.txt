@@ -1,0 +1,23 @@
+
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+      _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+      $.src="https://v2.zopim.com/?2uc9eXRL5Or0SpyxdmA7FIFdfgMM62CG";z.t=+new Date;$.
+      type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+    
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: 'index',
+ecomm_totalvalue: '',
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1061710942;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

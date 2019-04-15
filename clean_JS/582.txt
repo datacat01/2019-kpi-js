@@ -1,0 +1,9 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".hauntedhousecreations.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"7e501f3a2003d98e345f9c007f020cb986b2b0c4","type":"ANONYMOUS","visit_id":"b4530208-ffe9-4df0-949c-3c633d613c01","visitor_id":"d1f78de2-ae98-4567-acb7-db9bc8fa927e"},"referer":{"url":""},"request":{"url":"https:\/\/www.hauntedhousecreations.com\/"}}, '', 3177009, "other", {"customer":{"id":"anonymous"}}, 'b4530208-ffe9-4df0-949c-3c633d613c01', 'd1f78de2-ae98-4567-acb7-db9bc8fa927e');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"547224be259827bbfa6f52f132932266d23991bf1d99d8202d22c3768ccff06a"};
+

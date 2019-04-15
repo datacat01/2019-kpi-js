@@ -1,0 +1,68 @@
+
+//<![CDATA[
+var Anthem_FormID = "aspnetForm";
+//]]>
+
+
+    $(document).ready(function () {
+ 
+
+
+        $('#exceptionslnk').on('click', function () {
+            $('#exceptionsModal').foundation('reveal', 'open');
+        });
+
+        
+        $('#expeditedShippinglnk').on('click', function () {
+            $('#expeditedShippingModal').foundation('reveal', 'open');
+        });
+
+    });
+
+
+var google_tag_params = {
+ecomm_prodid:  '',
+ecomm_pagetype:  'home',
+ecomm_totalvalue:  0
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072535500;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+var google_tag_params = {
+ecomm_prodid:  '',
+ecomm_pagetype:  'home',
+ecomm_totalvalue:  0
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072535500;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+

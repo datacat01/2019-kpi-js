@@ -1,0 +1,62 @@
+
+	/* modul 1 */
+        (function () {
+            var flDataMain = "https://cdn.findologic.com/autocomplete/A91D14961F501496FD07A45C6B53F5CF/autocomplete.js";
+            var flAutocomplete = document.createElement('script');
+            flAutocomplete.type = 'text/javascript';
+            flAutocomplete.async = true;
+            flAutocomplete.src = "https://cdn.findologic.com/autocomplete/require.js";
+            var s = document.getElementsByTagName('script')[0];
+            flAutocomplete.setAttribute('data-main', flDataMain);
+            s.parentNode.insertBefore(flAutocomplete, s);
+        })();
+    
+
+	//<![CDATA[
+	(function(){function a(a){var b,c,d=window.document.createElement("iframe");d.src="javascript:false",(d.frameElement||d).style.cssText="width: 0; height: 0; border: 0";var e=window.document.createElement("div");e.style.display="none";var f=window.document.createElement("div");e.appendChild(f),window.document.body.insertBefore(e,window.document.body.firstChild),f.appendChild(d);try{c=d.contentWindow.document}catch(g){b=document.domain,d.src="javascript:var d=document.open();d.domain='"+b+"';void(0);",c=d.contentWindow.document}return c.open()._l=function(){b&&(this.domain=b);var c=this.createElement("scr".concat("ipt"));c.src=a,this.body.appendChild(c)},c.write("<bo".concat('dy onload="document._l();">')),c.close(),d}var b="nostojs";window[b]=window[b]||function(a){(window[b].q=window[b].q||[]).push(a)},window[b].l=new Date;var c=function(d,e){if(!document.body)return setTimeout(function(){c(d,e)},30);e=e||{},window[b].o=e;var f=document.location.protocol,g=["https:"===f?f:"http:","//",e.host||"connect.nosto.com",e.path||"/include/",d].join("");a(g)};window[b].init=c})();
+
+	nostojs.init('drsuxnes');
+
+	//]]>
+	
+
+	var htmlElement = document.getElementsByTagName("html")[0];
+	htmlElement.className = '';
+
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ 
+
+  ga('create', 'UA-1130828-1', 'horror-shop.com');  
+  ga('require', 'displayfeatures');
+  ga('require', 'ecommerce', 'ecommerce.js');
+  
+  
+  ga('set', 'anonymizeIp', true);
+  
+   		
+
+  ga('send', 'pageview');
+
+  
+ 
+
+
+
+	window.criteo_q = window.criteo_q || [];
+	window.criteo_q.push(
+	{ event: "setAccount", account: 37399 },
+			{ event: "setSiteType", type: window.innerWidth < 640 ? 'm' : window.innerWidth < 800 ? 't' : 'd' }
+			,{ event: "viewHome" }
+		 
+		 
+		);
+	

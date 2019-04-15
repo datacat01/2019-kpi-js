@@ -1,0 +1,294 @@
+		
+
+            //  
+            //  The purpose of this script block is to include script file hosted in App_Themes
+            // 
+        
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+null;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$Header1$ToolkitScriptManager1', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+
+
+	                                                   
+                 
+    //transform functions to call
+       
+	// Fix up asp:datagrid to support THEAD tags
+	//dataTable options passed as array to 
+    // Review myaccount_Orders.aspx for sample how to implement it
+	function fixASPGridView(tableID,headerTrClass,dataTableOptions) {
+		//console.log(tableID, headerTrClass,dataTableOptions);
+		$("#"+tableID+"").addClass("dt-responsive table table-striped table-hover").attr("width","100%");
+		$("#"+tableID+" tbody").before("<thead><tr></tr></thead>");            
+		$("#"+tableID+" thead tr").append($("#"+tableID+" tbody ."+headerTrClass+" td"));
+		$("#"+tableID+" thead tr td").wrapInner("<div />").find("div").unwrap().wrap("<th />").contents().unwrap();
+		//console.log($("#"+tableID+" tbody "+headerTrClass+" td"));
+		$("#"+tableID+" tbody tr:first").remove();		                
+		
+		//https://www.datatables.net/manual/installation
+		//https://www.datatables.net/manual/options
+		//https://www.datatables.net/reference/option/
+		//https://www.datatables.net/extensions/responsive/
+		$(document).ready( function () {
+		//alert(dataTableOptions);
+		
+		var dataTableDefaults = {
+			"bInfo": false,
+            "paging": false,
+			"searching": false,
+			"ordering": false,
+			responsive: true,
+		}
+		var dataTableSettings = $.extend({}, dataTableDefaults, dataTableOptions);
+		$("#"+tableID+"").DataTable(dataTableSettings);     
+		
+		});		
+	}
+
+    
+    // Fix up asp:GridView to support THEAD tags
+	//dataTable options passed as array to 
+    // Review quickOrderEntry.aspx and quickOrderEntry.aspx.cs for sample how to implement it
+    function fixASPGridView2(tableID,headerTrClass,dataTableOptions) {
+		                
+		
+		//https://www.datatables.net/manual/installation
+		//https://www.datatables.net/manual/options
+		//https://www.datatables.net/reference/option/
+		//https://www.datatables.net/extensions/responsive/
+		$(document).ready( function () {
+		//alert(dataTableOptions);
+		
+		var dataTableDefaults = {
+			"bInfo": false,
+            "paging": false,
+			"searching": false,
+			"ordering": false,
+			responsive: true,
+		}
+		var dataTableSettings = $.extend({}, dataTableDefaults, dataTableOptions);
+		$("#"+tableID+"").DataTable(dataTableSettings);     
+		
+		});		
+	}
+
+    function setCountdown() {
+        // var currentyear = moment().year();
+        var currentyear = 2019
+        var thisYearChristmas = currentyear + "-12-25";
+        var thisMoment = moment();
+        var crMoment = moment(thisYearChristmas);
+        var crDateDiff = moment.duration(crMoment.diff(thisMoment));
+        var diffarray = crDateDiff.format('d[,]h[,]m').split(",");
+        var crDays = diffarray[0];
+        console.log(currentyear)
+        var crHours = diffarray[1];
+        var crMinutes = diffarray[2];
+        //$('#countDnDays').html(crDays);
+        //$('#countDnHours').html(crHours);
+        //$('#countDnMins').html(crMinutes);
+        if (thisMoment.isBefore(thisYearChristmas)) {
+            $('#countDnDays').html(crDays);
+            $('#countDnHours').html(crHours);
+            $('#countDnMins').html(crMinutes);
+            //$('#countDnHours').html(crDateDiff.format('d [Days] h [hours] m [mins]'));
+        }
+    }
+
+	//apply all transformation here
+	$(document).ready(function(){
+		
+        // For tooltips
+         $('[data-toggle="tooltip"]').tooltip();
+		//images
+		//these transformation should not be altered or removed
+		$("img").removeAttr("height");
+		$("img").addClass("img-responsive");
+		
+		//this function inherits the text alignment attribute set in the content block for the container
+		//the value is applied to the image class, the style is in the customStyles.css  value can be left, right, center.  default is center. 
+		$(".contentBlock div[class*=text-] img").each(function() {
+			var parentTextAttr = $(this).parents(".contentBlock div[class*=text-]").attr("class")+" ";
+			var imgTextAttrStart = parentTextAttr.indexOf("text-");
+			var imgTextAttrEnd = parentTextAttr.indexOf(" ",imgTextAttrStart);
+			var imgTextAttr = parentTextAttr.substring(imgTextAttrStart+5,imgTextAttrEnd).trim();
+			//console.log(imgTextAttrStart,imgTextAttr,imgTextAttrEnd);
+			$(this).addClass("img-"+imgTextAttr);
+		});
+
+		//color swatch transform. 
+		
+		$(".ProductGrid .ColorSwatchTableLayout").parent("div").each(function(){
+			var colorSwatchImages = $(this).find(".ColorSwatchTableColumn img").detach();
+			
+			//just a text object remove later
+			var colorSwatchImages2 = $(colorSwatchImages).clone();
+			
+			$(this).children(".ColorSwatchTableLayout").remove();
+			
+			for(var i=0;i<colorSwatchImages.length;i++) {
+				$(this).children(".colorSwatch").append($(colorSwatchImages).eq(i).wrap("<span class=\"swatchImg\"></span>").parent());
+			}
+			
+			//just a test loop remove later
+			/*for(var i=0;i<colorSwatchImages2.length;i++) {
+				$(this).children(".colorSwatch").append($(colorSwatchImages2).eq(i).wrap("<span class=\"swatchImg\"></span>").parent());
+				console.log("remove test loop");
+			}
+			*/
+			//console.log($(this));
+			//console.log($(colorSwatchImages));
+		});
+
+		// social media containers
+		
+		//$(".SocialPlugin .row").css("display","inline-block").css("width","100%");
+		$(".SocialPlugin .TwitterButton").css("display","inline-block").css("padding","2px");
+		$(".SocialPlugin .FBLikeButton").css("display","inline-block").css("padding","2px");
+		
+		//need to rework the logic here
+		/*
+		
+		//keep these last since previous transforms may alter height
+		
+		//set the container height to the height of the tallest container.
+		//this ensures bootstrap will have consistent grid layout.
+		//inner containers must be set first
+		$(".contentBlock:not(.FullCategoryList):not(.SocialPlugin)").each(function(){
+			var heightOfLargestContainer = 0;
+				$(this).find(".SingleCategoryDisplayImage").each(function(){
+					if(heightOfLargestContainer < $(this).outerHeight()) {
+						heightOfLargestContainer = $(this).outerHeight();
+					}
+				
+				});
+			$(this).find(".SingleCategoryDisplayImage").css("height", ""+heightOfLargestContainer+"px");
+		});
+		//set the container height to the height of the tallest container.
+		//this ensures bootstrap will have consistent grid layout. 
+		//inner containers must be set first
+
+		$(".contentBlock:not(.FullCategoryList):not(.SocialPlugin)").each(function(){
+			var heightOfLargestContainer = 0;
+				$(this).children("div").each(function(){
+					if(heightOfLargestContainer < $(this).outerHeight()) {
+						heightOfLargestContainer = $(this).outerHeight();
+					}
+				
+				});
+			$(this).children("div").css("height", ""+heightOfLargestContainer+"px");
+		});
+		*/
+
+        //Set the Christmas Countdown Counter
+		setCountdown();
+		setInterval("setCountdown()", 60000);
+		
+	});
+
+
+		        $(document).ready(function () {
+		            var loginIcon = "unlock-alt";
+		            if ($('a#Header1_LoginStatusControl1_lnkStatus').text() == "Sign Out") {
+		                loginIcon = "lock";
+		            }
+		            $('a#Header1_LoginStatusControl1_lnkStatus').prepend('<i class="fa fa-' + loginIcon + '"></i>');
+		            $('a#Header1_lnkMyAccount').prepend('<i class="fa fa-user"></i>');
+		            $('a#Header1_lnkCustomerService').prepend('<i class="fa fa-star"></i>');
+		            $('a#Header1_lnkQuickOrderEntry').prepend('<i class="fa fa-book"></i>');
+		            $('a#Header1_lnkSearch').prepend('<i class="fa fa-search"></i>');
+		            $('a#Header1_lnkCart').prepend('<i class="fa fa-shopping-cart"></i>');
+		        });
+		    
+
+
+    $.maxZIndex = $.fn.maxZIndex = function (opt) {
+        var def = { inc: 10, group: "*" };
+        $.extend(def, opt);
+        var zmax = 0;
+        $(def.group).each(function () {
+            var cur = parseInt($(this).css('z-index'));
+            zmax = cur > zmax ? cur : zmax;
+        });
+        if (!this.jquery)
+            return zmax;
+
+        return this.each(function () {
+            zmax += def.inc;
+            $(this).css("z-index", zmax);
+        });
+    }
+
+
+    $(".dropdown").hoverIntent(function () {
+        // Use hoverIntent to display site category dropdown menu
+        $('.owl-carousel').css('z-index', '0');
+        $('.header-bottom').css('padding-bottom', '54px');
+        $('.NOdropdown-menu').css('display', 'block');
+        $('.NOdropdown-menu').collapse('show');
+        $('.navholderouter').css('position', 'absolute');
+        $('.navholderouter').css('z-index', '10');
+        $('.headerbottom').css('display', 'none');
+    }, function () {
+        $('.header-bottom').css('padding-bottom', '0px');
+        $('.NOdropdown-menu').css('display','none').collapse('hide');
+        $('.navholderouter').css('position', 'static');
+        $('.headerbottom').css('display', 'block');
+    });
+
+
+    $(".dropup").hover(function () {
+        $(this).addClass("open");
+    }, function () {
+        $(this).removeClass("open");
+    });
+
+
+//<![CDATA[
+(function() {var fn = function() {$get("Header1_ToolkitScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionInterval":10,"completionSetCount":12,"contextKey":"Both","delimiterCharacters":";, :","id":"AutoCompleteEx","minimumPrefixLength":1,"serviceMethod":"GetCompletionList","servicePath":"WebServices/AjaxServices.asmx","useContextKey":true}, null, null, $get("Header1_HeaderSearch1_txtInput"));
+});
+//]]>
+
+
+/* <![CDATA[ */
+var google_conversion_id = 881514857;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+        var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+        (function (d, s, id, tid, vid) {
+          var js, ljs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+          js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+          ljs.parentNode.insertBefore(js, ljs);
+        })(document, 'script', 'ltkSDK', 'hAoF3lcR0JuX', '1');
+

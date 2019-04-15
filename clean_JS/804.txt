@@ -1,0 +1,506 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.customcages.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+        //<![CDATA[
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            
+ga('create', 'UA-592580-6', 'auto');
+
+ga('send', 'pageview');
+            
+        //]]>
+        
+
+    etCurrencyManagerJsConfig ={"precision":2,"position":32,"display":2,"zerotext":" ","excludecheckout":"1","cutzerodecimal":"0","cutzerodecimal_suffix":",-","min_decimal_count":"2"};
+    try {
+        extendProductConfigformatPrice();
+    } catch (e) {
+
+    }
+
+
+    jQuery(document).ready(function(){
+        jQuery("a[rel=fancybox],a[rel=fancybox-main]").fancybox({
+			'padding' : 10,
+'margin' : 40,
+'opacity' : 1,
+'scrolling' : 'auto',
+'autoScale' : 1,
+'hideOnOverlayClick' : 1,
+'overlayShow' : 1,
+'overlayOpacity' : 0.7,
+'overlayColor' : '#777',
+'titleShow' : 1,
+'transitionIn' : 'elastic',
+'transitionOut' : 'elastic',
+'speedIn' : 500,
+'speedOut' : 500,
+'changeFade' : 'fast',
+'easingIn' : 'swing',
+'easingOut' : 'swing',
+'showCloseButton' : 1,
+'showNavArrows' : 1,
+'enableEscapeButton' : 1
+		});
+
+    });
+
+
+		jQuery(document).ready(function(){
+			 jQuery("a[rel=fancy]").fancybox({
+
+});		});
+	
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+	//<![CDATA[
+
+
+
+		var MegaMenu = {
+
+			mobileMenuThreshold: 960			, bar: Glacemenumobile_172('#nav')
+			, panels: null
+			, mobnavTriggerWrapper: null
+			, itemSelector: 'li'
+			, panelSelector: '.nav-panel'
+			, openerSelector: '.opener'
+			, isTouchDevice: ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0)
+			, ddDelayIn: 100
+			, ddDelayOut: 200
+			, ddAnimationDurationIn: 100
+			, ddAnimationDurationOut: 300
+
+			, init : function()
+			{
+				MegaMenu.panels = MegaMenu.bar.find(MegaMenu.panelSelector);
+				MegaMenu.mobnavTriggerWrapper = Glacemenumobile_172('.mobnav-trigger-wrapper');
+			}
+
+			, initDualMode : function()
+			{
+				MegaMenu.init();
+				MegaMenu.bar.accordion(MegaMenu.panelSelector, MegaMenu.openerSelector, MegaMenu.itemSelector);
+				if (Glacemenumobile_172(window).width() >= MegaMenu.mobileMenuThreshold)
+				{
+					MegaMenu.cleanUpAfterMobileMenu(); //Required for IE8
+				}
+
+				enquire
+					.register('screen and (max-width: ' + (MegaMenu.mobileMenuThreshold - 1) + 'px)', {
+						match: MegaMenu.activateMobileMenu,
+						unmatch: MegaMenu.cleanUpAfterMobileMenu
+					})
+					.register('screen and (min-width: ' + MegaMenu.mobileMenuThreshold + 'px)', {
+						deferSetup: true,
+						setup: MegaMenu.cleanUpAfterMobileMenu,
+						match: MegaMenu.activateRegularMenu,
+						unmatch: MegaMenu.prepareMobileMenu
+					});
+			}
+
+			, initMobileMode : function()
+			{
+				MegaMenu.init();
+				MegaMenu.bar.accordion(MegaMenu.panelSelector, MegaMenu.openerSelector, MegaMenu.itemSelector);
+				MegaMenu.activateMobileMenu();
+			}
+
+			, activateMobileMenu : function()
+			{
+				MegaMenu.mobnavTriggerWrapper.show();
+				MegaMenu.bar.addClass('nav-mobile acco').removeClass('nav-regular');
+			}
+
+			, activateRegularMenu : function() //Default state
+			{
+				MegaMenu.bar.addClass('nav-regular').removeClass('nav-mobile acco');
+				MegaMenu.mobnavTriggerWrapper.hide();
+			}
+
+			, cleanUpAfterMobileMenu : function()
+			{
+								MegaMenu.panels.css('display', '');
+			}
+
+			, prepareMobileMenu : function()
+			{
+								MegaMenu.panels.hide();
+
+								MegaMenu.bar.find('.item-active').each( function() {
+					Glacemenumobile_172(this).children('.nav-panel').show();
+				});
+			}
+
+		}; //end: MegaMenu
+
+
+
+		
+					MegaMenu.initMobileMode();
+		
+		//Toggle mobile menu
+		Glacemenumobile_172('a.mobnav-trigger').on('click', function(e) {
+			e.preventDefault();
+			if (Glacemenumobile_172(this).hasClass('active'))
+			{
+				MegaMenu.bar.removeClass('show');
+				Glacemenumobile_172(this).removeClass('active');
+			}
+			else
+			{
+				MegaMenu.bar.addClass('show');
+				Glacemenumobile_172(this).addClass('active');					
+			}
+		});
+
+	
+
+
+		
+
+
+	//]]>
+	
+
+/* <![CDATA[ */
+var google_conversion_id = 923662082;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+        var checkedForms = [];
+        var hasFormsChanged = false;
+
+        var onSubmit = function (token) {
+            if (currentValidationForm && currentValidationForm.validator
+                && currentValidationForm.validator.validate()
+            ) {
+                currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+                if (typeof(recaptchaObject) !== 'undefined'
+                    && 'post' !== currentForm.method
+                ) {
+                    recaptchaObject.submit();
+                } else {
+                    currentForm.submit();
+                }
+            } else {
+                grecaptcha.reset();
+            }
+        };
+
+        function checkForms() {
+            formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"newsletter\/subscriber\/new\"]","form[action*=\"customer\/account\/loginPost\"]","form[action*=\"review\/product\/post\"]","form[action*=\"contacts\/index\/post\"]"];
+            formsToProtect.forEach(function (item) {
+                var continueWorking = true;
+                formsSearchedBySelector = $$(item);
+                checkedForms.forEach(function(element) {
+                    if (element[0] == formsSearchedBySelector[0]) {
+                        continueWorking = false;
+                        return;
+                    }
+                })
+                if (formsSearchedBySelector.length != 0 && continueWorking) {
+                    checkedForms.push(formsSearchedBySelector);
+                    formsSearchedBySelector.forEach(function (formToProtect) {
+                        formsToProtectOnPage.push(formToProtect);
+                        hasFormsChanged = true;
+                    });
+                }
+            });
+            if (hasFormsChanged) {
+                for (var index in formsToProtectOnPage) {
+                    if (formsToProtectOnPage.hasOwnProperty(index)) {
+                        var formToProtectOnPage = formsToProtectOnPage[index];
+                        if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                            formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                            if (0 < formToProtectOnPage.length) {
+                                formToProtectOnPage = formToProtectOnPage[0];
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        if (1 > formToProtectOnPage.getElementsByClassName('amasty_recaptcha').length) {
+                            var recaptchaBlock = document.createElement('div');
+                            recaptchaBlock.className = 'amasty_recaptcha';
+                            formToProtectOnPage.appendChild(recaptchaBlock);
+                        }
+
+                        if (1 > formToProtectOnPage.getInputs(formToProtectOnPage, 'hidden', 'amasty_invisible_token').length) {
+                            var tokenInput = document.createElement('input');
+                            tokenInput.type = 'hidden';
+                            tokenInput.name = 'amasty_invisible_token';
+                            tokenInput.value = '';
+                            formToProtectOnPage.appendChild(tokenInput);
+                        }
+
+                        formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                            currentForm = event.target;
+                            currentValidationForm = new VarienForm(currentForm.id, false);
+                            recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                            if ('' == recaptchaBlock.innerHTML) {
+                                recaptcha = grecaptcha.render(recaptchaBlock, {
+                                    'sitekey': '6LeIeWIUAAAAANURGMcC5gAmYkv2bAR__bq8F7Md',
+                                    'callback': onSubmit,
+                                    'size': 'invisible',
+                                    'theme': 'light',
+                                    'badge': 'bottomright'
+                                });
+                            }
+                            grecaptcha.reset(recaptcha);
+                            grecaptcha.execute(recaptcha);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        document.observe("dom:loaded", function() {
+            var formsCount = 0;
+            setInterval(function () {
+                var formLength = $$('form').length;
+                if (formsCount != formLength) {
+                    formsCount = formLength;
+                    checkForms();
+                }
+            }, 1000);
+        });
+    
+
+    var newwindow;
+    var intId;
+    function fbLogin(){
+        var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
+        var	 screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
+        var	 outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
+        var	 outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
+        var	 width    = 500;
+        var	 height   = 270;
+        var	 left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
+        var	 top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
+        var	 features = (
+                'width=' + width +
+                ',height=' + height +
+                ',left=' + left +
+                ',top=' + top
+              );
+    
+        newwindow=window.open('https://www.facebook.com/dialog/oauth?client_id=135422940257428&redirect_uri=https%3A%2F%2Fwww.customcages.com%2Fsociallogin%2Ffblogin%2Flogin%2Fauth%2F1%2F&state=5c0255e46f969258f56104c29d50a604&display=popup&scope=email','Login_by_facebook',features);
+    
+        if (window.focus) {
+            newwindow.focus()
+        }
+        return false;
+    }
+    
+
+                            if ($('bt-loginfb-popup'))
+                                $('bt-loginfb-popup').addClassName('visible');
+                        
+
+var newwindow;
+var intId;
+function twLogin(){
+	var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
+	var	 screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
+	var	 outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
+	var	 outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
+	var	 width    = 790;
+	var	 height   = 590;
+	var	 left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
+	var	 top      = parseInt(screenY + ((outerHeight - height) / 2), 10);
+	var	 features = (
+			'width=' + width +
+			',height=' + height +
+			',left=' + left +
+			',top=' + top
+		  );
+
+	newwindow=window.open('https://www.customcages.com/sociallogin/twlogin/login/','Login_by_twitter',features);
+
+	if (window.focus) {
+		newwindow.focus()
+	}
+	return false;
+}
+
+
+                            if ($('bt-logintw-popup'))
+                                $('bt-logintw-popup').addClassName('visible');
+                        
+
+    try {
+                var links = document.links;
+        for (i = 0; i < links.length; i++) {
+            if (links[i].href.search('/customer/account/login/') != -1 && links[i].href.search('/customer/account/login/#') == -1) {
+                links[i].href = 'javascript:socialLogin.open();$("magestore-create-back").click();';
+                Event.observe(links[i], 'click', function () {
+                    $('magestore-login-social').style.display = "block";
+                    if ($('sociallogin-other-a-popup')) $('sociallogin-other-a-popup').style.display = "block";
+                    $('magestore-popup').style.width = "706px";
+                });
+            }
+            if (links[i].href.search('/customer/account/create/') != -1 && links[i].href.search('/customer/account/create/#') == -1) {
+                links[i].href = 'javascript:socialLogin.open();$("magestore-sociallogin-create-new-customer").click();';
+                Event.observe(links[i], 'click', function () {
+                    $('magestore-login-social').style.display = "block";
+                    if ($('sociallogin-other-a-popup')) $('sociallogin-other-a-popup').style.display = "block";
+                    $('magestore-popup').style.width = "706px";
+                });
+            }
+            if (links[i].href.search('/wishlist/') != -1) {
+                links[i].href = 'javascript:socialLogin.open();';
+                Event.observe(links[i], 'click', function () {
+                    $('magestore-login-social').style.display = "block";
+                    if ($('sociallogin-other-a-popup')) $('sociallogin-other-a-popup').style.display = "block";
+                    $('magestore-popup').style.width = "706px";
+                });
+            }
+            if (links[i].href.search('/customer/account/') != -1 && !links[i].down('span') && links[i].href.search('/customer/account/login/#') == -1) {
+                links[i].href = 'javascript:socialLogin.open();';
+                Event.observe(links[i], 'click', function () {
+                    $('magestore-login-social').style.display = "block";
+                    if ($('sociallogin-other-a-popup')) $('sociallogin-other-a-popup').style.display = "block";
+                    $('magestore-popup').style.width = "706px";
+                });
+            }
+        }
+
+        if (document.getElementById('product_comparison')) {
+            var links = document.links;
+            for (i = 0; i < links.length; i++) {
+                if (links[i].href.search('/wishlist/') != -1) {
+                    links[i].href = 'javascript:socialLogin.open();';
+                }
+            }
+        }
+                if (document.getElementById("checkout-step-login")) {
+            $$('.col-2 .buttons-set').each(function (e) {
+                e.insert({bottom: '<div id="multilogin"> <button type="button" class="button" style="" onclick="javascript:socialLogin.open();" title="Social Login" name="headerboxLink1" id="headerboxLink1"><span><span>Social Login</span></span></button></div>'});
+            });
+        }
+    } catch (exception) {
+        alert(exception);
+    }
+
+
+    socialLogin = new Lightboxsocial('magestore-popup');
+    Event.observe(window, 'load', function () {
+        Event.observe('bg_fade', 'click', function () {
+            socialLogin.close();
+        });
+    });
+    Event.observe('sociallogin-close-popup', 'click', function () {
+        socialLogin.close();
+    });
+    document.observe("dom:loaded", function () {
+        var magestorePopupSocial = $('magestore-popup_social');
+
+        Event.observe(window, 'resize', function () {
+            socialLogin._centerWindow('magestore-popup');
+            socialLogin._centerWindow('magestore-popup_social');
+        });
+    });
+
+
+    function checkHttps(requestUrl) {
+        if (window.location.href.match('https://') && !requestUrl.match('https://'))
+            requestUrl = requestUrl.replace('http://', 'https://');
+        if (!window.location.href.match('https://') && requestUrl.match('https://'))
+            requestUrl = requestUrl.replace('https://', 'http://');
+        return requestUrl;
+    }
+    Event.observe(window, 'load', function () {
+        var options = {
+            email: document.getElementById('magestore-sociallogin-popup-email').value,
+            pass: document.getElementById('magestore-sociallogin-popup-pass').value,
+            login_url: checkHttps("https://www.customcages.com/sociallogin/popup/login"),
+            send_pass_url: checkHttps("https://www.customcages.com/sociallogin/popup/sendPass"),
+            create_url: checkHttps("https://www.customcages.com/sociallogin/popup/createAcc"),
+        };
+        Login = new LoginPopup(options);
+    });
+
+
+    var newwindow;
+    var intId;
+    function fbLogin(){
+        var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
+        var	 screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
+        var	 outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
+        var	 outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
+        var	 width    = 500;
+        var	 height   = 270;
+        var	 left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
+        var	 top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
+        var	 features = (
+                'width=' + width +
+                ',height=' + height +
+                ',left=' + left +
+                ',top=' + top
+              );
+    
+        newwindow=window.open('https://www.facebook.com/dialog/oauth?client_id=135422940257428&redirect_uri=https%3A%2F%2Fwww.customcages.com%2Fsociallogin%2Ffblogin%2Flogin%2Fauth%2F1%2F&state=3c68c05ed72db0a66866867d1c058932&display=popup&scope=email','Login_by_facebook',features);
+    
+        if (window.focus) {
+            newwindow.focus()
+        }
+        return false;
+    }
+    
+
+					$('bt-loginfb').addClassName('non-visible');
+				
+
+var newwindow;
+var intId;
+function twLogin(){
+	var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
+	var	 screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
+	var	 outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
+	var	 outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
+	var	 width    = 790;
+	var	 height   = 590;
+	var	 left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
+	var	 top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
+	var	 features = (
+			'width=' + width +
+			',height=' + height +
+			',left=' + left +
+			',top=' + top
+		  );
+
+	newwindow=window.open('https://www.customcages.com/sociallogin/twlogin/login/','Login_by_twitter',features);
+
+	if (window.focus) {
+		newwindow.focus()
+	}
+	return false;
+}
+
+
+					$('bt-logintw').addClassName('non-visible');
+				

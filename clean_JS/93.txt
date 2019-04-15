@@ -1,0 +1,203 @@
+
+    var pageTemplate = "index";
+    var cartAttibutes = {};
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+      var handle = "home-page";
+      var ecomm_pagetype = "home";
+    
+
+      
+
+    
+
+    
+
+    var productAvailability = undefined;
+    var publishDate = undefined;
+    var shopifyTags = undefined;
+  
+
+  function botCheck() {
+      var botPattern = "(googlebot\/|Googlebot-Mobile|Googlebot-Image|Google favicon|Mediapartners-Google|bingbot|slurp|java|wget|curl|Commons-HttpClient|Python-urllib|libwww|httpunit|nutch|phpcrawl|msnbot|jyxobot|FAST-WebCrawler|FAST Enterprise Crawler|biglotron|teoma|convera|seekbot|gigablast|exabot|ngbot|ia_archiver|GingerCrawler|webmon |httrack|webcrawler|grub.org|UsineNouvelleCrawler|antibot|netresearchserver|speedy|fluffy|bibnum.bnf|findlink|msrbot|panscient|yacybot|AISearchBot|IOI|ips-agent|tagoobot|MJ12bot|dotbot|woriobot|yanga|buzzbot|mlbot|yandexbot|purebot|Linguee Bot|Voyager|CyberPatrol|voilabot|baiduspider|citeseerxbot|spbot|twengabot|postrank|turnitinbot|scribdbot|page2rss|sitebot|linkdex|Adidxbot|blekkobot|ezooms|dotbot|Mail.RU_Bot|discobot|heritrix|findthatfile|europarchive.org|NerdByNature.Bot|sistrix crawler|ahrefsbot|Aboundex|domaincrawler|wbsearchbot|summify|ccbot|edisterbot|seznambot|ec2linkfinder|gslfbot|aihitbot|intelium_bot|facebookexternalhit|yeti|RetrevoPageAnalyzer|lb-spider|sogou|lssbot|careerbot|wotbox|wocbot|ichiro|DuckDuckBot|lssrocketcrawler|drupact|webcompanycrawler|acoonbot|openindexspider|gnam gnam spider|web-archive-net.com.bot|backlinkcrawler|coccoc|integromedb|content crawler spider|toplistbot|seokicks-robot|it2media-domain-crawler|ip-web-crawler.com|siteexplorer.info|elisabot|proximic|changedetection|blexbot|arabot|WeSEE:Search|niki-bot|CrystalSemanticsBot|rogerbot|360Spider|psbot|InterfaxScanBot|Lipperhey SEO Service|CC Metadata Scaper|g00g1e.net|GrapeshotCrawler|urlappendbot|brainobot|fr-crawler|binlar|SimpleCrawler|Livelapbot|Twitterbot|cXensebot|smtbot|bnf.fr_bot|A6-Indexer|ADmantX|Facebot|Twitterbot|OrangeBot|memorybot|AdvBot|MegaIndex|SemanticScholarBot|ltx71|nerdybot|xovibot|BUbiNG|Qwantify|archive.org_bot|Applebot|TweetmemeBot|crawler4j|findxbot|SemrushBot|yoozBot|lipperhey|y!j-asr|Domain Re-Animator Bot|AddThis)";
+      var re = new RegExp(botPattern, 'i');
+      var userAgent = navigator.userAgent;
+      if (re.test(userAgent)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+
+  var dataCollection = {};
+    dataCollection.shop = "babyearth-prod.myshopify.com";
+    dataCollection.pageType = "index";
+    dataCollection.path = window.location.pathname;
+    dataCollection.referrer = document.referrer;
+    dataCollection.timestamp = hitTimestamp();
+    dataCollection.mailchimpEmailId = getUrlParameter('mc_eid');
+    
+    dataCollection.cart = $.getJSON('/cart.js');
+     
+  
+  var i = 0;
+  function getRecentlyViewed () { 
+    setTimeout(function () {
+      dataCollection.gaClientId = getGaClientId();
+      var keeptrying = true;
+      i++;
+      if (dataCollection.gaClientId != "false")
+      {
+          keeptrying = false;
+          var recommendationUri = "https://efpersonalization.azurewebsites.net/api/recommendations.json?shop=" + dataCollection.shop + "&user_id=" + dataCollection.gaClientId + "&page_type=" + dataCollection.pageType;
+          if (dataCollection.shopifyId != null)
+          {
+              recommendationUri = recommendationUri + "&id=" + dataCollection.shopifyId;
+          } 
+        $.post(recommendationUri, JSON.stringify(dataCollection), function(data, status){
+              // Settings for what to replace on the page
+              var recentlyViewedProductsDiv = $('#replaceWithRecentProducts'); //Div ID name for where the recently viewed products go
+              var recentlyViewedArticlesDiv = $('#replaceWithRecentArticles'); //Recent articles
+              var itemToProductsDiv = $('#replaceWithItem2ProductRecs'); //Item to Product Recommenders
+              var personalizedDiv = $('#replaceWithPersonalizedRecs'); //Personalized Recs
+              // / replace settings/
+
+              
+          },
+                "json");
+      }        
+      if (i < 20 && keeptrying) {
+        getRecentlyViewed();
+      }
+    	}, 250)
+    }
+  if (!botCheck()) {
+    getRecentlyViewed();
+  }
+
+
+  $(function() {
+    $("#menu").mmenu({
+       "extensions": [
+          "pagedim-black",
+          "multiline"
+       ],
+       "autoHeight": true,
+       "dropdown": true,
+       "iconPanels": true,
+        navbar   : { title  : "Baby Earth"}
+    });
+  });
+  
+    
+  $(document).ready(function() {
+     // define the mouseover event for hover-id
+     $('.base_links.inactive').mouseover(function() {
+           $('#sub_active_point').css('display','none');
+     });
+
+     // define the mouseout event for hover-id       
+     $('.base_links.inactive').mouseout(function() {
+           $('#sub_active_point').css('display','block');
+     });
+  })
+
+
+        $(function(){
+          $('#Subscribe').click(function() {
+            var subscriber_address = $('#Email').val();
+            $.ajax({
+              type: "POST",
+              url: '/cart.js',
+              data: { 
+                "attributes[newsletter_signup]": subscriber_address },
+              dataType: 'json'
+             });
+          });
+        });
+      
+
+      function openNewsletterPopup() {
+        setTimeout(function() {
+         if ($('#entry-popup').length) {
+           $.magnificPopup.open({
+            items: {
+              src: '#entry-popup' 
+            },
+            type: 'inline'
+              });
+           }
+         }, 15*1000);
+        };
+
+      
+      $(function() {
+        var popup = $.cookie('entrypop');
+        var cookie_enabled = true;
+
+        if (cookie_enabled && popup == 'open') {
+            return false;
+        } else if (true || $(window).width() > 768) {
+          openNewsletterPopup();
+        }
+        if (cookie_enabled) {
+          $.cookie('entrypop', 'open', { expires: 7 });
+        }
+      });
+    
+
+    $('.image-slide-link').magnificPopup({
+      type: 'image'
+      // other options
+    });
+    $('.entry-popup-link').magnificPopup({
+      type:'inline',
+      closeBtnInside: true,
+      midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+    });
+  
+
+    $(document).ready(function(){
+      $.ajax({
+        type: "POST",
+        url: '/cart.js',
+        data: { 
+          "attributes[previous_page]": "/"},
+          
+
+        dataType: 'json'
+       });
+    });
+  
+
+    $(document).ready( function() {
+      $('a[href^="/account/logout"]').on("click", function() {
+        $.ajax( $(this).attr('href') )
+          .done(function() {
+          window.top.location.href = "/";
+          });
+        
+        $.ajax({
+          type: "POST",
+          url: '/cart.js',
+          data: { 
+            "attributes[newsletter_signup]": "" },
+          dataType: 'json'
+         });
+        return false;
+      });
+    });
+  

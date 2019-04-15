@@ -1,0 +1,151 @@
+
+        WebFontConfig = {
+            google: { families: ['Arvo:700:latin', 'Open+Sans:400,600,700:latin'] }
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    
+
+        //<![CDATA[
+
+        function mycarousel_initCallback(carousel) {
+            jQuery('.next1').bind('click', function () {
+                carousel.next();
+                return false;
+            });
+
+            jQuery('.prev1').bind('click', function () {
+                carousel.prev();
+                return false;
+            });
+        };
+
+        function mycarousel2_initCallback(carousel) {
+            jQuery('.next2').bind('click', function () {
+                carousel.next();
+                return false;
+            });
+
+            jQuery('.prev2').bind('click', function () {
+                carousel.prev();
+                return false;
+            });
+        };
+
+        jQuery(document).ready(function () {
+            jQuery('.absoluteIframeDOMWindow').click(function () {
+                return false;
+            }).openDOMWindow({
+                height: 310,
+                width: 310,
+                positionType: 'centered',
+                positionTop: 50,
+                eventType: 'click',
+                positionLeft: 50,
+                windowSource: 'iframe',
+                windowPadding: 0,
+                loader: 1,
+                loaderImagePath: 'animationProcessing.gif',
+                loaderHeight: 16,
+                loaderWidth: 17
+            });
+
+            $(".rotate1").jcarousel({
+                scroll: 1,
+                initCallback: mycarousel_initCallback,
+                // This tells jCarousel NOT to autobuild prev/next buttons
+                buttonNextHTML: null,
+                buttonPrevHTML: null
+            });
+            $(".rotate2").jcarousel({
+                scroll: 1,
+                initCallback: mycarousel2_initCallback,
+                // This tells jCarousel NOT to autobuild prev/next buttons
+                buttonNextHTML: null,
+                buttonPrevHTML: null
+            });
+
+            jQuery("ul.browse h3").addClass("hide2").click(function () {
+                jQuery(this).next().slideToggle();
+                jQuery(this).toggleClass("hide2");
+            });
+            jQuery("ul.browse ul").each(function () {
+
+                if (jQuery(this).children().children(".selected").size() < 1) {
+                    jQuery(this).hide();
+                } else {
+                    jQuery(this).prev().toggleClass("hide2");
+                }
+            });
+            $(".search_in").focus(function () {
+                if ($(this).val() == "Search tools, sandpaper, etc...") {
+                    $(this).val("");
+                }
+            });
+            $(".search_in").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).val("Search tools, sandpaper, etc...");
+                }
+            });
+            jQuery("ul.mastercats h3").addClass("hide").click(function () {
+                jQuery(this).next().slideToggle();
+                jQuery(this).toggleClass("hide");
+            });
+
+        });
+        //]]>
+
+        function fillQty(form) {
+
+        }
+
+    
+
+    var _ss = _ss || [];
+    _ss.push(['_setDomain', 'https://koi-CAL5N5RI.sharpspring.com/net']);
+    _ss.push(['_setAccount', 'KOI-ILO7D5V2']);
+    _ss.push(['_trackPageView']);
+    (function () {
+        var ss = document.createElement('script');
+        ss.type = 'text/javascript'; ss.async = true;
+
+        ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-CAL5N5RI.sharpspring.com/client/ss.js?ver=1.1.1';
+        var scr = document.getElementsByTagName('script')[0];
+        scr.parentNode.insertBefore(ss, scr);
+    })();
+
+
+            $(document).ready(function() {
+                function playcarousel() {
+                    $('.carousel-control.right').trigger('click');
+                }
+                window.setInterval(playcarousel, 5000);
+            });
+        
+
+                                        SiteSeal("https://seal.networksolutions.com/images/basicrecgreen.gif", "NETSP", "none");
+                                    
+window.$crisp=[];window.CRISP_WEBSITE_ID="32d3ddb1-edee-460a-9095-74a7c7e8ddf7";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+
+        function downloadJSAtOnload() {
+            var element = document.createElement("script");
+            element.src = "//www.woodworkingshop.com/zflow/alt/js/main-alt.js";
+            //element.src = "//www.woodworkingshop.com/zflow/js/main.js";
+            document.body.appendChild(element);
+        }
+        if (window.addEventListener)
+            window.addEventListener("load", downloadJSAtOnload, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", downloadJSAtOnload);
+        else window.onload = downloadJSAtOnload;
+    
+
+        ga('require', 'ecommerce');
+

@@ -1,0 +1,400 @@
+
+    (function ($) { $.fn.hoverIntent = function (f, g) { var cfg = { sensitivity: 7, interval: 100, timeout: 0 }; cfg = $.extend(cfg, g ? { over: f, out: g} : f); var cX, cY, pX, pY; var track = function (ev) { cX = ev.pageX; cY = ev.pageY }; var compare = function (ev, ob) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t); if ((Math.abs(pX - cX) + Math.abs(pY - cY)) < cfg.sensitivity) { $(ob).unbind("mousemove", track); ob.hoverIntent_s = 1; return cfg.over.apply(ob, [ev]) } else { pX = cX; pY = cY; ob.hoverIntent_t = setTimeout(function () { compare(ev, ob) }, cfg.interval) } }; var delay = function (ev, ob) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t); ob.hoverIntent_s = 0; return cfg.out.apply(ob, [ev]) }; var handleHover = function (e) { var ev = jQuery.extend({}, e); var ob = this; if (ob.hoverIntent_t) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t) } if (e.type == "mouseenter") { pX = ev.pageX; pY = ev.pageY; $(ob).bind("mousemove", track); if (ob.hoverIntent_s != 1) { ob.hoverIntent_t = setTimeout(function () { compare(ev, ob) }, cfg.interval) } } else { $(ob).unbind("mousemove", track); if (ob.hoverIntent_s == 1) { ob.hoverIntent_t = setTimeout(function () { delay(ev, ob) }, cfg.timeout) } } }; return this.bind('mouseenter', handleHover).bind('mouseleave', handleHover) } })(jQuery);
+
+
+
+
+
+        var PageURL = "", MessageIds = 0, AppFabricURL = "", _dataResponse = 0, _jsLoaded = 0;
+
+        var shareThisTitle = "Product Name";
+        var shareThisUrl = "http://www.powells.com/";
+        var shareThisSummary = "Get insider deals, freebies, and other special offers sent to your inbox!";
+
+        function SetAllVariable() {
+            PageURL = arguments[0];
+            AppFabricURL = arguments[1];
+        }
+        function LoadValidationJS() {
+            MessageIds = arguments[0];
+            var jsName = PageURL + "js/powellsValidationData.js"
+            $.getScript(jsName, function () {
+                var wcfURL = AppFabricURL + "/GetValidationMessages?messageIDs=" + MessageIds;
+                MakeDBReq(onGetValiationData, wcfURL);
+            });
+        }
+
+        function LoadOnlineCalenderJS() {
+            var jsName = PageURL + "js/fullcalendar.min.js?" + Math.floor((Math.random() * 1000) + 1);
+            $.getScript(jsName, function () { _jsLoaded = 1; });
+        }
+
+        function LoadCalenderJS() {
+            var jsName = PageURL + "js/fullcalendar.js?" + Math.floor((Math.random() * 1000) + 1);
+            $.getScript(jsName, function () { _jsLoaded = 1; });
+        }
+
+        function LoadAnyJS() {
+            var jsName = PageURL + arguments[0];
+            $.getScript(jsName, function () {
+                _jsLoaded = 1;
+            });
+        }
+
+        function toggleSiteAdmin() {
+            $('ul.siteAdmin1').each(function (index) {
+                $(this).hide("slow");
+            });
+            $('span.siteAdminPlus').each(function (index) {
+                $(this).text("+");
+            });
+            if (arguments[2] != null) {
+                var $link = $("#" + arguments[2]);
+                $("#" + arguments[0]).is(":visible") ? $link.text("+") : $link.html(" -&nbsp;");
+            }
+            if (arguments[0] != null)
+                $("#" + arguments[0]).slideToggle("slow");
+        }
+
+        function OpenDropDown(sender, args) {
+
+            var bool = sender.get_dropDownVisible();
+            if (bool != true)
+                sender.showDropDown();
+        }
+
+    
+
+//<![CDATA[
+var theForm = document.forms['Form'];
+if (!theForm) {
+    theForm = document.Form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+if (!(window.jQuery && window.jQuery.fn && window.jQuery.fn.hoverIntent)) document.write(unescape('%3Cscript src="/Portals/_default/Skins/Powells/superfish/hoverIntent.js" type="text/javascript"%3E%3C/script%3E'));
+if (!(window.jQuery && window.jQuery.fn && window.jQuery.fn.superfish)) document.write(unescape('%3Cscript src="/Portals/_default/Skins/Powells/superfish/superfish.js" type="text/javascript"%3E%3C/script%3E'));
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', ['tdnn$ctr10326$CartSummary$uptCartSummary',''], [], [], 90, '');
+//]]>
+
+
+    if (typeof loadedHawkSearch == 'undefined') {
+        var loadedHawkSearch = false;
+    }
+    if (!loadedHawkSearch) {
+        $.getScript("/Resources/Shared/scripts/HawkSearch.js", function (data, textStatus, jqxhr) {
+            //console.log(data); // Data returned
+            //console.log(textStatus); // Success
+            //console.log(jqxhr.status); // 200
+            console.log("HawkSearch.js loaded.");
+        });
+        loadedHawkSearch = true;
+    };
+
+
+    //<![CDATA[
+
+
+    var timeoutInMiliseconds = 15000;
+    var timeoutId;
+
+    function startTimer() {
+        // window.setTimeout returns an Id that can be used to start and stop a timer
+        timeoutId = window.setTimeout(doInactive, timeoutInMiliseconds)
+    }
+
+    function doInactive() {
+        console.log("clear");
+        window.clearTimeout(timeoutId);
+        $('#keyword').val('');  // Clear input
+        clearUrl();  // Clear url
+        window.location.assign(window.location.toString());  // Refresh
+    }
+
+    function resetTimer() {
+        console.log("reset");
+        window.clearTimeout(timeoutId)
+        startTimer();
+    }
+    function setupTimers() {
+        document.addEventListener("mousemove", resetTimer, false);
+        document.addEventListener("mousedown", resetTimer, false);
+        document.addEventListener("keypress", resetTimer, false);
+        document.addEventListener("touchmove", resetTimer, false);
+        document.addEventListener("scroll", resetTimer, false);
+        document.addEventListener("wheel", resetTimer, false);
+    }
+    $(document).ready(function () {
+        if ($("input[id$='hfInStoreMode']").val() === "false") {
+            HawkSearch.initAutoSuggest = function () {
+                HawkSearch.suggestInit('#keyword', {
+                    lookupUrlPrefix: HawkSearch.HawkUrl + '/?fn=ajax&f=GetSuggestions',
+                    hiddenDivName: '',
+                    isAutoWidth: true
+                });
+            }
+        }
+        if ($("input[id$='hfInStoreMode']").val() === 'true') {
+            var timeout = $("input[id$='hfPageTimeOut']").val();
+            if (!isNaN(timeout) && timeout > 0) {
+                timeoutInMiliseconds = timeout;
+                setupTimers();
+            }
+
+            //$("#keyword").keypress(setTime);
+            //$(document).mousemove(setTime);
+            //setTimeout(refresh, 10000);
+        }
+
+    });
+    $(document).ajaxComplete(function () {
+        if ($("input[id$='hfInStoreMode']").val() === 'true') {
+            var baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
+            var urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams.has('hawkcustom')) {
+                urlParams.append('hawkcustom', 'lookup_mode');
+            }
+            //window.location.search = urlParams.toString();
+            window.history.replaceState({}, "", baseUrl + "?" + urlParams.toString());
+            /*var hsqs = window.location.href.slice(window.location.href.indexOf('?') + 1);
+            if (hsqs.toLowerCase().indexOf("hawkcustom") < 0){
+                window.history.pushState({}, {}, '?' + hsqs + '&hawkcustom=lookup_mode'); 
+            }
+            */
+        }
+    });
+
+
+    function clearUrl() {
+        var uri = window.location.toString();
+        if (uri.indexOf("?") > 0) {
+            var clean_uri = uri.substring(0, uri.indexOf("?"));
+            window.history.replaceState({}, document.title, clean_uri);
+        }
+    }
+
+
+
+        //]]>
+
+
+	//initialise plugins
+	jQuery(document).ready(function($){
+		$("#menu-icon").on("click", function(){
+			jQuery(".sf-menu").slideToggle();
+			jQuery(this).toggleClass("active");
+		});
+	});
+	jQuery(document).ready(function($){
+		$("#leftbar").on("click", function(){
+			jQuery(".middle-left").slideToggle();
+			jQuery(this).toggleClass("active");
+		});
+	});
+
+
+			jQuery(function($) {
+				$("#dnn_ctl02").superfish(
+					{onShow:function() { if ($.browser.msie) this[0].style.removeAttribute('filter'); },MenuStyle:"superfish"}
+				);
+			});
+
+
+		
+
+				    function RadWindowprompt_detectenter(id, ev, input)
+				    {							
+					    if (!ev) ev = window.event;                
+					    if (ev.keyCode == 13)
+					    {															        
+					        var but = input.parentNode.parentNode.getElementsByTagName("A")[0];					        
+					        if (but)
+						    {							
+							    if (but.click) but.click();
+							    else if (but.onclick)
+							    {
+							        but.focus(); var click = but.onclick; but.onclick = null; if (click) click.call(but);							 
+							    }
+						    }
+					       return false;
+					    } 
+					    else return true;
+				    }	 
+				    
+
+
+   
+    $(document).ready(function () {
+        
+        try {
+        }
+        catch (err)
+        { console.log(err); } { }
+    });
+
+    function ShowShoppingCartPopupAuthorPod(productItemID) {    
+        var manager = $find("dnn_ctr7893_AuthorPod_windowmgrAddToCart");
+        var url = $("#dnn_ctr7893_AuthorPod_hfUrl").val();
+        myWin = manager.open(url + "?popUp=true&ProductItemID=" + productItemID, "AddToCartPopup");
+    }
+    function FnCloseWindowAuthorPod() {       
+        if ($("#hfSCUrl").val() != "")
+            top.location.href = $("#hfSCUrl").val();
+        else
+            top.location.href = top.location.href;
+    }
+
+    function imgErrorAuthorPod(image, width, height) {
+        image.onerror = "";
+        image.src = $("#dnn_ctr7893_AuthorPod_hfAuthorPodNoImage").val();
+            $(image).height(height).width(width);
+            return true;
+    }
+
+
+
+
+
+    jQuery(document).ready(function ($) {
+        /*  Banner Rotator Script
+            This script will automatically create a banner rotator based on the content entered into container.
+            The script will automatically cycle through all the sibling elements and create a full rotator including navigation.
+            Banner sizes and other styles are located in container.css.  The page titles for the navigation row are
+			created from each display elements title attribute.
+            See http://jquery.malsup.com/cycle/ for more info on plugin.
+        */
+        $('#454_Rotator div.DNNModuleContent > div.Normal').cycle({
+		
+            fx: 'fade', //effect to apply to rotation
+            speed: 1000, // speed of the transition (any valid fx speed value) 
+            timeout: 5000, // milliseconds between slide transitions (0 to disable auto advance) 
+            pager: '#454_Rotator .RotatorNav', //selector for rotator navigation
+            // callback fn that creates a navigation to use as pager anchor 
+            pagerAnchorBuilder: function (idx, slide) {
+             //   return '<li></li>';
+            }
+        })//.cycle("resume").hover(function() {
+            //$(this).cycle('pause');
+     // },
+	 // function(){
+          //  $(this).cycle('resume');
+        // });
+        UpdateBanners();
+        $(window).resize(function () {
+            UpdateBanners();
+        });
+
+
+    });
+
+    function UpdateBanners() {
+        $('.slideshow-wrapper').children('div').children('div').children('img').each(function () {
+            if ($(window).width() <= 780) {
+                $(this).attr('src', $(this).attr('src').replace('HR', 'LR'));
+            }
+            else {
+                $(this).attr('src', $(this).attr('src').replace('LR', 'HR'));
+            }
+        });
+    }
+	 
+	  $('#pauseButton').click(function() {     $('#454_Rotator div.DNNModuleContent > div.Normal').cycle('pause'); });
+	  $('#startButton').click(function() {     $('#454_Rotator div.DNNModuleContent > div.Normal').cycle('resume'); });
+	  $('#454_Rotator div.DNNModuleContent > div.Normal').cycle({next:   '#next2',     prev:   '#prev2' });   
+
+
+//<![CDATA[
+;(function() {
+                        function loadHandler() {
+                            var hf = $get('StylesheetManager_TSSM');
+                            if (!hf._RSSM_init) { hf._RSSM_init = true; hf.value = ''; }
+                            hf.value += ';Telerik.Web.UI, Version=2013.2.717.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4:en-US:e3f2cc69-ba1e-40db-bc46-4dec0d4c670e:92753c09:91f742eb';
+                            Sys.Application.remove_load(loadHandler);
+                        };
+                        Sys.Application.add_load(loadHandler);
+                    })();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadWindow, {"_dockMode":false,"behaviors":60,"clientStateFieldID":"dnn_ctr7893_AuthorPod_AddToCartPopup_ClientState","formID":"Form","height":"500px","iconUrl":"","left":"20px","minimizeIconUrl":"","modal":true,"name":"AddToCartPopup","reloadOnShow":true,"showContentDuringLoad":false,"skin":"Default","title":"Add to cart Pop-up","top":"20px","width":"700px"}, {"close":FnCloseWindowAuthorPod}, null, $get("dnn_ctr7893_AuthorPod_AddToCartPopup"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadWindowManager, {"clientStateFieldID":"dnn_ctr7893_AuthorPod_windowmgrAddToCart_ClientState","formID":"Form","iconUrl":"","minimizeIconUrl":"","name":"windowmgrAddToCart","skin":"Default","windowControls":"['dnn_ctr7893_AuthorPod_AddToCartPopup']"}, null, {"child":"dnn_ctr7893_AuthorPod_AddToCartPopup"}, $get("dnn_ctr7893_AuthorPod_windowmgrAddToCart"));
+});
+//]]>
+
+
+     (function (global, $) {
+
+             $(document).ready(function () {
+
+                 // this will find ALL tables within ALL comboboxes
+                 var $table = $(".RadComboBox").children("table");
+
+                 // this removes the summary from all found tables
+                 $table.removeAttr("summary");
+                 $table.attr("role", "presentation");
+
+             });
+
+             $(document).ready(function () {
+
+                 // this will find ALL tables within ALL comboboxes
+                 var $a = $(".rcbArrowCell").children("a");
+
+                 // this removes the summary from all found tables
+                 // $table.removeAttr("summary");
+                 $a.attr("role", "button");
+
+             });
+         })(window, $telerik.$);
+                                
+                                   $(document).ready(function () {
+
+                 // this will find ALL tables within ALL comboboxes
+                 var $t = $("#content").find("table");
+
+                 // this removes the summary from all found tables
+                
+                 $t.attr("role", "presentation");
+
+             });
+                                                
+                                   $(document).ready(function () {
+
+                 // this will find ALL tables within ALL comboboxes
+                 var $ol = $("#content").find("ol");
+
+                 // this removes the summary from all found tables
+                
+                 $ol.attr("role", "presentation");
+
+             });
+                                                   $(document).ready(function () {
+
+                 // this will find ALL tables within ALL comboboxes
+                 var $ol = $("#content").find("ul");
+
+                 // this removes the summary from all found tables
+                
+                 $ol.attr("role", "presentation");
+
+             });
+         toggleSiteAdmin();
+         //]]>
+    
+
+	/* <![CDATA[ */
+		var google_conversion_id = 1071649651;
+		var google_custom_params = window.google_tag_params;
+		var google_remarketing_only = true;
+	/* ]]> */
+	
+
+	

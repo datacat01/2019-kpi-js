@@ -1,0 +1,7 @@
+
+var certona = {
+"pagetype": "home",
+"recommendations": true,
+"visualsearch": false
+}; 
+

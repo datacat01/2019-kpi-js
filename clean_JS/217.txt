@@ -1,0 +1,44 @@
+
+(function(w){
+w.Etsy=w.Etsy||{};
+w.Etsy.errorQueue=[];w.Etsy.ssxQueue=[];
+['alert','confirm','prompt'].forEach(function(n){var o=w[n];w[n]=function(){if (Etsy.ssxQueue) Etsy.ssxQueue.push([n, arguments]);return o.apply(w,arguments)}})
+w.onerror=function(msg,url,line,col,exception){if (Etsy.errorQueue) Etsy.errorQueue.push([msg,url,line,col,exception,document.documentElement.innerHTML.split("\n").slice(Math.max(0,line-50),line+50).join("\n")])}
+})(window)
+
+document.getElementsByTagName("html")[0].className += " js";
+
+    window.dataLayer = [
+    {
+        "Language": "en-US",
+        "Region": "UA",
+        "Currency": "USD",
+        "UAID": "iid1mBkeJIi9UMFKDxf8kLETM9Q3",
+        "DetectedRegion": "UA"
+    }
+];
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KWW5SS');
+window.Etsy=window.Etsy||{};Etsy.Context={"page":null,"data":{"is_mobile":false,"should_auto_redirect":false,"locale_settings":{"language":{"code":"en-US","id":0,"name":"English (US)","translation":"English (US)","is_detected":true,"is_default":true},"currency":{"currency_id":840,"code":"USD","name":"United States Dollar","number_precision":2,"symbol":"$","listing_enabled":true,"browsing_enabled":true,"buyer_location_restricted":false,"rate_updates_enabled":true,"is_detected":false,"is_default":true},"region":{"code":"UA","country_id":207,"name":"Ukraine","translation":"Ukraine","is_detected":true,"is_default":false,"is_EU_region":false},"subdir_code":""},"neu_api_specs_sample_rate":null,"FB_GRAPHQL_VERSION":"v2.10","mott_version":"4d884e0","catnav_show_sales":false,"show_mothers_day":false,"toolkit_v2_enabled":true,"is_gce":true,"guest_uaid":["iid1mBkeJIi9UMFKDxf8kLETM9Q3","iid1mBkeJIi9UMFKDxf8kLETM9Q3"],"is_mweb_faves_in_search":[false,false,false,false,false,false],"in_cart_count":0,"granify_enabled":false},"config":[],"feature":{"perf_send_perf_beacon":true,"disable_old_frontend_logger":true,"localization.global_autocomplete":false,"otf_desktop\/with_guest_checkout":true},"variant":{"localization.global_autocomplete":false},"locale":{"decimal_point":".","thousands_sep":",","int_curr_symbol":"","currency_symbol":"","mon_decimal_point":"","mon_thousands_sep":"","positive_sign":"","negative_sign":"","int_frac_digits":127,"frac_digits":127,"p_cs_precedes":127,"p_sep_by_space":127,"n_cs_precedes":127,"n_sep_by_space":127,"p_sign_posn":127,"n_sign_posn":127,"grouping":[3,3],"mon_grouping":[]}};
+
+        Etsy.performance = Etsy.performance || {};
+        Etsy.performance.firstAnimationFrameFired = -1;
+        // normalize requestAnimationFrame across user agents
+        !function(){
+            var vendors = ['ms', 'moz', 'webkit', 'o'];
+            for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+            }
+        }();
+        if (window.requestAnimationFrame) {
+            requestAnimationFrame(function(){
+                Etsy.performance.firstAnimationFrameFired = new Date().getTime();
+            });
+        }
+    
+EventPipe.enabled=true;EventPipe.init({"url":"\/\/www.etsy.com\/bcn\/beacon","defaults":{"user_id":0,"page_guid":"e2519e55a88.06435b3cc511ec92dd85.00","version":1,"request_uuid":"EuVjGteLgY5sxZqiSxlRCJLwJ-4f","datacenter":"c","cdn-provider":"fastly","ref":"","loc":"http:\/\/www.etsy.com\/","locale_currency_code":"USD","pref_language":"en-US","region":"UA","detected_currency_code":"USD","detected_language":"en-US","detected_region":"UA","isWhiteListedMobileDevice":false,"isMobileRequestIgnoreCookie":false,"isMobileRequest":false,"isMobileDevice":false,"isMobileSupported":false,"isTabletSupported":false,"isTouch":false,"isEtsyApp":false,"isPreviewRequest":false,"isChromeInstantRequest":false,"isMozPrefetchRequest":false,"isTestAccount":false,"isSupportLogin":false,"isInternal":false,"event_source":"web","browser_id":"iid1mBkeJIi9UMFKDxf8kLETM9Q3","gdpr_tp":3,"gdpr_p":3,"ab":{"international.languages.pl":["on","x"],"geoipv2":["on","x"],"granify_april_01_2019":["ineligible","e"],"localization.shipping_name_change":["ineligible","e"],"persistent_experiment.q1_2019":["fallthrough","w"],"persistent_experiment.q2_2019":["on","w"],"arizona.bigtable.dataset.HighQualityShopReviews":["off","x"],"search.use_mmx_slv2":["on","x"],"ranking\/csr_organic_operational":["on","x"],"team_experiments.2019_q1.high_quality":["winners_only","w"],"ranking\/high_quality.csr.2019_q1.egms":["csr_rerank_fitness_smoothing_alpha0point85","x"],"ranking\/high_quality.static_ranking.2019_q1.hist_expanded":["ineligible","e"],"search.use_dark_cluster":["off","x"],"search.mixer_fanout_to_k8s.experimental":["first","x"],"global_idf_type":["idf","x"],"listing_search_fair_pairs":["on","x"],"query_expand_outer":["off","x"],"ranking\/free_and_fair_shipping_boost_95":["on","x"],"search_debug_listing_id":["off","x"],"search_entities":["off","x"],"search_probabilistic_quality":["off","x"],"search_ranking.explain_ranking":["off","x"],"signals\/search_hide_conditional_signals":["off","x"],"search.gke_mmx.slv2.load_test":["off","x"],"homepage_layer\/searchx_3q18_hp_modules_carousel_client_side_rendering":["on","x"],"buyer_promise.buyer_promise_simulation":["ineligible","e"],"homepage_layer\/accessible_search_header":["on","x"],"vesta_homepage.accessible_search_header_remove_shapes":["on","x"],"vesta_homepage.what_is_etsy_signed_out":["ineligible","e"],"vesta_homepage.what_is_etsy_signed_in":["ineligible","e"],"homepage_layer\/email_list_signup_higher_on_homepage_mobile":["ineligible","e"],"android_image_filename_hack":["ineligible","e"],"vesta_homepage.signed_out_listings_non_cookied":["on","x"],"vesta_homepage.lazy_load_images":["ineligible","e"],"searchx.3q18.hp_bestseller_signedout.experiment":["off","x"],"made_for_cats.wayfinding.mothers_day_2019":["ineligible","e"],"sentry_js":["on","w"],"team_experiments.2019_q2.design_systems":["on","w"],"show_v2_toolkit_catnav":["on","w"],"otf_desktop\/with_guest_checkout":["on","x"],"nav_promo.gift_guide_tools":["ineligible","e"],"nav_promo.gift_guide_tools_v2":["ineligible","e"],"global_nav_experiments.hide_home_icon_desktop":["on","x"],"qualtrics_survey":["ineligible","e"],"lingtools\/suggest.boe_simplified":["ineligible","e"],"team_experiments.2019_q1.international_cx":["fallthrough","w"],"team_experiments.2019_q2.international_cx":["on","w"],"lingtools\/suggest.autosuggest_ml2":["off","w"],"lingtools\/suggest.fair_pairs":["randomize","x"],"search_bar_placeholder_new_copy":["off","x"],"lingtools\/trending_searches.gcp":["on","x"],"searchx.3q18.autosuggest_mobile_clear":["ineligible","e"],"global_nav_experiments.hamburger_in_front":["ineligible","e"],"engagement.notifications_view_redesign":["on","x"],"discovery.feed_holdout":["ineligible","e"],"discovery.translated_feed_US_region":["ineligible","e"],"gdpr.consent":["on","x"],"gdpr.consent.email_marketing":["ineligible","e"],"facebook_signin.desktop":["on","x"],"google_sign_in.desktop":["on","x"],"localization.cart_to_basket_2":["ineligible","e"],"localization.uk_header_logo":["ineligible","e"],"admin-tools-v3-everywhere":["off","x"],"xssauditor":["off","w"],"searchx_pe.3q18_pre_slush":["on","x"],"searchx.3q18.square_listing_card_images_mobile":["ineligible","e"],"searchx.3q18.square_listing_card_images_desktop":["off","x"],"team_experiments.2019_q1.seller_ads_insights":["fallthrough","w"],"ads.prolist.prevent_adblocker":["on","x"],"eu_cookie_nag":["ineligible","e"],"registration_copy_update_legal":["on","x"],"eu_cookie_nag_no_fr":["off","x"]}},"events":[{"attributes":{"guid":"e2519e55a87.7b7b7668b2712656953f.00","event_name":"home_complementary","event_logger":"frontend","event_timestamp":1555251104013,"primary_complement":true,"event_source":"web","browser_id":"iid1mBkeJIi9UMFKDxf8kLETM9Q3"},"selector":null,"event":null},{"attributes":{"guid":"e2519e55a88.85cbbdab95d721ab4187.00","event_name":"home_perf","event_logger":"frontend","event_timestamp":1555251104013,"primary_perf":true,"event_source":"web","browser_id":"iid1mBkeJIi9UMFKDxf8kLETM9Q3"},"selector":null,"event":null}]});
+if(window.console){console.log("Is code your craft? https://www.etsy.com/careers")}

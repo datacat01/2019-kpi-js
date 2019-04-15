@@ -1,0 +1,28 @@
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/gV6nJfN3NsuSkKmqyz7WDPAoN5xGVJnz3QCYy8Ny/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+    adroll_adv_id = "FSNXNARQBNDGDJE4DJTURM";
+    adroll_pix_id = "RAGCGF2SUJD3XO2444WZAQ";
+    /* OPTIONAL: provide email to improve user identification */
+    adroll_email = "bbigelowdroid@gmail.com";
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+  
+
+
+ga('set','dynx_prodid', 'shopify_US__');
+ga('set','dynx_totalvalue', '');
+ga('set','dynx_pagetype', '');
+

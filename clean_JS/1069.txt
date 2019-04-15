@@ -1,0 +1,48 @@
+ (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=!0, e.src="//staticw2.yotpo.com/nEuIJ4ZZtdEY6TpevSBcKF6dtZ83bvd5mXrdZDJ2/widget.js";var t=document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e,t)})(); 
+
+    (function (d, t) {
+      var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      bh.type = 'text/javascript';
+      bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=o0ojzi7bx36kzfipnh6yaq';
+      s.parentNode.insertBefore(bh, s);
+    })(document, 'script');
+  
+
+var fieldMaps = {};
+
+
+  var fieldMaps = {};
+
+
+          var fieldMaps = {};
+        
+
+// Editable fields:
+var afterpay_min = 0.04;            // As per your Afterpay contract.
+var afterpay_max = 1000.00;         // As per your Afterpay contract.
+var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+
+
+// Overrides (jQuery CSS Selectors)
+var afterpay_product_selector = '.dd-product-price:nth-child(1)';
+
+ if (window.innerWidth < 768) {
+    afterpay_product_selector = '.dd-product-price';
+  }
+
+  
+
+// var afterpay_cart_static_selector = '####';
+// var afterpay_modal_responsive = true;
+var afterpay_show_currency_code = false;
+
+// Non-editable fields:
+var afterpay_shop_currency = "USD";
+var afterpay_shop_money_format = "${{amount}}";
+var afterpay_shop_permanent_domain = "j-w-hulme-co.myshopify.com";
+var afterpay_theme_name = "Copy of Spring Envision - 4\/1\/19";
+var afterpay_product = null;
+var afterpay_current_variant = null;
+var afterpay_cart_total_price = 0;
+var afterpay_js_snippet_version = '1.0.1';
+

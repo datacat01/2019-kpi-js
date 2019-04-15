@@ -1,0 +1,115 @@
+
+var Darkened2 = false;
+function signup_popup() {
+if(document.cookie.indexOf('subscribe=') != -1) return;
+if(navigator.userAgent.match(/(phone|android|blackberry|ipod)/i)) return;
+document.cookie = "subscribe=1; expires=Sat, 1 Apr 2021 10:08:21 UTC; path=/";
+if(!Darkened2) {
+$("body").append('<div id="bingo" class="overlay"></div>');
+Darkened2=true;
+}
+$(".news").show();
+$(".closeme").click(function(e) {
+$(".news, .overlay").hide();
+$("#bingo").removeClass("overlay");
+Darkened2 = false;
+});
+};
+setTimeout(signup_popup, 40000);
+
+
+$(document).ready(function () {
+//
+$("#previewForm").validate({
+errorPlacement: function (error, element) {
+if (element.next(".ui-datepicker-trigger").length > 0)
+error.insertAfter(element.next(".ui-datepicker-trigger"));
+else
+error.insertAfter(element);
+},
+rules:
+{
+confirmEmail: {
+equalTo: "#4434518"
+}
+},
+messages:
+{
+confirmEmail: "Email addresses do not match."
+}
+})
+//Localize validation message
+$.validator.messages.email = "Please enter a valid email address";
+$.validator.messages.required = "This field is required";
+$.validator.messages.date = "Please enter a valid date.";
+$.validator.messages.number = "Please enter a valid number.";
+});
+
+
+//<![cdata[
+var theForm = document.forms['previewForm'];
+if (!theForm) {
+theForm = document.previewForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+theForm.__EVENTTARGET.value = eventTarget;
+theForm.__EVENTARGUMENT.value = eventArgument;
+theForm.submit();
+}
+}
+//]]>
+
+
+
+ SiteSeal("https://seal.networksolutions.com/images/prosqblue.gif", "NETSP", "none");
+
+
+
+
+
+
+
+var Darkened = false;
+$(document).ready(function() {
+$(".button").click(function(e) {
+if(!Darkened) {
+$("body").append('<div id="bingo" class="overlay"></div>');
+Darkened = true;
+}
+$(".popup").show();
+$(".close").click(function(e) {
+$(".popup").hide();
+$(".overlay").hide();
+$("#bingo").removeClass("overlay");
+Darkened = false;
+});
+});
+});
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-20864471-1']);
+_gaq.push(['_setDomainName', '.camcor.com']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+window.lpTag=window.lpTag||{},"undefined"==typeof window.lpTag._tagCount?(window.lpTag={site:'44605274'||"",section:lpTag.section||"",tagletSection:lpTag.tagletSection||null,autoStart:lpTag.autoStart!==!1,ovr:lpTag.ovr||{},_v:"1.8.0",_tagCount:1,protocol:"https:",events:{bind:function(t,e,i){lpTag.defer(function(){lpTag.events.bind(t,e,i)},0)},trigger:function(t,e,i){lpTag.defer(function(){lpTag.events.trigger(t,e,i)},1)}},defer:function(t,e){0==e?(this._defB=this._defB||[],this._defB.push(t)):1==e?(this._defT=this._defT||[],this._defT.push(t)):(this._defL=this._defL||[],this._defL.push(t))},load:function(t,e,i){var n=this;setTimeout(function(){n._load(t,e,i)},0)},_load:function(t,e,i){var n=t;t||(n=this.protocol+"//"+(this.ovr&&this.ovr.domain?this.ovr.domain:"lptag.liveperson.net")+"/tag/tag.js?site="+this.site);var a=document.createElement("script");a.setAttribute("charset",e?e:"UTF-8"),i&&a.setAttribute("id",i),a.setAttribute("src",n),document.getElementsByTagName("head").item(0).appendChild(a)},init:function(){this._timing=this._timing||{},this._timing.start=(new Date).getTime();var t=this;window.attachEvent?window.attachEvent("onload",function(){t._domReady("domReady")}):(window.addEventListener("DOMContentLoaded",function(){t._domReady("contReady")},!1),window.addEventListener("load",function(){t._domReady("domReady")},!1)),"undefined"==typeof window._lptStop&&this.load()},start:function(){this.autoStart=!0},_domReady:function(t){this.isDom||(this.isDom=!0,this.events.trigger("LPT","DOM_READY",{t:t})),this._timing[t]=(new Date).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],hooks:lpTag.hooks||[],ev:lpTag.ev||[]},lpTag.init()):window.lpTag._tagCount+=1;
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0021/5890.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+(function() {
+window._pa = window._pa || {};
+var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/53220081f95b64d36b000195.js";
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+})();
+

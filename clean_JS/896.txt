@@ -1,0 +1,426 @@
+
+    (function(){
+        window._pxAppId = 'PXpMq1D3Fb';
+        // Custom parameters
+        // window._pxParam1 = "<param1>";
+        var p = document.getElementsByTagName('script')[0],
+            s = document.createElement('script');
+        s.async = 1;
+        s.src = '/pMq1D3Fb/init.js';
+        p.parentNode.insertBefore(s,p);
+    }());
+
+
+				var monetateT = new Date().getTime();				
+				//(function() {
+				//    var p = document.location.protocol;
+				//    if (p == "http:" || p == "https:") {
+				//        var m = document.createElement("script"); m.type = "text/javascript"; m.src = (p == "https:" ? "https://s" : "http://") + "https://se.monetate.net/js/2/a-ae95c976/p/moosejaw.com/entry.js";
+				//        var e = document.createElement("div"); e.appendChild(m); document.write(e.innerHTML);
+				//    }
+				//})();
+			
+ (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A48706-6b95-4e09-8720-55031b4fedcd1.js','script','ire',document,window); 
+
+		var _javascript_key = "dCwg39XTdJACZnS2KHJuvIeOe8VL3Ni97NfA9pCRRNj";
+	 	var _cf = _cf || [];
+		 _cf.push(['_setJavaScriptKey', _javascript_key]);
+		 _cf.push(['_setSDFieldNames', 'sensorData_signInRegisterPopUpData']);
+		 _cf.push(['_setSDFieldNames', 'sensorData_orderTrackingPopUpData']);
+		 _cf.push(['_setSDFieldNames', 'sensorData_hardLogonPageData']);
+		 _cf.push(['_setSDFieldNames', 'sensorData_accountRegistrationPageData']);
+		var itv=0; if (Date.now) itv = Date.now(); else itv = +new Date();
+		 _cf.push(['_setInitTime', itv]);
+	
+
+    globalLibrary.ERROR_LOGON_FAILED = "We do not recognize your email and/or password. Please try again. If you forgot your password please click the forgot password link below to have a reset link emailed to you.";
+    globalLibrary.ERROR_CAPTCHA_FAILED = "Our crystal ball says you might be a robot.  If not, please re-enter your password, do the reCAPTCHA thingy, and SIGN IN again.";
+    globalLibrary.ERROR_EMAIL_NOT_FOUND = "We do not recognize your email and/or password. Please try again. If you forgot your password please click the forgot password link below to have a reset link emailed to you.";
+    globalLibrary.ERROR_PASSWORD_MISSING = "Type a password in the Password field.";
+    globalLibrary.ERROR_LOGON_ID_MISSING = "You forgot to type an email address in the email field.";
+    globalLibrary.ERROR_ORGANIZATION_LOCKED = "Your organization is locked. You cannot log in at this time. Sorry to be so mean about it.";
+    globalLibrary.ERROR_HAVENT_PROPER_AUTHORITY = "You do not have the proper authority to log in. Call your local Moosejaw Shop and they can help you out. ";
+    globalLibrary.ERROR_HAVENT_ACTIVATED_ACCOUNT = "You have not activated your account. Please respond to the activation e-mail we sent you. If you don't know what we're talking about call 877.MOOSEJAW (1.877.666.7352).";
+    globalLibrary.ERROR_ACCOUNT_LOCKED = "Due to 10 unsuccessful password attempts, your account is now locked. Click on the \"Forgot Password?\" link to begin the password reset process, which will then unlock your account.";
+    globalLibrary.ERROR_WAIT_THRESHOLD = "We do not recognize your email and/or password. Please try again. If you forgot your password please click the forgot password link below to have a reset link emailed to you.";
+    globalLibrary.ERROR_PASSWORD_RESET = "Your password has been reset. Please retrieve the temporary password from your email and login again. This is so exciting.";
+    globalLibrary.ERROR_ACCOUNT_NOT_ACTIVATED = "Your account is not activated. If you have already responded to the activation e-mail your received,  call 877.MOOSEJAW (1.877.666.7352) and we'll fix everything.";
+
+ 
+						cmSetupNormalization("krypto-_-krypto"); 
+						
+						// send data to system 
+						cmSetClientID("90220406",true,"data.coremetrics.com","www.moosejaw.com");
+					
+ window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'9888306'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;} 
+
+	var termTemplate = "<span style='font-weight:bold'>%s</span>";
+	
+	function swap(items, firstIndex, secondIndex){
+	    var temp = items[firstIndex];
+	    items[firstIndex] = items[secondIndex];
+	    items[secondIndex] = temp;
+	}
+	
+	function partition(items, left, right) {
+		var p		= Math.floor((right + left) / 2);
+	    var pivot   = parseInt(items[p].substring((items[p].indexOf(":") + 1)));
+	    var i       = left;
+	    var j       = right;
+	
+	    while (i <= j) {
+	        while (parseInt(items[i].substring((items[i].indexOf(":") + 1))) > pivot) {
+	            i++;
+	        }
+	        while (parseInt(items[j].substring((items[j].indexOf(":") + 1))) < pivot) {
+	            j--;
+	        }
+	        if (i <= j) {
+	            swap(items, i, j);
+	            i++;
+	            j--;
+	        }
+	    }
+	    return i;
+	}
+	
+	function quickSort(items, l, r) {
+		var n = items.length;
+	 	var index;
+	 	l = typeof l != "number" ? 0 : l;
+	 	r = typeof r != "number" ? n - 1 : r;
+	 
+	 	if(n > 1) {
+	 		index = partition(items, l, r);
+	 		if(l < index - 1){
+	 			quickSort(items, l, index - 1);
+	 		}
+	 		if(index < r){
+	 			quickSort(items, index, r);
+	 		}
+	 	}
+	 	
+	 	return items;
+	}
+	
+	
+	jQuery(function() {
+		
+	jQuery( "#SimpleSearchForm_SearchTerm" ).autocomplete({
+	 minLength:1,
+	 position: {
+		 
+			my: "left top", at: "left bottom", of: jQuery("#SimpleSearchForm_SearchTerm"), collision: "flip"
+		 
+	},
+	 
+	 open:function(e,ui) {
+	
+		jQuery(".ui-menu-item div:contains('POPULAR')").addClass("title");
+		jQuery(".ui-menu-item div:contains('POPULAR')").parent("li").addClass("title popular");
+		// jQuery(".ui-menu-item div:contains('POPULAR')").removeAttr("href");
+		jQuery(".ui-menu-item div:contains('BRANDS')").parent("li").addClass("title bottom brands brands-upper right-autos");
+		jQuery(".ui-menu-item div:contains('BRANDS')").addClass("title bottom");
+		// jQuery(".ui-menu-item div:contains('BRANDS')").removeAttr("href");
+		jQuery(".ui-menu-item div:contains('HISTORY')").parent("li").addClass("title bottom brands history right-autos");
+		jQuery(".ui-menu-item div:contains('HISTORY')").addClass("title bottom");
+		// jQuery(".ui-menu-item div:contains('HISTORY')").removeAttr("href");
+		jQuery(".ui-autocomplete li.popular").nextUntil("li.brands").addClass("popular");
+		jQuery(".ui-autocomplete li.brands-upper").first().nextUntil("li.history").addClass("brands brands-upper");
+		jQuery(".ui-autocomplete li.popular").last().nextUntil("ul").addClass("right-autos");
+		jQuery(".ui-autocomplete li.history").first().nextUntil("ul").addClass("right-autos");
+		jQuery(".ui-autocomplete li.brands").first().nextUntil("ul").addClass("right-autos");
+		jQuery(".ui-autocomplete li.popular").wrapAll("<div class='left-auto' />");
+		jQuery(".ui-autocomplete li.right-autos").wrapAll("<div class='right-auto' />");
+		
+	    if (jQuery('.right-auto').length < 1){
+	        jQuery(".left-auto").after("<div class='right-auto hide-for-small'><li class='ui-menu-item title'><div class='title'>BRANDS</div></li><li class='ui-menu-item'><div><em>No Results</em></div></li><li class='ui-menu-item title' style='margin-top:15px!important;'><div class='title bottom'>HISTORY</div></li><li class='ui-menu-item'><div><em>No Results</em></div></li></div>");
+	    }
+	    if (jQuery('.left-auto').length < 1){
+	        jQuery(".right-auto").before("<div class='left-auto hide-for-small'><li class='ui-menu-item title'><div class='title'>POPULAR SEARCHES</div></li><li class='ui-menu-item'><div><em>No Results</em></div></li></div>");
+	    }
+	    
+	    if(jQuery('.brands-upper').length < 1) {
+	    	jQuery('li.history').addClass("noMarT");
+	    }
+	    
+	    
+		
+		  var
+		  acData = jQuery(this).data('ui-autocomplete');
+		  acData
+		   .menu
+		   .element
+		   .find('li > div')
+		   .each(function() {
+		     var me = jQuery(this);
+		     var starts_regex = new RegExp("^" + acData.term, "gi");
+		     var contains_regex = new RegExp(" " + acData.term, "gi");
+		     me.html( me.text().replace(contains_regex, function (matched) {
+		      return termTemplate.replace('%s', matched);
+		     }).replace(starts_regex, function (matched) {
+		      return termTemplate.replace('%s', matched);
+		     }));
+		    });
+	 },
+	 
+	
+	 
+	 select: function (e, ui) {
+	  if (ui.item.value != undefined && (ui.item.value != "POPULAR SEARCHES" && ui.item.value != "BRANDS" && ui.item.value != "HISTORY")) {
+	   jQuery("#SimpleSearchForm_SearchTerm").val(ui.item.value);
+	   // TODO - Add GA Tag
+	   // _gaq.push(['_trackEvent', 'search', 'autocomplete', ui.item.value]);
+	   submitSpecifiedForm(document.CatalogSearchForm);
+	  }
+	 },
+	 
+	 
+	 source: function( request, response ) {
+		 
+		 var wWidth = jQuery(window).width();
+		 
+		 
+		 
+		 if (wWidth > 550) {
+	
+			  //======SUGGESTED KEYWORDS======//
+			  // Search for matches where the first word in the term starts with the search string
+			  var starts_with_matchesKeywords = jQuery.map( availableTagsKeywords, function(tag) {
+			   if ( tag.toUpperCase().indexOf(request.term.toUpperCase()) == 0 || tag.toUpperCase().indexOf("POPULAR SEARCHES:") != -1 ) {
+			    var oldRank = parseInt(tag.substring((tag.indexOf(":") + 1)));
+			    var rank = parseInt(tag.substring((tag.indexOf(":") + 1))) * 2;
+			    tag = tag.substring(0,(tag.indexOf(":"))) + ":" + rank;
+			    return tag;
+			   }
+			  });
+			  // Search for matches where a word other than the first word in the term starts with the search string
+			  var contains_matchesKeywords = jQuery.map( availableTagsKeywords, function(tag) {
+			   if ( tag.toUpperCase().indexOf(" " + request.term.toUpperCase()) > 0) {
+			    
+			    return tag;
+			   }    
+			  });
+			  var top_matchesKeywords = starts_with_matchesKeywords.concat(contains_matchesKeywords);
+			  	top_matchesKeywords = quickSort(top_matchesKeywords);		 
+			  var sliced_topKeywords = top_matchesKeywords.slice(0,11);
+			  	for (var i = 0; i < sliced_topKeywords.length; i ++) {
+				  sliced_topKeywords[i] = sliced_topKeywords[i].substring(0,sliced_topKeywords[i].indexOf(":"));
+			 	}
+	
+			  //======BRANDS======//
+			  // Search for matches where the first word in the term starts with the search string
+			  var starts_with_matchesBrands = jQuery.map( availableTagsBrands, function(tag) {
+			   if ( tag.toUpperCase().indexOf(request.term.toUpperCase()) == 0 || tag.toUpperCase().indexOf("BRANDS:") != -1 ) {   
+			    var oldRank = parseInt(tag.substring((tag.indexOf(":") + 1)));
+			    var rank = parseInt(tag.substring((tag.indexOf(":") + 1))) * 2;
+			    tag = tag.substring(0,(tag.indexOf(":"))) + ":" + rank;
+			    return tag;
+			   }
+			  });
+			  // Search for matches where a word other than the first word in the term starts with the search string
+			  var contains_matchesBrands = jQuery.map( availableTagsBrands, function(tag) {
+			   if ( tag.toUpperCase().indexOf(" " + request.term.toUpperCase()) > 0) {
+			    
+			    return tag;
+			   }    
+			  });
+			  var top_matchesBrands = starts_with_matchesBrands.concat(contains_matchesBrands);
+			  	top_matchesBrands = quickSort(top_matchesBrands);
+			  var sliced_topBrands = top_matchesBrands.slice(0,6);
+			  	for (var i = 0; i < sliced_topBrands.length; i ++) {
+				  sliced_topBrands[i] = sliced_topBrands[i].substring(0,sliced_topBrands[i].indexOf(":"));
+			 	}
+			  	 
+			  //======HISTORY======//
+			  var cookieValue = getCookie("searchTermHistory");
+			  if(cookieValue) {
+			  var cookieValueSplit = cookieValue.split('|');
+			  
+			  var history = "[\"HISTORY\"";
+			  for(var i=0; i<cookieValueSplit.length; i++){
+			   var searchTerm = cookieValueSplit[i];
+			   searchTerm = searchTerm.replace("&#039;","\'")
+			   if(history.indexOf("\""+searchTerm+"\"") == -1){
+			    history = history + ",\"" + searchTerm + "\"";
+			   } 
+			  }
+			  history = history + "]";
+			  
+			  history = JSON.parse(history);
+			  var history_matches = jQuery.map( history, function(tag) {
+				  if(tag.toUpperCase().indexOf(request.term.toUpperCase()) >= 0 || tag.toUpperCase() == "HISTORY"){
+					return tag;  
+				  }
+			  });
+			  var sliced_history = history_matches.slice(0,4);
+			  }
+			  
+			  //=====PRODUCE AUTO-SUGGESTIONS=====//
+			  var top_matches = "";
+			  foundOne = false;
+			  if(Object.keys(sliced_topKeywords).length > 1) { 
+				   if(foundOne){
+				    top_matches = top_matches.concat(sliced_topKeywords);
+				   }
+				   else{
+				    foundOne = true;
+				    top_matches = sliced_topKeywords;
+				   }
+				  }
+	
+			  if(Object.keys(sliced_topBrands).length > 1) { 
+			   if(foundOne){
+			    top_matches = top_matches.concat(sliced_topBrands);
+			   }
+			   else{
+			    foundOne = true;
+			    top_matches = sliced_topBrands;
+			   }
+			  }
+			  if(cookieValue){
+			  if(Object.keys(sliced_history).length > 1) { 
+			   if(foundOne){
+			    top_matches = top_matches.concat(sliced_history);
+			   }
+			   else{
+			    foundOne = true;
+			    top_matches = sliced_history;
+			   }
+			  } 
+			 }
+	
+			  response(top_matches.slice(0,23));
+			 
+		 }
+		 
+		 else {
+			 
+			  //======SUGGESTED KEYWORDS======//
+			  // Search for matches where the first word in the term starts with the search string
+			  var starts_with_matchesKeywords = jQuery.map( availableTagsKeywords, function(tag) {
+			   if ( tag.toUpperCase().indexOf(request.term.toUpperCase()) == 0 || tag.toUpperCase().indexOf("POPULAR SEARCHES:") != -1 ) {
+			    var oldRank = parseInt(tag.substring((tag.indexOf(":") + 1)));
+			    var rank = parseInt(tag.substring((tag.indexOf(":") + 1))) * 2;
+			    tag = tag.substring(0,(tag.indexOf(":"))) + ":" + rank;
+			    return tag;
+			   }
+			  });
+			  // Search for matches where a word other than the first word in the term starts with the search string
+			  var contains_matchesKeywords = jQuery.map( availableTagsKeywords, function(tag) {
+			   if ( tag.toUpperCase().indexOf(" " + request.term.toUpperCase()) > 0) {
+			    
+			    return tag;
+			   }    
+			  });
+			  var top_matchesKeywords = starts_with_matchesKeywords.concat(contains_matchesKeywords);
+			  	top_matchesKeywords = quickSort(top_matchesKeywords);
+			  var sliced_topKeywords = top_matchesKeywords.slice(0,6); 
+			   	for (var i = 0; i < sliced_topKeywords.length; i ++) {
+				  sliced_topKeywords[i] = sliced_topKeywords[i].substring(0,sliced_topKeywords[i].indexOf(":"));
+			 	}
+	
+			  //======BRANDS======//
+			  // Search for matches where the first word in the term starts with the search string
+			  var starts_with_matchesBrands = jQuery.map( availableTagsBrands, function(tag) {
+			   if ( tag.toUpperCase().indexOf(request.term.toUpperCase()) == 0 || tag.toUpperCase().indexOf("BRANDS:") != -1 ) {   
+			    var oldRank = parseInt(tag.substring((tag.indexOf(":") + 1)));
+			    var rank = parseInt(tag.substring((tag.indexOf(":") + 1))) * 2;
+			    tag = tag.substring(0,(tag.indexOf(":"))) + ":" + rank;
+			    return tag;
+			   }
+			  });
+			  // Search for matches where a word other than the first word in the term starts with the search string
+			  var contains_matchesBrands = jQuery.map( availableTagsBrands, function(tag) {
+			   if ( tag.toUpperCase().indexOf(" " + request.term.toUpperCase()) > 0) {
+			    
+			    return tag;
+			   }    
+			  });
+			  var top_matchesBrands = starts_with_matchesBrands.concat(contains_matchesBrands);
+			  	top_matchesBrands = quickSort(top_matchesBrands);
+			  var sliced_topBrands = top_matchesBrands.slice(0,3);
+			  	for (var i = 0; i < sliced_topBrands.length; i ++) {
+				  sliced_topBrands[i] = sliced_topBrands[i].substring(0,sliced_topBrands[i].indexOf(":"));
+			 	}
+	
+			  //=====PRODUCE AUTO-SUGGESTIONS=====//
+			  var top_matches = "";
+			  foundOne = false;
+	 
+			  if(Object.keys(sliced_topBrands).length > 1) { 
+				   if(foundOne){
+				    top_matches = top_matches.concat(sliced_topBrands);
+				   }
+				   else{
+				    foundOne = true;
+				    top_matches = sliced_topBrands;
+				   }
+				  }
+	
+			  if(Object.keys(sliced_topKeywords).length > 1) { 
+				   if(foundOne){
+				    top_matches = top_matches.concat(sliced_topKeywords);
+				   }
+				   else{
+				    foundOne = true;
+				    top_matches = sliced_topKeywords;
+				   }
+				  }
+	
+			  response(top_matches.slice(0,20));
+	 
+		 }
+	
+	 }
+	 
+	});
+	
+	});
+	
+	
+	jQuery( window ).resize(function() {
+		jQuery( "#ui-id-1" ).hide();
+	});	
+	
+	
+
+jQuery("#searchComponent").mouseenter(function() {	
+	var SearchValCheck = jQuery("input#SimpleSearchForm_SearchTerm").val();
+	
+	if(SearchValCheck == ""){
+		jQuery(".clearSearchIcon").css("display","none");
+	}else{
+		jQuery(".clearSearchIcon").css("display","block");
+	}
+});
+
+jQuery("#searchComponent").mouseleave(function() {
+	jQuery(".clearSearchIcon").css("display","none");
+});
+
+
+					function openChatWindow() {
+						document.getElementById("lpHeaderEngagement").childNodes[0].click();
+					}
+				
+
+	dojo.addOnLoad(function() { 
+			
+		MessageHelper.setMessage("ERROR_MSG__USER_CANT_BUY_GC_WITH_PP","E-Gift Cards may not be purchased using Paypal.  So sorry.  Please checkout and select an alternate payment method." );
+	});	
+
+
+	dojo.addOnLoad(function() { 
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		requestSubmitted = false;
+
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+		dojo.query('div[dojoType]').forEach(function(node, index, arr){
+			addToWidgetsList(node.id);
+		});
+		parseAllWidgets();
+	}); 	
+

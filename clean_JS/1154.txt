@@ -1,0 +1,137 @@
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/www.bellenza.com\/home-portal\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f;c.supports={simple:d("simple"),flag:d("flag")},c.supports.simple&&c.supports.flag||(f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+            var ajaxurl = 'https://www.bellenza.com/home-portal/wp-admin/admin-ajax.php';
+        
+(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
+                                            
+
+var addthis_config = {"data_track_clickback":true,"ui_atversion":300,"ignore_server_config":true};
+var addthis_share = {};
+
+
+                    var addthis_product = "wpp-5.2.3";
+                    var wp_product_version = "wpp-5.2.3";
+                    var wp_blog_version = "4.2";
+                    var addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","cms_version":"4.2","plugin_name":"Share Buttons by AddThis","plugin_version":"5.2.3","anonymous_profile_id":"wp-2a4329c2ea2d3fcb1c164eb8035f0b25","plugin_mode":"WordPress","select_prefs":{"addthis_per_post_enabled":true,"addthis_above_enabled":false,"addthis_below_enabled":false,"addthis_sidebar_enabled":true,"addthis_above_showon_home":true,"addthis_above_showon_posts":true,"addthis_above_showon_pages":true,"addthis_above_showon_archives":true,"addthis_above_showon_categories":true,"addthis_above_showon_excerpts":true,"addthis_below_showon_home":true,"addthis_below_showon_posts":true,"addthis_below_showon_pages":true,"addthis_below_showon_archives":true,"addthis_below_showon_categories":true,"addthis_below_showon_excerpts":true,"addthis_sidebar_showon_home":false,"addthis_sidebar_showon_posts":true,"addthis_sidebar_showon_pages":true,"addthis_sidebar_showon_archives":true,"addthis_sidebar_showon_categories":true,"sharing_enabled_on_post_via_metabox":false},"page_info":{"template":"home","post_type":""}};
+                    if (typeof(addthis_config) == "undefined") {
+                        var addthis_config = {"data_track_clickback":true,"ui_atversion":300,"ignore_server_config":true};
+                    }
+                    if (typeof(addthis_share) == "undefined") {
+                        var addthis_share = {};
+                    }
+                    if (typeof(addthis_layers) == "undefined") {
+                        var addthis_layers = {};
+                    }
+                
+
+                
+
+                    (function() {
+                        var at_interval = setInterval(function () {
+                            if(window.addthis) {
+                                clearInterval(at_interval);
+                                addthis.layers(addthis_layers);
+                            }
+                        },1000)
+                    }());
+                
+
+/* <![CDATA[ */
+var ticker = {"ticker-wrapper-5cb347b40f922":"Slide"};
+var main_slider = ["5cb347b43c00c"];
+var countdownID = [];
+var ticker = {"ticker-wrapper-5cb347b40f922":"Slide"};
+var justified_ids = [];
+var megamenu_carousel_el = null;
+var main_slider = ["5cb347b43c00c"];
+var fixed_nav = "1";
+var customconfig = {"timestamp":""};
+/* ]]> */
+
+
+    $(document).ready(function () {
+		//load featured product 1
+		$("#featured-recent-product1").load("https://www.bellenza.com/home-portal/api/featured-product1.php");
+		
+		//load featured product 2
+		$("#featured-recent-product2").load("https://www.bellenza.com/home-portal/api/featured-product2.php");
+		
+		//load featured recent wedding 1
+		$("#featured-recent-wedding1").load("https://www.bellenza.com/home-portal/api/featured-wedding1.php");
+		
+		//load featured recent wedding 2
+		$("#featured-recent-wedding2").load("https://www.bellenza.com/home-portal/api/featured-wedding2.php");
+		
+		//load featured recent party 1
+		$("#featured-recent-party1").load("https://www.bellenza.com/home-portal/api/featured-party1.php");
+		
+		//load featured recent party 2
+		$("#featured-recent-party2").load("https://www.bellenza.com/home-portal/api/featured-party2.php");
+		
+        //load wedding idea posts with diy tags
+        $("#wedding-diy").load("https://www.bellenza.com/home-portal/api/wedding-ideas_diy-tag.php");
+
+		//load wedding idea posts with baby showers tags
+		$("#baby-showers").load("https://www.bellenza.com/home-portal/api/party-ideas_baby-showers-tag.php");
+
+		//load shop products
+		$("#shop-products").load("https://www.bellenza.com/home-portal/api/shop_products.php");
+
+		//load packaging favors
+		$("#packaging-favors").load("https://www.bellenza.com/home-portal/api/wedding-ideas_packaging-favors.php");
+
+		//load party trends
+		$("#party-trends").load("https://www.bellenza.com/home-portal/api/party-ideas_party-trends.php");
+
+        //load wedding trends
+        $("#wedding-trends").load("https://www.bellenza.com/home-portal/api/wedding-ideas_wedding-trends.php");
+
+		//load food and drinks category
+		$("#food-and-drinks").load("https://www.bellenza.com/home-portal/api/party-ideas_food-and-drinks.php");
+
+		//load sweet-16 tags
+		$("#sweet-16").load("https://www.bellenza.com/home-portal/api/party-ideas_sweet-16.php");
+
+        //append loaded list from both sites
+        $.get('https://www.bellenza.com/home-portal/api/wedding-ideas_latest-sidebar.php', function (data) {
+            $('#sidebar-latest-post').append(data);
+        });
+
+        $.get('https://www.bellenza.com/home-portal/api/party-ideas_latest-sidebar.php', function (data) {
+            $('#sidebar-latest-post').append(data);
+        });
+
+        $.get('https://www.bellenza.com/home-portal/api/wedding-ideas_comments.php', function (data) {
+            $('#bz-recent-comments').append(data);
+        });
+
+        $.get('https://www.bellenza.com/home-portal/api/party-ideas_comments.php', function (data) {
+            $('#bz-recent-comments').append(data);
+        });
+
+        $.get('https://www.bellenza.com/home-portal/api/party-ideas_ticker-party-trends.php', function (data) {
+            $('.newsticker').append(data);
+        });
+		
+        $.get('https://www.bellenza.com/home-portal/api/wedding-ideas_ticker-wedding-trends.php', function (data) {
+            $('.newsticker').append(data);
+        });
+
+		/*
+			append loaded list from both sites (most commented-FOOTER)
+			$.get('https://www.bellenza.com/home-portal/api/party-ideas_most-commented.php', function (data) {
+				$('#footer-most-commented').append(data);
+			});
+
+			$.get('https://www.bellenza.com/home-portal/api/wedding-ideas_most-commented.php', function (data) {
+				$('#footer-most-commented').append(data);
+			});
+		*/
+    });
+
+
+    var _auto = { accountKey: "fd80b999cc1e03bb659508532ed0316e42426b21cabd2833f2eb646295e5ec91", u1: "", apiURL: "https://www.popshops.com", snippetURL: "https://automate-prod.s3.amazonaws.com/minified_logic.js", automateURL: "https://automate.linksynergy.com", widgetKey: "lru0pn11buzogjmbuatoi2t1xo9ki881", aelJS: null, useDefaultAEL: false, loaded: false, events: [] };var ael=window.addEventListener;window.addEventListener=function(a,b,c,d){"click"!==a&&_auto.useDefaultAEL?ael(a,b,c):_auto.events.push({type:a,handler:b,capture:c,rakuten:d})};_auto.links={};var httpRequest=new XMLHttpRequest;httpRequest.open("GET",_auto.snippetURL,!0);httpRequest.timeout=5E3;httpRequest.ontimeout=function(){if(!_auto.loaded){for(i=0;i<_auto.events.length;i++){var a=_auto.events[i];ael(a.type,a.handler,a.capture)}_auto.useDefaultAEL=!0}};httpRequest.onreadystatechange=function(){httpRequest.readyState===XMLHttpRequest.DONE&&200===httpRequest.status&&(eval(httpRequest.responseText),_auto.run(ael))};httpRequest.send(null);
+

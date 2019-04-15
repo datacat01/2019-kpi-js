@@ -1,0 +1,60 @@
+
+  function checkJqBootstrap() {
+    if (window.jQuery && jQuery.ui) {
+      if (/(faq)|(about)|(careers)|(drums-alive)|(drum-circle)|(in-our-stores)|(learn-and-discover)|(news-release)|(partners-and-awards)|(privacy-policy)|(promo)|(resources)|(service)|(shop-by-brand)/.test(window.location.href)||window.location.href.split("?")[0]=="https://www.westmusic.com/"||window.location.href.split("?")[0]=="https://www.westmusic.com/home"){
+        if (!(/(music-books-resources)/.test(window.location.href))){
+          var bootstrapjs = document.createElement('script');
+          bootstrapjs.type = 'text/javascript';
+          bootstrapjs.src = '//www.westmusic.com/content/css/Custom/bootstrap/js/bootstrap.min.js';
+          bootstrapjs.defer = true;
+          document.head.appendChild(bootstrapjs);
+          var bootstrapcss = document.createElement('link');
+          bootstrapcss.rel = 'stylesheet';
+          bootstrapcss.href = '//www.westmusic.com/content/css/Custom/bootstrap/css/bootstrap.min.css';
+          document.head.appendChild(bootstrapcss);
+        }
+      }
+    } else {
+      window.setTimeout(checkJqBootstrap, 100);
+    }
+  }
+  checkJqBootstrap();
+
+
+//<![CDATA[
+(function (HawkSearch, undefined) {
+HawkSearch.BaseUrl = 'http://api.hawksearch.info/sites/westmusic';
+HawkSearch.TrackingUrl = HawkSearch.BaseUrl;
+if ("https:" == document.location.protocol) {
+HawkSearch.BaseUrl = HawkSearch.BaseUrl.replace("http://",
+"https://");
+HawkSearch.TrackingUrl =
+HawkSearch.TrackingUrl.replace("http://", "https://");
+}
+}(window.HawkSearch = window.HawkSearch || {}));
+var hawkJSScriptDoc = document.createElement("script");
+hawkJSScriptDoc.async = true;
+hawkJSScriptDoc.src = HawkSearch.TrackingUrl +
+'/includes/hawksearch.min.js?v1.0';
+var hawkJSTag = document.getElementsByTagName('script')[0];
+hawkJSTag.parentNode.insertBefore(hawkJSScriptDoc, hawkJSTag);
+var hawkCSSScriptDoc = document.createElement("link");
+hawkCSSScriptDoc.setAttribute("rel", "stylesheet");
+hawkCSSScriptDoc.setAttribute("type", "text/css");
+hawkCSSScriptDoc.setAttribute("href", HawkSearch.TrackingUrl +
+'/includes/hawksearch.css');
+document.head.appendChild(hawkCSSScriptDoc);
+//]]>
+
+
+//<![CDATA[
+HawkSearch.initAutoSuggest = function () {
+HawkSearch.suggestInit('#searchbox', {
+lookupUrlPrefix: HawkSearch.BaseUrl +
+'/?fn=ajax&f=GetSuggestions',
+hiddenDivName: '',
+isAutoWidth: true
+});
+};
+//]]>
+

@@ -1,0 +1,23 @@
+
+  if (typeof window.SonyAnalytics === 'undefined') {
+    window.SonyAnalytics = function() {
+        this.build = function() {
+            var dataLayer = {};
+            dataLayer.analytics = {};
+            dataLayer.analytics.version = '1';
+            dataLayer.analytics.page = {};
+            dataLayer.analytics.page.brand = 'US';
+            dataLayer.analytics.page.country = 'US';
+            dataLayer.analytics.page.language = 'en';
+            dataLayer.analytics.page.name = 'Sony Homepage';
+            dataLayer.analytics.page.omniture_rsid = 'sonygwt-na-prod';
+            dataLayer.analytics.page.section = 'usa';
+            dataLayer.analytics.page.template = 'usa:Sony Homepage';
+            dataLayer.analytics.page.template_revision = 'usa:Sony Homepage';
+            return dataLayer;
+        }; <!--/* dataLayer */-->
+    }; <!--/* function */-->
+  } <!--/* window.SonyAnalytics */-->
+  var es_boot = '<script async type="text/javascript" src="//nexus.ensighten.com/sonyglobal/Bootstrap.js"><\/script>';
+  document.write(es_boot);
+

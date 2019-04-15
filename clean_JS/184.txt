@@ -1,0 +1,164 @@
+var trackingpagename = 'Welcome to the world of satellite radio';
+var trackingpagetype = 'ResponsiveHomePage';
+
+jQuery(document).ready(function() {
+
+	var category='null';
+	var bTag='null';
+	if( bTag ==='' || bTag ==='null')
+	{
+		bTag='';
+	}
+		
+	if( category ==='' || category ==='null')
+	{
+		category='';
+	}
+	var blogURL = 'https://blog.siriusxm.com/category/siriusxm-com//feed/json/';
+	var publicURL = false;
+		if(blogURL.indexOf('public-api.wordpress.com') !=-1)
+		{
+			publicURL=true;
+		}
+		else
+		{
+			blogURL = blogURL+'?jsonp=?';
+		}
+		jQuery.ajax({
+			url: blogURL,
+			dataType: 'jsonp',
+			
+			data: { 
+	
+		        'category':category,
+		        'tag':bTag,
+		        'per_page':1,
+		    },
+			
+			success: function(json) {
+				
+				
+				var bTitle = 'null';
+				var respArray = null;
+				
+				if(jQuery.isArray(json) || jQuery.isArray(json.posts))
+				{
+					if(json.length >0)
+					{
+						respArray=json;
+					}
+					else if(json.posts &&json.posts.length >0 )
+					{
+						respArray=json.posts;
+						publicURL=true;
+					}
+					
+					for( var i=0;i<respArray.length;i++)
+					{
+						 
+							 
+							if(publicURL)
+							{
+								jQuery('#12939503398791anc').css('background-image', 'url('+respArray[i].featured_image+'?w=300)');
+								jQuery('#12939503398791anc').attr('href', respArray[i].URL+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+								 jQuery('#12939503398791anc1').attr('href', respArray[i].URL);
+								 jQuery('#12939503398791readmore').attr('href', respArray[i].URL+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+							}
+							else
+							{
+							jQuery('#12939503398791anc').css('background-image', 'url('+respArray[i].featured_image_url+'?w=300)');
+							jQuery('#12939503398791anc').attr('href', respArray[i].permalink+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+							 jQuery('#12939503398791anc1').attr('href', respArray[i].permalink);
+							 jQuery('#12939503398791readmore').attr('href', respArray[i].permalink+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+							}
+							 
+							
+							 
+							if (!bTitle || bTitle == 'null') {
+	
+								jQuery('#12939503398791body').html(respArray[i].title);
+							} else {
+	
+								jQuery('#12939503398791body').html(bTitle);
+							}
+							var excertText = null;
+							excertText = respArray[i].excerpt;						
+							excertText = jQuery("<div/>").html(excertText).text();
+							excertText = excertText.substr(0, 115);
+							excertText = excertText.substr(0, excertText.lastIndexOf(" "));
+	
+							jQuery('#12939503398791excerpt').html(excertText + " &hellip;");
+							
+							break;
+					 }
+					
+				}
+				else
+				{
+					console.log("category is  null "+category);
+					
+					jQuery('#12939503398791anc').css('background-image', 'url('+json.featured_image+')');
+					jQuery('#12939503398791anc').attr('href', json.URL+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+					jQuery('#12939503398791anc1').attr('href', json.URL);
+					jQuery('#12939503398791readmore').attr('href', json.URL+'?intcmp=GN_HEADER_NEW_WhatsOn_HearNowBlog');
+					if (!bTitle || bTitle == 'null') {
+
+						jQuery('#12939503398791body').html(json.title);
+					} else {
+
+						jQuery('#12939503398791body').html(bTitle);
+					}
+					var excertText = null;
+					excertText = json.excerpt;
+					excertText = jQuery("<div/>").html(excertText).text();
+					excertText = excertText.substr(0, 115);
+					excertText = excertText.substr(0, excertText.lastIndexOf(" "));
+
+					jQuery('#12939503398791excerpt').html(excertText + " &hellip;");
+					
+				}
+				
+			}
+		});
+	});
+
+
+  var s_account="sxmr.prod";
+  
+    
+    s.channel="SiriusXM.com Flow";
+    if(typeof trackingpagename === "undefined"){
+      var trackingpagename = "Unknown";
+    }
+    if(typeof trackingpagetype === "undefined"){ 
+      var trackingpagetype = "Unknown";
+    }else{    
+      if(SXM && SXM.analytics && SXM.analytics.pageTypes){
+        trackingpagetype = SXM.analytics.pageTypes[trackingpagetype] || trackingpagetype;
+      }
+    }
+    var pageName="COM:"+ trackingpagetype + ":" + trackingpagename;
+  s.pageName = pageName;
+    s.server=".COM";           
+    var s_code=s.t();
+    if(s_code){    
+    	window.addEventListener("adobe.target.events.LIBRARY_LOADED", function(){
+    		 document.write(s_code);
+    	});
+    	setTimeout(function(){ "object" !== typeof adobe.target && document.write(s_code);},3e3);
+    }
+
+
+
+
+				(function(){var g=function(e,h,f,g){
+				this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+				this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+				this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};
+				this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g+ "&t=" + (new Date()).getTime();document.body&&document.body.appendChild(a)}};
+				this.start=function(){var a=this;window.addEventListener?window.addEventListener("load",function(){a.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){a.go()})}};
+				try{(new g(100,"r","QSI_S_ZN_bfRPy3eqewfuGoZ","//zn_bfrpy3eqewfugoz-siriusxm.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_ZID=ZN_bfRPy3eqewfuGoZ&Q_LOC="+encodeURIComponent(window.location.href))).start()}catch(i){}})();
+				
+
+			  		if(typeof _satellite != "undefined"){_satellite.pageBottom()};
+			  	

@@ -1,0 +1,60 @@
+var HTTPHost = 'https://www.trophystore.co.uk'; SSLHost = 'https://www.trophystore.co.uk', CDNHost = 'https://cdn.trophystore.co.uk', FolderRoot = '/', CSRFToken = '110e5989-1f69-4faf-8b80-4f0856815dcb', LoqateKey = 'XB71-YF69-JW41-EY75', LoqateCountries = 'gb'
+
+		var dataLayer = [];
+		var pageName = 'home';
+	
+
+//<![CDATA[
+var theForm = document.forms['frmMain'];
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('sm', 'frmMain', [], [], [], 90, '');
+//]]>
+
+
+			var hmCustomersTimer,
+				hmCustomersPauseTimer = false;
+
+			$(document).ready(function () {
+				hmCustomersTimer = setInterval(hmCustomersScroll, 5000);
+				$("#hmCustomers").hover(function () {
+					hmCustomersPauseTimer = true;
+				}, function () {
+					hmCustomersPauseTimer = false;
+				});
+			});
+
+			function hmCustomersScroll() {
+				if (hmCustomersPauseTimer) {
+					return;
+				}
+
+				$("#hmCustomers .list").animate({
+					top: parseInt($("#hmCustomers .list").css('top')) - (isDesktop ? 60 : 120)
+				}, 600, function () {
+					$("#hmCustomers ul:last").after($("#hmCustomers ul:first"));
+					$("#hmCustomers ul:last").after($("#hmCustomers ul:first"));
+					$("#hmCustomers .list").css({ top: 0 });
+				});
+			}
+		
+
+		dataLayer.push({
+			'google_tag_params': {
+				'ecomm_prodid': '',
+				'ecomm_pagetype': 'home',
+				'ecomm_totalvalue': '0'
+			},
+			'pageName': 'home',
+			'sourceServer': 'RSWeb1'
+		});
+	

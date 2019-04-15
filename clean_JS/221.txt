@@ -1,0 +1,77 @@
+var monetateT = new Date().getTime();
+
+        //var ENVIRONMENT = "production";
+        var ENVIRONMENT = "dev";
+        var GAT = 'UA-XXXXXXX-X';
+    
+
+function yo_loader(url){ 
+ 
+ try{(new Image()).src = url;}catch(e){ } 
+ }
+
+
+yo_loader("https://www.crayola.com/yo-app-sequencer.png?v=hx245WyXJAYWfWCt0pf1VLT_9aXAW0AW0ucIMvkQWzs=,hce7-fp7aDC_VMrOWi0rsuamP-zJqEJd6LcAYREifAU=,lQXpS5v-2Ai_N5ivycSFYw-L5nQZMW_XS5L4idGsqtA=&t=M5K0Ze-3WZJ1Bg6wKUof0w==&s=e70208c75e94d620cac88ea1d9704ca6");
+
+
+
+            jQuery('link[title=screenCSS]')[0].disabled = true;
+        
+
+    var dwHost = "https://shop.crayola.com";
+    var dwSearchPath = "/search?q=";
+
+
+                                    (function ($) {
+                                        var $window = $(window),
+                                            $html = $('#btnSpecialOffers');
+
+                                        function resize() {
+                                            if ($window.width() < 767) {
+                                                return $html.removeClass('btn-promo');
+                                            }
+
+                                            $html.addClass('btn-promo');
+                                        }
+
+                                        $window
+                                            .resize(resize)
+                                            .trigger('resize');
+                                    })(jQuery);
+                                
+
+
+$(document).ready(function () {
+	$(".btn-search").click(function () {
+	    $(this).closest('div').find('#q').focus();
+	});
+});
+        
+
+    if (monetateData.setPageType == "unknown") {
+        monetateData.trackUnknownPage = function () {
+            window.monetateQ.push(["setPageType", monetateData.setPageType]);
+
+            if (monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+            if (monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+
+            window.monetateQ.push(["trackData"]);
+        };
+        monetateData.trackUnknownPage();
+    }
+
+
+    var mUser = { "email": "mreifinger@crayola.com", "firstName": "Michael", "gender": 0, "birthday": "1973-03-20", "phoneMobile": "" }
+
+
+		        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			        var msViewportStyle = document.createElement('style')
+			        msViewportStyle.appendChild(
+			        document.createTextNode(
+			          '@-ms-viewport{width:auto!important}'
+			        )
+			        )
+			        document.querySelector('head').appendChild(msViewportStyle)
+		        }
+	        
+ try { Typekit.load(); } catch (e) { }

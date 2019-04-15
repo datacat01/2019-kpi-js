@@ -1,0 +1,452 @@
+
+if(ns4)_d.write("<scr"+"ipt src=/a/j/milonic/mmenuns4.js><\/scr"+"ipt>"); 
+  else _d.write("<scr"+"ipt src=/a/j/milonic/mmenudom.js><\/scr"+"ipt>"); 
+
+
+var Config_CDN_URL = '/'
+
+
+	var Config_VCompare_MaxProducts = '3';
+	var PageText_783 = "Compare";
+	var PageText_784 = "Change Selections";
+	var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+	var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+
+
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/ajaxcart.asp?cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+
+
+	var global_Config_EnableDisplayOptionProducts = 'False';
+	var global_Config_ForceSecureShoppingCartPage = false;
+	var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+	var Config_EnableSoftAddToCart = false;
+
+
+	var Config_Search_Auto_Complete = false;
+
+
+_qoptions={
+qacct:"p-47ZJytqSRhYs-"
+};
+
+
+        var triggermail=triggermail||[];triggermail.load=function(a){var b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===document.location.protocol?"https://":"http://")+"triggeredmail.appspot.com/triggermail.js/"+a+".js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)};triggermail.load("strapworks");window.triggermail=triggermail;
+    
+var seffJs=document.createElement("script");seffJs.type="text/javascript";var seffJss=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/strapworks/safe-standard.js?ps_h=ffJs&ps_t="+new Date().getTime();setTimeout("seffJs.src=seffJss;document.getElementById('sdffJs').appendChild(seffJs)",1)
+var breadCrumb="||";
+
+function mOvr3(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav nav_hover'; }
+function mOut3(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav'; }
+function mClk3(src, popup) 
+{ if (!popup) {window.location=src.getElementsByTagName('A')[0].getAttribute('href');} else {window.open(src);} }
+
+var breadCrumb="||";
+
+function mOvr4(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav nav_hover'; }
+function mOut4(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav'; }
+function mClk4(src, popup) 
+{ if (!popup) {window.location=src.getElementsByTagName('A')[0].getAttribute('href');} else {window.open(src);} }
+
+var breadCrumb="||";
+display_menu_1();
+var breadCrumb="||";
+
+document.getElementById('search_v5_1') ? document.getElementById('search_v5_1').value=QueryString('Search') : null;
+
+
+var googleprice = 0;
+var googleprodid ='';
+var pathname = window.location.pathname;
+
+if(pathname == "/" || pathname == "/Default.asp" || pathname == "/default.asp"){ /* If home page */
+	
+	var google_tag_params = {
+		ecomm_pagetype: 'home'
+	};
+}else
+if(pathname.indexOf('_s/') > -1){/* If Category Page */
+	
+	var google_tag_params = {
+		ecomm_pagetype: 'category'
+	};
+	
+}else
+if((pathname.indexOf('_p/') > -1) || (pathname.indexOf('ProductDetails') > -1)){/* If Product Page */
+	
+	googleprice = jQuery('span[itemprop="price"]').text().replace(/[^0-9.]/g,'');
+    googleprodid = window.global_Current_ProductCode;
+	
+	var google_tag_params = {
+		ecomm_prodid: googleprodid, 
+		ecomm_pagetype: 'product',
+		ecomm_totalvalue: parseFloat(googleprice)
+};
+
+}else
+if((pathname.indexOf('shoppingcart') > -1) || (pathname.indexOf('ShoppingCart') > -1)){/* If cart Page */
+		
+	googleprice = jQuery(".pricecolor.colors_productprice b:first").text().replace(/[^0-9.]/g, '');
+	var productIdArray = new Array();
+	var cartquantity = jQuery('a .cart-item-name').length;
+	
+	for (var i=0; i < cartquantity; i++) { 
+		var link = jQuery('a.cart-item-name').eq(i).attr('href'); 
+		var substr = link.split('&'); 
+		var pcode = substr[0].split('='); 
+		googleprodid = pcode[1].replace("%","-"); 
+		productIdArray.push(googleprodid); 
+	} 
+	
+	googleprodid = productIdArray; 
+	
+	var google_tag_params = {
+		ecomm_prodid: googleprodid, 
+		ecomm_pagetype: 'cart',
+		ecomm_totalvalue: parseFloat(googleprice)
+	};
+}
+else if(pathname.indexOf('OrderFinished') > -1 || pathname.indexOf('orderfinished') > -1){/* If confirmation Page */
+
+	googleprice = Order[3]; 
+	productIdArray = new Array();
+	
+	for (var i=0; i < OrderDetails.length; i++) {
+		productIdArray.push(OrderDetails[i][2]); 
+	}
+	
+	googleprodid = productIdArray;
+	
+	var google_tag_params = {
+		ecomm_prodid: googleprodid, 
+		ecomm_pagetype: 'purchase',
+		ecomm_totalvalue: parseFloat(googleprice)
+	};
+}else if(pathname.indexOf('SearchResults') > -1) {/* If search Page */
+	var google_tag_params = {
+		ecomm_pagetype: 'searchresults',
+	};
+}
+else{
+	var google_tag_params = {
+		ecomm_pagetype: 'other',
+	};
+}
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071726329;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';
+js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/') + 'widget_async.js#57751a60bbddbd72d0c62e0a';
+document.getElementsByTagName("head")[0].appendChild(js);
+
+
+if (window._GUARANTEE && _GUARANTEE.Loaded) {
+_GUARANTEE.Hash = "VFBmlKDortoUBLA%2FzrBm7h6IE8C19H64lRAl3KlwOAWWMo%2FFisa6Hsf4WRcnQIOWCFRPI%2FxbndBYUC9895%2Ba%2Fw%3D%3D";
+_GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+}
+
+
+if (jQuery( "#v65-product-parent" ).length ){
+ jQuery("#teasers").appendTo(".vCSS_breadcrumb_td");
+jQuery("#teasers").show();
+var TurnToItemSku =  jQuery("span.product_code").html();
+ var TurnToChatterSku = TurnToItemSku;
+function reviewsTeaser() {
+            if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+                return '';
+            } else {
+                var reviewCount = TurnToItemData.counts.r;
+                var teaserContainer = TurnTojQuery(".TurnToReviewsTeaser");
+                var teaserHtml = '';
+
+                // round the average rating to the nearest tenth
+                var rating = Math.round((TurnToItemData.counts.ar + 0.25) * 100.0) / 100.0;
+                rating = rating.toString();
+                var decimal = parseInt(rating.substring(2, 3))
+                rating = rating.substring(0, 1) + "-" + (decimal >= 5 ? '5' : '0')
+
+                if(reviewCount == 0) {
+                    teaserHtml = '<div class="TT2left TTratingBox TTrating-0-0"></div> <a id="writeReview" href="javascript:void(0)">Write a Review</a>';
+                } else {
+                    teaserHtml = '<div class="TTratingBox TTrating-' + rating + '"></div><a id="readReviews" href="javascript:void(0)">' + reviewCount + ' Review' + (reviewCount == 1 ? '' : 's') + '</a>';
+                }
+
+                teaserContainer.html(teaserHtml);
+
+                // Listener on 'read reviews' link
+                teaserContainer.find('#readReviews').click(function(e) {
+                    
+                    jQuery("html, body").animate({ scrollTop: jQuery('#TurnToReviewsContent').offset().top }, 1500);
+                });
+
+                // Listener on 'write review' link
+                teaserContainer.find('#writeReview').click(function(e) {
+                    TurnTo.writeReview();
+                });
+            }
+        }
+function qaTeaser (){
+            if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+                return '';
+            } else {
+                var answerCount = TurnToItemData.counts.a;
+                var questionCount = TurnToItemData.counts.q;
+                var teaserContainer = TurnTojQuery(".TurnToItemTeaser");
+
+                var teaserHtml = ' | ';
+
+                if(questionCount == 0) {
+                    teaserHtml = teaserHtml + '<a id="askQuestion" href="javascript:void(0)">Ask a Question</a>';
+                } else {
+                    teaserHtml = teaserHtml + '<a id="readQuestions" href="javascript:void(0)">' + questionCount + ' Question' + (questionCount == 1 ? '' : 's') + ', ' + answerCount + ' Answer' + (answerCount == 1 ? '' : 's') + '</a>';
+                }
+
+                 var reviewCount = TurnToItemData.counts.r;
+   
+
+                // Fill container with Q&A content
+                teaserContainer.html(teaserHtml);
+
+                // Add the appropriate listeners to the links
+                teaserContainer.find('#askQuestion').click(function(e) {
+                    e.preventDefault();
+                    jQuery("html, body").animate({ scrollTop: jQuery('#TurnToContent').offset().top }, 1500);
+               
+                });
+
+                teaserContainer.find('#readQuestions').click(function(e) {
+                    e.preventDefault();
+                   jQuery("html, body").animate({ scrollTop: jQuery('#TurnToContent').offset().top }, 1500);
+                 
+                });
+            }
+        }
+
+var turnToConfig = {
+      siteKey: "NA4LF1rlf8vpXGGsite",
+      setupType: "dynamicEmbed" ,
+      reviewsSetupType: "dynamicEmbed",
+reviewsTeaserFunc: reviewsTeaser,
+iTeaserFunc: qaTeaser
+   };
+jQuery("#qa_reviews").insertAfter("#vCSS_mainform");
+
+
+jQuery(document).ready(function(){
+  var tt = document.createElement('script'); tt.type = 'text/javascript'; tt.async = true;
+  tt.src = document.location.protocol + "//static.www.turnto.com/traServer4_3/trajs/" + turnToConfig.siteKey + "/tra.js";
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tt, s);
+  
+  var ss = document.createElement('script'); ss.type='text/javascript'; ss.async = true;
+  ss.src=document.location.protocol + "//static.www.turnto.com/sitedata/" + turnToConfig.siteKey+"/v4_3/"+TurnToItemSku+"/d/itemjs";
+  var u = document.getElementsByTagName('script')[1]; u.parentNode.insertBefore(ss,u);
+
+
+ var rr = document.createElement('script'); tt.type = 'text/javascript'; rr.async = true;
+ rr.src = document.location.protocol + "//static.www.turnto.com/traServer4_3/chatterjs/" + turnToConfig.siteKey + "/turnto-chatter.js";
+ var x = document.getElementsByTagName('script')[2]; x.parentNode.insertBefore(rr, x);
+}); 
+
+};
+
+
+  jQuery(document).ready(function(){
+  var letter;
+	jQuery("[data-type='map']").hover(function(){
+		letter = $(this).attr("class");
+		jQuery("."+letter).css('background-color','powderblue');
+	}, function(){
+			jQuery("."+letter).css('background','none');
+	}
+	
+	);
+  });
+  
+// <![CDATA[
+        var pathname = window.location.pathname;
+        if((pathname.indexOf('_p/') > -1) || (pathname.indexOf('ProductDetails') > -1)){/* If Product Page */
+            var cod_page_guid = 'PRODUCT';
+            var COD_CONFIG = {'platform':'other', 'stoken':'StrapWorks_com'};
+            (function(){
+                    var divCOD = document.createElement('div');
+                    divCOD.id = 'codScripts';
+                    var bodytag = document.getElementsByTagName('body')[0];
+                    bodytag.appendChild(divCOD);
+                    var cod = document.createElement('script');
+                    cod.type = 'text/javascript';
+                    cod.src = 'https://www.conversionsondemand.com/codadmin2/framework/cod-scripts-loader.js';
+                    var s = document.getElementById('codScripts');
+                    s.parentNode.insertBefore(cod, s);
+                })(COD_CONFIG);
+
+        }else if((pathname.indexOf('shoppingcart') > -1) || (pathname.indexOf('ShoppingCart') > -1)){/* If cart Page */
+                var cod_page_guid = 'CART'; 
+
+
+                var cod_product_urls = [];
+				var st_url = 'https://www.strapworks.com/';
+				var fp_url = '';
+				
+				$('#v65-cart-table a.cart-item-name').each(function(i, a){ 
+					fp_url = st_url + $(a).attr('href');
+					cod_product_urls.push(fp_url);
+				});
+                
+                if(typeof cod_page_guid != 'undefined' && cod_page_guid != 'SUCCESS'){
+
+                var COD_CONFIG = {'platform':'other', 'stoken':'StrapWorks_com'};
+                    (function(){
+                        var divCOD = document.createElement('div');
+                        divCOD.id = 'codScripts';
+                        var bodytag = document.getElementsByTagName('body')[0];
+                        bodytag.appendChild(divCOD);
+                        var cod = document.createElement('script');
+                        cod.type = 'text/javascript';
+                        cod.src = 'https://www.conversionsondemand.com/codadmin2/framework/cod-scripts-loader.js';
+                        var s = document.getElementById('codScripts');
+                        s.parentNode.insertBefore(cod, s);
+                    })(COD_CONFIG);
+
+                }
+
+        }
+        else if(pathname.indexOf('one-page-checkout') > -1){/* If confirmation Page */
+             var cod_page_guid = 'CHECKOUT'; 
+
+            $("#v65-cart-billemail").addClass("cod_checkout_email"); // $("#billing-email")
+			$("#v65-onepage-shipfirstname").addClass("cod_checkout_name"); // $("#shipping-full-name")
+			$("#v65-onepage-shiplastname").addClass("cod_checkout_name"); // $("#shipping-full-name")
+
+			var cod_product_urls = [];
+			var st_url = 'https://www.strapworks.com/ProductDetails.asp?ProductCode=';
+			var fp_url = '';
+
+			var items = $('.v65-onepage-ordersummary-itemcode');
+			if(items.length){
+				$(items).each(function(i, item){
+					if(i > 0){
+						fp_url = st_url + $(item).text().trim();
+						cod_product_urls.push(fp_url);						
+					}
+				});
+			}
+			
+                if(typeof cod_page_guid != 'undefined' && cod_page_guid != 'SUCCESS'){
+
+                var COD_CONFIG = {'platform':'other', 'stoken':'StrapWorks_com'};
+                    (function(){
+                        var divCOD = document.createElement('div');
+                        divCOD.id = 'codScripts';
+                        var bodytag = document.getElementsByTagName('body')[0];
+                        bodytag.appendChild(divCOD);
+                        var cod = document.createElement('script');
+                        cod.type = 'text/javascript';
+                        cod.src = 'https://www.conversionsondemand.com/codadmin2/framework/cod-scripts-loader.js';
+                        var s = document.getElementById('codScripts');
+                        s.parentNode.insertBefore(cod, s);
+                    })(COD_CONFIG);
+
+                }
+
+        }
+        else if(pathname.indexOf('OrderFinished') > -1 || pathname.indexOf('orderfinished') > -1){/* If confirmation Page */
+                var productIdArray = new Array();
+                var productPriceArray = new Array();
+                var prodQtyArray = new Array();
+                var prodItemsArray = new Array();
+                var orderId = Order[0];
+                var payAmt = Order[2];
+
+                for (var i=0; i < OrderDetails.length; i++) {
+                    productIdArray.push(OrderDetails[i][2]);
+                    prodItemsArray.push(OrderDetails[i][3]);
+                    productPriceArray.push(OrderDetails[i][5]);
+                    prodQtyArray.push(OrderDetails[i][6]);
+                   
+                }
+                var googleprice = Order[3]; 
+                var total_prod = OrderDetails.length;
+
+                var cod_ab_orderSubTotal = payAmt;
+                var cod_ab_orderTotal = googleprice;
+                var cod_ab_orderNum = orderId;
+                var cod_ab_numOfItems = total_prod;
+                var cod_ab_product_items = prodItemsArray;
+                var cod_ab_product_ids = productIdArray;
+                var cod_ab_product_codes = productIdArray;
+                var cod_ab_product_qtys = prodQtyArray;
+                var cod_ab_product_price = productPriceArray;
+                var cod_page_guid = 'SUCCESS';   
+                    if(typeof cod_page_guid != 'undefined' && cod_page_guid == 'SUCCESS'){
+
+                    var COD_CONFIG = {'platform':'other', 'stoken':'StrapWorks_com'};
+                        (function(){
+                            var divCOD = document.createElement('div');
+                            divCOD.id = 'codScripts';
+                            var bodytag = document.getElementsByTagName('body')[0];
+                            bodytag.appendChild(divCOD);
+                            var cod = document.createElement('script');
+                            cod.type = 'text/javascript';
+                            cod.src = 'https://www.conversionsondemand.com/codadmin2/framework/cod-scripts-loader.js';
+                            var s = document.getElementById('codScripts');
+                            s.parentNode.insertBefore(cod, s);
+                        })(COD_CONFIG);
+
+                    }
+        }
+        else {
+            var cod_page_guid = 'NON-PRODUCT';
+            var COD_CONFIG = {'platform':'other', 'stoken':'StrapWorks_com'};
+            (function(){
+                var divCOD = document.createElement('div');
+                divCOD.id = 'codScripts';
+                var bodytag = document.getElementsByTagName('body')[0];
+                bodytag.appendChild(divCOD);
+                var cod = document.createElement('script');
+                cod.type = 'text/javascript';
+                cod.src = 'https://www.conversionsondemand.com/codadmin2/framework/cod-scripts-loader.js';
+                var s = document.getElementById('codScripts');
+                s.parentNode.insertBefore(cod, s);
+                })(COD_CONFIG);
+
+        };
+// ]]>
+function store_init(event){protect_images1();} AttachEvent(window, 'load', store_init);
+
+    function_protect_images2_msg = 'Sorry, our images are copyrighted.'
+    protect_images1();
+

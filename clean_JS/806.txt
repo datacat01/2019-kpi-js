@@ -1,0 +1,288 @@
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/strictlyreptiles.tv\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.10"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/strictlyreptiles.tv\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var yith_wcdn = {"ajaxurl":"https:\/\/strictlyreptiles.tv\/wp-admin\/admin-ajax.php","time_check":"10000","looping_sound":"no"};
+/* ]]> */
+
+
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//strictlyreptiles.tv/?wordfence_lh=1&hid=F361B03D6E07B6C5657C47960D36318A');
+
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+
+	;(function($) {
+		var w = $(window);
+		var sbwis;
+		sbwis = {
+			init: function() {
+				var pagination_type = 'infinite_scroll';
+												if(w.width() <= '767') {
+									var pagination_type = 'load_more_button';
+								}
+															
+							if(pagination_type == 'ajax_pagination') {
+								$('body').on('click', '.woocommerce-pagination a', function(e) {
+									e.preventDefault();
+									var href = $.trim($(this).attr('href'));
+									if(href != '') {
+										if(!sbwis.msieversion()) {
+											history.pushState(null, null, href);
+										}
+										sbwis.onstart();
+																				$('.woocommerce-pagination').before('<div id="sb-infinite-scroll-loader" class="sb-infinite-scroll-loader  "><img src="https://strictlyreptiles.tv/wp-content/plugins/sb-woocommerce-infinite-scroll//assets/img/ajax-loader.gif" alt=" " /><span>Loading...</span></div>');
+																				$.get(href, function(response) {
+											if(!sbwis.msieversion()) {
+												document.title = $(response).filter('title').html();
+											}
+																								var html = $(response).find('ul.products').html();
+													$('ul.products').html(html);
+																										var html = $(response).find('.woocommerce-pagination').html();
+													$('.woocommerce-pagination').html(html);
+																									$('.sb-infinite-scroll-loader').remove();
+												sbwis.onfinish();
+																									var scrollto = 0;
+																											if($('html, body').length) {
+															var scrollto = $('html, body').offset().top;
+														}
+																										$('html, body').animate({ scrollTop: scrollto }, 500);
+																							$('ul.products li.product').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+												$(this).removeClass('animated fadeIn');
+											});
+										});
+									}
+								});
+							}
+							
+							if(pagination_type == 'load_more_button' || pagination_type == 'infinite_scroll') {
+								$(document).ready(function() {
+									if($('.woocommerce-pagination').length) {
+										$('.woocommerce-pagination').before('<div id="sb-infinite-scroll-load-more" class="sb-infinite-scroll-load-more  "><a sb-processing="0">Load More Products</a><br class="sb-clear" /></div>');
+										if(pagination_type == 'infinite_scroll') {
+											$('#sb-infinite-scroll-load-more').addClass('sb-hide');
+										}
+									}
+									$('.woocommerce-pagination').addClass('sb-hide');
+									$('ul.products li.product').addClass('sb-added');
+								});
+								$('body').on('click', '#sb-infinite-scroll-load-more a', function(e) {
+									e.preventDefault();
+									if($('.woocommerce-pagination a.next').length) {
+										$('#sb-infinite-scroll-load-more a').attr('sb-processing', 1);
+										var href = $('.woocommerce-pagination a.next').attr('href');
+										sbwis.onstart();
+																					$('#sb-infinite-scroll-load-more').hide();
+											$('.woocommerce-pagination').before('<div id="sb-infinite-scroll-loader" class="sb-infinite-scroll-loader  "><img src="https://strictlyreptiles.tv/wp-content/plugins/sb-woocommerce-infinite-scroll//assets/img/ajax-loader.gif" alt=" " /><span>Loading...</span></div>');
+																				$.get(href, function(response) {
+											$('.woocommerce-pagination').html($(response).find('.woocommerce-pagination').html());
+											
+											$(response).find('ul.products li.product').each(function() {
+												$('ul.products li.product:last').after($(this));
+											});
+											
+											$('#sb-infinite-scroll-loader').remove();
+											$('#sb-infinite-scroll-load-more').show();
+											$('#sb-infinite-scroll-load-more a').attr('sb-processing', 0);
+											sbwis.onfinish();
+											$('ul.products li.product').not('.sb-added').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+												$(this).removeClass('animated fadeIn').addClass('sb-added');
+											});
+											
+											if($('.woocommerce-pagination a.next').length == 0) {
+												$('#sb-infinite-scroll-load-more').addClass('finished').removeClass('sb-hide');
+												$('#sb-infinite-scroll-load-more a').show().html('No more products available...').css('cursor', 'default');
+											}
+											
+										});
+									} else {
+										$('#sb-infinite-scroll-load-more').addClass('finished').removeClass('sb-hide');
+										$('#sb-infinite-scroll-load-more a').show().html('No more products available...').css('cursor', 'default');
+									}
+								});
+								
+							}
+							if(pagination_type == 'infinite_scroll') {
+							
+								var buffer_pixels = Math.abs(50);
+								w.scroll(function () {
+									if($('ul.products').length) {
+										var a = $('ul.products').offset().top + $('ul.products').outerHeight();
+										var b = a - w.scrollTop();
+										if ((b - buffer_pixels) < w.height()) {
+											if($('#sb-infinite-scroll-load-more a').attr('sb-processing') == 0) {
+												$('#sb-infinite-scroll-load-more a').trigger('click');
+											}
+										}
+									}
+								});
+							
+							}			},
+			onstart: function() {
+				;			},
+			onfinish: function() {
+				sbwis.trigger_load();
+				;			},
+			msieversion: function() {
+				var ua = window.navigator.userAgent;
+				var msie = ua.indexOf("MSIE ");
+	
+				if (msie > 0)      // If Internet Explorer, return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+
+				return false;
+			},
+			lazyload_init: function() {
+				w.scroll(function () {
+					sbwis.trigger_load();
+				});
+				sbwis.trigger_load();
+			},
+			trigger_load: function() {
+				$(".sb-lazy-img").each(function () {
+					sbwis.lazyload($(this));
+				});
+			},
+			lazyload: function(e) {
+				var threshold = Math.abs(50);
+				var a = e.offset().top;
+				var b = a - w.scrollTop();
+				if ((b - threshold) < w.height()) {
+					var h = e.attr("sb-lazy-src");
+					e.attr("src",h).removeAttr("sb-lazy-src").removeClass('sb-lazy-img');
+					
+				}
+			}
+		};
+		sbwis.init();
+		sbwis.lazyload_init();
+		
+	})(jQuery);
+	
+
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */
+var comfort_feature_ajax = {"ajaxurl":"https:\/\/strictlyreptiles.tv\/wp-admin\/admin-ajax.php","ultraweb":"ultraweb"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/strictlyreptiles.tv\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_1b7f9b563d653806ab6ce61030b2e8eb","fragment_name":"wc_fragments_1b7f9b563d653806ab6ce61030b2e8eb"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var mailchimp_public_data = {"site_url":"https:\/\/strictlyreptiles.tv","ajax_url":"https:\/\/strictlyreptiles.tv\/wp-admin\/admin-ajax.php","queue_url":"https:\/\/strictlyreptiles.tv\/wp-json\/mailchimp-for-woocommerce\/v1\/queue\/work","queue_should_fire":"1"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination."};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var etConfig = {"ajaxurl":"https:\/\/strictlyreptiles.tv\/wp-admin\/admin-ajax.php","noresults":"No results were found!","successfullyAdded":"Product added.","checkCart":"Please check your cart.","catsAccordion":"1","contBtn":"Continue shopping","checkBtn":"Checkout","menuBack":"Back","woocommerce":"1","checkoutUrl":"https:\/\/strictlyreptiles.tv\/checkout\/"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woo_log_ajaxurl = {"ajaxurl":"https:\/\/strictlyreptiles.tv\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+( function( grecaptcha, sitekey ) {
+
+	var wpcf7recaptcha = {
+		execute: function() {
+			grecaptcha.execute(
+				sitekey,
+				{ action: 'homepage' }
+			).then( function( token ) {
+				var forms = document.getElementsByTagName( 'form' );
+
+				for ( var i = 0; i < forms.length; i++ ) {
+					var fields = forms[ i ].getElementsByTagName( 'input' );
+
+					for ( var j = 0; j < fields.length; j++ ) {
+						var field = fields[ j ];
+
+						if ( 'g-recaptcha-response' === field.getAttribute( 'name' ) ) {
+							field.setAttribute( 'value', token );
+							break;
+						}
+					}
+				}
+			} );
+		}
+	};
+
+	grecaptcha.ready( wpcf7recaptcha.execute );
+
+	document.addEventListener( 'wpcf7submit', wpcf7recaptcha.execute, false );
+
+} )( grecaptcha, '6LdtaZwUAAAAABiHLF_J9KKXtEQe0TiJhRcTdn8O' );
+

@@ -1,0 +1,35 @@
+                      
+	            	window.settings = {
+	            		docroot:'https://www.eurocarparts.com',
+						cnc:{
+							enabled : 1,
+						},
+						postcode:'',
+						cncselectedbranch:'',
+						cncselectedbranchname:'',
+						ads:{
+							required:1,
+							maker:'/catalog/manufacturers/maker',
+							model:'/catalog/manufacturers/model',
+							year:'/catalog/manufacturers/year',
+							engine:'/catalog/manufacturers/engine',
+							fuel:'/catalog/manufacturers/fuel',
+							componentmannual:'/catalog/manufacturers/getcomponentmannual',
+							enabled: '1'
+						},
+						vrm:{
+							detailurl:'/catalog/manufacturers/getvehiclebyreg',
+							redirecturl:'https://www.eurocarparts.com/car-parts',
+							enabled: '1'
+						}
+					};
+		
+
+		  var _bsw = _bsw || [];
+		  _bsw.push(['_bswId', '52cfa6963a22e82cd9fec97b80f4f300ffa04adc26db3bb5033061716f576ea6']);
+		  (function() {
+			var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+			bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/s/b.min.js';
+			var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+		  })();
+		

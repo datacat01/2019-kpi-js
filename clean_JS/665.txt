@@ -1,0 +1,112 @@
+try{Typekit.load();}catch(e){}
+
+var OK = "0";
+var pepper_url = "https://www.jwpepper.com"+window.location.pathname+location.search;
+$("#canonical").attr("href", pepper_url);
+$("#canonical").attr("rel", "canonical");
+var INVALID_EMAIL = "10";
+var INVALID_PASSWORD = "20";
+var NEW_REGISTRATION = "30";
+var ABUSER = "40";
+var isTest = false;
+$(
+	function () {
+
+		loadLogin();
+
+	//for facets on all departmental pages
+ $(".facet-heading").toggle(function(){  
+			$(this).parent().children(".facet-hide.shown").slideDown("slow");
+       		$(this).parent().children(".show").hide("slow");
+          	}, function () {
+				$(this).parent().children(".facet-hide").slideUp("slow");
+          		$(this).parent().children().children(".facet-hide").slideUp("slow");
+				$(this).parent(".facet-hide").slideUp("slow");
+				$(this).parent().children(".less").hide("slow");
+				$(this).parent().children(".more").hide("slow");
+				$(this).parent().children().children(".less").hide("slow");
+				$(this).parent().children(".more").hide("slow"); 		
+       	});
+			
+
+     	$(".show-filters").click(function(){
+     		$(".dep-facets").toggle();
+			$("#facets").toggle();
+     	});
+     	$(".more").click(
+     			function(){
+     				$(this).siblings("div.hidden").each(
+     						function(){
+     							$(this).parent().children(".facet-hide.hidden").css("display","block"),
+     							$(this).siblings(".less").css("display","block")
+     							$(this).siblings(".more").hide()
+ 					})
+ 					
+     			});
+     	$(".less").click(
+				function(){
+     				$(this).siblings("div.hidden").each(
+   							function(){
+     							$(this).parent().children(".facet-hide.hidden").css("display","none"),
+     							$(this).siblings(".more").css("display","block")
+     							$(this).siblings(".less").hide()
+     						})			
+     			});	
+	}
+);
+
+
+
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=850,height=900,left = 240,top = 212');");
+}
+
+
+$(function() {
+	$('.rslides').responsiveSlides({
+		nav: true,
+		 timeout: 10000,
+		 pager:true,
+		 prevText:"",
+		 nextText:""
+		});
+});
+
+
+
+	$(".footer-ad").hover(function(){$(this).children(".footer-icon1").fadeTo("fast",1),$(this).children(".footer-icon2").fadeTo("fast",1e-4),$(this).addClass("footer-adhov")},function(){$(this).children(".footer-icon1").fadeTo("fast",1e-4),$(this).children(".footer-icon2").fadeTo("fast",1),$(this).removeClass("footer-adhov")}),$(".footer-category-mobile").toggle(function(a){$(this).parent(".footer-five").css("padding-bottom","20px"),$(this).css("padding-bottom","0px"),$(this).next("ul").children("li").css("display","block");var b=$(this).next("ul").outerHeight(),c=55+b;$(this).parent(".footer-five").animate({height:c},200),$(this).next("ul").children("li").fadeTo("slow",1),$(".footer-five").not($(this).parent(".footer-five")).css("padding-bottom","0px"),$(".footer-category-mobile").not(this).css("padding-bottom","20px"),$(".footer-five ul li").not($(this).next("ul").children("li")).fadeTo("fast",0),$(".footer-five").not($(this).parent(".footer-five")).animate({height:"55px"},200),$(".footer-five ul li").not($(this).next("ul").children("li")).css("display","none"),a.stopPropagation()},function(){$(this).parent(".footer-five").css("padding-bottom","0px"),$(this).css("padding-bottom","20px"),$(this).next("ul").children("li").fadeTo("fast",0),$(this).parent(".footer-five").animate({height:"55px"},200),$(this).next("ul").children("li").css("display","none")});
+  
+
+			$(".footer-first-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-first-column .re-footer-col").slideDown("slow");
+			});
+			$(".footer-second-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-second-column .re-footer-col").slideDown("slow");
+			});
+			$(".footer-third-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-third-column .re-footer-col").slideDown("slow");
+			});
+			$(".footer-fourth-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-fourth-column .re-footer-col").slideDown("slow");
+			});
+			$(".footer-fifth-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-fifth-column .re-footer-col").slideDown("slow");
+			});
+			$(".footer-sixth-column .re-footer-heading").click(function() {
+				$(".re-footer-col").hide("fast");
+				$(".footer-sixth-column .re-footer-col").slideDown("slow");
+			});
+		
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/1321.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b);}, 1);
+

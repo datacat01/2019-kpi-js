@@ -1,0 +1,28 @@
+ 
+
+                           var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" );
+                           $(document).ready(function(){
+                          	 $('body').append(unescape("%3Cscript src='" + bbbprotocol + 'seal-easttexas.bbb.org' + unescape('%2Flogo%2Fannies-attic-4000676.js') + "' type='text/javascript'%3E%3C/script%3E"));
+                       	});
+
+                           
+
+window.google_tag_params = {
+ecomm_prodid: "",
+ecomm_pagetype: "home", // See guide for values
+ecomm_category: "",
+ecomm_totalvalue: 0.00
+};
+
+try {
+  gtag('event', 'visit', {
+    'event_category': 'page',
+    'event_label': window.google_tag_params.ecomm_pagetype.toString(), //local variable for page type.
+    'dimension1': window.google_tag_params.ecomm_prodid.toString(),
+    'dimension2': window.google_tag_params.ecomm_pagetype.toString(),
+    'dimension3': window.google_tag_params.ecomm_totalvalue.toString(),
+    'dimension4': window.google_tag_params.ecomm_category.toString(),
+    'non_interaction': true
+  });
+} catch (e) {}
+

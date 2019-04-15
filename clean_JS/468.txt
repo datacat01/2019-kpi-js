@@ -1,0 +1,241 @@
+
+
+
+	$.extend(true, window.shc, {
+		asapAkamaiBasePath: '',
+		siteDomain: 'www.kmart.com',
+		catgroupId: '',
+		storeName: 'www.kmart.com'.replace(/www\.|\.com/g, '').replace('.', '-'), //sears.pr->sears-pr
+		isASAP: true,
+		apiBaseUrls: {			
+			shcapi: shc.env === 'QA' ? 'http://wsapp403p.prod.ch4.s.com:8780/shcapi/' : 'http://api.sears.com/shcapi/',
+			priceservice: shc.env === 'QA' ? 'http://prqdvip.qa.ch3.s.com/priceservice/v1/get/price/jsonp' : 'http://pricing.prod.global.s.com/priceservice/v1/get/price/jsonp'
+		},
+		catArray: [],
+		catIdArray: [],
+		productSearchAPI: {
+			searchUrlPrefix: '//c.shld.net/rpx/shcapi/productSearch',
+			developerAPIURL: '//api.developer.sears.com/v2/productsearch',
+			key: 'f413f84e3a58687373ac803a9ae1aaa0'
+		}
+  	});
+	
+	// legacy global vars used by modalLogin.js/SPURefactor*.js
+	var	storeDomain = location.hostname,
+		omVrt = shc.catArray.length > 0 ? shc.catArray[0] : "Kmart",
+		omCat = shc.catArray.length > 1 ? shc.catArray[1] : "",
+		omSubCat = shc.catArray.length > 2 ? shc.catArray[2] : "";
+
+
+shc = $.extend(shc, {
+ storeId: '10151',
+ catalogId: '10104',
+ langId: '-1',
+ hdrFallbackVersion: 'v3'
+});
+shc.storeName = shc.storeName || 'kmart';
+
+
+//Common values which can be derived for all pages-test
+shc = $.extend(shc, {
+  commonQS: '?storeId=' + shc.storeId + '&catalogId=' + shc.catalogId + '&langId=' + shc.langId,
+  env: /(pilot\.)/.test(location.hostname) ? 'PILOT' : 'PROD',
+  sslPort: '443',
+  casServerName: 'http://sso.shld.net',
+  casServerNameHttps: 'https://sso.shld.net:443',
+  isOutlet: /SHC\-HTS|SHC\-HAS|SHC\-AHS|SHC\-OUT/.test(navigator.userAgent),
+  footer: false, 
+  IRP: true,
+  entCSSVersion: '.1.7.1',
+  abTest:{},
+  versions: {base: 'Assets_0.90/', scode:'19'},
+  isKiosk: trim($.cookie('KI_FLAG')).toLowerCase() === 'true',
+  isSYWR: location.href.indexOf('shopyourway.com') >=0,
+  isBOT: !!$.query.get('isBOT') || ($.cookie('ot')  || '').indexOf('-bots') >= 0 || location.href.indexOf('/botmanagement') >= 0,
+  isNewSpanish: true,
+  freeShipThreshold: {default:59, sywmax:59}
+});
+shc.asapAkamaiBasePath = shc.asapAkamaiBasePath || '';
+//need to have path prefixed for dynamic file adds in IE8
+shc.imagePath = (shc.imagePath.indexOf('http') >=0 ? '' : location.protocol) + shc.imagePath;
+shc.siteId=shcWidgets.USR_SITEID[shc.storeId];
+
+shc.gaSite=(function() {
+var env = shc.env, map = {
+  'sears': env==='PROD'?'3':'1',
+  'sears-pr': env==='PROD'?'3':'1',
+  'kmart': env==='PROD'?'4':'2',
+  'kmart-pr': env==='PROD'?'4':'2'
+  };
+   return 'UA-71669311-' + (map[shc.storeName] || 'none');
+}());
+
+shc.URLs = $.extend(shc.URLs, {
+    chronometer: shc.env === 'STAGE' ? '//chronometervip.stress.ch3.s.com/' : '//chrono.shld.net/',
+    secureURL: String.format('https://{1}:{0}/', shc.sslPort, location.hostname),
+    chronData: 'segments/',
+    chronAssets: 'assets/',
+    orderStatus: String.format('https://{1}/universalprofile/OrderHistory?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+    orderStatusError: '/shc/s/OrderStatusLoginModalView' + shc.commonQS + '&shcapiBypassSSO=true&errorCode=&OrdStatErr=',
+    logonForm: '/shc/s/LogonForm' + shc.commonQS + '&URL=TopCategoriesDisplay',
+    userLogoff: String.format('https://{1}:{0}/shc/s/Logoff{2}' +
+    '&personalizedCatalog=true&LogoffFlag=true&URL=TopCategoriesDisplay&rememberMe=false', shc.sslPort, location.hostname, shc.commonQS),
+    profile: String.format('https://{1}/universalprofile/dashboard?upid={2}', shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+    orderCenter: String.format('https://{1}/universalprofile/checkorderstatus?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+   userLoginView: String.format('https://{1}/shc/s/USRLoginViewHttps{2}', shc.sslPort, location.hostname, shc.commonQS),
+    scene7: 'https://s.shld.net/is/image/Sears/',
+   listCenter: String.format('https://{1}/universalprofile/listcenter?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+    miniCartCount: '/crsp/api/cart/v1/itemcount',
+    addToCart: 'https://' + location.hostname + '/crsp/mx/cart',
+    staticAssets: 'https://c.shld.net/staticassets/Assets_0.90/',
+    searsCard: "https://www.sears.com/en_us/hybrid/citi-card-apply-now.html",
+    linkCreditCard: ['10151', '10153'].indexOf(shc.storeId) >=0 ? String.format('https://{1}/universalprofile/cardenrollment/manage?upid={2}',shc.sslPort, location.hostname, shc.siteId) : '',
+    paySearsCard: 'http://pay.searscard.com',
+    returns: String.format('https://{1}/universalprofile/makeareturn?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+    manageAccount: String.format('https://{1}/universalprofile/managemyaccount?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]),
+    layawayPmt: ['10151', '10153'].indexOf(shc.storeId) >=0 ? String.format('https://{1}/universalprofile/layawayorders?upid={2}',shc.sslPort, location.hostname, shcWidgets.USR_SITEID[shc.storeId]) : '',
+    dealCenter: ['10151', '10153'].indexOf(shc.storeId) >=0 ? '/en_us/savings/coupons.html' : '',
+    giftCards: ['10153', '10165'].indexOf(shc.storeId) >= 0 ? String.format('/{0}-gift-cards.html', shc.storeName.replace('-','')) : 
+shc.storeId === '10151' ? String.format('/{0}-gift-cards.html', shc.storeName.replace('-pr','')) : '',
+  recommendations:  ['10151', '10153'].indexOf(shc.storeId) >=0 ? '/en_us/dap/my-recommendations.html' : '',
+   tecMM: 'https://pop.telluride.sears.com/tellurideAS/MemberMessaging',
+   webservices: '//api.sears.com',
+   api: {
+    zipHelper: '/globalapi/v1/store/ziphelper/zip/',
+    schedule: '/globalapi/v1/store/schedule/'
+   },
+   certona: String.format('//edge1.certona.net/cd/5abc36e3/{0}.com/scripts/resonance.js',shc.storeName),
+   autofill: /i\-prod|i2\-prod/.test(location.href) ? 'https://solrx4119p.stag.ch4.s.com:8623/autofill/search' : ('https://' +location.hostname + '/autofill/search')
+});
+
+shc.features = $.extend(shc.features, {
+  autofill:true,
+  omniture: true,
+  SYWR: {enabled: true, refresh: 5},
+  regPricing: {enabled: 'ON'  /*legacy stupidity - should be a boolean*/},
+  disableHdrMiniCart: true,
+  newMiniCart: shc.storeId !== '10165',
+  miniCartThresholdMessaging: true,
+  reserveIt: shc.storeId === '10153',
+  sywrOffer: true,
+  ssoDisabled: false, //SSOContingency from WCS
+  headerCoupons: {
+    enabled: false,
+      shcApi: {
+      details: 'https://api.sears.com/shcapi/v2/userCoupon/json/getCouponInfo,1500,ecpnbrwBA6DF77123C6A9A1A0AB5466AA5192013,UCoupon_BRW',
+      headerClient: 'hdr',
+      headerFields: 'count'
+   }
+  },
+  headerResponsive: $.query && $.query.get('skinny').toLowerCase() === 'true',
+  messaging: ['sears-us', 'kmart-us'].indexOf(shc.chronStoreName)>=0 && !shc.isSYWR && !$.query.get('msgOff'), //US only
+  chat247: ['10151','10153'].indexOf(shc.storeId)>=0 && !shc.isBOT && !shc.isSYWR && !$.query.get('noChat'),
+  localAd: false, 
+  splitNav: ['sears-us', 'kmart-us', 'sears-pr','kmart-pr'].indexOf(shc.chronStoreName)>=0,
+  miniPop: ['sears-us', 'kmart-us'].indexOf(shc.chronStoreName) >= 0,
+  addToCart: ['product', 'shoppingcart', 'browse-page'].indexOf($('body').attr('id')) >=0 || /managemyaccount|automotive\-tires\-wheels\-tires/.test(location.href),
+  pheroType: shc.storeId === '10151' ? 'TELLURIDE' : 'ASAP',
+  autofillCategoryOff: true,
+  leasing:true,
+  OCPviaHTTPS: true,
+  kioskPayNow: false
+});
+// legacy global vars used by modalLogin.js/SPURefactor*.js
+var storeId = shc.storeId, catalogId = shc.catalogId, langId = shc.langId,
+ isKiosk = shc.isKiosk.toString(),
+ casServerName = shc.casServerName,
+ casServerNameHttps = shc.casServerNameHttps,
+ CASUrl = shc.casServerNameHttps + '/shccas/shcLogin?gateway=true&method=POST',
+ CASServiceParam = '&service=http://searsdomain.com/TestApp',
+ UserLoginModalURL = shc.URLs.orderStatus,
+ storeDomain = location.hostname,
+ sslPort = shc.sslPort,
+ imagePath = shc.imagePath,
+ jspStoreImgDir = shc.imagePath, //legacy var still in use many places
+ usrModalFeature = 'ON', //legacy - drives the new USR reg
+ usrLoginModalFeature = 'ON', //legacy - drives new USR login
+ omnitureEnabled = shc.features.omniture ? 'true' : 'false',
+ usrLoginViewHttps = shc.URLs.userLoginView,  //legacy - drives new USR login
+ RPOmnitureCheck = false,
+ pageFlag = ''; //legacy - SPURefactorHeader;
+
+//Various A/B testing setup
+shc.abTest = function() {
+  var ab = {}, ngsub = $.cookie('ngsub');
+  if ($.cookie('MP_LANG')==='es') {return ab;} //disable test in spanish 
+  if (!!ngsub) {
+    switch (ngsub) {
+    default: //nothing
+  }
+}
+return ab;
+}();
+
+
+var jsSkylineExtra = $.query.get('previewDate');
+
+$.ajax({
+	url: String.format('https://content.telluride.searshc.com/tellurideAS/PersonalizedEmail/promo/asset/skyline?source={0}&ctype=js{1}',
+		shc.storeName,
+		jsSkylineExtra.toString().length > 0? '&previewDate=' + jsSkylineExtra :''
+	),
+	dataType: 'script',
+	crossDomain: true
+});
+FED.Util.addJsFile(String.format('https://content.telluride.searshc.com/tellurideAS/PersonalizedEmail/content/sears/dynamicskyline.js?source={0}', shc.storeName));
+
+_satellite.pageBottom();
+
+
+	window.bt = {"levelIds":"",
+	"levels":"",
+	"verticalId":"",
+	"verticalName":"",
+	"categoryID":"",
+	"categoryName":"",
+	"subCategoryID":"",
+	"subCategoryName":"",
+	"itemNumber":"",
+	"beanType":"",
+	"itemPrice":"N/A",
+	"itemDiscount":"N/A",
+	"productDescription":"",
+	"oasSitePage":"kmart.com/index/homepage"};
+	(function() {
+		var catArray = shc.catArray;
+		var catIdArray =  shc.catIdArray;
+		if (catArray.length > 0) {
+			var i = 0, l = Math.min(3, catArray.length);
+			for (i = 0; i < l; i++) {
+				switch (i) {
+					case 0:
+						bt.verticalName = catArray[i];
+						bt.levels = bt.verticalName;
+						bt.verticalId = catIdArray[i];
+						bt.levelIds = bt.verticalId;
+						break;
+					case 1:
+						bt.categoryName = catArray[i];
+						bt.levels += '_'+bt.categoryName;
+						bt.categoryID = catIdArray[i];
+						if(bt.categoryID !== ""){
+						bt.levelIds += '_'+bt.categoryID;
+						}
+						break;
+					case 2:
+						bt.subCategoryName = catArray[i];
+						bt.levels += '_'+bt.subCategoryName;
+						bt.subCategoryID = catIdArray[i];
+						if(bt.subCategoryID !== ""){
+						bt.levelIds += '_'+bt.subCategoryID;
+						}
+				}
+			}
+		}
+	})();
+
+	$(document).trigger(shcWidgets.EVENTS.signalDataReady, {id: shc.getPageType(), data: window.bt});
+
+var tags = "";
+
+var omPrefix= "Homepage";var omsiteenviroment= "Sears ASAP";var omPageName= "";var omtitle= "Homepage > Kmart";var omcategory= "Homepage";var omsubcategory= "Homepage";var ompagetype= "Homepage";var omchannel= "Homepage";var ombrandvertical= "Homepage";var ompagetypevertical= "Homepage";

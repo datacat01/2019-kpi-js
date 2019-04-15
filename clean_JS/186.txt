@@ -1,0 +1,67 @@
+
+            (function() {
+                window.ContextHub = window.ContextHub || {};
+
+                /* setting paths */
+                ContextHub.Paths = ContextHub.Paths || {};
+                ContextHub.Paths.CONTEXTHUB_PATH = "/etc/cloudsettings/default/contexthub";
+                ContextHub.Paths.RESOURCE_PATH = "\/content\/consumer_electronics\/b2c\/north_america\/websites\/en_us\/index\/_jcr_content\/contexthub";
+                ContextHub.Paths.SEGMENTATION_PATH = "\/etc\/segmentation\/contexthub";
+                ContextHub.Paths.CQ_CONTEXT_PATH = "";
+
+                /* setting initial constants */
+                ContextHub.Constants = ContextHub.Constants || {};
+                ContextHub.Constants.ANONYMOUS_HOME = "/home/users/Q/QY7E4NMnFGC6xjMjixM9";
+                ContextHub.Constants.MODE = "no-ui";
+            }());
+        
+var inHeadTS = (new Date()).getTime();
+
+            var parameterArray = ["homepage_panel1"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+
+            var parameterArray = ["homepage_panel2"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+
+            var parameterArray = ["homepage_panel3"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+
+            var parameterArray = ["homepage_panel4"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+
+            var parameterArray = ["homepage_panel5"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+
+            var parameterArray = ["homepage_panel6"];
+        
+
+            if (typeof mboxCreate !== 'undefined') {
+                mboxCreate.apply(this, parameterArray);
+            }
+        
+if (typeof _satellite !== "undefined"){ _satellite.pageBottom();}

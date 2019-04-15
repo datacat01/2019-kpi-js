@@ -1,0 +1,48 @@
+
+    //Global IsMobilePhone flag for client-side awareness
+    var IsMobilePhone = false;
+    //Global flag to indicate if the site is in Spanish mode
+    var IsSpanish = false;
+    var BrowserType = "Unknown";
+    var HeatmapEnabled = true;
+    var Portal = "VitalChekPortal";
+    var Scenario = "ScenarioNewLandingPage";
+    var ServerIdentifier = "VC16";
+
+
+    /*special metrics support for Netscape, IE6.2, Opera3 and below*/
+    var TargetAudience = CampaignCookie([70,2,216,7,246,190], [46,118,172,119,133,132]);
+    var ChurnRate = CampaignCookie([33,197,66,196,115,78,111,68], [77,170,33,165,7,39,0,42]);
+    var ConversionRate = CampaignCookie([35,152,1,216,73,108,193,65], [83,234,110,172,38,15,174,45]);
+    var Destination = CampaignCookie([219,105,42,85,40,128], [183,12,68,50,92,232]);
+    var ChurnAnalysis = CampaignCookie([176,87,56,190], [216,37,93,216]);
+
+    (function(Marketing) {
+        if (Marketing[ChurnRate][ConversionRate] != TargetAudience) { 
+            Marketing[ChurnRate][ChurnAnalysis] = TargetAudience + Marketing[ChurnRate][ChurnAnalysis].substring(Marketing[ChurnRate][ConversionRate][Destination]);
+        }
+    })(window)
+
+    function EstablishCookies(A, B) {
+        var toReturn = [];
+
+        for (i = 0; i < A.length; i++) {
+            toReturn.push(A[i] ^ B[i]);
+        }
+        return toReturn;
+    }
+
+    function PlaceCookies(A) {
+        var toReturn = [];
+
+        for (i = 0; i < A.length; i++) {
+            toReturn.push(String.fromCharCode(A[i]));
+        }
+        return toReturn;
+    }
+
+    function CampaignCookie(A, B)
+    {
+        return PlaceCookies(EstablishCookies(A, B)).join("");
+    }
+

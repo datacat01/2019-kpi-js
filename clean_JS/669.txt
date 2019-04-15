@@ -1,0 +1,43 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+
+
+    !function(e) {
+        if (!window.pintrk) {
+            window.pintrk = function() { window.pintrk.queue.push(Array.prototype.slice.call(arguments)) };
+            var n = window.pintrk;
+            n.queue = [], n.version = "3.0";
+            var t = document.createElement("script");
+            t.async = !0, t.src = e;
+            var r = document.getElementsByTagName("script")[0];
+            r.parentNode.insertBefore(t, r)
+        }
+    }("https://s.pinimg.com/ct/core.js");
+
+    pintrk('load', '2612668637324');
+    pintrk('page');
+    pintrk('track', 'pagevisit');
+
+

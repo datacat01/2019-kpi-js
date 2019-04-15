@@ -1,0 +1,306 @@
+var monetateT = new Date().getTime();
+ var dataLayer = dataLayer || []; dataLayer.push({ 'pageCategory': 'Homepage' }); 
+var appInsights=window.appInsights||function(config){function t(config){i[config]=function(){var t=arguments;i.queue.push(function(){i[config].apply(i,t)})}}var i={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",r,f;setTimeout(function(){var t=u.createElement(o);t.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(t)});try{i.cookie=u.cookie}catch(y){}for(i.queue=[],r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)t("track"+r.pop());return t("set"+s),t("clear"+s),t(h+a),t(c+a),t(h+v),t(c+v),t("flush"),config.disableExceptionTracking||(r="onerror",t("_"+r),f=e[r],e[r]=function(config,t,u,e,o){var s=f&&f(config,t,u,e,o);return s!==!0&&i["_"+r](config,t,u,e,o),s}),i}({instrumentationKey:"6256e4f6-c013-4c40-b8cd-e154846bb2e2",sdkExtension:"a"});window.appInsights=appInsights;appInsights.queue&&appInsights.queue.length===0&&appInsights.trackPageView();
+// <![CDATA[
+var bikeDateRun = 0;
+function clearBikeDates(){
+	var bikePresent = false;
+	if($('.cart-item-list').length > 0){
+		if($(".cart-item-hdr-itemAvailable").length > 0){
+		$(".cart-item-list tr div:nth-child(3)").each(function(){
+		   if($(this).html().indexOf("BI") != -1){ 
+			  bikePresent = true;
+		   } 
+		});
+		
+		if(bikePresent){
+			$(".cart-item-hdr-itemAvailable").remove();
+			$(".cart-item-list td").remove(":nth-child(2)");
+			$(".cart-item-detail-prodstatus").remove();
+				if($(".delivery-cost:contains('FREE')").length > 0){
+					$(".delivery-cost:contains('FREE')").siblings(".delivery-date").html("Standard (3-5 business days)");
+					$(".delivery-cost:not(:contains('FREE'))").parent().parent().remove();
+					$(".delivery-cost:contains('FREE')").not(':first').parent().parent().remove()
+				}
+
+		}
+	}
+	bikeDateRun++;
+		$('.cart-item-list').show();
+			$('.shipping-option-list').show();
+	}
+}
+$(function() {
+clearBikeDates();
+$('.cart-item-list').show();
+
+setInterval(function(){ clearBikeDates(); }, 1500);
+// Terms Update
+$(".login-container .row .section:nth-child(1)").append("<div class='termsblock'>By continuing you are agreeing to the JensonUSA terms & conditions and the JensonsUSA  <a href='https://www.jensonusa.com/our-culture/help-desk/privacy' target='_blank'>privacy policy</a>, including receipt of JensonUSA exclusive email offers and promotions.</div>");
+
+$(".login-container .row .section:nth-child(2)").append("<div class='termsblock'>By continuing you are agreeing to the JensonUSA terms & conditions and the JensonsUSA  <a href='https://www.jensonusa.com/our-culture/help-desk/privacy' target='_blank'>privacy policy</a>, including receipt of JensonUSA exclusive email offers and promotions.</div>");
+
+
+// seatpost helper 
+
+function loadSeatpost(letter){
+	if(letter == null){
+		$("#seatPostGraphic").attr("src", "https://www.jensonusa.com/globalassets/product-page-assets/SEATPOST-GEO.jpg");
+	}
+	else{
+		$("#seatPostGraphic").attr("src", "https://www.jensonusa.com/globalassets/product-page-assets/seat_post_" + letter + ".jpg");
+	}
+}
+
+
+    setTimeout(function(){ $(".brand-bottom-content").show(); }, 3000);
+
+    $(".header-content-inner").prepend("<div id='hdr-shipping' class='info-shipping'>FREE SHIPPING OVER $50*</div>");
+
+
+// Special Seatpost graphic
+	if($("#seatPostGraphic").length > 0){
+		$(".seatPostElement").on("mouseover", function(){
+			loadSeatpost($(this).attr("id"));
+		});
+		$(".seatPostElement").on("mouseout", function(){
+			loadSeatpost(null);
+		});
+	}
+
+
+});
+// ]]>
+// <![CDATA[
+window.renderBadge = function() {
+    var ratingBadgeContainer = document.createElement("div");
+    document.body.appendChild(ratingBadgeContainer);
+    window.gapi.load('ratingbadge', function() {
+      window.gapi.ratingbadge.render(ratingBadgeContainer, {"merchant_id": 17229, "position": "BOTTOM_LEFT"});
+    });
+  }
+// ]]>
+// <![CDATA[
+//KioskCode
+function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+  
+	$(function() {
+      if(getCookie("IsKiosk") && $("body > header > div.header-top.clearfix > div > div > div.dropdown.header-account-menu-container.hidden-xs > ul > li:nth-child(1) > a").html() =="Sign out"){
+          
+$("body").prepend("<div id='kioskHead' style='background-color: #BB020A; color: white; height: 25px; width: 100%; text-align: center; font-size: 13px; padding-top: 4px; font-weight: bold;' >Attention: You will be automatically logged off after you complete your order, or after 30 seconds of idle.</div>");
+          
+      }
+    });
+// ]]>
+
+
+
+$(function(){
+
+
+//  Removal of select item for return reason
+if($("#returnReason option[value='GA Exchange']").length > 0){ $("#returnReason option[value='GA Exchange']").remove()}
+
+   setTimeout(function(){
+   if($(".bike-custom-button-container").length > 0){
+	 // bike customization modal
+	   $(".customize-this-button").click(function() {
+		  $.fancybox("#customBikeMessaging", { autoSize: true, maxWidth: 600, minHeight: 700 });
+				
+		  $("#chatNow").click(function() {
+			 LC_API.open_chat_window();
+		  });
+		  
+		  $("#closeForm").click(function(){
+			 $.fancybox.close();
+		  });
+		  
+		  $("#sendEmail").click(function(){
+			  if(checkForm()){
+				  $("#responseLine").hide();
+				  $.post("/API/Product/CustomBikeRequest", { Name: $.trim($("#customBikeName").val()), 
+															 Bike: $.trim($(".product-name h1:first").text()), 
+															 Email: $.trim($("#customBikeEmail").val()), 
+															 Phone: $.trim($("#customBikePhone").val()), 
+															 TellUs: $.trim($("#customBikeTellUs").val()) }, 
+						null, "json");
+						
+				 $("#mainForm").hide();
+				 $("#closeWinDone").show();
+				 $("#closeWinDone").click(function(){
+				 	 $.fancybox.close();
+				 });
+			  }
+			  else{
+				  $("#responseLine").show();
+			  }
+		  });
+	   });
+   }
+   }, 500);
+});
+
+
+function checkForm(){
+	if($.trim($("#customBikeName").val()) != "" && $.trim($("#customBikeEmail").val()) != "" && $.trim($("#customBikePhone").val()) != "" && $.trim($("#customBikeTellUs").val()) != ""){
+		return true;
+	}
+	return false;
+
+}
+// ]]>
+// <![CDATA[
+// stock status on bike page, removal MATT L project
+
+if($('[id^=product_layout]').length > 0 && $("#ProdSku").val().indexOf("BI") > -1){
+    
+    $(".product-selector-availability").remove()
+}
+else{
+    $(".product-selector-availability").show()
+}
+
+// Hide estimated delivery date
+if($(".order-confirmation-header").length > 0){
+    $("body > main > div > div.grey-block.order-details > div > div > span:nth-child(4)").remove();
+}
+// ]]>
+
+    /* BlueCore Triggered Emails */
+        var triggermail_email_address = "";
+
+        var brontoCart = "";
+        /* Monetate Page Tracking */
+
+        var pageType = dataLayer[0].pageCategory || "";
+        if (window.location.href.indexOf("search") > -1) {
+            pageType = "Search";
+        }
+
+        if (pageType !== "Product" && pageType !== "Cart" && pageType !== "Category" && pageType !== "Search" && pageType !== "Receipt") {
+            window.monetateQ = window.monetateQ || [];
+
+            var productID = dataLayer[0].itemNumber || "";
+            if (productID !== "") {
+                window.monetateQ.push(["addProductDetails", [productID]]);
+            }
+            window.monetateQ.push(["setPageType", pageType.toLowerCase()]);
+            window.monetateQ.push(["trackData"]);
+        }
+
+
+        /* Bronto Tracking */
+
+        var brontoCartCookieName = "brontoCart";
+
+        function processCart()
+        {
+            $(".cart-item-list tbody tr").each(function () {
+                if (!$(this).hasClass("visible-xs")) {
+
+                    var itemNum = $.trim($(this).find(".cart-item-detail-proditemnum:nth-child(3)").html());
+                    itemNum = itemNum.substring(itemNum.indexOf("</span>") + 7);
+                    var sku = $.trim($(this).find(".cart-item-detail-proditemnum:nth-child(2)").html());
+                    var findVal = (itemNum + " " + sku).replace(/['"]+/g, '');
+                    for (var i = 0; i < brontoCart.lineItems.length; i++) {
+                        if (findVal === brontoCart.lineItems[i].sku) {
+                            brontoCart.lineItems[i].quantity = parseInt($(this).find(".quantityBox").val());
+                        }
+                    }
+                }
+            });
+
+            // remove items not present in DOM that are in cart cookie:
+            var newLineItems = new Array();
+            for (var i = 0; i < brontoCart.lineItems.length; i++) {
+                var itemFound = false;
+                $(".cart-item-list tbody tr").each(function () {
+                    var itemNum = $.trim($(this).find(".cart-item-detail-proditemnum:nth-child(3)").html());
+                    itemNum = itemNum.substring(itemNum.indexOf("</span>") + 7);
+                    var sku = $.trim($(this).find(".cart-item-detail-proditemnum:nth-child(2)").html());
+                    var findVal = (itemNum + " " + sku).replace(/['"]+/g, '');
+                    if (findVal === brontoCart.lineItems[i].sku) {
+                        brontoCart.lineItems[i].quantity = parseInt($(this).find(".quantityBox").val());
+                        itemFound = true;
+                    }
+                });
+                if (itemFound) {
+                    newLineItems.push(brontoCart.lineItems[0]);
+                }
+            }
+
+            brontoCart.lineItems = null;
+            brontoCart.lineItems = newLineItems;
+
+            if (newLineItems.length <= 0 || brontoCart.lineItems.length <= 0) {
+                Cookies.remove(brontoCartCookieName);
+                brontocart = null;
+            }
+            else {
+                Cookies.set(brontoCartCookieName, brontoCart);
+            }
+
+        }
+
+        var brontoCookie = Cookies.get(brontoCartCookieName);
+
+        if (Cookies.get(brontoCartCookieName) != null) {
+            brontoCart = JSON.parse(Cookies.get(brontoCartCookieName));
+            if (triggermail_email_address != null && triggermail_email_address != "") {
+                brontoCart.emailAddress = triggermail_email_address;
+            }
+            
+            if (window.location.pathname == "/cart") {
+                // cycle through all products in table, and update the quantities based upon the current display
+                processCart();
+                $(".update-link").click(function () {
+                    processCart();
+                });
+
+                $(".cart-item-btnCtrl").click(function () {
+                    setTimeout(function () {
+                        processCart();
+                    }, 8000);
+                });
+
+                $(".cart-ctrl-emptycart").click(function () {
+                    setTimeout(function () {
+                        processCart();
+                    }, 8000);
+                });
+
+
+                document.querySelector('#cart-layout-left > table > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(5) > div > div.cart-item-btnCtrl > a:nth-child(2)')
+            }
+            else if (window.location.pathname == "/receipt") {
+                brontoCart.cartPhase = "ORDER_COMPLETE";
+                brontoCart.orderId = document.querySelector('body > main > div > div.row.order-confirmation-header > div > span').innerText.substr(1);
+                brontoCart.subtotal = parseFloat(document.querySelector('body > main > div > div.grey-block.purchase-details > div:nth-child(2) > div.col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2.col-lg-3.col-lg-offset-3.col-sm-push-6 > dl > dd:nth-child(2)').innerText.replace(/[^\d.-]/g, ''));
+                brontoCart.taxAmount = parseFloat(document.querySelector('body > main > div > div.grey-block.purchase-details > div:nth-child(2) > div.col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2.col-lg-3.col-lg-offset-3.col-sm-push-6 > dl > dd:nth-child(4)').innerText.replace(/[^\d.-]/g, ''));
+                brontoCart.grandTotal = parseFloat(document.querySelector('body > main > div > div.grey-block.purchase-details > div:nth-child(2) > div.col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2.col-lg-3.col-lg-offset-3.col-sm-push-6 > dl > dd:nth-child(8)').innerText.replace(/[^\d.-]/g, ''));
+
+                Cookies.remove(brontoCartCookieName);
+            }
+
+        }
+
+        // Bronto Callback
+!function(o,t){var e=window.bronto=function(){"string"==typeof arguments[0]&&e.q.push(arguments),e.go&&e.go()};e.q=e.q||[];var n=o.createElement(t),s=o.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s),n.async=!0,n.onload=e,n.src="https://snip.bronto.com/v2/sites/eyJ0eXBlIjoic2l0ZWhhc2giLCJpZCI6ImExNDdlOTQ3NGM2YmU4OWYyMDJlMWQ2Yzc2ZjlmYjk3YjZhN2U2ZTZjZjJiYTk2MWQzYjY0ZDZhOWY0MWQxZTEifQ==/assets/bundle.js"}(document,"script");
+
+        bronto('cart:send', brontoCart);
+
+    

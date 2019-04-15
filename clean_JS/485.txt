@@ -1,0 +1,94 @@
+
+    window.isPreviewMode = false ;
+    if (window.isPreviewMode === false ){
+      var bActiveX;
+      try {
+        new ActiveXObject('Microsoft.XMLHTTP');
+        bActiveX = true;
+      }
+      catch(e) { bActiveX = false; }
+      if (window.XMLHttpRequest || bActiveX) {
+        var xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            window.endpointRegistry = xhttp.response ;
+          }
+        };
+        xhttp.open("GET", "/ccstoreui/v1/registry", true);
+        xhttp.responseType = 'json';
+        xhttp.setRequestHeader("X-CCProfileType", "storefrontUI");
+        xhttp.send();
+      }
+    }
+  
+
+    if (self === top) {
+      var antiClickjack = document.getElementById("antiClickjack");
+      antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+      top.location = self.location;
+    }
+  
+
+    window.urlLocale = '';
+  
+
+    window.siteBaseURLPath = '/';
+    window.siteId = 'siteUS';
+    window.siteIdOnURL = '';
+  
+
+    window.externalServiceData = { social: { scheme: 'https', host: 'ccsocial.oracleoutsourcing.com', port: '443' } };
+  
+
+      function getSamlResponse() {
+        return "";
+      }
+  
+
+      function getAgentAuthToken() {
+        return "";
+     }
+  
+
+      function getAgentRedirectUrl() {
+        return "";
+     }
+  
+    
+        function getRelayState() {
+          return "";
+        }
+  
+
+      function getOAuthToken() {
+        return "";
+     }
+      function getAdditionalFormData() {
+        var additionalFormDataJson = {  
+            
+        };
+        return additionalFormDataJson;
+     }
+  
+var require = {
+  "config": {
+    "ccNavState": {
+      "referrer": "/",
+      "statusCode": "200"
+    },
+    "ccResourceLoader": {"jsUrls": [
+      "/file/v8028280988117858928/global/occ.googleMaps.min.js?bust=LTgwMjgyODA5ODgxMTc4NTg5Mjg=",
+      "/file/v3345178864324679861/global/occ.adobe.dtm.min.js?bust=MzM0NTE3ODg2NDMyNDY3OTg2MQ==",
+      "/file/v7906345769832824524/global/helpers.min.js?bust=NzkwNjM0NTc2OTgzMjgyNDUyNA==",
+      "/file/v4495831599340639412/global/occ.owl.carousel.min.js?bust=NDQ5NTgzMTU5OTM0MDYzOTQxMg==",
+      "/file/v8158964556119804730/global/thirdpartyscripts.min.js?bust=ODE1ODk2NDU1NjExOTgwNDczMA==",
+      "/file/v7163925431501552008/global/occ.dataLayer.min.js?bust=NzE2MzkyNTQzMTUwMTU1MjAwOA==",
+      "/file/v1615871506215469895/global/tr_common.min.js?bust=LTE2MTU4NzE1MDYyMTU0Njk4OTU=",
+      "/file/v6591612636947963239/global/customSearchTypeAhead.min.js?bust=NjU5MTYxMjYzNjk0Nzk2MzIzOQ==",
+      "/file/v8590331274925818869/global/ScriptUnresponsiveApplicationFix.min.js?bust=LTg1OTAzMzEyNzQ5MjU4MTg4Njk="
+    ]},
+    "pageLayout/css-loader": {"optimizingCSS": true}
+  },
+  "urlArgs": "bust=18.6.1.1"
+};

@@ -1,0 +1,20 @@
+
+	var assetUrl = '//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/';
+	var SDG = SDG || {};
+	var	_ = _ || {};
+
+var path={about:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/about.js?16603',account:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/account.js?16603',ajax:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/ajax.js?16603',cart:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/cart.js?16603',clipboard:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/clipboard.js?16603',search:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/search.js?16603',contact:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/contact.js?16603',dashboard:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/dashboard.js?16603',facility:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/facility.js?16603',faq:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/faq.js?16603',flickity:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/flickity.js?16603',grid:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/grid.js?16603',letters:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/letters.js?16603',index:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/index.js?16603',load_more:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/load-more.js?16603',nac:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/nac.js?16603',mombassadors:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/letters.js?16603',press:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/press.js?16603',product:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/product.js?16603',shopify_options:'//cdn.shopify.com/s/assets/themes_support/option_selection-fe6b72c2bbdd3369ac0bfefe8648e3c889efca213baefd4cfb0dd9363563831f.js',style_guide:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/style-guide.js?16603',variable_menu:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/variable-menu.js?16603',vue:'//cdn.shopify.com/s/files/1/1848/0147/t/1/assets/vue.js?16603'},page_handle='index';
+
+	var ssId = 'u72b97';
+
+
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'K3wAhE']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+

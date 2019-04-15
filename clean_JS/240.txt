@@ -1,0 +1,45 @@
+
+		jQuery = true;
+		deferredScript = []; // Used to store deferred javascript blocks
+	
+
+		(function(n,t,i,r,u,f,e){n.GoogleAnalyticsObject=u;n[u]=n[u]||function(){(n[u].q=n[u].q||[]).push(arguments)};n[u].l=1*new Date;f=t.createElement(i);e=t.getElementsByTagName(i)[0];f.async=1;f.src=r;e.parentNode.insertBefore(f,e)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-26949614-1","auto");ga("send","pageview")
+	
+
+	!function(n){var i,t,r;window.pintrk||(window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))},i=window.pintrk,i.queue=[],i.version="3.0",t=document.createElement("script"),t.async=!0,t.src=n,r=document.getElementsByTagName("script")[0],r.parentNode.insertBefore(t,r))}("https://s.pinimg.com/ct/core.js");pintrk("load","2618999628354");pintrk("page",{page_name:"Art &amp;amp; Craft Supplies for Jewelry Making, Scrapbooking &amp;amp; More",page_category:"ConsumerCrafts is an online craft store that sells affordable art &amp; craft supplies for jewelry making, scrapbooking, kids crafts &amp; more.  Shop for art &amp; crafting supplies today!"})
+	
+
+	(function(n,t,i,r,u){var f,e,o;n[u]=n[u]||[];n[u].push({projectId:"10000",properties:{pixelId:"10041200"}});f=t.createElement(i);f.src=r;f.async=!0;f.onload=f.onreadystatechange=function(){var t,i=this.readyState,r=n[u];if(!i||i=="complete"||i=="loaded")try{t=YAHOO.ywa.I13N.fireBeacon;n[u]=[];n[u].push=function(n){t([n])};t(r)}catch(f){}};e=t.getElementsByTagName(i)[0];o=e.parentNode;o.insertBefore(f,e)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq")
+
+
+    !function(n,t,i,r,u,f,e){n.fbq||(u=n.fbq=function(){u.callMethod?u.callMethod.apply(u,arguments):u.queue.push(arguments)},n._fbq||(n._fbq=u),u.push=u,u.loaded=!0,u.version="2.0",u.queue=[],f=t.createElement(i),f.async=!0,f.src=r,e=t.getElementsByTagName(i)[0],e.parentNode.insertBefore(f,e))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","345763979100262");fbq("track","PageView")
+
+
+		
+		delete jQuery;
+
+		
+		var showEmailLightBox = false;
+
+		
+		function getToken() {
+			return $('<input name="__RequestVerificationToken" type="hidden" value="Gn110oF43weTzJacw8tNwX1Jt7f_PQPEUiNnEKHiPFUzuGBJw0us3tsxsSkQytJYja8EpHedE2yah2P6jjci_8-4sKQ1" />').val();
+		}
+
+		var isLoggedInUser = false;
+	
+
+    (function(n,t,i,r,u){var o,f,e;n[u]=n[u]||[];o=function(){var t={ti:"4031492"};t.q=n[u];n[u]=new UET(t);n[u].push("pageLoad")};f=t.createElement(i);f.src=r;f.async=1;f.onload=f.onreadystatechange=function(){var n=this.readyState;n&&n!=="loaded"&&n!=="complete"||(o(),f.onload=f.onreadystatechange=null)};e=t.getElementsByTagName(i)[0];e.parentNode.insertBefore(f,e)})(window,document,"script","//bat.bing.com/bat.js","uetq")
+
+
+		
+		var google_tag_params = {
+			ecomm_pagetype: "home",
+		};
+	
+
+	var google_tag_params;typeof google_tag_params=="undefined"&&(google_tag_params={ecomm_pagetype:"other"});var google_conversion_id=1054883825,google_conversion_language="en",google_conversion_format="3",google_conversion_color="ffffff",google_custom_params=window.google_tag_params,google_remarketing_only=!0
+
+
+	usi_installed=0;USI_installCode=function(){if(usi_installed==0){usi_installed=1;var t=document.getElementsByTagName("head")[0],n=document.createElement("script");n.type="text/javascript";n.src="//www.upsellit.com/active/consumercrafts.jsp";t.appendChild(n)}};typeof document.readyState!="undefined"&&document.readyState==="complete"?USI_installCode():window.addEventListener?window.addEventListener("load",USI_installCode,!0):window.attachEvent?window.attachEvent("onload",USI_installCode):USI_installCode();setTimeout("USI_installCode()",1e4)
+

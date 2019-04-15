@@ -1,0 +1,12 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".armysurpluswarehouse.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"686200e11ebacbb82d482399e9e8b5794886243d","type":"ANONYMOUS","visit_id":"6ca57c89-d0b4-4096-992c-e97afb2b2592","visitor_id":"6089750e-51d2-40e3-b8b1-0bf738b714ea"},"referer":{"url":""},"request":{"url":"https:\/\/armysurpluswarehouse.com\/"}}, '', 3193376, "other", {"customer":{"id":"anonymous"}}, '6ca57c89-d0b4-4096-992c-e97afb2b2592', '6089750e-51d2-40e3-b8b1-0bf738b714ea');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"0628c2aeb616be1da24fb34b696de424f089c67c0e2f58132c72b6c3244afab3"};
+
+
+    document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+

@@ -1,0 +1,75 @@
+
+ $(document).ready(function() {
+  if ($('input[type="text"]').attr("readonly") == false) {
+  $('input[type="text"]').addClass("idleField");
+  $('input[type="text"]').focus(function() {
+   $(this).removeClass("idleField").addClass("focusField");
+   if (this.value == this.defaultValue){ 
+    this.value = '';
+   }
+   if(this.value != this.defaultValue){
+    this.select();
+   }
+  });
+  $('input[type="text"]').blur(function() {
+   $(this).removeClass("focusField").addClass("idleField");
+   if ($.trim(this.value) == ''){
+    this.value = (this.defaultValue ? this.defaultValue : '');
+   }
+  });
+  }
+ });
+ 
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1172760-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+var sePysx=document.createElement("script");sePysx.type="text/javascript";var sePysxs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/14w671qyig2gq0vbhtwojhfv84/safe-textlink.js?ps_h=Pysx&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("sePysx.src=sePysxs;document.getElementById('sdPysx').appendChild(sePysx)",1)
+var sa_interval = 5000;function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } if (typeof(shopper_first) == 'undefined') saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/27360.js'); shopper_first = true; 
+(function() )();
+
+   $(function() {
+    $('#slideshow').cycle({
+     fx: 'fade',
+     timeout: 7000,
+     pager:  '#nav'
+    });
+   });
+  
+
+(function(d,s,i,r) {
+if (d.getElementById(i)){return;}
+var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+n.id=i;n.src='//js.hubspot.com/analytics/'+(Math.ceil(new Date()/r)*r)+'/208995.js';
+e.parentNode.insertBefore(n, e);
+})(document,"script","hs-analytics",300000);
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: 'home',
+ecomm_totalvalue: 
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072563389;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "uXfjCPjK2AIQvYm4_wM";
+var google_conversion_value = 0;
+/* ]]> */
+
+
+

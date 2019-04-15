@@ -1,0 +1,15 @@
+var monetateT = new Date().getTime();
+
+$("#primary-nav, #secondary-nav").cssMenu();
+ToggleElement(".sign-in-form .forgot-password a",".forgot-password-form");
+if (screen.width>569) {
+  $("#member_orders .order a, .bill-ship-pay .field a.tip, .see-price, .shipping a.tip, .order-contact-us .tip, .checkout-page .payment-info .tip, .send-to-friend").displayInModal();
+}
+swmToggle({
+  container: '.js-toggle-transition',
+    control: '.js-toggle-transition__ctrl',
+    body: '.js-toggle-transition__body',
+    closeEsc: true,
+  isAnimated: true
+});
+

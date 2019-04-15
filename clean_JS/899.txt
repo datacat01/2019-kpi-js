@@ -1,0 +1,132 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbrn-Yeti_US';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","VIEW":"View","HIDE":"Hide","SHOW":"Show","SHOWMORE":"Show more","SHOWLESS":"Show less","APPLY":"Apply","CANCEL":"Cancel","CONFIRM":"Confirm","NEXT":"Go to Next","PREVIOUS":"Go to Previous","COMMON_ERROR":"An error has occured","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","DELETE":"Delete","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"OOPS! Please enter a coupon code","GIFT_CARD_MISSING":"OOOPS! Please make sure you've entered the gift card number and pin","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"{0} characters left","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","RESELECT_SHIPPING":"Please re-select your shipping option.","SHOP_NOW":"shop now >","ADDED_TO_CART":"PRODUCTS","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"OOPS! Please enter a valid email address","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Field exceeds max allowed length","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","VALIDATE_ADDRESS_SELECT":"OOPS! SELECT AN ADDRESS FROM BELOW","INVALID_GIFT_MESSAGE":"singleshipping.shippingAddress.giftMessage","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Resources-Load","pageInclude":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Page-Include","continueUrl":"https://intl.yeti.com/","staticPath":"https://intl.yeti.com/on/demandware.static/Sites-Yeti_US-Site/-/en_US/v1555236063524/","addGiftCert":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/GiftCert-Purchase","minicartGC":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/GiftCert-ShowMiniCart","addProduct":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Cart-AddProduct","minicart":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Cart-MiniAddProduct","cartShow":"https://intl.yeti.com/en_US/cart","giftRegAdd":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Address-GetAddressDetails?addressID=","paymentsList":"https://intl.yeti.com/en_US/payments","addressesList":"https://intl.yeti.com/en_US/address-list","wishlistAddress":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Wishlist-SetShippingAddress","updateWishlistNumber":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Wishlist-ProductsInWishlist","shareWishlist":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Wishlist-SendEmail","deleteAddress":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Address-Delete","getProductUrl":"https://intl.yeti.com/en_US/product","getBonusProducts":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Product-GetBonusProducts","addBonusProduct":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Cart-AddBonusProduct","getSetItem":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Product-GetSetItem","productDetail":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Product-Detail","getAvailability":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Product-GetAvailability","removeImg":"https://intl.yeti.com/on/demandware.static/Sites-Yeti_US-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Search-GetSuggestions","productNav":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Product-Productnav","summaryRefreshURL":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-UpdateSummary","removeGiftCard":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-RemoveGiftCertificate","billingSelectCC":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-SelectCreditCard","updateAddressDetails":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COShipping-SelectShippingMethod","resetPaymentForms":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-ResetPaymentForms","compareShow":"https://intl.yeti.com/en_US/compare","compareAdd":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Compare-AddProduct","compareRemove":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Compare-RemoveProduct","compareEmptyImage":"https://intl.yeti.com/on/demandware.static/Sites-Yeti_US-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COBilling-RedeemGiftCertificateJson","addCoupon":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Cart-AddCouponJson","storesInventory":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-Inventory","setPreferredStore":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-SetPreferredStore","getPreferredStore":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-GetPreferredStore","setStorePickup":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-SetStore","setZipCode":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-SetZipCode","getZipCode":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/StoreInventory-GetZipCode","billing":"https://intl.yeti.com/en_US/billing-start","setSessionCurrency":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Currency-SetSessionCurrency","addEditAddress":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/COShippingMultiple-AddEditAddressJSON","cookieHint":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Page-Show?cid=cookie_hint","cookiePolicy":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/CookieMsg-Show","rateLimiterReset":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/RateLimiter-HideCaptcha","csrffailed":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/CSRF-Failed","registerProduct":"https://intl.yeti.com/en_US/register-product","registerProductSteps":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/RegisterProduct-Steps","registerProductValidate":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/RegisterProduct-Validate","validateRegistrationCode":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/RegisterProduct-ValidateRegistrationCode","iceConfiguration":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/IceConfiguration-Steps","iceConfigurationGenerator":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/IceConfiguration-Steps?generator=true","qasVerifyAddress":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/QAS-VerifyAddress","qasUpdateAddress":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/QAS-UpdateAddress","qasVerifyEmail":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/QAS-VerifyEmail","addToCart":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/GTM-AddToCart","removeFromCart":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/GTM-RemoveFromCart","passwordReset":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Account-PasswordResetModalHandle","etCreateSubscriber":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/ExactTarget-CreateSubscriber","etPopup":"https://intl.yeti.com/en_US/popup-email-signup.html","handleBackInStock":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/BackInStock-HandleForm","getPartialView":"https://intl.yeti.com/en_US/checkout-view","updateProductQuantity":"https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/Cart-UpdateProductQuantity","selectors":"/on/demandware.store/Sites-Yeti_US-Site/en_US/Currency-SetSessionCurrency","preparePreOrderRequest":"/on/demandware.store/Sites-Yeti_US-Site/en_US/EShopWorld-HandlePreOrderRequest"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":true,"COOKIE_HINT":false,"CHECK_TLS":false,"QAS_ENABLED":true,"ET_POPUP_ENABLED":false,"PAYMETRIC_ENABLED":true,"DY_ENABLED":"8768341","INAUTH_ENABLED":true,"CUSTOM_SHOP_ENABLED":true,"ESHOP_ENABLED":true,"CUSTOMIZER_WIDGET_URL":"https://customize.yeticustomshop.com/widget.js"};
+}());
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.RequestData = {"locale":{"countryCode":"US","language":"en"}};
+window.User = {"authenticated":false,"zip":null,"storeId":null};
+}());
+$(document).ready(function() {
+			var script = '/script',
+			gtmcode = 'GTM-WKGW2KZ',
+			gtmframe = '<noscript><iframe src="//www.googletagmanager.com/ns.html?id=' + gtmcode + '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>',
+			gtm = gtmframe;
+			//add tracking snippet after body tag
+			$('body').append(gtm);
+			window.gaECGlobals = window.gaECGlobals || {};
+			gaECGlobals.cartUpdateItemID = '';
+			gaECGlobals.cartUpdateItemQty = '';
+		});
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://intl.yeti.com/on/demandware.store/Sites-Yeti_US-Site/en_US/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->

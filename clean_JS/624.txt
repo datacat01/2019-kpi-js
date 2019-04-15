@@ -1,0 +1,76 @@
+
+    //MS AI
+    var appInsights=window.appInsights||function(a){
+        function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+    }({
+        instrumentationKey:"b16091f5-09fd-4b86-aea6-e74af658cc80"
+    });
+
+    window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+
+
+    var digitalData = {
+        page: {
+            name: "home",
+            section: "home",
+
+			languageCountry: "en",
+			type: "StartPage"
+		},
+		user: {
+			loginStatus: "guest",
+			userID: "",
+    	customerGroup: ""
+		}
+	}
+
+
+        function getUrlVars() {
+            var vars = [];
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                vars[key] = value;
+            });
+            return vars;
+        };
+        function loadTrackScript() {
+            if (parseInt(getCookie("cookieacceptance")) === 7) {
+                _etmc.push(["setOrgId", "6411491"]);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var m = JSON.parse(this.responseText);
+                        var userInfo = {
+                            "details": {
+                                "Country": m.Country,
+                                "Language": m.Language,
+                                "Production": m.IsProductionSite
+                            }
+                        };
+                        if (m.UserEmail) {
+                            userInfo.email = m.UserEmail;
+                        } else {
+                            var sfmcid = "sfmcid";
+                            var param = getUrlVars()[sfmcid];
+                            var id = param == "undefined" ? null : param;
+                            if (id != null || (id = getCookie(sfmcid))) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + (30 * 24 * 3600000));
+                                document.cookie = sfmcid + "=" + id + "; expires=" + date.toGMTString() + "; path=/";
+                                userInfo.email = atob(id);
+                            }
+                        }
+                        _etmc.push(["setUserInfo", userInfo]);
+                        _etmc.push(["trackPageView"]);                    
+                    }
+                }
+                xhttp.open("GET", "/api/igodigital/getuserinfo", true);
+                xhttp.send();
+            };
+        };
+
+        loadTrackScript();
+    
+
+if(FindApi){var api = new FindApi();api.setApplicationUrl('/');api.setServiceApiBaseUrl('/find_v2/');api.processEventFromCurrentUri();api.bindWindowEvents();api.bindAClickEvent();api.sendBufferedEvents();}
+
+_satellite.pageBottom();

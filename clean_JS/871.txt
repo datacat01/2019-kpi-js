@@ -1,0 +1,36 @@
+
+	var _gaq	= _gaq || [];
+	_gaq.push(['_setAccount','UA-5088430-1']);
+	_gaq.push(['_setCustomVar',1, 'No AB Test', 'a',2 ]);
+	_gaq.push(['_setDomainName', 'none']);
+	(function() {
+		var ga		= document.createElement('script');
+		ga.type		= 'text/javascript';
+		ga.async	= true;
+		ga.src		= ('https:'	== document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s			= document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga,s);
+	})();
+
+
+
+		_gaq.push(['_setVar',"Techstreet"]);
+
+			_gaq.push(['_trackPageview','/']);
+
+
+
+
+
+  	_bizo_data_partner_id = "8678";
+	
+
+	(function() {
+	  var s = document.getElementsByTagName("script")[0];
+	  var b = document.createElement("script");
+	  b.type = "text/javascript";
+	  b.async = true;
+	  b.src = (window.location.protocol === "https:" ? "https://sjs" : "http://js") + ".bizographics.com/insight.min.js";
+	  s.parentNode.insertBefore(b, s);
+	})();
+	

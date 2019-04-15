@@ -1,0 +1,203 @@
+
+    var GoogleAccountId = 'UA-9572006-1';
+    if (GoogleAccountId != "") {
+    	(function (i, s, o, g, r, a, m) {
+    		i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+    			(i[r].q = i[r].q || []).push(arguments)
+    		}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    	ga('create', GoogleAccountId, 'auto');
+    	ga('require', 'displayfeatures');
+    	ga('send', 'pageview');
+    	ga('require', 'ecommerce');   // Load the ecommerce plug-in.
+    }
+
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var UUWT_SDC = 'sdc1.uniteu.net/dcsmf11ut00000g4ajumpjgso_7s5x';//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ScriptManager1', 'form1', [], [], [], 90, 'ctl00$ctl00');
+//]]>
+
+
+            <!--
+            /* Functions used throughout site to clear and refill text boxes */
+            //function used to clear out text from passed in text field.
+            function clearField(obj) {
+                obj.value = "";
+            } //end clearField
+            //function used to return original text (found in title/ToolTip attribute) to text field IFF text field is still empty
+            function returnField(obj) {
+                if (obj.value == "") obj.value = obj.title;
+            } //end returnField
+            //-->
+        
+
+    $(document).ready(function () {
+        $("#header_nav ul li.level-1").click(function () {
+            $("#header_nav ul li.level-1").removeClass("opened");
+            $(this).addClass("opened");
+        });
+        $("#header_nav ul li.level-2 .item-level-2").click(function () {
+            $("#header_nav ul li.level-2").removeClass("opened");
+            $(this).parent().addClass("opened");
+            $(this).parent().find("[data-src]").each(function () {
+                $(this).attr("src", $(this).attr("data-src"));
+            });
+        });
+        $(document).click(function (event) {
+            if (!$(event.target).closest('#header_nav ul li').length) {
+                $("#header_nav ul li").removeClass("opened");
+            }
+        });
+    });
+
+
+        // initial pageload functions
+        function pageLoad() {
+            // initialize slick slider for featured products
+            $("#mycarousel").slick({
+                dots: false,
+                arrows: true,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                infinite: false
+            });
+        }
+    
+
+            $(document).ready(function () {
+		        if(getCookie("cookieMessage") != "shown")
+                {
+		            $("#cookieMessage").show();
+		        }
+		        $(".cookieMessageButton").click(function () {
+		            setCookie('cookieMessage', 'shown', 1);
+		            $("#cookieMessage").hide();
+		        });
+            });
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+        
+
+//<![CDATA[
+$(document).ready(function(){$('#SearchControl1_searchText').autocomplete({    source: function (request, response) {        $.ajax({            url: '/Services/AutoComplete/SearchAutoComplete?term=' + request.term,            type: 'GET',            dataType: 'json',            success: function (msg) {               response(msg.d);            }        });    },    minLength: 2,    select: function (event, ui) { GotoSearchUrl("https://www.redoxx.com/Search.aspx?search_freetext="+MakeUrlFriendly(ui.item.label, false)+"",ui.item.value);$("[id$='searchText']").val(ui.item.label);return false;},    focus: function (event, ui) { $('#SearchControl1_searchText').val(ui.item.label);return false;}});});WT.si_n="ShoppingCart";WT.si_p="Home";UU.pb=0;UU.page_tts=0.1560;wtGetGif();//]]>
+
+
+        $(function() {
+            /* Delay load thawte seal and put seal into #thawte*/
+            //remove the script tag
+            $("#thawteLoader").find("script").remove();
+            //move seal to desired location, if desired location exists
+            if($("#thawte")) $("#thawte").html($("#thawteLoader").html());
+        });
+    
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/1796.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+    adroll_adv_id = "JZ752TJ6G5H5HKGB3IS7RG";
+    adroll_pix_id = "WBT2KMLK75ANFM7DN2KOZJ";
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'pk_3871e1a6c04805eab5e67b206523b1788c']);
+
+  //(function () {
+  //var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  //b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  //var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  //})();
+
+
+    var return_to_top_visible = false;
+	$(document).ready(function ()
+	{
+	    if (window.location.href.indexOf("/Product") > 0 
+          || window.location.href.indexOf("/product") > 0
+	      || window.location.href.indexOf("/Dept") > 0 
+          || window.location.href.indexOf("/dept") > 0) {
+	        $("#return_to_top").click(scroll_to_top);
+	        $(window).scroll(toggle_elevator);
+	    }
+	});
+	function scroll_to_top(e)
+	{
+		e.preventDefault();
+		$("html, body").animate({
+			scrollTop: 0
+		}, "slow");
+	}
+	function toggle_elevator()
+	{
+		var c = window.pageYOffset;
+		if (c >= (window.screenY + 10))
+		{
+			if (!return_to_top_visible)
+			{
+				return_to_top_visible = true;
+				$("#return_to_top").fadeIn();
+			}
+		} else
+		{
+			if (return_to_top_visible)
+			{
+				return_to_top_visible = false;
+				$("#return_to_top").fadeOut();
+			}
+		}
+	}
+        

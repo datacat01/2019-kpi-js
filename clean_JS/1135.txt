@@ -1,0 +1,95 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.hansonellis.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.hansonellis.com\/mm5\/json.mvc\u003F";
+var Store_Code = "hansonellis";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.hansonellis.com\/SRCH.html\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+
+(function(d){
+var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+p.type = 'text/javascript';
+p.setAttribute('data-pin-hover', true);
+p.async = true;
+p.src = '//assets.pinterest.com/js/pinit.js';
+f.parentNode.insertBefore(p, f);
+}(document));
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: '',
+ecomm_totalvalue: ,
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1069238450;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+jssor_1_slider_init = function() {
+var jssor_1_SlideshowTransitions = [
+{$Duration:800,x:-0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}
+];
+var jssor_1_options = {
+$AutoPlay: 1,
+$Idle: 4500,
+$FillMode: 4,
+$SlideshowOptions: {
+$Class: $JssorSlideshowRunner$,
+$Transitions: jssor_1_SlideshowTransitions,
+$TransitionsOrder: 1
+},
+$ArrowNavigatorOptions: {
+$Class: $JssorArrowNavigator$
+},
+$BulletNavigatorOptions: {
+$Class: $JssorBulletNavigator$
+}
+};
+var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+/*#region responsive code begin*/
+var MAX_WIDTH = 1600;
+function ScaleSlider() {
+var containerElement = jssor_1_slider.$Elmt.parentNode;
+var containerWidth = containerElement.clientWidth;
+if (containerWidth) {
+var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+jssor_1_slider.$ScaleWidth(expectedWidth);
+}
+else {
+window.setTimeout(ScaleSlider, 30);
+}
+}
+ScaleSlider();
+$Jssor$.$AddEvent(window, "load", ScaleSlider);
+$Jssor$.$AddEvent(window, "resize", ScaleSlider);
+$Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+/*#endregion responsive code end*/
+};
+
+jssor_1_slider_init();
+
+window.criteo_q = window.criteo_q || [];
+var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+window.criteo_q.push( { event: "setAccount", account: 34859 },
+{ event: "setSiteType", type: deviceType }, { event: "setEmail", email: "" },
+{ event: "viewHome"}
+);
+
+var quarter_choosed = false, window_limits = [], best_quarter = 'ne';var vertical_way = "n", horizontal_way = "e";function vimeoLoadingThumb(id) {var url = "https://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";var script = document.createElement( 'script' );script.type = 'text/javascript';script.src = url;var list = document.getElementById("vimeo-thumb");list.insertBefore(script, list.childNodes[0]);}function showThumb(data) {var id_img = document.getElementById('vimeo-thumb');id_img.src = data[0].thumbnail_large;}if (jQuery('#vimeotooltip').length > 0) {var player1 = document.getElementById('vimeotooltip');froogaloop = $f(player1);var vimplayButton = document.getElementById("vimeovideoelem");vimplayButton.addEventListener("mouseover", function() {froogaloop.api('play');quarter_choosed = false;});vimplayButton.addEventListener("mouseout", function() {froogaloop.api('pause');quarter_choosed = false;});}var tag = document.createElement('script');tag.src = "//www.youtube.com/player_api";var firstScriptTag = document.getElementsByTagName('script')[0];firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);var player;function onYouTubePlayerAPIReady() {if(jQuery('#tooltip').length > 0) {player = new YT.Player('tooltip', {events: {'onReady': onPlayerReady}});}}function onPlayerReady(event) {var playButton = document.getElementById("youvideoelem");playButton.addEventListener("mouseover", function() {player.playVideo();quarter_choosed = false;});playButton.addEventListener("mouseout", function() {player.pauseVideo();quarter_choosed = false;});}var tooltipSpan = null;if (jQuery('#tooltip-you-span').length > 0) {tooltipSpan = document.getElementById('tooltip-you-span');}if (jQuery('#tooltip-vim-span').length > 0) {tooltipSpan = document.getElementById('tooltip-vim-span');}if (tooltipSpan !== null) {window.onmousemove = function (ev) {var leftPixelSpace = ev.clientX;var rightPixelSpace = this.innerWidth - leftPixelSpace;var topPixelSpace = ev.clientY;var bottomPixelSpace = this.innerHeight - topPixelSpace;if (quarter_choosed === false) {if (leftPixelSpace > rightPixelSpace) {horizontal_way = 'w';}else {horizontal_way = 'e';}if (topPixelSpace > bottomPixelSpace) {vertical_way = 'n';}else {vertical_way = 's';}best_quarter = vertical_way + horizontal_way;window_limits["south"] = this.innerHeight - 320;window_limits["east"] = this.innerWidth - 640;window_limits["north"] = 0;window_limits["west"] = 0;quarter_choosed = true;}if (quarter_choosed) {var top, left;switch (best_quarter) {case "nw":top = topPixelSpace - tooltipSpan.offsetHeight - 10;left = leftPixelSpace - tooltipSpan.offsetWidth - 10;break;case "ne":top = topPixelSpace - tooltipSpan.offsetHeight - 10;left = leftPixelSpace + 10;break;case "sw":top = topPixelSpace + 10;left = leftPixelSpace - tooltipSpan.offsetWidth - 10;break;case "se":default:top = topPixelSpace + 10;left = leftPixelSpace + 10;}if (top < window_limits["north"]) {top = window_limits["north"];}else {if (top > window_limits["south"]) {top = window_limits["south"];}}if (left < window_limits["west"]) {left = window_limits["west"];}else {if (left > window_limits["east"]) {left = window_limits["east"];}}tooltipSpan.style.left = left + "px";tooltipSpan.style.top = top + "px";}};}

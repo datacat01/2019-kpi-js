@@ -1,0 +1,277 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".diecastmodelswholesale.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"0e7e263e13eeec5025872fb1a781154325855200","type":"ANONYMOUS","visit_id":"45578359-0ec9-492e-9083-080557138747","visitor_id":"c622e770-00c1-437d-8625-e2d6560132f5"},"referer":{"url":""},"request":{"url":"https:\/\/www.diecastmodelswholesale.com\/"}}, '', 1368850, "other", {"customer":{"id":"anonymous"}}, '45578359-0ec9-492e-9083-080557138747', 'c622e770-00c1-437d-8625-e2d6560132f5');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	$(".QuickView").quickview({
+		buttonText: "Quick View",
+		buttonColor: "#f7f7f7",
+		gradientColor: "#dcdbdb",
+		textColor: "#000000"
+	});
+});
+
+
+var BCData = {"csrf_token":"ab8af832423e726cc6656b8a5e7af6491ee694f7d7918db6e2cb095ce7adae56"};
+
+var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-sanjose.bbb.org' + unescape('%2Flogo%2Fwholesale-diecast-models-100057714.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();
+
+    var QuickSearchAlignment = 'right';
+    var QuickSearchWidth = '390px';
+    lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+    // uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+    $(document).ajaxComplete(function() {
+        $('input[type=checkbox], select').not('.UniApplied').uniform();
+    });
+
+
+$(document).ready(function(){
+    $("select#DropDownBrands option").each(function(){
+    if($(this).val() == window.location.href){
+    $(this).attr('selected','');
+    }
+});
+});
+
+
+// <!--
+    $('#subscribe_form').submit(function() {
+        /*if($('#nl_first_name').val() == '') {
+            alert('You forgot to type in your first name.');
+            $('#nl_first_name').focus();
+            return false;
+        }*/
+
+        if($('#nl_email').val() == '') {
+            alert('You forgot to type in your email address.');
+            $('#nl_email').focus();
+            return false;
+        }
+
+        if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+            alert('Please enter a valid email address, such as john@example.com.');
+            $('#nl_email').focus();
+            $('#nl_email').select();
+            return false;
+        }
+
+        // Set the action of the form to stop spammers
+        $('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+        return true;
+
+    });
+// -->
+
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+    //<![CDATA[
+function check_add_to_cart_new(form, required) {
+    var valid = true;
+    var qtyInputs = $(form).find('input.qtyInput');
+    qtyInputs.each(function() {
+        if(isNaN($(this).val()) || $(this).val() <= 0) {
+            alert(lang.InvalidQuantity);
+            this.focus();
+            this.select();
+            valid = false;
+            return false;
+        }
+    });
+    if(valid == false) {
+        return false;
+    }
+
+    if(!CheckProductConfigurableFields(form)) {
+        return false;
+    }
+
+    // validate the attributes
+    var attributesValidated = $('#productDetailsAddToCartForm')
+        .validate()
+        .form();
+
+    if (!attributesValidated) {
+        return false;
+    }
+
+    if (!CheckQuantityLimits(form)) {
+        return false;
+    }
+
+    if(required && !$(form).find('.CartVariationId').val()) {
+        alert(lang.OptionMessage);
+        var select = $(form).find('select').get(0);
+        if(select) {
+            select.focus();
+        }
+        var radio = $(form).find('input[type=radio]').get(0);
+        if(radio) {
+            radio.focus();
+        }
+        return false;
+    }
+
+    if (!CheckEventDate()) {
+        return false;
+    }
+
+    // if we're using the fastcart, pop that up now
+    if (config.FastCart) {
+        return fastCartActionNew();
+    }
+
+    return true;
+}
+    
+function fastCartActionNew(event,item) {
+    var url = '';
+
+    var modalOptions;
+
+    // Supplied URL
+    if (typeof(event) == 'string') {
+        var url = event;
+
+        // Make sure a valid URL was supplied
+        if (!url || url.indexOf('cart.php') == -1) {
+            return false;
+        }
+
+        // strip protocol from url to fix cross protocol ajax access denied problem
+        url = url.replace(/^http[s]{0,1}:\/\/[^\/]*\/?/, '/');
+      
+        url += '&fastcart=1';
+         
+        if($(item).closest('li').find('.inputBoxQty').size() > 0){
+           var qty = $(item).closest('li').find('.inputBoxQty').val();
+           if(qty){
+             url += '&qty[]='+qty;
+           }
+        }
+
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function(data)    {
+                if (data.success) {
+                    modalOptions = {
+                        data: data
+                    };
+                    _showFastCartNew(modalOptions,item);
+                }
+                else if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+            }
+        });
+    }
+    // 'Add' button on product details page
+    else {
+        $('#productDetailsAddToCartForm').ajaxSubmit({
+            data: {
+                fastcart: 1,
+                ajaxsubmit: 1
+            },
+            type: 'post',
+            iframe: true,
+            dataType: 'json',
+            success: function(data)    {
+                if (data.success) {
+                    modalOptions = {
+                        data: data
+                    };
+                    _showFastCartNew(modalOptions);
+                }
+                else if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+            }
+        });
+    }
+
+    return false;
+}
+function _showFastCartNew(modalOptions,item) {
+     if(typeof(item) != "undefined"){
+        //$(item).parent().html('<a href="#" id="addedToCart" onclick="return false;"><img src="/template/images/check2.png" />Added to cart</a>');
+        $(item).html('Added to cart');
+        $(item).prepend('<img class="addedToCartImg" src="/template/images/check2.png" />')
+         $(item).attr("class","addedToCart btn");
+         $(item).attr("title","clcik again to add more");
+     }else{
+        $('.addto .DetailRow').html('<a href="#" class="addedToCart btn" onclick="$(\'#productDetailsAddToCartForm\').submit();return false;" style="width:160px;" title="clcik again to add more"><img class="addedToCartImg" src="/template/images/check2.png" />Added to cart<a>');
+     }
+     $('#hiddenCartContent').html(modalOptions.data.imodal);
+     var itemTxt = $(' #hiddenCartContent #fastCartNumItemsTxt').html();
+     var itemVal = $(' #hiddenCartContent .subtotal .ProductPrice').html();
+            if (itemTxt && itemVal ) {
+                // update the view cart item count on top menu
+               // $('#cartText').html('(' + itemTxt + ') Amount: '+itemVal);
+                 $(".cartItemsCount").html(itemTxt );
+                $(".cartItemsAmount").html(itemVal);
+            }
+    
+}
+$(document).ready(function() {
+    // attach fast cart event to all 'add to cart' link
+    $(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+        fastCartActionNew($(this).attr('href'),this);
+        return false;
+    });
+
+    /*lets find out which products we have in cart*/    
+    var cartItems = []
+    $('#SideCartContents .ProductList li').each(function(){
+       cartItems.push($(this).find("a").attr("href"))
+    })
+
+    /*adding qty forms */
+    $(".ProductList .ProductActionAdd a[href*='cart.php?action=add']").each(function(){
+       $(this).before('<input type="text" name="qty[]" value="1"  class="inputBoxQty" />');
+      //$(this).before('<select name="qty[]" class="Field45 quantityInput" style=" "> <option selected="selected" value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> </select>');
+ 
+
+   /*lets show added to cart for products already in cart*/
+   if(cartItems.indexOf($(this).closest("li").find(".pname").attr("href")) > -1){
+        $(this).html('Added to cart');
+        $(this).prepend('<img class="addedToCartImg" src="/template/images/check2.png" />')
+        $(this).attr("class","addedToCart btn");
+        $(this).attr("title","clcik again to add more");
+   }
+
+   })
+
+   /*for product page added to cart*/
+   if(cartItems.indexOf(location.href) > -1){
+
+      $('.addto .DetailRow').html('<a href="#" class="addedToCart btn" onclick="$(\'#productDetailsAddToCartForm\').submit();return false;" style="width:160px;" title="clcik again to add more"><img class="addedToCartImg" src="/template/images/check2.png" />Added to cart<a>');
+    
+    }
+
+});
+//]]>
+
+
+/* <![CDATA[ */var google_conversion_id = 1071477333;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;/* ]]> */
+
+
+
+

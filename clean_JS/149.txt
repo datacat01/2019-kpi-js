@@ -1,0 +1,20 @@
+
+		var dataLayerV2Json = {"event":"loadDataLayer","mkt":{"marinID":"7iu9q7bk10","recoverCartUrl":null,"conversion_value":"0.00","google_remarketing":{"ecomm_pagetype":"other","google_conversion_label":"IQJUCLWi7wQQ46OE1QM","google_conversion_id":"983634403"},"criteo":{"account":"2820"}},"server":{"environment":"pro","application":"shop","sessionID":"E965B584D72DE761ED095745804EB088"},"viewType":{"type":"pageview"},"shop":{"countryID":"006","countryISO":"GB","countryName":"notDetected","onSale":false,"warehouse":["001"],"languageID":"IN","languageISO":"en","device":"desktop","access":"web","isApp":false,"isVOTF":false},"user":{"logged":false,"userID":null,"navigationID":null,"mail":null,"emailMD5":null,"countryID":"006","countryISO":"GB","address":"United Kingdom","firstName":null,"newsletter":"no","registered":"no","firstSession":"si","showPopupRGPD":false,"loyalty":false},"page":{"brand":"multimarca","brandID":"she","brandEN":"she","pageType":"prehome"},"ecommerce":{}};
+	
+     dataLayer = [];
+    dataLayer.push(dataLayerV2Json);
+       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TWFTD4')
+   ;    
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); 
+        ga('create', 'UA-855910-26', 'mango.com'); 
+        ga('set', { 'dimension1' : 'notDetected','dimension44' : 'GB','dimension2' : 'notDetected','dimension3' : 'mango','dimension43' : 'she','dimension7' : 'no logado','dimension41' : 'no','dimension42' : 'no','dimension26' : 'null','dimension9' : 'web','dimension18' : 'prehome'});        ga('require', 'displayfeatures');
+        ga('require', 'ec', 'ec.js'); 
+    ga('send', 'pageview');
+   ;

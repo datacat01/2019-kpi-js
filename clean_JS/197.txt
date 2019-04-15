@@ -1,0 +1,58 @@
+
+            var monetateT = new Date().getTime();
+                (function() {
+                    var p = document.location.protocol;
+                    if (p == "http:" || p == "https:") {
+                        var m = document.createElement('script'); m.type = 'text/javascript'; m.async = true; m.src = (p == "https:" ? "https://s" : "http://") + "b.monetate.net/js/1/a-6c2cfae3/p/batteriesplus.com/" + Math.floor((monetateT + 487139) / 3600000) + "/g";
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(m, s);
+                    }
+                })();
+        
+
+    var bpjscontext = {
+        IsCrawler: false,
+        IsMobile: false,
+        CurrentStoreCode: "",
+        CurrentStoreMinutesBeforeClose: 0};
+
+
+                                var __dcid = __dcid || []; __dcid.push(["DigiCertClickID_EH5udEu3", "5", "m", "white", "EH5udEu3"]); (function () { var cid = document.createElement("script"); cid.async = true; cid.src = "//seal.digicert.com/seals/cascade/seal.min.js"; var s = document.getElementsByTagName("script"); var ls = s[(s.length - 1)]; ls.parentNode.insertBefore(cid, ls.nextSibling); }());
+                            
+
+        (function e() {
+            var e = document.createElement("script"); e.type = "text/javascript", e.async = !0, e.src = "//staticw2.yotpo.com/" + "P61QRTuPGNIqkSThRWVvgh9b9hIBBvBuMGrOm7xB" + "/widget.js";
+            var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t)
+        })();
+
+        $(window).on("load", function () {
+            if ($(".yotpo-small-box.yotpo-nav").is(".0")) {
+                $("h2 a.yotpoStars-top .yotpo.bottomLine").show();
+                $(".yotpo.yotpo-main-widget").css({ "padding-top": "5px" });
+                $("h3.yotpo-reviews").show();
+            } else {
+                $("h2 a.yotpoStars-top .yotpo.bottomLine").hide();
+                $("h3.yotpo-reviews").hide();
+            }
+        });
+    
+
+    (function() {
+        var adlDays=45, adlRetailer="batteriesplus";
+        var qs = document.location.search,adlClkID,adlName,adlPxID,adlURL;
+        if (/[?&]gclid=/.test(qs)) {
+            adlName="gclid";
+        } else if (/[?&]adlclid=/.test(qs)) {
+            adlName="adlclid";
+        }
+        if (adlName) {
+            adlClkID =
+            qs.substring(qs.match("[?&]"+adlName.toString()+"=").index+adlName.length+2).split("&")[0];
+            document.cookie = "_adlClkID="+adlClkID+"; max-age="+(60*60*24*adlDays).toString()+"; path=/";
+        }
+        if (/[?&]adlpxid=/.test(qs)) {
+            adlPxID = qs.substring(qs.match("[?&]adlpxid=").index+9).split("&")[0];
+            adlURL=document.location.protocol+"//tracking.deepsearch.adlucent.com/adlucent/Redirector/beacon?retailer="+adlRetailer+"&clickid="+adlClkID+"&pixelid="+adlPxID;
+            var pix = new Image(1,1); pix.src = adlURL;
+        }
+    })();
+

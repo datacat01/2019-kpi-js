@@ -1,0 +1,72 @@
+ gsProductCSID = ""; 
+
+
+
+var bkRawUrl = function(){return window.location.href}();
+(function (doc, scriptPath) {
+    var sc, node, today=new Date(),dd=today.getDate(),mm=today.getMonth()+1,yyyy=today.getFullYear();if(dd<10)dd='0'+dd;if(mm<10)mm='0'+mm;today=yyyy+mm+dd;
+    // Load base script tag
+    sc = doc.createElement("script");
+    sc.type = "text/javascript";
+    sc.async = !0;
+    sc.src = scriptPath + '?' + today;
+    node = doc.getElementsByTagName("script")[0];
+    node.parentNode.insertBefore(sc, node);
+})(document, 'https://sdk.beeketing.com/js/beeketing.js');
+
+
+  if (typeof window.saso_config != "object") {
+    window.saso_config = {}
+  }
+  if (typeof window.saso_config.hide_shown_upsells_for != "number") {
+    window.saso_config.hide_shown_upsells_for = 15
+  }
+  if (typeof window.saso_config.hide_closed_notifications_for != "number") {
+    window.saso_config.hide_closed_notifications_for = 10
+  }
+  window.saso_config.hide_shown_upsells_for *= 60 * 1000 //microseconds  
+  window.saso_config.hide_closed_notifications_for *= 60 * 1000 //microseconds
+  
+  if (typeof window.saso_config.crosssell_continue_after_close != "boolean") {
+    window.saso_config.crosssell_continue_after_close = true
+  }
+  if (typeof window.saso_config.crosssell_popup_on_add != "boolean") {
+    window.saso_config.crosssell_popup_on_add = true
+  }  
+
+  
+  window.saso = {
+    shop_slug: "fuzzibunzdiapers",
+    money_format: "$ {{amount}}",
+    customer: null,
+    cart: null,
+  }
+
+  
+
+  
+
+  
+
+  
+
+  
+  	window.saso.cart = {"token":"e2d185501b7711e1270707213aec27e2","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]}
+    window.saso.cart_collections = {}
+    
+  
+
+  window.saso.page_type = ""
+
+
+  window._tfa = window._tfa || [];
+  window._tfa.push({notify: 'event', name: 'page_view', id: 1164026});
+  !function (t, f, a, x) {
+         if (!document.getElementById(x)) {
+            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+         }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/unip/1164026/tfa.js',
+  'tb_tfa_script');
+

@@ -1,0 +1,143 @@
+jQuery.noConflict();
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.toolpartsdirect.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-135620-1']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A50905-b060-4a22-9ceb-9ed650ce37ae1.js','script','ire',document,window);
+if (typeof ire === 'function') {
+ire('identify', {customerId: '', customerEmail: ''});
+}
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    Enterprise.TopCart.initialize('topCartContent');
+    // Below can be used to show minicart after item added
+    // Enterprise.TopCart.showCart(7);
+
+
+
+    jQuery(document).ready(function() {
+        jQuery('.cart-remove-item').each(function () {
+            var deleteHref = jQuery(this).attr('data');
+                jQuery(this).fancybox({
+                    width       : '250px',
+                    wrapCSS    : 'delete-item-popup',
+                    padding     : '0',
+                    fitToView   : false,
+                    autoHeight  : true,
+                    autoWidth  : false,
+                    autoSize    : false,
+                    closeClick  : false,
+                    openEffect  : 'fade',
+                    closeEffect : 'fade',
+                    afterLoad: function(){
+                        jQuery('#del_address').click(function () {
+                            window.location = deleteHref;
+                            jQuery.fancybox.close();
+                        });
+                        jQuery('#cancel_address').click(function(){
+                            jQuery.fancybox.close();
+                        });
+                    }
+                });
+        });
+    });
+
+
+    //<![CDATA[
+    var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Enter Keyword(s)');
+        searchForm.initAutocomplete('https://www.toolpartsdirect.com/ssearch/ajax/suggest/', 'search_autocomplete');
+
+
+    jQuery(document).ready(function($) {
+        $(".model-search select").uniform({
+            selectAutoWidth: false
+        });
+
+        (function(){
+            var defaultText = "";
+
+            $('.header-search-filter').on('change', function (){
+                var optionSelected = $(".header-search-filter option:selected");
+                var value = optionSelected.val();
+                var optionText = optionSelected.text();
+                var search = $("#search");
+                var searchButton = $('.header-search-btn');
+                search.val(optionText);
+                searchButton.prop("disabled", true);
+                search.on('click', function (){
+                    if (search.val() == optionText){
+                        defaultText = search.val();
+                        search.val('');
+                        searchButton.prop("disabled", false);
+                    }
+                });
+                search.on('blur', function (){
+                    if (search.val() == 'Enter Model Number'){
+                        search.val(defaultText);
+                        searchButton.prop("disabled", true);
+                    }
+                });
+            });
+        })();
+    });
+    //]]>
+
+
+    //<![CDATA[
+    var searchFormByModel = new Varien.searchForm('search_by_model', 'search_model', 'Search by Model#');
+    var searchFormByPart = new Varien.searchForm('search_by_part', 'search_part', 'Search by Part#');
+    searchForm.initAutocomplete('https://www.toolpartsdirect.com/ssearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+
+
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    
+
+  var gts = gts || [];
+
+  gts.push(["id", "699629"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en"]);
+  gts.push(["google_base_offer_id", ""]);
+  gts.push(["google_base_subaccount_id", ""]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+

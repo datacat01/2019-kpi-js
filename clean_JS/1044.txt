@@ -1,0 +1,81 @@
+
+
+/***********************************************
+* Ultimate Fade In Slideshow v2.0- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+
+
+
+
+var mygallery=new fadeSlideShow({
+	wrapperid: "fadeshow1", //ID of blank DIV on page to house Slideshow
+	dimensions: [350, 354], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	imagearray: [
+		
+		["https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/graphics4/homepage_images/homepage_slideshow1.jpg", "https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/pages/powerlift_pro_2.html", "", ""],
+		["https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/graphics4/homepage_images/homepage_slideshow2.jpg", "https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/pages/router_table5.html", "", ""],
+		["https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/graphics4/homepage_images_2/homepage_slideshow3.jpg", "https://www.mlcswoodworking.com/shopsite_sc/store/html/smarthtml/pages/merle_clamp.html", "", ""]
+	
+	
+		//<--no trailing comma after very last image element!
+	],
+	displaymode: {type:'auto', pause:4500, cycles:0, wraparound:false},
+	persist: false, //remember last viewed slide and recall within same session?
+	fadeduration: 500, //transition duration (milliseconds)
+	descreveal: "ondemand",
+	togglerid: ""
+})
+
+
+
+    $(document).ready(function($) {
+      $('a[rel*=facebox]').facebox() 
+    })
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-8920782-1']);
+  _gaq.push(['_setLocalRemoteServerMode']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+//SYNTAX: tabdropdown.init("menu_id", [integer OR "auto"])
+tabdropdown.init("colortab", 10)
+
+
+<!--
+var Accordion2 = new Spry.Widget.Accordion("LeftNavExpander");
+//-->
+
+ window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'28509540'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;} 
+
+  (function() {
+    var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+    sa.src = ('https:' == document.location.protocol ? 'https://cdn' : 'http://cdn') + '.ywxi.net/js/1.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sa, s);
+  })();
+
+
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: '',
+ecomm_totalvalue: '',
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070357717;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

@@ -1,0 +1,3 @@
+
+var contextJsParameters={contextPath:"",lang:"en_US",uilang:"en_US",siteUuid:"fe177d88-7ac7-44f5-ab1e-1538870ffa62",wcag:true,ckeCfg:""}; var CKEDITOR_BASEPATH="/modules/ckeditor/javascript/"; var scayt_custom_params=new Array(); scayt_custom_params['sLang']='en_US';
+

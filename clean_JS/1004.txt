@@ -1,0 +1,61 @@
+
+$(document).ready(function() {
+
+    $.cookieBar({});
+
+    $('#mgmenu1').universalMegaMenu({
+        menu_effect: 'hover_slide',
+        menu_speed_show: 300,
+        menu_speed_hide: 200,
+        menu_speed_delay: 200,
+        menu_click_outside: true,
+        menubar_trigger : false,
+        menubar_hide : false,
+        menu_responsive: true
+    }); 
+	
+	$('#featured_more').click(function() {
+    location.reload();
+    });
+		
+	$('.page-desc').truncate({max_length: 500});
+	$('.cat-desc').truncate({max_length: 500});
+	
+});  
+    
+
+
+// fix jQuery 1.8.0 and jQuery UI 1.8.22 bug with dialog buttons; https://bugs.jqueryui.com/ticket/8484
+if ( $.attrFn ) { $.attrFn.text = true; }
+
+ 
+        $(document).ready(function(){
+          $.colorbox({inline:true, href:'#entry_page', overlayClose: false, escKey: false, maxWidth:'95%', maxHeight:'95%', fixed:true });
+          $('#cboxClose').remove();
+        }); 
+    
+
+			!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				if(!d.getElementById(id)){
+					js=d.createElement(s);
+					js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js,fjs);
+				}
+			}(document,"script","twitter-wjs");
+		
+
+/* <![CDATA[ */
+var jetpackSlideshowSettings = {"spinner":"https:\/\/www.simplycigars.co.uk\/guide\/wp-content\/plugins\/jetpack\/modules\/shortcodes\/img\/slideshow-loader.gif"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+
+
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.9.2',blog:'108117878',post:'0',tz:'0',srv:'www.simplycigars.co.uk'} ]);
+	_stq.push([ 'clickTrackerInit', '108117878', '0' ]);
+

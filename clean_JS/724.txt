@@ -1,0 +1,164 @@
+
+  var gts = gts || [];
+
+  gts.push(["id", "539592"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_GB"]);
+   gts.push(["google_base_subaccount_id", "1416194"]);
+  gts.push(["google_base_country", "GB"]);
+  gts.push(["google_base_language", "en_GB"]);
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+var google_tag_params = { 
+  ecomm_pagetype: 'home'
+};
+
+
+  $(function () {
+
+    // Init Hero Slider
+    var heroSlider = new Swiper('.hero .swiper-container', {
+		  pagination: '.hero .swiper-pagination',
+      paginationClickable: true,
+      autoplay: 4000,
+      keyboardControl: true,
+      prevButton: '.slider__pagination--btn-prev',
+      nextButton: '.slider__pagination--btn-next',
+      loop: true
+    });
+
+    // Init Product Slider
+    var productsSlider = new Swiper('.js-product-slider .swiper-container', {
+      pagination: '.swiper-pagination',
+      slidesPerView: 4,
+      spaceBetween: 30,
+      keyboardControl: true,
+      prevButton: '.slider__pagination--btn-prev',
+      nextButton: '.slider__pagination--btn-next',
+      breakpoints: {
+        // when window width is <= 480px
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 15
+        },
+        // when window width is <= 640px
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        }
+      }
+    });
+
+    // Make divs with class 'js-equalHeight' equal height
+    $('.js-equalHeight').matchHeight();
+
+  });
+    var $productContainer = $('#products');
+
+    function filterProducts (filter, value) {
+      'price' == filter && 'asc' == value ? $('.product').sort(priceAsc).appendTo($productContainer) : 'price' == filter && 'desc' == value ? $('.product').sort(priceDesc).appendTo($productContainer) :
+	   'name' == filter && 'asc' == value ? $('.product').sort(nameAsc).appendTo($productContainer) : 'name' == filter && 'desc' == value && $('.product').sort(nameDesc).appendTo($productContainer);
+	    'prodid' == filter && 'asc' == value ? $('.product').sort(prodidAsc).appendTo($productContainer) : 'prodid' == filter && 'desc' == value && $('.product').sort(prodidDesc).appendTo($productContainer);
+    }
+
+    function priceAsc (el1, el2) {
+      return $(el2).data('price') < $(el1).data('price') ? 1 : -1;
+    }
+
+    function priceDesc (el1, el2) {
+      return $(el2).data('price') > $(el1).data('price') ? 1 : -1;
+    }
+
+    function nameAsc (el1, el2) {
+      return $(el2).data('name') < $(el1).data('name') ? 1 : -1;
+    }
+
+    function nameDesc (el1, el2) {
+      return $(el2).data('name') > $(el1).data('name') ? 1 : -1;
+    }
+ function prodidAsc (el1, el2) {
+      return $(el2).data('prodid') < $(el1).data('prodid') ? 1 : -1;
+    }
+
+    function prodidDesc (el1, el2) {
+      return $(el2).data('prodid') > $(el1).data('prodid') ? 1 : -1;
+    }
+
+   // Event listener for name filter
+    $('.jsFilterByNew').click(function () {
+
+      // If id = name_asc then filter will sort product in ascending order and vice versa
+      if ($(this).attr('id') === 'prodid_asc') {
+        filterProducts('prodid', 'asc');
+      } else {
+        filterProducts('prodid', 'desc');
+      }
+
+      // Hide filter which we applied and show the opposite filter
+      $('.jsFilterByNew').toggle();
+
+    });
+
+    // Event listener for name filter
+    $('.jsFilterByName').click(function () {
+
+      // If id = name_asc then filter will sort product in ascending order and vice versa
+      if ($(this).attr('id') === 'name_asc') {
+        filterProducts('name', 'asc');
+      } else {
+        filterProducts('name', 'desc');
+      }
+
+      // Hide filter which we applied and show the opposite filter
+      $('.jsFilterByName').toggle();
+
+    });
+
+
+    // Event listener for price filter
+    $('.jsFilterByPrice').click(function () {
+
+      // If id = price_asc then filter will sort product in ascending order and vice versa
+      if ($(this).attr('id') === 'price_asc') {
+        filterProducts('price', 'asc');
+      } else {
+        filterProducts('price', 'desc');
+      }
+
+      // Hide filter which we applied and show the opposite filter
+      $('.jsFilterByPrice').toggle();
+
+    });
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1059889488;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+var google_tag_params = { 
+  ecomm_pagetype: 'home'
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1059889488;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

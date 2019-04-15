@@ -1,0 +1,17 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.morethanpaper.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.morethanpaper.com\/mm5\/json.mvc\u003F";
+var Store_Code = "MTP";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.morethanpaper.com\/search-637578.htm\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+
+var Product_Code = '';
+var Screen = 'SFNT';
+

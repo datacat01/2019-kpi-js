@@ -1,0 +1,44 @@
+
+    $(window).load(function() {  
+      $('.prod-image').matchHeight();
+
+    });
+  
+
+      var userFeed = new Instafeed({
+        get: 'user',
+        userId: 1980116810,
+        accessToken: '1980116810.1677ed0.80c85f9d4c5b42b09fdd8aed9446dfe1',
+        template: '<a class="fancybox desktop-1 tablet-1 mobile-half padded" href="{{image}}" rel="ig" title="{{caption}}"><img class="instagram-image" src="{{image}}" /></a>'
+      });
+      userFeed.run();        
+    
+
+    //initiating jQuery
+    jQuery(function($) {
+      if ($(window).width() >= 741) {
+
+        $(document).ready( function() {
+          //enabling stickUp on the '.navbar-wrapper' class
+          $('nav').stickUp();
+        });
+      }
+
+    });
+  
+
+    //<![CDATA[
+
+    // Including jQuery conditionnally.
+    if (typeof jQuery === 'undefined') {
+      document.write("\u003cscript src=\"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1\/jquery.min.js\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");
+      document.write('<script type="text/javascript">jQuery.noConflict();<\/script>');
+    }
+
+    // Including api.jquery.js conditionnally.
+    if (typeof Shopify.resizeImage === 'undefined') {
+      document.write("\u003cscript src=\"\/\/cdn.shopify.com\/s\/assets\/themes_support\/api.jquery-e94e010e92e659b566dbc436fdfe5242764380e00398907a14955ba301a4749f.js\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");
+    }
+
+    //]]>
+  

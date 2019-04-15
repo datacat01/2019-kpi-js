@@ -1,0 +1,43 @@
+
+//<![CDATA[
+	
+function goToPage(destPage, target){
+	if (typeof(target) != "undefined" && target !== null ) {
+		var win = window.open(destPage,target);
+		win.focus();
+		}
+		else { window.location = destPage ; };
+} 
+	
+function showLogin($ShowHide){
+	//alert($ShowHide);
+	var Loginpopup = document.getElementById('LoginPopup'); 
+	var HiderElement = document.getElementById('ModalDiv');
+	switch($ShowHide){
+		case 'show': Loginpopup.style.visibility = 'visible';
+					 HiderElement.style.visibility = 'visible';	
+		      break;
+			  
+		case 'hide': Loginpopup.style.visibility = 'hidden';
+					 HiderElement.style.visibility = 'hidden';
+		      break;
+	} // close switch($ShowHide)	
+}
+function showRegister($ShowHide){
+	//alert($ShowHide);
+	var Popup = document.getElementById('RegisterPopup'); 
+	var HiderElement = document.getElementById('ModalDiv');
+	switch($ShowHide){
+		case 'show': Popup.style.visibility = 'visible';
+					 HiderElement.style.visibility = 'visible';	
+		      break;
+			  
+		case 'hide': Popup.style.visibility = 'hidden';
+					 HiderElement.style.visibility = 'hidden';
+		      break;
+	} // close switch($ShowHide)	
+}
+	
+	
+//]]>
+

@@ -1,0 +1,15 @@
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.636078a7aa3f41ffadd9e940df8b4d0a');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".funeralprogram-site.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"c50f5c8723a354a6ecd2be387c71e20c66260a12","type":"ANONYMOUS","visit_id":"01dbca15-b099-42ea-bf7c-2ba3d55d16c6","visitor_id":"d5303269-f800-48a0-ba68-77115764eb55"},"referer":{"url":""},"request":{"url":"https:\/\/www.funeralprogram-site.com\/"}}, '', 3227898, "other", {"customer":{"id":"anonymous"}}, '01dbca15-b099-42ea-bf7c-2ba3d55d16c6', 'd5303269-f800-48a0-ba68-77115764eb55');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"05dd6aad2e91967c54dd574ef5d1a55a0d5c67ca2e26939f1588cb6110cc5516"};
+

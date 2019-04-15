@@ -1,0 +1,113 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.decorative-urns.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://decorative-urns.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+	var klevu_sessionId = 'e644e6aa03d5479b3f5dba69d83c9fff';
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.2.17';
+    		(function () {
+			// Remove Magento event observers from the search box
+			// Redirect to klevu js page
+			for( i = 0, len = allInputs.length; i < len; i++ ){
+				if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+					if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+						var search_input = allInputs[i];
+						search_input.stopObserving('click');
+						search_input.stopObserving('keydown');
+						search_input.form.action='https://decorative-urns.com/search/' ;//?q="+search_input.value;
+						search_input.form.observe('submit', function (e) {
+							//if(search_input.value.length!= 0){
+								//Event.stop(e);
+								//return false;
+							//}
+						});
+					}
+				}
+			}
+			
+		})();
+		 var klevu_storeLandingPageUrl = 'https://decorative-urns.com/search/';
+		 var klevu_showQuickSearchOnEnter=false;
+    		// call store js
+		var klevu_apiKey = 'klevu-14833738881205005',
+			searchTextBoxName = 'search',
+			klevu_lang = 'en',
+			klevu_result_top_margin = '',
+			klevu_result_left_margin = '';
+		(function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+    var klevu_cms_module_enabled=true;
+
+
+// Enable cms for klevu template
+        var klevu_cmsSearchEnabled = false;
+          
+
+
+    var imgURL = "//googleads.g.doubleclick.net/pagead/viewthroughconversion/1042921874/?value=0&amp;guid=ON&amp;script=0&data=" + encodeURIComponent("ecomm_pagetype=home;ecomm_prodid=;ecomm_pvalue=");
+    document.getElementById('dRC').innerHTML = "<img src=" + imgURL + " style='visibility:hidden;' />";
+
+
+    var _qevents = _qevents || [];
+
+    (function() {
+        var elem = document.createElement('script');
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem, scpt);
+    })();
+
+    _qevents.push({
+        qacct:"p-qj_mgaTCDYpG8"
+    });
+
+
+    (function() {
+        var referrer, search_term, klevu_search_product_tracking;
+        referrer = document.referrer;
+        search_term = referrer.toQueryParams().q;
+        if (referrer.indexOf('content/index') > -1 && search_term) {
+            klevu_search_product_tracking = {"klevu_apiKey":"klevu-14833738881205005","klevu_term":"","klevu_type":"clicked","klevu_productId":"107","klevu_productName":"Cremation Urns - Beautiful Urns for Ashes | Une Belle Vie","klevu_productUrl":"home","Klevu_typeOfRecord":"KLEVU_CMS"};
+            klevu_search_product_tracking.klevu_term = search_term;
+
+            // Send the ajax request
+            new Ajax.Request('//stats.klevu.com/analytics/productTracking', {
+                method: "GET",
+                parameters: klevu_search_product_tracking,
+
+                // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                }
+            });
+        }
+    })();
+

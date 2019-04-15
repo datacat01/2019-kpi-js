@@ -1,0 +1,91 @@
+
+        // set neustar to default value so that we don't break Optimizely tests in there is an issue with callback
+        window.neustar = false;
+        //callback function – adds response as a global variable
+        function neustar_response(nue_resp) {
+            window.neustar = nue_resp;
+        }
+
+        var nue = document.createElement("script");
+        nue.src = 'https://aa.agkn.com/adscores/g.json?sid=9212284698&page=' + window.encodeURIComponent(window.location.href);
+        document.head.appendChild(nue);
+    
+
+            
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://exmgr.cricketwireless.com/ckmain.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WBVJR6');
+            
+    
+
+        
+        CONST_GA_CODE = 'UA-45477502-1';
+
+        
+
+        
+
+
+        (function() {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(
+                    document.createTextNode("@-ms-viewport{width:auto!important}")
+                );
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+        })();
+
+
+    
+
+    siteRoot = "";
+    contextPath = "";
+
+
+    if (window.location.href.indexOf('/amazon-prime/') > -1 || cricket.utilities.urlCheck('service') === 'amazon-prime') {
+        $('body').addClass('amazon-prime-container');
+        if (window.location.pathname.indexOf('dashboard') > -1) {
+            $('body').addClass('amazon-prime-dashboard-container');
+        }
+    }
+
+
+    if (window.location.href.indexOf('/amazon-prime/') > -1 || cricket.utilities.urlCheck('service') === 'amazon-prime') {
+        $('#cricketFooterNav').remove();
+    } else {
+        $('#amazonPrimeFooterNav').remove();
+    }
+
+
+    /* <![CDATA[ */
+    var google_conversion_id = 946590707;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+
+
+
+//<![CDATA[
+(function () {
+    var uz = document.createElement('script');
+    uz.type = 'text/javascript';
+    uz.async = true;
+    uz.charset = 'utf-8';
+    uz.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn5.userzoom.com/files/js/QzUwNTdUNyAg.js?t=uz_til&cuid=19AB8A6E6BCDE41180C90050569444FB';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(uz, s);
+})();
+//]]>
+
+    //<![CDATA[ 
+    var scRec = document.createElement('SCRIPT');
+    scRec.type = 'text/javascript';
+    scRec.src = "//d2oh4tlt9mrke9.cloudfront.net/Record/js/sessioncam.recorder.js"
+    setTimeout(function() {
+        document.getElementsByTagName('head')[0].appendChild(scRec);
+    }, 2500);
+    //]]>
+
+
+    var cachebuster = Math.floor(Math.random() * 9000000000);
+    $('.footer').append('<iframe width="1" height="1" frameborder="0" style="display:none" src="https://d.agkn.com/iframe/6043/?che=' + cachebuster + '&type=1001"></iframe>');
+

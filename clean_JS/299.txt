@@ -1,0 +1,788 @@
+
+if((screen.width < 1280) && (document.cookie.indexOf('screenwidth=1024') < 0))
+{
+	document.cookie = 'screenwidth=1024; path=/; domain=.blu-ray.com';
+	if(document.cookie.indexOf('screenwidth=1024') >= 0 && navigator.userAgent.indexOf('Google Page Speed') < 0)
+		window.location.reload();
+}
+else if((screen.width >= 1280) && (document.cookie.indexOf('screenwidth=1024') >= 0))
+{
+	document.cookie = 'screenwidth=1280; path=/; domain=.blu-ray.com';
+	if(document.cookie.indexOf('screenwidth=1280') >= 0 && navigator.userAgent.indexOf('Google Page Speed') < 0)
+		window.location.reload();
+}
+		
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12543580-1', 'auto');
+  ga('send', 'pageview');
+
+
+		var previd = '';
+		function highlightSection(currid, currsection, focus)
+		{
+			maxpos = 0;
+			var search = $('#search');
+			var section = $('#section');
+
+			if(currid == previd)
+				return;
+			$('#' + currid).css('color', 'white');
+
+			if(previd != '')
+			{
+				$('#' + previd).css('color', '#3070b0');
+				$('#' + previd).css('backgroundColor', '');
+				$('#' + previd).css('border', '');
+			}
+
+			previd = currid;
+
+			section.val(currsection);
+			if(currid == 'section_bluraymovies' || currid == 'section_dvdmovies' || currid == 'section_uvmovies' || currid == 'section_mamovies' || currid == 'section_aivmovies' || currid == 'section_itunesmovies' || currid == 'section_3d' || currid == 'section_4k' || currid == 'section_games')
+			{
+				$('#search_locale').css('display', 'block');
+				$('#search_clear').css('left', '452px');
+			}
+			else
+			{
+				$('#search_locale').css('display', 'none');
+				$('#search_clear').css('left', '488px');
+			}
+
+			if(focus)
+				search.focus();
+
+			document.cookie = 'search_section='+currsection+'; path=/; domain=.blu-ray.com';
+		}
+		
+$(window).load(function() { $('#load21913452274994').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load21913452274994').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/global-transparent.png').dequeue() }); });
+$(window).load(function() { $('#load79287267892800').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load79287267892800').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/US.png').dequeue() }); });
+$(window).load(function() { $('#load74045078829495').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load74045078829495').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/UK.png').dequeue() }); });
+$(window).load(function() { $('#load40150083431831').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load40150083431831').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/CA.png').dequeue() }); });
+$(window).load(function() { $('#load83292963066430').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load83292963066430').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/AU.png').dequeue() }); });
+$(window).load(function() { $('#load54490187734737').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load54490187734737').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/DE.png').dequeue() }); });
+$(window).load(function() { $('#load62206471866282').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load62206471866282').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/FR.png').dequeue() }); });
+$(window).load(function() { $('#load10670518077974').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load10670518077974').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/ES.png').dequeue() }); });
+$(window).load(function() { $('#load49681088836261').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load49681088836261').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/IT.png').dequeue() }); });
+$(window).load(function() { $('#load15382954739059').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load15382954739059').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/AR.png').dequeue() }); });
+$(window).load(function() { $('#load90684422989317').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load90684422989317').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/AT.png').dequeue() }); });
+$(window).load(function() { $('#load94036891612317').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load94036891612317').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/BE.png').dequeue() }); });
+$(window).load(function() { $('#load59790506443069').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load59790506443069').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/BR.png').dequeue() }); });
+$(window).load(function() { $('#load28570158585836').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load28570158585836').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/BG.png').dequeue() }); });
+$(window).load(function() { $('#load97434888860258').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load97434888860258').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/CL.png').dequeue() }); });
+$(window).load(function() { $('#load41442721934834').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load41442721934834').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/CN.png').dequeue() }); });
+$(window).load(function() { $('#load11352532072998').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load11352532072998').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/CO.png').dequeue() }); });
+$(window).load(function() { $('#load88276347539760').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load88276347539760').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/CZ.png').dequeue() }); });
+$(window).load(function() { $('#load99024942842643').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load99024942842643').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/DK.png').dequeue() }); });
+$(window).load(function() { $('#load99715918231791').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load99715918231791').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/FI.png').dequeue() }); });
+$(window).load(function() { $('#load49090735420610').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load49090735420610').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/GR.png').dequeue() }); });
+$(window).load(function() { $('#load59665281129721').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load59665281129721').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/NL.png').dequeue() }); });
+$(window).load(function() { $('#load62868926033579').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load62868926033579').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/HK.png').dequeue() }); });
+$(window).load(function() { $('#load82076961255001').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load82076961255001').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/HU.png').dequeue() }); });
+$(window).load(function() { $('#load48698408745991').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load48698408745991').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/IS.png').dequeue() }); });
+$(window).load(function() { $('#load49940603938283').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load49940603938283').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/ID.png').dequeue() }); });
+$(window).load(function() { $('#load17353084397749').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load17353084397749').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/IE.png').dequeue() }); });
+$(window).load(function() { $('#load45506016714359').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load45506016714359').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/IL.png').dequeue() }); });
+$(window).load(function() { $('#load98408196407617').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load98408196407617').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/IN.png').dequeue() }); });
+$(window).load(function() { $('#load53001959584308').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load53001959584308').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/JP.png').dequeue() }); });
+$(window).load(function() { $('#load52678758444468').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load52678758444468').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/MY.png').dequeue() }); });
+$(window).load(function() { $('#load15191425403128').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load15191425403128').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/MX.png').dequeue() }); });
+$(window).load(function() { $('#load95174679346777').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load95174679346777').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/NZ.png').dequeue() }); });
+$(window).load(function() { $('#load29428899419961').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load29428899419961').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/NO.png').dequeue() }); });
+$(window).load(function() { $('#load21894202914481').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load21894202914481').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/PH.png').dequeue() }); });
+$(window).load(function() { $('#load76517526098494').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load76517526098494').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/PL.png').dequeue() }); });
+$(window).load(function() { $('#load73350923618280').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load73350923618280').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/PT.png').dequeue() }); });
+$(window).load(function() { $('#load62282163621985').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load62282163621985').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/RO.png').dequeue() }); });
+$(window).load(function() { $('#load86518604435912').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load86518604435912').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/RU.png').dequeue() }); });
+$(window).load(function() { $('#load38769863521701').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load38769863521701').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/SG.png').dequeue() }); });
+$(window).load(function() { $('#load31819047871046').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load31819047871046').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/ZA.png').dequeue() }); });
+$(window).load(function() { $('#load64599853917213').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load64599853917213').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/KR.png').dequeue() }); });
+$(window).load(function() { $('#load22687961010586').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load22687961010586').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/SE.png').dequeue() }); });
+$(window).load(function() { $('#load96315722109615').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load96315722109615').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/CH.png').dequeue() }); });
+$(window).load(function() { $('#load64182034931768').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load64182034931768').delay(500).queue(function() { $(this).attr('src', 'https://images4.static-bluray.com/flags/TW.png').dequeue() }); });
+$(window).load(function() { $('#load16939241686079').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load16939241686079').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/TH.png').dequeue() }); });
+$(window).load(function() { $('#load33762362213066').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load33762362213066').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/TR.png').dequeue() }); });
+$(window).load(function() { $('#load60892082893703').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load60892082893703').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/UA.png').dequeue() }); });
+$(window).load(function() { $('#load15598448032098').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load15598448032098').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/AE.png').dequeue() }); });
+
+		$(document).ready(function()
+		{
+			window.section = $('#section');
+			window.quicksearchcountry = $('#quicksearchcountry');
+			window.countrycode = $('#countrycode');
+			window.search = $('#search');
+			window.search_auto_complete = $('#search_auto_complete');
+			window.search_preview = $('#search_preview');
+			window.search_clear = $('#search_clear');
+			window.search_locale = $('#search_locale');
+			window.search_locale_list = $('#search_locale_list');
+			window.previewthumb = $('#previewthumb');
+			window.overallrating = $('#overallrating');
+
+			window.addcollection = $('#addcollection');
+			window.addcollectionlink = $('#addcollectionlink');
+			window.addwishlist = $('#addwishlist');
+			window.addwishlistlink = $('#addwishlistlink');
+			window.removecollection = $('#removecollection');
+			window.removecollectionlink = $('#removecollectionlink');
+			window.removewishlist = $('#removewishlist');
+			window.removewishlistlink = $('#removewishlistlink');
+
+			window.dvd_addcollection = $('#dvd_addcollection');
+			window.dvd_addcollectionlink = $('#dvd_addcollectionlink');
+			window.dvd_addwishlist = $('#dvd_addwishlist');
+			window.dvd_addwishlistlink = $('#dvd_addwishlistlink');
+			window.dvd_removecollection = $('#dvd_removecollection');
+			window.dvd_removecollectionlink = $('#dvd_removecollectionlink');
+			window.dvd_removewishlist = $('#dvd_removewishlist');
+			window.dvd_removewishlistlink = $('#dvd_removewishlistlink');
+
+			window.uv_addcollection = $('#uv_addcollection');
+			window.uv_addcollectionlink = $('#uv_addcollectionlink');
+			window.uv_addwishlist = $('#uv_addwishlist');
+			window.uv_addwishlistlink = $('#uv_addwishlistlink');
+			window.uv_removecollection = $('#uv_removecollection');
+			window.uv_removecollectionlink = $('#uv_removecollectionlink');
+			window.uv_removewishlist = $('#uv_removewishlist');
+			window.uv_removewishlistlink = $('#uv_removewishlistlink');
+
+			window.ma_addcollection = $('#ma_addcollection');
+			window.ma_addcollectionlink = $('#ma_addcollectionlink');
+			window.ma_addwishlist = $('#ma_addwishlist');
+			window.ma_addwishlistlink = $('#ma_addwishlistlink');
+			window.ma_removecollection = $('#ma_removecollection');
+			window.ma_removecollectionlink = $('#ma_removecollectionlink');
+			window.ma_removewishlist = $('#ma_removewishlist');
+			window.ma_removewishlistlink = $('#ma_removewishlistlink');
+
+			window.aiv_addcollection = $('#aiv_addcollection');
+			window.aiv_addcollectionlink = $('#aiv_addcollectionlink');
+			window.aiv_addwishlist = $('#aiv_addwishlist');
+			window.aiv_addwishlistlink = $('#aiv_addwishlistlink');
+			window.aiv_removecollection = $('#aiv_removecollection');
+			window.aiv_removecollectionlink = $('#aiv_removecollectionlink');
+			window.aiv_removewishlist = $('#aiv_removewishlist');
+			window.aiv_removewishlistlink = $('#aiv_removewishlistlink');
+
+			window.itunes_addcollection = $('#itunes_addcollection');
+			window.itunes_addcollectionlink = $('#itunes_addcollectionlink');
+			window.itunes_addwishlist = $('#itunes_addwishlist');
+			window.itunes_addwishlistlink = $('#itunes_addwishlistlink');
+			window.itunes_removecollection = $('#itunes_removecollection');
+			window.itunes_removecollectionlink = $('#itunes_removecollectionlink');
+			window.itunes_removewishlist = $('#itunes_removewishlist');
+			window.itunes_removewishlistlink = $('#itunes_removewishlistlink');
+
+			window.games_addcollection = $('#games_addcollection');
+			window.games_addcollectionlink = $('#games_addcollectionlink');
+			window.games_addwishlist = $('#games_addwishlist');
+			window.games_addwishlistlink = $('#games_addwishlistlink');
+			window.games_removecollection = $('#games_removecollection');
+			window.games_removecollectionlink = $('#games_removecollectionlink');
+			window.games_removewishlist = $('#games_removewishlist');
+			window.games_removewishlistlink = $('#games_removewishlistlink');
+
+			window.theatrical_addcollection = $('#theatrical_addcollection');
+			window.theatrical_addcollectionlink = $('#theatrical_addcollectionlink');
+			window.theatrical_removecollection = $('#theatrical_removecollection');
+			window.theatrical_removecollectionlink = $('#theatrical_removecollectionlink');
+
+			window.addother = $('#addother');
+
+			window.localetimer = 0;
+			search_locale.bind('mouseenter', function(e) { clearTimeout(localetimer); document.getElementById('search_locale_list').style.display = 'block' });
+			search_locale.bind('mouseleave', function(e) { localetimer = setTimeout("document.getElementById('search_locale_list').style.display = 'none'", 500) });
+			search_locale_list.bind('mouseenter', function(e) { clearTimeout(localetimer) });
+highlightSection('section_bluraymovies', 'bluraymovies', false);
+		});
+
+		function usepreload()
+		{
+			if(navigator.userAgent.match(/Kindle/i))
+				return(true);
+
+			if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/Android/i) && navigator.userAgent.match(/Mobile/i)) || navigator.userAgent.match(/Mobile Safari/i))
+				return(false);
+
+			return(true);
+		}
+
+		function ismobile()
+		{
+//			if(navigator.userAgent.match(/Kindle/i))
+//				return(false);
+
+//			if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/Android/i) && navigator.userAgent.match(/Mobile/i)) || navigator.userAgent.match(/Mobile Safari/i))
+//				return(true);
+
+			return(false);
+		}
+
+		var pos = -1, lastpos = -1, maxpos = -1;
+		function highlightSearchOption(newpos)
+		{
+			if(pos == newpos)
+				return;
+
+			$('#match' + pos).removeClass('selected');
+
+			if(newpos < -1)
+				newpos = maxpos-1;
+			else if(newpos >= maxpos)
+				newpos = -1;
+
+			if((newpos >= 0) && (newpos < maxpos))
+				$('#match' + newpos).addClass('selected');
+
+			lastpos = pos;
+			pos = newpos;
+			previewSearchOption();
+		}
+
+		function hideAll()
+		{
+			addother.css('display', 'none');
+
+			addcollection.css('display', 'none');
+			addwishlist.css('display', 'none');
+			removecollection.css('display', 'none');
+			removewishlist.css('display', 'none');
+
+			dvd_addcollection.css('display', 'none');
+			dvd_addwishlist.css('display', 'none');
+			dvd_removecollection.css('display', 'none');
+			dvd_removewishlist.css('display', 'none');
+
+			uv_addcollection.css('display', 'none');
+			uv_addwishlist.css('display', 'none');
+			uv_removecollection.css('display', 'none');
+			uv_removewishlist.css('display', 'none');
+
+			ma_addcollection.css('display', 'none');
+			ma_addwishlist.css('display', 'none');
+			ma_removecollection.css('display', 'none');
+			ma_removewishlist.css('display', 'none');
+
+			aiv_addcollection.css('display', 'none');
+			aiv_addwishlist.css('display', 'none');
+			aiv_removecollection.css('display', 'none');
+			aiv_removewishlist.css('display', 'none');
+
+			itunes_addcollection.css('display', 'none');
+			itunes_addwishlist.css('display', 'none');
+			itunes_removewishlist.css('display', 'none');
+			itunes_removecollection.css('display', 'none');
+
+			theatrical_addcollection.css('display', 'none');
+			theatrical_removecollection.css('display', 'none');
+
+			games_addcollection.css('display', 'none');
+			games_addwishlist.css('display', 'none');
+			games_removecollection.css('display', 'none');
+			games_removewishlist.css('display', 'none');
+		}
+
+		var preload1 = new Image();
+		var preload2 = new Image();
+		function previewSearchOption()
+		{
+			if(pos < 0)
+				imagepos = 0;
+			else
+				imagepos = pos;
+
+			if(ismobile())
+			{
+				search_preview.css('display', 'none');
+				return;
+			}
+
+			if(section.val() == 'theatrical' || section.val() == 'castandcrew' || section.val() == 'mamovies' || section.val() == 'uvmovies' || section.val() == 'aivmovies' || section.val() == 'itunesmovies' || section.val() == 'games')
+			{
+				overallrating.html('<div class="product_rating" style="margin-top: -2px; margin-bottom: 6px"><div class="average_rating" style="width:' + Math.ceil(ratings[imagepos] * 10) + '%"></div></div>');
+			}
+			else
+			{
+				if(ratings[imagepos] != '')
+					overallrating.html('<img src="https://www.blu-ray.com/images/rating/b' + ratings[imagepos] + '.jpg" width="69" height="13" border="0" style="vertical-align: text-bottom; margin-bottom: 5px">');
+				else
+					overallrating.html('<img src="https://www.blu-ray.com/images/rating/b0.jpg" width="69" height="13" border="0" style="vertical-align: text-bottom; margin-bottom: 5px">');
+			}
+
+			hideAll();
+			if(collections[imagepos] == 1)
+				removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 5)
+				removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 4508 || collections[imagepos] == 23462 || collections[imagepos] == 39389 || collections[imagepos] == 39395 || collections[imagepos] == 42568 || collections[imagepos] == 47912 || collections[imagepos] == 68420 || collections[imagepos] == 68574 || collections[imagepos] == 68578 || collections[imagepos] == 68582 || collections[imagepos] == 121445)
+				games_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 4510 || collections[imagepos] == 23464 || collections[imagepos] == 39391 || collections[imagepos] == 39397 || collections[imagepos] == 42570 || collections[imagepos] == 47914 || collections[imagepos] == 68422 || collections[imagepos] == 68575 || collections[imagepos] == 68579 || collections[imagepos] == 68584 || collections[imagepos] == 121446)
+				games_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 16809)
+				dvd_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 16812)
+				dvd_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 11138)
+				theatrical_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 36391)
+				uv_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 36390)
+				uv_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 108391)
+				ma_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 108390)
+				ma_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 46076)
+				aiv_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 40677)
+				aiv_removecollection.css('display', 'inline');
+			else if(collections[imagepos] == 48210)
+				itunes_removewishlist.css('display', 'inline');
+			else if(collections[imagepos] == 48209)
+				itunes_removecollection.css('display', 'inline');
+			else if(section.val() == 'castandcrew')
+				;
+			else if(section.val() == 'theatrical')
+				theatrical_addcollection.css('display', 'inline');
+			else if(section.val() == 'dvdmovies')
+			{
+				dvd_addcollection.css('display', 'inline');
+				dvd_addwishlist.css('display', 'inline');
+			}
+			else if(section.val() == 'uvmovies')
+			{
+				uv_addcollection.css('display', 'inline');
+				uv_addwishlist.css('display', 'inline');
+			}
+			else if(section.val() == 'mamovies')
+			{
+				ma_addcollection.css('display', 'inline');
+				ma_addwishlist.css('display', 'inline');
+			}
+			else if(section.val() == 'aivmovies')
+			{
+				aiv_addcollection.css('display', 'inline');
+				aiv_addwishlist.css('display', 'inline');
+			}
+			else if(section.val() == 'itunesmovies')
+			{
+				itunes_addcollection.css('display', 'inline');
+				itunes_addwishlist.css('display', 'inline');
+			}
+			else if(section.val() == 'games')
+			{
+				games_addcollection.css('display', 'inline');
+				games_addwishlist.css('display', 'inline');
+			}
+			else
+			{
+				addcollection.css('display', 'inline');
+				addwishlist.css('display', 'inline');
+			}
+
+			if(images[imagepos] != '')
+			{
+				previewthumb.attr('src', images[imagepos]);
+				previewthumb.removeAttr('width');
+				previewthumb.removeAttr('height');
+			}
+			else
+			{
+				previewthumb.attr('src', 'https://www.blu-ray.com/images/nocover_medium.gif');
+				previewthumb.attr('width', '156');
+				previewthumb.attr('height', '201');
+			}
+
+			if(usepreload())
+			{
+				if(pos == (lastpos + 1))
+				{
+					if(images[imagepos + 1] != undefined)
+					{
+						if(images[imagepos + 1] != '')
+							preload1.src = images[imagepos + 1];
+						else
+							preload1.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+
+					if(images[imagepos + 2] != undefined)
+					{
+						if(images[imagepos + 2] != '')
+							preload2.src = images[imagepos + 2];
+						else
+							preload2.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+				}
+				else if(pos == (lastpos - 1))
+				{
+					if(images[imagepos - 1] != undefined)
+					{
+						if(images[imagepos - 1] != '')
+							preload2.src = images[imagepos - 1];
+						else
+							preload2.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+
+					if(images[imagepos - 2] != undefined)
+					{
+						if(images[imagepos - 2] != '')
+							preload2.src = images[imagepos - 2];
+						else
+							preload2.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+				}
+				else
+				{
+					if(images[imagepos + 1] != undefined)
+					{
+						if(images[imagepos + 1] != '')
+							preload2.src = images[imagepos + 1];
+						else
+							preload2.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+
+					if(images[imagepos - 1] != undefined)
+					{
+						if(images[imagepos - 1] != '')
+							preload2.src = images[imagepos - 1];
+						else
+							preload2.src = 'https://www.blu-ray.com/images/nocover_medium.gif';
+					}
+				}
+			}
+		}
+
+		var retry = 0;
+		function getSearchOption()
+		{
+			if(retry > 10)
+				return;
+			if((pos >= 0) && (pos < maxpos))
+			{
+				window.location = urls[pos];
+			}
+			else
+			{
+				$('#quicksearch_keyword').val(search.val());
+				$('#quicksearch_country').val(quicksearchcountry.val());
+				$('#quicksearch_form').submit();
+			}
+		}
+
+		function tabSearchOption()
+		{
+			if(retry > 10)
+				return;
+
+			if(seqrecv < seqsent)
+			{
+				retry++;
+				setTimeout('tabSearchOption()', 100);
+				return;
+			}
+
+			if(pos > 0)
+				window.location = urls[pos];
+			else
+				window.location = urls[0];
+		}
+
+		var xhr = null;
+		var seqsent = 0;
+		var seqrecv = 0;
+		var aborts = 0;
+		function abortSearch()
+		{
+		}
+
+		var nosearch = 0;
+		function searchKeyword()
+		{
+			if(section.val() != 'bluraymovies' && section.val() != '3d' && section.val() != '4k' && section.val() != 'dvdmovies' && section.val() != 'uvmovies' && section.val() != 'mamovies' && section.val() != 'aivmovies' && section.val() != 'itunesmovies' && section.val() != 'theatrical' && section.val() != 'castandcrew' && section.val() != 'games')
+				return;
+
+			if(search.val() != '')
+				search_clear.css('display', 'block');
+			else
+				search_clear.css('display', 'none');
+
+			var seq = ++seqsent;
+			xhr = $.post('https://www.blu-ray.com/search/quicksearch.php', { section: section.val(), userid: "-1", country: quicksearchcountry.val(), keyword: search.val() }, function(data) { if(data != '') { if(seq > seqrecv) { seqrecv = seq; highlightSearchOption(-1); search_auto_complete.html(data); search_auto_complete.css('display', 'block'); if(!ismobile() && !nosearch) { search_preview.css('display', 'block'); }} } else { maxpos = -1; search_auto_complete.css('display', 'none'); search_preview.css('display', 'none') }});
+		}
+
+		$(document).ready(function()
+		{
+			window.hovertime = 0;
+			window.blurtimer = null;
+			window.cancelBlur = false;	// ie fix
+			window.cancelKeypress = false; // opera fix
+
+			search.bind('keydown', function(e) { code = e.keyCode ? e.keyCode : e.which; cancelKeypress = false; if(code.toString() == 8 || code.toString() == 32 || code.toString() > 40) { abortSearch(); setTimeout('searchKeyword()', 0) } else if(code.toString() == 9) { tabSearchOption(); } else if(code.toString() == 27) { setTimeout(function() { highlightSearchOption(-1); $('#search_auto_complete').css('display', 'none'); search_preview.css('display', 'none'); search.blur(); }); } else if(code.toString() == 13) { getSearchOption(); e.preventDefault(); cancelKeypress = true; return false; } else if(code.toString() == 38) { highlightSearchOption(pos-1); e.preventDefault(); cancelKeypress = true; return false } else if(code.toString() == 40) { highlightSearchOption(pos+1); e.preventDefault(); return false };});
+			search.bind('keypress', function(e) { if(cancelKeypress) { return false; }});
+			search.bind('focus', function() { setTimeout(function() { if(maxpos > 0) { $('#search_auto_complete').css('display', 'block'); if(!ismobile()) { search_preview.css('display', 'block'); }} else { searchKeyword() } }, 100); });
+			// catch link clicks (uses clicktime and hovertime to allow hovering on an iPad)
+			$(document).bind('mousedown', function(e) { var clicktime = (new Date).getTime(); if(e.target.id.slice(0,5) == 'match') { if((clicktime - hovertime) > 50 || (lastpos < 0 && pos == 0)) { getSearchOption(); return false; }} else if(e.target.id == 'search' || e.target.id == 'country_us' || e.target.id == 'country_uk' || e.target.id == 'country_ca' || e.target.id == 'country_de' || e.target.id == 'country_fr' || e.target.id == 'country_au' || e.target.id == 'country_hk' || e.target.id == 'addcollectionlink' || e.target.id == 'addwishlistlink' || e.target.id == 'dvd_addcollectionlink' || e.target.id == 'dvd_addwishlistlink' || e.target.id == 'uv_addcollectionlink' || e.target.id == 'uv_addwishlistlink' || e.target.id == 'ma_addcollectionlink' || e.target.id == 'ma_addwishlistlink' || e.target.id == 'aiv_addcollectionlink' || e.target.id == 'aiv_addwishlistlink' || e.target.id == 'itunes_addcollectionlink' || e.target.id == 'itunes_addwishlistlink' || e.target.id == 'games_addcollectionlink' || e.target.id == 'games_addwishlistlink' || e.target.id == 'theatrical_addcollectionlink' || e.target.id == 'removecollectionlink' || e.target.id == 'removewishlistlink' || e.target.id == 'dvd_removecollectionlink' || e.target.id == 'dvd_removewishlistlink' || e.target.id == 'uv_removecollectionlink' || e.target.id == 'uv_removewishlistlink' || e.target.id == 'ma_removecollectionlink' || e.target.id == 'ma_removewishlistlink' || e.target.id == 'games_removecollectionlink' || e.target.id == 'games_removewishlistlink' || e.target.id == 'aiv_removecollectionlink' || e.target.id == 'aiv_removewishlistlink' || e.target.id == 'itunes_removecollectionlink' || e.target.id == 'itunes_removewishlistlink' || e.target.id == 'theatrical_removecollectionlink') { e.returnValue = false; } else { /* $('#debug').append('node: ' + e.target.nodeName + ', id: ' + e.target.id + '<br>'); */ setTimeout(function() { highlightSearchOption(-1); search_auto_complete.css('display', 'none'); search_preview.css('display', 'none'); }, 100); }});
+			$('#previewthumb').bind('mousedown', function(e) { if(pos < 0) pos = 0; getSearchOption(); return false; });
+
+			window.userid = -1;
+
+			if(userid > 0)
+			{
+				addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=7&addeddevice=2&typeid=1&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '1'; addcollection.css('display', 'none'); addwishlist.css('display', 'none'); addother.css('display', 'none'); removecollection.css('display', 'inline'); removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=7&addeddevice=2&typeid=5&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '5'; addcollection.css('display', 'none'); addwishlist.css('display', 'none'); addother.css('display', 'none'); removecollection.css('display', 'none'); removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=7&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; removecollection.css('display', 'none'); removewishlist.css('display', 'none'); addcollection.css('display', 'inline'); addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=7&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; removecollection.css('display', 'none'); removewishlist.css('display', 'none'); addcollection.css('display', 'inline'); addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				dvd_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=21&addeddevice=2&typeid=16809&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '16809'; dvd_addcollection.css('display', 'none'); dvd_addwishlist.css('display', 'none'); addother.css('display', 'none'); dvd_removecollection.css('display', 'inline'); dvd_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				dvd_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=21&addeddevice=2&typeid=16812&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '16812'; dvd_addcollection.css('display', 'none'); dvd_addwishlist.css('display', 'none'); addother.css('display', 'none'); dvd_removecollection.css('display', 'none'); dvd_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				dvd_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=21&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; dvd_removecollection.css('display', 'none'); dvd_removewishlist.css('display', 'none'); dvd_addcollection.css('display', 'inline'); dvd_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				dvd_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=21&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; dvd_removecollection.css('display', 'none'); dvd_removewishlist.css('display', 'none'); dvd_addcollection.css('display', 'inline'); dvd_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				uv_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=24&addeddevice=2&typeid=36390&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '36390'; uv_addcollection.css('display', 'none'); uv_addwishlist.css('display', 'none'); addother.css('display', 'none'); uv_removecollection.css('display', 'inline'); uv_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				uv_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=24&addeddevice=2&typeid=36391&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '36391'; uv_addcollection.css('display', 'none'); uv_addwishlist.css('display', 'none'); addother.css('display', 'none'); uv_removecollection.css('display', 'none'); uv_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				uv_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=24&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; uv_removecollection.css('display', 'none'); uv_removewishlist.css('display', 'none'); uv_addcollection.css('display', 'inline'); uv_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				uv_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=24&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; uv_removecollection.css('display', 'none'); uv_removewishlist.css('display', 'none'); uv_addcollection.css('display', 'inline'); uv_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				ma_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=41&addeddevice=2&typeid=108390&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '108390'; ma_addcollection.css('display', 'none'); ma_addwishlist.css('display', 'none'); addother.css('display', 'none'); ma_removecollection.css('display', 'inline'); ma_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				ma_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=41&addeddevice=2&typeid=108391&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '108391'; ma_addcollection.css('display', 'none'); ma_addwishlist.css('display', 'none'); addother.css('display', 'none'); ma_removecollection.css('display', 'none'); ma_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				ma_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=41&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; ma_removecollection.css('display', 'none'); ma_removewishlist.css('display', 'none'); ma_addcollection.css('display', 'inline'); ma_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				ma_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=41&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; ma_removecollection.css('display', 'none'); ma_removewishlist.css('display', 'none'); ma_addcollection.css('display', 'inline'); ma_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				aiv_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=28&addeddevice=2&typeid=40677&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '40677'; aiv_addcollection.css('display', 'none'); aiv_addwishlist.css('display', 'none'); addother.css('display', 'none'); aiv_removecollection.css('display', 'inline'); aiv_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				aiv_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=28&addeddevice=2&typeid=46076&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '46076'; aiv_addcollection.css('display', 'none'); aiv_addwishlist.css('display', 'none'); addother.css('display', 'none'); aiv_removecollection.css('display', 'none'); aiv_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				aiv_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=28&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; aiv_removecollection.css('display', 'none'); aiv_removewishlist.css('display', 'none'); aiv_addcollection.css('display', 'inline'); aiv_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				aiv_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=28&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; aiv_removecollection.css('display', 'none'); aiv_removewishlist.css('display', 'none'); aiv_addcollection.css('display', 'inline'); aiv_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				itunes_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=31&addeddevice=2&typeid=48209&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '48209'; itunes_addcollection.css('display', 'none'); itunes_addwishlist.css('display', 'none'); addother.css('display', 'none'); itunes_removecollection.css('display', 'inline'); itunes_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				itunes_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=31&addeddevice=2&typeid=48210&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '48210'; itunes_addcollection.css('display', 'none'); itunes_addwishlist.css('display', 'none'); addother.css('display', 'none'); itunes_removecollection.css('display', 'none'); itunes_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				itunes_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=31&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; itunes_removecollection.css('display', 'none'); itunes_removewishlist.css('display', 'none'); itunes_addcollection.css('display', 'inline'); itunes_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				itunes_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=31&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; itunes_removecollection.css('display', 'none'); itunes_removewishlist.css('display', 'none'); itunes_addcollection.css('display', 'inline'); itunes_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				// 4508 and 4510 used as dummy ids (old PS3 typeids)
+				games_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&addeddevice=2&type=owned&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '4508'; games_addcollection.css('display', 'none'); games_addwishlist.css('display', 'none'); addother.css('display', 'none'); games_removecollection.css('display', 'inline'); games_removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				games_addwishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&addeddevice=2&type=wishlist&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '4510'; games_addcollection.css('display', 'none'); games_addwishlist.css('display', 'none'); addother.css('display', 'none'); games_removecollection.css('display', 'none'); games_removewishlist.css('display', 'inline'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				games_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; games_removecollection.css('display', 'none'); games_removewishlist.css('display', 'none'); games_addcollection.css('display', 'inline'); games_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				games_removewishlistlink.bind('mouseup', function(e) { cancelBlur = true; if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; games_removecollection.css('display', 'none'); games_removewishlist.css('display', 'none'); games_addcollection.css('display', 'inline'); games_addwishlist.css('display', 'inline'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+
+				theatrical_addcollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var addpos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickadd&u=-1&categoryid=20&addeddevice=2&typeid=11138&p=' + ids[addpos], dataType: 'jsonp'}); collections[addpos] = '1'; theatrical_addcollection.css('display', 'none'); addcollection.css('display', 'none'); addwishlist.css('display', 'none'); addother.css('display', 'none'); theatrical_removecollection.css('display', 'inline'); removecollection.css('display', 'none'); removewishlist.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+				theatrical_removecollectionlink.bind('mouseup', function(e) { search.focus(); if(e.which == 1) { var removepos = (pos > 0) ? pos : 0; $.ajax({url: 'https://www.blu-ray.com/community/collection.php?action=quickdelete&u=-1&categoryid=20&p=' + ids[removepos], dataType: 'jsonp'}); collections[removepos] = '0'; theatrical_removecollection.css('display', 'none'); removewishlist.css('display', 'none'); theatrical_addcollection.css('display', 'inline'); addcollection.css('display', 'none'); addwishlist.css('display', 'none'); addother.css('display', 'none'); }; e.preventDefault ? e.preventDefault() : e.returnValue = false; });
+			}
+			else
+			{
+				$('#addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#dvd_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#dvd_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#uv_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#uv_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#ma_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#ma_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#aiv_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#aiv_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#itunes_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#itunes_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#games_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your collection') });
+				$('#games_addwishlist').bind('mousedown', function(e) { alert('Register as a member to add this title to your wishlist') });
+				$('#theatrical_addcollection').bind('mousedown', function(e) { alert('Register as a member to add this title to your theatrical collection') });
+			}
+		});
+		
+$(window).load(function() { $('#load23136652749265').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load23136652749265').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/ALL.png').dequeue() }); });
+$(window).load(function() { $('#load99465798965417').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load99465798965417').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/US.png').dequeue() }); });
+$(window).load(function() { $('#load78477607281671').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load78477607281671').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/UK.png').dequeue() }); });
+$(window).load(function() { $('#load25836984075976').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load25836984075976').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/CA.png').dequeue() }); });
+$(window).load(function() { $('#load99036571235559').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load99036571235559').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/DE.png').dequeue() }); });
+$(window).load(function() { $('#load75118893780643').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load75118893780643').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/FR.png').dequeue() }); });
+$(window).load(function() { $('#load37572609693793').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load37572609693793').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/ES.png').dequeue() }); });
+$(window).load(function() { $('#load16516899217245').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load16516899217245').delay(500).queue(function() { $(this).attr('src', 'https://images2.static-bluray.com/flags/IT.png').dequeue() }); });
+$(window).load(function() { $('#load36110062920486').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load36110062920486').delay(500).queue(function() { $(this).attr('src', 'https://images.static-bluray.com/flags/AU.png').dequeue() }); });
+$(window).load(function() { $('#load92278323242579').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load92278323242579').delay(500).queue(function() { $(this).attr('src', 'https://images3.static-bluray.com/flags/JP.png').dequeue() }); });
+
+			$(window).load(function() {
+				$('#signup_lightbox').css("background-image", "url(https://images3.static-bluray.com/backdrops/145264.jpg)");
+				$('#signup_lightbox_arrow').attr("src", "https://images2.static-bluray.com/arrow.png");
+			});
+		
+
+document.write('<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7321834945163044" data-ad-slot="7408543512"></ins>');
+$(window).load(function() {
+(adsbygoogle = window.adsbygoogle || []).push({});
+});
+
+$(window).load(function() { $('#load40301025646035').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load40301025646035').attr('src', 'https://images.static-bluray.com/movies/covers/240142_medium.jpg?t=1554574733'); } );
+$(window).load(function() { $('#load71743474724026').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load71743474724026').attr('src', 'https://images.static-bluray.com/movies/covers/240057_medium.jpg?t=1554467331'); } );
+$(window).load(function() { $('#load63321159550583').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load63321159550583').attr('src', 'https://images4.static-bluray.com/movies/covers/233685_medium.jpg?t=1553201363'); } );
+$(window).load(function() { $('#load59370932421323').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load59370932421323').attr('src', 'https://images2.static-bluray.com/nocover.gif'); } );
+$(window).load(function() { $('#load24442876496937').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load24442876496937').attr('src', 'https://images4.static-bluray.com/movies/covers/230456_medium.jpg?t=1554409631'); } );
+$(window).load(function() { $('#load94534213757952').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load94534213757952').attr('src', 'https://images2.static-bluray.com/movies/covers/44108_medium.jpg?t=1555113121'); } );
+$(window).load(function() { $('#load82462039400001').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load82462039400001').attr('src', 'https://images2.static-bluray.com/movies/covers/131372_medium.jpg?t=1548969315'); } );
+$(window).load(function() { $('#load27233696093963').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load27233696093963').attr('src', 'https://images3.static-bluray.com/movies/covers/30733_medium.jpg?t=1555114038'); } );
+$(window).load(function() { $('#load66816734307068').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load66816734307068').attr('src', 'https://images4.static-bluray.com/movies/covers/230313_medium.jpg'); } );
+$(window).load(function() { $('#load91699396585330').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load91699396585330').attr('src', 'https://images4.static-bluray.com/movies/covers/30733_medium.jpg'); } );
+$(window).load(function() { $('#load45426286681829').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load45426286681829').attr('src', 'https://images3.static-bluray.com/movies/covers/44108_medium.jpg'); } );
+$(window).load(function() { $('#load93659737299888').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load93659737299888').attr('src', 'https://images.static-bluray.com/movies/covers/240094_medium.jpg'); } );
+$(window).load(function() { $('#load63756221017663').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load63756221017663').attr('src', 'https://images2.static-bluray.com/movies/covers/230456_medium.jpg'); } );
+
+	$(window).load(function() {
+		window._mNHandle = window._mNHandle || {};
+		window._mNHandle.queue = window._mNHandle.queue || [];
+		medianet_versionId = "3121199";
+
+		var medianet = document.createElement('script');
+		medianet.onload = function () {
+			try {
+				window._mNHandle.queue.push(function () {
+					window._mNDetails.loadTag("792807766", "460x250", "792807766");
+				});
+			}
+			catch (error) {}
+		};
+		medianet.src = "//contextual.media.net/dmedianet.js?cid=8CU66RE11";
+		document.head.appendChild(medianet);
+	});
+	
+$(window).load(function() { $('#load65171348986629').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load65171348986629').attr('src', 'https://images3.static-bluray.com/rss_icon.png'); } );
+$(window).load(function() { $('#load29381495744967').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load29381495744967').attr('src', 'https://images.static-bluray.com/products/20/48339_2_medium.jpg'); } );
+$(window).load(function() { $('#load22292085968251').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load22292085968251').attr('src', 'https://images2.static-bluray.com/movies/covers/240459_medium.jpg'); } );
+$(window).load(function() { $('#load13910038403555').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load13910038403555').attr('src', 'https://images3.static-bluray.com/movies/covers/222812_medium.jpg'); } );
+$(window).load(function() { $('#load96922786723118').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load96922786723118').attr('src', 'https://images2.static-bluray.com/movies/covers/232090_medium.jpg'); } );
+$(window).load(function() { $('#load79541395629371').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load79541395629371').attr('src', 'https://images.static-bluray.com/movies/covers/240476_medium.jpg'); } );
+$(window).load(function() { $('#load81444419398426').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load81444419398426').attr('src', 'https://images.static-bluray.com/movies/covers/240489_medium.jpg'); } );
+$(window).load(function() { $('#load21263097597863').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load21263097597863').attr('src', 'https://images3.static-bluray.com/flags/UK.png'); } );
+$(window).load(function() { $('#load31563789372512').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load31563789372512').attr('src', 'https://images2.static-bluray.com/movies/covers/230120_medium.jpg'); } );
+$(window).load(function() { $('#load69978644879748').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load69978644879748').attr('src', 'https://images4.static-bluray.com/movies/covers/240431_medium.jpg'); } );
+$(window).load(function() { $('#load54664763679537').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load54664763679537').attr('src', 'https://images4.static-bluray.com/movies/covers/240259_medium.jpg'); } );
+$(window).load(function() { $('#load81868164636415').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load81868164636415').attr('src', 'https://images4.static-bluray.com/movies/covers/240305_medium.jpg'); } );
+$(window).load(function() { $('#load92648672729444').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load92648672729444').attr('src', 'https://images4.static-bluray.com/movies/covers/240413_medium.jpg'); } );
+$(window).load(function() { $('#load13182458630840').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load13182458630840').attr('src', 'https://images3.static-bluray.com/flags/UK.png'); } );
+$(window).load(function() { $('#load90293336693867').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load90293336693867').attr('src', 'https://images2.static-bluray.com/movies/covers/240419_medium.jpg'); } );
+$(window).load(function() { $('#load86485035546468').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load86485035546468').attr('src', 'https://images.static-bluray.com/movies/covers/240418_medium.jpg'); } );
+$(window).load(function() { $('#load56804961586653').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load56804961586653').attr('src', 'https://images3.static-bluray.com/movies/covers/232570_medium.jpg'); } );
+$(window).load(function() { $('#load12914366909704').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load12914366909704').attr('src', 'https://images4.static-bluray.com/movies/covers/240420_medium.jpg'); } );
+$(window).load(function() { $('#load65549051682439').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load65549051682439').attr('src', 'https://images.static-bluray.com/movies/covers/95012_medium.jpg'); } );
+$(window).load(function() { $('#load53132606247183').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load53132606247183').attr('src', 'https://images.static-bluray.com/movies/covers/238868_medium.jpg'); } );
+$(window).load(function() { $('#load74055573267399').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load74055573267399').attr('src', 'https://images4.static-bluray.com/movies/covers/240349_medium.jpg'); } );
+$(window).load(function() { $('#load18765545549999').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load18765545549999').attr('src', 'https://images3.static-bluray.com/flags/UK.png'); } );
+$(window).load(function() { $('#load26658253002864').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load26658253002864').attr('src', 'https://images2.static-bluray.com/movies/covers/240260_medium.jpg'); } );
+$(window).load(function() { $('#load31478624822203').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load31478624822203').attr('src', 'https://images.static-bluray.com/products/20/68407_2_medium.jpg'); } );
+$(window).load(function() { $('#load23753769145726').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load23753769145726').attr('src', 'https://images4.static-bluray.com/movies/covers/239642_medium.jpg'); } );
+$(window).load(function() { $('#load87019516841852').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load87019516841852').attr('src', 'https://images2.static-bluray.com/movies/covers/240257_medium.jpg'); } );
+$(window).load(function() { $('#load28252646888768').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load28252646888768').attr('src', 'https://images4.static-bluray.com/movies/covers/113784_medium.jpg'); } );
+$(window).load(function() { $('#load14782682090131').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load14782682090131').attr('src', 'https://images.static-bluray.com/movies/covers/240252_medium.jpg'); } );
+$(window).load(function() { $('#load86182131796513').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load86182131796513').attr('src', 'https://images3.static-bluray.com/products/20/77914_1_medium.jpg'); } );
+
+$(window).load(function() {
+(adsbygoogle = window.adsbygoogle || []).push({});
+});
+
+$(window).load(function() { $('#load97209727647547').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load97209727647547').attr('src', 'https://images4.static-bluray.com/movies/covers/228174_small.jpg'); } );
+$(window).load(function() { $('#load74903818369475').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load74903818369475').attr('src', 'https://images4.static-bluray.com/movies/covers/230751_small.jpg'); } );
+$(window).load(function() { $('#load31940163170877').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load31940163170877').attr('src', 'https://images.static-bluray.com/movies/covers/227174_small.jpg'); } );
+$(window).load(function() { $('#load89561293485452').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load89561293485452').attr('src', 'https://images2.static-bluray.com/movies/covers/230076_small.jpg'); } );
+$(window).load(function() { $('#load90805825511034').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load90805825511034').attr('src', 'https://images4.static-bluray.com/movies/covers/226189_small.jpg'); } );
+$(window).load(function() { $('#load41678924393842').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load41678924393842').attr('src', 'https://images.static-bluray.com/movies/covers/222812_small.jpg'); } );
+$(window).load(function() { $('#load17582171573450').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load17582171573450').attr('src', 'https://images3.static-bluray.com/rss_icon.png'); } );
+$(window).load(function() { $('#load66612412634772').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load66612412634772').attr('src', 'https://images3.static-bluray.com/theatrical2.gif'); } );
+$(window).load(function() { $('#load61234498327066').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load61234498327066').attr('src', 'https://images3.static-bluray.com/theatrical2.gif'); } );
+$(window).load(function() { $('#load46376368271312').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load46376368271312').attr('src', 'https://images3.static-bluray.com/theatrical2.gif'); } );
+$(window).load(function() { $('#load31492706013013').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load31492706013013').attr('src', 'https://images3.static-bluray.com/theatrical2.gif'); } );
+$(window).load(function() { $('#load74170391851222').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load74170391851222').attr('src', 'https://images3.static-bluray.com/theatrical2.gif'); } );
+$(window).load(function() { $('#load28548659242303').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load28548659242303').attr('src', 'https://images3.static-bluray.com/flags/UK.png'); } );
+$(window).load(function() { $('#load77399913333134').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load77399913333134').attr('src', 'https://images3.static-bluray.com/flags/UK.png'); } );
+
+$(window).load(function() {
+(adsbygoogle = window.adsbygoogle || []).push({});
+});
+
+$(window).load(function() { $('#load13324356358204').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load13324356358204').attr('src', 'https://images3.static-bluray.com/rss_icon.png'); } );
+$(window).load(function() { $('#load41296481053407').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load41296481053407').attr('src', 'https://images3.static-bluray.com/rss_icon.png'); } );
+$(window).load(function() { $('#load40057521620029').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load40057521620029').attr('src', 'https://forum.blu-ray.com/image.php?u=245550'); } );
+$(window).load(function() { $('#load84228836199769').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load84228836199769').attr('src', 'https://forum.blu-ray.com/image.php?u=473458'); } );
+$(window).load(function() { $('#load37909077379012').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load37909077379012').attr('src', 'https://forum.blu-ray.com/image.php?u=253463'); } );
+$(window).load(function() { $('#load86852212871489').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load86852212871489').attr('src', 'https://forum.blu-ray.com/image.php?u=328599'); } );
+$(window).load(function() { $('#load28900472853114').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load28900472853114').attr('src', 'https://images3.static-bluray.com/products/20/28466_1_small.jpg'); } );
+$(window).load(function() { $('#load62653323648264').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load62653323648264').attr('src', 'https://images4.static-bluray.com/products/20/71247_1_small.jpg'); } );
+$(window).load(function() { $('#load34265642926573').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load34265642926573').attr('src', 'https://images.static-bluray.com/products/20/78034_1_small.jpg'); } );
+$(window).load(function() { $('#load52830378550014').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load52830378550014').attr('src', 'https://images3.static-bluray.com/products/20/5936_2_small.jpg'); } );
+$(window).load(function() { $('#load12536408920673').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load12536408920673').attr('src', 'https://images2.static-bluray.com/products/20/76528_2_small.jpg'); } );
+$(window).load(function() { $('#load68213273402910').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load68213273402910').attr('src', 'https://images.static-bluray.com/products/20/73310_3_small.jpg'); } );
+$(window).load(function() { $('#load49336864238366').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load49336864238366').attr('src', 'https://images.static-bluray.com/products/20/65998_2_small.jpg'); } );
+$(window).load(function() { $('#load42541336788552').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load42541336788552').attr('src', 'https://images2.static-bluray.com/products/20/24843_1_small.jpg'); } );
+$(window).load(function() { $('#load34806701994124').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load34806701994124').attr('src', 'https://images2.static-bluray.com/products/20/18642_1_small.jpg'); } );
+$(window).load(function() { $('#load91216863813105').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load91216863813105').attr('src', 'https://images.static-bluray.com/products/20/77_1_small.jpg'); } );
+
+$(window).load(function() {
+(adsbygoogle = window.adsbygoogle || []).push({});
+});
+
+$(window).load(function() { $('#load32513343866513').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load32513343866513').attr('src', 'https://images3.static-bluray.com/androidapp.png'); } );
+$(window).load(function() { $('#load13580813871364').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load13580813871364').attr('src', 'https://images3.static-bluray.com/iphoneapp2.png'); } );
+$(window).load(function() { $('#load22893966557850').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load22893966557850').attr('src', 'https://images4.static-bluray.com/sale.png'); } );
+$(window).load(function() { $('#load66622718668409').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load66622718668409').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load52430728533761').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load52430728533761').attr('src', 'https://images3.static-bluray.com/star2.png'); } );
+$(window).load(function() { $('#load15584567096186').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load15584567096186').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load47990934206721').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load47990934206721').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load70203707755052').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load70203707755052').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load71917173079391').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load71917173079391').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load69100156402120').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load69100156402120').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+
+var ad_offset = 250;
+$(document).ready(function()
+{
+	$.fn.scrollFixed = function(params)
+	{
+		params = $.extend( {appearAfterDiv: 0, hideBeforeDiv: 0}, params);
+		var element = $(this);
+
+		if(params.appearAfterDiv)
+			var distanceTop = element.offset().top + $(params.appearAfterDiv).outerHeight(true) + element.outerHeight(true) + ad_offset - 5;
+		else
+			var distanceTop = element.offset().top + ad_offset - 5;
+
+		if(params.hideBeforeDiv)
+			var bottom = $(params.hideBeforeDiv).offset().top - element.outerHeight(true) - 10;
+		else
+			var bottom = 200000;
+
+		$(window).scroll(function()
+		{
+			var scrollTop = $(window).scrollTop();
+
+			if(scrollTop > distanceTop && scrollTop < bottom)
+				element.css({'position':'fixed', 'top':'5px'});
+			else
+				element.css({'position':'static'});
+		});
+	};
+});
+
+
+					$(document).ready(function()
+					{
+						$("#mostpopulardeals").scrollFixed();
+					});
+					
+$(window).load(function() { $('#load95227516725666').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load95227516725666').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load84897588072766').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load84897588072766').attr('src', 'https://images4.static-bluray.com/buttons/buynow.gif'); } );
+$(window).load(function() { $('#load69793077410432').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load69793077410432').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load48940939382218').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load48940939382218').attr('src', 'https://images4.static-bluray.com/buttons/buynow.gif'); } );
+$(window).load(function() { $('#load23441188132460').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load23441188132460').attr('src', 'https://images3.static-bluray.com/flags/US.png'); } );
+$(window).load(function() { $('#load36363518132671').css('opacity', 0).load(function() { $(this).animate({ opacity: 1 }, 400) } ); $('#load36363518132671').attr('src', 'https://images4.static-bluray.com/buttons/buynow.gif'); } );
+
+$(window).load(function()
+{
+	$('a[href^="http://www.blu-ray.com/link/link.php?url="]').each(function()
+	{
+		this.href = decodeURI(this.href.replace('http://www.blu-ray.com/link/link.php?url=', ''));
+	});
+});
+(function(w,d,i){function q(){setTimeout(fn,1000)};function fn(){var b;if(b=d.getElementById("a"+"d"+i)){d.write=function(a){a=a.replace("<script><\/script>","");if("script"==a.slice(1,7))(src=a.match(/src="(.+)"/))?(a=d.createElement("script"),a.type="text/javascript",a.src=src[1],b.appendChild(a)):eval(a.replace(/<[\/]*script[\s\S]*?>/gm,";"));else if(b.innerHTML+=a,"ins"==a.slice(1,4)||"img"==a.slice(1,4)||"div"==a.slice(1,4)||"iframe"==a.slice(1,7))i++,setTimeout(fn,0)};for(var c=b.innerHTML.match(/<script(>| )[\s\S]*?<\/script>/gm);c.length;)d.write(c.shift())}else i++,5>=i&&fn()}d.addEventListener?w.addEventListener("load",q,!1):d.attachEvent&&w.attachEvent("onload",q)})(window,document,1);
+
+$(document).ready(function(){setTimeout(function(){$(window).trigger('load')},1000)});
+$(window).load(function(){$(window).unbind('load')});
+

@@ -1,0 +1,169 @@
+
+        !function() {
+            var analytics = window.analytics = window.analytics || [];
+            if (!analytics.initialize)
+                if (analytics.invoked)
+                    window.console && console.error && console.error("Segment snippet included twice.");
+                else {
+                    analytics.invoked = !0;
+                    analytics.methods = [
+                        "trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group",
+                        "track", "ready", "alias", "debug", "page", "once", "off", "on"
+                    ];
+                    analytics.factory = function(t) {
+                        return function() {
+                            var e = Array.prototype.slice.call(arguments);
+                            e.unshift(t);
+                            analytics.push(e);
+                            return analytics
+                        }
+                    };
+                    for (var t = 0; t < analytics.methods.length; t++) {
+                        var e = analytics.methods[t];
+                        analytics[e] = analytics.factory(e)
+                    }
+                    analytics.load = function(t) {
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = !0;
+                        e.src = ("https:" === document.location.protocol ? "https://" : "http://") +
+                            "cdn.segment.com/analytics.js/v1/" +
+                            t +
+                            "/analytics.min.js";
+                        var n = document.getElementsByTagName("script")[0];
+                        n.parentNode.insertBefore(e, n)
+                    };
+                    analytics.SNIPPET_VERSION = "4.0.0";
+                    analytics.load("2fB30FMSOLPqi7BQWZPFASUHPR18FG1u");
+                    analytics.page();
+                }
+        }();
+
+
+    //todo: use babel polyfill instead?
+    if (typeof Promise === "undefined") {
+        document.write('<script src="/scripts/common/polyfills/es6-promise.auto.min.js"><\/script>');
+    }
+    if (typeof fetch === "undefined") {
+        //download fetch polyfill
+        document.write('<script src="/scripts/common/polyfills/fetch.min.js"><\/script>');
+    }
+    if (typeof NodeList.prototype.forEach === "undefined") {
+        document.write('<script src="/scripts/common/polyfills/nodelist-prototype-foreach.js"><\/script>');
+    }
+    if (typeof Object === "undefined" || typeof Object.assign === "undefined") {
+        document.write('<script src="/scripts/common/polyfills/object-assign-auto.min.js"><\/script>');
+    }
+    //window.CustomEvent object exists, but it cannot be called as a constructor. Adding polyfill to resolve it and render only for IE11
+    var ua = window.navigator.userAgent;
+    if (ua.indexOf("MSIE ") !== -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        document.write('<script src="/scripts/common/polyfills/custom-event-polyfill.min.js"><\/script>');
+    }
+
+    if (!String.prototype.endsWith) {
+        document.write('<script src="/scripts/common/polyfills/string-polyfill.min.js"><\/script>');
+    }
+
+    if (!Array.prototype.find) {
+        document.write('<script src="/scripts/common/polyfills/array-polyfill.min.js?v2"><\/script>');
+    }
+
+
+
+    
+    
+
+    var Crate = Crate || {};
+    Crate.jQueryEarlyRegistration = [];
+    $ = function(func) {
+        if (func != null && typeof(func) === "function") {
+            Crate.jQueryEarlyRegistration.push(func);
+        }
+        return {
+            ready : function(handler) {
+                Crate.jQueryEarlyRegistration.push(handler);
+            }
+        };
+    };
+
+
+        $(document).ready(function () {
+            if ($(".international-layout").length === 0) {
+                $("body").addClass("international-layout");
+            }
+        });
+    
+var Crate = Crate || {}; Crate.BundleVersions = {"account":"Gk1qc0D6HffRx8C1kVWyLWQ8wMLWBBbhKXh5a6cVIMs1","A11yAccordion":"haWQKXNiEa0_Z-1Z-t_WNVnbsFKR4LQjsjxbS5-N6Xo1","A11yButton":"NB_VD0p4nqOw5pdDAg-RWQ01FHLzKlpwchleKQBs6iI1","A11yFocus":"DTnPR4-w-pj7uJ2dimI_f_D7C3mYXvfdShwuh_PjqoU1","A11yTab":"CdENcVKn3LU28_c97agzm8oyCvouDEE2FEUdWtABV0E1","Accessory":"yYYOX-MLj1HFExZDeDR5nSiuDXKiOb9m8fefqQAzkWM1","AccountInfo":"RPoT3WuAaME1kT35yCaveFF60IV4784Hacy5Pk_y3Rk1","Actions":"pyoXvSj6wL7WQoaF-J7cgm8PlO3eSdFJ35MDycDGX3k1","BuyableSwatch":"W-deRIM8BOZcovZlX9npx2V70a84Ju3VGnNpoo8Irvc1","Care":"WUV5tRNZu4VyyMQnUMAgpcT4YLeWCmq4YWKebn2EhiM1","Carousel":"PHhuRPL3Tkmab4ZXvwCaPzmfQEWkAqw4dhYjbRQi1IY1","CbccShipping":"DojjCpEnqvImQ7tnLcMT9QFDdgN0Ms9helJOPhiVpNo1","Comfort":"Up86Dr4M8Tl8HsSz6jjgQj8teqAC0iIbOqQSfuDXdqM1","CrateSlickCarousel":"Ls8NH8P_u5jtIE-5gRdgu84vRCuQK7D5EKKC-tnmydI1","Curalate":"dIf7tir48c19izu9Off-SWuRDiyJTDOK3qF2E22Pecg1","Description":"6bqxsAO2MgwOS5LYVy4ylfYycIJBLYkkYoErh1bLPew1","Dimension":"OCHWhuiXsE0mvzMqABb6nFhr6z7WEPrCwgjLpmkxewM1","EmailFriend":"ZV0xexzrRY7C7yf6Oput9NSIoDyWQD-o71_5lZvWJE01","FamilyLineProduct":"rf_Ac855kGK-BYt-NuAEbMC1B8pGvgeB9kApf_n-YXw1","Favorites":"ZfHoq-e4bqQ44kMlYc68dGMe3-jjD8p5xKodx4NCQ8s1","GiftBundle":"zASRqGv-X1tnQ4le7wJxll52hoRd7J2Tmc7cwvwktog1","Grouper":"XP3HTzIRmnpeK1LeOVdTO4y2uY6MhgIesgkN5fciOH41","Header":"oVHU6oiabXyo-NIbm0jIBZsRSN4O825HtXjCdlDN7gU1","ImageZoom":"SBBJx4aLeQEVPOlahUabj2swQLzbM840Q5SvUa_d3ZQ1","InteractiveColorBar":"-Y5nVBrxdtBeQ4LQxPzMt5zpcPNT6iiwfWqG_XVQ26I1","Login":"-p1wD9RoTsP9QM7xHjyCoakS9EqTd7Q_XZPTQ_pvj1c1","Miniset":"PVnCbOW30HdLc34tIvciJUlIKmVw2SD0fQHO4HbDpck1","MixAndMatch":"K88Gn6pByn0e3pHiTfY_iArXcXu0aokKQeA8gSFNW0c1","NavFooter":"XJaGy-1KZc1m3_t-r37F1xLpT3Z5YAz_rJt4uduK0Xs1","PageNavBar":"p4dkTGePT5HMwCKoCk5qD0T_C26ZBem-o_JxfdiIQXI1","Personalization":"ucnQ9YPvU0O3dt2xwFtsP3JIPZJ_DAuLVyt8q-0zYrE1","Popup":"TP0CRPsffWWSLBNj17CHFXNy22NjMO8g54lyiZ371dE1","PrintAndShare":"Z4zj2pYJ29aCgrZ5WHfxRkFjs8A4nxcFYD8LfgsHfHs1","ProductAddOns":"3Uid_jhNh666AZPwewhzIpHKSZqhJ-veLYf3Ivfx_Xc1","Quicklook":"anIW0Q2Jvk95RDUD7eZFmql7guXuHQRoL7HH2jmTZIQ1","RecentlyViewed":"EIIiqViYwLnypXhqNo6MG-HYWYhXz8yMEIWbRzDshjQ1","RevealContent":"u8HShe0GRYPSBRZ151q0UTFf-wY7ao7k5xB_AIHcNzU1","Reviews":"GpOGjctALDySjBXSqOcZizRVogz7w0zONjsArOaPYO01","Rewards":"pDZR8OkCvuYmajtinS1KcOjhEYSkLvpJUEZZA8WqRmw1","S7VideoComponent":"KAb7_OzCXOehnMcIImVCbZFgf_5ChX0ZkW5SqP7YfD01","SeoSpill":"LApQOoKFxGxBOa2L-1EhQkRNFVau5spNDLdyUrPcM941","Shipment":"blVXYV9EmTEfKh49FfAbx-ALpitL3K2tMSJ49i_VbPw1","ShippingAndDeliveryPopup":"IeDEw4VB7KaDZvMGF4RA__BjC9Fe5GAXwS6X8kLzBWo1","ShopButtons":"44GAcnjpF9zIcHWSaajahAb45eZicG8O9rJvT59uMUE1","SingleCollection":"vHppxS1KJOrZbXuxXUheiPJKNw5fl_LUi87mT5mGpiM1","SocialMedia":"bimAf5dlyo87PiG_kAYalKZ4W9k_nzZ-iBanuZNu7jo1","Spategory":"IeptLOjWODJv5eWKSIg9FkHjpenzqLqPfKJCdLZiF2Q1","SpecialOrder":"qHQbd3YPH1SfR7QDBODJQ7CMrtkcMz3QaDABZoDRFbc1","Spills":"C7efQ0NWWwa66jBsuMxkKBXoXTqGQnfesLqAGfsG31o1","Spin":"yqtTWhsNb8cyqJrTy-Yqx-saDl0UGE9OfGWqN_uwTqo1","StoreAvailabilityPopup":"ZPA5jtlBu53GV6uBImDAygInQLhQacIxEcAdh7KLPRw1","Stores":"Dnq2OxwjGU89hlimXIyGVkaseGOzSsCICKHor7L1L2g1","TabDescription":"6z2gusApw3PUjgYKQurM4xjnHeJ6r6o-MBLYDOdj9Uk1","ThreeKitSectional":"07O6fUyUndPhOYD_4E4R12kX6lG8wva19bcvzRAVsPw1","WallpaperCalculator":"xnB7yroSKHo5afHZxmAUNkNDkUYPErxpyUbrTRYlb9o1"};
+
+                if (typeof jQuery === "undefined") {
+                    document.write('\u003cscript type=\u0027text/javascript\u0027 src=\u0027/Scripts/jQuery/Jquery-2.2.4.min.js\u0027\u003e\u003c/script\u003e');
+                }
+                
+
+            if (typeof Crate === "undefined" || typeof Crate.Debug === "undefined") {
+                $.getScript('/bundles/Scripts/core.js?v=d-t16LZyxtYKYmJOEifaOo6Kb6pCVKj9jWlDNwg81OU1');
+
+            }
+            
+
+
+    
+
+        if (Crate !== undefined && Crate.jQueryEarlyRegistration !== undefined) {
+            $(function() {
+                for (var i = 0; i < Crate.jQueryEarlyRegistration.length; i++) {
+                    Crate.jQueryEarlyRegistration[i].apply(this, arguments);
+                }
+            });
+        }
+
+
+        var Crate = Crate || {};
+        Crate.Config = Crate.Config || {};
+        Crate.Config.imageServer = "//images.crateandbarrel.com/is/image/Crate/";
+        Crate.Config.enableDebug = false;
+        Crate.Config.enableAutocomplete = false;
+    
+
+        Crate.HomePage = Crate.HomePage || {};
+        Crate.HomePage.init = Crate.HomePage.init || function(){};
+    
+
+        
+    
+
+                $(function() {
+                    if (typeof (Crate) !== "undefined" &&
+                        typeof (Crate.Header) !== "undefined" &&
+                        typeof (Crate.Header.initMenus) === "function") {
+                        Crate.Header.initMenus();
+                    }
+                });
+            
+
+                function executeFoundationScript() {
+                    if ($(document).foundation) {
+                        $(document).foundation();
+                    }
+                    else {
+                        setTimeout(executeFoundationScript, 1000);
+                    }
+                }
+                executeFoundationScript();
+            
+/*<![CDATA[*/var pageData={browse:{merchTotal:"0.00"},search:{searchResultsCount:"-1"},giftRegistry:{id:"0",registryItemCount:"0","registrySubTotal:":"0"}}//]]>
+/*<![CDATA[*/function loadTags(){var n=document.createElement("script"),t=document.getElementsByTagName("script")[0];n.async=!1;n.src="//s.btstatic.com/tag.js#site=kbMzxFN";t.parentNode.insertBefore(n,t)}//]]>
+/*<![CDATA[*/try{if(omntag!=null){omntag.server="IP-0AE6CB0C";omntag.eVar70="";var s_code=omntag.t();s_code&&document.write(s_code)}}catch(e){}//]]>
+
+                                                var Crate = Crate || {};
+                                                Crate.Config = Crate.Config || {};
+                                                Crate.Config.siteBrand = 'crate';
+                                                Crate.Config.IsInternational = true;
+                                                Crate.Config.outwardUrl = 'https://cb-imager-cdn.outwardinc.com/image/';
+                                                Crate.Config.specialOrderMoodboardEnabled = '1';
+                                                Crate.Config.recentlyViewedSwatchesLimit = 7;
+                                            
+
+                    loadTags();
+                    loadTags = function() {};
+                

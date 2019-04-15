@@ -1,0 +1,180 @@
+
+  /**
+   * Top-level function csLoad allows inline JavaScript to use jQuery
+   * once jQuery has been loaded. Executes the functions given in the order they're given.
+   * If jQuery is already loaded when function is given to csLoad, it immediately executes the function.
+   * If csLoad is given anything that is not a function, nothing will happen.
+   *
+   * @example csLoad(function($){ $("#id-of-tag").append('<p>This append method would only work if jQuery is loaded</p>'); });
+   */
+  window.csLoad = (function(){
+    var arrayOfLoadFunctions = [],
+        isLoaded = false;
+
+    document.addEventListener("DOMContentLoaded", onDOMContentLoad);
+    // This is a safety net to ensure the array will executed at least by the document's load event
+    document.addEventListener("load", jQueryLoaded);
+
+    function publicMethod(givenFunc){
+      if(notFunc(givenFunc)){ return null; }
+      if(isLoaded){
+        call(givenFunc);
+      }else{
+        addToArray(givenFunc);
+      }
+    }
+
+    function jQueryLoaded(){
+      if(!isLoaded){
+        isLoaded = true;
+        executeArray();
+      }
+    }
+
+    function addToArray(possibleFunc){
+      arrayOfLoadFunctions.push(possibleFunc);
+    }
+
+    function executeArray(){
+      for(var i=0; i<arrayOfLoadFunctions.length; i++){
+        call(arrayOfLoadFunctions[i]);
+      }
+      arrayOfLoadFunctions = null;
+    }
+
+    function call(givenFunc){
+      givenFunc(window.jQuery);
+    }
+
+    function notFunc(possibleFunc){
+      return typeof possibleFunc != "function";
+    }
+
+    function onDOMContentLoad(){
+      if(window.jQuery){
+        jQueryLoaded();
+      }else{
+        document.getElementById('jquery-load-tag').onload = jQueryLoaded;
+      }
+    }
+
+    return publicMethod;
+  })();
+
+  (function(factory){
+    var eventHash = {};
+
+    factory.waitFor = function(eventName, givenFunc){
+      if(eventHash[eventName]){
+        eventHash[eventName].push(givenFunc);
+      }else{
+        eventHash[eventName] = new Array(givenFunc);
+      }
+    };
+
+    factory.activateFor = function(eventName){
+      var funcArray = eventHash[eventName];
+      if(!funcArray){ return null; }
+      for(var i=0; i<funcArray.length; i++){
+        funcArray[i]();
+      }
+      eventHash[eventName] = [];
+    };
+  })(window.csLoad);
+
+
+  /**
+   * Declare application-wide configuration variables.
+   */
+  (function(){
+    window.csConf = {
+      algoliaApplicationID: "XE8Q13Z6BN",
+      algoliaSearchKey: "4007b685e046d6f0c82ec90985ff30b7",
+      algoliaIndexName: "Cs_SearchResult_production"
+    };
+  })();
+
+  /**
+   * Configuration dependent on other JS libraries being loaded first.
+   */
+  window.csLoad(function() {
+    Spree.api_key = "";
+  })
+
+
+          window.csLoad(function($) {
+            if (screenSize.isMediumOrLarger()) {
+              $('#masthead').attr('style', "background-image: url(https://d2r3z0h7oyiawr.cloudfront.net/2019/03/06/15/13/07/5b96179e-7f62-44d3-8f06-b1c061eaf120/Fragrance-Oil-Mood-Board-Header.jpg)")
+            }
+          })
+        
+
+  window.csLoad(function($){
+    var $successDiv, $failureDiv, $form, dropSpeed;
+
+    dropSpeed = 200;
+    $successDiv = $('#success-on-footer');
+    $failureDiv = $('#failure-on-footer');
+    $form = $("#mailchimp-on-footer")
+
+    submitSubscribeForm();
+    // Turn the given MailChimp form into an ajax version of it.
+    // If resultElement is given, the subscribe result is set as html to
+    // that element.
+
+    function newsletterSuccess(msg){
+      $failureDiv.css('display', 'none');
+      $successDiv.text(msg);
+      $successDiv.slideDown(dropSpeed);
+    }
+
+    function newsletterFailure(){
+      $successDiv.css('display', 'none');
+      $failureDiv.slideDown(dropSpeed);
+    }
+
+    function submitSubscribeForm() {
+      $form.submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: "GET",
+          url: $form.attr("action"),
+          data: $form.serialize(),
+          cache: false,
+          dataType: "jsonp",
+          jsonp: "c", // trigger MailChimp to return a JSONP response
+          contentType: "application/json; charset=utf-8",
+          error: function(error){
+            // According to jquery docs, this is never called for cross-domain JSONP requests
+            newsletterFailure();
+          },
+          success: function (data){
+            if (data.result != "success") {
+              if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
+                newsletterSuccess("You're already subscribed. Thank you.");
+              } else {
+                newsletterFailure();
+              }
+            } else {
+              newsletterSuccess("Thanks for subscribing! You will receive an email from us shortly with a link to confirm your subscription.");
+            }
+          }
+        });
+      });
+    }
+  });
+
+
+  window.csLoad(function($){
+      var $checkbox = $('.email-preference-checkbox'),
+          $submitButton = $('.signup-submit-button'),
+          $socialButtons = $('.btn-social'),
+          userEmail = "".trim();
+
+      if($checkbox.length > 0){
+          window.csEmailPreferences.listen($checkbox, $submitButton, $socialButtons);
+      }else if(userEmail.length > 0){
+          window.csEmailPreferences.updatePreferences(userEmail);
+      }
+  });
+

@@ -1,0 +1,1 @@
+var gts=gts||[];gts.push(["id","735744"]),gts.push(["badge_position","BOTTOM_LEFT"]),gts.push(["locale","en_US"]),function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://www.googlecommerce.com/trustedstores/api/js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}();

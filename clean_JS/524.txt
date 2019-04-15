@@ -1,0 +1,139 @@
+
+        var certona = {
+            pagetype: "HOME",
+            device: "DESKTOP",
+            countrycode: "UA",
+            recommendations: false
+        };
+    
+
+        if (!Array.prototype.forEach) {
+            Array.prototype.forEach = function (fn, scope) {
+                for (var i = 0, len = this.length; i < len; ++i) {
+                    fn.call(scope, this[i], i, this);
+                }
+            }
+        }
+        window.inline = window.inline || {};
+
+        function addContentServiceScripts() {
+            (function () {
+                window.$j = $.noConflict(true);
+            })();
+
+            window.inline.jsHeader.forEach(function (file) {
+                var script = document.createElement("script");
+                var head = document.getElementsByTagName("head")[0];
+                script.type = "text/javascript";
+                script.src = file;
+                head.appendChild(script);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var head = document.getElementsByTagName("head")[0];
+            var script = document.createElement('script');
+
+            window.inline.cssHeader.forEach(function(file) {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.media = 'all';
+                link.href = file;
+                head.appendChild(link);
+            });
+
+            script.type = 'text/javascript';
+            script.src = 'https://s3.images-iherb.com/static/js/vendor/jquery/jquery-3.3.1.min.js';
+            script.onload = addContentServiceScripts;
+            head.appendChild(script);
+        });
+    
+
+            window.inline.jsHeader = [
+                'https://s3.images-iherb.com/static/js/bundle.desktop.header_36fbee808795d9dce58b10851e977f53.js'
+            ];
+        
+
+            window.inline.cssHeader = [
+                'https://s3.images-iherb.com/static/css/app.desktop.min.header_e2c9df1c28a15e95c78901ec239e4019.css'
+            ];
+        
+
+        (function () {
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '275572386185529',
+                    //appId: '233374750478668', //test app id
+                    xfbml: true,
+                    version: 'v2.9'
+                });
+            };
+        })();
+    
+
+    var iHerb_Protocol = location.protocol;
+    var iHerb_BaseUrl = location.host;
+
+
+    if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function (fn, scope) {
+            for (var i = 0, len = this.length; i < len; ++i) {
+                fn.call(scope, this[i], i, this);
+            }
+        }
+    }
+    window.inline = window.inline || {};
+
+    function addBodyScripts() {
+        window.inline.js.forEach(function (file) {
+            loadJS(file);
+        });
+    }
+
+    function loadJS(file) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = file;
+        document.body.appendChild(script);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var head = document.getElementsByTagName("head")[0];
+        var script = document.createElement('script');
+
+        window.inline.css.forEach(function(file) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.media = 'all';
+            link.href = file;
+            head.appendChild(link);
+        });
+
+        if (typeof jQuery == 'undefined') {
+            script.type = 'text/javascript';
+            script.src = 'https://s3.images-iherb.com/static/js/vendor/jquery-1.11.2.min.js';
+            script.onload = addBodyScripts;
+            head.appendChild(script);
+        }
+    });
+
+
+    window.inline.js = [
+        'https://s3.images-iherb.com/static/js/app.catalog-home-v2_db8a92532841dbe303bf66733c1fd35f.js'
+    ];
+    
+
+    window.inline.css = [
+        'https://s3.images-iherb.com/static/css/app.desktop.min.catalog-home-v2_d526114697fb35de436241da97e9f835.css'
+    ];
+    

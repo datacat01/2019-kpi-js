@@ -1,0 +1,181 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.temptu.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+    window.onAmazonLoginReady = function() {
+        amazon.Login.setClientId('amzn1.application-oa2-client.2e5d74f4e13141eeab632f92740faf00');
+
+                amazon.Login.setUseCookie(true);
+        
+    };
+
+        src = 'https://static-na.payments-amazon.com/OffAmazonPayments/us/js/Widgets.js?sellerId=A19FLHFFGV8CM7';
+    
+
+
+//<![CDATA[
+	if (typeof EM == 'undefined') EM = {};
+	EM.QuickShop = {
+		BASE_URL : 'https://temptu.com/',
+		QS_FRM_TYPE : 1,
+		QS_FRM_WIDTH : 820,
+		QS_FRM_HEIGHT : 600,
+		QS_IMG: 'https://smhttp-ssl-17728.nexcesscdn.net/skin/frontend/rwd/temptu/images/em_quickshop_preview.png'
+	};
+	if(EM.QuickShop.QS_FRM_TYPE == 0 ){
+		EM.QuickShop.QS_FRM_WIDTH = EM.QuickShop.QS_FRM_WIDTH + "%";
+		EM.QuickShop.QS_FRM_HEIGHT = EM.QuickShop.QS_FRM_HEIGHT + "%";
+	}
+
+//]]	
+
+
+  window.universal_variable = window.universal_variable || {};
+  window.universal_variable.version         = "1.2";
+  window.universal_variable.magento_version = "1.14.2.0";
+  window.universal_variable.page            = {"type":"home","category":"home","site":"temptu","breadcrumb":[]};
+  window.universal_variable.user            = {"username":null,"returning":false,"language":"en_US"};
+      window.universal_variable.basket          = {"currency":"USD","subtotal":0,"tax":0,"subtotal_include_tax":false,"shipping_cost":0,"shipping_method":"","total":0,"line_items":[]};
+      window.universal_variable.listing         = {"items":[{"currency":"USD","description":"","id":"5131","name":"TEMPTU Air Perfect Canvas Starter Kit","sku_code":"99418","unit_price":"$195.00","unit_sale_price":"$195.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"5082","name":"Perfect Canvas Hydra Lock Airpod Foundation","sku_code":"99429","unit_price":"$48.00","unit_sale_price":"$48.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"4515","name":"SilkSphere Airpod Foundation","sku_code":"99975","unit_price":"$45.00","unit_sale_price":"$45.00","url":"https:\/\/temptu.com\/air-pod-foundation.html"},{"currency":"USD","description":"","id":"5237","name":"Perfect Canvas Airpod Blush","sku_code":"99340","unit_price":"$30.00","unit_sale_price":"$30.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"5109","name":"Perfect Canvas Airpod Highlighter","sku_code":"99420","unit_price":"$35.00","unit_sale_price":"$35.00","url":"https:\/\/temptu.com\/air-pod-highlighter.html"},{"currency":"USD","description":"","id":"5340","name":"Perfect Canvas Airpod Bronzer & Contour","sku_code":"99271","unit_price":"$35.00","unit_sale_price":"$35.00","url":"https:\/\/temptu.com\/air-pod-bronzer.html"},{"currency":"USD","description":"","id":"5278","name":"Perfect Canvas One Step Concealer & Color Corrector","sku_code":"99332","unit_price":"$30.00","unit_sale_price":"$30.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"246","name":"Base Smooth & Matte Primer","sku_code":"61300","unit_price":"$35.00","unit_sale_price":"$35.00","url":"https:\/\/temptu.com\/base-smooth-matte-primer.html"},{"currency":"USD","description":"","id":"5271","name":"Perfect Canvas Airpod Foundation Trio ","sku_code":"99335","unit_price":"$117.00","unit_sale_price":"$117.00","url":"https:\/\/temptu.com\/perfect-skin-foundation-bundle.html"},{"currency":"USD","description":"","id":"4961","name":"Lip Trio","sku_code":"99514","unit_price":"$52.00","unit_sale_price":"$52.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"4883","name":"Airpod Airbrush Root Touch-Up & Hair Color","sku_code":"99550","unit_price":"$35.00","unit_sale_price":"$35.00","url":"https:\/\/temptu.com\/"},{"currency":"USD","description":"","id":"5132","name":"TEMPTU Air Perfect Canvas Custom Essentials Kit","sku_code":"99419","unit_price":"$275.00","unit_sale_price":"$275.00","url":"https:\/\/temptu.com\/"}]};
+     
+  window.universal_variable.events          = [];
+
+
+var slibaseurlsearch = 'http://';
+var slibaseurl = 'http://';
+
+
+function loadAsyncScripts(){
+  var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/0VG96jTTqzDs6OEkljqnwjtubaP2iecRLWTTLNoB/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);
+}
+jQuery(window).load( function(){setTimeout(loadAsyncScripts(), 5000);});
+
+
+function loadCretio(){
+  var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//static.criteo.net/js/ld/ld.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);
+  
+  window.criteo_q = window.criteo_q || [];
+	window.criteo_q.push(
+		{event: "setAccount", account: 26683},
+		{event: "setEmail", email: ""},
+		{event: "setSiteType", type: "d"},
+		{event: "viewHome"}
+	);
+}
+jQuery(window).load( function(){ loadCretio()});
+
+
+window.__lo_site_id = 34217;
+    (function() {
+        var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+        wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    
+ 
+(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1251362-2d45-455f-8fed-87306951fd2f1.js','script','ire',document,window);
+ire('identify', {customerId: '', customerEmail: 'da39a3ee5e6b4b0d3255bfef95601890afd80709'});
+
+// <![CDATA[
+jQuery(document).ready(function($){
+		$('.slider').slick({
+		  infinite: true,
+		  speed: 300,
+		  slidesToShow: 1,
+		  slidesToScroll: 1
+		});
+	});
+// ]]>
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+window.PixleeAsyncInit = function(){Pixlee.init({apiKey:'xh0dsUmtPfcgJIq8C5'});Pixlee.addSimpleWidget({widgetId:386819});};
+
+document.getElementById("pixlee_uploader_button").addEventListener("click",function(){Pixlee.openUploader({albumId:443546,recipeId:216,displayOptionsId:42013
+,accountId:990})},!1);
+
+// <![CDATA[
+jQuery(document).ready(function($){
+		$('.quote-cntslider').slick({
+		  infinite: true,
+		  speed: 300,
+		  slidesToShow: 1,
+		  slidesToScroll: 1
+		});
+	});
+// ]]>
+
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    
+
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('https://temptu.com/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+
+
+    //<![CDATA[
+    var scrProtocol  = (document.location.protocol == "https:") ? "https:" : "http:";
+    var scriptString = '%3Cscript src="' + scrProtocol + '//p.bm23.com/bta.js" type="text/javascript"%3E%3C/script%3E';
+    document.write(unescape(scriptString));
+    //]]>
+
+
+    //<![CDATA[
+    var bta = new __bta('20a0e7e197a3344ef1a42439eeb55feb');
+    //]]>
+
+
+    //<![CDATA[
+
+    // Handle Magento Email Fields
+    Event.observe(window, 'load', function() {
+        $$('input.validate-email').each(function(item) {
+            item.observe('change', function(event) {
+                captureEmail(item.value);
+            });
+        });
+    });
+
+    // Handle Popup Event
+    if (document.addEventListener) {
+        document.addEventListener('bronto:popup-created', function(e) {
+            $$('.popup-dialog input[id*=inputs-email]').each(function(item) {
+                item.observe('change', function(event) {
+                    captureEmail(item.value);
+                });
+            });
+        }, false);
+    }
+
+    // Trigger AJAX call to capture Email Address
+    function captureEmail(emailAddress) {
+        var targetUrl = 'https://temptu.com/emailcapture/index/capture/';
+        new Ajax.Request(targetUrl, {
+            method: 'post',
+            parameters: {emailAddress: emailAddress}
+        });
+    }
+    //]]>
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1003842324;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

@@ -1,0 +1,636 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.cremationsolutions.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+        //<![CDATA[
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            
+ga('create', 'UA-7666529-1', 'auto');
+
+ga('send', 'pageview');
+            
+        //]]>
+        
+
+//<![CDATA[
+enUS = {"m":{"wide":["January","February","March","April","May","June","July","August","September","October","November","December"],"abbr":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}}; // en_US locale reference
+Calendar._DN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; // full day names
+Calendar._SDN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; // short day names
+Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
+Calendar._MN = ["January","February","March","April","May","June","July","August","September","October","November","December"]; // full month names
+Calendar._SMN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; // short month names
+Calendar._am = "AM"; // am/pm
+Calendar._pm = "PM";
+
+// tooltips
+Calendar._TT = {};
+Calendar._TT["INFO"] = 'About the calendar';
+
+Calendar._TT["ABOUT"] =
+'DHTML Date/Time Selector\n' +
+"(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
+'For latest version visit: http://www.dynarch.com/projects/calendar/\n' +
+'Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details.' +
+'\n\n' +
+'Date selection:\n' +
+'- Use the \xab, \xbb buttons to select year\n' +
+'- Use the \u2039 buttons to select month\n' +
+'- Hold mouse button on any of the above buttons for faster selection.';
+Calendar._TT["ABOUT_TIME"] = '\n\n' +
+'Time selection:\n' +
+'- Click on any of the time parts to increase it\n' +
+'- or Shift-click to decrease it\n' +
+'- or click and drag for faster selection.';
+
+Calendar._TT["PREV_YEAR"] = 'Prev. year (hold for menu)';
+Calendar._TT["PREV_MONTH"] = 'Prev. month (hold for menu)';
+Calendar._TT["GO_TODAY"] = 'Go Today';
+Calendar._TT["NEXT_MONTH"] = 'Next month (hold for menu)';
+Calendar._TT["NEXT_YEAR"] = 'Next year (hold for menu)';
+Calendar._TT["SEL_DATE"] = 'Select date';
+Calendar._TT["DRAG_TO_MOVE"] = 'Drag to move';
+Calendar._TT["PART_TODAY"] = ' (' + "today" + ')';
+
+// the following is to inform that "%s" is to be the first day of week
+Calendar._TT["DAY_FIRST"] = 'Display %s first';
+
+// This may be locale-dependent. It specifies the week-end days, as an array
+// of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
+// means Monday, etc.
+Calendar._TT["WEEKEND"] = "0,6";
+
+Calendar._TT["CLOSE"] = 'Close';
+Calendar._TT["TODAY"] = "today";
+Calendar._TT["TIME_PART"] = '(Shift-)Click or drag to change value';
+
+// date formats
+Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
+Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
+
+Calendar._TT["WK"] = "Week";
+Calendar._TT["TIME"] = 'Time:';
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('https://www.cremationsolutions.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+//<![CDATA[
+
+    var topMenuContainer = jQuery('#mainmenu');
+    var topMenuSettings = {
+        mobileMenuThreshold: 992        , isVerticalLayout: false        
+        , mode: 0                , initVerticalMenuCollapsed: true        , outermostContainer: jQuery('.hp-blocks-holder')        , fullWidthDdContainer: jQuery('.hp-blocks-holder')    };
+    var theTopMenu = topMenuContainer.ultramegamenu(topMenuSettings).data("infortis-ultramegamenu");
+    theTopMenu.enableDropdowns();
+
+        
+        jQuery(function($) {
+
+            var itemsList = topMenuContainer.children('ul');
+
+            // Non-clickable links
+            itemsList.on('click', '.no-click', function(e) {
+                e.preventDefault();
+            });
+
+        }); //end: on document ready
+
+        jQuery(window).on("load", function() {
+
+            var menubar = topMenuContainer;
+            var isTouchDevice = ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0);
+            if (isTouchDevice)
+            {
+                menubar.on('click', 'a', function(e) {
+
+                    var link = jQuery(this);
+                    if (!menubar.hasClass('nav-mobile') && link.parent().hasClass('nav-item--parent'))
+                    {
+                        if (!link.hasClass('ready'))
+                        {
+                            e.preventDefault();
+                            menubar.find('.ready').removeClass('ready');
+                            link.parents('li').children('a').addClass('ready');
+                        }
+                    }
+
+                }); //end: on click
+            } //end: if isTouchDevice
+
+        }); //end: on load
+
+    
+//]]>
+
+
+//<![CDATA[
+
+    var theHeaderContainer = jQuery('#header-container');
+
+        
+        var smartHeaderSettings = {
+            cartBlockSelector: '#mini-cart'
+            , dropdownBlockClass: 'dropdown'
+        };
+        theHeaderContainer.smartheader(smartHeaderSettings);
+
+    
+    jQuery(function($) {
+
+        
+            //Skip Links
+            var skipContents = $('.skip-content');
+            var skipLinks = $('.skip-link');
+            skipLinks.on('click', function (e) {
+                e.preventDefault();
+
+                var self = $(this);
+                var target = self.attr('href');
+
+                //Get target element
+                var elem = $(target);
+
+                //Check if stub is open
+                var isSkipContentOpen = elem.hasClass('skip-active') ? 1 : 0;
+
+                //Hide all stubs
+                skipLinks.removeClass('skip-active');
+                skipContents.removeClass('skip-active');
+
+                //Toggle stubs
+                if (isSkipContentOpen) {
+                    self.removeClass('skip-active');
+                } else {
+                    self.addClass('skip-active');
+                    elem.addClass('skip-active');
+                }
+            });
+
+        
+        
+            var stickyHeaderSettings = {
+                stickyThreshold: 992                , cartBlockSelector: '#mini-cart'
+            };
+            theHeaderContainer.stickyheader(stickyHeaderSettings);
+
+        
+    }); //end: on document ready
+
+//]]>
+
+
+//<![CDATA[
+
+    //Expose the header container
+    var jsHeaderContainerObject = document.getElementById("header-container");
+    if (jsHeaderContainerObject.style.display == 'none')
+    {
+        jsHeaderContainerObject.style.display = "block";
+        jsHeaderContainerObject.classList.add("js-shown"); ///
+    }
+
+//]]>
+
+
+//<![CDATA[
+    jQuery(function($) {
+        
+        var owl = $('#slideshow-6cfcf9ae77b9a4b9d7582a72c769ccae');
+        owl.owlCarousel({
+
+            navigationText: false
+            , addClassActive: true
+
+                    , singleItem: true
+
+            
+        
+                    , slideSpeed: 200        
+                    , paginationSpeed: 500        
+                    , autoPlay: 4000        
+                    , stopOnHover: true
+        
+                    , rewindNav: true
+            , rewindSpeed: 600
+        
+                    , pagination: true
+        
+                    , navigation: true
+        
+        
+            , beforeInit: function() {
+                var firstSlide = owl.find('.item:eq(0)');
+                firstSlide.find('[data-animate-in]').each(function() {
+                    $(this).addClass($(this).data('animate-in') + ' animated');
+                });
+            }
+
+                        , afterMove: function() {
+                owl.find('.owl-item.active [data-animate-in]').each(function() {
+                    $(this).addClass($(this).data('animate-in') + ' animated');
+                });
+            }
+
+            , beforeMove: function() {
+                owl.find('.owl-item.active [data-animate-in]').each(function() {
+                    $(this).removeClass($(this).data('animate-in') + ' animated');
+                });
+            }
+
+        
+        }); // end: owl
+
+    });
+//]]>
+
+
+//<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    new Varien.searchForm('newsletter-validate-detail', 'newsletter', 'Enter your email address');
+//]]>
+
+
+	//<![CDATA[
+
+			var gridItemsEqualHeightApplied = false;
+	function setGridItemsEqualHeight($)
+	{
+		var $list = $('.category-products-grid');
+		var $listItems = $list.children();
+
+		var centered = $list.hasClass('centered');
+		var gridItemMaxHeight = 0;
+		$listItems.each(function() {
+			
+			$(this).css("height", "auto"); 			var $object = $(this).find('.actions');
+
+						if (centered)
+			{
+				var objectWidth = $object.width();
+				var availableWidth = $(this).width();
+				var space = availableWidth - objectWidth;
+				var leftOffset = space / 2;
+				$object.css("padding-left", leftOffset + "px"); 			}
+
+						var bottomOffset = parseInt($(this).css("padding-top"));
+			if (centered) bottomOffset += 10;
+			$object.css("bottom", bottomOffset + "px");
+
+						if ($object.is(":visible"))
+			{
+								var objectHeight = $object.height();
+				$(this).css("padding-bottom", (objectHeight + bottomOffset) + "px");
+			}
+
+						
+			gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
+		});
+
+		//Apply max height
+		$listItems.css("height", gridItemMaxHeight + "px");
+		gridItemsEqualHeightApplied = true;
+
+	}
+	
+
+
+	jQuery(function($) {
+
+        // Drop-down
+        var ddBlockSelector = '.dropdown';
+        var ddOpenTimeout;
+        var dMenuPosTimeout;
+        var DD_DELAY_IN = 200;
+        var DD_DELAY_OUT = 0;
+        var DD_ANIMATION_IN = 0;
+        var DD_ANIMATION_OUT = 0;
+
+        $(document).on('mouseenter touchstart', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddHeading = dd.children('.dropdown-heading');
+            var ddContent = dd.children('.dropdown-content');
+
+            // If dd is not opened yet (or not initialized yet)
+            var isDdOpened = dd.data('ddOpened');
+            if (isDdOpened === false || isDdOpened === undefined)
+            {
+                // Clear old position of dd menu
+                ddContent.css("left", "");
+                ddContent.css("right", "");
+
+                // Show dd menu
+                clearTimeout(ddOpenTimeout);
+                ddOpenTimeout = setTimeout(function() {
+                    
+                    dd.addClass('open');
+
+                    // Set dd open flag
+                    dd.data('ddOpened', true);
+                    
+                }, DD_DELAY_IN);
+
+                ddContent.stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+                
+                // Set new position of dd menu.
+                // This code is delayed the same amount of time as dd animation.
+                clearTimeout(dMenuPosTimeout);
+                dMenuPosTimeout = setTimeout(function() {
+
+                    if (ddContent.offset().left < 0)
+                    {
+                        var space = dd.offset().left; // Space available on the left of dd
+                        ddContent.css("left", (-1)*space);
+                        ddContent.css("right", "auto");
+                    }
+                
+                }, DD_DELAY_IN);
+
+            } // end: dd is not opened yet
+
+        }).on('mouseleave', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddContent = dd.children('.dropdown-content');
+
+            clearTimeout(ddOpenTimeout); // Clear, to close dd on mouseleave
+            ddContent.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+            if (ddContent.is(":hidden"))
+            {
+                ddContent.hide();
+            }
+            dd.removeClass('open');
+
+            // Clear dd open flag
+            dd.data('ddOpened', false);
+
+            // After hiding, clear the click event flag
+            dd.data('ddClickIntercepted', false);
+
+        }).on('click', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddHeading = dd.children('.dropdown-heading');
+            var ddContent = dd.children('.dropdown-content');
+
+            // Only if the heading was clicked
+            if ($.contains(ddHeading[0], e.target) || ddHeading.is(e.target))
+            {
+                // Only after the first click already happened, the second click can close the dropdown
+                if (dd.data('ddClickIntercepted'))
+                {
+                    if (dd.hasClass('open'))
+                    {
+                        clearTimeout(ddOpenTimeout); // Clear, to close dd on mouseleave
+                        ddContent.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+                        if (ddContent.is(":hidden"))
+                        {
+                            ddContent.hide();
+                        }
+                        dd.removeClass('open');
+
+                        // Clear dd open flag
+                        dd.data('ddOpened', false);
+
+                        // After hiding, clear the click event flag
+                        dd.data('ddClickIntercepted', false);
+                    }
+                }
+                else 
+                {
+                    // Set the click event flag
+                    dd.data('ddClickIntercepted', true);
+                }
+            }
+
+        });
+
+
+
+				var windowScroll_t;
+		$(window).scroll(function(){
+			
+			clearTimeout(windowScroll_t);
+			windowScroll_t = setTimeout(function() {
+										
+				if ($(this).scrollTop() > 100)
+				{
+					$('#scroll-to-top').fadeIn();
+				}
+				else
+				{
+					$('#scroll-to-top').fadeOut();
+				}
+			
+			}, 500);
+			
+		});
+		
+		$('#scroll-to-top').click(function(){
+			$("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+			return false;
+		});
+		
+		
+		
+						
+						$('.category-products-grid').on('mouseenter', '.item', function() {
+				$(this).find(".display-onhover").fadeIn(400, "easeOutCubic");
+			}).on('mouseleave', '.item', function() {
+				$(this).find(".display-onhover").stop(true).hide();
+			});
+		
+		
+
+
+				$('.products-grid, .products-list').on('mouseenter', '.product-image-wrapper', function() {
+			$(this).find(".alt-img").fadeIn(400, "easeOutCubic");
+		}).on('mouseleave', '.product-image-wrapper', function() {
+			$(this).find(".alt-img").stop(true).fadeOut(400, "easeOutCubic");
+		});
+
+
+
+				$('.fade-on-hover').on('mouseenter', function() {
+			$(this).animate({opacity: 0.75}, 300, 'easeInOutCubic');
+		}).on('mouseleave', function() {
+			$(this).stop(true).animate({opacity: 1}, 300, 'easeInOutCubic');
+		});
+
+
+
+				var dResize = {
+
+			winWidth : 0
+			, winHeight : 0
+			, windowResizeTimeout : null
+
+			, init : function()
+			{
+				dResize.winWidth = $(window).width();
+				dResize.winHeight = $(window).height();
+				dResize.windowResizeTimeout;
+
+				$(window).on('resize', function(e) {
+					clearTimeout(dResize.windowResizeTimeout);
+					dResize.windowResizeTimeout = setTimeout(function() {
+						dResize.onEventResize(e);
+					}, 50);
+				});
+			}
+
+			, onEventResize : function(e)
+			{
+				//Prevent from executing the code in IE when the window wasn't actually resized
+				var winNewWidth = $(window).width();
+				var winNewHeight = $(window).height();
+
+				//Code in this condition will be executed only if window was actually resized
+				if (dResize.winWidth != winNewWidth || dResize.winHeight != winNewHeight)
+				{
+					//Trigger deferred resize event
+					$(window).trigger("themeResize", e);
+
+					//Additional code executed on deferred resize
+					dResize.onEventDeferredResize();
+				}
+
+				//Update window size variables
+				dResize.winWidth = winNewWidth;
+				dResize.winHeight = winNewHeight;
+			}
+
+			, onEventDeferredResize : function() //Additional code, execute after window was actually resized
+			{
+				//Products grid: equal height of items
+									setGridItemsEqualHeight($);
+				
+			}
+
+		}; //end: dResize
+
+		dResize.init();
+
+
+
+	}); //end: on document ready
+	
+	
+
+	jQuery(window).load(function(){
+		
+							setGridItemsEqualHeight(jQuery);
+		
+	}); //end: jQuery(window).load(){...}
+
+
+
+	//]]>
+
+
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+
+        var onSubmit = function (token) {
+            if (currentValidationForm && currentValidationForm.validator
+                && currentValidationForm.validator.validate()
+            ) {
+                currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+                currentForm.submit();
+            } else {
+                grecaptcha.reset();
+            }
+        };
+
+        formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"newsletter\/subscriber\/new\"]","form[action*=\"customer\/account\/loginPost\"]","form[action*=\"review\/product\/post\"]","form[action*=\"contacts\/index\/post\"]"];
+        formsToProtect.forEach(function (item) {
+            formToProtect = $$(item)[0];
+            if (formToProtect) {
+                formsToProtectOnPage.push(formToProtect);
+            }
+        });
+        for (var index in formsToProtectOnPage) {
+            if (formsToProtectOnPage.hasOwnProperty(index)) {
+                var formToProtectOnPage = formsToProtectOnPage[index];
+                if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                    formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                    if (0 < formToProtectOnPage.length) {
+                        formToProtectOnPage = formToProtectOnPage[0];
+                    } else {
+                        continue;
+                    }
+                }
+
+                var recaptchaBlock = document.createElement('div');
+                recaptchaBlock.className = 'amasty_recaptcha';
+                formToProtectOnPage.appendChild(recaptchaBlock);
+
+                var tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = 'amasty_invisible_token';
+                tokenInput.value = '';
+                formToProtectOnPage.appendChild(tokenInput);
+
+                formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                    currentForm = event.target;
+                    currentValidationForm = new VarienForm(currentForm.id, false);
+                    recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                    if ('' == recaptchaBlock.innerHTML) {
+                        recaptcha = grecaptcha.render(recaptchaBlock, {
+                            'sitekey': '6LeTR2UUAAAAAEv7Avyv9S_Hd4HNRwMLXt2GDPzL',
+                            'callback': onSubmit,
+                            'size': "invisible",
+                            'badge': 'bottomright'
+                        });
+                    }
+                    grecaptcha.reset(recaptcha);
+                    grecaptcha.execute(recaptcha);
+                    return false;
+                }
+            }
+        }
+    
+
+function initLightbox(){
+    new Lightbox({
+        fadeDuration  : 200,
+        resizeDuration: 400,
+        wrapAround    : 1,
+        fitImagesInViewport : 1,
+        showImageNumberLabel: 1,
+        albumLabel: function(curImageNum, albumSize) {
+            return "Image " + curImageNum + " of " + albumSize;
+        }
+    });
+}
+
+//if (Prototype.Browser.IE) {
+//    Event.observe(window, 'load', function() { //KB927917 fix
+//        initLightbox();
+//    });
+//} else {
+    document.observe("dom:loaded", function() {
+        initLightbox();
+    });
+//}
+

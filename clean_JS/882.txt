@@ -1,0 +1,30 @@
+
+var user_id="";
+var session_id=""; 
+user_id="";
+session_id="ep9fq62prgagepm487cmv7c6c4";
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-107942-4']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+        var GB_ROOT_DIR = "https://www.learnoutloud.com/greybox/";
+    
+
+               // we will use greybox' afterclose function to reload the parent page
+               // after closing the grebox pop up window
+             <!--
+                    function afterclose() 
+					{
+                    window.location.reload();
+                    }        
+               // -->
+          

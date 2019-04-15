@@ -1,0 +1,98 @@
+
+/*<![CDATA[*/
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-5578443-1', 'www.rockymountainatvmc.com');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+/*]]>*/
+
+var lhnWindowN = 35089;var lhnButtonN = 8321;var lhnDepartmentN = 36352;
+setTimeout(function(){$("#aLHNBTN").attr("onclick",null).unbind("click").attr("onclick","window.lhnDepartmentN=36352;OpenLHNChat();return false;");},2000);
+ document.addEventListener('DOMContentLoaded', function() {SpecialOfferBannerPanelInit('//images.rockymountainatvmc.com/images/rm/special/RMFantasySX/2019/19-RMFantasySX-promopage-season.jpg', 'https://www.rmfantasysx.com/?utm_source=2019-RMFantasySX-Signup-master-banner&il_medium=specialofferbanner&il_campaign=2019-RMFantasySX-Promo-Page')});
+
+/*<![CDATA[*/
+document.getElementById("noJsVehsubBtn").style.display = 'none';
+/*]]>*/
+
+
+/*<![CDATA[*/
+window.jQuery || document.write(unescape("%3Cscript src='/scripts/jquery-2.2.4.min.js' type='text/javascript' %3E%3C/script%3E"))
+/*]]>*/
+
+
+/*<![CDATA[*/
+window.ctxPath = '/';
+/*]]>*/
+
+
+/*<![CDATA[*/
+
+/*]]>*/
+
+
+/*<![CDATA[*/
+$(function(){$('.selectVehicle select').selectBoxIt();var selectWidth = '130px';if((/Trident\/7\./).test(navigator.userAgent)) selectWidth = '120px';if($('.selVehicleTypes').length > 0){$('span.selVehicleTypes,span.selVehYears').css('width',selectWidth);$('span.selVehMakes,span.selVehModels').css({width:'140px',color:'#CCC'});}});
+/*]]>*/
+
+
+    (function(i,s,o,g,r,a,m){i[r]=i[r]||function(){
+    (i[r].a=i[r].a||[]).push(arguments)};i[r].t=1;a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//rockymountainatv.resultspage.com/js/sli-spark.js', 'sliSpark');
+    sliSpark('send', 'pageview');
+	
+
+/*<![CDATA[*/
+function showRebateModal() { initStaticModal('RebateSWhatIsModal','What is RM Cash?', 'RebateProgramsInfo', 'rebateInfoPopup');}
+/*]]>*/
+
+
+/*<![CDATA[*/
+$(document).on('click', '.rebateWhatIs', showRebateModal);
+/*]]>*/
+
+
+/*<![CDATA[*/
+(function(){if(sessionStorage.getItem){var $cLiM=$('header').find('.loggedIn');if(window.location.href.indexOf('rm-rider-exchange')==-1&&$cLiM.length>0){sessionStorage.setItem('customerLoggedInMenu',$cLiM[0].outerHTML)}else{sessionStorage.removeItem('customerLoggedInMenu')}};})();
+/*]]>*/
+
+
+/*<![CDATA[*/
+var gts = gts || [];
+gts.push(["id", "19186"]);
+gts.push(["badge_position", "USER_DEFINED"]);
+gts.push(["badge_container", "GTS_BADGE"]);
+gts.push(["google_base_subaccount_id", "1346699"]);
+gts.push(["locale", "en_US"]);
+var prodNo = "1880020001";
+if (prodNo !== ("$" + "{prodNo}")) {
+  gts.push(["google_base_offer_id", prodNo]);
+}
+gts.push(["google_base_country", "US"]);
+gts.push(["google_base_language", "EN"]);
+(function() {
+  var gts = document.createElement("script");
+  gts.type = "text/javascript";
+  gts.async = true;
+  gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(gts, s);
+})();
+/*]]>*/
+
+
+/*<![CDATA[*/
+window.criteo_q = window.criteo_q || [];window.criteo_q.push({event:"setAccount",account:5164},{event:"setSiteType",type:"d"},{event:"viewHome"});
+/*]]>*/
+
+
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+var $img = $('#SSDiv:first').find('img:first'); $img.one("load", function() { $('#SSDiv:first').slider({auto: true, continuous: true,numeric: true,speed: 800, prevNext : true, imagesInMargins : true});});$img.each(function() { if (this.complete) $(this).load(); });;
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+

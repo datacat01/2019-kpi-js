@@ -1,0 +1,201 @@
+
+		function AjaxPrompt(e) {
+			var ae = "#ajaxerror";
+			switch(e){
+				case "open":
+					$(ae).css({left:(iecompattest().clientWidth-$(ae).width())/2+"px",marginTop:-$(ae).height()+"px",display:""}).animate({marginTop:"0px"},1000);					
+					break;
+				case "close":
+					$(ae).animate({marginTop:-$(this).height()+"px"},1000);
+					location.reload();					
+					break;
+			}			
+		}
+        function showAjaxError() {
+          AjaxPrompt('open');
+        }
+	
+
+var HEADER_PREF = new Object();
+HEADER_PREF.running=false;
+var HEADER_CART = new Object();
+HEADER_CART.running=false;
+
+$(document).ready(function(){
+    $("#menutab>ul>li").hoverIntent({
+    interval: 10,
+    over:function(){
+
+      $(this).children("a").addClass("onPullDown");
+      $("#catlayer, #entertainmentMenu",this).slideDown("fast");
+    },
+    out:function(){
+        $(this).children("a").removeClass("onPullDown");
+      $("#catlayer, #entertainmentMenu",this).stop(true,true).hide();
+    }
+  })
+  $("#catlayer>.overlay>ul>li").hover(
+        function(){
+            
+            
+            $(this).children("a").addClass("hover").siblings(".submenu").show().css({"left":"98%","top":"0"});
+    },
+    function(){
+        $(this).children("a").removeClass("hover").siblings(".submenu").stop(true,true).hide();
+    }
+  )
+})
+
+<!--/*--><![CDATA[/*><!--*/
+Wicket.Event.add(window, "load", function(event) { setTimeout("var wcall=wicketAjaxGet('https://www.yesasia.com/?wicket:interface=:1:keepAliveTimer::IActivePageBehaviorListener:0:2&wicket:ignoreIfNotActive=true',function() { }.bind(this),function() { ;}.bind(this), function() {var c = Wicket.$('id1'); return typeof(c) != 'undefined' && c != null}.bind(this));", 300000);;});
+/*-->]]>*/
+
+$(document).ready(function() {
+  var ww = $.browser.msie || $.browser.opera ? $(window).width():$(document).width();
+  var ml = (ww-934)/2;
+  $("#fixbar").css({left:ml});
+  $(window).resize(function() {
+    var ww = $.browser.msie || $.browser.opera ? $(window).width():$(document).width();
+    var ml = (ww-934)/2;
+    if (ww < 934) {
+      $("#fixbar").css({left:0});
+    } else {
+      $("#fixbar").css({left:ml});
+    }
+  });
+  $("a.shide").click(function(){
+    $("#socialmedia").animate({bottom:"-36px"},500).hide();
+    $("a.sb").show();
+  });
+  $("a.sb").click(function(){
+    $("#socialmedia").show().animate({bottom:0},500);
+    $(this).hide();
+  });
+});
+
+
+		$(document).ready(function(){
+			$(".splashblock").tabSwitch({
+				tabs: ".tab",
+				content: "ul.section",
+				handler: "click",
+				starter: 0
+			})
+			addShowMenu(".boardarea");			
+		})
+	
+   
+    var RHSInterval, currentRHS=0, RHSlots, RHSstatus=1, creativeImage=new Array(); 
+    function rotateRHS(n){        
+        var waitComplete,waitRotate,ready=0,next=(n+1<RHSlots.length)? n+1 : 0;
+        clearTimeout(RHSInterval);clearInterval(waitComplete);clearInterval(waitRotate);
+        $("#RHS .creative a.lot").each(function(i){
+            var nn=(n+i<RHSlots.length)? n+i : 0;           
+            if (!creativeImage[nn]){
+                creativeImage[nn]=new Image();
+                creativeImage[nn].onerror=function(){
+                    RHSlots.eq(nn).fadeTo(100,0.3).css("color","#999");
+                    creativeImage[nn]=new Image();                                      
+                    rotateRHS(next);
+                }
+                creativeImage[nn].src=RHSlots[nn].name;
+                creativeImage[nn].alt=RHSlots[nn].title;
+                waitComplete=setInterval(function(){ 
+                    if (creativeImage[nn].complete){ready=1;clearInterval(waitComplete)}
+                },500)
+            }else if(!creativeImage[nn].src){               
+                n=(next==nn)? n:next;
+                ready=1;                
+            }else{
+                ready=1;
+            }
+        })
+        if(ready){
+            updateRHS(n);
+        }else{
+	        waitRotate=setInterval(function(){
+	            if(ready){updateRHS(n);clearInterval(waitRotate)}
+	        },500)
+        }
+    }
+    function updateRHS(n){
+        $("#RHS .creative a.lot").each(function(i){
+            var nn=(n+i<RHSlots.length)? n+i : 0;
+            this.href=RHSlots[nn].href;
+            if(creativeImage[nn].src){
+                $(this).html(creativeImage[nn]);
+            }else{
+                var nnn=(nn+1<RHSlots.length)? nn+1 : 0;
+                $(this).html(creativeImage[nnn]);
+            }
+        })
+        RHSlots.removeClass("on").eq(n).addClass("on");
+        currentRHS=(n+1<RHSlots.length)? n+1 : 0;
+        if(RHSstatus) RHSInterval=setTimeout("rotateRHS("+currentRHS+")",5000);
+    }
+    function RHSControl(status){
+        clearTimeout(RHSInterval);
+        var RHSSelectbar=$("#creativeSelectbar");
+        RHSstatus=status;
+        switch(status){
+            case 0:             
+                $("a.controlPause",RHSSelectbar).css("display","none");
+                $("a.controlPlay",RHSSelectbar).css("display","inline");
+                break;
+            case 1:         
+                rotateRHS(currentRHS);
+                $("a.controlPause",RHSSelectbar).css("display","inline");
+                $("a.controlPlay",RHSSelectbar).css("display","none");
+                break;
+        }       
+    }   
+    $(document).ready(function(){
+        RHSlots=$("#creativeSelectbar a.num");
+        var creativeLot=$("#RHS .creative a.lot"), mouseCtrl; 
+        if(RHSlots.length>creativeLot.length){
+            creativeLot.each(function(i){creativeImage[i]=this.childNodes[0]})
+            $("#RHS a.num, #RHS a.lot").hover(
+            	function(){clearTimeout(RHSInterval);mouseCtrl=RHSstatus;RHSstatus=0},
+            	function(){
+            		RHSstatus=mouseCtrl;
+	                if (RHSstatus) RHSInterval=setTimeout("rotateRHS("+currentRHS+")",500);
+            	}
+            )
+            RHSInterval=setTimeout("rotateRHS("+1+")",5000);
+        }else{
+            $("#creativeSelectbar").css("display","none");
+        }
+    })
+
+
+    var sv;
+    function switchView(e){
+    	var ti = e.parent().next(".details").find("a.item img");
+    	if (ti.length && ti[0].src.indexOf("loading.gif")!=-1) {
+    		ti[0].onerror = function(){ti[0].style.display="none"}
+    		ti[0].src = ti[0].name;
+    	}
+      e.addClass("on").parent().next(".details").slideDown("slow").parent("li").siblings().children(".details:visible").slideUp("fast").prev().children("a.title").removeClass("on");
+    }
+    $(document).ready(function(){
+    	$(".switchview a.title").hover(
+    		function(){
+    			var e = $(this);
+    			var f = function(){switchView(e)};
+    			sv = setTimeout(f,600);
+    		},
+    		function(){
+    			clearTimeout(sv);			
+    		}			
+    	)
+    })    
+    
+
+    var tmpcookie = new Date();
+    chkcookie = (tmpcookie.getTime() + '');
+    document.cookie = "chkcookie=" + chkcookie + "; path=/";
+    if (document.cookie.indexOf(chkcookie,0) < 0) {
+      $(document).ready(function(){$("#nocookieError,#noCookieSpacer").css("display","block")})
+    }
+  
+var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-428450-7']);_gaq.push(['_trackPageview']);_gaq.push(['_trackPageLoadTime']);(function() {  var ga = document.createElement('script');  ga.type = 'text/javascript';  ga.async = true;  ga.src = ('https:' == document.location.protocol   ? 'https://ssl'   : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0];  s.parentNode.insertBefore(ga, s);})();

@@ -1,0 +1,129 @@
+
+$(window).load(function(){
+	$('#demo-side-bar').removeAttr('style');
+});
+
+
+<!--
+var formrules=new Array(0);
+	
+//-->
+
+
+var cfJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%3Cscript src='" + cfJsHost + "www.123contactform.com/includes/interactive123cf.js?2083' type='text/javascript'%3E%3C/script%3E"));
+
+
+<!--
+var selectedfield='';
+var multiPageCurent=1;
+var multiPageTotal=1;
+function InputActions(field,id) {
+	var textcolor='#000000';
+	var hltextcolor='#000000';
+
+	if (id==selectedfield) { /* alert('do nothing'); */ }
+	else
+		{
+		// first we unhighlight the previous field, if any
+		if (selectedfield!='')
+			{
+			lid=selectedfield;
+			lidsec=lid.replace('row','rowsec');
+			
+			// reparam culoare textlabels
+			var tr=document.getElementById(lid);
+	
+			if (document.getElementsByClassName) 
+				{
+			var textlabels = tr.getElementsByClassName('class123-label');
+			for (j=0;j<textlabels.length;j++)
+				textlabels[j].style.color=textcolor;
+				}
+				else
+				{
+				var textlabels=tr.getElementsByTagName('label');
+				for (j=0;j<textlabels.length;j++)
+					if (textlabels[j].className.indexOf('class123-label')>-1) textlabels[j].style.color=textcolor;
+				}
+			var oldbg='';
+			if (document.getElementById('errorflag'+lid)!=null)
+				oldbg=document.getElementById('errorflag'+lid).value;
+				
+			// reparam culoare bg td
+			var tds = tr.getElementsByTagName('div');
+			for (j=0;j<tds.length;j++)
+				tds[j].parentNode.parentNode.style.background=oldbg;
+			
+			// reparam culoare bg td sec
+			if (document.getElementById(lidsec) != null)
+				{
+				var trsec=document.getElementById(lidsec);
+				tds = trsec.getElementsByTagName('div');
+				for (j=0;j<tds.length;j++)	
+					tds[j].parentNode.parentNode.style.background=oldbg;
+				}
+			}
+		// then we highlight the new one
+		selectedfield=id;
+		
+		lid=id;
+		lidsec=lid.replace('row','rowsec');
+
+		// modificam culoare textlabels
+		var tr=document.getElementById(lid);
+		if (document.getElementsByClassName) 
+			{		
+		var textlabels = tr.getElementsByClassName('class123-label');
+		for (j=0;j<textlabels.length;j++)
+			textlabels[j].style.color=hltextcolor;
+			}
+			else
+			{
+			var textlabels=tr.getElementsByTagName('label');
+			for (j=0;j<textlabels.length;j++)
+				if (textlabels[j].className.indexOf('class123-label')>-1) textlabels[j].style.color=hltextcolor;
+			}
+
+		// modificam culoare bg td
+		var tds = tr.getElementsByTagName('div');
+		for (j=0;j<tds.length;j++)
+			tds[j].parentNode.parentNode.style.background='#FEF1C1';
+		
+		// modificam culoare bg td sec
+		if (document.getElementById(lidsec) != null)
+			{
+			var trsec=document.getElementById(lidsec);
+			tds = trsec.getElementsByTagName('div');
+			for (j=0;j<tds.length;j++)	
+				tds[j].parentNode.parentNode.style.background='#FEF1C1';
+			}
+		}
+
+	// now the field rules
+	
+	InputRules('beginning');	
+}
+function IsFullDateEntered(c_id) {
+if  ((document.getElementById('id123-control'+c_id+'-1').value!='')&&(document.getElementById('id123-control'+c_id+'-2').value!='')&&(document.getElementById('id123-control'+c_id+'-3').value!=''))
+	document.getElementById('id123-control'+c_id).value=document.getElementById('id123-control'+c_id+'-1').value+'/'+document.getElementById('id123-control'+c_id+'-2').value+'/'+document.getElementById('id123-control'+c_id+'-3').value;
+
+}
+//-->
+
+
+		InputRules('firsttime');
+		
+multiPageTotal=1;
+
+var sc_project=8090973; 
+var sc_invisible=1; 
+var sc_security="f99ecc91"; 
+
+
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//www.webtraxs.com/trxscript.php' type='text/javascript'%3E%3C/script%3E"));
+
+
+_trxid = "grangerplastics";
+webTraxs();
+

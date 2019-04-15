@@ -1,0 +1,195 @@
+ 
+ <!-- 
+ (new Image).src="https://www.trophycentral.com/cgi-bin/refsd?cd=.trophycentral.com&e=http://www.trophycentral.com/&h=www.trophycentral.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+var pd_myAccountUrl = "https://trophycentral.practicaldatacore.com/";
+var onloadList = new Array();
+function doWindowOnload() {
+	for(var i=0;i<onloadList.length;i++) {
+		try {
+			onloadList[i]();
+		} catch(e) { 
+			//***IGNORE BAD SCRIPT 
+			//alert("skipping bad script");
+		}
+	}
+}
+function windowOnload(f){
+	if(typeof window.onload=='function') onloadList.push(window.onload);
+	window.onload = null;
+	onloadList.push(f);
+}
+
+
+yswLib.config('sportsawards','www.trophycentral.com');
+
+
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-QnC_ufBhcJ7FD"
+});
+
+
+$(window).scroll( function() {
+  if ($("#modalOverlay").length > 0)
+    $("#modalOverlay").css("top" , (document.documentElement.scrollTop || document.body.scrollTop) + 'px' );
+});
+
+
+<!--
+function PageQuery(q) {
+if(q.length > 1) this.q = q.substring(1, q.length);
+else this.q = null;
+this.keyValuePairs = new Array();
+if(q) {
+for(var i=0; i < this.q.split("&").length; i++) {
+this.keyValuePairs[i] = this.q.split("&")[i];
+}
+}
+this.getKeyValuePairs = function() { return this.keyValuePairs; }
+this.getValue = function(s) {
+for(var j=0; j < this.keyValuePairs.length; j++) {
+if(this.keyValuePairs[j].split("=")[0] == s)
+return this.keyValuePairs[j].split("=")[1];
+}
+return false;
+}
+this.getParameters = function() {
+var a = new Array(this.getLength());
+for(var j=0; j < this.keyValuePairs.length; j++) {
+a[j] = this.keyValuePairs[j].split("=")[0];
+}
+return a;
+}
+this.getLength = function() { return this.keyValuePairs.length; } 
+}
+function queryString(key){
+var page = new PageQuery(window.location.search); 
+return unescape(page.getValue(key)); 
+}
+
+if (queryString('ref')!='false')
+{
+	if (typeof(AffiliateLogo) != "undefined")
+		SetCookie("AffiliateLogo", AffiliateLogo);
+
+	if (typeof(AffiliateText) != "undefined")
+		SetCookie("AffiliateText", AffiliateText);
+
+	if (typeof(AffiliateID) != "undefined")
+		SetCookie("AffiliateID", AffiliateID);
+
+	if (typeof(TrackLink) != "undefined")
+	{
+		document.location.href = TrackLink;
+	}
+SetCookie("ref", queryString('ref'));
+}
+
+function SetAffLogo()
+{
+	var Branding = "";
+	if (GetCookie("AffiliateText") != null)
+	{
+		Branding = GetCookie("AffiliateText");
+	}
+	
+	if (GetCookie("AffiliateLogo") != null)
+	{
+		// Branding += " <img border=0 align=absmiddle src=" + GetCookie("AffiliateLogo") + ">";
+		$("img[name='logo']").removeAttr("width").removeAttr("height");
+		$("img[name='logo']")[0].src = GetCookie("AffiliateLogo");
+	}
+	
+	if (document.getElementById("divBranding") && GetCookie("AffiliateID") != null && !location.href.match(GetCookie("AffiliateID") + ".html"))
+	{
+		document.getElementById("divBranding").innerHTML = Branding;
+	}
+}
+
+//-->
+
+
+function pricingInit() {
+	//var url = pd_myAccountUrl + "/mod_wholesale/priceRoutines2009.js";
+var url = 'https://lib.store.yahoo.net/lib/sportsawards/priceRoutines2009.js';
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.src = url;
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+windowOnload(pricingInit);
+windowOnload(pdShowHideForWholesale);
+
+doWindowOnload();
+
+
+function pdInit() {
+
+    //***** REVIEWS IMPLEMENTATION ***********
+	var elements = document.getElementsByClassName("pdRatingStars");
+    var productIdList = new Array();
+    for(var i=0;i<elements.length;i++) {
+        productIdList[i] = elements[i].getAttribute("productId");
+    }
+    var productIdListCsv = productIdList.join(",");
+	
+	//***** REWARDS IMPLEMENTATION ******
+	var productIdListRewardsElements = document.getElementsByClassName("pdRewardsPromoMessage");
+    var productIdListRewards = new Array();
+    for(var i=0;i<productIdListRewardsElements.length;i++) {
+        productIdListRewards[i] = productIdListRewardsElements[i].getAttribute("productId");
+    }
+    var productIdListRewardsCsv = productIdListRewards.join(",");
+	
+	//****** CONSTRUCT SCRIPT URL WITH CACHE BUSTING ********************
+	var cb = (new Date()).getTime();
+    var scriptUrl = "https://trophycentral.practicaldatacore.com//mod_yahooMerchantSolutions/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListRewardsCsv=" + encodeURIComponent(productIdListRewardsCsv);
+    scriptUrl += "&productIdListCsv=" + encodeURIComponent(productIdListCsv);
+    try {scriptUrl += "&pdSpecialAccessList=" + encodeURIComponent(pdSpecialAccessList);} catch(e) {}
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+
+}
+pdInit();
+
+
+(function() {
+	var nxt_host = (("https:" == document.location.protocol) ? "https://" : "http://"); nxt_host += "vector.nextopiasoftware.com/";
+	document.write(unescape("%3C") + "script src='" + nxt_host + "nxt-ac-js-1.1-min.js' type='text/javascript'" + unescape("%3E%3C/script%3E"));
+	document.write(unescape("%3C") + "link rel='stylesheet' type='text/css' href='" + nxt_host + "ac.css'" + unescape("%3E"));
+})();
+
+
+(function() {
+	var jnxtac = jQuery.noConflict(true);
+	jnxtac("#search_box_id").autocomplete({cid:'5207aaf47b1c5b64913b806bed75208d'});
+})();
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'secure.trophycentral.com';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/2f3feeee123401b5a01feac3c5b3249a?id=20e3eacad8da'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

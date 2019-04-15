@@ -1,0 +1,43 @@
+
+        var localizedErrMap = {};
+        localizedErrMap['required'] = 'This field is required.';
+        localizedErrMap['ca'] = 'An unexpected error occurred while attempting to send email.';
+        localizedErrMap['email'] = 'Please enter your email address in name@email.com format.';
+        localizedErrMap['birthday'] = 'Please enter birthday in MM/DD format.';
+        localizedErrMap['anniversary'] = 'Please enter anniversary in MM/DD/YYYY format.';
+        localizedErrMap['custom_date'] = 'Please enter this date in MM/DD/YYYY format.';
+        localizedErrMap['list'] = 'Please select at least one email list.';
+        localizedErrMap['generic'] = 'This field is invalid.';
+        localizedErrMap['shared'] = 'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+        localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';
+        localizedErrMap['state_province'] = 'Select a state/province';
+        localizedErrMap['selectcountry'] = 'Select a country';
+        var postURL = 'https://visitor2.constantcontact.com/api/signup';
+    
+
+        var localizedErrMap = {};
+        localizedErrMap['required'] = 'This field is required.';
+        localizedErrMap['ca'] = 'An unexpected error occurred while attempting to send email.';
+        localizedErrMap['email'] = 'Please enter your email address in name@email.com format.';
+        localizedErrMap['birthday'] = 'Please enter birthday in MM/DD format.';
+        localizedErrMap['anniversary'] = 'Please enter anniversary in MM/DD/YYYY format.';
+        localizedErrMap['custom_date'] = 'Please enter this date in MM/DD/YYYY format.';
+        localizedErrMap['list'] = 'Please select at least one email list.';
+        localizedErrMap['generic'] = 'This field is invalid.';
+        localizedErrMap['shared'] = 'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+        localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';
+        localizedErrMap['state_province'] = 'Select a state/province';
+        localizedErrMap['selectcountry'] = 'Select a country';
+        var postURL = 'https://visitor2.constantcontact.com/api/signup';
+    
+
+            AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+        
+
+        var merchant = "70211";
+        var cookieVal = 365;
+        document.write(unescape("%3Cscript async src='https://impression.clickinc.com/impressions/servlet/CookeExpire?merchant=" + merchant + "' type='text/javascript'%3E%3C/script%3E"));
+    
+
+        var triggermail = triggermail || []; triggermail.load = function (a) { var b = document.createElement("script"); b.type = "text/javascript"; b.async = !0; b.src = ("https:" === document.location.protocol ? "https://" : "http://") + "triggeredmail.appspot.com/triggermail.js/" + a + ".js"; a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(b, a) }; triggermail.load("grassland_beef"); window.triggermail = triggermail;
+    

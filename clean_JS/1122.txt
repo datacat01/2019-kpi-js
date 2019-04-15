@@ -1,0 +1,73 @@
+
+
+$(document).ready(function() {
+	
+		
+		
+		$(".selectorToolTip").delay(2000).fadeIn();
+	
+	
+	var initialCarState = {
+		year: null,
+		make: null,
+		baseModel: null,
+		model: null,
+		makeId: null,
+		baseModelId: null,
+		modelId: null,
+		category: "",
+		categoryId: "",
+		widgetRedirectURL: "",
+		userSessionId: "3froe9bt45p20s89nglstnbvm3"
+		};
+	VehicleSelector.init(initialCarState);
+
+	$('#selectorForm').submit(function(e) {
+		e.preventDefault();
+		var vin = $('#vin').val();
+		VehicleSelector.getCarByVin(vin);
+		});
+
+	$('#pfgGoButton').click(function() {
+		$('#selectorForm').submit();
+		});
+
+	$('.clearSelector').click(function(e) {
+		e.preventDefault();
+		VehicleSelector.resetSelector();
+		});
+
+	$('.homeSelector').click(function(e) {
+		e.preventDefault();
+		window.location = $('#selectedVehiclesSelect').val();
+		});
+
+	$('.resetSelector').click(function(e) {
+		e.preventDefault();
+		VehicleSelector.resetSelector();
+		});
+
+	$('#selectedVehiclesSelect').change(function(e) {
+		e.preventDefault();
+		VehicleSelector.changeSelectedVehicle($(this).val());
+		});
+
+	});
+
+
+
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+{ event: "setAccount", account: 32546 },
+{ event: "setEmail", email: "d41d8cd98f00b204e9800998ecf8427e" },
+{ event: "setSiteType", type: "d" },
+{ event: "viewHome" }
+);
+
+
+//if (window.addEventListener) {    
+//	(function(d, src, c) { var t=d.scripts[d.scripts.length - 1],s=d.createElement('script');s.id='la_x2s6df8d';s.async=true;s.src=src;s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};t.parentElement.insertBefore(s,t.nextSibling);})(document,
+//	'https://eeuroparts.ladesk.com/scripts/track.js',
+//	function(e){ LiveAgent.createButton('0e62d092', e); });
+//	}
+

@@ -1,0 +1,83 @@
+
+  !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+
+  pintrk('load','2614376089296');
+  pintrk('page');
+
+
+      function togglePhoneHelp() {
+        document.getElementById('phone-help-box').style.visibility='visible';
+	  }
+    
+
+          function showHideNetwork() {
+            var isChecked = document.getElementById('TVCommercial').checked;
+            if (isChecked) {
+              document.getElementById('Network').style.display='block';
+            }
+            else {
+              document.getElementById('Network').style.display='none';
+            }
+          }
+        
+ $( document ).ready( setNavigation );
+
+  (function() {
+    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+    se.src = '//storage.googleapis.com/code.snapengage.com/js/330e78bc-aeb4-4328-afbf-2b42fc1a8f72.js';
+    var done = false;
+    se.onload = se.onreadystatechange = function() {
+      if (!done&&(!this.readyState||this.readyState==='loaded'||this.readyState==='complete')) {
+        done = true;
+        var seAgent;
+		SnapEngage.getAgentStatusAsync(function (online) {
+			if(online) {
+				$("#live-chat-button #snap-engage-chat-on").show();
+				$("#live-chat-button #snap-engage-chat-off").hide();
+				$("#mobile-chat #snap-engage-chat-on").show();
+				$("#mobile-chat #snap-engage-chat-off").hide();
+			} else {
+				$("#live-chat-button #snap-engage-chat-on").hide();
+				$("#live-chat-button #snap-engage-chat-off").show();
+				$("#mobile-chat #snap-engage-chat-on").hide();
+				$("#mobile-chat #snap-engage-chat-off").show();
+			}
+		});
+		  
+		SnapABug.setCallback('OpenProactive', function(agent, msg) {
+		seAgent = agent;
+		 ga('send','event','SnapEngage', 'proactivePrompt', agent);
+		});
+		SnapABug.setCallback('StartChat', function(email, msg, type) {
+		if (type == 'proactive') {
+		ga('send','event','SnapEngage', 'proactiveEngaged', seAgent);
+		 }
+		});
+		  
+		if (window.location.href.indexOf('/job') > -1 ||
+			window.location.href.indexOf('/alumni') > -1 ||
+			window.location.href.indexOf('/cat-training/curriculum/') > -1 ||
+		    window.location.href.indexOf('/ContinuingEducation') > -1 ||
+		    window.location.href.indexOf('/cpr') > -1 ||
+		    window.location.href.indexOf('/tests') > -1 ||
+		    window.location.href.indexOf('/customers') > -1 ||
+		    window.location.href.indexOf('/2013') > -1 ||		  
+		    window.location.href.indexOf('/students') > -1 ) {
+				SnapEngage.hideButton();
+				SnapEngage.allowProactiveChat(false);
+				$("#livechat").hide();
+		}
+      }
+    };
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+  })();
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072654100;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

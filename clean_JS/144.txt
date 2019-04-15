@@ -1,0 +1,59 @@
+
+    (function(d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter35916760 = new Ya.Metrika({
+                    id: 35916760,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true
+                });
+            } catch (e) {
+            }  
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function() {
+                    n.parentNode.insertBefore(s, n);
+                };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks");
+
+
+            adroll_adv_id = "FHULOH7WBRDKVNEMFMQIR6";
+            adroll_pix_id = "DPD6J5QZF5EJRILDHTR4QA";
+            /* OPTIONAL: provide email to improve user identification */
+            /* adroll_email = "username@example.com"; */
+            (function () {
+                var _onload = function(){
+                    if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+                    if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+                    var scr = document.createElement("script");
+                    var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+                    scr.setAttribute('async', 'true');
+                    scr.type = "text/javascript";
+                    scr.src = host + "/j/roundtrip.js";
+                    ((document.getElementsByTagName('head') || [null])[0] ||
+                    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+                };
+                if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+                else {window.attachEvent('onload', _onload)}
+            }());
+        
+
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery('body').on('click','#subscribe',function(){jQuery.ajax({'type':'POST','url':'/subscribe','success':function(data) { $(".subscribe").html(data); }  ,'cache':false,'data':jQuery(this).parents("form").serialize()});return false;});
+});
+/*]]>*/
+

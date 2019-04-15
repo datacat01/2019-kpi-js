@@ -1,0 +1,62 @@
+
+	var Config_VCompare_MaxProducts = '3';
+	var PageText_783 = "Compare";
+	var PageText_784 = "Change Selections";
+	var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+	var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+
+
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/ajaxcart.asp?cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+
+
+	var global_Config_EnableDisplayOptionProducts = 'False';
+	var global_Config_ForceSecureShoppingCartPage = false;
+	var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+	var Config_EnableSoftAddToCart = true;
+
+
+	var Config_Search_Auto_Complete = true;
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?24QXYW3eGQ6Nb80MvYjSXsUboZrpBo1d";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+var breadCrumb="||";
+function store_init(event){} AttachEvent(window, 'load', store_init);
+
+    if (!/\/shoppingcart\.asp/i.test(window.location.pathname)) {
+        jQuery(document).ready(function() {
+            jQuery('a').each(AddCartLink)
+        });
+    }
+
+
+    volusion.cbExtendSnippets = true;
+

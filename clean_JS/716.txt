@@ -1,0 +1,93 @@
+  
+  Shopify.doNotTriggerClickOnThumb = false; 
+
+  var selectCallbackQuickview = function(variant, selector) {
+    var productItem = jQuery('.quick-view .product-item');
+    addToCart = productItem.find('.btn-addTocart'),
+      productPrice = productItem.find('.price'),
+      comparePrice = productItem.find('.compare-price'),
+      totalPrice = productItem.find('.total-price span');           
+
+    if (variant) {
+      if (variant.available) {   
+        addToCart.removeClass('disabled').removeAttr('disabled').text('Add to Cart');
+                                                                      } else {
+                                                                      addToCart.val('sold_out').addClass('disabled').attr('disabled', 'disabled');
+      }
+
+      productPrice.html(Shopify.formatMoney(variant.price, '<span class=money>$ {{amount}}</span>'));
+                                            if ( variant.compare_at_price > variant.price ) {
+                        comparePrice
+                        .html(Shopify.formatMoney(variant.compare_at_price, '<span class=money>$ {{amount}}</span>'))
+                        .show();
+      productPrice.addClass('on-sale');
+    } else {
+      comparePrice.hide();
+      productPrice.removeClass('on-sale');
+    }
+
+    var form = jQuery('#' + selector.domIdPrefix).closest('form');
+    for (var i=0,length=variant.options.length; i<length; i++) {
+      var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+      if (radioButton.size()) {
+        radioButton.get(0).checked = true;
+      }
+    }
+
+
+    var inventoryInfo = productItem.find('.product-inventory span');
+    if (variant.available) {
+      if (variant.inventory_management!=null) {
+        inventoryInfo.text(variant.inventory_quantity + " " + 'in_stock');
+      } else {
+        inventoryInfo.text('many_in_stock');
+      }
+    } else {
+      inventoryInfo.text('out_of_stock');
+    }
+
+    var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+    var unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);
+
+    if (!unitPriceTextMatch) {
+      regex = /([0-9]+[.|,][0-9]+)/g;
+      unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);     
+    }
+
+    if (unitPriceTextMatch) {
+      var unitPriceText = unitPriceTextMatch[0];     
+      var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+      var quantity = parseInt(jQuery('.quick-view input[name=quantity]').val());
+      var totalPrice = unitPrice * quantity;
+
+      var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+      regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;     
+      if (!totalPriceText.match(regex)) {
+        regex = /([0-9]+[.|,][0-9]+)/g;
+      } 
+      totalPriceText = totalPriceText.match(regex)[0];
+
+      var regInput = new RegExp(unitPriceText, "g"); 
+      var totalPriceHtml = jQuery('.quick-view .price').html().replace(regInput ,totalPriceText);
+      jQuery('.quick-view .total-price span').html(totalPriceHtml);     
+    }
+
+    if (variant && variant.featured_image) {
+      var newImage = Shopify.resizeImage(variant.featured_image.src, 'small');
+      newImage = newImage.replace(/https?:/,'');
+      jQuery('.quick-view .quickview-more-views img').each(function() {
+        var grandSize = jQuery(this).attr('src');
+        if (grandSize == newImage) {
+          jQuery(this).parent().trigger('click');              
+          return false;
+        }
+      });
+    }
+
+  } else {
+    addToCart.text('unavailable').addClass('disabled').attr('disabled', 'disabled');
+  }
+  };
+
+
+

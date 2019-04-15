@@ -1,0 +1,173 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.abcstores.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA","VN"];
+//]]>
+
+
+        //<![CDATA[
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            
+ga('create', 'UA-58417535-1', 'auto');
+
+ga('send', 'pageview');
+            
+        //]]>
+        
+
+			//<![CDATA[
+				var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail2');
+			//]]>			
+		
+
+				jQuery(document).ready(function() {
+					var newsPopup 		= jQuery('#newsletterpopup');
+					var newsPopupClose 	= newsPopup.find('.close');
+                    var showNewsPopup 	= localStorage.getItem("showNewsPopup");
+					if (showNewsPopup != '0') {
+						newsPopup.modal();
+						disable_scroll();
+					};				
+
+					newsPopupClose.click(function(){
+                        localStorage.setItem("showNewsPopup", '0');
+						enable_scroll();
+					});
+					jQuery('body').click(function(){
+						enable_scroll();
+					});
+
+				});
+
+				function disable_scroll() {
+			         jQuery('body').bind('touchmove', function(e){e.preventDefault()});
+			    }
+
+			    function enable_scroll() {
+			        jQuery('body').unbind('touchmove');
+			    }
+				function CloseWindow() {
+					localStorage.setItem("showNewsPopup", '0');
+					window.open("/customer/account/create/", "_top", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+				}
+			
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.abcstores.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.abcstores.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+    jQuery(window).load(function(){
+        if(jQuery(".homeSider").length){ 
+            jQuery('.homeSider').carouFredSel({
+                responsive: true,
+                width: '100%',
+                prev: '.carousel-prev',
+                next: '.carousel-next',
+                scroll: 1,
+                auto    : {
+                    play    : 1,
+                    timeoutDuration :150000
+                },
+                items: {
+                    visible: {
+                        min: 1,
+                        max: 4
+                    },
+                    width:390,
+                    height: 'variable'
+                },
+                mousewheel: true,
+                swipe: {
+                    onMouse: false,
+                    onTouch: true
+                }
+            });
+            jQuery('.sliderClass .caroufredsel_wrapper').css({
+                'overflow': 'inherit'
+            });
+        };
+    });
+
+
+    var validationForInvisibleCaptchaForm;
+    var formToProtectOnPage;
+
+    var onSubmit = function (token) {
+            if (validationForInvisibleCaptchaForm.validator.validate()){
+                document.getElementById('amasty_invisible_token').setAttribute('value', token);
+                document.getElementById('amasty_invisible_token').form.submit();
+            } else {
+                grecaptcha.reset();
+            }
+    };
+
+    var onloadCallback = function () {
+        formToProtectOnPage.innerHTML +=
+            '<input type="hidden" id="amasty_invisible_token" name="amasty_invisible_token" value=""/>';
+        validationForInvisibleCaptchaForm = new VarienForm(formToProtectOnPage.id, false);
+        var id = "";
+        if (!id) {
+            id = document.getElementById('amasty_invisible_token').form.querySelector("[type='submit']");
+        }
+        if (!id) {
+            id = document.getElementById('amasty_invisible_token').form.querySelector("[type='button']");
+        }
+
+        grecaptcha.render(id, {
+            'sitekey': '6LcABEAUAAAAAGfkOOGmFKgKg6-HRy1nJ4-9G6x8',
+            'callback': onSubmit
+        });
+    };
+
+    formsToProtect = [".account-create #form-validate","#customer-reviews #review-form",".customer-account-forgotpassword .padding-s form","#contactForm #contactUs","#customform_3"];
+    formsToProtect.forEach(function(item) {
+        formToProtect = $$(item)[0];
+        if (formToProtect) {
+            formToProtectOnPage = formToProtect;
+        }
+    });
+    if (formToProtectOnPage) {
+        var recaptchaScript = document.createElement('script');
+        recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+        recaptchaScript.attributes = 'async defer';
+        document.body.appendChild(recaptchaScript);
+    }
+
+
+jQuery(window).load(function(){
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+    if(!isMobile) {
+        if(jQuery(".block-content-home").length){  jQuery(".block-content-home").cherryFixedParallax({  invert: false });};    
+    };  
+});
+
+
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        document.getElementById("newsletter").setAttribute('autocapitalize', 'off');
+        document.getElementById("newsletter").setAttribute('autocorrect', 'off');
+    //]]>
+    
+// <![CDATA[
+var mdate = new Date(); document.write(mdate.getFullYear());
+// ]]>

@@ -1,0 +1,100 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".cardchef.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"598289f68292a63d8eb692a35cc394a9ea3683bf","type":"ANONYMOUS","visit_id":"9dab1e3d-d46e-4083-b514-998488181303","visitor_id":"29c849f8-56c0-4ebb-a1c3-1126380d8819"},"referer":{"url":""},"request":{"url":"https:\/\/cardchef.com\/"}}, '', 1957334, "other", {"customer":{"id":"anonymous"}}, '9dab1e3d-d46e-4083-b514-998488181303', '29c849f8-56c0-4ebb-a1c3-1126380d8819');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	$(".QuickView").quickview({
+		buttonText: "Quick View",
+		buttonColor: "#f7f7f7",
+		gradientColor: "#dcdbdb",
+		textColor: "#000000"
+	});
+});
+
+
+var BCData = {"csrf_token":"bc9812dddadcb7be1c514dc662cd73211a51dcc077b8ad63f01de0189dc77308"};
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], input[type=radio], select').not('.UniApplied').uniform();
+	});
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], input[type=radio], select').not('.UniApplied').uniform();
+	});
+
+
+    $(window).load(function() {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "slide",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: true
+        });
+    });
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+

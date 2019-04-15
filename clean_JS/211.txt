@@ -1,0 +1,54 @@
+
+    $(document).ready(function($) {
+      $('#accordion').find('.accordion-toggle').click(function(){
+
+        //Expand or collapse this panel
+        $(this).next().slideToggle('fast');
+
+        //Hide the other panels
+        $(".accordion-content").not($(this).next()).slideUp('fast');
+
+      });
+
+      $('#accordion').find('.accordion-toggle2').click(function(){
+
+        //Expand or collapse this panel
+        $(this).addClass('open');
+        $(this).next().slideToggle('fast');
+
+        //Hide the other panels
+
+        $(".accordion-content2").not($(this).next()).slideUp('fast');
+
+      });        
+
+
+    });
+  
+
+  var _learnq = _learnq || [];
+  
+  
+
+  _learnq.push(['account', 'JKceeT']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+
+
+            var google_tag_params = {
+                ecomm_pagetype: "home"
+            };
+        
+
+/* <![CDATA[ */
+var google_conversion_id = 873766460;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

@@ -1,0 +1,397 @@
+
+
+
+  
+  if(typeof dataLayer  === 'undefined')
+  {
+    dataLayer = [];
+  }
+dataLayer.push({'google_tag_params': {"ecomm_pagetype":"home","ecomm_prodid":null,"edp_num":null,"ecomm_pcat":null,"cat_id":null,"ecomm_pname":null,"ecomm_totalvalue":null}});
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ScriptManager', 'aspnetForm', [], [], [], 90, 'ctl00$ctl00');
+//]]>
+
+
+$(document).ready(function() {
+var rotator = new TabCom.UI.ImageRotator('#rotator', 5000);
+rotator.addImage({
+url: '/ContentFiles/hash_CF-63-BC-37-A7-07-11-BC-BA-F0-BB-A2-DC-54-A8-BD/21652/68689/19MARCH10_KV_slide_petpharmacy.jpg',pos: 3,alt: 'Shop Pet Pharmacy!',
+href: '/pharmacy/see-all-pharmacy/558/?intid=HPM419FEB24'
+});rotator.addImage({
+url: '/ContentFiles/hash_CF-63-BC-37-A7-07-11-BC-BA-F0-BB-A2-DC-54-A8-BD/21652/68689/19MARCH31_KV_slide_freshenup.jpg',pos: 1,alt: 'Shop for Spring!',
+href: '/content/seasonal/the-spring-store/?intid=HPM219MAR31'
+});
+rotator.addImage({
+url: '/ContentFiles/hash_CF-63-BC-37-A7-07-11-BC-BA-F0-BB-A2-DC-54-A8-BD/21652/68689/19APRIL07_KV_slide_top_supplements.jpg',pos: 2,alt: 'Shop Top Supplements!',
+href: '/content/health-and-wellness/top-selling-dog-supplements/?intid=HPM319APR07'
+});
+rotator.start();
+});
+
+var fb_param = {};fb_param.pixel_id = '6016372907470';fb_param.value = '0.00';fb_param.currency = 'USD';(function() {var fpw = document.createElement('script');fpw.async = true;fpw.src = '//connect.facebook.net/en_US/fp.js';var ref = document.getElementsByTagName('script')[0];ref.parentNode.insertBefore(fpw, ref);})();
+
+     	        var widget = $('#CatPageWidget');
+
+     		    if (widget.length > 0)
+                  {
+     		        widget.show();
+     		      }
+     
+     	    
+
+                        var today = new Date()
+                        var year = today.getYear()
+                        if (year < 1900)
+                        {
+                            year = year + 1900;
+                        }
+                        document.write(year)
+                    
+
+
+
+   
+    
+        $(function()
+        {
+            var facebookWidth = '400px';
+            var fbLike = new TabCom.SocialSharingWidget(
+            {
+                parentElement     : '#facebookLikeSite',
+                redirectUrl       : 'https://www.facebook.com/KV-Supply-109203575775620/?hc_ref=SEARCH&fref=nf',
+                showFacebookSend  : false,
+                facebookShowType  : 'standard',
+                facebookWidth     : facebookWidth,
+                fullWidget        : false,
+                facebookAppId     : '1779473835418939'
+            });
+            fbLike.addFacebookScript();
+            fbLike.loadScripts();
+        });
+        
+        
+
+        var searchText =  $('.SearchBox');
+        var defaultText = 'Keyword/Brand/SKU#'
+        if (!Modernizr.input.placeholder)
+        {        
+          $.when(typeof(searchText.watermark) === 'function').then( function()
+          {
+            searchText.watermark({defaultText : defaultText });
+          });
+        }
+
+        var showCookie = function()
+        {
+            TabCom.MainMaster.updateCartSummary({cookie : $.cookie('CO_C')});
+        };
+
+        var addToCartFCCallback = function(params) 
+        { 
+            var totalCartCost = params.totalPrice, 
+                name = params.name, 
+                xmlFeedItemNumber = params.sku, 
+                largeImageUrl = params.largeImageUrl, 
+                price = params.price, 
+                itemPageUrl = params.itemPageUrl,
+                cartId = params.cartId,
+                numberOfItems = params.itemCount;
+
+            showCookie(numberOfItems, totalCartCost);
+        
+        }
+
+        $(document).ready(function() 
+        {    
+            if ((typeof(TabCom) === 'undefined') || (typeof(TabCom.MainMaster) === 'undefined'))
+            {
+              throw 'A dependency was not found: TabCom.MainMaster';
+            }
+            TabCom.AccountMenu.initialize(); 
+            
+              if (typeof($.isDefined) ==='function' && $.isDefined(TabCom.ResponsiveButton))
+              {
+                TabCom.ResponsiveButton.initialize();
+              }
+            
+
+            var emailSignup      = null;
+            var emailSignupAsync = null;
+
+            if ((typeof(TabCom) !== 'undefined') && (typeof(TabCom.Widgets) !== 'undefined') )
+            {
+              if (typeof(TabCom.Widgets.EmailSignup) !== 'undefined')
+              {
+                emailSignup = TabCom.Widgets.EmailSignup;
+              }
+
+              if (typeof(TabCom.Widgets.AsyncRenderingEngine) !== 'undefined')
+              {
+                var dataContext = 
+                {
+                  ServiceUrl                            : '/EmailSignup.ashx',
+                  PrimarySiteId                         : 36,
+                  PrimarySiteDomainName                 : 'kvsupply.com',
+                  AdditionalSignupSiteJson              : '[{"Id":6,"DomainName":"Bird.com","ImageUrl":"/images/com_bird.gif"},{"Id":7,"DomainName":"Fish.com","ImageUrl":"/images/com_fish.gif"}]',
+                  ViewPrivacyPolicyClientScriptCallback : TabCom.MainMaster.viewPrivacyPolicy,
+                  SignupSuccessClientScriptCallback     : TabCom.MainMaster.signupSuccessHandler,
+                  RenderSynchronous                     : false
+                }       
+
+                emailSignupAsync = new TabCom.Widgets.AsyncRenderingEngine(
+                {
+                  serviceUrl            : '/AsyncRendering.ashx',
+                  targetElementSelector : '#emailSignupPlaceHolder',
+                  widgetName            : 'Email-Signup-Widget-Sync-Chunk-Block',
+                  dataContext           : dataContext
+                });
+              }
+            }
+  
+            var emailSignupParams =           
+            {
+                emailAddressSelector                 : '#GrayBarMiddle_01 .email-widget-input', 
+                emailAddressFocusClassName           : 'textbox-focused',
+                actionElementSelector                : '#GrayBarMiddle_01 .email-widget-link',
+                resultDisplayElementSelector         : '#GrayBarMiddle_01 .result-display',
+                emailElementContainerElementSelector : '#GrayBarMiddle_01 .email-element-container',
+                signupSuccessMessage                 : 'Thank you for registering.',
+                signupFailureMessage                 : 'An error occurred.  Please try again.',
+                invalidEmailAddressMessage           : 'Your email address is not valid.',
+                emailSignupWidget                    : emailSignup,
+                fallbackSignupUrl                    : 'https://www.kvsupply.com/CS/EmailSignup.aspx' ,                
+                primarySiteId                        : 36,
+                serviceUrl                           : '/EmailSignup.ashx'
+            };
+
+            var searchSuggestionParams =           
+            {
+                searchTextSelector                   : '.SearchBox', 
+                proxyHandler                         : 'https://www.kvsupply.com/Handlers/SearchSuggestionHandler.ashx?term=',                
+                minimiumTermLength                   : 3,
+                delay                                : 200,
+                enabled                              : true,
+                siteId                               : 36,
+                searchSuggestionType                 : 0,
+                pathConstant                         : 'cKVSUPPLYp'              
+              
+            };
+
+            TabCom.MainMaster.initialize(
+            {
+              privacyPolicyUrl               : 'https://www.kvsupply.com/CS/Privacy.aspx',
+              searchUrl                      : 'https://www.kvsupply.com/Search.aspx?query=',
+              logoutServiceUrl               : 'https://www.kvsupply.com/AccountServices.ashx?op=1',
+              resetUserServiceUrl            : 'https://www.kvsupply.com/AccountServices.ashx?op=0',
+              loginTriggerSelector           : '.login-trigger',
+              resetUserTriggerSelector       : '.notme-trigger',
+              searchTextSelector             : '.SearchBox',
+              searchTriggerSelector          : '.SearchButton',
+              searchBoxDefaultText           : 'Keyword/Brand/SKU#',
+              emailSignupParams              : emailSignupParams,
+              canandaShippingTriggerSelector : '.CanadaShipping',
+              canadaShippingModalSelector    : '.MasterCanadaModalOuter',
+              canadaShippingCloseLinkSelector: '.CloseCanadaShipping',
+              emailSignUpAsyncRenderingEngine : emailSignupAsync,
+              searchSuggestionParams          : searchSuggestionParams,
+              newHeaderEnabled                : false,
+              showShopAllOnTopNav               : 'False',
+              cartServiceUrl : '/VersionTestControls/Cart/Handlers/CartHandler.ashx',
+              siteId : 36,
+              modernLayout: false,
+              isMobileOrTabletDevice: false
+              });  
+
+            
+                
+            // Sys.WebForms.PageRequestManager.getInstance().add_endRequest(showCookie);
+            
+            
+
+           if ($.historyMatchesCurrentPage("/default.aspx") === false)
+           {
+            showCookie();
+           }
+
+            TabCom.ModalContest.initialize(
+            {
+                emailValidator          :   new TabCom.Validation.Account()
+                });
+
+           
+            var deferLoader = new TabCom.UI.DeferLoader();
+            deferLoader.loadStyles();
+        });
+      
+    
+
+      $(document).ready(function()
+      {
+        if ($.historyMatchesCurrentPage('/default.aspx') === false)
+        {
+          return;
+        }
+        
+        TabCom.Widgets.PromoNotifier.initialize(
+        {
+          modalSelector       : '#promoModalWrapper',
+          errorPaneSelector   : '#divPromoModal #errorPane',
+          initialPaneSelector : '#divPromoModal #divPromoModalLeftCol',
+          waitPaneSelector    : '#divPromoModal #waitPane',
+          serviceUrl          : '/PromoNotifier.ashx',
+          targetSiteId        : 36,
+          offerId             : 914,
+          couponCode          : '1F634BO5VJ',
+          customerHelperServiceUrl : '/Handlers/CustomerHelperHandler.ashx',
+          confirmationOnly    : true,
+          FBAppId             : 1779473835418939,
+          facebookChannelUrl  : 'kvsupply.com/channel.html',
+          appType             : 0,
+          contestServiceUrl   : '/Contest.ashx'
+        });
+      });
+    
+
+
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "113547616"]);
+  gts.push(["google_base_subaccount_id", ""]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+  
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en"]);
+
+  (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+
+    
+    
+
+$(document).ready(function()
+{
+    if ($.isDefined(TabCom)) {
+        if ($.isDefined(TabCom.Util) && $.isDefined(TabCom.Util.ShopperValidation)) {
+            TabCom.Util.ShopperValidation.initialize({
+                window: window,
+                serviceUrl: '/ShopperValidation.ashx'
+            });
+
+            
+            TabCom.Util.ShopperValidation.validate({
+                validationKey: 'bdde2c5a-f8f5-4b62-81b4-f2d0685597a9'
+            });
+            
+        }
+        
+    }
+});
+
+ 
+  var globalErrorMsg = null;   
+  var logToServer=function(d,a,e){try{var f={};if(typeof(d)!=="undefined"){var c=d.originalEvent;if(c!=null&&c!==undefined&&typeof(c!=="undefined")){f.ErrorMessage=c.message;f.ErrorUrl=c.filename;f.LineNumber=c.lineno}else{f.ErrorMessage=d;f.ErrorUrl=a;f.LineNumber=e}}if(globalErrorMsg!=null){if(f.ErrorMessage===globalErrorMsg.ErrorMessage&&f.ErrorUrl===globalErrorMsg.ErrorUrl&&f.LineNumber===globalErrorMsg.LineNumber){return false}else{globalErrorMsg=f}}else{globalErrorMsg=f}$.ajax({cache:false,url:'/Handlers/ClientErrorLogger.ashx',type:"GET",data:f})}catch(b){return false}return true};  
+  window.onerror = logToServer;
+  
+
+   $(document).ready(function()
+   {
+     var trackInitAttempts = 50;    
+     var trackInterval = null;
+     var trackReady = function()
+     {
+        try
+        {
+            return typeof($.isDefined) === 'function'
+              && $.isDefined(TabCom)
+              && $.isDefined(TabCom.Tracking)
+              && $.isDefined(TabCom.Tracking.EventTrack)              
+            && ga !== undefined && $.isFunction(ga);
+        }
+        catch(err)
+        {
+            return false;
+        }
+     }
+     
+     var initTrack = function()
+     {
+        if (trackReady() === true)
+        {            
+            var sessionCam = window.sessionCamRecorder;
+            if ($.isDefined(sessionCam)){
+              	if (!window.sessioncamConfiguration)
+		              window.sessioncamConfiguration = new Object();
+	              if (!window.sessioncamConfiguration.customDataObjects)
+		              window.sessioncamConfiguration.customDataObjects = [];
+            }
+            TabCom.Tracking.EventTrack.initialize(
+            {
+                eventData : [{"Category":"Introductory Modal","Action":"click","Label":"Start Shopping","Selector":"#divPromoModal .button-ssn","EventId":31},{"Category":"Introductory Modal","Action":"click","Label":"Top Right Close","Selector":"#promoModalWrapper .promo-modal-exit","EventId":32},{"Category":"Header Buttons","Action":"click","Label":"checkout","Selector":"#masterCartWrapper .master-checkout","EventId":117},{"Category":"Header Buttons","Action":"click","Label":"View Cart","Selector":".pnl-master-cart \u003e a[href*=\"Cart.aspx\"]","EventId":118},{"Category":"Main Header","Action":"click","Label":"Email Signup","Selector":"div.email-element-container \u003e a","EventId":181},{"Category":"Frequently Bought Together","Action":"click","Label":"Doggie Box","Selector":".image-wrapper \u003e a[href*=\"doggie-box\"]","EventId":189},{"Category":"Reward Header","Action":"click","Label":"Learn More","Selector":"#RedeemRewardsHeaderBtn","EventId":363},{"Category":"Mobile Header","Action":"click","Label":"Tap To Call","Selector":"#phoneHeaderBtn","EventId":364},{"Category":"Offer Bar","Action":"click","Label":"Recent Orders","Selector":"#headerRow5RightContainer .account-option-sprite-icon-recentorders","EventId":387},{"Category":"Offer Bar","Action":"click","Label":"Rewards","Selector":"#headerRow5RightContainer .account-option-sprite-icon-riderrewards","EventId":388},{"Category":"Offer Bar","Action":"click","Label":"Auto Ship","Selector":"#headerRow5RightContainer .account-option-sprite-icon-autoship","EventId":389},{"Category":"TurnTo Chatter","Action":"click","Label":"Product Name","Selector":"#TT3chatter div.TT3comment \u003e a","EventId":169},{"Category":"TurnTo Chatter","Action":"click","Label":"See All","Selector":"#TT3chatterFooter \u003e a","EventId":185},{"Category":"TurnTo Chatter","Action":"click","Label":"Next Arrow","Selector":"#TT3nextBtn","EventId":186},{"Category":"Home Page Product Carousel","Action":"click","Label":"Switch Tab","Selector":"#CatPageWidget \u003e .product-filter-widget-container \u003e .tabs \u003e li \u003e a","EventId":202},{"Category":"Home Page Product Carousel","Action":"click","Label":"View Product","Selector":"#CatPageWidget \u003e div \u003e div \u003e div.carousel-wrapper \u003e div.product-carousel.clearfix \u003e div \u003e ul \u003e li a","EventId":203},{"Category":"Home Page Product Carousel","Action":"click","Label":"Scroll Right","Selector":"#CatPageWidget \u003e div \u003e div \u003e div.carousel-wrapper \u003e div.product-carousel.clearfix \u003e a.scroller.right-arrow","EventId":204},{"Category":"Home Page","Action":"click","Label":"Bargains Link","Selector":"a[href *= \"bargains\"]","EventId":211},{"Category":"Left Nav","Action":"click","Label":"Home Page Left Nav Category","Selector":"#LeftNav \u003e div.left-nav-wrapper \u003e ul \u003e li \u003e a","EventId":293},{"Category":"Left Nav","Action":"click","Label":"Home Page Left Nav Brand","Selector":"div[id *=\"LeftSideContentArea\"] \u003e table \u003e tbody \u003e tr \u003e td \u003e table \u003e tbody \u003e tr \u003e td \u003e a","EventId":294},{"Category":"Home Page Top Carousel","Action":"click","Label":"product","Selector":"#recommendedCarousel div a","EventId":391},{"Category":"Home Page Middle Carousel","Action":"click","Label":"product","Selector":"#todaysDealsFeatured div a","EventId":392},{"Category":"Home Page Bottom Carousel","Action":"click","Label":"brand","Selector":"#brandCarousel div a","EventId":393}],
+                googleEnabled : true,
+                googleTrack : ga,
+                localEnabled : true,
+                localTrack : [],
+                initCallback : null,
+                serviceUrl : '/EventTracker.ashx',
+                splitTestVersions : [{"TestName":"KVSupply Rewards on Site","Version":"KVSupply Rewards on Site Off"}],
+                    emailValidator : ($.isDefined(TabCom.Validation) ? new TabCom.Validation.Account() : null),
+                currentEmailAddress : '',
+                googleAccountId : 'UA-321134-2',
+                pageUri : window.location.href,
+                sessionCamConfig: window.sessioncamConfiguration,
+                securityToken : '8xNM6yPYYz3MrKHyQt12B3sPQyOeEag14K8oe7v7V0m/twHNNrBDREnuoTiQsOY9',
+                customerServiceUrl: "/Handlers/CustomerHelperHandler.ashx",
+                version: '11.9.143.40383'
+            });            
+            clearInterval(trackInterval);
+            return;
+        }
+        
+        trackInitAttempts --;
+        if (trackInitAttempts === 0)
+        {            
+            clearInterval(trackInterval);
+            $.logToConsole('Event track did not load.');
+        }
+     };
+     
+     if (trackReady() === true)
+     {
+        initTrack();
+     }
+     else
+     {
+      trackInterval = setInterval( initTrack ,  1000);
+     }
+
+   });
+

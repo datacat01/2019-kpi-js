@@ -1,0 +1,75 @@
+
+    require.config({
+        paths: {
+            'artifi': '//designer.artifi.net/SCRIPT/sasIntegration/ArtifiIntegration.js?'
+        },
+        shim: {
+            'artifi': {
+                exports: 'Artifi'
+            }
+        }
+    });
+
+
+    require(['certona-device-type'], function(deviceType) {
+        window.certona = {
+            "pagetype": "HOME",
+            "devicetype": deviceType
+        };
+    });
+
+
+    require([
+        'jquery'
+    ], function ($) {
+        $(window).on('promo_banner_content', function (event, bannerContent) {
+            var globalBanner = $('.global-promo.wrapper');
+            bannerContent ? globalBanner.hide() : globalBanner.show();
+        })
+    });
+
+
+    require([
+        'jquery',
+        'slick',
+        'domReady!'
+    ], function ($) {
+                var hasPromotionBanner = function () {
+            return $('.promo-item .promo-block div').html().length > 0;
+        };
+
+        var nextPromotionItem = function () {
+            var nextPromoItem;
+            if (hasPromotionBanner()) {
+                nextPromoItem = $('.promo-item:not(.promo-active, #global-banner-1)').first();
+            } else {
+                nextPromoItem = $('.promo-item:not(.promo-active, #dynamic-promotion-banner)').first();
+            }
+
+            $('.promo-item.promo-active').removeClass('promo-active');
+            nextPromoItem.addClass('promo-active');
+        }
+
+        var promotionTimer = setInterval(nextPromotionItem, 3000);
+
+        $('.promotion-items').hover(
+            function () {
+                clearInterval(promotionTimer);
+            }, function () {
+                clearInterval(promotionTimer);
+                promotionTimer = setInterval(nextPromotionItem, 3000);
+            }
+        );
+            });
+
+
+    require(['jquery'], function ($) {
+        var windowDirectives = 'toolbar=no,location=no,directories=no,menubar=no,status=no,scrollbars=no,resizable=yes,replace=no,height=620,width=500';
+        $('.open-live-chat').on('click', function () {
+            window.open($(this).attr('href'), $(this).attr('data-caption'),windowDirectives);
+            this.focus();
+            this.opener = window;
+            return false;
+        });
+    });
+

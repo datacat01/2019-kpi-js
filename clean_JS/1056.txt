@@ -1,0 +1,391 @@
+
+    var requireJsBaseUrl = 'https://cdn3.ebags.com/eBagsBundles/19.409.1740.1';
+
+
+    require.config({
+        baseUrl: requireJsBaseUrl,
+        waitSeconds: 30,
+        map: {
+            '*': {
+                'bootstrapShim': 'bootstrap'
+            }
+        },
+        shim: {
+            "bootstrap": {
+                deps: ["jquery"]
+            },
+            "liveclickerLib": {
+                deps: ["jquery"]
+            },
+            "get!core/certonaTracker": {
+                deps: ["certona"]
+            },
+            "jquery.flexslider": {
+                deps: ["jquery"]
+            },
+            "jquery.menuaim": {
+                deps: ["jquery"]
+            },
+            "jquery.gifplayer": {
+                deps: ["jquery"]
+            },
+            "jquery.accessible-carousel": {
+                deps: ["jquery"]
+            },
+            "jquery.zoom": {
+                deps: ["jquery"]
+            },
+            'jquery.cycle': {
+                deps: ['jquery']
+            },
+            'jquery.validate': {
+                deps: ['jquery']
+            },
+            'get!giftCard/create': { //needed because jquery plugins are included with this
+                deps: ['jquery']
+            },
+            'jqueryDataTable': {
+                deps: ['jquery']
+            },
+            'jquery.touchwipe': {
+                deps: ['jquery']
+            },
+            'jquery.waitforimages': {
+                deps: ['jquery']
+            },
+            'jquery.appear': {
+                deps: ['jquery']
+            },
+            'jquery.easing': {
+                deps: ['jquery']
+            },
+            'jquery.atooltip': {
+                deps: ['jquery']
+            },
+            'jquery.countdown': {
+                deps: ['jquery']
+            },
+            
+        }
+    });
+    
+    require.onError = function (err) {
+        if(window.console) console.log(err.requireType);
+        if (err.requireType === 'timeout') {
+            if(window.console) console.log('modules request timeout - increase requirejs config timeout: ' + err.requireModules);
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            var url = '/logme.cfm?message=requirejs-timeout-error-script-request-of-script-timed-out+modules:+' + encodeURIComponent(err.requireModules) + '&machine=' + window.location.host;
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+
+        throw err;
+    };
+
+
+    require(['jquery', 'get!pageLocation/pageLocation'], function ($, pageLocation) {
+        $(function () {
+            pageLocation.init();
+        });
+    });
+
+
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+
+
+    googletag.cmd.push(function () {
+        var mapping = googletag.sizeMapping().
+            addSize([1200, 900], [728, 90]).
+            addSize([900, 1200], [728, 90]).
+            addSize([1024, 768], [728, 90]).
+            addSize([768, 1024], [728, 90]).       
+            addSize([980, 690], [728, 90]).
+            addSize([690, 980], [728, 90]).
+            addSize([966, 604], [728, 90]).
+            addSize([604, 966], [468, 60]).
+            addSize([640, 480], [468, 60]).
+            addSize([640, 360], [468, 60]).
+            addSize([360, 640], [320, 50]).
+            addSize([568, 320], [468, 60]).
+            addSize([320, 568], [320, 50]).            
+            addSize([480, 320], [468, 60]).
+            addSize([320, 480], [320, 50]).
+            addSize([384, 640], [320, 50]).
+            addSize([640, 384], [468, 60]).
+            addSize([0, 0], [234, 60]).build();
+
+        googletag.defineSlot('/94566778/other', [160, 600], 'div-dfp-ad-nav-skyscrapper').addService(googletag.pubads());
+        googletag.defineSlot('/94566778/other', [728, 90], 'div-dfp-ad-footer').defineSizeMapping(mapping).addService(googletag.pubads());
+        googletag.defineSlot('/94566778/other', [300, 250], 'div-dfp-ad-pdp').addService(googletag.pubads());
+        
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+    });
+
+
+document.cookie="__SessionId=jjyfxpnc033yo2l3fzthmdwa;Path=/;Domain=www.ebags.com"
+document.cookie="__vid=C1FEE2561329BF47A6B23746003713FD;Expires=Thu, 14-Apr-2039 14:43:20 GMT;Path=/;Domain=www.ebags.com"
+
+
+    (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel;
+    e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l;
+    i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l);
+    })(window,document,"script","bfx",
+    "https://bfx-objects.borderfree.com/v1/dist/bfx.js");
+    bfx({key:'115b1060-62ed-11e5-821e-5314e9184678', env:'PROD', mode:'default', brand:'default'});
+
+    
+
+
+
+            require(['jquery', 'get!core/trackedTooltip'], function ($, trackedTooltip) {
+                $(function () {
+                    trackedTooltip().init('#header-interest-wide');
+                });
+            });
+        
+
+            require(['jquery', 'get!core/trackedTooltip', 'get!core/eBags'], function ($, trackedTooltip, eBags) {
+                $(function () {
+                    trackedTooltip().init('.lnkAddToWishlist');
+
+                    eBags.subscribe('/interestListItem/added', function () {
+                        trackedTooltip().dispose('.lnkAddToWishlist');
+                    });
+                });
+            });
+        
+
+            require(['jquery', 'get!core/trackedTooltip'], function ($, trackedTooltip) {
+                $(function () {
+                    trackedTooltip().init('#header-interest-narrow');
+                });
+            });
+        
+
+            require(['jquery', 'get!core/trackedTooltip', 'get!core/eBags'], function ($, trackedTooltip, eBags) {
+                $(function () {
+                    trackedTooltip().init('.lnkAddToWishlist');
+
+                    eBags.subscribe('/interestListItem/added', function () {
+                        trackedTooltip().dispose('.lnkAddToWishlist');
+                    });
+                });
+            });
+        
+
+    require(["get!core/searchFormElasticSearch"], function (SiteSearch) {
+        $(document).ready(function () {
+            var container = $("#searchFormResponseHeader");
+
+            new SiteSearch({ delay: 150 })
+                .initialize(
+                    $("#txtSearchHeader", container),
+                    $(".btnResetSearch", container));
+        });
+    });
+
+
+    require(["get!core/searchFormElasticSearch"], function (SiteSearch) {
+        $(document).ready(function () {
+            var container = $("#searchFormResponseResponsiveHeader");
+
+            new SiteSearch({ delay: 150 })
+                .initialize(
+                    $("#txtSearchResponsiveHeader", container),
+                    $(".btnResetSearch", container));
+        });
+    });
+
+
+    require(["jquery", "get!core/flyaway"], function ($, flyaway) {
+        $(function () {
+            var eBagsFlyawayModule = flyaway();
+            eBagsFlyawayModule.initMenu();
+        });
+    });
+
+
+    require(['jquery', 'certona'], function ($, certona) {
+        
+        require(['bootstrap', 'views-site-header-bootstrap-v4'], function (bootstrap) {
+        
+            $(function () {
+                $('.rewardsTooltipMicroBar').popover();
+                $('body').on('ontouchstart' in document.documentElement ? 'touchstart' : 'click', function (e) {
+                    $('.rewardsTooltipMicroBar').each(function () {
+                        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                            $(this).popover('hide');
+                        }
+                    });
+                });
+            });
+        });
+        
+        
+            // TODO: Handle Certona for GDPR
+                require(['get!core/certonaVisualAutoSuggest'], function (visualAutoSuggest) {
+                    $(document).ready(function () {
+                        visualAutoSuggest().init('SEARCHRECS_RR', 'SEARCHRECS_RR', '.conHeaderSearch');
+                    });
+                });
+            
+        
+        require(['views-site-header-fixed']);
+
+        
+    });
+
+
+    require(['get!merchandising/productBlock'],
+        function (productBlock) {
+            var getModelCount = function () {
+                var modelCountToDisplay = 16;
+
+                return modelCountToDisplay;               
+            };
+
+            productBlock().init('HOME3_RR', getModelCount);
+        });
+
+
+    require(["get!core/certonaBlock","jquery"],
+        function (certonaBlock, $) {
+            $(function() {
+                certonaBlock().addScheme('HOME3_RR', '', 150, 150, 999);
+            });
+        });
+
+
+    //productBlock and views-marketing-certonablock loaded to help ensure that sub/pub for "/productBlock/dataReady" and "/productBlock/dataDisplayed" happens in correct order
+    require(['get!core/certonaBlock', 'get!merchandising/productBlock', 'jquery', 'views-marketing-ada-certonablock'],
+        function (certonaBlock, productBlock, $) {
+            $(function() {  
+                certonaBlock().getRecommendations(null, "");
+            });
+        }
+    );
+
+
+                        require(['views-content-department-megas']);
+                    
+
+    
+    require(['get!core/trackedTooltip', "get!wishlist/wishlist"], function(trackedTooltip, wishlist){
+        $(function() {
+            var wlSettings = {
+                isCartPage: false,
+                dynamicWishlistSkuContainerSelector: '.qvWishCon'
+            };
+
+            wishlist(wlSettings);
+        });
+    });
+
+
+    require(['views-home']);
+    require(['views-catalog-productblockactions']);
+
+ 
+        require(["get!enhancedEcommerce/listeners"]);
+
+
+require(['get!microCart/addToCartv3'], function (addToCart) {
+    addToCart({deviceType: 'Desktop'}).initProductBlocks();
+});
+    
+    require(['jquery', 'bootstrap', 'modernizr', 'revealOnScroll'], function ($, bootstrap, modernizr, revealOnScroll) {
+        $(document).ready(function () {
+            $(function () {
+                $('img[usemap]').rwdImageMaps();
+                $('[data-toggle="tooltip"]').tooltip();
+                if(Modernizr.csstransitions && Modernizr.csstransforms){
+                    $('.departmentMainCol').addClass('animationEnabled');
+                    revealOnScroll();
+                }                
+            });
+        });
+    });
+
+
+                    require(['jquery'], function($) {
+                        $(function () {
+                            googletag.cmd.push(function() { googletag.display('div-dfp-ad-footer'); });
+                        });
+                    });
+                
+
+    require(['views-site-footer']);
+    require(['get!loadCSS/loadCSS'], function (loadCSS) {
+        setTimeout(function () {
+            loadCSS.loadCSS("https://cdn3.ebags.com/eBagsBundles/19.409.1740.1/cssFooter");
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.async = true;
+            document.getElementsByTagName("head")[0].appendChild(b);
+        }, 1);
+    });
+
+
+    require(["get!core/webTrackedVisitor"], function (webTrackedVisitor) {
+        webTrackedVisitor.log();
+    });
+
+
+
+
+
+    require(['jquery', 'bootstrap'], function ($) {
+        $(function() {
+            $('.eBagsPopover').popover({ html: true });
+            require(['get!bootstrap/eBagsPopover']);
+        });
+    });
+
+
+        (function () {
+            window._bcvma = window._bcvma || [];
+            _bcvma.push(["setParameter", "WindowParameters", "vr=&vi=&ve=&vp=&vn=&lc="]);
+            _bcvma.push(["setAccountID", "341253769232358176"]);
+            _bcvma.push(["setParameter", "WebsiteID", "909328904499823534"]);
+            _bcvma.push(["setParameter", "InvitationID", "3401170248996010470"]);
+
+            
+            _bcvma.push(["addFloat", { type: "chat", id: "691248832888494795" }]);
+            
+
+            _bcvma.push(["pageViewed"]);
+        })();
+    
+
+    require(['get!core/purchaseLimit'], function (purchaseLimit) {
+        $(function () {
+            purchaseLimit.init({
+                modalSelector: '#purchaseLimitModal'
+            });
+        });
+	});
+
+
+    require(['get!core/lazyload']);
+
+
+            require(['get!trackingConsent/trackingConsent', 'jquery'])
+        

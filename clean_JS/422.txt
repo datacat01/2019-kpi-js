@@ -1,0 +1,605 @@
+
+if (window.BEJSSDKObserver === undefined) {
+(function(BEJSSDKObserver, $, undefined) {
+  var observer = void 0;
+  var listeners = [];
+  var readySet = [];
+  var doc = window.document;
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+  function checkSelector(selector, fn, indexList) {
+    var elements = doc.querySelectorAll(selector);
+    // issues on IE @see https://www.codesd.com/item/javascript-es6-not-a-function-error.html
+//    elements = Array.from(elements);
+    for (var i = 0, len = elements.length; i < len; i++) {
+        // -1 means all instances
+      if (indexList != -1 && !(i in indexList)) {
+        continue;
+      }
+      var element = elements[i];
+      for (var j = 0; j < readySet.length; j++) {
+        if (readySet[j] == element.className || readySet[j] == element.id) {
+          return;
+        }
+      }
+      if (element.className) {
+        readySet.push(element.className);
+      }
+      if (element.id) {
+        readySet.push(element.id);
+      }
+
+      if (!element.ready || MutationObserver==null) {
+        element.ready = true;
+        fn.call(element, element);
+      }
+    }
+  }
+
+  function checkListeners() {
+    listeners.forEach(function (listener) {
+        return checkSelector(listener.selector, listener.fn, listener.indexList);
+    });
+  }
+
+  function removeListener(selector, fn) {
+    var i = listeners.length;
+    while (i--) {
+      var listener = listeners[i];
+      if (listener.selector === selector && listener.fn === fn) {
+        listeners.splice(i, 1);
+        if (!listeners.length && observer) {
+          observer.disconnect();
+          observer = null;
+        }
+      }
+    }
+  }
+
+  /**
+   * Fire event on first js selector
+   * @param selector string to watch on
+   * @param fn       callback function
+   * @param index_list can be undefined which means only first one
+   *                   or -1 which means all
+   *                   or a list of allowable indexes
+   */
+  BEJSSDKObserver.jsElementReady = function(selector, fn, index_list) {
+    if (index_list === undefined) {
+        index_list = [];
+        index_list.push(0);
+    }
+
+    if (MutationObserver != null) {
+      if (!observer) {
+        observer = new MutationObserver(checkListeners);
+        observer.observe(doc.documentElement, {
+            childList: true,
+            subtree: true
+        });
+      }
+      listeners.push({ selector: selector, fn: fn, indexList: index_list });
+    } else {
+      // <= IE8
+      if (!document.addEventListener) {
+        // log("<=IE8 attachEvent assignment");
+        document.addEventListener = document.attachEvent;
+      }
+      document.addEventListener("DOMContentLoaded", function(event) {
+        var elements = doc.querySelectorAll(selector);
+//        elements = Array.from(elements);
+        for (var i = 0, len = elements.length; i < len; i++) {
+          // -1 means all instances
+          if (index_list != -1 && !(i in index_list)) {
+            continue;
+          }
+          var element = elements[i];
+          element.ready = true;
+          fn.call(element, element);
+        }
+      });
+    }
+
+    checkSelector(selector, fn, index_list);
+    return function () {
+      return removeListener(selector, fn);
+    };
+  }
+}(window.BEJSSDKObserver = window.BEJSSDKObserver || {}));
+}
+var jsElementReady = window.BEJSSDKObserver.jsElementReady;
+
+if (window.BELinkBlockGenerator === undefined) {
+(function(BELinkBlockGenerator, $, undefined) {
+  BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH = 100;
+  BELinkBlockGenerator.MAXIMUM_DESC_LENGTH = 200;
+
+  BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_URL_TYPE = 0;
+  BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_HEADLINE_TYPE = 1;
+  BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_DESCRIPTION_TYPE = 2;
+  BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_IMAGE_TYPE = 3;
+
+  BELinkBlockGenerator.REPLACEMENT_STRATEGY_OVERWRITE = 0;
+  BELinkBlockGenerator.REPLACEMENT_STRATEGY_POST_APPEND_ELEMENT = 1;
+  BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_ELEMENT = 2;
+  BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_PARENT = 3;
+
+  BELinkBlockGenerator.setMaximumHeadlineLength = function(length) {
+    BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH = length;
+  }
+
+  BELinkBlockGenerator.setMaximumDescriptionLength = function(length) {
+    BELinkBlockGenerator.MAXIMUM_DESC_LENGTH = length;
+  }
+
+  BELinkBlockGenerator.generateIndividualLinks = function(parentElement, linkStructure, link) {
+  var link_level_element_tag = linkStructure[0];
+  var link_level_element = document.createElement(link_level_element_tag);
+  var link_attribute_dictionary = linkStructure[1];
+  var allowable_elements = linkStructure[2];
+  var children_link_structures = linkStructure[3];
+  for (var link_attribute_key in link_attribute_dictionary) {
+    link_level_element.setAttribute(link_attribute_key, link_attribute_dictionary[link_attribute_key]);
+  }
+
+  var added_something = false;
+  if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_URL_TYPE)>=0) {
+    link_level_element.setAttribute('href', link.url);
+	added_something = true;
+  }
+  if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_HEADLINE_TYPE)>=0 && link.h1) {
+    var headline_text = link.h1;
+	if (headline_text.length > BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH) {
+      headline_text = headline_text.substring(0, BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH) + '...';
+    }
+    var text_node = document.createTextNode(headline_text);
+	link_level_element.appendChild(text_node);
+	added_something = true;
+  }
+  if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_DESCRIPTION_TYPE)>=0 && link.desc) {
+    var desc_text = link.desc;
+	if (desc_text.length > BELinkBlockGenerator.MAXIMUM_DESC_LENGTH) {
+      desc_text = desc_text.substring(0, BELinkBlockGenerator.MAXIMUM_DESC_LENGTH) + '...';
+    }
+//    console.log("Got text " + desc_text + ", max=" + BELinkBlockGenerator.MAXIMUM_DESC_LENGTH);
+    var text_node = document.createTextNode(desc_text);
+	link_level_element.appendChild(text_node);
+	added_something = true;
+  }
+  if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_IMAGE_TYPE)>=0 && link.image) {
+//    console.log("added image " + JSON.stringify(allowable_elements) + " for " + link_level_element_tag);
+    link_level_element.setAttribute('src', link.image);
+	added_something = true;
+  }
+  // don't emit for empty links, desc, headline, image
+  // except for parent structures where allowable_length=0
+  if (!added_something && allowable_elements.length != 0) {
+//    console.log("did not added anything for " + link_level_element_tag);
+
+    return;
+  }
+  // go depth first
+  for (var childrenIndex=0; childrenIndex<children_link_structures.length; childrenIndex++) {
+    var childLinkStructure = children_link_structures[childrenIndex];
+    BELinkBlockGenerator.generateIndividualLinks(link_level_element, childLinkStructure, link);
+  }
+  parentElement.appendChild(link_level_element);
+}
+
+ BELinkBlockGenerator.insertLinkBlocks = function(targetElement, replacementStrategy, overallStructure, linkStructure, links,
+                                                  titleStructure) {
+  if (targetElement == null) {
+    return;
+  }
+
+  if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_OVERWRITE) {
+    while (targetElement.firstChild) {
+      targetElement.removeChild(targetElement.firstChild);
+    }
+  }
+
+  var previousElement = targetElement;
+  for (var i=0;i<overallStructure.length;i++) {
+    var level_definition = overallStructure[i];
+    var level_element_tag = level_definition[0]
+	var level_element = document.createElement(level_element_tag);
+	var attribute_dictionary = level_definition[1]
+    for (var attribute_key in attribute_dictionary) {
+	  level_element.setAttribute(attribute_key, attribute_dictionary[attribute_key]);
+    }
+
+    // need to place title structure
+	if (titleStructure && titleStructure[0] == i) {
+	  var title_element_tag = titleStructure[1];
+	  var title_element = document.createElement(title_element_tag);
+  	  var title_attribute_dictionary = titleStructure[2];
+	  var title_text_content = titleStructure[3];
+      for (var title_attribute_key in title_attribute_dictionary) {
+	    title_element.setAttribute(title_attribute_key, title_attribute_dictionary[title_attribute_key]);
+      }
+
+	  var title_text_node = document.createTextNode(title_text_content);
+   	  title_element.appendChild(title_text_node);
+
+
+	  level_element.appendChild(title_element);
+    }
+
+	// last level place links
+	if (i == overallStructure.length-1) {
+      for (var link_i=0; link_i < links.length; link_i++) {
+  	    var link = links[link_i];
+		for (var linkStructureIndex=0;linkStructureIndex < linkStructure.length; linkStructureIndex++) {
+		  BELinkBlockGenerator.generateIndividualLinks(level_element, linkStructure[linkStructureIndex], link)
+		}
+	  }
+	}
+
+	// first level child we need to check placement
+    if (previousElement == targetElement) {
+      if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_ELEMENT) {
+	    // 2 means insert right before
+  	    previousElement.insertBefore(level_element, targetElement.firstChild);
+      } else if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_PARENT) {
+	    // 3 means insert right before at parent level
+		var parentElement = previousElement.parentElement;
+  	    parentElement.insertBefore(level_element, previousElement);
+  	  } else {
+    	previousElement.appendChild(level_element);
+	  }
+    } else {
+  	  previousElement.appendChild(level_element);
+	}
+	previousElement = level_element;
+  }
+}
+}(window.BELinkBlockGenerator = window.BELinkBlockGenerator || {}));
+};
+
+
+
+        var newuser;
+    
+
+function getScript(a,b){var c=document.createElement("script");c.src=a;var d=document.getElementsByTagName("head")[0],e=false;c.onload=c.onreadystatechange=function(){if(!e&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){e=true;b();c.onload=c.onreadystatechange=null;d.removeChild(c)}};d.appendChild(c)}function addLoadEvent(a){var b=startupfuncs;if(typeof startupfuncs!="function"){startupfuncs=a}else{startupfuncs=function(){if(b){b()}a()}}}(function(){function g(){if(!e){e=true;if(f){for(var a=0;a<f.length;a++){f[a].call(window,[])}f=[]}}}function h(a){var b=window.onload;if(typeof window.onload!="function"){window.onload=a}else{window.onload=function(){if(b){b()}a()}}}function i(){if(d){return}d=true;if(document.addEventListener&&!c.opera){document.addEventListener("DOMContentLoaded",g,false)}if(c.msie&&window==top)(function(){if(e)return;try{document.documentElement.doScroll("left")}catch(a){setTimeout(arguments.callee,0);return}g()})();if(c.opera){document.addEventListener("DOMContentLoaded",function(){if(e)return;for(var a=0;a<document.styleSheets.length;a++)if(document.styleSheets[a].disabled){setTimeout(arguments.callee,0);return}g()},false)}if(c.safari){var a;(function(){if(e)return;if(document.readyState!="loaded"&&document.readyState!="complete"){setTimeout(arguments.callee,0);return}if(a===undefined){var b=document.getElementsByTagName("link");for(var c=0;c<b.length;c++){if(b[c].getAttribute("rel")=="stylesheet"){a++}}var d=document.getElementsByTagName("style");a+=d.length}if(document.styleSheets.length!=a){setTimeout(arguments.callee,0);return}g()})()}h(g)}var a=window.DomReady={};var b=navigator.userAgent.toLowerCase();var c={version:(b.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/)||[])[1],safari:/webkit/.test(b),opera:/opera/.test(b),msie:/msie/.test(b)&&!/opera/.test(b),mozilla:/mozilla/.test(b)&&!/(compatible|webkit)/.test(b)};var d=false;var e=false;var f=[];a.ready=function(a,b){i();if(e){a.call(window,[])}else{f.push(function(){return a.call(window,[])})}};i()})();var startupfuncs=""
+
+					var session_email = '';
+		
+            var website_id = '8';
+
+      DomReady.ready(function() {
+                getScript('//morebeer-web-8-pavinthewaysoftw.netdna-ssl.com/minify/min/?f=/themes/morebeer/js/bootstrap-hover-dropdown.js,/themes/morebeer/js/bootstrap-toolkit.js,/themes/morebeer/js/jquery.menu-aim.js,/themes/morebeer/js/tabs.js,/themes/morebeer/js/tooltip.js,/themes/morebeer/js/jquery.charjustify.js,/themes/morebeer/js/nivo-slider/jquery.nivo.slider-rounded.js,/themes/morebeer/js/jquery.autoellipsis-1.0.2.js,/themes/morebeer/js/jquery.hoverIntent.minified.js,/themes/morebeer/js/jquery.dcverticalmegamenu.1.3.js,/themes/morebeer/js/jquery.bxSlider.min.js,/themes/morebeer/js/jquery.easing.1.3.js,/themes/morebeer/js/jquery.carousel.min.js,/themes/morebeer/js/jquery.nivo.zoom.pack.js,/themes/morebeer/js/jquery.blockUI-2.7.js,/themes/morebeer/js/jquery.accessible-news-slider.js,/themes/morebeer/js/lightbox.js,/themes/morebeer/js/selectivizr.js,/themes/morebeer/js/jquery.loadmask.js,/themes/morebeer/js/jquery.scrollTo-1.4.2.js,/themes/morebeer/js/zebra_dialog.src.js,/themes/morebeer/js/jquery.colorbox-1.6.4.js,/themes/morebeer/js/jquery.equalheights.js,/themes/morebeer/js/jquery.autocomplete.js,/themes/morebeer/js/jquery.radio-rater.js,/themes/morebeer/js/site_20120804.js,/themes/morebeer/js/jquery.animateNumbers.js,/themes/morebeer/js/jquery.magnific-popup.min.js&236',function () {
+					if (typeof startupfuncs == 'function') { 
+						startupfuncs(); 
+					}
+
+          });
+      });
+	
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+  ga('create', 'UA-361712-6', 'auto');
+
+   ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+
+
+    function positionLinkBlock(targetContainer) {
+        if (targetContainer != null) {
+            var strLinkBlock = '<div class="col-xs-12"><div class="be-related-link-container"><h4 class="be-label">Also of Interest:</h4><ul class="be-list"><li class="be-list-item"><a class="be-related-link" href="https://www.morebeer.com/category/allgrain-brewing-equipment.html">All Grain Brewing Equipment</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.morebeer.com/category/malt-extract.html">Malt Extract</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.morebeer.com/category/cleaners-sanitizers.html">Homebrew Sanitizers, Cleaning Solutions &amp; Equipment</a></li></ul></div></div>';
+            targetContainer.insertAdjacentHTML('afterbegin', strLinkBlock);
+        }
+    }
+
+    jsElementReady('.be-ix-link-block', positionLinkBlock)
+
+
+
+    var ca_transit_info = false;
+    var pa_transit_info = false;
+
+    $(document).ready(function() { 
+        });
+
+
+        var time_in_transit;
+
+        addLoadEvent(function() {
+            $.getJSON('/themes/morebeer/json/timeintransit.php',function(data) {
+
+                ca_transit_info = data.ca_transit_info;
+                pa_transit_info = data.pa_transit_info;
+                $('body').trigger('transit_loaded');
+
+                if ( data.transit_days && data.transit_days <= 2 ) {
+                    var daylabel = ( data.transit_days == 1 ) ? 'One' : 'Two';
+                    $('#tit-message').html('<a href="/content/shipping_policy">' + daylabel + ' Day Ground Shipping to ' + data.city + ', ' + data.region + '!</a>');
+
+                }
+            });
+        });
+
+    
+
+/* <![CDATA[ */
+var google_conversion_id = 1069786343;
+var google_conversion_label = "wtcOCPmDqgIQ58mO_gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+
+addLoadEvent(function() {
+	$('#searchbox').on('mouseup',function() { 
+		$(this).select();
+	});
+
+	$('#searchbox').autocomplete({
+  		serviceUrl: '/search_autosuggest',
+		onSelect: function (suggestion) {
+			$('#prodsearchform').submit();
+    	}
+	});
+});
+
+
+
+var fby = fby || [];
+fby.push(['showTab', {id: '4736', position: 'right', color: '#A60132'}]);
+(function () {
+    var f = document.createElement('script'); f.type = 'text/javascript'; f.async = true;
+    f.src = '//cdn.feedbackify.com/f.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(f, s);
+})();
+
+
+var google_tag_params = {
+    
+    ecomm_pagetype: 'home'
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1069786343;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+
+addLoadEvent(function() { 
+
+var removeClass = true;
+$(".gbd-quest").click(function () {
+$('.gbd-ptmsg.open').removeClass('open');
+//if ($('.gbd-ptmsg.open').length<=1){
+    $('.gbd-ptmsg',this).toggleClass('open');
+    removeClass = false;
+});
+
+$(".gbd-ptmsg").click(function() {
+    removeClass = false;
+});
+
+$("html").click(function () {
+    if (removeClass) {
+        $(".gbd-ptmsg").removeClass('open');
+    }
+    removeClass = true;
+});
+
+});
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "6592"]);
+  gts.push(["badge_position", "USER_DEFINED"]);
+  gts.push(["badge_container", "GTS_CONTAINER"]);
+  gts.push(["locale", "EN"]);
+      gts.push(["google_base_subaccount_id", "4207990"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+
+var menuEnabled = true;
+
+addLoadEvent(function() {
+
+    $('[data-toggle="popover"]').popover();
+
+/*
+    $('.dropdown-toggle').dropdownHover({
+        delay: 200,
+        hoverDelay: 100
+    });
+    */
+
+    $('#searchinput').on('mouseup',function() {
+        $(this).select();
+    });
+
+    $('#searchinput').autocomplete({
+        triggerSelectOnValidInput: false,
+        serviceUrl: '/search_autosuggest',
+        onSelect: function (suggestion) {
+            $('#searchform').submit();
+        }
+    });
+    $('#searchinput2').on('mouseup',function() {
+        $(this).select();
+    });
+
+    $('#searchinput2').autocomplete({
+        serviceUrl: '/search_autosuggest',
+        onSelect: function (suggestion) {
+            $('#searchform2').submit();
+        }
+    });
+
+
+
+});
+
+(function($, document, viewport){
+
+    $(document).ready(function() { 
+            if ( viewport.is('xs') ) { 
+                menuEnabled = false;
+            } else { 
+                menuEnabled = true;
+            }
+    });
+
+    $(window).resize(
+        viewport.changed(function(){
+            if ( viewport.is('xs') ) { 
+                menuEnabled = false;
+            } else { 
+                menuEnabled = true;
+            }
+        })
+    );
+
+
+})(jQuery, document, ResponsiveBootstrapToolkit);
+
+
+
+
+        try {
+                        SBS.Worker.go("90Pu8vGzEo");
+                    } catch (e) {};
+    
+
+
+    function qaTeaser (){
+            if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+                return '';
+            } else {
+                var answerCount = TurnToItemData.counts.a;
+                var questionCount = TurnToItemData.counts.q;
+                var teaserContainer = TurnTojQuery(".TurnToItemTeaser");
+
+                var teaserHtml = ' | ';
+
+                if(questionCount == 0) {
+                    teaserHtml = teaserHtml + '<a id="askQuestion" href="javascript:void(0)">Ask a Question</a>';
+                } else {
+                    teaserHtml = teaserHtml + '<a id="readQuestions" href="javascript:void(0)">' + questionCount + ' Question' + (questionCount == 1 ? '' : 's') + ', ' + answerCount + ' Answer' + (answerCount == 1 ? '' : 's') + '</a>';
+                }
+
+                // Fill container with Q&A content
+                teaserContainer.html(teaserHtml);
+
+                // Add the appropriate listeners to the links
+                teaserContainer.find('#askQuestion').click(function(e) {
+                    e.preventDefault();
+                    TurnTojQuery('html, body').animate({ 
+                        scrollTop: TurnTojQuery("#TurnToContent").offset().top}, 1500);
+               
+                });
+
+                teaserContainer.find('#readQuestions').click(function(e) {
+                    e.preventDefault();
+                    TurnTojQuery('html, body').animate({ 
+                        scrollTop: TurnTojQuery("#TurnToContent").offset().top}, 1500);
+                 
+                });
+            }
+        }
+
+    function customReviewsTeaser(clazz, data){
+
+            var clazzNam = clazz || "TurnToReviewsTeaser";
+
+            var iteasers = TurnTojQuery("." + clazzNam);
+
+            // round the average rating to the nearest tenth
+            var rating = Math.round((TurnToItemData.counts.ar + 0.25) * 100.0) / 100.0;
+            rating = rating.toString();
+            var decimal = parseInt(rating.substring(2, 3))
+            rating = rating.substring(0, 1) + "-" + (decimal >= 5 ? '5' : '0')
+
+            var html = '<div>';
+            // if don't want 5 empty stars to display when no reviews, can wrap this next line in an if(TurnToItemData.counts.ar > 0)
+            html += '<div class="TT2left TTratingBox TTrating-' + rating + '"></div>';
+            if(TurnToItemData.counts.r == 0) {
+               html += '<div><a class="TTwriteReview" href="javascript:void(0);">Be the first to write a review</a></div>';
+            } else {
+                html += '<div class="TTratingLinks">' +
+                        '    <a class="TTreadReviews" href="javascript:void(0)">Read ' + TurnToItemData.counts.r + ' Review' + (TurnToItemData.counts.r == 1 ? '' : 's') + '</a>' +
+                        ' or <a class="TTwriteReview" href="javascript:void(0)">Write a Review</a>' +
+                        '</div>' +
+                        '<div class="TTclear"></div>';
+            }
+            html += '</div>';
+            iteasers.html(html);
+
+            iteasers.find('.TTreadReviews').click(clickReviewsTabFromTeaser);
+            iteasers.find('.TTwriteReview').click(function(){TurnTo.writeReview()});
+        }
+
+
+        function clickReviewsTabFromTeaser() {
+            // this implementation assumes reviews are directly visible in page not under a tab
+            TurnTojQuery('html, body').animate({
+                            scrollTop: TurnTojQuery("#TurnToReviewsContent").offset().top}, 1500);
+        }
+
+
+   var turnToConfig = {
+    siteKey: "bdXTN47XxJFkkM3site",
+    reviewsSetupType: "staticEmbed",
+    setupType: "staticEmbed",
+    iTeaserFunc: qaTeaser, 
+    reviewsTeaserFunc: customReviewsTeaser,
+    skipCssLoad:true,
+    registration: {
+        localGetLoginStatusFunction: localGetLoginStatusFunction,
+        localRegistrationUrl: '/login',
+        localGetUserInfoFunction: localGetUserInfoFunction,
+        localLogoutFunction: localLogoutFunction
+    }
+   };
+
+   (function() {
+    var tt = document.createElement('script'); tt.type = 'text/javascript'; tt.async = true;
+    tt.src = document.location.protocol + "//static.www.turnto.com/traServer4_3/trajs/" + turnToConfig.siteKey + "/tra.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tt, s);
+   })();
+
+function localGetLoginStatusFunction(callbackFn){
+            callbackFn({user_auth_token:null});
+        return;
+    }
+
+function localLogoutFunction(callbackFn) { 
+    return;
+}
+
+function localGetUserInfoFunction(callbackFn) { 
+    
+    
+}
+

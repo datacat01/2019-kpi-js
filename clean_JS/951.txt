@@ -1,0 +1,445 @@
+
+$ = jQuery.noConflict();
+
+
+if (!window.console) {window.console = {};}
+if (!console.log) {console.log = function() {};}
+if (!console.debug) {console.debug = function() {};}
+
+
+	var swatchContainerWidth = '';
+	var pdpLinkPrefix = 'color_selected_';
+	// Convert the WCParam object which contains request properties into javascript object
+	var WCParamJS = {
+		"storeId":'10151',
+		"catalogId":'10052',
+		"langId":'-1',
+		"pageView":'',
+		"orderBy":'',
+		"orderByContent":'',
+		"searchTerm":''
+	};
+	var absoluteURL = "https://www.tgw.com/";
+	var imageDirectoryPath = "/wcsstore/StorefrontAssetStore/";
+	var styleDirectoryPath = "images/colors/color1/";
+	var supportPaymentTypePromotions = true;
+	
+	var subsFulfillmentFrequencyAttrName = "fulfillmentFrequency";
+	var subsPaymentFrequencyAttrName = "paymentFrequency";
+	var subsTimePeriodAttrName = "timePeriod";
+	
+	var storeNLS = null;
+	var storeUserType = "G";
+	var ios = false;
+	var android = false;
+	var multiSessionEnabled = false;
+	
+	// Store the amount of time of inactivity before a re-login is required, this value is retrieved from wc-server.xml, default is 30 mins
+	var inactivityTimeout = 1800000;
+	
+	// Store the amount of time the inactivity warning dialog will be displayed before it closes itself, default is 20 seconds
+	var inactivityWarningDialogDisplayTimer = 20000;
+	
+	// Store the amount of time to display a inactivity warning dialog before a re-login is required, default is 30 seconds
+	var inactivityWarningDialogBuffer = 30000;
+	
+	// Store the timing event to display the inactivity dialog
+	var inactivityTimeoutTracker = null;
+
+	// Store the timing event to close the inactivity dialog
+	var dialogTimeoutTracker = null;
+	
+	//browse only mode for Web Call Centre integration
+	var browseOnly = false;
+	
+	//Summary: Returns the absolute URL to use for prefixing any Ajax URL call.
+	//Description: Dojo does not handle the case where the parameters in the URL are delimeted by the "/" forward slash. Therefore, in order to
+	//             workaround the issue, all AJAX requests must be done using absolute URLs rather than relative.
+	//Returns: The absolute URL to use for prefixing any Ajax URL call.
+	function getAbsoluteURL() {
+		if (absoluteURL != "") {
+			var currentURL = document.URL;
+			var currentProtocol = "";
+		
+			if (currentURL.indexOf("://") != -1) {
+				currentProtocol = currentURL.substring(0, currentURL.indexOf("://"));
+			}
+			
+			var savedProtocol = "";
+			if (absoluteURL.indexOf("://") != -1) {
+				savedProtocol = absoluteURL.substring(0, absoluteURL.indexOf("://"));
+			}
+			
+			if (currentProtocol != savedProtocol) {
+				absoluteURL = currentProtocol + absoluteURL.substring(absoluteURL.indexOf("://"));
+			}
+		}
+		
+		return absoluteURL;
+	}
+	//Summary: Returns the path pointing to the shared image directory.
+	//Description: In order to get the image directory path in any javascript file, this function can be used.
+	//Returns: The path to reference images.
+	function getImageDirectoryPath() {
+		return imageDirectoryPath;
+	}
+	//Summary: Returns the path pointing to the directory containing color-dependant image files.
+	//Description: In order to get the directory containing color-dependant image files in any javascript file, this function can be used.
+	//Returns: The path to reference color-dependant image files.
+	function getStyleDirectoryPath() {
+		return styleDirectoryPath;
+	}
+
+	
+
+
+ //Set the default NLS to use in the store.
+ if(storeNLS == null) {
+	 dojo.requireLocalization("storetext", "StoreText");
+	 storeNLS = dojo.i18n.getLocalization("storetext","StoreText");
+ }
+ initializeInactivityWarning();
+ var ie6 = false;
+ var ie7 = false;
+ var ie8 = false;
+ if (navigator != null && navigator.userAgent != null) {
+	 ie6 = (navigator.userAgent.toLowerCase().indexOf("msie 6.0") > -1);
+	 ie7 = (navigator.userAgent.toLowerCase().indexOf("msie 7.0") > -1);
+	 ie8 = (navigator.userAgent.toLowerCase().indexOf("msie 8.0") > -1);
+	 ie9 = (navigator.userAgent.toLowerCase().indexOf("msie 9.0") > -1); 
+ }
+ if (location.href.indexOf('UnsupportedBrowserErrorView') == -1 && (ie6 || ie7 || ie8 || ie9)) {
+	 document.write('<meta http-equiv="Refresh" content="0;URL=https://www.tgw.com/UnsupportedBrowserErrorView?catalogId=10001&amp;langId=-1&amp;storeId=10151"/>');
+ }
+
+
+	dojo.addOnLoad(function() { 
+		shoppingActionsJS.setCommonParameters('-1','10151','10052','G','$');
+		
+		var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+		var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+		if (isChrome || isSafari) {
+			var hiddenFields = dojo.query('input[type=\"hidden\"]');
+			for (var i = 0; i < hiddenFields.length; i++) {
+				hiddenFields[i].autocomplete="off"
+			}
+		}
+		if (dojo.has("ios") || dojo.has("android")){
+			dojo.attr(dojo.body(),"data-wc-device","mobile");
+		}		
+	});
+	
+	$(window).on("load",function() {
+		$("img").unveil();
+	});
+
+(function() {var siteId = "fbabb974499d"; function t(t,e){for(var n=t.split(""),r=0;r<n.length;++r)n[r]=String.fromCharCode(n[r].charCodeAt(0)+e);return n.join("")}function e(e){return t(e,-h).replace(/%SN%/g,siteId)}function n(t){for(var e=escape(t)+"=",n=document.cookie.split(";"),r=0;r<n.length;r++){for(var o=n[r];" "==o.charAt(0);)o=o.substring(1,o.length);if(0===o.indexOf(e))return unescape(o.substring(e.length,o.length))}return null}function r(t,e){var r=new Date;r.setTime(r.getTime()+15768e7);var o,i,a,u="; expires="+r.toGMTString();if(a=location.host,1===a.split(".").length)document.cookie=escape(t)+"="+escape(e)+u+"; path=/";else{i=a.split("."),i.shift(),o="."+i.join("."),document.cookie=escape(t)+"="+escape(e)+u+"; path=/; domain="+o;var c=n(t);null!=c&&c==e||(o="."+a,document.cookie=escape(t)+"="+escape(e)+u+"; path=/; domain="+o)}}function o(t){x.ex=t,p(x)}function i(t,e,n){var r=document.createElement("script");r.onerror=n,r.onload=e,r.type="text/javascript",r.id="ftr__script",r.async=!0,r.src="https://"+t;var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(r,o)}function a(){U(S.uAL),setTimeout(u,v,S.uAL)}function u(t){try{var e=t===S.uDF?m:g;i(e,function(){k(),x.ex=t+S.uS,p(x)},function(){try{k(),x.td=1*new Date-x.ts,x.ex=t+S.uF,p(x),t===S.uDF&&a()}catch(e){x.ex=t+S.eUoe,p(x)}})}catch(e){x.ex=t+S.eTlu,p(x)}}var c="fort",s="erTo",d="ken",f=c+s+d,l="6",h=3,m=e("(VQ(1fgq71iruwhu1frp2vq2(VQ(2vfulsw1mv"),g=e("g68x4yj4t5;e6z1forxgiurqw1qhw2vq2(VQ(2vfulsw1mv"),v=10;window.ftr__startScriptLoad=1*new Date;var p=function(t){var e=function(t){return t||""},n=e(t.id)+"_"+e(t.ts)+"_"+e(t.td)+"_"+e(t.ex)+"_"+e(l);r(f,n)},w=function(){str=n(f)||"";var t=str.split("_"),e=function(e){return t[e]||void 0};return{id:e(0),ts:e(1),td:e(2),ex:e(3),vr:e(4)}},T=function(){for(var t={},e="fgu",n=[],r=0;r<256;r++)n[r]=(r<16?"0":"")+r.toString(16);var o=function(t,e,r,o,i){var a=i?"-":"";return n[255&t]+n[t>>8&255]+n[t>>16&255]+n[t>>24&255]+a+n[255&e]+n[e>>8&255]+a+n[e>>16&15|64]+n[e>>24&255]+a+n[63&r|128]+n[r>>8&255]+a+n[r>>16&255]+n[r>>24&255]+n[255&o]+n[o>>8&255]+n[o>>16&255]+n[o>>24&255]},i=function(){if(window.Uint32Array&&window.crypto&&window.crypto.getRandomValues){var t=new window.Uint32Array(4);return window.crypto.getRandomValues(t),{d0:t[0],d1:t[1],d2:t[2],d3:t[3]}}return{d0:4294967296*Math.random()>>>0,d1:4294967296*Math.random()>>>0,d2:4294967296*Math.random()>>>0,d3:4294967296*Math.random()>>>0}},a=function(){var t="",e=function(t,e){for(var n="",r=t;r>0;--r)n+=e.charAt(1e3*Math.random()%e.length);return n};return t+=e(2,"0123456789"),t+=e(1,"123456789"),t+=e(8,"0123456789")};return t.safeGenerateNoDash=function(){try{var t=i();return o(t.d0,t.d1,t.d2,t.d3,!1)}catch(t){try{return e+a()}catch(t){}}},t.isValidNumericalToken=function(t){return t&&t.toString().length<=11&&t.length>=9&&parseInt(t,10).toString().length<=11&&parseInt(t,10).toString().length>=9},t.isValidUUIDToken=function(t){return t&&32===t.toString().length&&/^[\d\w]+$/.test(t)},t.isValidFGUToken=function(t){return 0==t.indexOf(e)&&t.length>=12},t}(),S={uDF:"UDF",uAL:"UAL",mLd:"1",eTlu:"2",eUoe:"3",uS:"4",uF:"9",tmos:["T5","T10","T15","T30","T60"],tmosSecs:[5,10,15,30,60]},y=function(t,e){for(var n=S.tmos,r=0;r<n.length;r++)if(t+n[r]===e)return!0;return!1};try{var x=w();try{x.id&&(T.isValidNumericalToken(x.id)||T.isValidUUIDToken(x.id)||T.isValidFGUToken(x.id))||(x.id=T.safeGenerateNoDash()),x.ts=window.ftr__startScriptLoad,p(x);var D=new Array(S.tmosSecs.length),U=function(t){for(var e=0;e<S.tmosSecs.length;e++)D[e]=setTimeout(o,1e3*S.tmosSecs[e],t+S.tmos[e])},k=function(){for(var t=0;t<S.tmosSecs.length;t++)clearTimeout(D[t])};y(S.uDF,x.ex)?a():(U(S.uDF),setTimeout(u,v,S.uDF))}catch(t){x.ex=S.mLd,p(x)}}catch(t){}})() 
+
+			dojo.addOnLoad(function() { 
+				shoppingActionsJS.setCommonParameters('-1','10151','10052','G','$');
+				shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10151','10052');
+				});
+			
+		
+
+if (!window.$) {window.$ = jQuery.noConflict();}
+
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.setCommonParameters('-1','10151','10052');																		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_controller', getAbsoluteURL() + 'GlobalLoginView?langId=-1&amp;storeId=10151&amp;catalogId=10052&amp;ajaxStoreImageDir=%2fwcsstore%2fStorefrontAssetStore%2f');		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_SignIn_controller', getAbsoluteURL() + 'GlobalLoginSignInView?langId=-1&amp;storeId=10151&amp;catalogId=10052&amp;ajaxStoreImageDir=%2fwcsstore%2fStorefrontAssetStore%2f');
+		GlobalLoginShopOnBehalfJS.setBuyerSearchURL('/wcs/resources/store/10151/person?q=usersICanAdmin');
+		GlobalLoginShopOnBehalfJS.setControllerURL('GlobalLoginShopOnBehalfDisplayView?langId=-1&storeId=10151&catalogId=10052&ajaxStoreImageDir=%2fwcsstore%2fStorefrontAssetStore%2f');
+	});			
+
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.registerWidget('Header_GlobalLogin');
+		GlobalLoginJS.registerWidget('Header_GlobalLogin_SignIn');
+		GlobalLoginShopOnBehalfJS.registerShopOnBehalfPanel('Header_GlobalLogin_WC_B2B_ShopOnBehalf', 'Header_GlobalLogin_WC_B2B_ShopForSelf');
+	});
+
+
+	dojo.addOnLoad(function(){		
+		
+		
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2000", "Type a login ID in the Login ID field.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2010", "Either the login ID or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2020", "Either the login ID or the password entered is incorrect. Enter the information again.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2030", "Either the login ID or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2110", "Your account has been disabled. Contact the administrator for your organization or the store to enable your account.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2300", "Wait a few seconds before attempting to sign in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2400", "Your organization is locked. You cannot sign in at this time. ");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2410", "You do not have the proper authority to sign in. Contact the store for further information.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2420", "Your registration request has been received.  Your account is waiting for approval. Until your account has been approved, you cannot log on.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2430", "Your password has been reset. Retrieve the temporary password from your email and try signing in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2570", "Your account is not activated. If you have already responded to the activation email your received, contact our store for assistance.");		
+		
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_9900", "You are not allowed to login from this domain.");
+	});
+
+
+  dojo.addOnLoad(function() {
+		setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10151&catalogId=10052&langId=-1');
+		wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10151&catalogId=10052&langId=-1&page_view=dropdown';
+		var currentUserId = getCookieName_BeginningWith("WC_USERACTIVITY_").split("WC_USERACTIVITY_")[1];
+		//Removed the multiSessionEnabled check as minicart update was not working 3 of 3.
+		//if(dojo.byId('MiniShoppingCart') != null && !multiSessionEnabled && currentUserId != '-1002'){
+		if(dojo.byId('MiniShoppingCart') != null && currentUserId != '-1002'){
+			loadMiniCart("USD","-1");
+		}		
+	});
+
+
+	
+		
+		;(function(a){a.fn.rwdImageMaps=function(){var c=this;var b=function(){c.each(function(){if(typeof(a(this).attr("usemap"))=="undefined"){return}var e=this,d=a(e);a("<img />").load(function(){var g="width",m="height",n=d.attr(g),j=d.attr(m);if(!n||!j){var o=new Image();o.src=d.attr("src");if(!n){n=o.width}if(!j){j=o.height}}var f=d.width()/100,k=d.height()/100,i=d.attr("usemap").replace("#",""),l="coords";a('map[name="'+i+'"]').find("area").each(function(){var r=a(this);if(!r.data(l)){r.data(l,r.attr(l))}var q=r.data(l).split(","),p=new Array(q.length);for(var h=0;h<p.length;++h){if(h%2===0){p[h]=parseInt(((q[h]/n)*100)*f)}else{p[h]=parseInt(((q[h]/j)*100)*k)}}r.attr(l,p.toString())})}).attr("src",d.attr("src"))})};a(window).resize(b).trigger("resize");return this}})(jQuery);
+
+
+$(document).ready(function(e) {
+    $('img[usemap]').rwdImageMaps();
+
+    $('area').on('click', function(e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      var imagemapItems = $('.multilink_scalableImages');
+
+      imagemapItems.hide();
+      $(target).show();
+      $(target+'> h4').addClass('is-open');
+    });
+});
+	
+
+
+		var __dcid = __dcid || [];__dcid.push(["DigiCertClickID_Mkze2SwH", "13", "s", "black", "Mkze2SwH"]);(function(){var cid=document.createElement("script");cid.async=true;cid.src="//seal.digicert.com/seals/cascade/seal.min.js?v=03.20.2019.0227";var s = document.getElementsByTagName("script");var ls = s[(s.length - 1)];ls.parentNode.insertBefore(cid, ls.nextSibling);}());
+		
+
+	if(typeof String.prototype.endsWith != 'function' ) {
+ 		String.prototype.endsWith = function( str ) {
+    	return this.substring( this.length - str.length, this.length ) === str;
+  		}
+	};
+		
+	dojo.addOnLoad(function() {
+		var queryString = window.location.search;
+		//console.debug("queryString:"+queryString);
+		var splitQueryString = queryString.substring(1);  
+		//console.debug("splitQueryString:"+splitQueryString);
+		if(splitQueryString.indexOf("&")>-1){ 
+			var parameterArray = splitQueryString.split('&');
+			for (var i=0;i<parameterArray.length;i++){
+				var keyValue = parameterArray[i].split('=');				
+				if(keyValue[0]=='cid'){
+					var cidFound = true;
+					var cidValue = keyValue[1];
+				} else if(keyValue[0]=='mid'){
+					var midFound = true;
+					var midValue = keyValue[1];
+				} else if(keyValue[0]=='rid'){
+					var ridFound = true;
+					var ridValue = keyValue[1];
+				} else if(keyValue[0]=='companyName'){
+					var companyNameFound = true;
+					var companyName = keyValue[1];
+				} else if(keyValue[0]=='SITE_ID'){
+					var siteIdFound = true;
+					var siteId = keyValue[1];
+				}				
+			}
+		} else if(splitQueryString.indexOf("=")>-1){
+			var keyValue = splitQueryString.split('=');				
+				if(keyValue[0]=='cid'){
+					var cidFound = true;
+					var cidValue = keyValue[1];
+				} else if(keyValue[0]=='mid'){
+					var midFound = true;
+					var midValue = keyValue[1];
+				} else if(keyValue[0]=='rid'){
+					var ridFound = true;
+					var ridValue = keyValue[1];
+				} else if(keyValue[0]=='companyName'){
+					var companyNameFound = true;
+					var companyName = keyValue[1];
+				} else if(keyValue[0]=='SITE_ID'){					
+					var siteIdFound = true;
+					var siteId = keyValue[1];
+				}			
+		}
+			
+		var cookieValue = dojo.cookie('Experian');
+		//console.debug("Original cookieValue:"+cookieValue);
+		if(cookieValue!= null && cookieValue != 'undefined' && cookieValue != ''){				
+			var currentCidValue = '';
+			var currentMidValue = '';
+			var currentRidValue = '';
+			var currentCompanyName = '';
+			var cookieSplitArray = cookieValue.split(',');
+			var newCookieValue = '';
+			
+			for (var i=0;i<cookieSplitArray.length;i++){
+				var cookieParameter = cookieSplitArray[i].split('=');
+				if(cookieParameter[0]=='cid'){						
+					currentCidValue = cookieParameter[1];
+				} else if(cookieParameter[0]=='mid'){						
+					currentMidValue = cookieParameter[1];
+				} else if(cookieParameter[0]=='rid'){
+					currentRidValue = cookieParameter[1];
+				}  else if(cookieParameter[0]=='companyName'){
+					currentCompanyName = cookieParameter[1];
+				}					
+			}
+				
+			if(cidFound == true){
+				currentCidValue = cidValue;
+			}
+			if(midFound == true){
+				currentMidValue = midValue;
+			}
+			if(ridFound == true){
+				currentRidValue = ridValue;
+			}
+			if(companyNameFound == true){
+				currentCompanyName = companyName;
+			}
+			
+			if(currentCidValue != ''){
+				newCookieValue = newCookieValue + 'cid='+currentCidValue + ',';
+			}
+			if(currentMidValue != ''){
+				newCookieValue = newCookieValue + 'mid='+currentMidValue + ',';
+			}
+			if(currentRidValue != ''){
+				newCookieValue = newCookieValue + 'rid='+currentRidValue + ',';
+			}
+			if(currentCompanyName != ''){
+				newCookieValue = newCookieValue + 'companyName='+currentCompanyName;
+			}							
+				
+			if(newCookieValue.endsWith(",")){
+				newCookieValue = newCookieValue.substring(0,newCookieValue.length-1);
+			}
+			//console.debug("newCookieValue Experian:"+newCookieValue);
+				
+			dojo.cookie("Experian", newCookieValue, {path:'/'});
+		} else {
+			var initialExperianCookieValue = '';			
+			if(cidFound == true){
+				initialExperianCookieValue = initialExperianCookieValue + 'cid='+cidValue + ',';
+			}
+			if(midFound == true){
+				initialExperianCookieValue = initialExperianCookieValue + 'mid='+midValue + ',';
+			}
+			if(ridFound == true){
+				initialExperianCookieValue = initialExperianCookieValue + 'rid='+ridValue + ',';
+			}
+			if(companyNameFound == true){
+				initialExperianCookieValue = initialExperianCookieValue + 'companyName='+companyName;
+			}
+		
+			if(initialExperianCookieValue.endsWith(",")){
+				initialExperianCookieValue = initialExperianCookieValue.substring(0,initialExperianCookieValue.length-1);			
+			}
+			//console.debug("initialExperianCookieValue:"+initialExperianCookieValue);
+			dojo.cookie("Experian", initialExperianCookieValue, {path:'/'});
+		}
+		
+	}); 
+		
+	dojo.addOnLoad(function() { 		
+		var breakpoint = {};
+		breakpoint.refreshValue = function () {  
+		  //this.value = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+			this.value = $(document.body).attr("data-wc-device");
+		};
+		$(window).resize(function () {
+			  breakpoint.refreshValue();
+		}).resize();
+		var disArrowLen = 0;
+		
+		// Set display swatches length and swatch container width.
+		if(breakpoint.value == 'mobile'){
+		 	swatchContainerWidth = 145;
+		 	disArrowLen = 5;
+		}else{
+			swatchContainerWidth = 224;
+			disArrowLen = 8;
+		}
+		//console.debug("breakpoint:"+ breakpoint.value + " disArrowLen:"+disArrowLen + " swatchContainerWidth:"+swatchContainerWidth);
+		
+		// Dynamically display left/right arrow and related style class.
+		var swatchPrdLenArray = dojo.query("input[id^='displaySwatchLength_']");
+		for(var j = 0; j<swatchPrdLenArray.length; j++){
+			var productSwatchLenId = dojo.attr(swatchPrdLenArray[j],"id");
+			var lengthVal = dojo.attr(productSwatchLenId,'value');
+			var productId = dojo.attr(productSwatchLenId,'data-product-id');
+			var leftArrowSpan = 'spanCarouselLeft_'+productId;
+			var leftArrowDiv = 'divCarouselLeftArrow_'+productId;
+			var rightArrow = 'spanCarouselRight_'+productId;
+			var rightEndSpanArrow = 'endSpanCarouselRight_'+productId;
+			var leftArrowSpanId = document.getElementById(leftArrowSpan);
+			var leftArrowDivId = document.getElementById(leftArrowDiv);
+			var rightArrowId = document.getElementById(rightArrow);
+			var rightArrowEndSpanId = document.getElementById(rightEndSpanArrow);
+			if(lengthVal > disArrowLen){
+				if(leftArrowSpanId != null){
+					leftArrowSpanId.style.display = "";
+				}
+				if(leftArrowDivId != null){
+					leftArrowDivId.className = "slider-container";
+					leftArrowDivId.style.display = "";
+				}
+				if(rightArrowId != null){
+					rightArrowId.style.display = "";
+				}
+				
+			}else{
+				if(leftArrowDivId != null){
+					leftArrowDivId.className = "slider-container no-arrows";
+					leftArrowDivId.style.display = "";
+				}
+			}
+			if(rightArrowEndSpanId != null){
+				$("div#"+rightEndSpanArrow ).replaceWith("</div>");
+			}
+		}
+		
+	});
+	
+	
+	
+	
+
+
+	dojo.addOnLoad(function() { 
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		resetRequest();
+
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+		dojo.query('div[dojoType]').forEach(function(node, index, arr){
+			addToWidgetsList(node.id);
+		});
+		console.debug("before parse all widgets");
+		parseAllWidgets();
+		console.debug("after parse all widgets");
+	}); 	
+
+
+	var utag_data={	
+	
+	
+		page_name : "TGW Home",
+		page_type : "home"
+	};		
+
+
+    (function(a,b,c,d){
+    a='//tags.tiqcdn.com/utag/thegolfwarehouse/thegolfwarehouse-redesign/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+

@@ -1,0 +1,639 @@
+INSTART.Init({"apiDomain":"assets.insnw.net","correlation_id":"1555253135:eee0b25397f25d52","custName":"usautoparts","devJsExtraFlags":"{'rumDataConfigKey':'/instartlogic/clientdatacollector/getconfig/monitorprod.json','custName':'usautoparts','propName':'jcwhitneywww'}","disableInjectionXhr":true,"disableInjectionXhrQueryParam":"instart_disable_injection","iframeCommunicationTimeout":3000,"nanovisorGlobalNameSpace":"I10C","partialImage":false,"propName":"jcwhitneywww","rId":"0","release":"latest","rum":false,"serveNanovisorSameDomain":true,"third_party":["IA://www.jcwhitney.com/js/geotargeting.js"],"useIframeRpc":false,"useWrapper":false,"ver":"auto","virtualDomains":4,"virtualizeDomains":["^1-www\\.jcwhitney\\.com$","^2-www\\.jcwhitney\\.com$","^3-www\\.jcwhitney\\.com$","^4-www\\.jcwhitney\\.com$","^blog\\.jcwhitney\\.com$","^jcwhitney\\.com$","^tahserver\\.jcwhitney\\.com$","^www\\.jcwhitney\\.com$"]}
+);
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+        var objSomniture = [];
+	var splitEnabled = new Object();
+	splitEnabled = "";
+      if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+  }
+
+  dynamicSettingsObj.controller="index";
+  dynamicSettingsObj.action="index";
+  dynamicSettingsObj.jsDomain="//js.jcwstatics.com/sites/cpwhitney/includes/js/prd";
+  dynamicSettingsObj.jsDomain="//js.jcwstatics.com/sites/cpwhitney/includes/js/prd";
+  dynamicSettingsObj.cssDomain="//css.jcwstatics.com/sites/cpwhitney/includes/css/prd";
+  dynamicSettingsObj.appVersion="6.22.0";
+  dynamicSettingsObj.partfinderSort="ymmse";
+  dynamicSettingsObj.tealiumEnable=1;
+  dynamicSettingsObj.isTire=0;
+  dynamicSettingsObj.isCart="1";
+  dynamicSettingsObj.hostName="https://www.jcwhitney.com";
+  dynamicSettingsObj.homePage="https://www.jcwhitney.com";
+  dynamicSettingsObj.autoSubmitVSKillswitch="";
+  dynamicSettingsObj.myAccountHostName="https://myaccount.jcwhitney.com";
+  dynamicSettingsObj.cartHostName="https://cart.jcwhitney.com";
+  dynamicSettingsObj.checkoutHostName="https://checkout.jcwhitney.com";
+  dynamicSettingsObj.customerId="CUSTOMERID";
+  dynamicSettingsObj.customerFName="FIRSTNAME";
+  dynamicSettingsObj.imagesDomain="https://css.jcwstatics.com/sites/cpwhitney/design";
+  dynamicSettingsObj.selectedVehicleCookieName="activeVehicleKey";
+  dynamicSettingsObj.selectedVehicleTextCookieName="activeVehicleText";
+  dynamicSettingsObj.vehicleListsCookieName="JCW_MY_VEHICLE_COOKIE";
+
+    dynamicSettingsObj.marketingCookies=null;
+
+  
+  var blockedBrowser = new Array();
+  var blockedBrowserName = new Array();
+  
+  var PAGE_SECTION = "index";
+
+  // Google ReCaptcha 2.0 variables
+  var inventoryLbIds = new Array();
+  dynamicSettingsObj.recaptchaSiteKey = "6LePbhATAAAAAPt0BvKNGgyGjya-OiZb-VCvAdXE";
+  
+  dynamicSettingsObj.siteDomain = "jcw";
+  dynamicSettingsObj.isUpsell = false;
+  dynamicSettingsObj.isOOS = true;
+  
+  
+  
+  blockedBrowser[0]="MSIE 6";
+  blockedBrowserName[0]="Microsoft Internet Explorer 6";
+       
+
+ 
+
+var MSG_STRIKETHROUGH_PRICING = "We compare the prices of our products to the prices of comparable Original Equipment Manufacturer (OEM) products or the prices of comparable products offered by other retailers and suppliers (collectively, \u201cThird Party Suppliers\u201d). We use the median % price variance by product category between products we carry and the respective comparable products offered by Third Party Suppliers to determine the strike through price on any product listing. We check our prices against prices offered by these Third Party Suppliers on a semi-annual basis.";
+
+var MSG_STRIKETHROUGH_KILLSWITCH = "1";
+
+var MSG_CORE_PRICING = "The \u201ccore\u201d is your old part. Send us your old part and the core deposit will be refunded to you upon inspection. <a href='\/customer\/returnpolicy\/'>Core return<\/a> instructions will come with your order";
+
+var MSG_COREPRICE_KILLSWITCH = "1";
+
+
+    var objSomniture = []; //use for selenium test script
+
+    
+
+var SMARTFIT_TEST_OBJECT = {"enable":"","force_param":"force_sf","ab_test_config":{"smart_fit":{"traffic":"1","name":"smart_fit_03232017"}}};
+
+
+
+
+
+
+
+	jQuery(function($) {
+
+		// Affiliate Params
+		var oAffiliateParams = {}, oUrlParams = {};
+						oAffiliateParams[0] = "";
+				
+		oUrlParams = getUrlParams();
+
+		$.each(oAffiliateParams, function(i, val) {
+			if (typeof oUrlParams[val] != 'undefined') {
+				$.cookie(val, oUrlParams[val], "/");
+			}
+		});
+	});
+
+
+
+    window.module = window.module || [];
+
+
+    window.Search = {
+        URL: "https://www.jcwhitney.com/results/"
+    }
+
+
+		        if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+    }
+    dynamicSettingsObj.myAccountEnable=1;
+    dynamicSettingsObj.nonsecure="https://www.jcwhitney.com";
+    dynamicSettingsObj.myAccountLogoutUrl="https://myaccount.jcwhitney.com/myaccount/logout";
+    dynamicSettingsObj.myAccountLoginUrl="https://myaccount.jcwhitney.com/myaccount/login";
+    dynamicSettingsObj.myAccountRegisterUrl="https://myaccount.jcwhitney.com/myaccount/register";
+    dynamicSettingsObj.myAccountTrackingUrl="https://myaccount.jcwhitney.com/myaccount/trackorder";
+    dynamicSettingsObj.myAccountIndex="https://myaccount.jcwhitney.com/myaccount";
+   
+		
+
+    
+
+if (typeof dynamicSettingsObj == 'undefined') {
+    var dynamicSettingsObj = {};
+}
+dynamicSettingsObj.searchTextDefault='';
+dynamicSettingsObj.typeAheadEnabled = "1";
+dynamicSettingsObj.typeAheadServer = "tahserver.carparts.com";
+dynamicSettingsObj.typeAheadCid = "c547cb0fa2e9b5";
+dynamicSettingsObj.typeAheadTextBoxId = "Ntt";
+
+dynamicSettingsObj.typeAheadLibUrl = "//js.jcwstatics.com/sites/cpwhitney/includes/js/prd/tahdevlibrary.js";
+dynamicSettingsObj.typeAheadLandingPage = "https://www.jcwhitney.com/results/";
+
+
+            dynamicSettingsObj.isSelectedVehicle="";
+    dynamicSettingsObj.cookieSaveVehicles="JCW_MY_VEHICLE_COOKIE";
+
+        dynamicSettingsObj.cookieUseDomain="jcwhitney.com";
+        
+	$(function(){
+	
+		$('a#removeAll').click(function(){
+           var hostname = window.parent.location.hostname;
+       
+            $.get("/managevehicle/?status=removeall", function(data,status){
+                //if(status=="success"){
+                    window.location = '//'+hostname+'/';
+                //}
+            });
+			
+		});
+	});
+	
+    
+
+    if (typeof dynamicSettingsObj == 'undefined') {
+        var dynamicSettingsObj = {};
+    }
+
+dynamicSettingsObj.Baseurl = "https://www.jcwhitney.com";
+dynamicSettingsObj.emailDomains = ["yahoo.com","gmail.com","hotmail.com","aol.com","comcast.net","msn.com","sbcglobal.net","verizon.net","att.net","live.com","bellsouth.net","stylintrucks.com","cox.net","charter.net","earthlink.net","ymail.com","optonline.net","juno.com","embarqmail.com","windstream.net","roadrunner.com","rocketmail.com","me.com","mac.com","aim.com","netzero.net","netzero.com","q.com","frontier.com","frontiernet.net","us.army.mil","centurytel.net","hughes.net","mchsi.com","suddenlink.net","mail.ru","netscape.net","cfl.rr.com","peoplepc.com","tampabay.rr.com","insightbb.com","shaw.ca","cableone.net","mail.com","tds.net","ptd.net","yahoo.ca","excite.com","centurylink.net","nc.rr.com","wildblue.net","vvgmail.com","rochester.rr.com","wi.rr.com","pacbell.net","mindspring.com","zoominternet.net","telus.net","bresnan.net","twcny.rr.com","nycap.rr.com","sympatico.ca","adelphia.net","outlook.com","prodigy.net","sina.com","carolina.rr.com","yahoo.co.uk","rogers.com","fuse.net","hawaii.rr.com","thebest4ever.com","woh.rr.com","triad.rr.com","icloud.com","austin.rr.com","cs.com","wowway.com","swbell.net","snet.net","rcn.com","sc.rr.com","live.ca","email.com","knology.net","ameritech.net","myfairpoint.net","satx.rr.com","neo.rr.com","stny.rr.com","clearwire.net","videotron.ca","tx.rr.com","yandex.ru","columbus.rr.com","myway.com"];
+dynamicSettingsObj.topLevelDomain = "";   
+
+
+    if ( 'function' === typeof showSmartFitTest) {
+        showSmartFitTest();
+    } else {
+        $('.smart-fit-test-control').show();
+    }
+
+
+	var utag_data={
+	site:"JCWhitney",
+page:"Home",
+section:"Home",
+page_type:"Home Page",
+user_status:"logged out",
+page_name:"Home Page",
+section_name:"Home Page",
+tclip:"MjEyLjkwLjYzLjE3OA=="	};
+	
+
+
+var s_account  = "jcwhitneycomprod"
+var sc_domain  = "jcwhitney"
+var sc_cid     = "scid" //apwcid
+var sc_cj      = "CJ00001CP" //A1154013966W44c8db0e4c70a
+var sc_gan     = "DCP00010CP" //D1203533282W47bc75e2bd0dd
+var sc_cidkwd  = "scid,emcid,affcid,ppcid,chcid,tid,jcwcid" //apwcid,apwkw
+var sc_cidkwdsec  = "JCW_SRC" //JCW_SRC
+var sc_tracksrv = "metrics.jcwhitney.com" //
+var sc_tracksrvsecure = "smetrics.jcwhitney.com" //
+var sc_mcorgid = "861C3704532B3F9C0A490D44@AdobeOrg";
+var sc_visitorNamespace = "jcwhitney";
+
+var dcmsCookieName = "apwdcms"
+/* Affiliate Code */
+var affCodes = Array(
+);
+
+
+s.pageName = "Home" 
+s.channel = "Home" 
+s.prop3 = "Home" 
+s.prop20 = "other|160x600" 
+s.eVar2 = "Browse" 
+s.eVar38 = "No" 
+
+
+
+
+/* eVar12 for Email */
+var om_u = getQueryString('om_u');
+
+if(om_u) {
+    s.eVar12 = om_u;
+}
+/* End of eVar12 for Email */
+
+
+
+/**
+ * Recent Products
+ */
+if (typeof s != "undefined" && dynamicSettingsObj.controller == "details") {
+	console.log(window.location.hash);
+	if (window.location.hash.indexOf("#slot") == 0) {
+		var recent_slot = window.location.hash.replace("#slot", "");
+		s.eVar36 = "HP Recent View | " + recent_slot;
+	} else if (window.location.hash.indexOf("#plpslot") == 0) {
+		var recent_plp_slot = window.location.hash.replace("#plpslot", "");
+		s.eVar36 = "Product Listings Page | " + recent_plp_slot;
+	}
+}
+
+//Tagging for YMMSE
+if(typeof($.cookie("eVar41") ) != "undefined" && $.cookie("eVar41")  !== null) {
+   s.eVar41 = $.cookie("eVar41");
+}
+//Tagging for Smartfit
+//omniture tagging for a/b test
+//due to the cohorts is creating a cookie in the client side we need to do the omniture tagging in the client side also
+
+    if ( 'undefined' != typeof SMARTFIT_TEST_OBJECT && 'undefined' != typeof SMARTFIT_TEST_OBJECT.enable && SMARTFIT_TEST_OBJECT.enable ) {
+        if ( 'undefined' != typeof smart_fit_test ) {
+            if ( smart_fit_test.inTest() ) {
+                _evar23 = 'Control'; 
+               
+               if ( 'test' == smart_fit_test.getCohort() ) {
+                   _evar23 = 'SmartFit'; 
+               // } else if('control' == smart_fit_test.getCohort() ){
+               //     _evar41 = "Control";
+               }
+               
+               setCookie('evar23', _evar23 , (new Date()).getTime() +60*60*24*30, '/');
+            // } else if ( Number(smart_fit_test.options.sample) < 1 ) {
+            //     s.eVar23 = "Control";
+            }
+        }
+    }
+
+
+    if(typeof($.cookie("evar23") ) != "undefined" && $.cookie("evar23")  !== null) {
+        s.eVar23 = $.cookie("evar23");
+    }
+
+
+(function(){
+    var apwsess = CookieGroupHandler.getCookieInstance("apwsession");
+    var recentAddVehicleSERP = 0;
+    var currentVid = getCookie("activeVehicleKey");
+
+    if (currentVid && currentVid == apwsess.getValue("serp_add_v")) {
+        recentAddVehicleSERP = 1;
+    }
+
+    if (PAGE_SECTION == "vehicle") {
+        if('function' == typeof fireVLPPreloadTagging){
+            fireVLPPreloadTagging();
+        }
+    } else if (PAGE_SECTION == "search") {
+
+        var sfStatus = deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.status');
+if (sfStatus && sfStatus !== "Disabled") {
+
+    cleanupSmartfitVehicle();
+
+    // Tagging when filters are suddenly removed
+    if (!dynamicSettingsObj.selectedPartId || !dynamicSettingsObj.hasSelectedRefinement) {
+        if (apwsess.getValue('smartfit_show_partfinder_lb') == "1" || (apwsess.getValue('smartfit_event93_flag') == "1" && !isCurrentVehicleSmartfit())) {
+            if (apwsess.getValue('isEvent91Triggered') == "1" && !recentAddVehicleSERP) {
+
+                var sfPart = ( null != apwsess.getValue('smartfit_partname') ) ? apwsess.getValue('smartfit_partname').replace(/\+/g," ") : '';
+                var _keys =  ['pageName', 'channel', 'prop3', 'events', 'eVar34', 'eVar40', 'eVar60'];
+                var _values = [s.pageName, s.channel, s.prop3, 'event93', sfPart, s.eVar40, sfPart];
+
+                setAnalyticsByOnclick(_keys, _values);
+                
+                if (!isCurrentVehicleSmartfit()) {
+                    apwsess.removeValue('lb_smartfit_engaged');
+                    apwsess.removeValue('left_nav_engaged');
+                    apwsess.writeGroup();
+                }
+
+                apwsess.removeValue('isEvent91Triggered');
+            }
+        }
+    }
+
+    // Part was changed or was first time set
+    if (dynamicSettingsObj.selectedPart) {
+        var sfPart = dynamicSettingsObj.selectedPart;
+        if (apwsess.getValue('smartfit_partname') != null && sfPart != apwsess.getValue('smartfit_partname').replace(/\+/g," ") ) {
+            apwsess.removeValue('smartfit_evar66_properties');
+        }
+        
+        apwsess.setValue('smartfit_partname', sfPart);
+        apwsess.writeGroup();
+
+    } else {
+        apwsess.removeValue('smartfit_partname');
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.writeGroup();
+    }
+
+    // There is a part selected and it is a smartfit enabled part
+    if (deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.part') && dynamicSettingsObj.isPartnameSmartfit) {
+
+        // #nofilter yet selected (left nav or smartfit)
+        if (!dynamicSettingsObj.hasSelectedRefinement) {
+            if (isCurrentVehicleSmartfit()) {
+                apwsess.removeValue('smartfit_evar66_properties');
+                // Make it YMM as the first engaged smartfit section
+                smartfitFlagForEvar66('YMM');
+            }
+        }
+
+        // Set tracking cookie to tell analytics that visitor filtered by left nav
+        $('.smartfit-tracking-evar66').on('click', function(){
+            smartfitFlagForEvar66('LN+Filters');
+            apwsess.setValue('left_nav_engaged', 1).writeGroup();
+        });
+        
+        // Set tracking cookie to track vehicle widget engagement
+        $('#PartfinderFilter').on('click', '.smartfit-tracking-evar66-sbvw', function(){
+            apwsess.setValue('smartfit_ymm_flag', 1).writeGroup();
+        });
+        
+        // Set tracking cookie to track vehicle widget engagement
+        $('#SerpPartfinder').on('click', '.smartfit-tracking-evar66-sbvw', function(){
+            apwsess.setValue('smartfit_ymm_flag', 1).writeGroup();
+        });
+
+        // If selected part is not smartfit, then no engagement
+        var sfSegment = deepFind(dynamicSettingsObj, 'smartfitFirstQuestion.segment');
+        if (sfSegment !== "master" && sfSegment !== "test") {
+            // Not a smartfit partname, clear flags
+            apwsess.removeValue('lb_smartfit_engaged').removeValue('left_nav_engaged').writeGroup();
+        }
+
+        // If user engaged in left nav or lightbox, engagement will carry over
+        // only to the next landing page as long as user does not change partname
+        // However, if current vehicle is added from SERP, engagement is 
+        // carried over even on other partnames (as long as they are smartfit enabled)
+        if (isSmartfitEngaged() || isCurrentVehicleSmartfit()) {
+            
+            if (apwsess.getValue('smartfit_evar66_flag') == '1') {
+                if (apwsess.getValue('smartfit_evar66_properties') != null && validateEvar66Flag()) {
+
+                    var _sortedEvar66Properties = sortObject(apwsess.getValue('smartfit_evar66_properties'));
+                    var joinSortedEvarProperties = '';
+                    
+                    for ( var i in _sortedEvar66Properties ) {
+                        joinSortedEvarProperties = joinSortedEvarProperties+'|'+i;
+                    }
+                    
+                    s.eVar66 = joinSortedEvarProperties.substring(1).replace(/\+/g," ");
+                }
+
+                s.eVar60 = dynamicSettingsObj.selectedPart;
+            
+                s.events = setNewEvent('event91',s.events);
+                apwsess.setValue('isEvent91Triggered', 1);
+            }
+            
+            // Track clicks to sku pages
+            $('.smartfit-tracking-sku').click(function(){
+                apwsess.setValue('smartfit_sku', 1);
+                apwsess.setValue('smartfit_pl_sku', (dynamicSettingsObj.hasBrandSelected ? 0: 1));
+                apwsess.writeGroup();
+            });
+
+            // Track clicks to add-to-cart flow
+            $('input[class=add-to-cart-big], a.add-to-cart, a.add-special-price, .formHolder .btn-primary').click(function(){
+                apwsess.setValue('event_92_tag', true).writeGroup();
+            });
+            
+            apwsess.writeGroup();
+        }
+        
+        $('.edit-filtered-attribute').click(function(){
+            apwsess.removeValue('smartfit_event93_flag').writeGroup();
+        })
+        
+        $('.remove-filtered-attribute').click(function(){
+            apwsess.setValue('smartfit_event93_flag', 1).writeGroup();
+        });
+        
+        $('.smartfit-tracking-click').click(function(){
+            apwsess.removeValue('lb_smartfit_engaged');
+            apwsess.removeValue('left_nav_engaged');
+            apwsess.writeGroup();
+        });
+        
+        $('.smartfit-tracking-submit').submit(function(){
+            apwsess.removeValue('lb_smartfit_engaged');
+            apwsess.removeValue('left_nav_engaged');
+            apwsess.writeGroup();
+        });
+
+    } else {
+        // Reset if there is no smartfit question active
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.removeValue('lb_smartfit_engaged');
+        apwsess.removeValue('left_nav_engaged');
+    }
+} else {
+    // Either smartfit is disabled or no partname is selected yet
+    fireSERPPreloadTagging();
+}
+
+    } else if (PAGE_SECTION == "compare") {
+
+        userObject = apwsess.getValue('users');
+var skuLinks = $('.smartfit-tracking-sku');
+
+// Track branded and pl sku
+$('.smartfit-tracking-sku').each(function(i, obj){
+    $(this).click(function(){
+        var smarfit_sku = smartfit_pl_sku = 0;
+    
+        if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)] ) {
+            
+            if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)][2] ) {
+                smarfit_sku = userObject.selectedSku[obj.id.substring(2)][2];
+            }
+            
+            if ( 'undefined' !=  typeof userObject.selectedSku[obj.id.substring(2)][3] ) {
+                smartfit_pl_sku = userObject.selectedSku[obj.id.substring(2)][3];
+            }
+        }
+    
+        apwsess.setValue('smartfit_sku', smarfit_sku);
+        apwsess.setValue('smartfit_pl_sku', smartfit_pl_sku);
+        apwsess.writeGroup();
+    });
+});
+
+// Track add-to-cart
+$(".add-to-cart-compare").click(function(){
+    var p_id_val = encode($(this).siblings('form').children('input[name=productId]').val());
+
+    if ( p_id_val.indexOf('-semmi-') != -1 ) {
+      p_id_val = decode(p_id_val); 
+    }
+    if ( null != userObject && 'undefined' !=  typeof userObject.selectedSku[p_id_val][2] && userObject.selectedSku[p_id_val][2]) {
+        apwsess.setValue('event_92_tag', true).writeGroup();
+    }
+
+});
+
+apwsess.removeValue('lb_smartfit_engaged');
+apwsess.removeValue('left_nav_engaged');
+apwsess.removeValue('smartfit_evar66_properties');
+apwsess.removeValue('isEvent91Triggered');
+apwsess.writeGroup();
+
+    } else {
+
+        apwsess.removeValue('lb_smartfit_engaged');
+        apwsess.removeValue('left_nav_engaged');
+        apwsess.removeValue('smartfit_evar66_properties');
+        apwsess.removeValue('isEvent91Triggered');
+        apwsess.writeGroup();
+    }
+ })();
+
+	cookieV48 = $.cookie("evar48");
+	cookieV56 = $.cookie("evar56");
+	cookieV57 = $.cookie("evar57");
+	cookieP17 = $.cookie("prop17");
+	cookieP18 = $.cookie("prop18");
+
+	if ( (cookieV48!=null) && (cookieV56!=null) && (cookieV57!=null) && (cookieP17!=null) && (cookieP18!=null) && (cookieV48!=null)) {
+		s.eVar48 = cookieV48;
+		s.eVar56 = cookieV56;
+		s.eVar57 = cookieV57;
+		s.prop17 = cookieP17;
+		s.prop18 = cookieP18;
+		$.cookie('evar48', '',{expires:-1, path:'/'});
+		$.cookie('evar56', '',{expires:-1, path:'/'});
+		$.cookie('evar57', '',{expires:-1, path:'/'});
+		$.cookie('prop17', '',{expires:-1, path:'/'});
+		$.cookie('prop18', '',{expires:-1, path:'/'});
+	}
+
+	cookieE83 = $.cookie("cmmEvent");
+	if(typeof(cookieE83) != "undefined" && cookieE83 !== null) {
+		if(typeof(s.events) != "undefined" && s.events !== null) {
+			s.events = s.events+","+cookieE83;
+		} else {
+			s.events = cookieE83;
+		}
+		$.cookie('cmmEvent', '',{expires:-1, path:'/'});
+	}
+	
+	if(typeof(yt_event81) != "undefined" && yt_event81 !== null) {
+		s.events = s.events+",event81";
+	}
+
+	if ( typeof componentsContents != 'undefined' && typeof componentsContents['component'] != 'undefined' && typeof componentsContents['component'].Analytics != 'undefined' ) {
+		for ( var key in componentsContents['component'].Analytics[1] ) {
+			if ( componentsContents['component'].Analytics[1][key] != '' && componentsContents['component'].Analytics[1][key] != null ) {
+				eval("s."+key+" = componentsContents['component'].Analytics[1]."+key+"; \n");
+			}
+		}
+	}
+
+	cookieV48 = $.cookie("v48");
+    if (cookieV48!=null) {
+	    s.eVar48 = cookieV48;
+	    $.cookie('v48', '',{expires:-1, path:'/'});
+	}
+
+    	
+	
+
+	var abtestCookieName = null;
+	var pairs = document.cookie.split(";");
+	for (var i=0; i<pairs.length; i++){
+	  var pair = pairs[i].split("=");
+	  if(pair[0].trim().indexOf("cpwtest-") == 0){
+	    abtestCookieName = pair[0];
+	    break;
+	  }
+	}
+
+    // Turn-off eVar23 A/B Test Tagging for CPW
+	//if ( null != getCookie(abtestCookieName) ) {
+	//	console.log(getCookie(abtestCookieName));
+	//	switch(getCookie(abtestCookieName).substring(0,1)){
+	//		case('b'): s.eVar23 = 'New JCW on CP'; break;
+	//		case('a'): s.eVar23 = 'Control'; break;
+	//		case('c'): s.eVar23 = 'Control'; break;
+	//	}
+	//}
+	
+	if ($.cookie("isSetSplit") == null) {
+		if ( splitEnabled ) {
+			if ($.cookie("splitb") != null) {
+				var evarvalue = $.cookie("splitb");
+				s.eVar49 = "b."+evarvalue;
+				var s_code=s.t();
+				if(s_code) {
+					document.write(s_code);
+				}
+				$.cookie("isSetSplit", "true", {path:"/"});
+			}
+		}
+	}
+
+
+		var s_code=s.t();
+		if(s_code) {
+			document.write(s_code)
+		}
+	
+	function setCheckoutCreateAccountFailedOmni(eventValue, evarValue) {
+
+		if ( evarValue == 'Failed' ) {
+			var sc_events = '';
+
+			if ( s.events != '' ) {
+				sc_events = s.events;
+			}
+			if ( sc_events.search(/evarValue/i) < 0 ){
+				if(sc_events != ''){sc_events += ',';}
+				sc_events += eventValue;
+			}
+
+			s.events =  sc_events;
+			s.eVar61 = evarValue;
+			var s_code=s.t();
+			if(s_code){
+				document.write(s_code);
+			}
+		}
+	}
+
+	function changePageName(pageName) {
+		s.pageName = pageName;
+		var s_code=s.t();
+		if(s_code){
+			document.write(s_code);
+		}
+	}
+
+ /*AMP Redirect Override Referrer */
+ if (document.referrer.indexOf("www-jcwhitney-com.cdn.ampproject.org") >= 0){
+     var new_referrer = document.referrer.replace('www-jcwhitney-com.cdn.ampproject.org/v/s/','');
+     if(new_referrer != "" && new_referrer != undefined) {
+         s.referrer = new_referrer;
+     }
+ }
+
+
+
+<!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//-->
+
+      var ProActiveChatURL = "https://autochatpa1.ehosts.net/netagent/proactive/proactive.aspx";
+    var talCustProp = "PageName=Home";
+
+    var isProactiveEnable = 1;
+
+
+
+
+    var thirdparty_deprioritize=true;
+     var thirdparty_deprioritize_dart=false;
+     var tealiumfile ="//tags.tiqcdn.com/utag/usautoparts/jcwhitney/prod/utag.js";     var pgaction = 'index';
+     var thirdparty_warp ="//js.jcwstatics.com/sites/cpwhitney/includes/js/prd/us_auto_parts_warp.js";
+     var analyticsChannel = "Home";
+
+
+
+
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"55916a94dc","applicationID":"71003815","transactionName":"Zl0HNRNXCkEDAUBaDV8XJhQSQgtfTSpbXgcRaAQGBA==","queueTime":0,"applicationTime":782,"atts":"ShoQQ1tNGR5AAxYJGUxF","errorBeacon":"bam.nr-data.net","agent":""}

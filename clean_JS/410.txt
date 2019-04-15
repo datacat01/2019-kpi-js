@@ -1,0 +1,18 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".thebridesbouquet.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"03cf30f38ac073e59066565e117792d71362fd4d","type":"ANONYMOUS","visit_id":"f3c73b08-5f5a-4fb3-950f-20b04202393d","visitor_id":"61ebd3d8-11d2-4fba-87aa-31aac6c6942e"},"referer":{"url":""},"request":{"url":"https:\/\/www.thebridesbouquet.com\/"}}, '', 1379867, "other", {"customer":{"id":"anonymous"}}, 'f3c73b08-5f5a-4fb3-950f-20b04202393d', '61ebd3d8-11d2-4fba-87aa-31aac6c6942e');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"2ac7a5c4c794875d6c3feb4fbdd7e21a8a9a85fb907aa64ca420cf9901a6bf5e"};
+
+
+            /* <![CDATA[ */
+            var google_conversion_id = 1072546399;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        
+
+        

@@ -1,0 +1,81 @@
+window.status='Loading...';
+window.status='';
+ignoreResetDivSizes = true;
+
+$("#camera_wrap_4 div.slideimg").each(function(){if($(this).attr("data-src") == ""){$(this).remove();}});
+jQuery(function(){
+jQuery('#camera_wrap_4').camera({
+  time: 5000,
+  alignmen: 'topCenter',
+  height: '38.021%',
+  minHeight: '34px',
+  loader : true,
+  loaderColor: '#f48b47',
+  loaderPadding: '0',
+  loaderStroke: '2',
+  navigation: true,
+  pagination: false,
+  fx: 'simpleFade',
+  navigationHover:false,
+  thumbnails: false,
+  playPause: false 
+  });
+});
+$(document).ready(function(){
+  /*To make the first option of the item box selected*/
+	$(".item_options_content select option[value=1]").each(function(){$(this).attr('selected', 'selected');});
+  $('.product-image img').each(function(){
+var imageSourceProduct = $(this).attr('src');
+if(imageSourceProduct == "" || imageSourceProduct == " "){
+$(this).attr('src','/c.340019/site/TT_SB2_Files/img/default-img.jpg');
+}
+});
+$('.product-image').each(function(){
+if($(this).html() == ""){
+	var elementlink = $(this).next(".product-info").children("a").attr("href");
+	$(this).html("<a href='"+elementlink+"'><img src='/c.340019/site/TT_SB2_Files/img/default-img.jpg'>");
+}
+});
+});
+
+
+var Item2866_prices;
+var orgpricerange2866;
+
+NS.form.setValid(true);function checkmandatory2866() {if (document.forms['form2866'].amount) {var amt=document.forms['form2866'].amount;var max_amt=document.forms['form2866'].max_amount;if (!validate_field(amt,'poscurrency',true,false,null,null,true,null)) return false;if (max_amt.value > 0.00 && parseFloat(amt.value) > parseFloat(max_amt.value)) {alert('Invalid amount (exceeds maximum allowed)'); return false; }if (amt.value < 0.01) {alert('Invalid number (must be greater than 0).'); return false; }}if (typeof Item2866_prices != 'undefined' && Item2866_prices!=null) {if (!checkValidOptions2866()) {alert('Selected option is unavailable.'); return false; }}return NS.form.isValid() ? true : false;}
+
+var Item273_prices;
+var orgpricerange273;
+
+NS.form.setValid(true);function checkmandatory273() {if (document.forms['form273'].amount) {var amt=document.forms['form273'].amount;var max_amt=document.forms['form273'].max_amount;if (!validate_field(amt,'poscurrency',true,false,null,null,true,null)) return false;if (max_amt.value > 0.00 && parseFloat(amt.value) > parseFloat(max_amt.value)) {alert('Invalid amount (exceeds maximum allowed)'); return false; }if (amt.value < 0.01) {alert('Invalid number (must be greater than 0).'); return false; }}if (typeof Item273_prices != 'undefined' && Item273_prices!=null) {if (!checkValidOptions273()) {alert('Selected option is unavailable.'); return false; }}return NS.form.isValid() ? true : false;}
+
+var i=new Image();
+i.src='/app/site/hit/tracker.nl?c=340019&n=1&type=store&sc=1&category=-101&it=&itemid=&referer='+encodeURIComponent(document.referrer);
+i.onload=function(){nsVoid();};
+function nsVoid(){return;};
+
+function page_init() {
+if(typeof includedVersion2plusScript === 'function' && typeof fetchClientScripts === 'function' &&includedVersion2plusScript() && window && window.setTimeout && !fetchClientScripts(false)){
+	if (typeof require !== 'undefined' && typeof require.SSModuleLoader !== 'undefined') {
+		require.SSModuleLoader.perfTracking.didPoll = true;
+	}
+	NS.form.setInited(false);
+	window.setTimeout(page_init, 0);
+	return;
+}
+window.weekstart  ='2';
+window.dateformat ='fmMM/DDfm/YYYY';
+window.userfacing_dateformat = 'M/D/YYYY';
+window.longdateformat ='fmMonth DDfm, YYYY';
+window.timeformat ='fmHH:fmMI am';
+window.timeformatwithseconds ='fmHH:fmMI:SS am';
+window.decimalseparator ='.';
+window.groupseparator =',';
+window.negativeprefix ='-';
+window.negativesuffix ='';
+window.number_blacklist_regex = new RegExp('[^\\.\\-\\d]','g');
+window.datetime_am_string ='am';
+window.datetime_pm_string ='pm';
+window.datetime_short_months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""];
+window.phoneformat ="123-456-7890";
+window.loadcomplete = true;}

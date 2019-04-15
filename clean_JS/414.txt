@@ -1,0 +1,61 @@
+
+    /* <![CDATA[ */
+    var google_conversion_id = 933606829;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+
+
+            $(document).on('click', '.menu__control', function(){
+                var openTxt = $('.menu__control--txt').data('open');
+                var closeTxt = $('.menu__control--txt').data('close');
+                if ($('#site__wrapper').hasClass('menu__visible')) {
+                    menuControl();
+                    $('.menu__control--txt').html(closeTxt);
+                } else {
+                    $('.menu__control--txt').html(openTxt);
+                    $('body, html').animate({
+                        scrollTop: $('body').offset().top
+                     }, 0, menuControl());
+                }
+            });
+
+            function menuControl(){
+                $('.geo__container--select').hide();
+                $('#site__wrapper').toggleClass('menu__visible');
+                $('.site__container').toggleClass('menu__visible');$('#shopify-section-app_information-bar').toggleClass('menu__visible');}
+            
+            $(document).ready(function (){
+                var myLazyLoad = new LazyLoad();
+            });
+            
+            $(function() {
+                
+                CartJS.init({"token":"62455953596771d161ff729210ff1445","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"GBP","items_subtotal_price":0,"cart_level_discount_applications":[]}, {
+                    "moneyFormat": "&pound;{{amount}}",
+                    "moneyWithCurrencyFormat": "&pound;{{amount}} GBP"
+                });
+                
+            });
+            
+            $(document).on('cart.requestComplete', function(event, cart) {
+                $('.item__total').html(cart.item_count);
+            });
+            
+            $(document).ready(function () {
+                if(window.location.href.indexOf('ometria_form_ok=Y') > -1) {
+                    $('#mailing_list').addClass('success');
+                    $('#mailing_list_success').addClass('success');
+                    $('.mailing-list').addClass('success');
+                    $('html,body').animate({
+                       scrollTop: $('.mailing-list').offset().top
+                    });
+                }
+            });
+                    
+            $(document).on('keyup', Konami.code(function() {
+                console.log('ALL YOUR NUTRITION ARE BELONG TO US');
+                console.log('SET UP US THE NUTRITION');
+            }));
+
+        

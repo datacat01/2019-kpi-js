@@ -1,0 +1,872 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+                                                    // Instructions: please embed this snippet directly into every page in your website template.
+                                                    // For optimal performance, this must be embedded directly into the template, not referenced
+                                                    // as an external file.
+
+                                                    // Answers Cloud Services Embed Script v1.02
+                                                    // DO NOT MODIFY BELOW THIS LINE *****************************************
+                                                    ;
+                                                    (function(g) {
+                                                        var d = document,
+                                                            i, am = d.createElement('script'),
+                                                            h = d.head || d.getElementsByTagName("head")[0],
+                                                            aex = {
+                                                                "src": "//gateway.answerscloud.com/helzberg/production/gateway.min.js",
+                                                                "type": "text/javascript",
+                                                                "async": "true",
+                                                                "data-vendor": "acs",
+                                                                "data-role": "gateway"
+                                                            };
+                                                        for (var attr in aex) {
+                                                            am.setAttribute(attr, aex[attr]);
+                                                        }
+                                                        h.appendChild(am);
+                                                        g['acsReady'] = function() {
+                                                            var aT = '__acsReady__',
+                                                                args = Array.prototype.slice.call(arguments, 0),
+                                                                k = setInterval(function() {
+                                                                    if (typeof g[aT] === 'function') {
+                                                                        clearInterval(k);
+                                                                        for (i = 0; i < args.length; i++) {
+                                                                            g[aT].call(g, function(fn) {
+                                                                                return function() {
+                                                                                    setTimeout(fn, 1)
+                                                                                };
+                                                                            }(args[i]));
+                                                                        }
+                                                                    }
+                                                                }, 50);
+                                                        };
+                                                    })(window);
+                                                    // DO NOT MODIFY ABOVE THIS LINE *****************************************
+                                                
+
+                                                            function getTrackingServerUrl() {
+                                                                var trackingServerUrl = "";
+                                                                if ('' != null && ''.length > 0) {
+                                                                    trackingServerUrl = '';
+                                                                }
+                                                                return trackingServerUrl;
+                                                            }
+                                                        
+
+                                                                    /*DO NOT ALTER *** Helzberg*/
+                                                                    (function(e) {
+                                                                        var t = "2290",
+                                                                            n = document,
+                                                                            r, i, s = {
+                                                                                http: "http://cdn.mplxtms.com/s/MasterTMS.min.js",
+                                                                                https: "https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"
+                                                                            },
+                                                                            o = s[/\w+/.exec(window.location.protocol)[0]];
+                                                                        i = n.createElement("script"), i.type = "text/javascript", i.async = !0, i.src = o + "#" + t, r = n.getElementsByTagName("script")[0], r.parentNode.insertBefore(i, r), i.readyState ? i.onreadystatechange = function() {
+                                                                            if (i.readyState === "loaded" || i.readyState === "complete") i.onreadystatechange = null
+                                                                        } : i.onload = function() {
+                                                                            try {
+                                                                                e()
+                                                                            } catch (t) {}
+                                                                        }
+                                                                    })(function() {});
+                                                                
+
+
+
+
+																(function(u,t,d){
+																    var i=d.createElement(t);i.type='text/javascript';i.async=true;i.src='//'+u;
+																    var s=d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(i,s);
+																})('us2-track.inside-graph.com/gtm/IN-1000758/include.js','script',document);
+															
+
+                    
+                    
+                        
+                        
+                        
+                            document.domain ='helzberg.com'
+                        
+                        
+                    
+                
+
+
+			rfk.push(["trackEvent", {
+			        
+					"type": "user",
+			        "name": "login",
+			        "value": {
+			
+			                "user": {
+			                        "id": "",
+			                        "first_name": "",
+			                        "last_name": "",
+			                        "email": "",
+			                        "eid": "",
+			                        "fbid": "",
+			                        "cmid": "",
+			                        "rpid": "",
+			
+			                        "address": { 
+			                                "address_line_1": "",
+			                                "address_line_2": "",
+			                                "state": "",
+			                                "zip": "",
+			                                "country": ""
+			                        },
+			
+			                        "attributes": { 
+			                                "gender": "",
+			                                "email_subscriber": "",
+			                                "preferred_sizes": ["", "", "", ""],
+			                                "home_store_code": ""
+			                        }
+			                },
+        
+					      	"dn":"helzberg.com",
+					      	"locale":{  
+					         	"lg":"en",
+					         	"co":"us",
+					         	"cy":"USD"
+					      	}
+			        }
+			
+			}]);
+			
+	
+MarketLive.Nav.TopNav.initialize({minKeywordLength:3, maxKeywordLength:200, msgSearch:"Style # or Keyword", msgNoSearchTerm:"Please enter a keyword or item number", msgShortSearchTerm:"Your keyword or item number must be at least 3 characters long"});
+
+
+function replaceSearchButtonText(buttonId, text)
+{
+  if (document.getElementById)
+  {
+    var button=document.getElementById(buttonId);
+    if (button)
+    {
+      if (button.childNodes[0])
+      {
+        button.childNodes[0].nodeValue=text;
+      }
+      else if (button.value)
+      {
+        button.value=text;
+      }
+      else //if (button.innerHTML)
+      {
+        button.innerHTML=text;
+      }
+    }
+  }
+}
+
+
+
+
+	function submitEmail(email){
+
+			var channelMixId = jQuery.cookie('CMXID2');
+			var pageName = 'LiteRegistration.jsp';
+
+	     	submitUsersEmail(email, channelMixId, pageName);
+			setTimeout(function(){
+				$('.input-group-email .ml-csvalidation-errmessage').attr('id','loginEmail_error');
+				$('.input-group-pass .ml-csvalidation-errmessage').attr('id','loginPassword2_error');
+				$('.input-group-email-cont .ml-csvalidation-errmessage').attr('id','loginEmail_cont_error');
+				$('.input-group-pass-cont .ml-csvalidation-errmessage').attr('id','loginPassword2_cont_error');
+				$('.input-group-liteRegistrationAnswer .ml-csvalidation-errmessage').attr('id','liteRegistrationAnswer_error');
+			}, 100);
+	}
+	
+	jQuery(document).ready(function() {
+		jQuery(".channelMixId").val(jQuery.cookie('CMXID'));
+	});
+	
+
+
+	$(window).load(function(){
+		$(".ml-lite-registration-wrapper #accountSetupForm .input-group .custom-select-box .selectBox.form-select.selectBox-dropdown").attr("aria-required","true");
+	});
+
+ window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'5801812'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;} 
+
+	
+
+
+//Script to Delay Curalate From loading until a certain scroll
+//position.  This allows the Curalate images from impacting load time
+var x=0;
+console.log(x);
+activateAtY = 999;
+$(window).scroll(function() {
+	if($(window).scrollTop() > activateAtY && x==0) {
+		console.log('999 ' + x);
+		x=x+1;
+		callCuralate();
+	} else {
+		//alert("window load occurred!");
+		console.log(x);
+	}
+});
+function callCuralate(){
+	//alert("Boom!");
+	jQuery.getScript("https://cdn.curalate.com/sites/helzberg/site/latest/site.min.js");
+}
+
+
+                
+                                _etmc.push(["setOrgId", "100868"]);						
+		                        
+		                            							  
+		                            							
+		                                        //1.1 Home Page/Global Tag
+		                                        //DEG  Helzberg PI Implementation 
+		                                        //Track the users movement around the website which is used for 
+		                                        //Web & Mobile Analytics and other reporting.					
+		                            
+		                        	
+                                _etmc.push(["trackPageView"]);
+                        
+                
+
+	var subscriptionCenterUrl = '';
+
+
+    function getVersionDomain(version) {
+        var host="https://www.helzberg.com";
+        switch(version){
+            case "revv142":
+                host="https://helzberg-v142-rev.aws.marketlive.com";
+                break;
+            case "prdv142":
+                host="https://www.helzberg.com";
+                break;
+            case "stgv142":
+                host="https://helzberg-v142-staging.aws.marketlive.com";
+                break;
+        }
+        return host;
+    };
+
+    var addEventListenerFn = (window.document.addEventListener
+        ? function(element, type, fn) { element.addEventListener(type, fn); }
+        : function(element, type, fn) { element.attachEvent('on' + type, fn); });
+
+
+	//Newsletter Submit - Pass email address to Eplison
+	//Newsletter Submit - Pass email address to Eplison
+	jQuery("#subEmailButtonId").click(function(){
+		var emailPass = $( "#emailAddress" ).val();
+		var pathname = window.location.pathname;
+        //alert(pathname);
+		//alert("The paragraph was clicked." + emailPass);
+		if (emailPass) {
+			if (pathname == '/category/engagement.do')
+			{
+			window.location = 'https://shp.csharmony.epsilon.com/v3.0/r2/?w=7b50f66f-45c6-4317-89cd-5795e380d568&ck=' + emailPass + '&pgSource=' + pathname;
+			}
+			else{
+				window.location = 'https://shp.csharmony.epsilon.com/v3.0/r2/?w=7b50f66f-45c6-4317-89cd-5795e380d568&ck=' + emailPass;
+			}
+		}
+	});
+
+
+
+
+                                                            window.MarketLive = window.MarketLive || {}; MarketLive.Base = MarketLive.Base || {}; MarketLive.Base.section = 'HOME';
+                                                        
+
+
+												        jQuery(document).ready(function(){ 
+												        //jQuery(".img-responsive").attr('id', 'imgResponsiveId');
+												        jQuery(".img-responsive").addClass('imgRespId')
+												        //jQuery(".ml-dynamic-data-img").attr('id', 'imgResponsiveId');
+												        jQuery(".ml-dynamic-data-img").addClass('imgRespId')
+												        jQuery("#gateway_custom_72fillslots_leftnav-8").attr('id', 'imgResponsiveId'); 
+												        jQuery(".mainWrapper").attr('id','mainWrapper'); 
+												        jQuery(".mainWrapper").attr('tabindex', '-1'); 
+												        });
+    
+
+                                                        
+
+    
+            $( document ).ready(function() {
+            
+                //emid url
+                var piIdSesVar = '';
+                //console.log('piIdSesVar: '+piIdSesVar);	
+                if(piIdSesVar){												
+                        setCookie('CMXID2', piIdSesVar);	
+                }
+                
+                var channelMixId = jQuery.cookie('CMXID');
+                //console.log('channelMixId:'+channelMixId);
+                                                    
+                var channelMixId2 = jQuery.cookie('CMXID2');
+                //console.log('channelMixId2:' + channelMixId2);
+                
+                var sessEmailVar = '';
+                //console.log('sessEmailVar: ' + sessEmailVar);
+                                            
+                var isPiSubmitCkBl = jQuery.cookie('isPiSubmit');
+                //console.log('isPiSubmitCkBl: ' + isPiSubmitCkBl);
+                
+                var piIdCall = '';
+                //console.log('piIdCall: ' + piIdCall);
+
+                if (channelMixId && channelMixId != 'n/a' && channelMixId != 'undefined'){					
+                    if(!channelMixId2){												
+                        setCookie('CMXID2', channelMixId);	
+                    }
+                                
+                } else {
+                
+                    if(!channelMixId2){
+		                var ranNum = Math.random();
+		                ranNum = ranNum + $.now();
+		                //console.log('ranNum:'+ranNum);													
+                        setCookie('CMXID2', ranNum);	
+                    }	
+                
+                }
+                
+                var channelMixId3 = jQuery.cookie('CMXID2');
+                
+                
+                if(channelMixId3){
+                
+                    if(piIdCall != 'true' || !sessEmailVar && !isPiSubmitCkBl){
+                        submitPiId(channelMixId3);
+                    }
+                    
+                    if(piIdCall != 'true'){
+                        //Reset
+                        setCookie('isPiSubmit', false);
+                    }
+                                                
+                }
+                
+                
+            });
+            
+            //Validate a string
+            function isBlank(str) {
+	    			return (!str || /^\s*$/.test(str));
+			}
+            
+            //Reset email to null when user logout.
+            function resetCustEmailAddressSes(){
+            
+            	console.log('resetCustEmailAddressSes called!');
+            	
+            	//Delete cookie
+            	jQuery.cookie('sessPiEmail', null);
+            	
+	            var channelMixId = jQuery.cookie('CMXID2');
+				var pageName = 'MainResetEmail.jsp';
+				var email;
+	     		                    
+                var url = "/pitracking/submitEmail.do?method=submitEmail&MobileOptOut=2&emailAddress=";
+                url = url + encodeURIComponent(email)+'&piId='+channelMixId+'&channelMixPageName='+pageName;
+                
+                //console.log('Debug:url = '+url);
+                				
+                	jQuery.ajax({              	
+                        url: url,		  
+                        error: function() {
+                               console.log('Ajax Call resetCustEmailAddressSes fail!');			
+                        },
+                        success: function(data) {
+                                 console.log('Submit resetCustEmailAddressSes success.');					
+                        },
+                        type: 'POST'
+                 	});
+            
+            }
+            
+            $(".ml-topnav-identity-logout" ).click(function(){
+				resetCustEmailAddressSes();
+     		});
+            
+            function setCookie(name, value){
+            
+                $.cookie(name, value, {					
+                           //expires : 365,       		//expires in 365 days						
+                           secure  : true          		//If set to true the secure attribute of the cookie
+                                                        //will be set and the cookie transmission will
+                                                        //require a secure protocol (defaults to false).
+                        });
+            
+            }
+            
+            
+            
+            //Check for guest users.
+            function submitPiId(piId){
+
+                if (piId){
+                    
+                    var url = "/pitracking/submitPiId.do?method=submit";
+                    url = url + '&piId='+piId;
+                    //console.log('url: '+url);
+                                    
+                    jQuery.ajax({
+                    
+                            url: url,		  
+                            error: function() {
+                                console.log('Ajax Call submitPiId Failed!!!');			
+                            },
+                            
+                            success: function(data) {	
+                                                        
+                                console.log('Submit submitPiId success.');																						
+                                setCookie('isPiSubmit', true);
+                                                                                                                                                                                                
+                           },
+                                                   
+                            type: 'GET'
+                     });
+             
+                }
+                
+                
+            }	
+    
+    
+
+    	var cj_event = "";
+    	if (cj_event)
+    	{
+    		jQuery.cookie("cj_event", cj_event, {
+    					   path    : '/',					
+                           expires : 365,       		//expires in 365 days						
+                           secure  : true          		//If set to true the secure attribute of the cookie
+                                                        //will be set and the cookie transmission will
+                                                        //require a secure protocol (defaults to false).
+                        });
+    	}
+    	
+    
+
+    
+        
+        
+            function submitUsersEmail(email, channelMixId, channelMixPageName){	
+    
+                    //console.log('email: ' + email + ', channelMixId:'+channelMixId+', channelMixPageName: '+channelMixPageName);
+                    
+                    if (email =="Enter Email Address" || email=='' || !validateEmail(email)){
+                        console.log('Email is invalid!');
+                    } else{
+                    
+                        var url = "/pitracking/submitEmail.do?method=submitEmail&MobileOptOut=2&emailAddress=";
+                        url = url + encodeURIComponent(email)+'&piId='+channelMixId+'&channelMixPageName='+channelMixPageName;
+                        //console.log('url: '+url);				
+                         jQuery.ajax({
+                               url: url,		  
+                               error: function() {
+                                    console.log('Ajax Call submitUsersEmail fail!');			
+                               },
+                               success: function(data) {
+                                    console.log('Submit submitUsersEmail success.');					
+                               },
+                              type: 'POST'
+                         });
+                    }
+                }
+        
+                function validateEmail(sEmail) {
+                            
+                    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                    
+                    if (filter.test(sEmail)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+    
+    
+
+        
+            function setPiCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            
+            function getPiCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            
+            function checkPiCookie(cname) {
+                var ckname = getCookie(cname);
+                if (ckname) {
+                    console.log("Cookie name: " + ckname);
+                } else {
+                    ckname = prompt("Please enter cookie name:", "");
+                    if (ckname) {
+                        setCookie(cname, ckname, 365);
+                    }
+                }
+            }
+        
+        
+
+    jQuery(document).ready(function(){
+        var verificationRequired = "";
+        var fromPage = "LITEREGISTRATION";
+        if ((fromPage == 'LITEREGISTRATION' || fromPage == 'MOBILESAVEDCART') && verificationRequired == 'true') {
+            jQuery(".ml-lite-registration #guest").on("click", function() {
+                jQuery('#socialLoginVerificationMsgContainer').css("display", "none");
+            });
+            jQuery(".ml-lite-registration #login").on("click", function() {
+                jQuery('#socialLoginVerificationMsgContainer').css("display", "block");
+            });
+        }
+    });
+
+
+                window.MarketLive = window.MarketLive || {};
+                MarketLive.LiteRegistration = MarketLive.LiteRegistration || {};
+                MarketLive.LiteRegistration.originatingSrc = '';
+                placeHolderConfig = {autoInit:false};
+            
+
+    MarketLive.GlobalCart.onGlobalCartReady();
+
+
+MarketLive.GlobalCart.initialize(true, false,
+        "/basket.do", 80,
+        "GlobalCartOn", 119,
+        0, true,
+        true,true, "cartItemTable");
+if ('' !='QVE') jQuery(document).ready(MarketLive.GlobalCart.adjustGlobalCartLayout(true));
+
+
+        MarketLive.Nav.AutoComplete.ready(1, 35);
+    
+
+
+	function showPosition(position) {
+		jQuery.ajax({
+			url: "/findNearStores.do?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude,
+			success: function(result){
+				//jQuery("#ml-store-my-name-header").html(result);
+				jQuery("#nearestStore").html(result);
+				jQuery("#nearestStoreXS").html(result);
+
+			}
+		});
+	}
+	
+jQuery(function() {
+	jQuery("#ml-navbar-slider .mystores li").on('click', function() {
+		mystore = jQuery(this).html();
+		jQuery('#ml-store-my-name').html(mystore);
+		jQuery('#ml-navbar-slider .open').removeClass('open');
+	});
+});
+
+
+
+jQuery(function() {
+    jQuery('#mystores').selectBox('destroy');
+    jQuery('#mystores-custom').remove();
+    jQuery('#ml-store-my-name').html(jQuery('#ml-store-my-name-header').html());
+});
+
+	function changeMyNearStore(storeId,storeName){	
+		  var url="/findNearStores.do?method=changeStore&storeCode="+storeId+"&storeName="+storeName;
+	jQuery.post( url, function( data ) {								        
+	}).fail(function() {
+		alert( "Something went wrong here. Please come back later!" );
+	  });										 
+		  jQuery("#ml-store-my-name-header").html(storeName);
+		  jQuery("#ml-store-my-name").html(storeName);
+}
+
+
+
+	function showPosition(position) {
+		jQuery.ajax({
+			url: "/findNearStores.do?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude,
+			success: function(result){
+				//jQuery("#ml-store-my-name-header").html(result);
+				jQuery("#nearestStore").html(result);
+				jQuery("#nearestStoreXS").html(result);
+
+			}
+		});
+	}
+	
+jQuery(function() {
+	jQuery("#ml-navbar-slider .mystores li").on('click', function() {
+		mystore = jQuery(this).html();
+		jQuery('#ml-store-my-name').html(mystore);
+		jQuery('#ml-navbar-slider .open').removeClass('open');
+	});
+});
+
+
+
+jQuery(function() {
+    jQuery('#mystores').selectBox('destroy');
+    jQuery('#mystores-custom').remove();
+    jQuery('#ml-store-my-name').html(jQuery('#ml-store-my-name-header').html());
+});
+
+	function changeMyNearStore(storeId,storeName){	
+		  var url="/findNearStores.do?method=changeStore&storeCode="+storeId+"&storeName="+storeName;
+	jQuery.post( url, function( data ) {								        
+	}).fail(function() {
+		alert( "Something went wrong here. Please come back later!" );
+	  });										 
+		  jQuery("#ml-store-my-name-header").html(storeName);
+		  jQuery("#ml-store-my-name").html(storeName);
+}
+
+
+    MarketLive.Nav.FooterNav.onFooterReady();
+
+
+            jQuery(document).ready(function(){
+                if (MarketLive.Recommendations && MarketLive.Recommendations.start) {
+                    MarketLive.Recommendations.start();
+                }
+            });
+        
+
+	jQuery.cookie('suppressEmail', 'A1555424860937', {expires:365, path:'/'});
+	
+
+
+jQuery(document).ready(function(){
+    jQuery('a[data-toggle="modal"]').on('click', function(e) {
+        
+            // From the clicked element, get the data-target arrtibute
+    // which BS3 uses to determine the target modal
+    var target_modal = jQuery(e.currentTarget).data('target');
+    // also get the remote content's URL
+    var remote_content = e.currentTarget.href;
+//	alert(target_modal);
+    // Find the target modal in the DOM
+    var modal = jQuery(target_modal);
+    // Find the modal's <div class="modal-body"> so we can populate it
+    var modalBody = jQuery(target_modal + ' .modal-content');
+
+    // Capture BS3's show.bs.modal which is fires
+    // immediately when, you guessed it, the show instance method
+    // for the modal is called
+    modal.on('show.bs.modal', function () {
+            // use your remote content URL to load the modal body
+            modalBody.load(remote_content);
+        }).modal();
+        // and show the modal
+
+    // Now return a false (negating the link action) to prevent Bootstrap's JS 3.1.1
+    // from throwing a 'preventDefault' error due to us overriding the anchor usage.
+    
+    return false;
+
+
+    });
+    
+
+ });
+
+
+
+    
+// A $( document ).ready() block.
+jQuery( document ).ready(function() {
+     jQuery('.dropdown-toggle').dropdown();
+});
+    
+
+		
+			$( document ).ready(function() {
+			
+					var ws = checkWebStorage();					
+					if(ws == 'true'){
+						//console.log('ws-main: ' + ws);
+						resetIspChecked();
+					}
+	
+			});
+			
+			function resetIspChecked(){
+				
+				console.log('resetIspChecked');	
+				sessionStorage.removeItem("ispChecked");
+					
+				//Debug only, remove when finish.
+				var a = sessionStorage.getItem('ispChecked');		    
+				console.log('resetIspChecked.ispChecked.a = ' + a);
+				
+			};
+		
+	
+
+
+	function checkWebStorage(){
+	
+		console.log('checkWebStorage!');
+	
+		if (typeof(Storage) !== "undefined") {
+		
+		    //console.log('Web Storage support..');		 
+		   	return 'true';
+		    
+		} else {
+
+		    //console.log('Sorry! No Web Storage support..');		   
+		    return 'false';		   
+		}
+	
+	}
+
+
+
+		
+			$( document ).ready(function() {
+			
+					var ws = checkWebStorage();					
+					if(ws == 'true'){
+						resetPromoChecked();
+					}
+	
+			});
+			
+			function resetPromoChecked(){
+	
+				sessionStorage.removeItem("promoClicked");
+
+			};
+		
+	
+
+
+	function searchReplaceUnicodeChar(inStr){
+			
+		var retStr;
+		
+		if(inStr){
+		
+			var patt1 = /uff\d/ig;
+    		var result = inStr.match(patt1);		
+
+			if(result != null){
+				//console.log('searchReplaceUnicodeChar().Match!');
+				var newStr = inStr.replace(/uff/ig, "dWZm");
+				
+				retStr = newStr;
+				
+			} else {
+			
+				//console.log('searchReplaceUnicodeChar().NotMatch!');				
+				retStr = inStr;
+			}
+		
+		}
+
+		
+		return retStr;
+
+	}
+	
+	
+
+	function searchReplaceBase64Char(inStr) {
+	
+		var searchInStr = JSON.stringify(inStr);
+
+		var retStr;
+		
+		if(inStr){
+		
+			var patt1 = /dWZm/ig;
+    		var result = searchInStr.match(patt1);		
+			//console.log('searchReplaceBase64Char().result = ' + result);
+			
+			if(result != null){
+				//console.log('searchReplaceBase64Char().Match!');
+				retStr = searchInStr.replace(/dWZm/ig, "uff");	
+				
+			} else {
+			
+				//console.log('searchReplaceBase64Char().NotMatch!');				
+				retStr = searchInStr;
+			}
+		
+		}
+		
+		return JSON.parse(retStr);
+	
+	
+	}
+	
+	
+	function searchReplaceBase64Char2(inStr) {
+	
+		var retStr='';
+		
+		if(inStr){
+		
+			var patt1 = /dWZm/ig;
+    		var result = inStr.match(patt1);		
+			//console.log('searchReplaceBase64Char2().result = ' + result);
+			
+			if(result != null){
+				//console.log('searchReplaceBase64Char().Match!');
+				retStr = inStr.replace(/dWZm/ig, "uff");	
+				
+			} else {
+			
+				//console.log('searchReplaceBase64Char().NotMatch!');				
+				retStr = inStr;
+			}
+		
+		}
+		
+
+		return retStr;
+	
+	
+	}
+
+
+window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"85a7277884","agent":"","beacon":"bam.nr-data.net","applicationTime":73,"applicationID":"26538580","transactionName":"b11UZkoDW0ZZVkNeDlYXZUJKC1tSe1pZQxNXVFpXSk19WlVQdFgPTEpZXlQHRxpQWlpS","queueTime":0}
+
+	$(document).ready(function(){
+		$('#mainContentADA-cont').on('focus',function(){
+			$('#mainContentADA-cont').removeClass("ml-srOnly-content");
+		});
+		$('#mainContentADA-cont').on('focusout',function(){
+			$('#mainContentADA-cont').addClass("ml-srOnly-content");
+		});
+	});
+
+
+	$(window).load(function(){
+		$(".ml-back-to-top a").click(function(){
+			$("#mainContentADA-cont").focus();
+		});
+		$(".ml-back-to-top .ml-icon-lib.ml-icon-sort-asc").attr("aria-hidden","true");
+		$(".metal-type-head .img-responsive.imgRespId").attr("alt","Browse by metal type");
+	});
+

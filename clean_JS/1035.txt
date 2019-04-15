@@ -1,0 +1,40 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var Anthem_FormID = "aspnetForm";
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+
+
+                        var newsletterPostUrl = 'https://www.engineersupply.com//newsletter.aspx';
+                    
+
+   window.criteo_q = window.criteo_q || [];
+   var deviceType = / iPad /.test(navigator.userAgent) ? "t" : / Mobile | iP(hone | od) | Android | BlackBerry | IEMobile | Silk /.test(navigator.userAgent) ? "m" : "d";
+   window.criteo_q.push(
+{ event: "setAccount", account: 38010 },
+{ event: "setSiteType", type: deviceType },
+{ event: "setEmail", email: "" },
+
+       { event: "viewHome" }
+);
+
+window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '42e9022d-d6f7-4f8d-aa01-3f8fa5cc6dfb', f: true }); done = true; } }; })();

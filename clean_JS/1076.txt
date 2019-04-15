@@ -1,0 +1,16 @@
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.e9ee8679b4d74512a1e94233b2c7fa13');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".flight001.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"3da2e2799bd786b5c46ae21d6a3a2c9ea2f61ebb","type":"ANONYMOUS","visit_id":"02656124-84df-42ab-b741-2cf32abeaf79","visitor_id":"2c2b4f9e-9279-4dff-a84d-0601568d34a4"},"referer":{"url":""},"request":{"url":"https:\/\/flight001.com\/"}}, '', 3194228, "other", {"customer":{"id":"anonymous"}}, '02656124-84df-42ab-b741-2cf32abeaf79', '2c2b4f9e-9279-4dff-a84d-0601568d34a4');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"8a457eb480db9f2182e39e762392b61831e84733b600d04b67897adb2c24a915"};
+
+require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us7.list-manage.com","uuid":"737efcd1aa3953737c4898e2c","lid":"751e0f5ada"}) })

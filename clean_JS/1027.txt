@@ -1,0 +1,105 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070450857;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "VgNHCLvt2gEQqZG3_gM";
+var google_conversion_value = 0;
+/* ]]> */
+
+
+
+
+var google_tag_params = {
+ecomm_prodid:'',
+
+ecomm_pagetype: 'home'
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070450857;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$wpm$HomePage$ctl04$upMcSignUp',''], ['ctl00$wpm$HomePage$ctl04$btnMcSignUp',''], [], 90, 'ctl00');
+//]]>
+
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_wpm_HomePage_ctl04_revMcEmail"), document.getElementById("ctl00_wpm_HomePage_ctl04_rexMcEmail"));
+//]]>
+
+
+//<![CDATA[
+var ctl00_wpm_HomePage_ctl04_revMcEmail = document.all ? document.all["ctl00_wpm_HomePage_ctl04_revMcEmail"] : document.getElementById("ctl00_wpm_HomePage_ctl04_revMcEmail");
+ctl00_wpm_HomePage_ctl04_revMcEmail.controltovalidate = "ctl00_wpm_HomePage_ctl04_txtMcEmail";
+ctl00_wpm_HomePage_ctl04_revMcEmail.errormessage = "* Required";
+ctl00_wpm_HomePage_ctl04_revMcEmail.display = "Dynamic";
+ctl00_wpm_HomePage_ctl04_revMcEmail.validationGroup = "vgMcSignUp";
+ctl00_wpm_HomePage_ctl04_revMcEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_wpm_HomePage_ctl04_revMcEmail.initialvalue = "";
+var ctl00_wpm_HomePage_ctl04_rexMcEmail = document.all ? document.all["ctl00_wpm_HomePage_ctl04_rexMcEmail"] : document.getElementById("ctl00_wpm_HomePage_ctl04_rexMcEmail");
+ctl00_wpm_HomePage_ctl04_rexMcEmail.controltovalidate = "ctl00_wpm_HomePage_ctl04_txtMcEmail";
+ctl00_wpm_HomePage_ctl04_rexMcEmail.errormessage = "* Please use a valid email address";
+ctl00_wpm_HomePage_ctl04_rexMcEmail.display = "Dynamic";
+ctl00_wpm_HomePage_ctl04_rexMcEmail.validationGroup = "vgMcSignUp";
+ctl00_wpm_HomePage_ctl04_rexMcEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_wpm_HomePage_ctl04_rexMcEmail.validationexpression = "^.+@.+(\\..+)+$";
+//]]>
+
+
+//<![CDATA[
+var __wpmExportWarning='This Web Part Page has been personalized. As a result, one or more Web Part properties may contain confidential information. Make sure the properties contain information that is safe for others to read. After exporting this Web Part, view properties in the Web Part description file (.WebPart) by using a text editor such as Microsoft Notepad.';var __wpmCloseProviderWarning='You are about to close this Web Part.  It is currently providing data to other Web Parts, and these connections will be deleted if this Web Part is closed.  To close this Web Part, click OK.  To keep this Web Part, click Cancel.';var __wpmDeleteWarning='You are about to permanently delete this Web Part.  Are you sure you want to do this?  To delete this Web Part, click OK.  To keep this Web Part, click Cancel.';
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('ctl00_wpm_HomePage_ctl04_revMcEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_wpm_HomePage_ctl04_revMcEmail'));
+}
+
+document.getElementById('ctl00_wpm_HomePage_ctl04_rexMcEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_wpm_HomePage_ctl04_rexMcEmail'));
+}
+//]]>
+

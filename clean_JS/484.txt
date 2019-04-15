@@ -1,0 +1,163 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aayd-MAI';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+var vpw = (screen.width>=768&&screen.width<1024) ? '1024' :(screen.width < 768) ? 'device-width, initial-scale=1':'device-width';
+document.write('<meta name="viewport" content="width=' + vpw + '">');
+
+
+var cyCustomerDataLayer = {"registered":false};
+
+var sa_interval = 30000;function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } if (typeof(shopper_first) == 'undefined') saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/20718.js'); shopper_first = true; 
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', '0f98724d4574379ff87f3a63a03aa574f537300c850c6fb308f885d4ebf88efa']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/6vcafc6q7u1pgo0unq86nxnbxmnh3i8xlcyw4kmrozbnx9w80t/0f98724d4574379ff87f3a63a03aa574f537300c850c6fb308f885d4ebf88efa/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","BACK":"Back","CLOSE":"Close","CANCEL":"Cancel","CLOSE_RETURN_PAGE":"Close & Return to Page","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","PROCESSING":"processing","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Keyword or Item # ","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","PRICE":"Price","PRICING":"Pricing","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","SAVE_CART":"Your Cart has been saved!","COURIER":"Courier","CHECKOUT":"Checkout","REMOVE_CART_PRODUCT":"Are you sure want to remove items from your cart?","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies.","COOKIES_DISABLED2":"Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","AWARD":"Award","AVAILABLE_QTY":"Available Qty","AVAILABLE_QUANTITY":"Available\nQuantity","ITEM_NO":"Item #","AVAILABLE":"Available","PROD_SOLD_OUT":"This product is currently sold out","SOLD_OUT":"SOLD OUT","SELECT_A":"Select a","QUANTITY":"Quantity","STEP":"Step","FILE_TYPES":"Crown recommends the following file formats: ai, pdf, eps, svg. We can also use: bmp, jpg, or gif. Please make sure to send your logo with the highest resolution/largest file size available to ensure a high quality result.","DONT_SEE":"If you believe we have your artwork but you don’t see it, please complete your order. After the order is placed, our engraving department will search for your artwork and will contact you if we can’t find it.","EMAIL_LATER":"Your Order Confirmation screen will give you instructions on how to email your logo.","REPLACE_FILE":"Choosing a different file will overwrite the first file you selected.","CLICK_HERE_TO":"Click here to","CHOOSE":"Choose","CLICK_TO_VIEW":"Click To View","QTY_DISCOUNT":"Quantity Discounts","STEP_QUANTITY":"Sold in Increments of","STEP_QTY_ERROR":"Invalid quantity, item only sold in increments of","SELECT_OPTIONS":"Select the Options Above","MIN_QTY_ERROR":"You Must Order at Least","TOTAL":"Total","SUBTOTAL":"Subtotal","ADD_TO_CART":"Add to Cart","ADD_ALL_TO_CART":"Add All Awards to Cart","AND_ENGRAVE":"& Engrave","AND_WORD_ENGRAVE":"And Engrave","EDIT_CANCEL":"Cancel Edit","EDIT_TO_CHECKOUT":"Back To Checkout","CANCEL_RETURN":"Cancel > Return To Product Page","BUY_MORE_SAVE_MORE":"Buy More Save More","ENGRAVING_MULTIPLE_ITEMS":"You will have the opportunity to enter your personalized engraving for ALL your items on the next page.","ENGRAVING_MULTIPLE_TITLE":"Engraving Multiple Items?","ENTER_ENGRAVING":"Enter Engraving","REPEAT_NOTIFICATION":"Note: You can click 'Repeat On All' to apply the same engraving per line.","FONT_SIZE_NOTIFICATION":"The font size you are selecting is too large to fit with the amount of characters on this line.","CONFIRM_NO_ENGRAVING":"Are you sure you don't want to enter engraving?","NO_ENGRAVING_ADD_CART":"No engraving & add to cart","CONTINUE_ENGRAVING":"Continue engraving","M_ADDED_TO_CART":"ITEM ADDED TO CART","M_CONTINUE_SHOPPING":"CONTINUE SHOPPING","M_CONTINUE_SHOPPING_TI":"BACK TO YOUR ITEM","M_CHECKOUT":"CHECKOUT","M_VIEWCART":"VIEW CART","M_ATC_NO_ENGRAVING":"Add To Cart Without Engraving","M_ATC_ENTER_ENGRAVING":"Enter Engraving","M_ENG_NOT_SAVED":"Your engraving has not been saved!","M_ENG_LOST":"By choosing to leave our engraving page, your engraving will be lost.","M_CONTINUE_ENGRAVING":"Continue Engraving","M_PROCEED_ANYWAY":"Proceed Anyway","ATC_PROMO_BANNER":"<p><img alt=\"Free Shipping -- UPS Ground Shipping On $100+  Trophies and Plaques in the US\" class=\"desktop-show\" src=\"https://www.crownawards.com/on/demandware.static/-/Sites-MAI-Library/default/dw6155acbd/images/banners/atc-desktop-banner.png\" title=\"\" />\r\n<img alt=\"Free Shipping -- UPS Ground Shipping On $100+  Trophies and Plaques in the US\" class=\"mobile-show\" src=\"https://www.crownawards.com/on/demandware.static/-/Sites-MAI-Library/default/dw6005761f/images/banners/atc-mobile-banner.png\" title=\"\" /></p>","M_SESSION_EXPIRING":"Your session is about to expire in ","M_SECONDS":"seconds","M_EXTEND_SESSION":"Do you want to extend your session?","M_CONTINUE":"Yes, continue placing order","NOUSER_EXISTS":"No User Exists","VALIDATE_REQUIRED":"This field is required.","VALIDATE_EMAIL_REQUIRED":"The email address is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","INVALID_EMAIL":"Invalid Email","EMAIL_MISMATCH":"Your confirmation email does not match","PASSWORD_MISMATCH":"Password Mismatch","USER_EXISTS":"An account with this email address already exists.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_EXPIRATION":"Please double check your expiration date, it seems to be expired and try again.","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","INVALID_PASSWORD":"Invalid Password","VALIDATE_POSITIVENUMBER":"Please enter the complete phone number in digits only.","VALIDATE_EMAIL_ADDRESS":"Please check and re-enter your email address.","VALIDATE_EVENT_DATE":"Please enter mm/dd/yyyy for Event Date.","VALIDATE_PAST_EVENT_DATE":"Event Date Must Not Be Before Today.","VALIDATE_ZIP":"The zip code you entered is invalid.","VALIDATE_ADDRESS":"If you are shipping to a Post Office Box (P.O. BOX) , please remove street address entry in order to clarify deliver address to postal carrier","VALIDATE_REASONCODE":"You must select a reason code before submitting.","FORGOT_PASSWORD_LABEL":"account.login.logininclude.forgotpassword.label","FORGOT_PASSWORD":"account.login.logininclude.forgotpassword","CREATE_LOGIN":"account.login.logininclude.loginexistscreatelogin","LOGIN_LOGIN":"account.login.logininclude.loginexistslogin","EMPTY_CART_CONTENT":"Shopping Cart is currently empty, cannot Checkout.","ERROR_STATUS_0":"account.login.logininclude.locked","ERROR_STATUS_1":"account.login.logininclude.willbelocked","ERROR_STATUS_2":"account.login.logininclude.loginfberror","ERROR_STATUS_3":"Sorry, this doesn't match our records. Try entering it again.","ERROR_STATUS_4":"An account with this email address already exists.<br />Please check your email for a link to reset your password to login.<br />If you need help, please call 800-227-1557.","ERROR_STATUS_5":"account.login.logininclude.loginerrorpassword","ERROR_STATUS_6":"account.login.logininclude.loginerrormail","ERROR_STATUS_7":"account.login.logininclude.noaccountexists","COMPLETE_ADDRESS":"Please Complete The Following:","COMPLETE_SHIPPING_ADDRESS":"Please Fill Out Shipping Address Prior To Billing.","CONFIRM_ENGRAVING":"Please Click the Checkbox Confirming That You Have Reviewed and Verified The Text Entered.","NO_ENGRAVING":"No engraving was entered. What would you like to do?","REQUIRES_ENGRAVING":"This Item Requires Engraving.","EDIT_PAYMENT_FORM_HEADING":"Edit Credit Card","EDIT_ADDRESS_FORM_HEADING":"Edit Address","THANK_YOU_ACCT":"Thank you for creating an account!","THANK_YOU_ACCT_MSG":"Your information has been saved for an even faster and easier checkout next time you order with us. <br /> Please check your email to verify your email address. ","AUTH_EXPIRED":"Your secure connection has timed out. Please sign in.","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"home":"https://www.crownawards.com/","appResources":"/on/demandware.store/Sites-MAI-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-MAI-Site/default/Page-Include","continueUrl":"https://www.crownawards.com/","staticPath":"/on/demandware.static/Sites-MAI-Site/-/default/v1555236908111/","addGiftCert":"/on/demandware.store/Sites-MAI-Site/default/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-MAI-Site/default/GiftCert-ShowMiniCart","addProduct":"/add-product","minicart":"/on/demandware.store/Sites-MAI-Site/default/Cart-MiniAddProduct","cartShow":"https://www.crownawards.com/shopping-cart","giftRegAdd":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/PaymentInstruments-List","addressesList":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Address-List","deleteAddress":"/on/demandware.store/Sites-MAI-Site/default/Address-Delete","getBonusProducts":"/on/demandware.store/Sites-MAI-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-MAI-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-MAI-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-MAI-Site/default/Product-Detail","inventoryForFlex":"/on/demandware.store/Sites-MAI-Site/default/Inventory-Flex","inventoryForItem":"/on/demandware.store/Sites-MAI-Site/default/Inventory-ItemsString","addToCartInventory":"/on/demandware.store/Sites-MAI-Site/default/Inventory-CheckItemsString","getAvailability":"/on/demandware.store/Sites-MAI-Site/default/Product-GetAvailability","getMiniCart":"/on/demandware.store/Sites-MAI-Site/default/Cart-GetMiniCart","removeImg":"/on/demandware.static/Sites-MAI-Site/-/default/dw55928216/images/icon_remove.gif","engravingMultipleItems":"/on/demandware.static/Sites-MAI-Site/-/default/dwd66f53d6/images/pdp-engraving-tooltip.png","figurinesearch":"/on/demandware.static/Sites-MAI-Site/-/default/dw9385b35a/images/figurinesearch.png","tooltipicon":"/on/demandware.static/Sites-MAI-Site/-/default/dw539ab7d8/images/question-mark.png","BaseColorArrow":"/on/demandware.static/Sites-MAI-Site/-/default/dwee44789a/images/Quantity-Discounts-arrow.png","searchsuggest":"/on/demandware.store/Sites-MAI-Site/default/Search-GetSuggestions","activitySuggestions":"/on/demandware.store/Sites-MAI-Site/default/Suggest-ByActivity","productNav":"/on/demandware.store/Sites-MAI-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-MAI-Site/default/COBilling-UpdateSummary","engravingEngine":"https://www.crownawards.com/engraving","billingSelectCC":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-UpdateShippingMethodList","validateAddress":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/ASSISTCalls-ScrubAddress","shippingMethodsListWithPO":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-UpdateShippingWithPO","selectShippingMethodsList":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-MAI-Site/default/COBilling-ResetPaymentForms","giftCardCheckBalance":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Cart-AddCouponJson","billing":"/billing","setSessionCurrency":"/on/demandware.store/Sites-MAI-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-MAI-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-MAI-Site/default/Page-Include?cid=cookie_hint","rateLimiterReset":"/on/demandware.store/Sites-MAI-Site/default/RateLimiter-HideCaptcha","searchFinders":"/on/demandware.store/Sites-MAI-Site/default/Search-Finders","getFlexlistSteps":"/on/demandware.store/Sites-MAI-Site/default/Flexlist-GetSteps","flexlistConfig":"/on/demandware.store/Sites-MAI-Site/default/PDP-FlexListConfig","flexlistValues":"/on/demandware.store/Sites-MAI-Site/default/PDP-FlexListValues","findFigurine":"/on/demandware.store/Sites-MAI-Site/default/Flexlist-FindFigurine","getFigurineConfig":"/on/demandware.store/Sites-MAI-Site/default/Flexlist-GetFigurineConfig","uploadLogo":"/on/demandware.store/Sites-MAI-Site/default/Product-UploadLogo","logoOnFile":"/on/demandware.store/Sites-MAI-Site/default/Product-LogoOnFile","logoDupeCheck":"/on/demandware.store/Sites-MAI-Site/default/Cart-LogoDupeCheck","productSelectionPending":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-ProductSelectionPending","reduceQuantityOnEngraving":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-ReduceQuantityOnEngraving","selectLogoOptionEngraving":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-SelectLogoOptionEngraving","productLogoLogin":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-ProductLogoLogin","orderTrack":"/on/demandware.store/Sites-MAI-Site/default/Order-ContactUSOrderTrack","uploadLogoSuccess":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-UploadLogoSuccess","uploadLogoSuccessPreview":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-UploadLogoSuccessPreview","productNoLogo":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-ProductNoLogo","productNoLogoSelected":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-ProductNoLogoSelected","duplicateLogo":"/on/demandware.store/Sites-MAI-Site/default/ProductModals-DuplicateLogo","viewOtherItems":"/on/demandware.store/Sites-MAI-Site/default/Product-ViewOtherItems","getProductImage":"/on/demandware.store/Sites-MAI-Site/default/Product-GetBuilderImage","storeLastVisited":"/on/demandware.store/Sites-MAI-Site/default/Utils-LastVisitedProducts","myAccount":"https://www.crownawards.com/my-account","emailSignUp":"/on/demandware.store/Sites-MAI-Site/default/BrontoSignUp-AccountSignUp","directAdd":"/on/demandware.store/Sites-MAI-Site/default/BrontoDirectAddUpdate-DirectAddUpdate","relatedProducts":"/on/demandware.store/Sites-MAI-Site/default/Search-GetRelatedProducts","relatedColumnProducts":"/on/demandware.store/Sites-MAI-Site/default/Search-GetRelatedColumnProducts","relatedFinderProducts":"/on/demandware.store/Sites-MAI-Site/default/Search-GetRelatedFinderProducts","selectedproduct":"/on/demandware.store/Sites-MAI-Site/default/Product-GetSelectedProductTile","assistGeoData":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/ASSISTCalls-GetGeoData","saveCart":"/on/demandware.store/Sites-MAI-Site/default/Cart-SaveCartDialog","saveAddress":"/on/demandware.store/Sites-MAI-Site/default/COShipping-SaveAddressDialog","updateShipping":"/on/demandware.store/Sites-MAI-Site/default/COShipping-UpdateShippingMethodList","shipping":"/shipping","updatePOOrder":"/on/demandware.store/Sites-MAI-Site/default/Account-UpdatePOOrder","emptyCart":"/on/demandware.store/Sites-MAI-Site/default/Cart-EmptyCartDialog","deliveryCalculator":"/on/demandware.store/Sites-MAI-Site/default/Cart-DeliveryCalculator","getGtmData":"/on/demandware.store/Sites-MAI-Site/default/GTMTagManager-Start","tieIn":"/on/demandware.store/Sites-MAI-Site/default/Product-TieIn","minQty":"/on/demandware.store/Sites-MAI-Site/default/Product-MinQty","isAccessoryRemove":"/on/demandware.store/Sites-MAI-Site/default/Cart-AccessoryRemove","hamburgerSubcategory":"/on/demandware.store/Sites-MAI-Site/default/Utils-HamburgerSubcategory","mobileSubcats":"/on/demandware.store/Sites-MAI-Site/default/Utils-MobileSubcats","orderHistory":"https://www.crownawards.com/order-history","submitPayment":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Order-SubmitPayment","startCheckout":"https://www.crownawards.com/checkout","shippingPage":"https://www.crownawards.com/shipping","onlineCatalog":"https://www.crownawards.com/catalog","setNewPassword":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Auth-GetSetNewPassword","potoccselect":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/COShipping-POtoCCSelect","quoteLogo":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Utils-UploadLogoToImpex","cartUrl":"https://www.crownawards.com/shopping-cart","captureCartData":"/on/demandware.store/Sites-MAI-Site/default/Cart-CaptureCartData","logOut":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Auth-Logout","login":"https://www.crownawards.com/login","register":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Auth-GetRegister","continueRegister":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Auth-ContinueRegister","processRegister":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Auth-ProcessRegister","heartbeat":"/on/demandware.store/Sites-MAI-Site/default/Heartbeat-Start","clientErrorLog":"/on/demandware.store/Sites-MAI-Site/default/Client-LogError","clientInfoLog":"/on/demandware.store/Sites-MAI-Site/default/Client-LogInfo","cancelUpload":"/on/demandware.store/Sites-MAI-Site/default/Product-CancelUploadLogo","orderConfirmation":"https://www.crownawards.com/confirmation","forgotPassword":"/on/demandware.store/Sites-MAI-Site/default/Auth-GetForgotPassword","privacyPolicy":"/our-policies.html","getEncryptedCustomerIP":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Utils-GetEncryptedCustomerIP","getFileUploadURL":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Utils-GetFileUploadURL","updateRecommendations":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Product-UpdateRecommendations","quoteForm":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/Quote-Show","csrCheck":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/CustomerServiceController-Check","csrRepEnd":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/CustomerServiceController-CSRRepEnd","csrCustEnd":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/CustomerServiceController-CustomerEnd","threeSixty":"https://www.crownawards.com/on/demandware.static/Sites-MAI-Site/-/default/dw7df58d12/images/360.png","gifWorkers":"https://www.crownawards.com/on/demandware.static/Sites-MAI-Site/-/default/v1555236908111/js/gifWorkers.js","allSoldOut":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/ProductModals-AllSoldOut","back":"https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/PDP-Back"};
+window.SitePreferences = {"PASSWORD_INVALID":"Please make sure your password meets the requirements below and is not an email.","LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":false,"FIGURINE_MSG":"The figure you select may change the trophy height. Size is based on a 5” figure.\r\n<style>\r\n#product-content .figurine-message + .custom-select-box .flexdetails{padding-top:51px;height:70px;background-position:96% 53px;}\r\n#product-content .figurine-message {margin-top:-2px;}\r\n@media screen and (max-width: 767px){ \r\n#product-content .figurine-message{top:75px;}\r\n}\r\n</style>","FLEXIPLATE_MSG":"<div class=\"flexiplate-icon pt-3 pb-3 d-flex align-items-center\">\r\n<div class=\"border-right pr-4\"><img alt=\"Flexi-Plates Packaged Separately\" src=\"https://www.crownawards.com/on/demandware.static/-/Sites-MAI-Library/default/dwf8978465/icons/flexi-plate-example.png\" /></div>\r\n<div class=\"ml-4\">FLEXI-PLATES are packaged separately. They will ship with order. </div>\r\n</div>","COOKIE_HINT":false,"INVALID_SHIPPING_ADDRESS_ERROR_MSG":"<!-- START ASSET  invalid-shipping-address-error-msg-->\r\n<div class=\"invalid-shipping-address-msg\">\r\n<div class=\"d-flex justify-content-start\">\r\n<span class=\"star-flower-icon\">*</span>\r\n<span class=\"eror-msg\">Please Verify Your Address</span>\r\n</div>\r\n<div class=\"invalid-error-wrap\">\r\n<div class=\"eror-msg-black-bold\">We cannot ship to the address as entered</div>\r\n<div class=\"eror-msg-normal\">Please verify and edit, or enter an alternate address.</div>\r\n<div class=\"eror-msg-normal pt-1\">Need help? Call <span class=\"accent\"><a href=\"tel:+8002271557\">1-800-227-1557</a></span></div>\r\n</div>\r\n</div>\r\n<!-- END ASSET  invalid-shipping-address-error-msg-->","CHECK_TLS":null,"PO_BOX":"[PO.]*\\\\s?Box.*\\\\d+|(^\\PO )|(^\\P-O)|^(P\\/O)|(^\\P O )|(^\\P.O)|(^\\pob)","SLICK_PRODUCTS":4,"TOKENIZATION_ENABLED":true,"CURRENCY_CODE":"USD","SHOW_ORDER_HISTORY_ON_LOGIN":false,"HIDE_SHIPPING_BILLING_ADDRESSES":false,"IS_EVENT_DATE_REQUIRED":true,"PUNCHOUT_ENABLED":false,"LOGGER_CART":true,"LOGGER_SHIPPING":true,"LOGGER_BILLING":true,"SEEWHY":true,"SEEWHY_EVENT":"https://d3m83gvgzupli.cloudfront.net/webEvent/cywevent.js?servicecode=AD50492929&options=slider","SEEWHY_BROWSE":"https://www.crownawards.com/on/demandware.static/Sites-MAI-Site/-/default/v1555236908111/js/browse.js","CAPTURE_CART_DATA":true,"HIDE_SHIPPING_METHOD_LIST":false,"HIDE_SHIPMETHOD_FOR_PO":false,"BRONTO_ENABLED":true,"ENABLE_MOBILE_SUGGESTIONS":true,"SUGGEST_MIN_LENGTH":4,"SECURE_FORM_TIMEOUT":null};
+window.isGTMEnabled = true
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+
+window._bcvma = window._bcvma || [];
+_bcvma.push(["setAccountID", "2441508144143059001"]);
+_bcvma.push(["setParameter", "InvitationID", "6284694477187096031"]);
+_bcvma.push(["addFloat",
+{type: "chat", id: "103073277204737875"}
+]);
+_bcvma.push(["pageViewed"]);
+var bcLoad = function() { if(window.bcLoaded) return; window.bcLoaded = true; var vms = document.createElement("script"); vms.type = "text/javascript"; vms.async = true; vms.src = ('https:'==document.location.protocol?'https://':'http://') + "vmss.boldchat.com/aid/2441508144143059001/bc.vms4/vms.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vms, s); }
+;
+if(window.pageViewer && pageViewer.load) pageViewer.load();
+else if(document.readyState=="complete") bcLoad();
+else if(window.addEventListener) window.addEventListener('load', bcLoad, false);
+else window.attachEvent('onload', bcLoad);
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.crownawards.com/on/demandware.store/Sites-MAI-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

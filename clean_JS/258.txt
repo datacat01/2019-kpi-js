@@ -1,0 +1,227 @@
+
+        _etmc.push(["setOrgId", "100009938"]);
+        _etmc.push(["setUserInfo", { "email" : "" }]);
+        _etmc.push(["trackPageView"]);
+    
+
+    require([
+        "jquery",
+        'jquery/jquery.cookie',
+        'Magento_Customer/js/section-config'
+    ], function ($, cookie, sectionConfig) {
+        $(document).ready(function () {
+            var ExpireDays = 90;
+            //Do not change anything below this line
+            qstr = document.location.search;
+            qstr = qstr.substring(1, qstr.length);
+            function SetCookie(cookieName, cookieValue, nDays) {
+                var today = new Date();
+                var expire = new Date();
+                if (nDays == null || nDays == 0) nDays = 1;
+                expire.setTime(today.getTime() + 3600000 * 24 * nDays);
+                document.cookie = cookieName + "=" + escape(cookieValue) + "; expires=" + expire.toGMTString() + "; path=/";
+            }
+            thevars = qstr.split("&");
+            for (i = 0; i < thevars.length; i++) {
+                cookiecase = thevars[i].split("=");
+                switch (cookiecase[0]) {
+                    case "sfmc_sub":
+                        sfmc_sub = cookiecase[1];
+                        SetCookie("SubscriberID", sfmc_sub, ExpireDays);
+                        break;
+                    case "j":
+                        j = cookiecase[1];
+                        SetCookie("JobID", j, ExpireDays);
+                        break;
+                    case "l":
+                        l = cookiecase[1];
+                        SetCookie("ListID", l, ExpireDays);
+                        break
+                    case "jb":
+                        jb = cookiecase[1];
+                        SetCookie("BatchID", jb, ExpireDays);
+                        break;
+                    case "u":
+                        u = cookiecase[1];
+                        SetCookie("UrlID", u, ExpireDays);
+                        break;
+                    case "mid":
+                        mid = cookiecase[1];
+                        SetCookie("MemberID", mid, ExpireDays);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(typeof $('#newsletter-validate-detail') !== undefined) {
+                $('#newsletter-validate-detail').submit(function () {
+                    var newsletterEmail = $('#newsletter-validate-detail input#newsletter').val();
+                    alert(newsletterEmail);
+                    _etmc.push(["setOrgId", "100009938"]);
+                    _etmc.push(["setUserInfo", { "email" : newsletterEmail}]);
+                    _etmc.push(["trackPageView"]);
+                });
+            }
+        });
+        $(document).on('ajaxComplete', function (event, xhr, settings) {
+            if (settings.type.match(/post|put|delete/i)) {
+                if (settings.url.indexOf("cart") > -1) {
+                    $.ajax({
+                        showLoader: false,
+                        url: 'https://www.nancysnotions.com/sfcustom/',
+                        type: "get",
+                        dataType: 'json'
+                    }).done(function (data) {
+                        var cartItems = [];
+                        $.each( data, function( key, value ) {
+                            var cartItemTmp = {};
+                            cartItemTmp.item = value.item;
+                            cartItemTmp.unique_id = value.unique_id;
+                            cartItemTmp.price = value.price;
+                            cartItemTmp.quantity = value.quantity;
+                            cartItems.push(cartItemTmp);
+                        });
+                        if(cartItems.length) {
+                            _etmc.push(["setOrgId", "100009938"]);
+                            _etmc.push(["setUserInfo", { "email" : "" } ]);
+                            _etmc.push(["trackCart", {
+                                "cart" : cartItems
+                            }]);
+                            _etmc.push(["trackPageView"]);
+                        } else {
+                            _etmc.push(["setOrgId", "100009938"]);
+                            _etmc.push(["setUserInfo", { "email" : "" } ]);
+                            _etmc.push(["trackCart", { "clear_cart" : true } ]);
+                            _etmc.push(["trackPageView"]);
+                        }
+                    });
+                }
+            }
+        });
+    });
+    //Set the number of days before your cookie should expire
+
+
+        var dataLayer = dataLayer || [];
+        dataLayer.push({
+            event: 'crto_homepage',
+            crto: {
+                email: ''
+            }
+        });
+    
+
+        require(['jquery'], function ($) {
+            window.formToProtectOnPage = [];
+            formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"customer\/account\/forgotpasswordpost\"]"];
+            formsToProtect.forEach(function(item) {
+                formToProtect = $(item)[0];
+                if (formToProtect) {
+                    window.formToProtectOnPage.push(formToProtect);
+                }
+            });
+
+            if (window.formToProtectOnPage.length) {
+                var recaptchaScript = document.createElement('script');
+                recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?onload=amInvisibleCaptchaOnloadCallback&render=explicit';
+                recaptchaScript.attributes = 'async defer';
+                document.body.appendChild(recaptchaScript);
+            }
+
+            window.amInvisibleCaptchaOnloadCallback = function () {
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var tokenInput = document.createElement('input');
+                    tokenInput.type = 'hidden';
+                    tokenInput.name = 'amasty_invisible_token';
+                    window.formToProtectOnPage[i].appendChild(tokenInput);
+                }
+
+                var id = "";
+                if (id) {
+                    var additionalForm = document.getElementById(id).form;
+                    if (additionalForm) {
+                        window.formToProtectOnPage.push(additionalForm);
+                    }
+                }
+
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var form = window.formToProtectOnPage[i];
+                    if (form.tagName.toLowerCase() != 'form') {
+                        continue;
+                    }
+
+                    id = form.querySelector("[type='submit']");
+                    if (null == id) {
+                        console.log(
+                            'Amsty Google Invisible reCaptcha: can not protect form with id = '
+                            + form.id
+                            + ', please remove appropriate URL and Selector in the configuration of the extension.'
+                        );
+                        continue;
+                    }
+
+                    (function(form, id) {
+                        grecaptcha.render(id, {
+                            'theme': 'light',
+                            'badge': 'bottomright',
+                            'sitekey': '6LdmmVkUAAAAAF9-npInogOb9dtG0T8EKlnb0bjm',
+                            'callback': function(token) {
+                                if ($(form).valid()){
+                                    form.querySelector("[name='amasty_invisible_token']").setAttribute('value', token)
+                                    form.submit();
+                                } else {
+                                    grecaptcha.reset();
+                                }
+                            }
+                        });
+                    })(form, id);
+                }
+            };
+        });
+    
+
+    require(['jquery', 'awPopupManager'], function(){
+        ajaxPrepareContentUrl = 'https://www.nancysnotions.com/popup/ajax/prepareContent/';
+        ajaxAddCookieUrl = 'https://www.nancysnotions.com/popup/ajax/addCookie/';
+
+        jQuery.awPopupManager.ajaxAddCookieUrl = ajaxAddCookieUrl;
+
+        jQuery.ajax({
+            url: ajaxAddCookieUrl,
+            type: "GET",
+            dataType: 'json',
+            context: this,
+            data: {
+                isAjax: 'true',
+                form_key: "m2gptpX2fEHBG2O7",
+                cookie_type: 'aw_popup_viewed_page',
+                current_url: 'https://www.nancysnotions.com/cms/index/index/'
+            },
+            complete: function(response) {
+                jQuery.ajax({
+                    url: ajaxPrepareContentUrl,
+                    type: "GET",
+                    dataType: 'json',
+                    context: this,
+                    data: {
+                        isAjax: 'true',
+                        aw_popup: 'true',
+                        form_key: "m2gptpX2fEHBG2O7",
+                        name_in_layout:  'popup_home_page',
+                        product_id: '',
+                        preview: '0',
+                        popup_info: ''
+                    },
+                    complete: function(response) {
+                        try {
+                            eval("var json = " + response.responseText + " || {}");
+                        } catch (e) {
+                            return;
+                        }
+                        jQuery.awPopupManager.initObserversForPopup(json.popups);
+                    }
+                });
+            }
+        });
+    });
+

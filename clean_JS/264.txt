@@ -1,0 +1,91 @@
+PM_Config.set({HTTP_SERVER:'https://www.perfectmemorials.com', cPath:''});
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n; n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','//connect.facebook.net/en_US/fbevents.js'); fbq('init', '856502124395691');
+
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments);};
+        h._hjSettings={hjid:53375,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+ var bccbId = Math.random(); document.write(unescape('%3Cimg alt="" src="' + (('https:' == document.location.protocol) ? 'https:' : 'http:') + '//cbi.boldchat.com/aid/301406722418549395/bc.cbi?cbdid=4452031975297703049" border="0" id=' + bccbId + ' /%3E')); var bccb = {id: bccbId, bdid: '4452031975297703049', rdid: null, type: 'chat'}; var _bcvma = _bcvma || []; if(window.pageViewer && pageViewer.addButton) pageViewer.addButton(button); else _bcvma.push(['addButton', bccb]);
+
+	                jQuery(document).ready(function() {
+
+	                    jQuery('#countdown1074').countdown({until: +1435562, padZeroes: true, format: 'DHMS',  labels: ['', '', '', '', '', '', ''], labels1: ['', '', '', '', '', '', ''], layout: '<span class="hours">{hnn}{hl}</span> <span class="minutes">{mnn}{ml}</span> <span class="seconds">{snn}{sl}</span>', onTick: resizeText});
+	                    function resizeText() {
+	                        jQuery('#countdown1074 span').fitText(0.16);
+	                    }
+	                });
+	            
+
+		function sealsIframeLoaded()
+		{
+            if (!window.isMobile) {
+                var seals_html = jQuery("#seals_iframe").contents().find("html #seals").html();
+                jQuery('#footer_seals').prepend(seals_html);
+            };
+			
+		}
+		
+
+    var _bcvma = _bcvma || [];
+    _bcvma.push(["setAccountID", "301406722418549395"]);
+    _bcvma.push(["setParameter", "InvitationDefID", "2967356460600866272"]);
+    _bcvma.push(["pageViewed"]);
+    (function(){
+      var vms = document.createElement("script"); vms.type = "text/javascript"; vms.async = true;
+      vms.src = ('https:'==document.location.protocol?'https://':'http://') + "vmss.boldchat.com/aid/301406722418549395/bc.vms4/vms.js";
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vms, s);
+    })();
+  
+
+  var google_tag_params = {
+    prodid: "",
+    pagetype: "home",
+    pname: "",
+    pcat: "",
+    pvalue: "",
+    use_case: "retail"
+  };
+
+
+  /* <![CDATA[ */
+    var google_conversion_id = 1069877011;
+    var google_conversion_label = "2JWxCKXa7QQQk46U_gM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+  /* ]]> */
+
+
+
+
+  adroll_adv_id = "NHP5PZD6ENHVPBEJITZ6JC";
+  adroll_pix_id = "OYP3RMBPNZBODO4SPCH5AI";
+  (function () {
+  var oldonload = window.onload;
+  window.onload = function(){
+     __adroll_loaded=true;
+     var scr = document.createElement("script");
+     var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+     scr.setAttribute('async', 'true');
+     scr.type = "text/javascript";
+     scr.src = host + "/j/roundtrip.js";
+     ((document.getElementsByTagName('head') || [null])[0] ||
+      document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+     if(oldonload){oldonload()}};
+  }());
+
+
+  //<![CDATA[
+  var MOAnalyticsPrep = {
+    moAdUrl: 'track.perfectmemorials.com',
+    moScriptFile: '/analytics1501.min.js',
+    secure: (window.location.toString().indexOf('https:') >= 0 ? 'https://' : 'http://'),
+    asyncJSLoad: function(){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = MOAnalyticsPrep.secure + MOAnalyticsPrep.moAdUrl + MOAnalyticsPrep.moScriptFile; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);}
+  };
+  
+  MOAnalyticsPrep.asyncJSLoad();
+  //]]>
+

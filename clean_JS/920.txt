@@ -1,0 +1,19 @@
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0014/4945.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+         var jsonCart = {"customerCartId":"89967947","grandTotal":0,"subtotal":0,"discountAmount":0,"shippingAmount":0,"url":"https://www.gunpartscorp.com/cart?i=89967947\u0026k=ae104076-c214-4113-8be3-351c2893ef65","webhold":false,"taxAmount":0,"lineItems":[],"currency":"USD"};
+    
+var userid = '';var key = 'SL7D0D9T55gyk3ABYMJR4UPn+N/nSf/u';
+
+    var _bsw = _bsw || [];
+    _bsw.push(['_bswId', 'd05a6ad0fe20eace1db8d5909a35d322e2fa39d611edfe49f0cb18b02f6c558c']);
+    (function () {
+        var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+        bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/s/b.min.js';
+        var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+    })();
+

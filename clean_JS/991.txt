@@ -1,0 +1,215 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.cigarterminal.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+        //<![CDATA[
+            var _gaq = _gaq || [];
+            
+_gaq.push(['_setAccount', 'UA-19880726-1']);
+
+_gaq.push(['_trackPageview']);
+            
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        //]]>
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+            //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+            searchForm.initAutocomplete('https://www.cigarterminal.com/en/catalogsearch/ajax/suggest/', 'search_autocomplete');
+            jQuery(document).ready(function() {
+                jQuery('#search').searchSuite({text: "Search entire store here...",
+                    value: "",
+                    attributes:0,
+                    categories:0});
+            });
+            //]]>
+        
+
+    //document.observe("dom:loaded", function() {
+    //    ultMenu("exploded-menu", {"show_delay":"100", "hide_delay":"5700"});
+    //});
+
+
+  //document.observe("dom:loaded", function() {
+  //  ultMenu("customer-nav", {"show_delay":"100", "hide_delay":"100"});
+  //});
+
+  //var custNav = $('customer-nav');
+  //$('nav-container-customer').appendChild(custNav);
+  //custNav.show();
+
+
+            var login = '';
+            var messageDefault = 'Like or share to receive points.';
+            var messageError = 'Cannot connect to server.';
+            function showAjaxLoader(){
+                $('referfriends-ajax-loader').show();
+                $('behavior-ajax-loader').hide();
+            }
+            function hideAjaxLoader(){
+                $('referfriends-ajax-loader').hide();
+                $('behavior-ajax-loader').show();
+            }
+        
+
+            var messageFacebookShare = 'You will earn 25 Points for a Facebook share.';
+            var canRequestShare = (messageFacebookShare === '') ? false : true;
+            function shareFacebook() {
+                var sharedUrl = 'http://www.cigarterminal.com/en';
+                FB.ui({method: 'stream.share', u: sharedUrl}, function (response) {
+                    if (login && response && response.object_id && canRequestShare) {
+                        showAjaxLoader();
+                        new Ajax.Request('https://www.cigarterminal.com/en/rewardpointsbehavior/index/faceshare/', {
+                            method: 'post',
+                            parameters: {
+                                link: sharedUrl
+                            },
+                            onException: function () {
+                                $('social-info-behavior').innerHTML = messageError;
+                                hideAjaxLoader();
+                            },
+                            onSuccess: function (message) {
+                                if (message.responseText && message.responseText != '') {
+                                    $('social-info-behavior').innerHTML = message.responseText;
+                                } else {
+                                    $('social-info-behavior').innerHTML = messageDefault;
+                                }
+                                hideAjaxLoader();
+                                canRequestShare = false;
+                            }
+                        });
+                    }
+                });
+            }
+
+            if (messageFacebookShare !== '' && login) {
+                Event.observe('behavior-facebook-share', 'mouseover', function () {
+                    if (canRequestShare) {
+                        $('behavior-ajax-loader').show();
+                        $('social-info-behavior').innerHTML = messageFacebookShare;
+                    } else {
+                        $('behavior-ajax-loader').hide();
+                    }
+                });
+                Event.observe('behavior-facebook-share', 'mouseout', function () {
+                    $('behavior-ajax-loader').show();
+                    $('social-info-behavior').innerHTML = messageDefault;
+                });
+            }
+        
+
+            (function (d) {
+                var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+                p.type = 'text/javascript';
+                p.async = true;
+                p.src = '//assets.pinterest.com/js/pinit.js';
+                f.parentNode.insertBefore(p, f);
+            }(document));
+
+            var messagePinterest = '';
+            var canRequestPinterest = (messagePinterest === '') ? false : true;
+            if (messagePinterest !== '' && login) {
+                Event.observe('behavior-printerest', 'mouseover', function () {
+                    if (canRequestPinterest) {
+                        $('behavior-ajax-loader').show();
+                        $('social-info-behavior').innerHTML = messagePinterest;
+                    } else {
+                        $('behavior-ajax-loader').hide();
+                    }
+                });
+                Event.observe('behavior-printerest', 'mouseout', function () {
+                    $('behavior-ajax-loader').show();
+                    $('social-info-behavior').innerHTML = messageDefault;
+                });
+            }
+        
+
+            if(messageDefault === ''){
+                $('behavior-ajax-loader-bound').hide();
+            }
+        
+
+  var homegallery = new UltImgGallery().init();
+
+
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    
+decorateList('products-list-top', 'none-recursive')
+decorateList('products-list-best', 'none-recursive')
+decorateList('products-list-top', 'none-recursive')
+
+    if(!Mage.Cookies.get('cookie-notice')) {
+        jQuery('#footer-cookie-notice').show();
+    }
+
+    jQuery('#cookie-accept-button').on('click', function(event){
+        event.preventDefault();
+
+        expireAt = new Date();
+        expireAt.setTime(expireAt.getTime() + (1000 * 86400) * 365);
+        Mage.Cookies.set('cookie-notice', 'dn', expireAt);
+
+        jQuery('#footer-cookie-notice').hide();
+
+    });
+
+
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail-footer');
+        //]]>
+    
+
+    newsletterPopupConfig = {"translate":{"wait":"Wait..."},"baseUrl":"https:\/\/www.cigarterminal.com\/en\/","delayTime":30000,"cookieName":"es_newsletterpopup","cookieLifeTime":"999"};
+
+//<![CDATA[    
+$$('#search').first().stopObserving();
+jQuery('#search').searchSuiteAutocomplete({
+    url:'https://www.cigarterminal.com/en/autocomplete/ajax/', 
+    delay:500,
+    animation:'default'});
+//]]>
+
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?TwgMVFxkcWmW2OuUqzYm18oCxohHy3Pn';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+
+/* <![CDATA[ */
+var google_conversion_id = 998393909;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "z-MBCLOjkAMQtZCJ3AM";
+var google_conversion_value = 0;
+/* ]]> */
+
+
+

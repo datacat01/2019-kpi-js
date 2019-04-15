@@ -1,0 +1,67 @@
+
+      (function measureLoadTime (win) {
+        if (win.BOOMR && win.BOOMR.version) { return; }
+        function boomerangSaveLoadTime(e) {
+          win.BOOMR_onload=(e && e.timeStamp) || new Date().getTime();
+        }
+        if (win.addEventListener) {
+          win.addEventListener("load", boomerangSaveLoadTime, false);
+        } else if (win.attachEvent) {
+          win.attachEvent("onload", boomerangSaveLoadTime);
+        }
+      })(window);
+
+      (function(window) {
+        if (!window) return
+
+        var locationHrefBits = window.location.href.split(/\/+/g) || []
+
+        var URI = '' + locationHrefBits[0] + '//' + locationHrefBits[1] + '/log'
+        var loggedErrors = {}
+        var isBot = false
+        var pageTypeCode = 'HP'
+
+        var fn = function (message, source, lineNumber, columnNumber, error) {
+          console.log('_irisLogError: ', message)
+          var errAsString = JSON.stringify({message: message, lineNumber: lineNumber, columnNumber: columnNumber})
+          if (loggedErrors[errAsString]) {
+            return
+          }
+          loggedErrors[errAsString] = true
+
+          // Avoid send error when isBot is true
+          // but still keep the errorsSeenOnPageList updated.
+          if (isBot) {
+            return false
+          }
+
+          var errorObj = {
+            message: message,
+            source: source,
+            lineNumber: lineNumber,
+            columnNumber: columnNumber,
+            userAgent: window.navigator.userAgent,
+            url: window.location.href
+          }
+
+          var req = new XMLHttpRequest()
+          req.open('PUT', URI, true)
+          req.setRequestHeader('Accept', 'application/json')
+          req.setRequestHeader('Content-Type', 'application/json')
+          req.setRequestHeader('X-FRG-PT', pageTypeCode)
+          req.onreadystatechange = function () {}
+          req.send(JSON.stringify(errorObj))
+          return true
+        }
+
+        window._irisLogError = fn
+        if (window.addEventListener) {
+          window.addEventListener('error', function (err) {
+            fn(err.message, err.filename, err.colno, err.colno, err)
+          })
+        } else {
+          window.onerror = fn
+        }
+      })(window);
+    
+mPulse('FV6UE-NU9YW-CXWJW-PCRG3-DV54L')

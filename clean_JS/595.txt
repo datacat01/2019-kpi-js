@@ -1,0 +1,774 @@
+var monetateT = new Date().getTime();
+
+	/*
+	*	Global Monetate array for tracking
+	*/
+	window.monetateQ = window.monetateQ || [];
+	
+	/*
+	*	Temporary storage for data: cartrows, breadcrumbs, products on the plp/clp/search pages
+	*/
+	window.monetateData = window.monetateData || {};
+	window.monetateData.setPageType = "unknown";
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aabf-Gardeners';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+	window.__zmags = window.__zmags || {};
+	window.__zmags.demandware = window.__zmags.demandware || {};
+	window.__zmags.demandware.analytics = window.__zmags.demandware.analytics || {};
+	window.__zmags.demandware.analytics.creator = window.__zmags.demandware.analytics.creator || {}
+	window.__zmags.demandware.analytics.creator.settings = window.__zmags.demandware.analytics.creator.settings || {"googleAnalyticsEnabled":true,"googleAnalyticsId":"UA-2424835-12","adobeAnalyticsEnabled":false,"adobeAnalyticsRsid":null,"adobeAnalyticsTrackingServer":null};
+	window.__zmags.demandware.analytics.creator.data = window.__zmags.demandware.analytics.creator.data || {};
+
+
+			if (!window.ga) {
+				(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			}
+			// create tracker if it wasn't created already
+			ga(function() {
+				if (!ga.getByName('creator')) {
+					ga('create', window.__zmags.demandware.analytics.creator.settings.googleAnalyticsId, 'auto', {'name': 'creator'});
+				}
+			});
+		
+
+		if (typeof app != 'undefined') {
+			var zmagsAnalyticsScript = document.createElement('script');
+			zmagsAnalyticsScript.onload = function() {
+				window.__zmags.demandware.analytics.creator.init();
+			};
+			zmagsAnalyticsScript.src = "/on/demandware.static/Sites-Gardeners-Site/-/default/v1554986098904/js/zmags-creator-analytics.js";
+			document.getElementsByTagName('head')[0].appendChild(zmagsAnalyticsScript);
+		}
+	
+
+	window.__zmags = window.__zmags || {};
+	window.__zmags.demandware = window.__zmags.demandware || {};
+	window.__zmags.demandware.analytics = window.__zmags.demandware.analytics || {};
+	window.__zmags.demandware.analytics.publicator = window.__zmags.demandware.analytics.publicator || {}
+	window.__zmags.demandware.analytics.publicator.settings = window.__zmags.demandware.analytics.publicator.settings || {"googleAnalyticsEnabled":false,"googleAnalyticsId":null,"adobeAnalyticsEnabled":false,"adobeAnalyticsRsid":null,"adobeAnalyticsTrackingServer":null};
+	window.__zmags.demandware.analytics.publicator.data = window.__zmags.demandware.analytics.publicator.data || {};
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-Gardeners-Site/default/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-Gardeners-Site/default/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+(function() {
+var config = {
+kitId: 'ocq8jgv',
+scriptTimeout: 3000
+};
+var h = document.getElementsByTagName('html')[0];
+h.className += ' wf-loading';
+var t = setTimeout(function() {
+h.className = h.className.replace(/(\s|^)wf-loading(\s|$)/g, ' ');
+h.className += ' wf-inactive';
+}, config.scriptTimeout);
+var d = false;
+var tk = document.createElement('script');
+tk.src = '//use.typekit.net/' + config.kitId + '.js';
+tk.type = 'text/javascript';
+tk.async = 'true';
+tk.onload = tk.onreadystatechange = function() {
+var rs = this.readyState;
+if (d || rs && rs != 'complete' && rs != 'loaded') return;
+d = true;
+clearTimeout(t);
+try { Typekit.load(config); } catch (e) {}
+};
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(tk, s);
+})();
+
+
+var be_sdk_options = {'api.endpoint': 'https://ixf2-api.bc0a.com',
+'sdk.account': 'f00000000139987',
+'requestparameters.caseinsensitive': true,
+'whitelist.parameter.list': 'ixf'
+};
+BEJSSDK.construct(be_sdk_options);
+
+
+	/*
+	*	Writing cart rows to the temporary storage
+	*/
+	window.monetateData.addCartRows = [];
+	
+		if (Array.isArray(monetateData.addProducts)) {
+			window.monetateData.addCartRows.push("[Ljava.lang.Object;@619938c2");
+		}
+
+
+if($(window).width() > 960){
+var name = "";
+var parentName = "";
+var grandparentName = "";
+$("li.level1").children().one("click",function(e){
+//e.preventDefault();
+e.stopPropagation();
+var gName = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedgName = htmlDecode(gName);
+var grandparentName = decodedgName.replace(/[^\w\s!?]/g,'');
+dataLayer.push({
+"event": "menuClick",
+"L1": grandparentName, // the top level navigation the user clicks to
+"L2": "", // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": "", // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+});
+$("li.level2").children().one("click",function(e){
+//alert("DESKTOP L2 or by-interest");
+//e.preventDefault();
+e.stopPropagation();
+var nname = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodednname = htmlDecode(nname);
+var name = decodednname.replace(/[^\w\s!?]/g,'');
+var pName = $(this).closest("li.level1").find("a:first").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedparentName = htmlDecode(pName);
+var parentName = decodedparentName.replace(/[^\w\s!?]/g,'');
+//alert("SD-name:: " + parentName + " D-Name:: " + name);
+dataLayer.push({
+"event": "menuClick",
+"L1": parentName, // the top level navigation the user clicks to
+"L2": name, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": "", // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+});
+$("li.level3").children().one("click",function(e){
+//e.preventDefault();
+e.stopPropagation();
+var Aname = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedname = htmlDecode(Aname);
+var name = decodedname.replace(/[^\w\s!?]/g,'');
+var pName = $(this).closest("li.level2").find("a:first").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedparentName = htmlDecode(pName);
+var parentName = decodedparentName.replace(/[^\w\s!?]/g,'');
+var gName = $(this).closest("li.level1").find("a:first").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedgrandparentName = htmlDecode(gName);
+var grandparentName = decodedgrandparentName.replace(/[^\w\s!?]/g,'');
+//alert("SD-name:: " + grandparentName + " D-Name:: " + parentName + " C-name::: " + name);
+dataLayer.push({
+"event": "menuClick",
+"L1": grandparentName, // the top level navigation the user clicks to
+"L2": parentName, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": name, // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+});
+$("ul.service-nav li.seasonal a").one("click",function(e){
+//e.preventDefault();
+e.stopPropagation();
+//alert("desktop SEASONAL");
+var pName = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedpName = htmlDecode(pName);
+var name = decodedpName.replace(/[^\w\s!?]/g,'');
+dataLayer.push({
+"event": "menuClick",
+"L1": "", // the top level navigation the user clicks to
+"L2": name, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": "", // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "seasonal nav" // "seasonal nav" or "flyout"
+});
+});
+}else if($(window).width() < 960){
+$('.menu-category li a').on('click', function (e) {
+//e.preventDefault();
+e.stopPropagation();
+var $targetLink = $(e.target).hasClass('menu-item-toggle') ? $(e.target).parent() : $(e.target);
+var name = "";
+var parentName = "";
+var grandparentName = "";
+if ($targetLink.closest('.level-3').length > 0) {
+var n = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedName = htmlDecode(n);
+var name = decodedName.replace(/[^\w\s!?]/g,'');
+//alert("category name:: " + name);
+var pName = $(this).closest("li.active").find("a:first").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedparentName = htmlDecode(pName);
+var parentName = decodedparentName.replace(/[^\w\s!?]/g,'');
+//alert("Department Name:: " + parentName);
+var gName = $(this).closest("li.level1").find("a.back-link").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedgrandparentName = htmlDecode(gName);
+var grandparentName = decodedgrandparentName.replace(/[^\w\s!?]/g,'');
+//alert("SD Name:: " + grandparentName);
+var isByInterest = $(this).closest(".level-3").hasClass("by-interest-links");
+//alert("this is is by Interest:: " + isByInterest);
+if(isByInterest){
+//alert("MOBILE by-interest");
+var grandparentName = parentName;
+var parentName = name;
+var name = "";
+}
+dataLayer.push({
+"event": "menuClick",
+"L1": grandparentName, // the top level navigation the user clicks to
+"L2": parentName, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": name, // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+}else if ((!$targetLink .hasClass('back-link')) && $targetLink.parent().hasClass('active')) {
+//e.preventDefault();
+e.stopPropagation();
+//alert("2-TWO");//return; track!!
+var name = "";
+var pName = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedparentName = htmlDecode(pName);
+var parentName = decodedparentName.replace(/[^\w\s!?]/g,'');
+//alert("department name:: " + parentName);
+var gName = $(this).closest("li.level1").find("a.back-link").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedgrandparentName = htmlDecode(gName);
+var grandparentName = decodedgrandparentName.replace(/[^\w\s!?]/g,'');
+//alert("department parentName:: " + grandparentName);
+if(grandparentName == ''){var grandparentName = parentName; var parentName = '';}
+dataLayer.push({
+"event": "menuClick",
+"L1": grandparentName, // the top level navigation the user clicks to
+"L2": parentName, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": name, // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+}else if (!$targetLink.hasClass('has-sub-menu')) {
+//e.preventDefault();
+e.stopPropagation();
+//alert("THREE");
+var name = "";
+var pName = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedparentName = htmlDecode(pName);
+var parentName = decodedparentName.replace(/[^\w\s!?]/g,'');
+//alert("department name:: " + parentName);
+var gName = $(this).closest("li.active").find("a:first").text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedgrandparentName = htmlDecode(gName);
+var grandparentName = decodedgrandparentName.replace(/[^\w\s!?]/g,'');
+//alert("category parentName:: " + grandparentName);
+dataLayer.push({
+"event": "menuClick",
+"L1": grandparentName, // the top level navigation the user clicks to
+"L2": parentName, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": name, // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "flyout" // "seasonal nav" or "flyout"
+});
+}else{
+e.stopPropagation();
+//alert("FOUR don't track");//
+}
+});
+$("ul.service-nav li.seasonal a").one("click",function(e){
+//e.preventDefault();
+e.stopPropagation();
+//alert("mobile SEASONAL");
+var pName = $(this).text().replace(/\n/g, '');
+function htmlDecode(input)
+{
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
+}
+var decodedpName = htmlDecode(pName);
+var parentName = decodedpName.replace(/[^\w\s!?]/g,'');
+//alert("mobile/seasoanl:: " + text4);
+dataLayer.push({
+"event": "menuClick",
+"L1": "", // the top level navigation the user clicks to
+"L2": parentName, // the secondary navigation the user clicks to. Leave blank if user navigates only to top level navigation
+"L3": "", // the tertiary navigation the user clicks to. Leave blank if user navigates only to top level or secondary level navigation
+"pageName": dataLayer[0].pageName, // <pageType>:<meta title> or "Search" if it is on a search result page of the page clicked from
+"pageType": dataLayer[0].pageType, // populate with page type clicked from
+"menuType": "seasonal nav" // "seasonal nav" or "flyout"
+});
+});
+}
+
+
+// var pr = require('~/cartridge/js/rating.js');
+// $(document).ready(function () {
+// pr.init();
+// });
+
+
+function populateReview(review) {
+// only populate rating if it has not been done
+if ($.trim($('.rating', review).html())) {
+return;
+}
+var pid = $(review).data('pid');
+var rating = $(review).data('rating');
+var ratingCount = $(review).data('rating-count');
+if (!pid || !rating || !ratingCount) {
+return;
+}
+// rating range from 2 - 5
+var baseRating = Math.floor(rating);
+var starsCount = 0;
+for (var i = 0; i < baseRating; i++) {
+$('.rating', review).append(
+'<i class="fas fa-star" aria-hidden="true"></i>');
+starsCount++;
+}
+// give half star for anything in between
+if (rating > baseRating) {
+$('.rating', review).append(
+'<i class="fas fa-star-half-o" aria-hidden="true"></i>');
+starsCount++;
+}
+if (starsCount < 5) {
+for (var j = 0; j < 5 - starsCount; j++) {
+$('.rating', review).append(
+'<i class="fal fa-star" aria-hidden="true"></i>');
+}
+}
+$('.rating', review).append(
+'&nbsp;<span>(' + ratingCount + ')</span>');
+}
+
+
+        candid.init({
+            id: '16d3419a-209c-411a-92d2-5baf6c8db72a',
+            tag: 'love',
+slideshowSpeed: 7500,
+            linksHeading: 'Shop Now',
+            margin: 2,
+            width: 150,
+cache: true
+        });
+    
+
+var criteoEmail = "";
+criteoEmail = calcMD5(criteoEmail);
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push({
+event : "setAccount",
+account : 10317
+}, {
+event : "setSiteType",
+type : /iPad/.test(navigator.userAgent) ? "t"
+: /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/
+.test(navigator.userAgent) ? "m" : "d"
+}, {
+event : "setEmail",
+email : criteoEmail
+}, {
+event : "viewHome"
+});
+//Setting hash email from email param into cookie for Monetate - expire 1 year
+var email = '';
+if (email != null && email != '') {
+if (email.indexOf('@') >= 0) {
+email = calcMD5(email);
+}
+var d = new Date();
+d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+var expires = "expires=" + d.toUTCString();
+document.cookie = "personId=" + email + ";" + expires + ";path=/";
+}
+
+
+var br_data = {};
+
+/* --- Begin parameters section: fill in below --- */
+br_data.acct_id = "5383";
+br_data.ptype = "homepage";
+br_data.cat_id = "";
+br_data.cat = "";
+br_data.prod_id = "";
+br_data.prod_name = "";
+br_data.sku = "";
+br_data.search_term = "";
+br_data.is_conversion = "0";
+br_data.basket_value = "";
+br_data.order_id ="";
+br_data.basket = {};
+/* --- End parameter section --- */
+(function() {
+var brtrk = document.createElement('script');
+brtrk.type = 'text/javascript';
+brtrk.async = true;
+brtrk.src = 'https:' == document.location.protocol ? "https://cdns.brsrvr.com/v1/br-trk-5383.js" : "http://cdn.brcdn.com/v1/br-trk-5383.js";
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(brtrk, s);
+})();
+
+
+				monetateData.setPageType = "main";
+		
+				window.monetateQ.push(["setPageType", monetateData.setPageType]);
+		
+				if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+				if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+		
+				window.monetateQ.push(["trackData"]);
+			
+
+var __dcid = __dcid || [];__dcid.push(["DigiCertClickID_ca1ACU0w", "3", "s", "black", "ca1ACU0w"]);(function(){var cid=document.createElement("script");cid.async=true;cid.src="//seal.digicert.com/seals/cascade/seal.min.js";var s = document.getElementsByTagName("script");var ls = s[(s.length - 1)];ls.parentNode.insertBefore(cid, ls.nextSibling);}());
+
+
+RightNow.Client.Controller.addComponent(
+{
+c: "1",
+chat_login_page_width: 500,
+container_element_id: "myChatLinkContainer",
+info_element_id: "myChatLinkInfo",
+label_available_immediately_template:"", //"Chat Now",
+label_available_with_wait_template:"", // "Chat Now",
+label_default:"", // "Chat Now",
+label_unavailable_busy_template:"", //" "All agents are busy", //"", // "All agents are busy",
+label_unavailable_hours: "",
+link_element_id: "myChatLink",
+min_sessions_avail: 1,
+instance_id: "chat1",
+module: "ConditionalChatLink",
+type: 7
+},
+"https://gardeners.widget.custhelp.com/ci/ws/get"
+);
+
+
+	var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+	document.write(unescape("%3Cscript src='" + biJsHost + "s1.listrakbi.com/scripts/script.js?m=fY86lkvhP8r4&v=1' type='text/javascript'%3E%3C/script%3E"));
+	
+
+
+	jQuery.ajax({
+		  url: '/on/demandware.store/Sites-Gardeners-Site/default/ltkClickTracking-Start' + '?' + document.location.search,
+		  context: document,
+		  success: function(trkt){
+			  var start = trkt.indexOf('[');
+			  var end = trkt.indexOf(']');
+			  var token = trkt.substring(start+1, end); 
+			  setCookie("_trkt", token, 365, null, '/'); 
+			  }
+		});
+	
+	function setCookie(c_name,value,exdays, domain, path, secure)
+	{
+		if (value != '' && value != undefined)
+		{
+			var exd = new Date();
+			exd.setDate(exd.getDate() + exdays);
+			document.cookie =
+				c_name + "=" + encodeURIComponent(value) +
+		        ((exdays == null) ? "" : "; expires=" + exd.toGMTString()) +
+		        ((domain == null && domain != "") ? "" : "; domain=" + domain) +
+		        ((path == null) ? "" : "; path=" + path) +
+		        ((secure) ? "; secure" : "");			
+		}
+	}	
+
+
+	
+	var _ltkwmt = '';
+	
+		_ltkwmt = 'Enter E-mail Address,Get special offers, tips &amp; info!';
+	
+	
+	
+	function isWatermark(wmt) {
+	    if(!_ltkwmt || _ltkwmt.length == 0) {
+	        return false;
+	    }
+	    if(_ltkwmt.indexOf(wmt) >= 0) { 
+	        return true; 
+	    }
+	    else { return false; }
+	}
+		
+	function ltkCaptureEmail(id) {
+	    try {
+	        var _stsi1 = setInterval(function () {
+	            if (!window.jQuery) { return; }
+	            clearInterval(_stsi1);
+	            if (typeof id == "undefined" || id == "") { return; }
+	            var _sl = jQuery("[id='" + id + "']");
+	            if (_sl.length == 0) { _sl = jQuery("input[name='" + id + "']"); }
+	            if (_sl.length) {
+	                _sl.change(function () { 
+			                if (jQuery(_sl).val().length > 0 && !isWatermark(jQuery(_sl).val()))
+			                {
+			                	jQuery.ajax({
+			              		  url: '/on/demandware.store/Sites-Gardeners-Site/default/ltkEmailCapture-Start' + '?email=' + jQuery(this).val(),
+			              		  context: document,
+			              		  success: function(success){ return; }
+			              		});
+			                }
+						}
+	                );
+	                if (jQuery(_sl).val().length > 0 && !isWatermark(jQuery(_sl).val())) { _ltk.SCA.Update("email", jQuery(_sl).val()); }
+	            }
+	        }, 100);
+	    }
+	    catch (ex) {
+	        _ltk.Exception.Submit(ex, 'CaptureEmail');
+	    }
+	}
+	
+	
+		
+			ltkCaptureEmail("email");
+		
+			ltkCaptureEmail("dwfrm_profile_customer_email");
+		
+			ltkCaptureEmail("dwfrm_billing_billingAddress_email_emailAddress");
+		
+			ltkCaptureEmail("dwfrm_contactus_email");
+		
+			ltkCaptureEmail("dwfrm_askanexpert_emailAddress");
+		
+			ltkCaptureEmail("dwfrm_login_username");
+		
+			ltkCaptureEmail("QuickSignupFooterInput");
+		
+	
+	
+	jQuery(document).bind("ltkmodal.show", function() {
+		ltkCaptureEmail("ltkmodal-email");
+	});
+	
+	
+
+	var path = '/on/demandware.store/Sites-Gardeners-Site/default/ltkActivityTracker-StartActivity';
+	jQuery.ajax({
+		  url: path.concat('?path=' + document.location.href),
+		  context: document,
+		  success: function(){}
+		});
+
+
+	if(monetateData.setPageType == "unknown") {
+		monetateData.trackUnknownPage = function() {
+			window.monetateQ.push(["setPageType", monetateData.setPageType]);
+			
+			if(monetateData.addCartRows) window.monetateQ.push(["addCartRows", monetateData.addCartRows]);
+			if(monetateData.breadCrumbs) window.monetateQ.push(["addBreadcrumbs", monetateData.breadCrumbs]);
+	
+			window.monetateQ.push(["trackData"]);
+		};
+		monetateData.trackUnknownPage();
+	}
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No Thanks","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Couldn't Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Product(s)","SELECT_BONUS_PRODUCTS":"Select Bonus Product(s)","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Keyword or item number","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please Enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response, Parser error","INVALID_PHONE":"Please specify a valid phone number.","INVALID_EMAIL":"The email address is invalid.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added to compare.  Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid Gift Certificate Code","GIFT_CERT_BALANCE":"Your current gift card balance is $","GIFT_CERT_AMOUNT_INVALID":"Only numbers are accepted in this field","GIFT_CERT_MISSING":"Please enter a gift card code.","INVALID_OWNER":"This appears to be a credit card number.  Please enter the name of the credit card owner.","COUPON_CODE_MISSING":"Please Enter a Code","COOKIES_DISABLED":"Your browser currently is not set to accept Cookies. Please turn it on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"{0} characters remaining","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"Expected to ship {0}","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter Zip Code","INVALID_ZIP":"Please enter a valid Zip Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Less Stores","QUICK_VIEW":"Quick View","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) In Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back Order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-Gardeners-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-Gardeners-Site/default/Page-Include","continueUrl":"https://www.gardeners.com/home?dwcont=C1717698734","staticPath":"/on/demandware.static/Sites-Gardeners-Site/-/default/v1554986098904/","addGiftCert":"/gift-certificate-buy","minicartGC":"/on/demandware.store/Sites-Gardeners-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-Gardeners-Site/default/Cart-AddProduct","minicart":"/on/demandware.store/Sites-Gardeners-Site/default/Cart-MiniAddProduct","cartShow":"/cart","giftRegAdd":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.gardeners.com/my-wallet","addressesList":"https://www.gardeners.com/my-addresses","wishlistAddress":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-Gardeners-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-Gardeners-Site/default/Product-Show","getBonusProducts":"/on/demandware.store/Sites-Gardeners-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-Gardeners-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-Gardeners-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-Gardeners-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-Gardeners-Site/default/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-Gardeners-Site/-/default/dwc8e53f09/images/interface/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-Gardeners-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-Gardeners-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-Gardeners-Site/default/COBilling-UpdateSummary","billingSelectCC":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-Gardeners-Site/default/COBilling-ResetPaymentForms","compareShow":"/on/demandware.store/Sites-Gardeners-Site/default/Compare-Show","compareAdd":"/on/demandware.store/Sites-Gardeners-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-Gardeners-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-Gardeners-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COBilling-CheckOMSGCBalance","redeemGiftCert":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/COBilling-RedeemOMSGiftCertificate","addCoupon":"https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-Gardeners-Site/default/StoreInventory-GetZipCode","billing":"/billing","setSessionCurrency":"/on/demandware.store/Sites-Gardeners-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-Gardeners-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-Gardeners-Site/default/Page-Include?cid=cookie_hint"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"LISTING_SEARCHSUGGEST_LEGACY":false,"STORE_PICKUP":false,"COOKIE_HINT":false};
+window.User = {"zip":null,"storeId":null};
+}());
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.gardeners.com/on/demandware.store/Sites-Gardeners-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

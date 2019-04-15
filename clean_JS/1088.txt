@@ -1,0 +1,39 @@
+
+    adroll_adv_id = "HKMA5XVGIFECFHHXJ323FR";
+    adroll_pix_id = "TDS2HGTLIRBUHNEPYQTNOG";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+window.__lo_site_id = 120868;
+
+	(function() {
+		var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+		wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+	  })();
+	
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".flyingcirclegear.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"9c6bc2684c28320ed31404bd20c12e7a622cc3ca","type":"ANONYMOUS","visit_id":"ddffb7c6-3cd4-4222-bc16-0868a4d179a1","visitor_id":"932a6e1d-0481-43b4-a9be-2cd4d5374f87"},"referer":{"url":""},"request":{"url":"https:\/\/www.flyingcirclegear.com\/"}}, '', 3124093, "other", {"customer":{"id":"anonymous"}}, 'ddffb7c6-3cd4-4222-bc16-0868a4d179a1', '932a6e1d-0481-43b4-a9be-2cd4d5374f87');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"f373ab15c3816be9d0e5e4fedb9f833c3a8d2b865ce96df2c6afd4ad3fa904db"};
+

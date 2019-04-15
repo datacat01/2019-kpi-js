@@ -1,0 +1,498 @@
+<!--
+document.cookie="home=0; path=/";
+//-->
+
+	<!--
+	function gup (name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var regexS = "[\\?&]"+name+"=([^&#]*)";
+		var regex = new RegExp( regexS );
+		var results = regex.exec( window.location.href );
+		if( results == null ) {
+			return "";
+		} else {
+			return results[1];
+		};
+	};
+	var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\scs|palm/i.test(navigator.userAgent.toLowerCase()));
+	var tablet= (/ipad/i.test(navigator.userAgent.toLowerCase()));
+		if ((mobile)&&(!tablet))
+		{
+			try {
+				if ('matchMedia' in window)
+				{
+					if(window.matchMedia('only screen and (min-device-width: 600px)').matches)
+					{
+						if((/android/i.test(navigator.userAgent.toLowerCase())))
+						{
+							if(!(/mobile/i.test(navigator.userAgent.toLowerCase())))
+							{
+								tablet=true;
+							}
+						}
+					}
+				}
+			}
+			catch (err){
+			}
+		}
+		//alert("Mobile:"+mobile+" / Tablet:"+tablet);
+		if (( ((mobile)&&(!tablet)) && (gup("r") != 0) ) || ((!gup("r").length) && ((mobile)&&(!tablet)) )) {
+			document.location = 'https://mobile.auctionzip.com';
+		};
+		if ((mobile)&&(tablet))
+		{
+			document.writeln("<!-- begin ZEDO for channel:  AuctionZip - 1800 , publisher: AuctionZip , Ad Dimension: Pixel\/Popup - 1 x 1 -->");
+			document.writeln("<script language=\"JavaScript\">");
+			document.writeln("var zflag_nid=\"305\"; var zflag_cid=\"26157\/22899\/1\"; var zflag_sid=\"3374\"; var zflag_width=\"1\"; var zflag_height=\"1\"; var zflag_sz=\"15\";");
+//			document.writeln("alert(\"Tablet\");");
+			document.writeln("<\/script>");
+			document.writeln("<script language=\"JavaScript\" src=\"\/\/c5.zedo.com\/jsc\/c5\/fo.js\"><\/script>");
+			document.writeln("<!-- end ZEDO for channel:  AuctionZip - 1800 , publisher: AuctionZip , Ad Dimension: Pixel\/Popup - 1 x 1 -->");
+		};
+	//-->
+	
+
+if(typeof(AZ_UID_SET)=='undefined')
+{
+	var _aaq = window._aaq || (window._aaq = []);
+	if(typeof(AZ_UID)!='undefined')
+	{
+		_aaq.push(['setUser', AZ_UID]);
+	}
+	else
+	{
+		_aaq.push(['setUser', null]);
+	}
+	if(typeof(AZ_EMAIL)!='undefined')
+	{
+		_aaq.push(['setCustomField', 'userEmail', decodeURIComponent(AZ_EMAIL), 'request']);
+	}
+	else
+	{
+		_aaq.push(['setCustomField', 'userEmail', null, 'request']);
+	}
+}
+
+
+<!--
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+googletag.cmd.push(function() {
+		var sizes=null;
+		sizes=[[728,90]];
+		googletag.defineSlot('/1027821/Global_Head_Unit', sizes, 'global_header_ad').addService(googletag.pubads());
+ 		googletag.pubads().enableSingleRequest();
+ 		googletag.pubads().disableInitialLoad();
+		googletag.enableServices();
+	});
+googletag.cmd.push(function() {
+		googletag.display(global_header_ad);
+	});
+//-->
+
+
+<!--
+///AMAZON CODE
+//load the apstag.js library
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+//initialize the apstag.js library on the page to allow bidding
+apstag.init({
+     pubID: 'aeae6523-6c60-4147-89c0-0f9e845706d9', //enter your pub ID here as shown above, it must within quotes
+     adServer: 'googletag'
+});
+apstag.fetchBids({
+     slots: [{
+         slotID: 'global_header_ad',
+         slotName: '/1027821/Global_Head_Unit',
+         sizes: [[728,90]]
+       }],
+     timeout: 2e3
+}, function(bids) {
+     // set apstag targeting on googletag, then trigger the first DFP request in googletag's disableInitialLoad integration
+     googletag.cmd.push(function(){
+         apstag.setDisplayBids();
+      //   googletag.pubads().refresh();
+     });
+}); 
+//-->
+
+
+<!--
+// Page Bid Timeout
+var PREBID_timeout=1250;
+// Ads slots to get bids for and bidder lists
+var PREBID_adUnits = [{
+//  code: 'global_header_ad',
+  code: '/1027821/Global_Head_Unit',
+  mediaTypes: {
+    banner: {
+      sizes: [728,90]    }
+  },
+  bids: [{
+    bidder: 'rubicon',
+    params: {
+      accountId: '16282',
+      siteId: '119460',
+      zoneId: '564486',
+      Sizes: '[2]'
+    }
+  },{
+    bidder: 'pulsepoint',
+    params: {
+      cf: '728X90',
+      cp: '560772',
+      ct: '529615'
+    }
+  },{
+    bidder: 'openx',
+    params: {
+      unit: '540705920',
+      delDomain: 'invaluable-d.openx.net'
+    }
+  },{
+    bidder: 'medianet',
+    params: {
+      cid: '8CUJ0577W',
+      crid: '619417898'
+    }
+  },{
+    bidder: 'ix',
+    params: {
+      size: [728,90],
+      siteId: 189362
+    }
+  },{
+    bidder: 'districtmDMX',
+    params: {
+      dmxid: 130939,
+      memberid: 100567
+    }
+  },{
+    bidder: 'districtm',
+    params: {
+      placementId: 9841125,
+      revShare: 0.90
+    }
+  },{
+    bidder: 'criteo',
+    params: {
+      zoneId: 534160
+    }
+  },{
+    bidder: 'aol',
+    params: {
+      network: '9506.1',
+      placement: '4345420'
+    }
+  },{
+    bidder: 'sovrn',
+    params: {
+      tagid: '404728'
+    }
+  }]
+}];
+// 0 - /index.html
+// 
+// SELECT u.timeoutms, p.divname, a.sizes, a.adid, a.alias, u.ptid, b.bidder, p.slotname, b.pname1, if (b.adid=0,p.ox_adid,b.pvalue1) as value1, b.pname2, b.pvalue2, b.pname3, b.pvalue3, b.pname4, b.pvalue4, b.pname5, b.pvalue5 FROM hburi AS u LEFT JOIN hbptl AS p USING (ptid) LEFT JOIN hbadv AS a USING (adid) LEFT JOIN hbbid AS b ON (b.adid=a.adid OR b.adid=IF(p.ox_adid IS NOT NULL,0,NULL)) WHERE (u.uri='global_header_ad' OR ( u.uri='/index.html' AND u.ptid=(SELECT x.ptid FROM (SELECT uu.ptid, (IF(uu.exclude_buri IS NOT NULL,IF(LOCATE(uu.exclude_buri,'/')=0,1,0),0) + IF(uu.buri IS NOT NULL,IF(LOCATE(uu.buri,'/')>0,1,0),0) + IF(uu.buri IS NOT NULL,IF(uu.buri='/',1,0),0) + IF(uu.exclude_query IS NOT NULL,IF(LOCATE(uu.exclude_query,'')=0,1,0),0) + IF(uu.query IS NOT NULL,IF(LOCATE(uu.query,'')>0,1,0),0) ) AS matchscore FROM hburi AS uu WHERE uu.uri='/index.html' AND IF(uu.exclude_buri IS NOT NULL,LOCATE(uu.exclude_buri,'/')=0,1) AND IF(uu.buri IS NOT NULL,LOCATE(uu.buri,'/')>0,1) AND IF(uu.exclude_query IS NOT NULL,LOCATE(uu.exclude_query,'')=0,1) AND IF(uu.query IS NOT NULL,LOCATE(uu.query,'')>0,1) ORDER BY matchscore DESC,uu.ptid ) AS x LIMIT 1 ) ) ) AND b.adid IS NOT NULL ORDER BY p.ptid, p.divname DESC,a.adid,b.adid DESC
+//-->
+
+
+<!--
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [];
+pbjs.retries = 0;
+
+const customGranularity = {
+ 'buckets': [{
+  "precision": 2,
+  'min': 0,
+  'max': 100,
+  'increment': 0.01
+ }]
+};
+
+(function () {
+  var script = document.createElement('script');
+  script.async=true;
+  script.type = 'text/javascript';
+  script.src = '//www.auctionzip.com/includes/js/prebid.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(script, node);
+  var gscript = document.createElement('script');
+  gscript.async=true;
+  gscript.type = 'text/javascript';
+  gscript.src = '//www.googletagservices.com/tag/js/gpt.js';
+  var gnode = document.getElementsByTagName('script')[0];
+  gnode.parentNode.insertBefore(gscript, gnode.nextSibling);
+})();
+
+pbjs.que.push(function() {
+
+  pbjs.addAdUnits(PREBID_adUnits);
+  //  pbjs.setConfig({ priceGranularity: "high" });
+  // pbjs.setConfig({ priceGranularity: customGranularity });
+  pbjs.setConfig({ priceGranularity: "dense" });
+  //  pbjs.enableSendAllBids(); // Depreciated
+  // pbjs.setConfig({ enableSendAllBids: true });
+  pbjs.setConfig({ enableSendAllBids: false });
+  pbjs.requestBids({
+    timeout: PREBID_timeout, // The primary timeout is set here
+    bidsBackHandler: initAdserver
+//    bidsBackHandler: sendAdserverRequest
+  });
+});
+
+function initAdserver() {
+	if (pbjs.initAdserverSet) return;
+	pbjs.initAdserverSet = true;
+
+	googletag.cmd.push(function() {
+		pbjs.setTargetingForGPTAsync && pbjs.setTargetingForGPTAsync();
+		googletag.pubads().refresh();
+	});
+}
+
+function sendAdserverRequest(bidResponses) {
+	// Prevent duplicate display calls.		
+	if (pbjs.adserverRequestSent) return;
+	pbjs.adserverRequestSent = true;
+
+	// Get results
+	var targetingParams = pbjs.getAdserverTargeting();
+//	console.log(JSON.stringify(targetingParams));
+	// Optional Bid Diagnostics Display
+	var container = document.getElementById('prebid_diag');
+	if (container)
+	{
+		container.innerHTML = JSON.stringify(targetingParams);
+	}
+	// Loop through all ad units even if we didn't get a bid
+	for (bid=0;bid<PREBID_adUnits.length;bid++)
+	{
+		var adsize=null;
+		var oxauid=null;
+		var bidvars=null;
+		var bidid=null;
+		var code=PREBID_adUnits[bid].code;
+		// Extract openx auid from bid requests where available
+		// bids without delDomain-v.34 or jstag_url-v.17 param will not execute,
+		// but this is a good place to store the auid for use below.
+		var bids=PREBID_adUnits[bid].bids;
+		for (b=0;b<bids.length;b++)
+		{
+			if(bids[b].bidder=='openx')
+			{
+				oxauid=bids[b].params.unit;
+			}
+		}
+		// Grab first requested ad size from bid request for dimensions
+		// if we don't get a bid response.
+		if(typeof(PREBID_adUnits[bid].sizes[0]) === 'number')
+		{
+			adsize=PREBID_adUnits[bid].sizes;
+		}
+		else
+		{
+			adsize=PREBID_adUnits[bid].sizes[0];
+		}
+
+		if (targetingParams.hasOwnProperty(code))
+		{
+			bidid=targetingParams[code].hb_adid;
+			bidvars=targetingParams[code];
+			adsize=targetingParams[code].hb_size.split("x");
+
+			container = document.getElementById(code+'-pb');
+			if ((bidid)&&(container))
+			{
+				var iframe = document.createElement('iframe');
+				iframe.setAttribute("scrolling", "no");
+				try {
+				iframe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
+				} catch (e) {}
+				iframe.style.margin='0px';
+				iframe.style.padding='0px';
+				iframe.style.border="none";
+				container.appendChild(iframe);
+				container.style.margin='0px';
+				container.style.padding='0px';
+				pbjs.renderAd(iframe.contentWindow.document,bidid);
+				iframe.contentWindow.document.body.style.margin='0px';
+				iframe.contentWindow.document.body.style.padding='0px';
+			}
+		}
+
+		// Select OX div container
+		container = document.getElementById(code);
+		if (container)
+		{
+			if (oxauid)
+			{
+				// Push Results to OX container
+				container.style.width=adsize[0]+"px";
+				container.style.height=adsize[1]+"px";
+				container.style.margin='0px';
+				container.style.padding='0px';
+
+				var iframe = document.createElement('iframe');
+				iframe.setAttribute("scrolling", "no");
+				try {
+				iframe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
+				} catch (e) {}
+				iframe.style.margin='0px';
+				iframe.style.padding='0px';
+				iframe.style.border="none";
+				iframe.style.width=adsize[0]+"px";
+				iframe.style.height=adsize[1]+"px";
+				iframe.src="/includes/structureTemplates/headerbidiframe.html?code="+encodeURIComponent(code)+"&oxauid="+encodeURIComponent(oxauid)+"&referer="+encodeURIComponent(document.location)+"&bidvars="+encodeURIComponent(JSON.stringify(bidvars));
+				container.appendChild(iframe);
+//				var ifdoc=iframe.contentWindow.document;
+				var html="\<html>\n";
+				html+="\<head>\n";
+				html+="\</head>\n";
+				html+="\<body style=\"margin: 0px; padding: 0px;\">\n";
+				html+="\<div id=\""+code+"\" style=\"width: "+adsize[0]+"px; height: "+adsize[1]+"px; margin: 0px; padding: 0px;\">\n";
+				html+="\<script type='text/javascript' src='//artfact-d.openx.net/w/1.0/jstag'\>\
+\n";
+				html+="var code='"+code+"';\n";
+				html+="var oxauid='"+oxauid+"';\n";
+				html+="var OX_Render = OX();\n";
+				html+="OX_Render.addAdUnit(oxauid);\n";
+				html+="OX_Render.setAdUnitSlotId(oxauid,code);\n";
+				if (bidvars)
+				{
+					for (var key in bidvars ) 
+					{
+						html+="OX_Render.addVariable(\""+key+"\",\""+bidvars[key]+"\");\n";
+					}
+				}
+				html+="OX_Render.load();\n";
+				html+="\<"+"/script\>\n";
+				html+="\</div>\n";
+				html+="\</body>\n";
+				html+="\</html>\n";
+//				ifdoc.open();
+//				ifdoc.write(html);
+//				ifdoc.close();
+			}
+			else
+			{
+				if (bidid)
+				{
+					var iframe = document.createElement('iframe');
+					iframe.setAttribute("scrolling", "no");
+					try {
+					iframe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
+					} catch (e) {}
+					iframe.style.margin='0px';
+					iframe.style.padding='0px';
+					iframe.style.border="none";
+					container.appendChild(iframe);
+					container.style.margin='0px';
+					container.style.padding='0px';
+					pbjs.renderAd(iframe.contentWindow.document,bidid);
+					iframe.contentWindow.document.body.style.margin='0px';
+					iframe.contentWindow.document.body.style.padding='0px';
+				}
+			}
+		}
+	}
+}
+//-->
+
+
+		var logState = 'Log In';
+	
+
+<!--
+var ifavsrc=3;
+//-->
+
+
+	<!--
+	var title1 = 'LARGE QUALITY ON-SITE PUBLIC AUCTION';
+	var desc1 = 'VINTAGE KEY WIND WALL CLOCK';
+	var loc1 = 'Worthington, Oh';
+	var auc1 = 'John B. Auctions';
+	var time1 = 'Saturday&nbsp;Apr&nbsp;27<BR>10:00 am';
+	var keywords1 = 'VINTAGE CLOCKS';
+	var num1 = '';
+	//-->
+
+
+	<!--
+	var title2 = 'William D Munyon Jr. Estate Auction!!!';
+	var desc2 = 'standard garden tractor in 1925 to 1927';
+	var loc2 = 'Momence, IL';
+	var auc2 = 'River Valley Auctions';
+	var time2 = 'Saturday&nbsp;Jul&nbsp;27<BR>10:30 am';
+	var keywords2 = 'garden tractor, tractors, standard garden';
+	var num2 = '';
+	//-->
+
+
+	<!--
+	var title3 = 'Braxton\'s Spring Mancave Spectacular 2019';
+	var desc3 = '';
+	var loc3 = 'Loganville, GA';
+	var auc3 = 'Braxton\'s Auction78.com';
+	var time3 = 'Saturday&nbsp;Apr&nbsp;20<BR>10:00 am';
+	var keywords3 = 'COKE COUNTER , ORIGINAL ';
+	var num3 = '';
+	//-->
+
+
+	<!--
+	var title4 = 'GUNS, FIREARMS, HANDGUNS, AMMO';
+	var desc4 = 'COLT DIAMONDBACK 38';
+	var loc4 = 'Pendleton, Ky';
+	var auc4 = 'MIKE SHAW';
+	var time4 = 'Saturday&nbsp;Apr&nbsp;27<BR>12:00 pm';
+	var keywords4 = 'GUNS, COLT, HAND GUNS, FIREARMS';
+	var num4 = '';
+	//-->
+
+
+	<!--
+	var title5 = 'William D Munyon Jr. Estate Auction!!!';
+	var desc5 = '0787 colt army revolver 45Cal SN. 252528';
+	var loc5 = 'Kankakee, IL';
+	var auc5 = 'River Valley Auctions';
+	var time5 = 'Sunday&nbsp;May&nbsp;19<BR>1:00 pm';
+	var keywords5 = 'colt army  , colt, revolver 45Ca';
+	var num5 = '';
+	//-->
+
+
+	<!--
+	var title6 = 'Farm equipment auction';
+	var desc6 = '86 FORD F-600 DIESEL 102,143';
+	var loc6 = 'Waterford, Oh';
+	var auc6 = 'McLeish Auction Service';
+	var time6 = 'Saturday&nbsp;Apr&nbsp;27<BR>10:00 am';
+	var keywords6 = 'GRAIN, TRUCK, DUMP, EQUIPMENT';
+	var num6 = '';
+	//-->
+
+
+	<!--
+	var title7 = 'HUGE ESTATE SALE!!  GUNS, GOLD, COINS, &amp; KNIVES';
+	var desc7 = 'TAURUS PT92 9MM PISTOL';
+	var loc7 = 'HILSLVILLE, VA';
+	var auc7 = 'Silver Leaf Auction Co.';
+	var time7 = 'Saturday&nbsp;Apr&nbsp;27<BR>10:00 am';
+	var keywords7 = 'PISTOL, GUN, FIREARM';
+	var num7 = '';
+	//-->
+
+
+			<!--
+			//google_ad_client = "pub-1714340745383765";
+			/* 728x90 Footer Ad - Home, created 3/10/11 */
+			//google_ad_slot = "9722494133";
+			//google_ad_width = 728;
+			//google_ad_height = 90;
+			//-->
+		
+var d = new Date(); d = d.getFullYear(); document.write(d);

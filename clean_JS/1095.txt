@@ -1,0 +1,758 @@
+
+	var webApplicationBaseURL = "//www.tirerack.com";
+	
+	var nonSecureWebApplicationBaseURL = webApplicationBaseURL;
+	var isCQpage = true;
+	
+	var QueryString = function () {
+		  // This function is anonymous, is executed immediately and 
+		  // the return value is assigned to QueryString!
+		  var query_string = {};
+		  var query = window.location.search.substring(1);
+		  var vars = query.split("&");
+		  for (var i=0;i<vars.length;i++) {
+		    var pair = vars[i].split("=");
+		        // If first entry with this name
+		    if (typeof query_string[pair[0]] === "undefined") {
+		      query_string[pair[0]] = pair[1];
+		        // If second entry with this name
+		    } else if (typeof query_string[pair[0]] === "string") {
+		      var arr = [ query_string[pair[0]], pair[1] ];
+		      query_string[pair[0]] = arr;
+		        // If third or later entry with this name
+		    } else {
+		      query_string[pair[0]].push(pair[1]);
+		    }
+		  } 
+		    return query_string;
+		} ();
+
+
+	if(typeof s == "undefined"){
+		s = { t: function(){}, tl: function(){}, clearVars: function(){} };
+		s_gi = function(){return s;};
+		s_code = '';
+	}
+	if(typeof s_code == "undefined") {
+		s_code = '';
+	}
+	if(typeof s.clearVars == "undefined"){
+		s.clearVars = function(){};
+	}
+
+
+	window.sessionIsSet = false;
+	
+	if($.cookie('sessionStarted')==1) {
+		window.sessionIsSet = true;
+	} else {
+		$.ajax({ 
+			type: "GET",
+			url: webApplicationBaseURL + "/rest/v1/session/startSession?to_desktop=true",
+			dataType : "jsonp",
+			timeout: 3500,
+			success: function(response) {
+				window.sessionIsSet = true;
+				$(window).trigger("sessionStarted");
+				$.cookie('sessionStarted', '1', { path: '/' });
+			},
+			error: function(jqXHR, exception){
+				window.sessionIsSet = true;
+				$(window).trigger("sessionStarted");
+				$.cookie('sessionStarted', '1', { path: '/' });
+			}
+		});
+	}
+
+	var hideVehicleSelector = "false";
+	var hideVehicleBar = "true";
+	
+	var phoneNumber = "888-541-1777";
+    $(function() {
+	    var affiliatePhoneNumber = getAffiliateCallNumber();
+	    if (typeof affiliatePhoneNumber != 'undefined' && affiliatePhoneNumber.length > 0) {
+	    	phoneNumber = affiliatePhoneNumber;
+	    }
+	});
+    
+    if(window.sessionIsSet == true) {
+    	getVehicleDataForCQ();
+    } else {
+    	$(window).on("sessionStarted",function(){
+    		getVehicleDataForCQ();
+    	});
+    }
+	
+	function getVehicleDataForCQ() {
+		$(document).ready(function(){
+			if (hideVehicleBar != "true") {
+				$.ajax({
+					cache: false, 
+					type: "GET",
+					url: webApplicationBaseURL + "/CurrentVehicleServlet?site=new",
+					dataType: "json",
+					contentType: "text/plain", 
+					success: updateVehicleBar
+				});
+			} else if (hideVehicleSelector != "true") {
+				loadVehicleSelector();
+			}
+		});
+	}
+	
+	$(document).ready(function(){	
+		$(".text.parbase.baseContainer.section, .htmlMarkup.section, .hero.section p, .featureCarousel p, .textImageCarousel .carouselText p, .combineCompare .column2 p, .noimgHero .noimgHeroContent .contentblock-left p, .combineCompare .column2 .subline, #dcMapSection .zipSearchPadding").each(function () {
+			findReplaceTextInDOM(this, '888-541-1777', phoneNumber);
+		});
+		
+		if(typeof QueryString.autoMake != 'undefined'){
+			$('a[href="/tires/dg/SelectVehiclePopup.jsp"]').each( function(){
+				var thisHref = $(this).attr('href') + '?autoMake=' + QueryString.autoMake;
+				if(typeof QueryString.autoYear != 'undefined') thisHref += '&autoYear=' + QueryString.autoYear;
+				$(this).attr('href', thisHref);
+			});
+		}
+	});
+	
+	function updateVehicleBar(data) {
+		if(data.length) {
+			var filter = '';
+			if(typeof QueryString.filterSpecial != 'undefined'){
+				filter = "&filterSpecial=" + encodeURIComponent(QueryString.filterSpecial);
+			}
+			var vehicle = data[0];
+			showVehicleSearchButton(vehicle,filter);
+			$.ajax({ 
+				type: "GET",
+				url: webApplicationBaseURL + "/includes/Components/Nav/AEM_persVehNav.jsp?product=all&site=new" + filter,
+				cache: false,
+				dataType: "html", 
+				success: function(response) {
+					var htmlToAdd = response;
+					$('#AemVehicleNav').html(htmlToAdd);
+					$('#AemVehicleNav').show();
+					$('#vehicleSelector').hide();
+				},
+				error: function(jqXHR, exception){}
+			});
+		} else {
+			if (hideVehicleSelector != "true") {
+				loadVehicleSelector();
+			}
+		}
+		$(window).trigger("vehicleDataLoaded");
+	}
+	function loadVehicleSelector () {
+		//window.alert("Loading Vehicle Selector with size search params: ");
+		var filter = '';
+		if(typeof QueryString.filterSpecial != 'undefined'){
+			filter = "&filterSpecial=" + encodeURIComponent(QueryString.filterSpecial);
+		}
+		$.ajax({ 
+			type: "GET",
+			url: webApplicationBaseURL + "/modalPopups/changeSearchLayer.jsp?xhr=true&product=all"+filter,
+			dataType: "html", 
+			success: function(response) {
+				var htmlToAdd = response;
+				$('#vehicleSelector').html(htmlToAdd).promise().done(function(){
+					currentForm = document.forms["recentVehicles"];
+					$(".vehicle-selector-popup").find('select:not(.ddDisabled)').each(function(){
+						trDropdown(this);
+					});	
+					updateHeroHeight();
+					$(window).on("updateHeroHeight",function(){
+						updateHeroHeight();
+			    	});
+                    //try {
+                    //    mboxDefine('mboxPN4918', 'PN4918');
+                    //    mboxUpdate('PN4918');
+                    //} catch (err) {}
+                    try {
+                    	if($('video.mainBannerImg').length>0) $('video.mainBannerImg')[0].play();
+                    } catch (err) {}
+				});
+			},
+			error: function(jqXHR, exception){}
+		});
+	}
+	function updateHeroHeight(){
+		if($('#vehicleSelector').length > 0){
+			var heroSection = [];
+			if($('.hero.section').length>0){
+				heroSection = $('.hero.section');
+			} else if($('.heroRandom.section').length>0){
+				heroSection = $('.heroRandom.section');
+			} else {
+				heroSection = $('.heroFreeForm.section');
+			}
+			if(heroSection.length > 0){
+				var selectorHeight = $('#vehicleSelector').height() + $('#vehicleSelector').position().top -  ($(heroSection).position().top - $('#headerBackground').height());
+				var minBottomMargin = 60;
+				var heroHeight = $(heroSection).height();
+				if(heroHeight < 560) heroHeight = 560;
+				if(selectorHeight + minBottomMargin > heroHeight) {
+					$('.homeLandingImg .mainBanner').css('height',selectorHeight+minBottomMargin+'px');
+					$('.homeLandingImg .mainBannerImg').css('min-height',selectorHeight+minBottomMargin+'px');
+				}
+			}
+		}
+	}
+	function showVehicleSearchButton(vehicle,filter){
+		var qs = '?autoMake=' + encodeURIComponent(vehicle.autoMake) +
+				 '&autoYear=' + encodeURIComponent(vehicle.autoYear) +
+				 '&autoModel=' + encodeURIComponent(vehicle.autoModel) +
+				 '&autoModClar=' + encodeURIComponent(vehicle.autoModClar) +
+				 filter;
+			
+			window.vehicleSearchButton = '/tires/SelectTireSize.jsp'+ qs + '';
+	}
+
+ var ScarabQueue = ScarabQueue || []; (function(id) { if (document.getElementById(id)) return; var js = document.createElement('script'); js.id = id; js.src = '//cdn.scarabresearch.com/js/17642909895CB523/scarab-v2.js'; var fs = document.getElementsByTagName('script')[0]; fs.parentNode.insertBefore(js, fs); })('scarab-js-api'); 
+ window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'14240048'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.6.0',_tagCount:1,protocol:'https:',events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;} 
+
+		if(typeof window.mboxIDs === 'undefined'){
+			window.mboxIDs = []; 
+		}
+			window.mboxIDs["/content/campaigns/tirerack/geowinter/geowinter/homepage/winterhero/_jcr_content/par.html"] = "content-tirerack-desktop-en-homepage-main-content-start_1";
+			window.mboxIDs["/content/campaigns/tirerack/geowinter/geononwinter/homepage/nonwinterhero/_jcr_content/par.html"] = "content-tirerack-desktop-en-homepage-main-content-start_1";
+	
+
+mboxCreate("GeoTargetHero");
+// hide default mbox content; hiding just the outer div doesn't work, it will be shown again a bit later
+var defaultDivs = document.getElementById("content-tirerack-desktop-en-homepage-main-content-start_1").getElementsByTagName("div");
+for(var i=0; i<defaultDivs.length; i++) {
+    defaultDivs[i].style.visibility="hidden";
+}
+
+// wait 2s for campaign content to arrive before showing default content
+setTimeout(function() {
+    var defaultContent = document.getElementById('content-tirerack-desktop-en-homepage-main-content-start_1');
+    if (defaultContent) {
+    	if(typeof CQ_Analytics.TestTarget.ignoreNextUpdate != 'undefined'){
+        	CQ_Analytics.TestTarget.ignoreNextUpdate('GeoTargetHero');
+    	}
+        var defaultDivs = defaultContent.getElementsByTagName("div");
+        for(var i=0; i<defaultDivs.length; i++) {
+            defaultDivs[i].style.visibility="visible";
+        }
+    }    
+}, 2000);
+
+
+window.threeFeatureAnimationStarted = false;
+function isScrolledIntoView(elem) {
+	var docViewTop = $(window).scrollTop();
+	var docViewBottom = docViewTop + $(window).height();
+	var elemTop = $(elem).offset().top;
+	var elemBottom = elemTop + $(elem).outerHeight();
+	return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+function controlThreeFeaturedAnimations() {
+	var howItWorksWrapper = $('div.howItWorks .wrapper')[0];
+	if(!window.threeFeatureAnimationStarted && isScrolledIntoView(howItWorksWrapper)) {
+		window.threeFeatureAnimationStarted = true;
+		linkTracking({linkName:"tr: home: here's how it works"});
+	}
+}
+
+
+var isIE10Test = false;
+try {
+	if($.browser.msie && $.browser.version == 10) isIE10Test = true;
+} catch(err) {}
+function testThreeFeaturedAnimations() {
+	if(!window.threeFeatureAnimationStarted && isScrolledIntoView(document.getElementById('HowItWorks'))) {
+		window.threeFeatureAnimationStarted = true;
+		if(isIE10Test) {
+			$('#HowItWorks .findFeatured').append($('<img />',{'src':'/content/dam/tirerack/desktop/svg/images/FindEnd.jpg','alt':'Find'}));
+			$('#HowItWorks .deliverFeatured').append($('<img />',{'src':'/content/dam/tirerack/desktop/svg/images/DeliverEnd.jpg','alt':'Deliver'}));
+			$('#HowItWorks .installFeatured').append($('<img />',{'src':'/content/dam/tirerack/desktop/svg/images/InstallEnd.jpg','alt':'Install'}));
+		} else {
+			$('#HowItWorks .findFeatured').append($('<iframe />',{'width':'200px','height':'100px','src':'/images/heres_how_it_works/FDIS_SVG/Find.html'}));
+			$('#HowItWorks .deliverFeatured').append($('<iframe />',{'width':'200px','height':'100px','src':'/images/heres_how_it_works/FDIS_SVG/Deliver.html'}));
+			$('#HowItWorks .installFeatured').append($('<iframe />',{'width':'200px','height':'100px','src':'/images/heres_how_it_works/FDIS_SVG/Install.html'}));
+		}
+		linkTracking({linkName:"tr: home: animation: play"});
+	}
+}
+$(document).ready(function() {
+	$(window).on('scroll', function() {
+		testThreeFeaturedAnimations();
+	}).trigger('scroll');
+});
+
+
+if(window.sessionIsSet == true) {
+	getPromosForCQ();
+} else {
+	$(window).on("sessionStarted",function() {
+		getPromosForCQ();
+	});
+}
+
+function getPromosForCQ() {
+	$.ajax(webApplicationBaseURL+'/includes/Components/promos.jsp?product=all&site=new', {
+		cache: false
+	}).done(function(returnHTML) {
+		var filterBrand = false;
+		$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel').html(returnHTML);
+		var slideTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.all').children().length;
+		if(slideTotal>0 || filterBrand) $('section.promoContainer').show();
+		initializeAllPromoSlides();
+		if(slideTotal>0) setPromoCarouselButtonTracking();
+	});
+}
+
+function initializeAllPromoSlides(){
+	var slideTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.all').children().length;
+	slideTotal = slideTotal>3?3:slideTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.all').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: slideTotal,
+		slidesToScroll: slideTotal
+	});
+}
+
+function initializeTirePromoSlides(){
+	var tireTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.tire').children().length;
+	tireTotal = tireTotal>3?3:tireTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.tire').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: tireTotal,
+		slidesToScroll: tireTotal
+	});
+}
+function initializeSnowPromoSlides(){
+	var snowTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.snow').children().length;
+	snowTotal = snowTotal>3?3:snowTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.snow').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: snowTotal,
+		slidesToScroll: snowTotal
+	});
+}
+function initializeWheelPromoSlides(){
+	var wheelTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.wheel').children().length;
+	wheelTotal = wheelTotal>3?3:wheelTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.wheel').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: wheelTotal,
+		slidesToScroll: wheelTotal
+	});
+}
+function initializeBrakePromoSlides(){
+	var brakeTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.brake').children().length;
+	brakeTotal = brakeTotal>3?3:brakeTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.brake').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: brakeTotal,
+		slidesToScroll: brakeTotal
+	});
+}
+function initializeSuspensionPromoSlides(){
+	var suspensionTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.suspension').children().length;
+	suspensionTotal = suspensionTotal>3?3:suspensionTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.suspension').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: suspensionTotal,
+		slidesToScroll: suspensionTotal
+	});
+}
+function initializeLightPromoSlides(){
+	var lightTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.light').children().length;
+	lightTotal = lightTotal>3?3:lightTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.light').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: lightTotal,
+		slidesToScroll: lightTotal
+	});
+}
+function initializeWiperPromoSlides(){
+	var wiperTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.wiper').children().length;
+	wiperTotal = wiperTotal>3?3:wiperTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.wiper').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: wiperTotal,
+		slidesToScroll: wiperTotal
+	});
+}
+function initializeTuningPromoSlides(){
+	var tuningTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.tuning').children().length;
+	tuningTotal = tuningTotal>3?3:tuningTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.tuning').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: tuningTotal,
+		slidesToScroll: tuningTotal
+	});
+}
+function initializeAccessoryPromoSlides(){
+	var accessoryTotal = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.accessory').children().length;
+	accessoryTotal = accessoryTotal>3?3:accessoryTotal;
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-promotioncarousel .promoCarousel.accessory').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: accessoryTotal,
+		slidesToScroll: accessoryTotal
+	});
+}
+
+
+		if(typeof window.mboxIDs === 'undefined'){
+			window.mboxIDs = []; 
+		}
+			window.mboxIDs["/content/campaigns/tirerack/geowinter/geowinter/homepage/winter-full-width-images-carousel/_jcr_content/par.html"] = "content-tirerack-desktop-en-homepage-main-content-start";
+	
+
+    $(document).ready(function(){
+        $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel').slick({
+        	dots: true,
+        	onBeforeChange: function(slick, currentSlide, nextSlide){
+    			try{
+    				$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel').find('div.video iframe').each(function(){this.contentWindow.AMP_Object.pause()});
+    			}catch(e){}
+    		},
+        	onAfterChange: function(slick, currentSlide){
+    			var $slide = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel');
+    			try{
+    				var $currentIframe = $slide.find('.slick-slide[index="'+currentSlide+'"]').find('iframe');
+    				if($currentIframe.length>0) {
+    					//$($currentIframe[0]).hide().show(0);
+    					try{
+    						var y = ($currentIframe[0].contentWindow || $currentIframe[0].contentDocument);
+    						if (y.document)y = y.document;
+    						y.body.style.display='none';
+    						y.body.offsetHeight; // no need to store this anywhere, the reference is enough
+    						y.body.style.display='';
+    					} catch(err){}
+    				}
+    			}catch(e){}
+    		}
+        });
+
+		$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel').find('.slick-prev').bind('click', function(){
+			linkTracking({linkName: 'tr: home: textimagecarousel: arrows'});
+		});
+		$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel').find('.slick-next').bind('click', function(){
+			linkTracking({linkName: 'tr: home: textimagecarousel: arrows'});
+		});
+		$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-textimagecarousel').find('.slick-dots').find(':button').bind('click', function(){
+			linkTracking({linkName: 'tr: home: textimagecarousel: dots'});
+		});
+		
+		$('div.textImageCarousel div.carouselItem div.addIframe').each(function(){
+			var $container = $(this);
+			$container.removeClass('addIframe');
+			if($container.find('iframe').length==0) {
+				var vidID = $container.data('vid');
+				if(vidID) {
+					$.getJSON(webApplicationBaseURL+'/rest/v1/videoLookUp/id/'+vidID+'?to_desktop=true', function(json) {
+						if(json.status=="success" && json && json.data) {
+							$container.html($('<iframe>',{'width':'500','height':'281','frameborder':'0','allowfullscreen':'','src':webApplicationBaseURL+'/videos/amp/player.jsp?noAnalytics=true&title='+encodeURIComponent(json.data.video.title)+'&image='+encodeURIComponent(json.data.video.ampimageURL)+'&fragment='+encodeURIComponent(json.data.video.ampfragmentURL)}));
+						}
+					});
+				}
+			}
+		})
+    });
+
+
+	if(window.sessionIsSet == true) {
+		getVideoEntertainment();
+	} else {
+		$(window).on("sessionStarted",function(){
+			getVideoEntertainment();
+		});
+	}
+	function getVideoEntertainment(){
+		$.getJSON(webApplicationBaseURL+'/rest/v1/videoLookUp/id/549?to_desktop=true', function(json) {
+			if(json.status=="success") {
+				$vidLocation = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-entertainment');
+				$vidLocation.find('div.entvid1').html('<img src="'+webApplicationBaseURL+json.data.video.desktopThumbURL+'" class="thumb" alt="Play Video" />');
+				$vidLocation.find('div.entvid1').click(function(){
+					openInfoBox(webApplicationBaseURL+'/videos/video_modalbox.jsp?video=549','','default');
+				});
+			}
+		});
+		$.getJSON(webApplicationBaseURL+'/rest/v1/videoLookUp/id/608?to_desktop=true', function(json) {
+			if(json.status=="success") {
+				$vidLocation = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-entertainment');
+				$vidLocation.find('div.entvid2').html('<img src="'+webApplicationBaseURL+json.data.video.desktopThumbURL+'" class="thumb" alt="Play Video" />');
+				$vidLocation.find('div.entvid2').click(function(){
+					openInfoBox(webApplicationBaseURL+'/videos/video_modalbox.jsp?video=608','','default');
+				});
+			}
+		});
+		$.getJSON(webApplicationBaseURL+'/rest/v1/videoLookUp/id/601?to_desktop=true', function(json) {
+			if(json.status=="success") {
+				$vidLocation = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-entertainment');
+				$vidLocation.find('div.entvid3').html('<img src="'+webApplicationBaseURL+json.data.video.desktopThumbURL+'" class="thumb" alt="Play Video" />');
+				$vidLocation.find('div.entvid3').click(function(){
+					openInfoBox(webApplicationBaseURL+'/videos/video_modalbox.jsp?video=601','','default');
+				});
+			}
+		});
+	}
+
+
+	var otherImages = [];
+	var otherImagesAlt = [];
+	var otherImagesTitle = [];
+			otherImages.push('/content/dam/tirerack/desktop/homepage/PackageComponent_KM700.jpg');
+			otherImagesAlt.push('New Tire and Wheel Package on Black SUV');
+			otherImagesTitle.push('Make it a Tire & Wheel Package');
+			otherImages.push('/content/dam/tirerack/desktop/homepage/PackageComponent_Hyper_GT_HLT.jpg');
+			otherImagesAlt.push('New Tire and Wheel Package on White Car');
+			otherImagesTitle.push('Make it a Tire & Wheel Package');
+			otherImages.push('/content/dam/tirerack/desktop/homepage/PackageComponent_MT7_Ventoso.jpg');
+			otherImagesAlt.push('New Tire and Wheel Package on Blue Car');
+			otherImagesTitle.push('Make it a Tire & Wheel Package');
+			otherImages.push('/content/dam/tirerack/desktop/homepage/PackageComponent_X107.jpg');
+			otherImagesAlt.push('New Tire and Wheel Package on Silver Jeep');
+			otherImagesTitle.push('Make it a Tire & Wheel Package');
+			otherImages.push('/content/dam/tirerack/desktop/homepage/PackageComponent_XD127.jpg');
+			otherImagesAlt.push('New Tire and Wheel Package on Black Truck');
+			otherImagesTitle.push('Make it a Tire & Wheel Package');
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous_1').find('.randomImage img.mainBannerImg').each(function(){
+		otherImages.push($(this).attr("src"));
+		otherImagesAlt.push($(this).attr("alt"));
+		otherImagesTitle.push($(this).attr("title"));
+		var randomIndex = Math.floor(Math.random()*otherImages.length);
+		var src = otherImages.splice(randomIndex, 1);
+		var alt = otherImagesAlt.splice(randomIndex, 1);
+		var title = otherImagesTitle.splice(randomIndex, 1);
+		$(this).attr("src", src);
+		$(this).attr("alt", alt);
+		$(this).attr("title", title);
+		if(randomIndex != otherImages.length){
+			otherImages.pop();
+			otherImagesAlt.pop();
+			otherImagesTitle.pop();
+		}
+	});
+	
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous_1').slick({
+		dots: true
+	});
+
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous_1').find('.slick-prev').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous_1: arrows'});
+	});
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous_1').find('.slick-next').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous_1: arrows'});
+	});
+
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous_1').find('.slick-dots').find(':button').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous_1: dots'});
+	});
+	
+	
+
+
+mboxCreate("GeoTarget2015");
+// hide default mbox content; hiding just the outer div doesn't work, it will be shown again a bit later
+var defaultDivs = document.getElementById("content-tirerack-desktop-en-homepage-main-content-start").getElementsByTagName("div");
+for(var i=0; i<defaultDivs.length; i++) {
+    defaultDivs[i].style.visibility="hidden";
+}
+
+// wait 2s for campaign content to arrive before showing default content
+setTimeout(function() {
+    var defaultContent = document.getElementById('content-tirerack-desktop-en-homepage-main-content-start');
+    if (defaultContent) {
+    	if(typeof CQ_Analytics.TestTarget.ignoreNextUpdate != 'undefined'){
+        	CQ_Analytics.TestTarget.ignoreNextUpdate('GeoTarget2015');
+    	}
+        var defaultDivs = defaultContent.getElementsByTagName("div");
+        for(var i=0; i<defaultDivs.length; i++) {
+            defaultDivs[i].style.visibility="visible";
+        }
+    }    
+}, 2000);
+
+
+		if(typeof window.mboxIDs === 'undefined'){
+			window.mboxIDs = []; 
+		}
+			window.mboxIDs["/content/campaigns/tirerack/geowinter/geowinter/homepage/winteroffertesting/_jcr_content/par.html"] = "content-tirerack-desktop-en-homepage-main-content-start_0";
+	
+
+if(window.sessionIsSet == true) {
+	getVideoHeroForCQ();
+} else {
+	$(window).on("sessionStarted",function(){
+		getVideoHeroForCQ();
+	});
+}
+function getVideoHeroForCQ(){
+	$.getJSON(webApplicationBaseURL+'/rest/v1/videoLookUp/id/84?to_desktop=true', function(json) {
+		var vidID = 84;
+		if(json.status=="success") {
+			$vidLocation = $('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-videohero');
+			$vidLocation.find('div.video-thumb').html('<img src="'+webApplicationBaseURL+json.data.video.desktopThumbURL+'" class="thumb" alt="Play Video" />');
+			$vidLocation.find('div.video-thumb').click(function(){
+				openInfoBox(webApplicationBaseURL+'/videos/video_modalbox.jsp?video='+vidID,'','default');
+			});
+		}
+	});
+}
+
+
+mboxCreate("GeoTargetTesting");
+// hide default mbox content; hiding just the outer div doesn't work, it will be shown again a bit later
+var defaultDivs = document.getElementById("content-tirerack-desktop-en-homepage-main-content-start_0").getElementsByTagName("div");
+for(var i=0; i<defaultDivs.length; i++) {
+    defaultDivs[i].style.visibility="hidden";
+}
+
+// wait 2s for campaign content to arrive before showing default content
+setTimeout(function() {
+    var defaultContent = document.getElementById('content-tirerack-desktop-en-homepage-main-content-start_0');
+    if (defaultContent) {
+    	if(typeof CQ_Analytics.TestTarget.ignoreNextUpdate != 'undefined'){
+        	CQ_Analytics.TestTarget.ignoreNextUpdate('GeoTargetTesting');
+    	}
+        var defaultDivs = defaultContent.getElementsByTagName("div");
+        for(var i=0; i<defaultDivs.length; i++) {
+            defaultDivs[i].style.visibility="visible";
+        }
+    }    
+}, 2000);
+
+
+	var otherImages = [];
+	var otherImagesAlt = [];
+	var otherImagesTitle = [];
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous').find('.randomImage img.mainBannerImg').each(function(){
+		otherImages.push($(this).attr("src"));
+		otherImagesAlt.push($(this).attr("alt"));
+		otherImagesTitle.push($(this).attr("title"));
+		var randomIndex = Math.floor(Math.random()*otherImages.length);
+		var src = otherImages.splice(randomIndex, 1);
+		var alt = otherImagesAlt.splice(randomIndex, 1);
+		var title = otherImagesTitle.splice(randomIndex, 1);
+		$(this).attr("src", src);
+		$(this).attr("alt", alt);
+		$(this).attr("title", title);
+		if(randomIndex != otherImages.length){
+			otherImages.pop();
+			otherImagesAlt.pop();
+			otherImagesTitle.pop();
+		}
+	});
+	
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous').slick({
+		dots: true
+	});
+
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous').find('.slick-prev').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous: arrows'});
+	});
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous').find('.slick-next').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous: arrows'});
+	});
+
+	$('#2ad3ad11-7712-44b5-b623-4fbc42a6453c-main-content-fullwidthimagecarous').find('.slick-dots').find(':button').bind('click', function(){
+		linkTracking({linkName: 'tr: home: fullwidthimagecarous: dots'});
+	});
+	
+	
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "565953"]);
+  gts.push(["badge_position", "USER_DEFINED"]);
+  gts.push(["badge_container", "GTS_CONTAINER"]);
+  gts.push(["locale", "en_US"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+var google_tag_params = {
+		pagetype: 'home',
+		prodid: '',
+		pvalue: '',
+		pcat: '',
+		pname: '',
+		use_case: 'retail'
+};
+
+
+	/* <![CDATA[ */
+	var google_conversion_id = 959929992;
+	var google_conversion_label = "jmyeCLi66wUQiL3dyQM";
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+
+
+	
+
+var affiliate = "";
+
+if(typeof QueryString.affiliate != 'undefined'){
+	affiliate = "?to_desktop=true&affiliate=" + QueryString.affiliate;
+} else {
+	affiliate = "?to_desktop=true";
+}
+
+var getAnalyticsResponse = function(){
+	return new Promise(function(resolve, reject){
+		$.ajax({
+			type : "GET",
+			url : webApplicationBaseURL + "/rest/v1/analyticsLookUp/analyticsResponse"+affiliate,
+			dataType : "jsonp",
+			contentType : "application/jsonp",
+			success : function(response) {
+				if (response.status == "success") {
+					if(response.data.campaignCode != '')
+						s.campaign = response.data.campaignCode;
+					if(response.data.marketingChannel != '')
+						s.eVar74 = response.data.marketingChannel;
+					if(response.data.origRefer != '')
+						s.referrer = response.data.origRefer;
+					s.eVar37 = response.data.ecustID;
+					s.eVar18 = response.data.authenticatedUser;
+					s.eVar52 = response.data.userId;
+					resolve();
+				}
+			},
+			error : function(jqXHR, exception) {
+				resolve();
+			}
+		});
+	});
+}; 
+
+s.pageName='tr: home';
+s.channel='home';
+s.hier1='home';
+s.errorPage='';
+s.prop6="english";
+s.prop42=s.pageName;
+s.prop49="D=pageName";
+s.prop60="desktop";
+s.eVar42="D=c42";
+s.eVar60="D=c60";
+var s_code = '';
+getAnalyticsResponse().then(function(){
+    /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+    var s_code=s.t();if(s_code)document.write(s_code);
+});
+

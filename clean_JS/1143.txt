@@ -1,0 +1,134 @@
+
+      //<![CDATA[
+      // Add Google Font name here
+
+      WebFontConfig = { google: { families: [ 'Bangers', 'Arimo' ] } };
+                                             (function() {
+                                             var wf = document.createElement('script');
+                                             wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                                             '://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js';
+                                             wf.type = 'text/javascript';
+                                             wf.async = 'true';
+                                             var s = document.getElementsByTagName('script')[0];
+                                 s.parentNode.insertBefore(wf, s);
+                                })();
+
+                       //]]>
+    
+
+          AddShoppersTracking = {
+            image: '' // add URL for custom product image (RECOMMENDED if not using Product Schema)
+          }
+          var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';
+          js.src = ('https:' == document.location.protocol ? 'https://shop.pe' : 'http://cdn.shop.pe') + '/widget/widget_async.js#53a21c22a38764743210caec';
+          document.getElementsByTagName("head")[0].appendChild(js);
+        
+
+          setTimeout(function(){var a=document.createElement("script");
+                                var b=document.getElementsByTagName("script")[0];
+                                a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0020/2334.js?"+Math.floor(new Date().getTime()/3600000);
+                                a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+        
+
+var google_tag_params = {
+
+ecomm_pagetype: 'home',
+
+};
+
+
+var google_tag_params = {
+
+ecomm_pagetype: 'home',
+
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072310438;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+ 
+$(document).ready(function() {
+  
+  
+   
+  $(".pselector").change(function (e){
+    e.preventDefault();
+     
+    console.log('step 1');
+    var id= '#product-select2_' + $(this).val().toLowerCase().replace(/\s/g, '');
+     var number = $(id).attr("data-no");
+    number=parseFloat(number) + 1;
+    var origin = 229;
+      var margin = 461;
+    if(number== 0){
+      var origin = 229;
+      var margin = 461;
+      }
+    else{
+      var origin = 229*number;
+      var margin = 461*number;
+    }
+    $('#flexslider-product').find(".slides").css("transform", "translate3d(-"+margin+"px, 0px, 0px)")
+    $("#flexcarousel-product").find(".islide").removeClass("flex-active-slide")
+    $('#flexcarousel-product').find(".islide").eq(number).addClass("flex-active-slide");
+    
+    
+    
+});
+});
+           
+  $(document).ready(function() {
+   $(".single-option-selector").change(function (e){
+    e.preventDefault();
+    var id= '#product-select2_' + $(this).val().toLowerCase().replace(/\s/g, '');
+     var number = $(id).attr("data-no");
+    number=parseFloat(number) ;
+    var origin = 229;
+      var margin = 461;
+    if(number== 0){
+      var origin = 229;
+      var margin = 461;
+      }
+    else{
+      var origin = 229*number;
+      var margin = 461*number;
+    }
+  //  $('#flexslider-product').find(".slides").css("transform", "translate3d(-"+margin+"px, 0px, 0px)")
+    // alert(number);
+      $('#flexcarousel-product').find(".islide").eq(number).click();
+  //  $("#flexcarousel-product").find(".islide").removeClass("flex-active-slide")
+   // $('#flexcarousel-product').find(".islide").eq(number).addClass("flex-active-slide");
+    
+});
+});
+           $(document).ready(function() {
+   $(".islide").click(function (e){
+    e.preventDefault();
+     var id = $(this).attr("data-id");
+    if(id )
+      {
+      	$('.single-option-selector').val(id).prop('selected', true);
+      }
+    
+});
+});
+           
+           
+
+
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'EuSi9k']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+

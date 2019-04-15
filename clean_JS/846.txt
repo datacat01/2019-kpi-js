@@ -1,0 +1,535 @@
+
+    var typoStores = {};
+	typoStores.url = 'https://telescopes.net/store/';
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.telescopes.net';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+        //<![CDATA[
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            
+ga('create', 'UA-953152-1', 'auto');
+
+ga('send', 'pageview');
+            
+        //]]>
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"e6612ef90d87be3b60c210ce8088aa7b61e44019d19307b82e1f6c8a666c8717980445b48421d80c2b32a92f122bf690", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");
+
+        $typo(document).ready(function() {
+            $typo("#typo-accordion").TypoAccordion({
+                accordion:true,
+                speed: 400,
+                closedSign: 'collapse icon_plus',
+                openedSign: 'expand icon_minus-06',
+                mouseType: 0,
+                easing: 'easeInOutQuad'
+            });
+            $typo(".expand").empty();
+        });
+
+        (function($){
+            $(window).load(function(){
+                $(".navbar").mCustomScrollbar({
+                    theme:"light-2",
+                    scrollButtons:{
+                      enable:false
+                    }
+                });
+            });
+        })(jQuery);
+    
+
+    var datatext = {};
+    datatext.load = '<i class="icon_loading fa-spin"></i>';
+    Translator.add('View cart','View cart');
+    Translator.add('The quantity not zero!','The quantity not zero!');
+    (function($){
+        $(window).load(function(){
+            $("#ajaxcart-scrollbar").mCustomScrollbar({
+                theme:"dark-2",
+                scrollButtons:{
+                  enable:true
+                }
+            });
+        });
+    })(jQuery);
+
+
+        function isRetina() {
+            return ((window.matchMedia && (window.matchMedia('only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx), only screen and (min-resolution: 75.6dpcm)').matches || window.matchMedia('only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)').matches)) || (window.devicePixelRatio && window.devicePixelRatio > 2)) && /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+        }
+                $typo(window).load(function () {
+            // alert(isRetina());
+            var $logoImg = $typo('.logo img');
+            if (isRetina()) {
+                $logoImg.attr('src', $logoImg.attr('src').replace('logo-horizontal_2.png', 'logo-horizontal_3.png'));
+            }
+        });
+            
+
+                new Typo.Widget('widget-10', {
+                    carousel: {"enable":true,"dots":true,"autoplay":true,"autoplayTimeout":8000,"autoplayHoverPause":true,"smartSpeed":750,"animateOut":"fadeOut","animateIn":"fadeIn","items":1,"loop":false,"lazyLoad":true,"margin":0,"autoHeight":false,"rtl":false,"responsive":{"0":[],"480":[],"768":[],"992":[],"1200":[]},"nav":true,"rewind":true,"navText":["<i class=\"fa fa-angle-left\"><\/i>","<i class=\"fa fa-angle-right\"><\/i>"],"engineSrc":"js\/typostores\/js\/owl-carousel2\/dist\/owl.carousel.min.js"},
+                    carouselConfig: null,
+                    animation: {"enable":false,"animationName":null,"animationDelay":300,"itemSelector":null,"engineSrc":"js\/typostores\/lib\/wow\/dist\/wow.min.js"},
+                    parallax: {"enable":false,"type":null,"overlay":null,"video":{"src":null,"volume":false},"image":{"src":null,"fit":null,"repeat":null,"height":"500px"},"file":{"poster":null,"mp4":null,"webm":null,"volume":false}},
+                    kenburns: {"enable":false,"images":[],"overlay":null,"engineSrc":"js\/typostores\/extensions\/jquery\/plugins\/kenburns.min.js"},
+                    
+                    
+                    countdown: {"enable":false,"yearText":"years","monthText":"months","weekText":"weeks","dayText":"days","hourText":"hours","minText":"mins","secText":"secs","yearSingularText":"year","monthSingularText":"month","weekSingularText":"week","daySingularText":"day","hourSingularText":"hour","minSingularText":"min","secSingularText":"sec","engineSrc":"js\/typostores\/lib\/jcountdown\/dist\/jquery.jcountdown.min.js"},
+                    countdownConfig: null,
+                    countdownTemplate: '<div class="cd-sale day"><span class="num">%d</span><span class="unit">%td</span></div><div class="cd-sale hour"><span class="num">%h</span><span class="unit">%th</span></div><div class="cd-sale minute"><span class="num">%i</span><span class="unit">%ti</span></div><div class="cd-sale second"><span class="num">%s</span><span class="unit">%ts</span></div>',
+                });
+            
+
+                if (navigator.cookieEnabled) {
+                        document.observe('keydown', function (evt) {
+                if (evt.keyCode == 27) {
+                    win.cancelCallback();
+                }
+            });
+                        document.observe('keydown', function (evt) {
+                if (evt.keyCode == 13) {
+                    win.okCallback();
+                }
+            });
+            var cookieStored = emailCookieExists();
+            if (!cookieStored && $('popupDialog') == undefined) {
+                var popupWidth = 30*window.innerWidth/100;
+                var popupHeight = 30*window.innerHeight/100;
+                var win = Dialog.confirm($('email').innerHTML, {
+                    className: "popup",
+                    id: "popupDialog",
+                    width: popupWidth,
+
+                    zIndex: 2001,
+                    okLabel: 'Confirm',
+                                        cancelLabel: 'Close',
+                    onCancel: function (win) {
+                                                createCookie('email','none', "30");
+                                                                    },
+                                        onOk: function (win) {
+                        var inputFieldEmail = $$('.email_input input[type=text]').first();
+                        var inputFieldFName = $$('.fname_input input[type=text]').first();
+                        var inputFieldLName = $$('.lname_input input[type=text]').first();
+                        var email = inputFieldEmail.value;
+                        var fname = '';
+                        var lname = '';
+                        if(inputFieldFName) {
+                            fname = inputFieldFName.value;
+                        }
+                        if(inputFieldLName) {
+                            lname = inputFieldLName.value;
+                        }
+                        if (validateEmail(email)) {
+                            createCookie('email',email + '/' + fname + '/' + lname, 365);
+                                                        createCookie('subscribe','true', 365);
+                            location.reload();
+                                                    } else {
+                            $('email_error_msg').innerHTML = 'Not a valid e-mail address';
+                            $('email_error_msg').setStyle({color: '#F00'});
+                            $('email_error_msg').show();
+                            Windows.focusedWindow.updateHeight();
+                            new Effect.Shake(Windows.focusedWindow.getId());
+                        }
+                    }
+                });
+                                Event.observe(window, 'load', function () {
+                    $('overlay_modal').observe('click', function () {
+                        win.close();
+                        win.cancelCallback();
+                    });
+                });
+                            }
+        }
+                function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+        function emailCookieExists() {
+            if(Mage.Cookies.get('email')) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        function createCookie(name, value, expirationInDays) {
+            var now = new Date();
+            var expire = new Date(now.getTime() + (expirationInDays * 24 * 60) * 60000);//[(1 * 365 * 24 * 60) * 60000] == 1 year  -- (Years * Days * Hours * Minutes) * 60000
+            //document.cookie = cookie + '; expires=' + expire + '; path=/';
+            Mage.Cookies.expires = expire;
+            Mage.Cookies.set(name,value);
+        }
+    
+
+        jQuery(document).ready(function($) {
+            $('.tab-mobile').on('click', function(event) {
+                event.preventDefault();
+                $(this).find('+ .widget-tabs').toggleClass('showing');
+            });
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.tab-mobile').length) {
+                    $('.widget-tabs').removeClass('showing');
+                }
+            });
+            $('.widget-tabs >li>a').on('click', function(event) {
+                $(this).parents('.widget-tabs').removeClass('showing');
+            });
+        });
+        new Typo.Widget('widget-20e473a5c1e378e1b142074e2fbf80f4', {
+            carousel: {"enable":true,"dots":false,"autoplay":true,"autoplayTimeout":5000,"autoplayHoverPause":true,"smartSpeed":750,"animateOut":"fadeOut","animateIn":"fadeIn","items":4,"loop":false,"lazyLoad":true,"margin":30,"autoHeight":false,"rtl":false,"responsive":{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"2"},"992":{"items":"3"},"1200":{"items":"4"}},"nav":true,"rewind":true,"navText":["<",">"],"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/js\/owl-carousel2\/dist\/owl.carousel.min.js"},
+            carouselConfig: null,
+            animation: {"enable":false,"animationName":null,"animationDelay":300,"itemSelector":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/lib\/wow\/dist\/wow.min.js"},
+            collectionUrl: 'https://telescopes.net/store/typowidget/collection/get/',
+            collectionCallback: function(){},
+            spinnerClass: 'spinner',
+            spinnerImg: 'https://telescopes.net/store/media/extendware/ewimageopt/media/skin/bb/7/loader.gif',
+            parallax: {"enable":false,"type":null,"overlay":null,"video":{"src":null,"volume":false},"image":{"src":null,"fit":null,"repeat":null,"height":"500px"},"file":{"poster":null,"mp4":null,"webm":null,"volume":false}},
+            countdown: {"enable":false,"yearText":"years","monthText":"months","weekText":"weeks","dayText":"days","hourText":"hours","minText":"mins","secText":"secs","yearSingularText":"year","monthSingularText":"month","weekSingularText":"week","daySingularText":"day","hourSingularText":"hour","minSingularText":"min","secSingularText":"sec","engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/lib\/jcountdown\/dist\/jquery.jcountdown.min.js"},
+            countdownConfig: null,
+            countdownTemplate: '<div class="cd-prosale day"><span class="num">%d</span><span class="unit">%td</span></div><div class="cd-prosale hour"><span class="num">%h</span><span class="unit">%th</span></div><div class="cd-prosale minute"><span class="num">%i</span><span class="unit">%ti</span></div><div class="cd-prosale second"><span class="num">%s</span><span class="unit">%ts</span></div>',
+            kenburns: {"enable":false,"images":[],"overlay":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/extensions\/jquery\/plugins\/kenburns.min.js"}        });
+    
+
+        jQuery(document).ready(function($) {
+            $('.tab-mobile').on('click', function(event) {
+                event.preventDefault();
+                $(this).find('+ .widget-tabs').toggleClass('showing');
+            });
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.tab-mobile').length) {
+                    $('.widget-tabs').removeClass('showing');
+                }
+            });
+            $('.widget-tabs >li>a').on('click', function(event) {
+                $(this).parents('.widget-tabs').removeClass('showing');
+            });
+        });
+        new Typo.Widget('widget-fdef008279a6154cbe3cb4ace6e6565f', {
+            carousel: {"enable":true,"dots":false,"autoplay":false,"autoplayTimeout":false,"autoplayHoverPause":true,"smartSpeed":750,"animateOut":"fadeOut","animateIn":"fadeIn","items":4,"loop":false,"lazyLoad":true,"margin":30,"autoHeight":false,"rtl":false,"responsive":{"0":["1"],"480":["1"],"768":["2"],"992":["3"],"1200":["4"]},"nav":true,"rewind":true,"navText":["<",">"],"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/js\/owl-carousel2\/dist\/owl.carousel.min.js"},
+            carouselConfig: null,
+            animation: {"enable":false,"animationName":null,"animationDelay":300,"itemSelector":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/lib\/wow\/dist\/wow.min.js"},
+            collectionUrl: 'https://telescopes.net/store/typowidget/collection/get/',
+            collectionCallback: function(){},
+            spinnerClass: 'spinner',
+            spinnerImg: 'https://telescopes.net/store/media/extendware/ewimageopt/media/skin/bb/7/loader.gif',
+            parallax: {"enable":false,"type":null,"overlay":null,"video":{"src":null,"volume":false},"image":{"src":null,"fit":null,"repeat":null,"height":"500px"},"file":{"poster":null,"mp4":null,"webm":null,"volume":false}},
+            countdown: {"enable":false,"yearText":"years","monthText":"months","weekText":"weeks","dayText":"days","hourText":"hours","minText":"mins","secText":"secs","yearSingularText":"year","monthSingularText":"month","weekSingularText":"week","daySingularText":"day","hourSingularText":"hour","minSingularText":"min","secSingularText":"sec","engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/lib\/jcountdown\/dist\/jquery.jcountdown.min.js"},
+            countdownConfig: null,
+            countdownTemplate: '<div class="cd-prosale day"><span class="num">%d</span><span class="unit">%td</span></div><div class="cd-prosale hour"><span class="num">%h</span><span class="unit">%th</span></div><div class="cd-prosale minute"><span class="num">%i</span><span class="unit">%ti</span></div><div class="cd-prosale second"><span class="num">%s</span><span class="unit">%ts</span></div>',
+            kenburns: {"enable":false,"images":[],"overlay":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/extensions\/jquery\/plugins\/kenburns.min.js"}        });
+    
+
+
+        new Typo.Widget('widget-manufacturer', {
+
+            carousel: {"enable":true,"dots":false,"autoplay":false,"autoplayTimeout":false,"autoplayHoverPause":true,"smartSpeed":750,"animateOut":"fadeOut","animateIn":"fadeIn","items":6,"loop":false,"lazyLoad":true,"margin":30,"autoHeight":false,"rtl":false,"responsive":{"0":{"items":"2"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"5"},"1200":{"items":"6"}},"nav":true,"rewind":true,"navText":["<i class=\"fa fa-angle-left\"><\/i>","<i class=\"fa fa-angle-right\"><\/i>"],"engineSrc":"js\/typostores\/js\/owl-carousel2\/dist\/owl.carousel.min.js"},
+
+            carouselConfig: null,
+
+            animation: {"enable":false,"animationName":null,"animationDelay":300,"itemSelector":null,"engineSrc":"js\/typostores\/lib\/wow\/dist\/wow.min.js"},
+
+            parallax: {"enable":false,"type":null,"overlay":null,"video":{"src":null,"volume":false},"image":{"src":null,"fit":null,"repeat":null,"height":"500px"},"file":{"poster":null,"mp4":null,"webm":null,"volume":false}},
+
+            kenburns: {"enable":false,"images":[],"overlay":null,"engineSrc":"js\/typostores\/extensions\/jquery\/plugins\/kenburns.min.js"}        });
+
+    
+
+        new Typo.Widget('widget-0b230561b854221822c521e5e3953522', {
+            carousel: {"enable":false,"dots":false,"autoplay":false,"autoplayTimeout":false,"autoplayHoverPause":true,"smartSpeed":750,"animateOut":"fadeOut","animateIn":"fadeIn","items":4,"loop":false,"lazyLoad":true,"margin":30,"autoHeight":false,"rtl":false,"responsive":{"0":[],"480":[],"768":[],"992":[],"1200":[]},"nav":false,"rewind":true,"navText":["<i class=\"fa fa-angle-left\"><\/i>","<i class=\"fa fa-angle-right\"><\/i>"],"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/js\/owl-carousel2\/dist\/owl.carousel.min.js"},
+            carouselConfig: null,
+            animation: {"enable":false,"animationName":null,"animationDelay":300,"itemSelector":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/lib\/wow\/dist\/wow.min.js"},
+            parallax: {"enable":false,"type":null,"overlay":null,"video":{"src":null,"volume":false},"image":{"src":null,"fit":null,"repeat":null,"height":"500px"},"file":{"poster":null,"mp4":null,"webm":null,"volume":false}},
+            kenburns: {"enable":false,"images":[],"overlay":null,"engineSrc":"https:\/\/telescopes.net\/store\/js\/typostores\/extensions\/jquery\/plugins\/kenburns.min.js"}        });
+    
+
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    
+
+    // page loading
+    jQuery(document).ready(function($) {
+                    jQuery('.typo-container').addClass('loaded');
+                NProgress.configure({
+            showSpinner: false,
+            speed: 500,
+            trickleRate: 0.1,
+            trickleSpeed: 500
+        });
+        NProgress.start();
+    });
+    jQuery(window).load(function($) {
+        setTimeout(function () {
+                        NProgress.done();
+        }, 300);
+
+        // auto hide message
+        if ($typo('.messages').length) {
+            $typo('.messages').find('>li').append('<i aria-hidden="true" class="icon_close"></i>');
+            $typo('.messages .icon_close').click(function(event) {
+                $typo(this).parents('.messages').fadeOut();
+            });
+            setTimeout(function () {
+                $typo('.messages').fadeOut();
+            }, 10000);
+        }
+    });
+
+    $typo(function($) {
+        //lazyload
+        $("img.lazy").lazy({
+            effect : "fadeIn",
+            effectTime: 800,
+            threshold: 250,
+            retinaAttribute: "data-src-retina"
+        });
+        //Back to top
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#back-top').fadeIn();
+            } else {
+                $('#back-top').fadeOut();
+            }
+        });
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        //Quickview
+        $(document).on('click', '.product-quickview', function(event) {
+            event.preventDefault();
+            $.colorbox({
+                iframe: true,
+                href:this.href,
+                opacity:    0.8,
+                speed:      300,
+                current:    '{current} / {total}',
+                close:      "close",
+                width: '100%',
+                height: '100%',
+                maxWidth: '930px',
+                maxHeight: '100%',
+                fastIframe: true,
+                fixed: true,
+                className: 'box-quickview',
+                close: '<i aria-hidden="true" class="icon_close"></i>',
+                onOpen: function () {
+                    $('#cboxLoadingGraphic').addClass('box-loading');
+                },
+                onComplete: function () {
+                    setTimeout(function () {
+                        $('#cboxLoadingGraphic').removeClass('box-loading');
+                    }, 3000);
+                }
+            });
+        });
+
+        $(document).on('click', '.show-quickview', function(event) {
+            event.preventDefault();
+            if($('.btn-cart-mobile').length == 0){
+                $(this).next().trigger('click');
+            }else{
+                return window.location.href=$(this).attr('data-submit');
+            }
+        });
+    });
+    
+    $typo(".accordion-footer").addClass("accordion-show");
+    $typo(".accordion-footer").click(function(){
+        if($typo(this).parent().next().is(":visible")){
+            $typo(this).addClass("accordion-show");
+        }else{
+            $typo(this).removeClass("accordion-show");
+        }
+        $typo(this).parent().next().toggle(400);
+    });
+    
+    jQuery(document).ready(function() {
+        jQuery('[data-toggle="tooltip"]').tooltip({
+            container: 'body'
+        });
+    });
+
+    // button menum mobile
+    (function() {
+        "use strict";
+        var toggles = document.querySelectorAll(".cmn-toggle-switch");
+        for (var i = toggles.length - 1; i >= 0; i--) {
+            var toggle = toggles[i];
+            toggleHandler(toggle);
+        };
+
+        function toggleHandler(toggle) {
+            toggle.addEventListener("click", function(e) {
+                e.preventDefault();
+                (this.classList.contains("active") === true) ? this.classList.remove("active"): this.classList.add("active");
+            });
+        }
+    })();
+
+    jQuery(document).ready(function($) {
+        // Home 04 - Fullpage
+        if ($('#fullpage').length) {
+            $('#fullpage > div').addClass('section moveDown');
+            $('#fullpage').fullpage({
+                // anchors: ['page01', 'page02', 'page03','page04','page05'],
+                // autoScrolling: false,
+                navigation: true,
+                navigationPosition: 'right',
+                sectionSelector: '.section',
+                onLeave: function(index, nextIndex, direction){
+                    //leaving 1st section
+                    if(index == 1){
+                       $('.sticky-wrapper').addClass('is-sticky');
+                    }
+                    //back to the 1st section
+                    if(nextIndex == 1){
+                        $('.sticky-wrapper').removeClass('is-sticky');
+                    }
+                }
+            });
+        };
+        // Home 05 - Presentation
+        if ($('#multiscroll').length) {
+            $('#multiscroll').multiscroll({
+                onLeave: function(index, newIndex, direction){
+                    if(direction =='down'){
+                        $('#multiscroll .ms-section').removeClass('moveUp moveDown');
+                        $('#multiscroll .ms-section').eq(newIndex -1).addClass('moveUp');
+                    }
+                    else if(direction == 'up'){
+                        $('#multiscroll .ms-section').removeClass('moveUp moveDown');
+                        $('#multiscroll .ms-section').eq(newIndex -1).addClass('moveDown');
+                    }
+                }
+            });
+        };
+
+        // Map - Disable scroll zooming and bind back the click event
+        var onMapMouseleaveHandler = function (event) {
+            var that = $(this);
+
+            that.on('click', onMapClickHandler);
+            that.off('mouseleave', onMapMouseleaveHandler);
+            that.find('iframe').css("pointer-events", "none");
+        }
+
+        var onMapClickHandler = function (event) {
+            var that = $(this);
+
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+
+        // Enable map zooming with mouse scroll when the user clicks the map
+        $('.contact-map iframe').css('pointer-events', 'none');
+        $('.contact-map').on('click', onMapClickHandler);
+    });
+
+    //Home 10 - Sidebar
+    (function($){
+        $(window).load(function(){
+            if ($(".vheader-layout-1 .sb-header-menu").length) {
+                $(".vheader-layout-1 .sb-header-menu").mCustomScrollbar({
+                    theme:"dark-2",
+                    scrollButtons:{
+                        enable:false
+                    }
+                });
+            }
+            if ($(".vheader-layout-2 .sb-header-menu").length) {
+                $(".vheader-layout-2 .sb-header-menu").mCustomScrollbar({
+                    theme:"light-2",
+                    scrollButtons:{
+                        enable:false
+                    }
+                });
+            }
+        });
+    })(jQuery);
+
+
+    (function($){
+        
+        $(document).on('click', '.block-wishlist #wishlist-sidebar a', function(event) {
+            event.preventDefault();
+            // if (confirm($(this).attr('data-confirm'))) {
+            //     removetowishlist($(this));
+            // }
+            removetowishlist($(this));
+        });
+        $(document).on('click', '.add-to-links a.link-wishlist', function(event) {
+            event.preventDefault();
+            addtowishlist($(this));
+        }); 
+        if($('.product-view').length>0){
+            productAddToCartForm.submitLight = function(button, url){
+                return false; 
+            }.bind(productAddToCartForm);
+        }
+                        $(document).on('click', '.add-to-links a.link-compare', function(event) {
+            event.preventDefault();
+            addtocompare($(this));
+        });
+        $(document).on('click', '.block-top-compare a.btn-remove', function(event) {
+            event.preventDefault();
+            // if (confirm($(this).attr('data-confirm'))) {
+            //     removecompare($(this));
+            // }
+            removecompare($(this));
+        });
+        $(document).on('click', '.block-compare .clearall a, .block-compare .actions a, .block-top-compare .btn-remove-all', function(event) {
+            event.preventDefault();
+            // if (confirm($(this).attr('data-confirm'))) {
+            //     clearallcompare($(this));
+            // }
+            clearallcompare($(this));
+        });
+            })($typo);
+
+
+                var deviceType = (window.innerWidth <= 767) ? 'm' : (window.innerWidth >= 980) ? 'd' : 't';
+                window.criteo_q = window.criteo_q || [];
+                window.criteo_q.push({"event": "setSiteType", "type": deviceType, "ecpplugin": "magento-1.6.1"});
+                window.criteo_q.push( {"event":"setAccount","account":"39993"},
+{"event":"setEmail","email":""},
+{"event":"viewHome"} );
+        	
+            
+
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    "event": "crto_homepage",
+                    "crto": {"email":""} 
+                });
+            
+
+    var hps = hps || {};
+    hps.paypal = hps.paypal || {};
+    hps.paypal.incontext = {"env":"sandbox","bmlUrl":"https:\/\/telescopes.net\/store\/securesubmit\/paypal\/incontextCredit\/button\/1\/","stdUrl":"https:\/\/telescopes.net\/store\/securesubmit\/paypal\/incontext\/button\/1\/"}

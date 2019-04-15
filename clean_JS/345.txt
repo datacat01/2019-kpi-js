@@ -1,0 +1,472 @@
+
+
+//watch for clicks on searchspring filters.  on event, make sure certona div hidden
+// $('.sidebar__navigation--tablet').on('click', '.search-filters a', function() {
+//     console.log('saw click on ss filter');
+//     if ($('#certonaTarget #category1_rr').length) {
+// 		$('#certonaTarget #category1_rr').remove();
+// 	}	
+// });
+
+function ssAfterResults(ssTotalItems, ssCrumbs) { 
+    
+    //console.log("ssAFterResults FOOTER", ssTotalItems, ssCrumbs);
+    
+    if (window.location.href.indexOf("#") === -1) {
+        //console.log("skipping certona processing because ss results haven't yet been viewed");
+		return false;
+    }
+
+    // get breadcrumbs from window
+	var bcArr = [];
+	$(".breadcrumbs li span a").each(function(){
+	    if ( $(this).text() != '>') {
+	        bcArr.push( $.trim( $(this).text() ));
+	    }
+	});
+	bcArr.shift();  
+    
+	// merge breadcrumbs from ss with window
+	var categoryBcPath = bcArr.slice();
+	if (typeof ssCrumbs !== 'undefined' && ssCrumbs) {
+	    var crumbs = ssCrumbs.split("#");
+	    for (var i=0;i < crumbs.length;i++) {
+	        var cleanString = strip_entities(crumbs[i]).trim();
+	        if (categoryBcPath.indexOf(cleanString) === -1) {
+ 		   		categoryBcPath.push(cleanString);
+		    }		        
+	    }
+	}
+	
+	/* if this function is called, this will either need to be hidden or refreshed.  
+	start with a blank slate by hiding it */	 
+    if ($('#certonaTarget #category1_rr').length) {
+		$('#certonaTarget #category1_rr').remove();
+	}				
+
+	if (categoryBcPath.length) {
+		var ssBreadcrumb = categoryBcPath.join(' > ');
+		//console.log('categoryBcPath', categoryBcPath, 'ssBreadcrumb', ssBreadcrumb);
+		
+		// Update page title with path from SS
+		//console.log("attemtping to update heading #searchspring-results_title to:", ssBreadcrumb);
+		//$('#searchspring-results_title').text(ssBreadcrumb);
+		
+ 		function certonaRefreshCond(results) {
+ 		    //logic to determine whether the certona recommendations div should be refreshed
+ 		    refreshCertona = false;
+ 		    if (results > 20) {
+ 		        var filterCount = 0;
+ 		        var hasCategoryFilter = false;
+ 		        var hashes = window.location.hash.split('/');
+ 		        for(var i = 0; i < hashes.length; i++) {
+ 		            hash = hashes[i].split(':');    
+ 		            if (hash && hash.length > 1 && /^#?filter$/.test(hash[0])) {
+ 		                filterCount++;
+ 		            }
+ 		           	if (hash && hash[1] && (hash[1] === 'ss_hierarchy' || hash[1] === 'ss_category')) {
+ 		                hasCategoryFilter = true;
+ 		            }
+ 		        }
+ 		        if ((hasCategoryFilter && filterCount === 1) || filterCount === 0) {
+ 		           refreshCertona = true;
+ 		        }
+ 		    }
+ 		    return refreshCertona;
+ 		} 			
+		
+		if ( certonaRefreshCond(ssTotalItems) ){	
+			try {
+				certona.category_1 = categoryBcPath[0] || '';
+				certona.category_2 = categoryBcPath[1] || '';
+				certona.category_3 = categoryBcPath[2] || '';
+				certona.category_4 = categoryBcPath[3] || '';
+				certona.secondary_nav = '';
+				if (!/^DVD > DVD Genre|^DVD$|^Home|^Clothing|^T\-Shirts/.test(ssBreadcrumb) ||
+				    ssBreadcrumb === 'Home & Recreation > Personalized' || 
+				    ssBreadcrumb === 'Home & Recreation > Holidays'  
+					) {
+				    //console.log('adding secondary nav:', ssBreadcrumb);
+				    certona.secondary_nav = ssBreadcrumb;
+				}
+			    certonaResx = null;
+			    //console.log('attempting rec reload - updated object:', certona);
+			   	$("ul.desk-nav").children("li").off();
+			   	$('<div id="category1_rr" class="certona_dynamic_results"></div>').appendTo("#certonaTarget");
+				$.getScript('https://edge1.certona.net/cd/31853857/acornonline.com/scripts/resonance.js');
+			    window.dataLayer.push({
+			        'event': 'categoryReload',
+			        'breadcrumb': ssBreadcrumb
+			    });				
+			} 
+			catch(e) {
+				    console.log("error", e);
+			}
+		} else {
+		    if ($('#category1_rr').length) {
+		       $('#category1_rr').remove();
+		    }
+		}
+	}
+
+} // end ssAfterResults
+
+
+$(window).on('load', function(){
+	if ($(".slide_preview").length > 0) {
+		$(".slide_preview").hide();
+	}
+	var bxslider = $('.bxslider').show().bxSlider({
+	 	hideControlOnEnd: true,
+	    auto: true,
+	    speed: 1000, 
+	    pause: 5000,
+	    autoControls: false,
+	    touchEnabled: false
+	});	
+	$('.hp-slider a').click(function(e){
+	    bxslider.stopAuto();
+	});
+
+});
+
+
+function showCorrectForm(myform) {
+    $(document).ready(function () {
+        if ($( window ).width() > 968) {        
+	    if (myform=="capture") {
+	    		
+		  	var winWidth = $(window).width();
+		  	var targetHeight = 460;
+		  	if (winWidth<500) {
+		  		targetHeight = 340;
+		  	}	   
+				$.fancybox({
+					'href'	:	'/tools/email_capture.html',
+			        autoSize    : true,
+			        autoScale   : true,
+			        maxWidth: 530,
+			        maxHeight: targetHeight,
+			        'transitionIn'      : 'none',
+			        'transitionOut'     : 'none',
+			        'type'              : 'iframe'
+				});
+	    }
+	    else {
+	    	   
+	    }
+        }
+    });
+}  	
+
+
+$(document).ready(function () {
+    setTimeout(function() {      
+		var checkval = $.cookie('capturewin');
+		if ((typeof(checkval) !== 'undefined') && (checkval != null) && (checkval.length > 0)) {
+					} else {
+			var WIN = "capture";
+			showCorrectForm(WIN);
+						var wasset = $.cookie('capturewin', WIN, { 
+				expires: 400, 
+				path: '/',
+				domain: '.acornonline.com',
+				secure: true
+			});
+					} // end if/else for existence of cookie
+    }, 13000);
+});
+
+
+var certonaItemsObject = {};
+var currentlyProcessing = {};
+var registeredImpressionsStrings = {};
+
+function getCertonaItems(thisDiv) {
+    
+    var containerSkus = {};
+
+        var thumbContainer = null;
+    if (thisDiv === 'product2_rr') {
+        thumbContainer = '.detail-related-item';
+    } else if (thisDiv === 'cart2_rr') {
+        thumbContainer = '.cart-related-item';
+    } else if (thisDiv === 'addtocart1_rr') {
+        thumbContainer = '.popcart-related-item';
+    } else if (/^navigation[0-9]{1,2}_rr$/.test(thisDiv)) {
+        thumbContainer = '.nav-menu-item';	        
+    } else {
+        thumbContainer = '.product--container';
+    }
+    
+    var container = document.querySelector("#" + thisDiv);
+    if (!container) { return; }
+    var certonaItems = container.querySelectorAll(thumbContainer);
+    if (!certonaItems) { return; }
+    var currentContainer = "#" + thisDiv + ' ' + thumbContainer;
+    try {
+	    Array.prototype.forEach.call(certonaItems, function(el, index){
+			certonaItemsObject[el.dataset.id] = {
+		       'name': el.dataset.name,
+		       'id': el.dataset.id,
+		       'price': el.dataset.price,
+		       'list': 'certona ' + thisDiv,
+		       'category': 'INDEX',
+		       'position': index+1,
+		       'url': el.dataset.url,
+		       'container': currentContainer
+		    };
+			if (thisDiv in containerSkus) {
+				containerSkus[thisDiv].push(el.dataset.id);
+			} else {
+			    containerSkus[thisDiv] = [el.dataset.id]
+			}					
+	    });
+    } catch(e) {
+        console.log("certona item get exception", e);
+    }	
+    
+	return containerSkus;    
+    
+} // end getCertonaItems function
+
+function registerCertonaImpressions(thisDiv, containerSkus) {
+    if (thisDiv in currentlyProcessing) {
+        //console.log('canceling impressions on', thisDiv, currentlyProcessing[thisDiv]);
+        clearTimeout(currentlyProcessing[thisDiv]); 
+    }
+    currentlyProcessing[thisDiv] = setTimeout(function() {
+        var certonaImpressions = [];
+	    var container = document.querySelector("#" + thisDiv);
+	    if ($("#" + thisDiv).is(':visible')) {	
+	        try {
+		        Array.prototype.forEach.call(containerSkus[thisDiv], function(skuid) {
+					//console.log("impression", skuid, certonaItemsObject[skuid].container);
+					certonaImpressions.push(certonaItemsObject[skuid]);
+		        });
+            } catch(e) {
+                console.log("impressions exception", e);
+            }	        
+	    } else {
+	        //console.log("found this div to be not visible", thisDiv);
+	    }
+	    
+		if (certonaImpressions.length) {
+		    try {
+			    var currentImpressionsString = $.map(certonaImpressions, function(i) { return i.id }).join(',');
+			    if (thisDiv in registeredImpressionsStrings && currentImpressionsString === registeredImpressionsStrings[thisDiv]) {
+			        //console.log(thisDiv, 'already sent these impressions', currentImpressionsString, registeredImpressionsStrings[thisDiv]);
+			    } else {
+			        registeredImpressionsStrings[thisDiv] = currentImpressionsString;
+			        clearTimeout(currentlyProcessing[thisDiv]);
+					window.dataLayer.push({
+						'event': 'certonaImpressions',	    
+					    'ecommerce': {
+					      'impressions': certonaImpressions
+					    }
+					});
+					//console.log('SENT IMPRESSIONS FOR', currentImpressionsString);
+			    }
+		    } catch(e) {}
+		}	    
+    }, 1000);    
+    
+} // end registerCertonaImpressions
+
+function certonaShown(divContent) {
+if (divContent && typeof divContent ==='object' && divContent.length > 0) { 
+            var isCarousel = false;
+    var prefixes = ['home','nosearch','error404'];
+    for (var i = 0; i < divContent.length; i+=1) { 
+		for (var x = 0; x < prefixes.length; x++) {
+            if (divContent[i].indexOf(prefixes[x]) == 0) {	            
+	            isCarousel = true;
+	            break; 
+	        }
+        } 
+        if (isCarousel) {
+            break; 
+        }			
+    } 
+    	if (isCarousel && (typeof owl ==='undefined' || !owl)) { 
+		var owl = $(".product__list");
+		try {
+			owl.owlCarousel({
+				itemsCustom : [
+					[0, 1],
+					[450, 2],
+					[700, 3],
+					[1000, 4]
+				],
+				navigation : true,
+				pagination : false,
+				navigationText:["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"]
+			});
+		} catch(e) {}
+	}
+               
+	for (i = 0; i < divContent.length; i++) {
+		var thisDiv = divContent[i];
+	    var containerSkus = getCertonaItems(thisDiv);
+	    registerCertonaImpressions(thisDiv, containerSkus);
+	} // end for loop thru divs
+		
+	
+}} 	
+  
+$(document).on('click', '.certona_product_link', function(e) {
+    
+    try {
+        var matches = [];
+        var href = e.currentTarget.href;
+		var pattern = /action=([A-Z]{3,6})&ITEM=([A-Z0-9]{6,9})/i;
+		var matches = pattern.exec(href);
+		if (matches && matches[1] && matches[2]) {
+		    var actionType = matches[1];
+		    var currSku = matches[2];
+		    
+		    if (/DETAIL/i.test(actionType) && certonaItemsObject.hasOwnProperty(currSku)) {
+		    	productClick(e, certonaItemsObject[currSku]);
+		    }
+		    if (/ADD/i.test(actionType)) {
+		       e.preventDefault();
+		       addModal(currSku);
+		    }		    		    
+		}	            
+	} catch(error) {}	            
+
+});
+if (typeof window.pageItemsObject !== 'undefined' && Object.keys(window.pageItemsObject).length) {
+    var impressions = [];  
+	Object.keys(window.pageItemsObject).forEach(function(key) {
+    	impressions.push(window.pageItemsObject[key]);
+	});
+	window.dataLayer.push({
+		'event': 'productImpressions',	    
+	    'ecommerce': {
+	      'impressions': impressions
+	    }
+	}); 	
+}
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-901883-1', 'auto');
+   
+     
+      window.dataLayer.push({'event':'trackEvent','eventCategory':'home','eventAction':'view','eventLabel':''});
+    
+  ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures'); 
+  ga('send', 'pageview', '/home');
+
+			
+
+
+function updateMiniCart() {
+	var cartQuantity = "";
+	var cartSubTotal = "";
+	var updateURL = 'ACTION=ajax_carttotals';
+	
+	$.ajax({
+		type: "GET",
+		url: "https://www.acornonline.com/cgi-bin/hazel.cgi",
+		dataType: 'json',
+		data: updateURL,
+		success: function(j) {
+			for (var i = 0; i < j.length; i++) {
+			cartQuantity = j[i].cartQuantity;
+			cartSubTotal = j[i].cartSubTotal;
+			}
+			
+			var numberPattern = /\d+/g;
+			var carttotal = cartQuantity.match( numberPattern );
+			var carttotal_text;
+			if (carttotal == 1) {
+				carttotal_text = carttotal + " Item";
+			} else {
+				carttotal_text = carttotal + " Items";
+			}
+			var mobile_quantity = "(" + carttotal + ")";
+			$('#cartquantity').text( carttotal_text );
+			$('.mobile-quantity').text( mobile_quantity );
+			$('#carttotal').text(cartSubTotal);		
+		}  
+	});
+}
+$(document).ready(function () {
+    if ($('#cartquantity').length && /^0/.test($('#cartquantity').text())) {
+        var checkForCart = $.cookie('cart');
+	    if ((typeof(checkForCart) !== 'undefined') && (checkForCart !== null) && (checkForCart.length > 0)) {
+	        updateMiniCart();													
+	    }
+    }
+});
+
+
+/* tracking event for express order */
+var EOSubmitted1 = false;
+$('.express_footer .id__search').submit(function(e) {
+	execEOsubmit("express_footer");
+	e.preventDefault();
+});
+$('.express_index .id__search').submit(function(e) {
+	execEOsubmit("express_index");
+	e.preventDefault();
+});
+function execEOsubmit(expressdiv) {
+	var enteredVal = $('.' + expressdiv + ' .id__search #id__search').val();
+	ga('send', 'event', {
+		eventCategory: 'Form',
+		eventAction: 'Express',
+		eventLabel: 'Submitted: ' + enteredVal,
+		hitCallback: EOSubmit(expressdiv)
+	});
+	
+	/* if GA times out, call the function to continue form processing */
+	setTimeout(EOSubmit(expressdiv), 2000);
+	
+	/* continue form processing */
+	var EOSubmitted = false;
+	function EOSubmit(submitdiv) {
+	  if (EOSubmitted) return;
+	  EOSubmitted = true;
+	  /* alert('Submitted: ' + enteredVal + " div: " + submitdiv); */
+	  $('.' + submitdiv + ' .id__search').off().submit();
+	}	
+}
+
+
+$(document).ready(function() {
+	$(".indexfeatures .hp-event").each(function() {
+		var href = $(this).attr("href");
+		var target = $(this).attr("target");
+		var text = $(this).text();
+		var id = $(this).attr("id");
+		if ((typeof(href) !== 'undefined') && (href != null) && (href.length > 0)) {
+			$(this).click(function(event) { // when someone clicks these links
+				event.preventDefault(); // don't open the link yet
+				ga('send', 'event', {
+				   'eventCategory': 'Homepage Links', 
+				   'eventAction': 'Clicked', 
+				   'eventLabel': href,
+				   'eventValue': 1
+				});
+				ga('send', 'event', {
+				   'eventCategory': 'Homepage Containers', 
+				   'eventAction': 'Clicked', 
+				   'eventLabel': id,
+				   'eventValue': 1
+				});				
+				setTimeout(function() { // now wait 300 milliseconds...
+					window.open(href,(!target?"_self":target)); // ...and open the link as usual
+				},300);
+			});
+		}
+	});
+});
+

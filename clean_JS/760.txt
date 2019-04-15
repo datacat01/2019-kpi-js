@@ -1,0 +1,81 @@
+
+  WebFontConfig = {
+    google: { families: [ 
+      
+          'Montserrat:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+      	
+      		,
+      	      
+        'Roboto:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+      	
+      		,
+      	      
+        'Roboto:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+    ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+
+
+    window.__lo_site_id = 113332;
+
+    (function() {
+        var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+        wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+  
+var HE_DOMAIN='https://growave.io';Ssw={};function sswRun(application){if(typeof ssw!=typeof'function'){var _loadSswLib=setInterval(function(){if(typeof ssw!='undefined'&&ssw){clearInterval(_loadSswLib);window.sswIsAppPro=function(app){return(typeof window.ssw.apps.default!=='undefined'&&window.ssw.apps.default!='lite'&&window.ssw.apps.default!='starter')||(typeof window.ssw.apps[app]!=='undefined'&&window.ssw.apps[app]!='free'&&window.ssw.apps[app]!='starter')};application(ssw)}},10)}else application(ssw)}sswApp={"default":1,"cart_item_count":0,"accounts_enabled":1};var currency_format="${{amount}}";var shop_name="RubberStamps.com";sswProxyUrl="\/apps\/ssw";sswLangs={data:{},add:function(key,value){this.data[key]=value},t:function(key,params){var value=key;if(typeof this.data[key]!=='undefined'){value=this.data[key]}value=(value&&value.indexOf("translation missing:")<0)?value:key;if(params){value=value.replace(/%(\d+)%/g,function(match,number){return(typeof params[number]!='undefined')?params[number]:match})}return value},p:function(key_singular,key_plural,count,params){if(count==1){return this.t(key_singular,params)}else{return this.t(key_plural,params)}}};
+
+
+sswLangs.data = {"fave_view_product": "View Product", "checkout":"Checkout", "sold_out":"Sold Out","add_to_cart":"View product","view_more":"view more","unfollow":"Unfollow","cancel":"cancel","following":"Following","pending":"Pending","follow":"Follow","already_faved":"Already added to wishlist!","already_unfaved":"Already removed from wishlist!","fave":"Add to wishlist","faved":"in wishlist","fave_icon":"Add to Wishlist","faved_icon":"In Wishlist","my_faves":"My Wishlist","unfave":"Remove from Wishlist","untitled_favelist":"Untitled List","drop_to_add":"Drop to add","add_new_favelist":"Add a new list","drop_remove_fave":"Drop to remove","already_registered_and_sent_invite_message":"Please check your e-mail, account activation message has already been sent here - `%0%`","favelist_default":"Favorites","drop_create_favelist":"Drop to create a board","favelist_title":"Board Title","confirm_remove_favelist":"Delete this list?","add_to_faves":"Add to Wishlist","remove_from_faves":"Remove from Wishlist","fave_empty_board":"This list is empty","fave_empty_list":"Your wishlist is empty","added_to_wishlist":"added to Wishlist","sunday":"Sunday","monday":"Monday","tuesday":"Tuesday","wednesday":"Wednesday","thursday":"Thursday","friday":"Friday","saturday":"Saturday","sun":"Sun","mon":"Mon","tue":"Tue","wed":"Wed","thu":"Thu","fri":"Fri","sat":"Sat","su":"Su","mo":"Mo","tu":"Tu","we":"We","th":"Th","fr":"Fr","sa":"Sa","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December","jan":"Jan","feb":"Feb","mar":"Mar","apr":"Apr","may":"May","jun":"Jun","jul":"Jul","aug":"Aug","sep":"Sep","oct":"Oct","nov":"Nov","dec":"Dec","required_field":"This field is required.","not_valid_email_address":"Please enter a valid email address.","no_more_than_count_characters":"Please enter no more than %0% characters.","at_least_count_characters":"Please enter at least %0% characters.","quantity_new_update":"%0% new update","quantity_new_updates":"%0% new updates","message_or_upload_any_media_to_share":"Please type your message or upload any media to share","not_valid_url":"Not valid URL. Please check URL %0%","feed_is_empty":"The feed is empty. Be first to share\/post anything.","already_registered_to_social_service":"You already have an account registered to \"%0%\". This is the first time you're logging in via %1%. Please type your password below:","already_registered_to_social_service2":"You already have an account registered to \"%0%\". This is the first time you're logging in using your social account. Please type your password.","already_registered_and_disabled_account":"Account is not activated yet. Please contact the site administrator.","permission_share_to_facebook":"Do you wanna share your %0% with your friends on Facebook?","log_in_to_fave":"Please log in to save your wishlist.","sign_up_to_fave":"Please sign up to save your wishlist.","in_quantity":"in %0%","quantity_ago":"%0% ago","a_few_seconds":"a few seconds","a_minute":"a minute","quantity_minutes":"%0% minutes","an_hour":"an hour","quantity_hours":"%0% hours","a_day":"a day","quantity_days":"%0% days","a_month":"a month","quantity_months":"%0% months","a_year":"a year","quantity_years":"%0% years","remove_this_board":"Remove this board","successfully_shared_faves":"You have successfully shared your wishlist","quantity_review2":"{{ ssw_count_rate }} Review","quantity_reviews2":"{{ ssw_count_rate }} Reviews","this_email_is_already_used":"Already have an account? Please login to bind your account to your customer account.","incorrect_data":"Incorrect data","tumblr_user_not_found":"Tumblr user not found","not_created_customer_on_shopify":null,"problem_on_create_user":"Problem on create user","not_able_to_log_in_you_socially":"Right now we're not able to log you in socially. Please type your email and password in the form below to log in.","invalid_login_credentials":"Invalid log in credentials.","email_is_already_associated":"This email address is already associated with an account. If this account is yours, you can reset your password.","unavailable":"Unavailable","fave_variant_adding_to_cart":"Adding...","fave_variant_added_to_cart":"Added","login_to_leave_comment":"Please log in to  leave comments.","valid_until_coupon":"Valid until %0%","buy":"Buy", "view_cart":"View Cart", "remove_from_list":"Remove from list", "earn_points_to_get_discount":"Earn %0% more %1% to get discount", "redeem_for_points":"Redeem for %0% %1%", "count_points":"\u003cspan class=\"ssw-points-count\"\u003e%0%\u003c\/span\u003e %1%", "discount_copied":"Discount has been copied to clipboard!", "enter_coupon_in_cart_page":"Enter the coupon at the shopping cart page.","redeem":"Redeem","earn_rewards":"Earn %0%", "reward_redeem_confirmation_message":"Get %0%%1% off your next purchase for %2% %3%", "reward_redeem_confirmation_message_free_shipping":"Get free shipping of your next purchase for %0% %1%", "popup_title_faq": "Faq","popup_title_discount": "Refer a friend","popup_title_tiers": "Vip tiers","popup_title_history": "History", "c": "Copied", "count_points_clear": "\u003cspan class=\"ssw-points-count\"\u003e%0%\u003c\/span\u003e", "earn_popup": "Earn"};
+var ssw_scripts=["https:\/\/img0.socialshopwave.com\/scripts\/socialshopwave_l_f_i_r_1555061926.js"];
+
+  KlaviyoSubscribe.attachToForms('#email_signup', {
+    hide_form_on_success: true
+  });
+
+
+       var _learnq = _learnq || [];
+
+       _learnq.push(['account', 'My5MGS']);
+
+       (function () {
+       var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+       b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+       var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+       })();
+     
+
+        
+        var google_tag_params = {
+          ecomm_pagetype: 'home'
+        };
+
+      
+      
+
+        /* <![CDATA[ */
+        var google_conversion_id = 1015645017;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+      
+
+      

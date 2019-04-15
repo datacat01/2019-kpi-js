@@ -1,0 +1,425 @@
+
+(function(a,e,c,f,g,h,b,d){var k={ak:"860167529",cl:"uCzNCLv4tG4Q6bqUmgM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+
+
+
+    
+
+    //Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5CTJMBD');
+    //End Google Tag Manager
+
+    /* track arbitrary event */
+    function AnalyticsTrackEvent(category, action, opt_label, opt_value) {
+        // section: Header_Analytics_ascx.AnalyticsTrackEvent
+        try
+        {
+            // before we do anything, check if this is a search event with no opt_label, if so, return
+            if( category === 'Search' && opt_label === '' )
+            {
+                return;
+            }
+            // push the event to the JS cookie set, it will get sent to Google with the next page load
+            return _pushEventToGoogle(category, action, opt_label, opt_value);
+        }
+        catch(err){
+            _logException(err, 'Header_Analytics_ascx.AnalyticsTrackEvent');
+        }
+    }
+
+
+    /* push event to google */
+    function _pushEventToGoogle(category, action, opt_label, opt_value, opt_noninteraction)
+    {
+
+        // first check that both are set and silently fail if not
+        if (typeof category == "undefined" || category == null || category.length == 0) {
+            return true;
+        }
+        if (typeof action == "undefined" || action == null || action.length == 0) {
+            return true;
+        }
+        if (typeof opt_label == "undefined" || opt_label == null || opt_label.length == 0) {
+            opt_label = '';
+        }
+        if (typeof opt_value == "undefined" || opt_value == null || opt_value.length == 0 || typeof(opt_value)!='number') {
+            opt_value = -1;
+        }
+
+        if (typeof opt_noninteraction == "undefined" || opt_noninteraction == null || opt_noninteraction.length == 0 || typeof (opt_noninteraction) != 'boolean') {
+            opt_noninteraction = true;
+        }
+
+
+
+        /* below, use the correct call to _trackEvent based on what we have as input */
+        if (opt_value > -1) {
+            // section: Header_Analytics_ascx._pushEventToGoogle_ALL
+            try {
+                dataLayer.push({ 'event': 'trackEvent', 'eventCategory': category, 'eventAction': action, 'eventLabel': opt_label, 'eventValue': opt_value });
+            }
+            catch (err) {
+                _logException(err, 'Header_Analytics_ascx._pushEventToGoogle_ALL');
+            }
+
+            return true;
+          }
+
+        if (opt_label != '') {
+            // section: Header_Analytics_ascx._pushEventToGoogle_OPTLABEL
+            try {
+                dataLayer.push({ 'event': 'trackEvent', 'eventCategory': category, 'eventAction': action, 'eventLabel': opt_label, 'eventValue': '' });
+            }
+            catch (err) {
+                _logException(err, 'Header_Analytics_ascx._pushEventToGoogle_OPTLABEL');
+            }
+
+            return true;
+        }
+
+        // section: Header_Analytics_ascx._pushEventToGoogle_CAT_ACTION
+        try {
+            dataLayer.push({ 'event': 'trackEvent', 'eventCategory': category, 'eventAction': action, 'eventLabel': '', 'eventValue': '' });
+        }
+        catch (err) {
+            _logException(err, 'Header_Analytics_ascx._pushEventToGoogle_CAT_ACTION');
+        }
+
+        return true;
+    }
+
+    /* _logPushTo - log the push to google */
+    function _logPushTo(eventArr, pushTo)
+    {
+        var errCacheBuster = parseInt(Math.random()*99999999);  // cache buster
+        var category = eventArr[0];
+        var action = eventArr[1];
+        var opt_label = eventArr[2];
+        var opt_value = eventArr[3];
+        var qs = 'pushTo=' + escape(pushTo)
+                + '&category=' + escape(category)
+                + '&action=' + escape(action)
+                + '&opt_label=' + escape(opt_label)
+                + '&opt_value=' + escape(opt_value)
+                + '&cacheBuster=' + errCacheBuster;
+        var url = '/assets/images/transparent.gif?' + qs;
+
+        /* if we can append this now, do so, otherwise when body is loaded (because of IE problems, only do this if jQuery is loaded) */
+        if (typeof jQuery != 'undefined') {
+            if( $('body') != null ){
+                $('body').append('<img src=\'' + url + '\' />');
+            }
+            else{
+                $(document).ready(function() {
+                    $('body').append('<img src=\'' + url + '\' />');
+                });
+            }
+        }
+
+
+    }
+
+
+    /* _logException - causes image request to be emitted that records this
+                       exception in the IIS logs as an image request for transparent.gif */
+    function _logException(err, location){
+
+        var errCacheBuster = parseInt(Math.random()*99999999);  // cache buster
+        var errorMsg = 'no description on exception';
+        if( err != null ){
+            errorMsg = err.description;
+        }
+        if( errorMsg != null ){
+            if( errorMsg.length > 1024 ){
+                errorMsg = errorMsg.substring(0,1024);
+            }
+        }
+        else{
+            errorMsg = 'no description on exception';
+        }
+
+        var qs = 'err=' + escape(errorMsg)
+                + '&loc=' + escape(location)
+                + '&cacheBuster=' + errCacheBuster;
+        var url = '/assets/images/transparent.gif?' + qs;
+
+        /* this doesn't seem to work unless it is document.write instead of append */
+        document.write('<img id="err" src=\'' + url + '\' />');
+    }
+        
+    function CRO_SearchXOFF() {
+	    DoSearchSetSearchMethod('standard');
+	    console.log("Set search to STANDARD...");
+	    return true;
+	}
+
+    function CRO_SearchXON() {
+        DoSearchSetSearchMethod('searchx');
+	    console.log("Set search to SEARCHX...");
+	    return true;
+    }
+
+    function CRO_SURVEY4AON() {
+    	Survey4A_Init();
+    }
+
+    function CRO_SURVEY4BON() {
+    	Survey4B_Init();
+    }
+
+    function CRO_SURVEY4OFF() {
+    	//do nothing
+    }
+
+    function CRO_SURVEY5ON() {
+    	Survey5_Init();
+    }
+
+    function CRO_SURVEY5OFF() {
+    	//do nothing
+    }
+
+    function CRO_ADSENSEON() {
+        if (location.pathname.toLowerCase() != '/shoppingcart.aspx'
+            && location.pathname.toLowerCase() != '/shipping.aspx'
+            && location.pathname.toLowerCase() != '/secure/purchase.aspx'
+            && location.pathname.toLowerCase() != '/orderprocessing.aspx'
+            && location.pathname.toLowerCase() != '/confirm.aspx'
+            && location.pathname.toLowerCase() != '/modelsections.aspx'
+            && location.pathname.toLowerCase() != '/multimodels.aspx'
+            && location.pathname.toLowerCase() != '/selfservicesummary.aspx'
+            && location.pathname.toLowerCase() != '/selfservicecart.aspx') {
+
+            $(".adsbygoogle").each(function () {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+        }
+    }
+
+	
+	function CRO_MegaMerch_ON() {
+	    var mm = EGPGetCookie('use_megamerch_partdetail');
+	    if (mm != 'enable') {
+	        EGPSetCookie('use_megamerch_partdetail', 'enable', 180, '/');
+		}
+	}
+
+	function CRO_MegaMerch_OFF() {
+	    EGPDeleteCookie('use_megamerch_partdetail');
+	}
+    
+
+	
+    function CRO_NortonLogo_OFF() {
+        var mm = EGPGetCookie('hide_norton_logo');
+	    if (mm != 'enable') {
+	        EGPSetCookie('hide_norton_logo', 'enable', 180, '/');
+	    }
+	    $(".site-header__norton").hide();
+	}
+
+    function CRO_NortonLogo_ON() {
+        EGPDeleteCookie('hide_norton_logo');
+        $(".site-header__norton").show();
+	}
+    
+
+    
+    function CRO_FACETED_SEARCH_ON() {
+	    var search_method = EGPGetCookie('faceted_search_on');
+		if (search_method != 'true') {
+		    EGPSetCookie('faceted_search_on', 'true', 100, '/');
+		} else {
+            //DO NOTHING
+		}
+	}
+    function CRO_FACETED_SEARCH_OFF() {
+        EGPDeleteCookie('faceted_search_on');
+	}
+    
+
+    
+	function CRO_NotUseHotSpots_ON() {
+	    var mm = EGPGetCookie('not_use_hotspots');
+	    if (mm != 'enable') {
+	        EGPSetCookie('not_use_hotspots', 'enable', 180, '/');
+		}
+	}
+
+	function CRO_NotUseHotSpots_OFF() {
+	    EGPDeleteCookie('not_use_hotspots');
+    }
+
+    
+
+    function CRO_ENHANCED_SCHEMATIC_ON() {
+	    var enhanced_schematic = EGPGetCookie('enhanced_schematic_on');
+		if (enhanced_schematic != 'true') {
+		    EGPSetCookie('enhanced_schematic_on', 'true', 100, '/');
+		} else {
+            //DO NOTHING
+		}
+    }
+
+    function CRO_ENHANCED_SCHEMATIC_OFF() {
+        EGPDeleteCookie('enhanced_schematic_on');
+    }
+
+    
+
+    
+
+
+	
+
+
+//<![CDATA[
+var theForm = document.forms['MasterForm'];
+if (!theForm) {
+    theForm = document.MasterForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+window.WebForm_PostBackOptions||document.write('<script type="text/javascript" src="/WebResource.axd?d=ZF1Ne_3gFXgQGKsaE15dlTJ7Mnu-MDX5AjINditXheBRxZUKXXCRAHfepQeRVUEqfk7N0B-cc6rFEX2IGH9zfEQberpC5mxgQ1y0B_6aa901&amp;t=636426912960000000"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=uIupmopjAU890N5sFUpfQggn4gA8fF5QdDD0-QJOkX_iEFgW97jAFQoT0g6wYDYAONvIrwLA-oIp-ILKW7wJrZsAakIabmjC0xmaogADBbFLP0xNkWD-xJv_SCDsjoXZmIrwoB3zXIbASlWdXIUxI6H54YQmx3BW2CWfvPjly3A1&t=72fc8ae3"><\/script>');//]]>
+
+
+//<![CDATA[
+(window.Sys && Sys.WebForms)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=1EXzShHdUx5f9G3dcja6muaDFnEnjyJrwV_rxamg6hEzAv-6Ol-v4GEEOkMXN8-skj6jh3g8RObYMDO8keGQn_2p0pMRRxmLRDS_tziThoc5ghOOYZ6vQpwrgkaWtDhyMPEOpT9DZAIJBh4QZbthOgQL7euLV17PEkGN-lf1ODlZxEMwelLdVaQnZTDVO_8V0&t=72fc8ae3"><\/script>');//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'MasterForm', ['tctl00$HeaderMain$ctl00$updModals','HeaderMain_ctl00_updModals'], [], [], 90, 'ctl00');
+//]]>
+
+
+	function ViewedModal_event(ModalType){
+	    dataLayer.push({
+	        'event': 'trackEvent',
+	        'eventCategory': 'View',
+	        'eventAction': 'Viewed a Modal',
+	        'eventLabel': ModalType.toLowerCase(),
+	        'eventValue': ''
+	    });
+	}
+
+
+	function Survey5_Init() {
+		var pathname = window.location.pathname.toLowerCase();
+
+		//ensure we are not interrupting a purchase
+		if (!pathname.match(/.*(purchase|shipping|shoppingcart).*/)) {
+			var survey5state = EGPGetCookie('survey5');
+
+			if (survey5state == null || survey5state == 0) {
+				EGPSetCookie('survey5', 1, 90, '/');
+			}
+			else if (survey5state == 1) {
+				EGPSetCookie('survey5', 2, 90, '/');
+				Survey5_Show();
+			}
+		}
+	}
+
+	function Survey5_Show() {
+		Survey5_Quit = _QuitA; //allow quit analytics
+
+		$('.js-survey5-response').hide();
+		$('.js-survey5').show();
+
+		//transition effects
+		$('.modalps__mask').fadeIn(400);
+		$('.modalps__mask').fadeTo("slow", 0.8);
+		$('.modalps').fadeIn(800);
+	}
+
+	function Survey5_Yes() {
+		//_gaq.push(['_setCustomVar', 2, 'Survey', 'Have you ever purchased from PartSelect.com before? : YES', 1]);
+		Survey5_Quit = _Quit; //no further analytics
+
+		$('.js-survey5').hide();
+		$('.js-survey5-response').show();
+		$('.modalps').delay(1500).fadeOut(200);
+	}
+
+	function Survey5_No() {
+		//_gaq.push(['_setCustomVar', 2, 'Survey', 'Have you ever purchased from PartSelect.com before? : NO ', 1]);
+		Survey5_Quit = _Quit; //no further analytics
+
+		$('.js-survey5').hide();
+		$('.js-survey5-response').show();
+		$('.modalps').delay(1500).fadeOut(200);
+	}
+
+	function Survey5_Quit() {
+		//this method is replaced dynamically with one of the following two methods
+	}
+
+	function _QuitA() {
+		//_gaq.push(['_setCustomVar', 2, 'Survey', 'Have you ever purchased from PartSelect.com before? : DNR', 1]);
+		$('.modalps').fadeOut(10);
+	}
+
+	function _Quit() {
+		$('.modalps').fadeOut(10);
+	}
+
+
+
+	$(function () {
+		if (window.location.hash.toLowerCase().indexOf("ahredirect") >= 0) {
+			$('.js-ahredirect').css('display', 'block').hide().fadeIn();
+		}
+		else {
+			$('.js-ahredirect').css('display', 'none').hide();
+		}
+	});
+
+
+    /* Move side navigation to the right to view*/
+    function openNav() {
+        document.getElementById("mySidenav").style.left = "0";
+        $('.mobile-menu-overlay').fadeIn();
+    }
+
+    /* Move side navigation to the left to hide */
+    function closeNav() {
+        document.getElementById("mySidenav").style.left = "-95%";
+        $('.mobile-menu-overlay').fadeOut();
+    }
+
+
+    function expandSearchBox() {
+        document.getElementById("collapseLeft").className += "--left-collapsed";
+        document.getElementById("collapseRight").className += "--right-collapsed";
+        document.getElementById("search").className += "--search-expanded";
+        document.getElementById("reset").className += "--enable-reset-search";
+    }
+
+    function resetSearchBox() {
+        document.getElementById("collapseLeft").className = "mega-mobile-header__mega-mobile-collapse-left";
+        document.getElementById("collapseRight").className = "mega-mobile-header__mega-mobile-collapse-right";
+        document.getElementById("search").className = "mega-mobile-header__mega-mobile-search";
+        document.getElementById("reset").className = "mega-mobile-header__reset-search";
+    }
+
+
+//<![CDATA[
+overrideEventProperty();//]]>
+

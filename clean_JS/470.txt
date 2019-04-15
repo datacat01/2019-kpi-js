@@ -1,0 +1,30 @@
+
+  		if(typeof CM_DDX != 'undefined') CM_DDX.headScripts = false;
+  		cmSetupNormalization("krypto-_-krypto");
+  		cmSetupOther({"cm_TrackImpressions":""});
+  		var clientId="";
+  		var boolVal="";
+  		var siteVal="";
+  		var siteVal2="";
+  		if (document.domain == 'www.dillards.com' || document.domain == 'dillards.com') {
+  			clientId = "90384811";
+  			boolVal = true;
+  			siteVal = "data.coremetrics.com";
+  			siteVal2 = '.' + document.domain;
+  		} else {
+  			clientId = "60384811";
+  			booVal = false;
+  			siteVal = "testdata.coremetrics.com";
+  			if (document.domain == "localhost") {
+  				siteVal2 = document.domain;
+  			}
+  			else{
+  				siteVal2 = '.' + document.domain;
+  			}
+  	 	}
+  		if (typeof IORequest != "undefined"){
+  		  		IORequest.disable_console_logging = true;
+  				IORequest.conflict_resolution = false;
+  		}
+  		cmSetClientID(clientId, boolVal, siteVal, siteVal2);
+  	

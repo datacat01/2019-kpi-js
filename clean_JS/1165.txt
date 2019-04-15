@@ -1,0 +1,5 @@
+
+function reDir() {
+window.location = "http://www.theregistrynetwork.com" ;
+}
+

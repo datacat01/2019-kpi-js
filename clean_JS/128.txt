@@ -1,0 +1,294 @@
+setTimeout(function () { var a = document.createElement('script'); var b = document.getElementsByTagName('script')[0]; a.src = document.location.protocol + '//dnn506yrbagrg.cloudfront.net/pages/scripts/0010/1781.js'; a.async = true; a.type = 'text/javascript'; b.parentNode.insertBefore(a, b); }, 1); 
+
+                //<![CDATA[
+                // Set Equal Heights to Tripels
+                var equalheight = function (container) {
+
+                    var currentTallest = 0,
+                         currentRowStart = 0,
+                         rowDivs = new Array(),
+                         $el,
+                         topPosition = 0;
+                    $(container).each(function () {
+
+                        $el = $(this);
+                        $($el).height('auto')
+                        topPostion = $el.position().top;
+
+                        if (currentRowStart != topPostion) {
+                            for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+                                rowDivs[currentDiv].height(currentTallest);
+                            }
+                            rowDivs.length = 0; // empty the array
+                            currentRowStart = topPostion;
+                            currentTallest = $el.height();
+                            rowDivs.push($el);
+                        } else {
+                            rowDivs.push($el);
+                            currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+                        }
+                        for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+                            rowDivs[currentDiv].height(currentTallest);
+                        }
+                    });
+                }
+
+                $(window).load(function () {
+                    equalheight('#layout-tripel > div');
+                });
+
+
+                $(window).resize(function () {
+                    equalheight('#layout-tripel > div');
+                });
+                //]]>
+            
+
+//<![CDATA[
+    $(function () {
+        if ($('.zone-navigation .menu > li').hasClass('current-parent')) {
+            $('.zone-navigation').addClass('expandedSubNav');
+        }
+    })
+//]]>
+
+
+                (function () {
+                    var quadTop = $('#header-quad-wrapper').offset().top;
+                    var navTop = $('#navigation-wrapper').offset().top;
+
+                    var sticky = function (el, elTop) {
+                        if ($(window).width() < 768) {
+                            var scrollTop = $(window).scrollTop();
+                            if (scrollTop > elTop) {
+                                $(el).addClass('sticky');
+                            } else {
+                                $(el).removeClass('sticky');
+                            }
+                        }
+                    };
+
+                    sticky('#header-quad-wrapper', quadTop);
+                    sticky('#navigation-wrapper', navTop);
+
+                    $(window).scroll(function () {
+                        sticky('#header-quad-wrapper', quadTop);
+                        sticky('#navigation-wrapper', navTop);
+                    });
+                    $(window).resize(function () {
+                        sticky('#header-quad-wrapper', quadTop);
+                        sticky('#navigation-wrapper', navTop);
+                    });
+                })();
+            
+
+        var userLocation = {
+            initPopupOverlay: function() {
+                var relativeContainer = $("body");
+                relativeContainer.prepend("<div id='popUpOverlay' class='transparent'>&nbsp;</div>");
+            },
+
+            initPopUpBox: function(targetDomRef) {
+
+                // build html
+                var relativeContainer = $("body");
+                relativeContainer.prepend(
+                    "<div id='popUpBox'><a href='javascript:void(0)' class='close'></a><div class='content'></div></div>");
+                $("#popUpBox .content").html(targetDomRef.html());
+
+                var popUpBox = $("#popUpBox");
+                popUpBox.addClass("popup-" + targetDomRef.attr('id'));
+
+                var popUpTop = $(window).scrollTop() + 60;
+                popUpBox.css("top", popUpTop);
+            },
+
+            initPopUpBoxCloseButton: function() {
+                $("#popUpBox a.close").click(function() {
+                    $("#popUpBox").fadeOut("fast",
+                        function() {
+                            $(this).remove();
+                            $("#popUpOverlay").fadeOut("fast");
+                        });
+                });
+            },
+
+            showPopup: function(targetDomRef, useCloseButton) {
+                var domRef = $(targetDomRef);
+
+                var popUpOverlay = $("#popupOverlay");
+                if (popUpOverlay.length <= 0) {
+                    userLocation.initPopupOverlay();
+                }
+                popUpOverlay.fadeIn("fast");
+
+                var popUpBox = $("#popUpBox");
+                if (popUpBox.length <= 0) {
+                    userLocation.initPopUpBox(domRef);
+                    userLocation.initPopUpBoxCloseButton();
+                }
+                popUpBox.fadeIn("slow");
+
+                if (useCloseButton) {
+                    $("#popUpBox a.close").show();
+                } else {
+                    $("#popUpBox a.close").hide();
+                }
+            }
+        };
+
+        function findVehicleListNode() {
+            var $vehicleList = null;
+            var $a4Selector = $("#layout-vehicle-list");
+            var $a5Selector = $("#srp-app");
+            if ($a4Selector.length > 0) {
+                $vehicleList = $a4Selector;
+            } else if ($a5Selector.length > 0) {
+                $vehicleList = $a5Selector;
+            }
+            return $vehicleList;
+        }
+
+        function displayPopupUserLocation($vehicleList, widgetSelector, useCloseButton) {
+            var isNoScroll = {};
+            var scrollNodes = ["body", "html"];
+
+            if ($vehicleList != null) {
+                $vehicleList.fadeOut();
+            }
+
+            var userLocationDiv = widgetSelector != null ? $(widgetSelector) : null;
+            if (userLocationDiv != null) {
+                userLocationDiv.fadeOut();
+            }
+
+            $("#noLocationContent .errMsg").hide();
+
+            scrollNodes.forEach(function(name) {
+                if ($(name).hasClass('no-scroll')) {
+                    isNoScroll[name] = true;
+                    $(name).removeClass('no-scroll');
+                }
+            });
+
+            if ("UNKNOWN" === "NO LOCATIONS FOUND") {
+                $("#noLocationContent .errMsg").show();
+            }
+
+            userLocation.showPopup("#noLocationContent", useCloseButton);
+            $("#popUpBox a.close").addClass('userLocation');
+            $("#popUpBox a.close.userLocation").click(function() {
+                if (userLocationDiv != null) {
+                    userLocationDiv.fadeIn();
+                }
+                if ($vehicleList != null && "UNKNOWN" !== "UNKNOWN" && "UNKNOWN" !==
+                    "NO LOCATIONS FOUND") {
+                    $vehicleList.fadeIn();
+                }
+                scrollNodes.forEach(function(name) {
+                    if (isNoScroll[name]) {
+                        $(name).addClass('no-scroll');
+                    }
+                });
+            });
+        }
+
+        function setFocusOnPopupInput() {
+            // Focus on the input in the popup box and not the one hidden behind it.
+            if ($('#popUpBox').length > 0) {
+                $("#popUpBox form.a5-user-location-popup-form").find("input:first").focus();
+            } else {
+                $("form.a5-user-location-popup-form").find("input:first").focus();
+            }
+        }
+
+        function showPopUpUserLocation(noHideVehicleList, noUseCloseButton) {
+            var $vehicleList = noHideVehicleList ? null : findVehicleListNode();
+            displayPopupUserLocation($vehicleList, null, !noUseCloseButton);
+            setFocusOnPopupInput();
+            var url = window.location.pathname + window.location.search + getWindowLocationHash();
+            setPopUpBackToUrl(url);
+        }
+
+        function setPopUpBackToUrl(url) {
+            $("form.a5-user-location-popup-form input[name=backToUrl]").val(url);
+        }
+
+        (function() {
+
+            $('#srp-app').on('external-location-handler',
+                function() {
+                    showPopUpUserLocation(true);
+                }
+            );
+
+            $(document).on("keypress",
+                "input[name='zipCode']",
+                function(e) {
+                    if (e.which === 13) {
+                        $(this).closest("form").submit();
+                    }
+                });
+
+        })();
+
+        // User Geolocation
+        (function() {
+            var unavailable = false;
+
+            var geolocationIsUnavailable = function() {
+                // No matter what the reason for failure, let's hide the button so it's not clicked again.
+                $("button.use-my-location").hide();
+                $(".a5-user-location-form > .no-location").hide();
+                $(".enter-5-digit,.a5-geolocation-only").hide();
+                $(".a5-use-geolocation .no-location").show();
+                unavailable = true;
+            };
+
+            if (BrowserGeolocation.isAvailable()) {
+                var searchingAlready = false;
+                $(document).on("click",
+                    "button.use-my-location",
+                    function(e) {
+                        e.preventDefault();
+                        if (searchingAlready) {
+                            return;
+                        }
+                        $(this).find(".searching-icon").show();
+                        searchingAlready = true;
+                        var form = $(e.target).closest("form");
+                        BrowserGeolocation.geoLocate(function(latlng) {
+                            BrowserGeolocation.reverseGeocode(latlng,
+                                function(zipCode) {
+                                    if (zipCode != null) {
+                                        form.find(
+                                                "input[name='zipCode'], .a5-user-location-popup-form input[name='zipCode']")
+                                            .val(zipCode);
+                                        form.submit();
+                                    } else {
+                                        geolocationIsUnavailable();
+                                        $(".a5-manual-entry").show();
+                                        $(".a5-manual-entry-prompt").hide();
+                                    }
+                                });
+                        });
+                        return false;
+                    });
+
+                $(".a5-use-geolocation,.a5-geolocation-only").show();
+            }
+
+            $(".a5-manual-entry-prompt").click(function() {
+                $(".a5-manual-entry").show();
+                $(this).hide();
+            });
+
+            $("button.cancel-button").click(function() {
+                if (!unavailable) {
+                    $(".a5-manual-entry-prompt").show();
+                    $(".a5-manual-entry").hide();
+                }
+            });
+        })();
+
+    

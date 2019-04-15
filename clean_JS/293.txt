@@ -1,0 +1,191 @@
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+              
+          
+
+
+    var version = "3.9.3";
+    var build = "2019-04-14T09_40_05";
+
+    function buildEditorParent() {
+        window.isMultiScreen = true;
+        window.editorParent = {};
+        window.previewParent = {};
+        window.assetsCacheQueryParam = "?version=2019-04-14T09_40_05";
+        try {
+            var _p = window.parent;
+            if (_p && _p.document && _p.$ && _p.$.dmfw) {
+                window.editorParent = _p;
+            }
+            else if (_p.isSitePreview) {
+                window.previewParent = _p;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    buildEditorParent();
+
+
+
+
+(function() {
+ 	var campaign = (/utm_campaign=([^&]*)/).exec(window.location.search);
+ 	
+ 	if (campaign && campaign != null && campaign.length > 1) {
+ 		campaign = campaign[1]; 		
+ 		document.cookie = "_dm_rt_campaign=" + campaign + ";expires=" + new Date().getTime() + 24*60*60*1000 + ";domain=" + window.location.hostname + ";path=/";
+ 	}
+}());
+
+
+  var _dm_gaq = {};
+  var _gaq = _gaq || [];
+  var _dm_insite = [];
+
+  
+  _dm_gaq.siteAlias = '834cd291';
+  _dm_gaq.systemAggregatedGaqID = 'UA-7265702-9';
+  _dm_gaq.externalGaqID = '';
+  
+  _gaq.push(['_gat._forceSSL']);
+  
+  if(_dm_gaq.systemAggregatedGaqID && (_dm_gaq.systemAggregatedGaqID != _dm_gaq.systemGaqID)){
+     // track aggregated account
+    _gaq.push(['b._setAccount', _dm_gaq.systemAggregatedGaqID]);
+    _gaq.push(['b._setAllowLinker', true]);
+    _gaq.push(['b._setVar', _dm_gaq.siteAlias]);
+    
+    _gaq.push (['b._gat._anonymizeIp']);
+    
+    _gaq.push(['b._setCustomVar', 1, 'product', 'DM_DIRECT',  2 ]);
+    _gaq.push(['b._setCustomVar', 2, 'plan', 'Namesco_ECOM100',  2 ]);
+    _gaq.push(['b._setCustomVar', 3, 'dfooter', 'true',  2 ]);
+    _gaq.push(['b._setCustomVar', 4, 'sitetype', '1',  2 ]);
+    _gaq.push(['b._setCustomVar', 5, 'pwaEnabled', 'false',  2 ]);
+
+      _gaq.push(['b._trackPageview' ]);
+    pushInsiteImpressions('b._trackEvent');
+   }
+       
+   if(_dm_gaq.externalGaqID && _dm_gaq.externalGaqID!= '') {    	    	
+     _gaq.push(['c._setAccount', _dm_gaq.externalGaqID]);                      
+     _gaq.push(['c._setVar', _dm_gaq.siteAlias]);
+     _gaq.push(['c._setDomainName', 'lovedoneslost.co.uk']);
+     _gaq.push(['c._setAllowLinker', true]);
+     _gaq.push(['c._trackPageview' ]);
+     pushInsiteImpressions('c._trackEvent');
+   }
+
+   function pushInsiteImpressions(category) {
+   	$.each(_dm_insite, function(idx, rule) {
+   		_gaq.push([ category, 'insite_impression' , _dm_gaq.siteAlias, rule.ruleType + '__' + rule.ruleId, ]);
+   	});
+   }
+(function() {
+	var ga = document.createElement('script');
+	ga.type = 'text/javascript';
+	ga.async = true;
+  
+	ga.src = 'https://ssl.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(ga, s);
+})();
+  	
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
+window.dmsnowplow  = window.snowplow;
+
+dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
+  appId: '834cd291'
+});
+
+dmsnowplow('trackPageView')
+$.each(_dm_insite, function(idx, rule) {
+	//('trackStructEvent', 'category','action','label','property','value');
+			// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
+	        // the tracking is in popup.js
+			if (rule.actionName !== "popup") {
+                dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
+            }
+ 			$(document).ready(function(){
+ 				$.DM.events.trigger('event-ruleTriggered', {value: rule})}
+ 			);
+ 		});
+   
+
+    $.extend(Parameters,{
+        AjaxContainer : "div.dmBody",
+        WrappingContainer : "div.dmOuter",
+        HomeUrl : "https://www.lovedoneslost.co.uk/",
+        AccountUUID: "96604d0459414eb9bf478fcfec2857cb",
+        SiteAlias : "834cd291",
+        SiteId : "1272038",
+        SiteType : eval(Base64.decode("J0RVREFPTkUn")),
+        ExternalUid: 'lovedoneslost.co.uk',
+        IsSEOFriendlyLinks : true,
+        IsSiteMultilingual: false,
+        InitialPostAlias: '',
+        InitialPageAlias : "home",
+        InitialEncodedPageAlias : "aG9tZQ==",
+        IsFromScratch : "false",
+        CurrentPageUrl : "",
+        IsCurrentHomePage : true,
+        classicLink : "",
+         AllowAjax : true,
+        AfterAjaxCommand : null,
+        HomeLinkText:"Back To Home",
+        UseGalleryModule : false,
+        CurrentThemeName : "Layout Theme",
+        ThemeVersion : "745",
+        DefaultPageAlias : "",
+        RemoveDID : true,
+         LayoutVariationID : {desktop : 5},
+		LayoutID : {desktop : 23},
+		WidgetStyleID : null,
+		IsHeaderFixed: false,
+		IsHeaderSkinny: false,
+		IsBfs: true,
+		LayoutParams : {_manifestId : 10600,_device : "desktop"},
+    		StorePageAlias: "store1",
+        StorePath: "/store1",
+        StoreId: "14931151",
+        StoreVersion: 1,
+    		StoreBaseUrl: "/store1",
+        StoreCleanUrl:true,
+    		StoreDisableScrolling: true,
+    		NotificationSubDomain: "lovedoneslost",
+        HasCustomDomain: true,
+    		showCookieNotification: false,
+		cookiesNotificationMarkup: 'null',
+        translatedPageUrl: '',
+        isFastMigrationSite: false,
+        sidebarPosition: 'LEFT',
+        currentLanguage: "en",
+        NavItems: "W3sidGl0bGUiOiJIb21lIiwiYWxpYXMiOiJob21lIiwicGF0aCI6Ii8iLCJpbk5hdmlnYXRpb24iOnRydWUsInN1Yk5hdiI6W119LHsidGl0bGUiOiJBYm91dCB1cyIsImFsaWFzIjoiYWJvdXQtdXMiLCJwYXRoIjoiL2Fib3V0LXVzIiwiaW5OYXZpZ2F0aW9uIjp0cnVlLCJzdWJOYXYiOltdfSx7InRpdGxlIjoiQ29udGFjdCIsImFsaWFzIjoiY29udGFjdCIsInBhdGgiOiIvY29udGFjdCIsImluTmF2aWdhdGlvbiI6dHJ1ZSwic3ViTmF2IjpbXX0seyJ0aXRsZSI6IlRlc3RpbW9uaWFscyIsImFsaWFzIjoidGVzdGltb25pYWxzIiwicGF0aCI6Ii90ZXN0aW1vbmlhbHMiLCJpbk5hdmlnYXRpb24iOnRydWUsInN1Yk5hdiI6W119LHsidGl0bGUiOiJUZXJtcyAmIENvbmRpdGlvbnMiLCJhbGlhcyI6InRlcm1zYW5kY29uZGl0aW9ucyIsInBhdGgiOiIvdGVybXNhbmRjb25kaXRpb25zIiwiaW5OYXZpZ2F0aW9uIjp0cnVlLCJzdWJOYXYiOltdfSx7InRpdGxlIjoiRkFRIiwiYWxpYXMiOiJmYXEiLCJwYXRoIjoiL2ZhcSIsImluTmF2aWdhdGlvbiI6dHJ1ZSwic3ViTmF2IjpbXX0seyJ0aXRsZSI6IlN0b3JlIiwiYWxpYXMiOiJzdG9yZTEiLCJwYXRoIjoiL3N0b3JlMSIsImluTmF2aWdhdGlvbiI6dHJ1ZSwic3ViTmF2IjpbXX1d",
+		errors: {
+			general: 'There was an error connecting to the page.<br/> Make sure you are not offline.',
+				password: 'Incorrect name/password combination',
+			tryAgain: 'Try again'
+		}
+    });
+    $.extend(Parameters.NavigationAreaParams,{
+        ShowBackToHomeOnInnerPages : true,
+        NavbarSize : 5,
+        NavbarLiveHomePage : "https://www.lovedoneslost.co.uk/",
+        BlockContainerSelector : ".dmBody",
+        NavbarSelector : "#dmNav:has(a)",
+        SubNavbarSelector : "#subnav_main"
+    });
+    $.extend(Parameters.LayoutParams, {_navigationAnimationStyle : 'slide'});
+    
+    Parameters.NavigationAreaParams.MoreButtonText = 'MORE';
+    
+    Parameters.NavigationAreaParams.LessButtonText = 'LESS';
+    Parameters.HomeLinkText = 'Home';
+    

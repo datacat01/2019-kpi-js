@@ -1,0 +1,261 @@
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbwq-bouclair';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+
+$(document).ready(function(){
+     simpleslider.getSlider({
+    container: document.getElementById('myslider'),
+    delay:4,
+    duration: 2,
+    prop: 'top',
+    init: 100,
+    show: 0,
+    end: -100,
+    unit: '%'
+  });
+
+let trigger = document.querySelector('#targetTrigger');
+
+trigger.addEventListener('click', function() {
+    $('#topstrip').modal();
+});
+
+});
+
+
+
+        var yotpoAppKey = 'w2SrWps5bUrnkaIZG7xIu5MBChtXvun3nFbYHnpO';
+        var yotpoStaticContentURL = "https://staticw2.yotpo.com/";
+        var yotpoURL = yotpoStaticContentURL + yotpoAppKey + "/widget.js";
+        (function e() {
+            var e = document.createElement("script");
+                    e.type = "text/javascript",
+                    e.async = true,
+                    e.src = yotpoURL;
+            var t = document.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(e, t)
+        })();
+    
+
+     (function defer() {
+          if (window.jQuery) {
+
+var $window = $(window);
+        function swapper(width, smdir, lgdir) {
+            var $windowWidth = $window.width(),$replace;    
+            $('.swapper').each( function() {
+                var $this = $(this);
+                var $dataSrc = $this.attr('data-src');
+                if ( $windowWidth < width ) {
+                    $replace = $dataSrc.replace('{swapper}', '' + smdir);
+                } 
+                else if ( $windowWidth >= width ) {
+                    $replace = $dataSrc.replace('{swapper}', '' + lgdir);
+                }
+                $this.attr('src', $replace);        
+            });
+        }
+        swapper(815, 'sm', 'lg');
+
+        $window.resize( function() {
+            swapper(815, 'sm', 'lg');
+        });
+          } else {
+               setTimeout(function() { defer() }, 50);
+          }
+     })();
+ 
+
+
+
+    $( document ).ready(function() {
+        /* jquery to replace X to close in drop down menus */
+        $('.submenu-wrap button span').html('<svg width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>close</title> <desc> </desc><defs></defs> <g id="DROP-3a" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Adresses-Deleted" transform="translate(-1001.000000, -862.000000)" stroke="#020303" stroke-width="0.5"> <g id="close" transform="translate(1002.000000, 862.000000)"> <path d="M0,10 L10,0" id="Stroke-1"></path> <path d="M10,10 L0,0" id="Stroke-3"></path> </g> </g> </g></svg>');
+        /* fixed header scripts */
+        var lastScrollTop = 0;
+        var limitScroll = 0;
+        var navigation = document.querySelector('header');
+        var topbar = document.querySelector('.top-header');
+        var logobar = document.querySelector('.main-header');
+        var navbar = document.querySelector('.main-navigation-wrap');
+        var logorow = document.querySelector('.logo-row');
+        var page = document.querySelector('.page');
+        var topstrip = document.querySelector('.header-banner');
+
+        var topTopbar = topbar.offsetHeight;
+        var topTopbarS = topstrip.offsetHeight;
+        var topLogoBar = logobar.offsetTop;
+        var topNavBar = navbar.offsetTop + topTopbar + topTopbarS;
+        var topStripBar = topstrip.offsetTop;
+
+        initMenu();
+
+        window.addEventListener('scroll', stickyMenu);
+
+        function initMenu() {
+            logorow.classList.remove('small-logo');
+            logobar.classList.remove('hide-logo');
+            logobar.classList.remove('fixed-top');
+            topstrip.classList.remove('hide-logo');
+            topstrip.classList.remove('fixed-top');
+            page.classList.remove('fixed-header');
+        }
+
+        function stickyMenu() {
+            var currentScroll = window.pageYOffset;
+            if(currentScroll >= topStripBar + navbar.offsetTop) {
+                if(!logorow.classList.contains('small-logo')){
+                    logorow.classList.add('small-logo');
+                }
+            }
+
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop){
+                // scroll down
+                if(currentScroll >= topNavBar) {
+                    if(!logobar.classList.contains('hide-logo')
+                        && !logobar.classList.contains('fixed-top')
+                        && !page.classList.contains('fixed-header')
+                        && !topstrip.classList.contains('fixed-top')) {
+                        logobar.classList.add('hide-logo');
+                        logobar.classList.add('fixed-top');
+                        topstrip.classList.add('hide-logo');
+                        topstrip.classList.add('fixed-top');
+                        page.classList.add('fixed-header');
+                    }
+
+                    if(page.classList.contains('fixed-header')){
+                        logobar.classList.add('hide-logo');
+                    }
+                }
+                limitScroll = lastScrollTop;
+            } else {
+                // scroll up
+
+                if(logobar.classList.contains('hide-logo')){
+                    logobar.classList.remove('hide-logo');
+                }
+
+                if(currentScroll < topLogoBar) {
+                    logorow.classList.remove('small-logo');
+                    page.classList.remove('fixed-header');
+                    logobar.classList.remove('fixed-top');
+                    topstrip.classList.remove('fixed-top');
+
+                }
+            }
+            lastScrollTop = st;
+        }
+    });
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.bouclair.com/on/demandware.store/Sites-bouclair-Site/en/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

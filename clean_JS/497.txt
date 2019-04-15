@@ -1,0 +1,247 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.clintonsretail.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["AD","IE"];
+//]]>
+
+
+        (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A368470-0e55-440f-a839-c915fe00bfe01.js','script','ire',document,window);
+    
+
+	newsletterPopup = new newsletterPopupClass({
+		enable_analytics: 0,
+		area: 'home',
+		cmsPage: 'home',
+		categoryId: 0,
+		productId: 0,
+		action_url: 'https://www.clintonsretail.com/newsletterpopup/index/subscribe/',
+		cancel_url: 'https://www.clintonsretail.com/newsletterpopup/index/cancel/',
+		block_url: 'https://www.clintonsretail.com/newsletterpopup/index/block/',
+		history_url: 'https://www.clintonsretail.com/newsletterpopup/index/history/'
+	});
+
+
+
+   
+
+    (function (a, c, b, e) {
+        a[b] = a[b] || {}; a[b].initial = { accountCode: "CLINT11117", host: "CLINT11117.pcapredict.com" };
+        a[b].on = a[b].on || function () { (a[b].onq = a[b].onq || []).push(arguments) }; var d = c.createElement("script");
+        d.async = !0; d.src = e; c = c.getElementsByTagName("script")[0]; c.parentNode.insertBefore(d, c)
+    })(window, document, "pca", "//CLINT11117.pcapredict.com/js/sensor.js");
+
+    pca.on('ready', function() {
+        pca.sourceString = 'PCAPredictMagento1Extension-v4.0.0.1';
+    });
+        
+    
+
+//<![CDATA[
+        var Translator = new Translate({"Add to Cart":"Add to Basket"});
+        //]]>
+
+        //<![CDATA[
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        
+ga('create', 'UA-3592796-1', 'auto');
+
+ga('send', 'pageview');
+        
+        //]]>
+    
+
+        truncateOptions();
+        decorateList('cart-sidebar', 'none-recursive');
+        $j('document').ready(function() {
+            var minicartOptions  = {
+                formKey:           "qwbRYYeVagRvfcBf"
+            }
+            var Mini = new OnTapMinicart(minicartOptions);
+            Mini.init();
+        });
+    
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.clintonsretail.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+// <![CDATA[
+document.getElementsByTagName('body')[0].className+=' cms-page-view kids-cards'
+// ]]>
+
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    
+
+    (function () {
+        eKomiIntegrationConfig = new Array(
+            {certId: 'B95AE457B02D3AA'}
+        );
+        if (typeof eKomiIntegrationConfig != "undefined") {
+            for (var eKomiIntegrationLoop = 0; eKomiIntegrationLoop < eKomiIntegrationConfig.length; eKomiIntegrationLoop++) {
+                var eKomiIntegrationContainer = document.createElement('script');
+                eKomiIntegrationContainer.type = 'text/javascript';
+                eKomiIntegrationContainer.defer = true;
+                eKomiIntegrationContainer.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + "//connect.ekomi.de/integration_1459520937/" + eKomiIntegrationConfig[eKomiIntegrationLoop].certId + ".js";
+                document.getElementsByTagName("head")[0].appendChild(eKomiIntegrationContainer);
+            }
+        } else {
+            if ('console' in window) {
+                console.error('connectEkomiIntegration - Cannot read eKomiIntegrationConfig');
+            }
+        }
+    })();
+
+
+    /* <![CDATA[ */
+    function allowSaveCookie() {
+        Mage.Cookies.set('user_allowed_save_cookie', '{"1":1}', new Date(new Date().getTime() + 31536000 * 1000));
+        if (Mage.Cookies.get('user_allowed_save_cookie')) {
+            window.location.reload();
+        } else {
+            window.location.href = 'https://www.clintonsretail.com/cookies-disabled-notice/';
+        }
+    }
+    $('notice-cookie-block').show();
+    /* ]]> */
+
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '634846656653148', // App ID
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+        });
+    };
+
+    // Load the SDK Asynchronously
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_GB/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    function greet(id){
+        FB.api('/me', function(response) {
+            var src = 'https://graph.facebook.com/'+id+'/picture';
+            $$('.welcome-msg')[0].insert('<img height="20" src="'+src+'"/>');
+        });
+    }
+
+    function fblogin(){
+        try {
+            FB.login(function(response) {
+                if (response.status == 'connected') {
+                    var url = 'https://www.clintonsretail.com/facebookfree/customer/login/referer/aHR0cHM6Ly93d3cuY2xpbnRvbnNyZXRhaWwuY29tLw,,/';
+                    setLocation(url);
+                } else if (response.status === 'not_authorized') {
+                    alert('Please, approve our application');
+                } else {
+                    // user is not logged in
+                    window.location.reload();
+                }
+            }, {scope:'email'});
+        } catch (err) {
+            fblogin();
+        }
+        return false;
+    }
+
+
+        var ScarabQueue = ScarabQueue || [];
+        (function (subdomain, id) {
+            if (document.getElementById(id)) return;
+            var js = document.createElement('script');
+            js.id = id;
+            js.src = subdomain + '.scarabresearch.com/js/131AF75642BCAF24/scarab-v2.js';
+            var fs = document.getElementsByTagName('script')[0];
+            fs.parentNode.insertBefore(js, fs);
+        })('https:' == document.location.protocol ? 'https://recommender' : 'http://cdn', 'scarab-js-api');
+    
+
+	var klevu_sessionId = '49c7berun52nircv23jjh1o5e7';
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.2.11';
+    		(function () {
+			// Remove Magento event observers from the search box
+			// Redirect to klevu js page
+			for( i = 0, len = allInputs.length; i < len; i++ ){
+				if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+					if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+						var search_input = allInputs[i];
+						search_input.stopObserving('click');
+						search_input.stopObserving('keydown');
+						search_input.form.action='https://www.clintonsretail.com/search/' ;//?q="+search_input.value;
+						search_input.form.observe('submit', function (e) {
+							//if(search_input.value.length!= 0){
+								//Event.stop(e);
+								//return false;
+							//}
+						});
+					}
+				}
+			}
+			
+		})();
+		 var klevu_storeLandingPageUrl = 'https://www.clintonsretail.com/search/';
+		 var klevu_showQuickSearchOnEnter=false;
+    		// call store js
+		var klevu_apiKey = 'klevu-14798043890504507',
+			searchTextBoxName = 'search',
+			klevu_lang = 'en',
+			klevu_result_top_margin = '',
+			klevu_result_left_margin = '';
+		(function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+    var klevu_cms_module_enabled=true;
+
+
+// Enable cms for klevu template
+        var klevu_cmsSearchEnabled = false;
+          
+
+
+    (function() {
+        var referrer, search_term, klevu_search_product_tracking;
+        referrer = document.referrer;
+        search_term = referrer.toQueryParams().q;
+        if (referrer.indexOf('content/index') > -1 && search_term) {
+            klevu_search_product_tracking = {"klevu_apiKey":"klevu-14798043890504507","klevu_term":"","klevu_type":"clicked","klevu_productId":"95","klevu_productName":"Clintons \u2013 cards & gifts for every occasion ","klevu_productUrl":"home","Klevu_typeOfRecord":"KLEVU_CMS"};
+            klevu_search_product_tracking.klevu_term = search_term;
+
+            // Send the ajax request
+            new Ajax.Request('//stats.klevu.com/analytics/productTracking', {
+                method: "GET",
+                parameters: klevu_search_product_tracking,
+
+                // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                }
+            });
+        }
+    })();
+

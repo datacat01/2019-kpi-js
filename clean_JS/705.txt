@@ -1,0 +1,48 @@
+
+$(document).ready(function() {
+
+	// COMMON LOAD MASK
+	$(".nav_extra_toggle, .nav_banner_toggle, .callback_toggle").click(function(){
+		$(".mask").toggle("fast");
+	});
+
+	// TOGGLE POP UPS
+	$(".nav_extra_toggle").click(function(){
+		$("#nav-extra").toggle("fast");
+	});
+	
+	$(".nav_banner_toggle").click(function(){
+		$("#nav-banner").toggle("fast");
+	});
+	
+	$(".callback_toggle").click(function(){
+		$("#callback").toggle("fast");
+	});
+
+	$("#nav-top-toggle").click(function(){
+		$("#top-contact").toggle("fast");
+	});
+	
+	// CLOSE POP UP WINDOWS FROM MASK OR CLOSE
+	$(".mask, .close").click(function(){
+		
+		if($('#nav-banner:visible').length == 1) {
+			
+			$("#nav-banner").toggle("fast");
+
+		} else if ($('#nav-extra:visible').length == 1) {
+			
+			$("#nav-extra").toggle("fast");
+
+		} else if ($('#callback:visible').length == 1) {
+			
+			$("#callback").toggle("fast");
+
+		}
+
+		$(".mask").toggle("fast");
+
+	});	
+	
+});
+

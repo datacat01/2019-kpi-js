@@ -1,0 +1,407 @@
+ 
+
+    	var t_custPage = '';
+      //individual pages ask for this variable to load their individual resources
+      var initLoad = false;
+      var pickerLoad = false;
+      
+      /////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////
+      //////////////    Internet Explorer Console Log Fix   //////////////
+      ////////////////////////////////////////////////////////////////////
+
+      /*
+        Protect window.console method calls, e.g. console is not defined on IE
+       * unless dev tools are open, and IE doesn't define console.debug
+       */
+      if (!window.console) {
+        window.console = {};
+      }
+      // union of Chrome, FF, IE, and Safari console methods
+      var m = [ "log", "info", "warn", "error", "debug", "trace", "dir", "group", "groupCollapsed", "groupEnd", "time", "timeEnd", "profile", "profileEnd", "dirxml", "assert", "count", "markTimeline",
+          "timeStamp", "clear" ];
+      // define undefined methods as noops to prevent errors
+      for ( var i = 0; i < m.length; i++) {
+        if (!window.console[m[i]]) {
+          window.console[m[i]] = function() {
+          };
+        }
+      }
+    
+    
+
+     	
+     		var isEflorist = true;
+            var t_parent = "eFlorist_US_Node";
+            var t_parentid = "00000001";
+            var t_ga_account = "UA-5704849-1";
+            var t_template = "14503200 - 1-800-Balloons | pink";
+            var t_engagement = "";
+            s.eVar55 = t_parent;
+            s.eVar7 = t_template;
+            t_homepagetype = "";
+            t_ecom_campaign = "";
+            t_service_test = "";
+        
+
+    	var enableEnsightenTrackingCall = 'true';
+   		 // Added a property of starts with for JS
+        if ( typeof String.prototype.startsWith != 'function' ) {
+          String.prototype.startsWith = function( str ) {
+            return this.substring( 0, str.length ) === str;
+          }
+        };
+        if(typeof t_events == 'undefined') {
+            var t_events = "";
+    	}
+        var fromHeader = 'false';
+        if(fromHeader == 'true') {
+            t_events = "event42";
+        }
+        var referer = "";
+        var t_product_name = "";
+        var splitref = document.referrer.split("/",6);
+        if(splitref[2]) {
+            referer = splitref[0]+"//"+splitref[2];
+        }
+        // This method is to parse and replace the appostory encoded string array with the normal javascript accepted appostropy
+        function replaceEncodedArrayWithApostrophy(t_product_name) {
+            if (!(t_product_name instanceof Array)){
+                t_product_name = t_product_name.replace(/&#039;/g, '\'');
+                t_product_name = t_product_name.replace(/&amp;/g, '\&');
+                return t_product_name;
+                } else {
+                for(var i=0; i < t_product_name.length; i++) {
+                    t_product_name[i] = t_product_name[i].replace(/&#039;/g, '\'');
+                    t_product_name[i] = t_product_name[i].replace(/&amp;/g, '\&');
+                } 
+                return t_product_name;
+            }
+         }
+        
+        
+       function registerEvent8() {
+        var event8Array = [];
+        for(var i=0; i < t_yousaved.length; i++) {
+            if(t_yousaved[i]!= 0 && event8Array.indexOf('event8')<0){
+                event8Array.push('event8');
+            } else {
+            	if(event8Array.indexOf('event8')>0){
+                event8Array.push(' ');
+            }
+        }
+        }
+    		if(t_events != '') {
+                t_events = t_events + ','+ event8Array;
+            } else {
+                t_events = event8Array;
+            }
+        }  
+        var t_service_test = ''
+    
+
+                var t_channel = 'Home';
+                var t_homepagetype = "";
+                if(!isEflorist) {
+                	s.eVar7=t_homepagetype;
+                	s.prop7=t_homepagetype;
+                }
+                var t_recipe = 'Recipe U';
+                var t_page_name="Home";
+                s.prop1 = t_page_name;
+                s.prop2 = t_page_name;
+                s.prop3 = t_page_name;
+                if(typeof t_events != "undefined" && t_events != "") {
+                    t_events = t_events;
+                }else {
+                    var t_events = '';
+                }
+                
+                /* TF-21948 :  passing t_page_name to t_category & t_subcategory */
+                var t_category = t_page_name;
+                var t_subcategory = t_page_name;
+                var t_page_layout = "14503200 1-800-Balloons Homepage";
+                s.evar42 = t_page_layout;
+        	
+
+            /* Getting the hostname from the location object and identifying the language based on the prefix at the url.
+                    if the prefix is es. or es-, it will be identified as spanish and if its fr. or fr-, it will be identified as
+                    french. Rest of the cases will be identified as english
+            */
+            var hostName = location.hostname;
+            var t_lang = "english";
+            if(hostName.indexOf("es.") == 0 || hostName.indexOf("es-") == 0) {
+                t_lang = "spanish";
+            } else if (hostName.indexOf("fr.") == 0 || hostName.indexOf("fr-") == 0) {
+                t_lang = "french";
+            } 
+            var t_customerid = "";
+            if ("" == 'true') {
+                t_customerid = "ef2248436269";
+            }
+            var t_ref_dom = referer;
+            var t_partnername="1-800 Balloons";
+            var t_lastvisit = readTimeFromLastSiteAccess();
+            eraseCookie('lastLogInDayToTeleflora');
+            createCookie('lastLogInDayToTeleflora', new Date().getTime(),365);
+            var t_startofsession = getTimeParting('h', '-6', new Date().getFullYear()); 
+            var t_dayofweek =  getTimeParting('d', '-6', new Date().getFullYear()); 
+            var t_typeofday = getTimeParting('w', '-6', new Date().getFullYear());
+            var t_s_code_URL="vendor/0005557/javascript/s_code.js";
+            var t_server = 'www';
+            var t_serverip = '.39.112';
+            var t_pageurl = window.location.pathname;
+            var t_account="efloristcom,14503200";
+            var t_tfid ="14503200";
+            var t_region="US";
+            var t_currency="USD";
+            var t_promo_code = '';
+            var t_coupon_code = [];
+            var t_ecom_campaign = '';
+
+            // This parameter is taken from the URL. Should be set in the URL of an external source to identify from where the URL originated
+            var t_source_code='';
+            t_product_name = replaceEncodedArrayWithApostrophy(t_product_name);
+
+            s.server = t_server;
+            s.account=t_account;
+            s.channel=t_channel;
+            s.pageName=t_page_name;
+            s.eVar40 = t_partnername;
+            s.prop22 = t_serverip;
+            s.prop16 = t_pageurl
+            s.eVar47 = t_tfid;
+            s.prop8 = t_lastvisit;
+            s.prop13 = t_startofsession;
+            s.prop14 = t_dayofweek;
+            s.prop15 = t_typeofday ;
+            s.prop26 = t_lang;
+            s_code_URL = t_s_code_URL
+            s.eVar34 = "";
+            s.eVar23 = "";
+            s.eVar1=t_ecom_campaign;
+            s.eVar6=t_ref_dom;
+            s.eVar13=t_startofsession;
+            s.eVar14=t_dayofweek;
+            s.eVar15=t_typeofday;
+            s.eVar38=t_lang;
+            function getTimeParting(t, z, y) {
+                dc = new Date('1/1/2000');
+                f = 15;
+                ne = 8;
+                if (dc.getDay() != 6 || dc.getMonth() != 0) {
+                    return 'Data Not Available';
+                } else {
+                    z = parseInt(z);
+                    if (y == '2009') {
+                        f = 8;
+                        ne = 1;
+                    }
+                    gmar = new Date('3/1/' + y);
+                    dsts = f - gmar.getDay();
+                    gnov = new Date('11/1/' + y);
+                    dste = ne - gnov.getDay();
+                    spr = new Date('3/' + dsts + '/' + y);
+                    fl = new Date('11/' + dste + '/' + y);
+                    cd = new Date();
+                    if (cd > spr && cd < fl) {
+                        z = z + 1;
+                    } else {
+                        z = z;
+                    }
+                    utc = cd.getTime() + (cd.getTimezoneOffset() * 60000);
+                    tz = new Date(utc + (3600000 * z));
+                    thisy = tz.getFullYear();
+                    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    if (thisy != y) {
+                        return 'Data Not Available';
+                    } else {
+                        thish = tz.getHours();
+                        thismin = tz.getMinutes();
+                        thisd = tz.getDay();
+                        var dow = days[thisd];
+                        var ap = 'AM';
+                        var dt = 'Weekday';
+                        var mint = '00';
+                        if (thismin > 30) {
+                            mint = '30';
+                        }
+                        if (thish >= 12) {
+                            ap = 'PM';
+                            thish = thish - 12;
+                        }
+                        if (thish == 0) {
+                            thish = 12;
+                        }
+                        if (thisd == 6 || thisd == 0) {
+                            dt = 'Weekend';
+                        }
+                        var timestring = thish + ':' + mint + ap;
+                        var daystring = dow;
+                        var endstring = dt;
+                        if (t == 'h') {
+                            return timestring;
+                        }
+                        if (t == 'd') {
+                            return daystring;
+                        }
+                        if (t == 'w') {
+                            return endstring;
+                        }
+                    }
+                }
+            }
+
+            function createCookie(name,value,days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime()+(days*24*60*60*1000));
+                    var expires = '; expires='+date.toGMTString();
+                }
+                else var expires = '';
+                document.cookie = name+'='+value+expires+'; path=/';
+            }
+
+            function readCookie(name) {
+                var nameEQ = name + '=';
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+
+            function eraseCookie(name) {
+                createCookie(name,'',-1);
+            }
+
+             function readTimeFromLastSiteAccess() {
+                var todaysDate = new Date();
+                var lastVisitTime = readCookie('lastLogInDayToTeleflora')
+                 if(lastVisitTime == null){
+                    return ''
+                }
+                var timeDiff = Math.abs(todaysDate.getTime() - lastVisitTime);
+                var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+                
+                switch (diffDays) {
+                  case 0:
+                    return 'Less than 1 Day';
+                    break;
+                  case 16139:
+                      return 'Greater than 16138 Days';
+                      break;                        
+                  default:
+                    return diffDays+' Days';
+                }
+            }
+        
+
+		               var cartItemCount = 0;
+		         
+
+                var minAutoSuggestInputLength = "3", defaultNavState = "", autoSuggestServiceUrl = '/rest/model/teleflora/autosuggest/AutoSuggestActor/getAutoSuggestResults', collection = "/content/Shared/Auto-Suggest Panels", productUrl = "", containerClass = 'dimSearchSuggContainer', defaultImage = '//assets.eflorist.com/images/no_image_auto_suggest.gif',dodImage='//assets.eflorist.com/images/dotd/DOD-Cat-Banner-spring.jpg',subscImage='//assets.eflorist.com/images/subscriptions/subscription-custom.jpg', skuTypeDimension = '2307186877'
+                var serverUrl="//assets.eflorist.com/site/",nonSecureBaseUrl="//assets.eflorist.com",siteType="EFlorist";
+				
+            
+
+                var minAutoSuggestInputLength = "3", defaultNavState = "", autoSuggestServiceUrl = '/rest/model/teleflora/autosuggest/AutoSuggestActor/getAutoSuggestResults', collection = "/content/Shared/Auto-Suggest Panels", productUrl = "", containerClass = 'dimSearchSuggContainer', defaultImage = '//assets.eflorist.com/images/no_image_auto_suggest.gif',dodImage='//assets.eflorist.com/images/dotd/DOD-Cat-Banner-spring.jpg',subscImage='//assets.eflorist.com/images/subscriptions/subscription-custom.jpg', skuTypeDimension = '2307186877'
+                var serverUrl="//assets.eflorist.com/site/",nonSecureBaseUrl="//assets.eflorist.com",siteType="EFlorist";
+				
+            
+
+        		var siteTypeVal = 'EFlorist';
+        	
+
+          var excludedPromoBanners = {};
+        
+
+	var siteVendorType = "EFlorist";
+  	var varContextPath = "";
+  	var nonSecureBaseUrlImg = "//assets.eflorist.com/images";
+  	var loginEmailId ="";
+	var siteCutOffDays = 0;
+	siteCutOffDays =(siteCutOffDays !=0)?siteCutOffDays:[0];
+	var siteType="EFlorist";
+	var SessionAddTime="300";
+	var SessionWarningMsg="session about to expire in few minutes";
+	var vSessionTimeout = "1800";
+	var urlWithSiteContext = function(anchor) {
+	      anchor.href = '' + anchor.pathname + anchor.search;
+	  };
+	var telefloraHeaderProp = {
+	      loggedInUser : false,
+	      fbConnectLoggedIn : false,
+	      facebookId : null,
+	      myAccountEnabled: true
+      };
+	 var siteId = 'EF-31526';
+	 var pasServiceEnabled = true;
+	 var calenderServiceEnabled = false;
+	 var siteHasHolidays = true;
+	 var siteHolidays = null;
+	 var flexsliderZ = false;
+	 var vCartSize = 0;
+	 var cartItemCount = 0;
+	 var passwordRestUrl = '/rest/model/teleflora/userprofiling/ForgotPasswordActor/processForgotPassword';
+	 var siteValue ='EF-31526';
+	 
+	 var globalCurrency = "$"
+	 var vPageParam = "homePage";
+	 var siteContextPath = '';
+	 var categoryId = '';
+	 
+
+                   var homePageParam = true;
+                   var pageSpecificFiles = ['//assets.eflorist.com/js/sections/ef-homepage.js'];
+            
+
+	    var pickerLoad = true, _complete_selenium = false, externalJSFile = "", externalPageSpecJSFile="", subCatParam = false;
+	    var themeJS = '//assets.eflorist.com/themes/custom-templates/1/14503200/14503200-pink/js/theme.js';
+	    var externalChck = ((typeof pdpParm != "undefined" && pdpParm) || subCatParam || typeof homePageParam != "undefined" && homePageParam);
+	    
+	    (siteVendorType === "EFlorist") && pageSpecificFiles.push(themeJS);
+	    
+	    if(externalJSFile !=="" ) {
+	    	pageSpecificFiles.push(externalJSFile);
+	    }
+	    if(externalChck && externalPageSpecJSFile !="" && externalPageSpecJSFile !="null"){
+	    	pageSpecificFiles.push(externalPageSpecJSFile);
+	    }
+
+          if (typeof checkoutParam != "undefined" && checkoutParam) {
+            var askExpertWait = 3;
+            var t_cardtype;
+            var t_promocode;
+          } else if (typeof pdpParm != "undefined" && pdpParm) {
+            var PDPlogged = false;
+          }
+
+          Modernizr.load([ {
+            test : Modernizr.hasJquery,
+            complete: function() {
+                   //TFD-1110 - Fix
+                  Modernizr
+                      .load([
+            {
+                               load : '//assets.eflorist.com/js/sections/ef-common.js?v=EF1923'
+                             },
+                             {
+                               load : pageSpecificFiles,
+                               complete : function() {
+                                 teleflora.modenizrInitFn();
+                               }
+                             }
+                          ]);
+            }
+          }]);
+
+          Modernizr.load([ {
+            test : Modernizr.touch,
+            yep : [ '//assets.eflorist.com/js/lib/fastbutton.js' ]
+          } ]);
+          
+          
+        

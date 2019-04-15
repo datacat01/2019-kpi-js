@@ -1,0 +1,297 @@
+
+
+
+
+
+
+
+
+
+
+
+ 
+//<![CDATA[
+var anox_provider     = 'CooksonGold';
+var anox_url          = document.location.protocol + '//' + 'www.klick2contact.com/v022';
+var anox_remark       = 'Home Page';
+var anox_availability = null;
+var anox_offlinedelay = 3000;
+var anox_offline      = 'We are sorry but our callback service is offline at the moment. You can always call us directly or try again later.';
+ 
+var anox_timer        = 864000000;
+ 
+var anox_skin         = '';
+(function() {
+    var ens   = document.createElement('script');
+    ens.type  = 'text/javascript'; ens.async = true; ens.id = "anox_static";
+    ens.src   = anox_url + '/integrated/static_js_' + anox_provider + '.js';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(ens, first);
+    anox_availability = setTimeout(function() {
+    		var imgs = document.getElementsByTagName('a');
+    		for(var ic=0; ic<imgs.length; ic++) {
+    			if (imgs[ic].id==null) continue;
+    			if (imgs[ic].id.substring(0, 9)!='anox_icon') continue;
+    			imgs[ic].onclick = function(){alert(anox_offline);};
+    		}},anox_offlinedelay);
+})();
+//]]>
+ 	
+function SetCookie(c_name,value,expiredays)
+{
+var exdate=new Date()
+exdate.setDate(exdate.getDate()+expiredays)
+document.cookie=c_name+ "=" +escape(value)+";path=/"+((expiredays==null) ? "" : ";expires="+exdate.toUTCString())
+}
+ 
+        $(document).ready(function() {
+            <!-- -->$(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+                        
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+                        
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+function verifysrch(){
+	var srchv=document.getElementById("query").value;if((srchv.length==0)||(srchv.length==1)||(srchv=="product code or keyword")){
+		alert("Please enter a minimum of 2 characters");
+		return false;
+		}
+}
+
+
+var dataLayer = dataLayer || [];
+dataLayer.push({
+'PageType':'HomePage',
+'email': '',
+'remarketing_tag_params': {
+  'ecomm_pagetype' : 'home'
+}
+});
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+					var suggest				= new FFSuggest();
+
+					var searchURL			= '/proxy.jsp';
+					var formname			= 'search_word_inc';
+					var queryParamName		= 'query';
+					var channelParamName	= 'channel';
+
+					var channel				= 'uk';
+
+					var divLayername		= 'suggestLayer';
+					var instanceName		= 'suggest';
+					var debugMode			= false;
+					var showImages 			= true;
+					suggest.init(searchURL, formname, queryParamName, divLayername, instanceName, debugMode, channelParamName, channel, showImages);
+
+					document.onmousedown = suggest.hideLayerOutsideCall;
+
+
+if( document.cookie.indexOf("eucookie") ===-1 ){
+	$("#wrapper").addClass("wrapperslide");
+	$("#eucookielaw").show();
+	SetCookie('eucookie','eucookie',365*10);
+}
+else {
+$("#wrapper").removeClass("wrapperslide");
+	$("#eucookielaw").remove();
+}
+    $("#removecookie").click(function () {
+		SetCookie('eucookie','eucookie',365*10);
+		$("#wrapper").removeClass("wrapperslide");
+      $("#eucookielaw").remove();
+    });
+
+
+		var PeeriusCallbacks = {
+			track:{
+			type: "home",
+ 
+			lang: "en-GB"
+			,
+			smartRecs: {
+
+                
+				 showAttributes: ["gamme", "restricted"]
+
+            }
+		},
+    smartRecs: function (jsonArray) {
+
+        for (i in jsonArray) {
+
+            var widget = jsonArray[i]
+
+            if (typeof widget === "object") {
+
+
+                if (widget.position == "categorypage") {
+
+                    var container_id = "categorypage";
+
+                }
+                 if (widget.position == "cat_bestseller") {
+
+                    var container_id = "cat_bestseller";
+
+                }
+                 if (widget.position == "cat_new") {
+
+                    var container_id = "cat_new";
+
+                }
+                 if (widget.position == "cat_othersBrowsing") {
+
+                    var container_id = "cat_othersBrowsing";
+
+                }
+				 if (widget.position == "homeNew") {
+
+                    var container_id = "homeNew";
+
+                }
+                 if (widget.position == "homefeatured") {
+
+                    var container_id = "homefeatured";
+
+                }
+                 if (widget.position == "homeSale") {
+
+                    var container_id = "homeSale";
+
+                }
+
+
+                $.each(widget.recs,function (j,recs) {
+
+                if (container_id == "categorypage" || container_id == "cat_bestseller" || container_id == "cat_new" || container_id == "cat_othersBrowsing" || container_id == "homeNew" || container_id == "homefeatured" || container_id == "homeSale") {
+
+
+                    var p = widget.recs[j]
+
+
+                    var id = p.id;
+                    var title = p.title;
+                    var img = p.img;
+                    var link = p.url;
+					var restrictc =p.attributes.restricted;
+					var gamme =p.attributes.gamme;
+                   var cat = p.category;
+ 
+                    var salePrice = p.prices.GBP.salePrice;
+                    var unitPrice = p.prices.GBP.unitPrice;
+ 
+                   var h = "<div class=\"bx-product\">";
+					h += "<a href=\"" + link + "\" class=\"bx-product-link\"></a>";
+					h += "<div class=\"bx-product-img-container\">";					
+                    h += "<img src=\"" + img + "\" class=\"bx-product-img\" />";
+                    h += "<img  src=\"/assets/img/layout/box-col-product-boundary.png\"  class=\"bx-product-img-boundary\" />";
+                    h += "</div>";
+                    h += "<p class=\"bx-product-title bCif\">" + title.substring(0, 42) + "...</p>";
+					h += "<p class=\"bx-product-price\">";
+					if (unitPrice != 0.00) {
+                    if (unitPrice > salePrice)
+											
+                       h += "Was <del>&pound;" + parseFloat(Math.round(unitPrice * 100) / 100).toFixed(2) + "</del> Now  &pound;" + parseFloat(Math.round(salePrice * 100) / 100).toFixed(2) + " exc. VAT";
+             
+					
+                              else
+							  	
+                        h += " &pound; " + parseFloat(Math.round(unitPrice *100) / 100).toFixed(2) + " exc. VAT";
+					
+					}
+					h += "</p>";
+					h += "</div> </div>";
+
+
+                    var p = $("<div id=\""+container_id+"\">").html(h);
+
+
+                    p.click(function () {
+
+                      Peerius.smartRecsClick(id);
+
+                    })
+
+                if (container_id == "categorypage") {
+                    $(p).insertBefore('#container');
+
+                }
+
+                if (container_id == "cat_bestseller") {
+                    $(p).insertBefore('#container2');
+
+                }
+
+                if (container_id == "cat_othersBrowsing") {
+
+
+                    $(p).insertBefore('#container3');
+
+                }
+
+                if (container_id == "cat_new") {
+
+                    $(p).insertBefore('#container4');
+
+                }
+				
+				 if (container_id == "homeNew") {
+                    $(p).insertBefore('#container');
+
+                }
+
+                if (container_id == "homeSale") {
+                    $(p).insertBefore('#container2');
+
+                }
+
+                if (container_id == "homefeatured") {
+
+
+                    $(p).insertBefore('#container3');
+
+                }
+				
+				}
+                });
+            }
+
+        }
+}
+ 
+	}
+
+var _nRepData = _nRepData || []; _nRepData['kb'] = '77946910'; _nRepData['float'] = {account: 'CooksonGold', cdcVersion: 3, cdcFrame: '', scriptVersion: '3.2.2.1'}
+/* API here */;
+(function(){var windowLoadFunc = function(){var _nRepData = window._nRepData || [];_nRepData['windowLoaded'] = true;if (typeof(_nRepData['windowOnload']) === 'function') _nRepData['windowOnload']();};if (window.attachEvent)window.attachEvent('onload', windowLoadFunc);else if (window.addEventListener)window.addEventListener('load', windowLoadFunc, false);var sc = document.createElement('script');sc.type = 'text/javascript';sc.async = true;sc.defer = true;sc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'my.nanorep.com/widget/scripts/float.js';var _head = document.getElementsByTagName('head')[0];_head.appendChild(sc);})();
+

@@ -1,0 +1,40 @@
+	try{window.onload = setTimeout(function(e){googletag.cmd.push(function() { googletag.display('div-gpt-ad-1500977291672-0');});},1000)}catch(err){console.log(err)}
+try{window.onload = function(e){googletag.cmd.push(function() { googletag.display('div-gpt-ad-1500977211445-0'); });}}catch(err){console.log(err)}
+try{window.onload = function(e){googletag.cmd.push(function() {googletag.display('div-gpt-ad-1460923876927-4'); });}}catch(err){console.log(err)}
+
+	    var mod_captcha_onloadCallback = function ( ) {
+		var varified = false;
+		$( ".mod_captcha_field" ).each( function ( ) {
+		    $( this ).closest( "form" ).find( 'button[ type=button],button[ type=submit],input[type=submit]' ).attr( 'disabled', true );
+		    grecaptcha.render( this, {
+			'sitekey': '6Ld-O0oUAAAAAL3IrXmAEeNTILK5wPUuSYcOCstm',
+			'theme': 'light',
+			'callback': function ( response ) {
+			    $( ".g-recaptcha-response" ).each( function ( ) {
+				if ( this.value.length > 0 )
+				{
+				    if ( response.length > 0 )
+				    {
+					if ( $( "#use_insecure,#use_insecure2" ).is( ':visible' ) ) {
+					    if ( $( "#use_insecure,#use_insecure2" ).is( ":checked" ) ) {
+						$( "#" + this.id ).closest( "form" ).find( 'button[ type=button],button[type=submit], input[type=submit]' ).attr( 'disabled', false )
+					    }
+					} else {
+					    $( "#" + this.id ).closest( "form" ).find( 'button[ type=button],button[type=submit], input[type=submit]' ).attr( 'disabled', false )
+					}
+					varified = true;
+				    }
+				}
+			    } )
+			},
+			'expired-callback': function ( ) {
+			    if ( !varified ) {
+				$( "form" ).find( 'button[ type=button],button[type=submit],input[type=submit]' ).attr( 'disabled', true );
+			    }
+
+			}
+		    } );
+		} );
+	    };	    
+	
+var switchTo5x = true;

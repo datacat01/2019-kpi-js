@@ -1,0 +1,678 @@
+
+(function(i,s,o,g,r,a,m){
+    i['GoogleAnalyticsObject']=r;
+    i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+    a=s.createElement(o), m=s.getElementsByTagName(o)[0];
+    a.async=1;
+    a.src=g;
+    m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-9167819-1', 'auto');
+ga('send', 'pageview', '/');
+
+
+(function(_, $) {
+
+        _.tr({
+            cannot_buy: 'You cannot buy the product with these option variants',
+            no_products_selected: 'No products selected',
+            error_no_items_selected: 'No items selected! At least one check box must be selected to perform this action.',
+            delete_confirmation: 'Are you sure you want to delete the selected items?',
+            text_out_of_stock: 'Out of stock',
+            items: 'item(s)',
+            text_required_group_product: 'Please select a product for the required group [group_name]',
+            save: 'Save',
+            close: 'Close',
+            notice: 'Notice',
+            warning: 'Warning',
+            error: 'Error',
+        empty: 'Empty',
+            text_are_you_sure_to_proceed: 'Are you sure you want to proceed?',
+            text_invalid_url: 'You have entered an invalid URL',
+            error_validator_email: 'The email address in the <b>[field]<\/b> field is invalid.',
+            error_validator_phone: 'The phone number in the <b>[field]<\/b> field is invalid. The correct format is (555) 555-55-55 or 55 55 555 5555.',
+            error_validator_integer: 'The value of the <b>[field]<\/b> field is invalid. It should be integer.',
+            error_validator_multiple: 'The <b>[field]<\/b> field does not contain the selected options.',
+            error_validator_password: 'The passwords in the <b>[field2]<\/b> and <b>[field]<\/b> fields do not match.',
+            error_validator_required: 'The <b>[field]<\/b> field is mandatory.',
+            error_validator_zipcode: 'The ZIP / Postal code in the <b>[field]<\/b> field is incorrect. The correct format is [extra].',
+            error_validator_message: 'The value of the <b>[field]<\/b> field is invalid.',
+            text_page_loading: 'Loading... Your request is being processed, please wait.',
+            error_ajax: 'Oops, something went wrong ([error]). Please try again.',
+            text_changes_not_saved: 'Your changes have not been saved.',
+            text_data_changed: 'Your changes have not been saved.Press OK to continue, or Cancel to stay on the current page.',
+        placing_order: 'Placing the order',
+        file_browser: 'File browser',
+        browse: 'Browse...',
+        more: 'More',
+        text_no_products_found: 'No products found',
+        cookie_is_disabled: 'For a complete shopping experience, please <a href=\"http://www.wikihow.com/Enable-Cookies-in-Your-Internet-Web-Browser\" target=\"_blank\">set your browser to accept cookies<\/a>',
+        insert_image: 'Insert image',
+        image_url: 'Image URL'
+        });
+        
+        $.extend(_, {
+            index_script: 'index.php',
+            changes_warning: /*'Y'*/'N',
+            currencies: {
+                'primary': {
+                    'decimals_separator': '.',
+                    'thousands_separator': ',',
+                    'decimals': '2'
+                },
+                'secondary': {
+                    'decimals_separator': '.',
+                    'thousands_separator': ',',
+                    'decimals': '2',
+                    'coefficient': '1.00000'
+                }
+            },
+            default_editor: 'redactor',
+            default_previewer: 'magnific',    
+            current_path: '',
+            current_location: 'https://www.germanshop24.com',
+            images_dir: 'https://www.germanshop24.com/design/themes/responsive/media/images',
+            notice_displaying_time: 5,
+            cart_language: 'en',
+        language_direction: 'ltr',
+            default_language: 'en',
+            cart_prices_w_taxes: true,
+            theme_name: 'energot',
+            regexp: [],
+        current_url: 'https://www.germanshop24.com/',
+            current_host: 'www.germanshop24.com',
+            init_context: ''
+        });
+    
+    
+        $(document).ready(function(){
+            $.runCart('C');
+        });
+
+    
+}(Tygh, Tygh.$));
+
+
+    Searchanise = {};
+    Searchanise.host = 'https://www.searchanise.com';
+    Searchanise.api_key = '5o9Y8n3W3c';
+
+    Searchanise.AutoCmpParams = {};
+    Searchanise.AutoCmpParams.restrictBy = {};
+    Searchanise.AutoCmpParams.restrictBy.status = 'A';
+    Searchanise.AutoCmpParams.restrictBy.empty_categories = 'N';
+    Searchanise.AutoCmpParams.restrictBy.usergroup_ids = '0|1';
+    Searchanise.AutoCmpParams.restrictBy.category_usergroup_ids = '0|1';
+    Searchanise.AutoCmpParams.union = {};
+    Searchanise.AutoCmpParams.union.price = {};
+    Searchanise.AutoCmpParams.union.price.min = 'price_0|price_1';
+    Searchanise.AutoCmpParams.restrictBy.active_company = 'Y';
+    Searchanise.options = {};
+    Searchanise.options.PriceFormat = {rate : 1.00000, decimals: 2, decimals_separator: '.', thousands_separator: ',', symbol: '$', after: false};
+    Searchanise.AdditionalSearchInputs = '#additional_search_input';
+    Searchanise.SearchInput = '.ty-search-block__input';
+
+    Tygh.$.ceEvent('on', 'ce.commoninit', function(context) {
+        // Re-initialize Searchanise widget if its search input was updated after AJAX request
+        if (typeof(Searchanise) !== 'undefined' && Searchanise.Loaded && typeof(Searchanise.SetOptions) === 'function' && Tygh.$(Searchanise.SearchInput, context).length) {
+            Searchanise.SetOptions({ SearchInput: Tygh.$(Searchanise.SearchInput) });
+            Searchanise.AutocompleteClose();
+            Searchanise.Start();
+        }
+    });
+
+    (function() {
+        var __se = document.createElement('script');
+        __se.src = 'https://www.searchanise.com/widgets/v1.0/init.js';
+        __se.setAttribute('async', 'true');
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(__se, s);
+    })();
+
+
+    Tygh.$(document).ready(function() {
+        Tygh.$.get('https://www.germanshop24.com/index.php?dispatch=searchanise.async&no_session=Y&is_ajax=3');
+        $(window).scroll(function(){
+            var scrollTop = 200;
+            if($(window).scrollTop() >= scrollTop && windowWidth > 1006){
+                $('body').addClass('is-floating');
+            }else{
+                $('body').removeClass('is-floating');
+            }
+        })
+    });
+
+
+CloudZoom = {
+    path: 'https://www.germanshop24.com/js/addons/image_zoom'
+};
+
+
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+	    $("a.vs-social-toggle").click(function(e){
+	        e.preventDefault();
+
+	        var self=$(this);
+	        var target=self.siblings(".vs-auth");
+
+	        target.toggleClass("hidden");
+	    
+	    });
+    });
+}(Tygh, Tygh.$));
+
+
+//<![CDATA[
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var slider = context.find('#banner_slider_174');
+        var delay = '3000';
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        if (slider.length) {
+            slider.owlCarousel({
+                direction: 'ltr',
+                items: 1,
+                singleItem : true,
+                slideSpeed: 400,
+                autoPlay: delay,
+                stopOnHover: true,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+                                                                                    pagination: false,
+                    navigation: true,
+                    navigationText: ['', ''],
+                            });
+            owl = slider.data('owlCarousel');
+            owl.stop();
+            slider.addClass('stopped');
+
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",slider);
+                if (slider.visible(true)){
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() { 
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+            }
+        }
+    });
+}(Tygh, Tygh.$));
+//]]>
+
+
+//<![CDATA[
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var slider = context.find('#banner_slider_289');
+        var delay = '3000';
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        if (slider.length) {
+            slider.owlCarousel({
+                direction: 'ltr',
+                items: 1,
+                singleItem : true,
+                slideSpeed: 400,
+                autoPlay: delay,
+                stopOnHover: true,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+                                                    pagination: true
+                                                            });
+            owl = slider.data('owlCarousel');
+            owl.stop();
+            slider.addClass('stopped');
+
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",slider);
+                if (slider.visible(true)){
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() { 
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+            }
+        }
+    });
+}(Tygh, Tygh.$));
+//]]>
+
+
+//<![CDATA[
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var slider = context.find('#banner_slider_290');
+        var delay = '3000';
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        if (slider.length) {
+            slider.owlCarousel({
+                direction: 'ltr',
+                items: 1,
+                singleItem : true,
+                slideSpeed: 400,
+                autoPlay: delay,
+                stopOnHover: true,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+                                                    pagination: true
+                                                            });
+            owl = slider.data('owlCarousel');
+            owl.stop();
+            slider.addClass('stopped');
+
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",slider);
+                if (slider.visible(true)){
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() { 
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+            }
+        }
+    });
+}(Tygh, Tygh.$));
+//]]>
+
+
+//<![CDATA[
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var slider = context.find('#banner_slider_178');
+        var delay = '3000';
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        if (slider.length) {
+            slider.owlCarousel({
+                direction: 'ltr',
+                items: 1,
+                singleItem : true,
+                slideSpeed: 400,
+                autoPlay: delay,
+                stopOnHover: true,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+                                                    pagination: true
+                                                            });
+            owl = slider.data('owlCarousel');
+            owl.stop();
+            slider.addClass('stopped');
+
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",slider);
+                if (slider.visible(true)){
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() { 
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+            }
+        }
+    });
+}(Tygh, Tygh.$));
+//]]>
+
+
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var elm = context.find('#scroll_list_67');
+
+        var item = 5,
+            // default setting of carousel
+            itemsDesktop = 4,
+            itemsDesktopSmall = 3;
+            itemsTablet = 2;
+
+        if (item > 3) {
+            itemsDesktop = item;
+            itemsDesktopSmall = item - 1;
+            itemsTablet = item - 2;
+        } else if (item == 1) {
+            itemsDesktop = itemsDesktopSmall = itemsTablet = 1;
+        } else {
+            itemsDesktop = item;
+            itemsDesktopSmall = itemsTablet = item - 1;
+        }
+        
+        function loadImage(){
+            var check_delay=400+100;
+
+            setTimeout(function() {
+                check_animate();
+            },check_delay)                
+        }
+
+        var delay = '3000';
+// 
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+
+        if (elm.length) {
+            elm.owlCarousel({
+                direction: 'ltr',
+                items: 5,
+                            itemsDesktop: [1247, itemsDesktopSmall],
+                itemsDesktopSmall: [1008, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [320, 1],
+                                scrollPerPage: true,
+                                                autoPlay: '3000',
+                                            slideSpeed: 400,
+                rewindSpeed: 400,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['', ''],
+                pagination: false,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+            });
+
+            $('.owl-next, .owl-prev').click(loadImage);
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",elm);
+                active_anim=$(".active .scroll-image,.active .jscroll-item",elm);
+                if (elm.visible(true)){
+                    active_anim.each(function(){
+                        $(this).one('load',loadImage());
+                    });
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() {
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("lazyOwl");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay && windowWidth > 1006){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+
+            }
+
+            var owl = elm.data('owlCarousel');
+            owl.stop();
+            elm.addClass('stopped');
+        }
+    });
+}(Tygh, Tygh.$));
+
+
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var elm = context.find('#scroll_list_70');
+
+        var item = 3,
+            // default setting of carousel
+            itemsDesktop = 3,
+            itemsDesktopSmall = 3;
+            itemsTablet = 2;
+
+        if (item > 3) {
+            itemsDesktop = item;
+            itemsDesktopSmall = item - 1;
+            itemsTablet = item - 2;
+        } else if (item == 1) {
+            itemsDesktop = itemsDesktopSmall = itemsTablet = 1;
+        } else {
+            itemsDesktop = item;
+            itemsDesktopSmall = itemsTablet = item - 1;
+        }
+                    itemsDesktopSmall=itemsTablet=2;
+        
+        function loadImage(){
+            var check_delay=400+100;
+            setTimeout(function() {
+                check_animate();
+            },check_delay)                
+        }
+        var delay = '3000';
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        // 
+        function vs_check_loaded(elem){
+            
+            elem.trigger('owl.stop');
+            images=$(".active img.lazyOwl",elm);
+            active_anim=$(".active .scroll-image,.active .jscroll-item",elm);
+            if (elm.visible(true)){
+                active_anim.each(function(){
+                    $(this).one('load',loadImage());
+                });
+                images.each(function(){
+                    var img=$(this);
+                    img.one('load', function() {
+                        img.removeAttr("data-src");
+                        img.removeAttr("style");
+                        img.removeClass("lazyOwl");
+                        img.removeClass("vs_lazy_mobile");
+                        if (delay && windowWidth > 1006){
+                            elem.trigger('owl.play',delay);
+                        }
+                        return;
+                    }).attr('src', img.data("src"))
+                    .each(function() {
+                      //Cache fix for browsers that don't trigger .load()
+                      if(this.complete) $(this).trigger('load');
+                    });
+                });
+            }
+        }
+                function outsideNav (elem) {
+            if(this.options.items >= this.itemsAmount){
+                $("#owl_outside_nav_70").hide();
+            } else {
+                $("#owl_outside_nav_70").show();
+            }
+            vs_check_loaded(elem);
+        }
+                // 
+        if (elm.length) {
+
+            elm.owlCarousel({
+                items: item,
+                direction: 'ltr',
+                itemsDesktop: [1199, itemsDesktop],
+                itemsDesktopSmall: [979, itemsDesktopSmall],
+                itemsTablet: [768, itemsTablet],
+                itemsMobile: [479, 1],
+                                                autoPlay: '3000',
+                                slideSpeed: 400,
+                stopOnHover: true,
+                                pagination: false,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+                            afterInit: outsideNav,
+                afterUpdate : outsideNav
+            });
+
+              $('#owl_prev_70000').click(function(){
+                elm.trigger('owl.prev');
+              });
+              $('#owl_next_70000').click(function(){
+                elm.trigger('owl.next');
+              });
+
+            
+            
+
+            var owl = elm.data('owlCarousel');
+            owl.stop();
+            elm.addClass('stopped');
+
+        }
+    });
+}(Tygh, Tygh.$));
+
+
+(function(_, $) {
+    $.ceEvent('on', 'ce.commoninit', function(context) {
+        var elm = context.find('#scroll_list_71');
+
+        var item = 8,
+            // default setting of carousel
+            itemsDesktop = 4,
+            itemsDesktopSmall = 3;
+            itemsTablet = 2;
+
+        if (item > 3) {
+            itemsDesktop = item;
+            itemsDesktopSmall = item - 1;
+            itemsTablet = item - 2;
+        } else if (item == 1) {
+            itemsDesktop = itemsDesktopSmall = itemsTablet = 1;
+        } else {
+            itemsDesktop = item;
+            itemsDesktopSmall = itemsTablet = item - 1;
+        }
+        
+        function loadImage(){
+            var check_delay=400+100;
+
+            setTimeout(function() {
+                check_animate();
+            },check_delay)                
+        }
+
+        var delay = false;
+// 
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+
+        if (elm.length) {
+            elm.owlCarousel({
+                direction: 'ltr',
+                items: 8,
+                            itemsDesktop: [1247, itemsDesktopSmall],
+                itemsDesktopSmall: [1008, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [320, 1],
+                                scrollPerPage: true,
+                                                autoPlay: false,
+                                            slideSpeed: 400,
+                rewindSpeed: 400,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['', ''],
+                pagination: false,
+                addClassActive:true,
+                afterInit: vs_check_loaded,
+                afterMove: vs_check_loaded,
+            });
+
+            $('.owl-next, .owl-prev').click(loadImage);
+            function vs_check_loaded(elem){
+                
+                elem.trigger('owl.stop');
+                images=$(".active img.lazyOwl",elm);
+                active_anim=$(".active .scroll-image,.active .jscroll-item",elm);
+                if (elm.visible(true)){
+                    active_anim.each(function(){
+                        $(this).one('load',loadImage());
+                    });
+                    images.each(function(){
+                        var img=$(this);
+                        img.one('load', function() {
+                            img.removeAttr("data-src");
+                            img.removeAttr("style");
+                            img.removeClass("lazyOwl");
+                            img.removeClass("vs_lazy_mobile");
+                            if (delay && windowWidth > 1006){
+                                elem.trigger('owl.play',delay);
+                            }
+                            return;
+                        }).attr('src', img.data("src"))
+                        .each(function() {
+                          //Cache fix for browsers that don't trigger .load()
+                          if(this.complete) $(this).trigger('load');
+                        });
+                    });
+                }
+
+            }
+
+            var owl = elm.data('owlCarousel');
+            owl.stop();
+            elm.addClass('stopped');
+        }
+    });
+}(Tygh, Tygh.$));
+
+(function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '//traffic7.helponclick.com/assist?c=86235a64-c1cc-445c-ade6-8dc1ea83fd7a';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();

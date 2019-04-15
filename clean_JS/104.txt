@@ -1,0 +1,75 @@
+
+<META NAME="DESCRIPTION" CONTENT="Shop cloth diapers, diaper covers, prefold diapers and more at DiaperJunction.com.  Customer Rewards and Free Shipping.">
+<META NAME="ABSTRACT" CONTENT="Cloth Diapering - Shop Cloth Diapers from BumGenius, GroVia & More! ">
+<META NAME="KEYWORDS" CONTENT="cloth diaper, cloth diapers, BumGenius, grovia, diaper store,cloth diapers,organic cloth diapers,hybrid cloth diapers, cloth diapering">
+
+
+<script type="text/javascript" src="assets/templates/common-html5/js/modernizr.min.js?vcart=9.0.6">
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19134191-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://': 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "fade",
+		slideshowSpeed: 5000  
+      });
+    });
+
+
+$(document).ready(function(){
+	$('#mainmenu').slicknav();
+	$('#msearcha').click(function(){
+    $('#msearchpop').slideToggle('fast')
+  });
+});
+
+
+		function msearch () {
+				var scrollwidth = $(window).width();
+				if (scrollwidth > 767)
+						$('#msearchpop').slideUp('fast')
+		}
+		$(window).resize(msearch);
+
+
+jQuery(function() {
+	jQuery('#searchlight').searchlight('/search_quick.asp');
+});
+
+
+//<![CDATA[
+var file='/stats/count.asp';
+
+var stats_d=new Date();
+var stats_s=stats_d.getSeconds();
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';}
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';}
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.height;
+stats_v=navigator.appName;
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width="1" height="1" border="0" alt="stats" />');
+//]]>
+
+var _cart_secure_url = "https://www.diaperjunction.com"

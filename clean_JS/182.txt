@@ -1,0 +1,608 @@
+
+	var hash = window.location.hash;
+  
+
+var monetateT = new Date().getTime();
+(function() { 
+var p = document.location.protocol; 
+if (p == "http:" || p == "https:") { 
+var m = document.createElement("script"); 
+m.type = "text/javascript"; 
+m.src = (p == "https:" ? "https://s" : "http://") + "e.monetate.net/js/2/a-bdf3d812/p/directv.com/entry.js"; 
+var e = document.createElement("div"); 
+e.appendChild(m); document.write(e.innerHTML); 
+}
+})();
+
+var detmScriptLoadType='async';
+window.$profile = function(){};$profile.stop = function(){};$profile.loggers = {};
+
+$profile.loggers.mbox = $profile("mbox", "download + execution time", "brown");
+
+
+$profile.stop("mbox");
+$profile.loggers.waitingReady = $profile("head scripts executed, waiting for DOM ready", "The time difference between when the head scripts were executed and when the dom became ready", "olive");
+
+
+window.tmParam.tm_custom_2='Prospect';
+window.tmParam.tm_u8='';
+window.tmParam.tm_custom_14='';
+window.tmParam.tm_custom_15='';
+window.tmParam.tm_custom_16='';
+window.tmParam.tm_u3='';
+
+
+	printContingencyWarningMessage();
+
+
+<!--
+// -->
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Visa Banner : INF : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Visa Banner : OOF : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Visa Banner : DMA : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Header HTML (GOT - In Footprint)";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Header HTML (GOT - Out of Footprint)";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Shared : Header HTML (GOT - DMA)";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : TV Packages : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : Tabs : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Marketing : Packages : Bundles ATT : Visa Banner with CTA : HTML";
+
+adjustListModuleItemHeights('mod_160076_2_list', 4, 4, 'inline', 'none');
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : DTV and Internet : INF";
+
+adjustListModuleItemHeights('mod_160278_2_list', 4, 4, 'inline', 'none');
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : DTV and Internet : OOF";
+
+adjustListModuleItemHeights('mod_160342_2_list', 4, 4, 'inline', 'none');
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : DTV and Internet : DMA";
+
+
+var memail = document.dtv.email;
+if (memail.value == 'Enter+your+email+address+here.') {
+memail.value = 'Enter your email address here.';
+}
+
+
+(function($){
+$(document).ready(function() {
+$('#submit').click(function(){
+var email = $('#email').val();
+if(validateEmail(email)==false){
+$('#errors').html('Please enter a valid email address');
+return false;
+}
+else if (validateEmail(email)==true){
+$('#errors').html('<span style="color:#4fb000;">Thank you! We look forward to telling you about our special offers!</span>');
+}
+});
+});
+function validateEmail(test_email) {
+var emailReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+if( !emailReg.test( test_email ) ) {
+return false;
+} else {
+return true;
+}
+}
+})(jQuery);
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "PRHP : Email Capture : HTML";
+
+ 
+var Reporting = Reporting ? Reporting : new Object();
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+Reporting.ModuleIds[Reporting.ModuleIds.length] = "Prospect Home Page : HTML : Accessibility Act";
+
+
+			Dtv.Util.lazyStyles('ctm-media-module');
+		
+
+		Dtv.Util.lazyStyles('ep-photo-carousel');
+		Dtv.Util.lazyStyles('ep-carousel-module');
+	
+
+if (!window.$profile) {
+window.$profile = function(){};
+window.$profile.loggers = {};
+}
+$profile.loggers.omniture = $profile("omniture.js files", "Download + execution time", "brown");
+function delimiter(input,delimiter) {
+var delimitLowerCase = delimiter.toLowerCase();
+for(var i=0;i<input.length;i++){
+if (input.indexOf(delimiter)==0) {
+input=input.substring(delimiter.length);
+i+=delimiter.length-1;
+} else if(input.indexOf(delimitLowerCase)==0) {
+input=input.substring(delimitLowerCase.length);
+i+=delimitLowerCase.length-1;
+} else {
+break;
+}
+}
+return input;
+}
+
+
+Reporting.PageData.hasGenieGoService="false" ;
+
+
+Dtv.homepageSliderReporting = Dtv.homepageSliderReporting ? Dtv.homepageSliderReporting : {};
+Reporting.accountId="dtvdirectvcomprod";
+Reporting.pageName='Homepage:Prospect' ? 'Homepage:Prospect' : document.title;
+Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : []; 
+Reporting.PageData = Reporting.PageData ? Reporting.PageData : new Object();
+Reporting.PageData.hardwareSegment="U";
+Reporting.PageData.siteSection='Homepage';
+Reporting.PageData.siteSubsection='Homepage:Prospect';
+Reporting.PageData.siteSubsection2='Homepage:Prospect';
+Reporting.PageData.siteSubsection3='Homepage:Prospect';
+Reporting.PageData.pageType='Homepage';
+Reporting.PageData.teaLeafId="";
+var tlId = readCookie('TLTSID');
+if (tlId != null) {
+Reporting.PageData.teaLeafId = "TLTIID_" + tlId;
+}
+if (typeof(Reporting.errorPage) == "undefined") {
+Reporting.errorPage = false;
+}
+Reporting.PageData.accountNumber = "";
+Reporting.PageData.upId = "8734827301_dn";
+Reporting.PageData.prospectAccountNumber = "8734827301_dn";
+if (readCookie('socialUserDetails')!=null && readCookie('socialUserDetails') != ''){
+Reporting.PageData.userType = "existing";
+} else {
+Reporting.PageData.userType = "Prospect";
+}
+Reporting.PageData.nudgeSegment= "n/a";
+Reporting.PageData.language = "English"; 
+Reporting.PageData.targetMarket = "";
+<!-- [] -->
+Reporting.PageData.userPremiums = "U"; 
+Reporting.PageData.siteType = "Full Site";
+Reporting.reportPageData = function() { // Closing bracket in omniture4.jsp
+var addItemToArray = Reporting.Utils.addUniqueItemToArray;
+var s = Reporting.getReportingObject(Reporting.accountId);
+var source = new String(document.location);
+s.prop1 = Reporting.PageData.siteSection;
+s.prop2 = Reporting.PageData.siteSubsection;
+s.prop3 = Reporting.PageData.siteSubsection2;
+s.prop4 = Reporting.PageData.siteSubsection3;
+s.prop5 = Reporting.PageData.pageType;
+s.prop15 = Reporting.PageData.hardwareSegment;
+s.prop49 = Reporting.accountId;
+s.eVar7 = Reporting.PageData.hardwareSegment;
+s.prop47='';
+s.eVar67='';
+var events = [];
+var products = [];
+var removeProducts = [];
+var isReportDataSet = false;
+// [1] Video Tracking Report Logic
+s.Media.trackWhilePlaying = true;
+s.Media.trackSeconds = 15;
+var tracked10 = false;
+var tracked90 = false;
+s.Media.monitor = function(s, media){
+// eVar1 = Media Name
+// eVar2 = Media Name + Player Interaction
+// event1 = Reached 10%
+// event2 = Reached 90%
+// event3 = Reached 100%
+if ((!tracked90) && (media.percent >= 90)) {
+s.Media.trackVars = "eVar15, prop50";
+s.Media.trackEvents = "event1";
+s.eVar15 = media.name;
+s.prop50 = media.name + ":" + _root.player.events;
+s.Media.track();
+tracked90 = true;
+} else if ((!tracked10) && (media.percent >= 10)) {
+s.Media.trackVars = "eVar15, prop50";
+s.Media.trackEvents = "event2";
+s.eVar15 = media.name;
+s.eVar15 = media.name + ":" + _root.player.events;
+s.Media.track();
+tracked10 = true;
+if (media.event == "CLOSE") {
+s.Media.trackVars = "eVar15, prop50";
+s.Media.trackEvents = "event3";
+s.eVar15 = media.name;
+s.eVar15 = media.name + ":" + _root.player.events;
+s.Media.track();
+}
+}
+};
+// [2] CMS2 Content Pages Report Logic
+var contentPage = source.indexOf('/content/');
+var competition = source.indexOf('/directv/competition/');
+if (contentPage > 0 && !(competition > 0)){
+var currentLocation = source.substring(contentPage+9);
+currentLocation = currentLocation.split('?')[0]
+var section = currentLocation.substring(0, currentLocation.indexOf('/'));
+var subSection = currentLocation.substring(currentLocation.indexOf('/')+1);
+var subSection2 = subSection.indexOf('/');
+var subSection3 = subSection.indexOf('_');
+var equipment = section.indexOf('equipment');
+var checkList = new Array("hbo","showtime","starz","cinemax","showtime","nfl","nascar","mlb","mls");
+var marketingPages = new Array("P10330046","P10270004","P10330063","P10250052","P10320032","P10330055","P10330066","P10330065","P10840012");
+if ((marketingPages.indexOf('') == -1)) { 
+s.prop1 = section.substring(0,1).toUpperCase() + section.substring(1);
+s.prop2 = s.prop1+':'+subSection.substring(0,1).toUpperCase() + subSection.substring(1);
+}
+if (source.indexOf('damages/summons_customer') > 0 || source.indexOf('Damages/summons_customer') > 0) {
+s.prop1 = "Campaigns";
+s.prop2 = s.prop1 + ":Damages";
+s.prop3 = s.prop2 + ":Customer";
+s.prop4 = s.prop3 + ":Landing";
+Reporting.pageName = s.prop4;
+s.eVar9 = "Campaigns:Damages";
+} else if (source.indexOf('damages/summons') > 0 || source.indexOf('Damages/summons') > 0) {
+s.prop1 = "Campaigns";
+s.prop2 = s.prop1 + ":Damages";
+s.prop3 = s.prop2 + ":Prospect";
+s.prop4 = s.prop3 + ":Landing";
+Reporting.pageName = s.prop4;
+s.eVar9 = "Campaigns:Damages";
+} else if(source.indexOf('premiums') > 0) {
+s.prop1 = "Whats On:Premiums";
+s.prop2 = "Whats On:Premiums";
+s.prop3 = s.prop2;
+s.prop4 = s.prop3;
+Reporting.pageName = s.prop4;
+} else if(source.indexOf("newbill_sp") > 0) {
+s.eVar64 = "Flash11";
+s.eVar66 = s.prop1;
+s.eVar67 = s.prop2;
+s.eVar68 = s.prop3;
+s.eVar69 = s.prop4;
+s.prop20 = s.eVar23 = Reporting.PageData.targetMarket;
+s.prop59 = s.eVar59 = Reporting.PageData.nudgeSegment;
+}
+if (equipment >= 0) {
+var receiver = subSection.indexOf('receiver');
+if (receiver >= 0) {
+if (subSection == 'receivers') {
+subSection = 'Overview';
+}
+s.prop2 = s.prop1+':Receivers';
+s.prop3 = s.prop2+'::'+subSection.substring(0,1).toUpperCase() + subSection.substring(1);
+}
+} else if((subSection2 > 0)){
+var newsubSection = subSection.substring(0, subSection2);
+subSection2 = subSection.substring(subSection2+1);
+s.prop2 = s.prop1+':'+newsubSection.substring(0,1).toUpperCase() + newsubSection.substring(1);
+s.prop3 = s.prop2+'::'+subSection2.substring(0,1).toUpperCase() + subSection2.substring(1);
+//s.prop3 = Reporting.pageName;
+} else if((subSection3 > 0)){
+var newsubSection = subSection.substring(0, subSection3);
+var checkCount = checkList.indexOf(newsubSection);
+if(checkCount >= 0){	
+subSection2 = subSection.substring(subSection3+1);
+s.prop2 = s.prop1+':'+newsubSection.toUpperCase();
+s.prop3 = s.prop2+'::'+subSection2.substring(0,1).toUpperCase() + subSection2.substring(1);
+}	
+} else if(checkList.indexOf(subSection) >= 0) {
+s.prop2 = s.prop1 +':'+subSection.toUpperCase();
+s.prop3 = s.prop2 +'::Overview';
+} else if(source.indexOf("packages/international") >= 0) {
+s.prop3 = s.prop2+'::Packages';
+}
+if (source.indexOf("My_Account") > 0) {
+s.prop1 = "My Account";
+s.prop2 = s.prop1 + ":Index";
+s.prop3 = s.prop2;
+s.prop4 = s.prop2;
+Reporting.pageName = s.prop2;
+} else if (source.indexOf("myaccount/benefits") > 0) {
+s.prop1 = "My Account";
+s.prop2 = s.prop1 + ":Benefits Center";
+s.prop3 = s.prop2;
+s.prop4 = s.prop2;
+Reporting.pageName = s.prop2;
+} else if (source.indexOf("gopaperless") > 0) {
+s.prop1 = "My Account";
+s.prop2 = s.prop1 + ":Go Paperless";
+s.prop3 = s.prop2;
+s.prop4 = s.prop2;
+Reporting.pageName = s.prop2;
+} else if (source.indexOf('premiums') > 0) {
+s.prop1 = "Whats On";
+s.prop3 = s.prop2;
+s.prop4 = s.prop2;
+Reporting.pageName = s.prop2;
+s.prop2 = "Whats On:Premiums";
+}
+} else if (s.prop1 == 'Packages') {
+if (source.indexOf('languageCode=S') > 0) {
+s.prop2 = s.prop1+':Spanish';
+}else{
+s.prop2 = s.prop1+':English';
+}
+s.prop3 = s.prop2+'::Packages';
+} else if (source.indexOf('packageType=ENGLISH') > 0) {
+s.prop1 = 'Packages';
+s.prop2 = s.prop1+':English';
+s.prop3 = s.prop2+'::Explore Channels';
+} else if (source.indexOf('packageType=SPANISH') > 0) {
+s.prop1 = 'Packages';
+s.prop2 = s.prop1+':SPANISH';
+s.prop3 = s.prop2+'::Explore Channels';
+} else if (source.indexOf('assetId=3950004') > 0) {
+s.prop1 = 'Packages';
+s.prop2 = s.prop1+':English';
+s.prop3 = s.prop2+'::Compare Packages';
+} else if (source.indexOf('assetId=3950010') > 0) {
+s.prop1 = 'Packages';
+s.prop2 = s.prop1+':SPANISH';
+s.prop3 = s.prop2+'::Compare Packages';
+} else if (source.indexOf('assetId=3950016') > 0) {
+s.prop1 = 'Packages';
+s.prop2 = s.prop1+':International';
+s.prop3 = s.prop2+'::Compare Packages';
+} else if (source.indexOf('assetId=3950022') > 0) {
+s.prop1 = 'DIRECTV';
+s.prop2 = s.prop1+':Exclusive Entertainment';
+} else if (source.indexOf('assetId=3950023') > 0) {
+s.prop1 = 'DIRECTV';
+s.prop2 = s.prop1+':DIRECTV News';
+} else if (source.indexOf('assetId=3940020') > 0) {
+s.prop1 = 'DIRECTV';
+s.prop2 = s.prop1+':Access Magazine';
+} else if (source.indexOf('loginId=') > 0) {
+var loginId = source.indexOf('loginId=');
+s.eVar25 = source.substring(loginId+8);
+} else if (source.indexOf('loyal=true') > 0){
+s.eVar25 = "Loyalty";
+} else if (source.indexOf('rebates=true') > 0) {
+s.eVar25 = "Rebates";
+} else if(source.indexOf('wot=') > 0) {
+if (source.indexOf("epg/theGuide.jsp") != -1) {
+if (source.indexOf("tab=order") != -1) {
+s.eVar25 = "Order EPG";
+} else {
+s.eVar25 = "Record EPG";
+}
+} else if (source.indexOf("listing/ppvMovies.jsp") != -1) {
+if (source.indexOf("tab=order") != -1) {
+s.eVar25 = "Order PPV Movie";
+} else {
+s.eVar25 = "Record PPV Movie";
+}
+} else if (source.indexOf("listing/ppvEvents.jsp") != -1) {
+if (source.indexOf("tab=order") != -1) {
+s.eVar25 = "Order PPV Event";
+} else {
+s.eVar25 = "Record PPV Event";
+}
+} else if (source.indexOf("listing/ppvAdult.jsp") != -1) {
+if (source.indexOf("tab=order") != -1) {
+s.eVar25 = "Order PPV Adult";
+} else {
+s.eVar25 = "Record PPV Adult";
+}
+} else if (source.indexOf("listing/dodMovies.jsp") != -1) {
+s.eVar25 = "Record DOD";
+}
+} else if (source.indexOf("login/login.jsp") != -1) {
+if (readCookie('socialUserDetails')!=null && readCookie('socialUserDetails') != '') {
+s.prop1 = "My Account";
+s.prop2 = s.prop1 + ":Sign In";
+s.prop3 = s.prop2 + ':Customer';
+s.prop4 = s.prop3 + ':Social';
+Reporting.pageName = s.prop2;
+s.eVar25 = "Logout";
+} else if('yes'== readCookie('customer')) {
+s.eVar25 = "Logout";
+s.prop3=s.prop3+":Customer";
+Reporting.pageName = s.prop4=s.prop3;
+} else {
+s.eVar25 = "Logout";
+s.prop3=s.prop3+":Prospect";
+Reporting.pageName = s.prop4=s.prop3;
+}
+s.eVar66 = s.prop1;
+} else if(source.indexOf("account/myOverview.jsp") != -1) { 
+s.eVar66 = s.prop1;
+s.eVar25 = "UP";
+} else if(source.indexOf("/DTVAPP/login/linkSocialAccountWithDirectv.jsp") != -1) {
+s.overrideLinkTracking = true;
+s.prop1 = "My Account"
+s.prop3 = "My Account:Sign In:Link Account"
+s.eVar66 = s.prop1;
+Reporting.pageName = s.prop4 = s.prop41 = s.prop3;
+s.prop42 = "Social Login";
+s.prop43 = s.prop41 + "|"+ s.prop42;
+s.prop44 = "Logo";
+s.eVar25 = "Logout";
+} else if (source.indexOf("/DTVAPP/register/register.jsp") != -1){
+s.eVar66 = s.prop1;	
+s.eVar25 = "Logout";
+} else if (false) {
+s.eVar64 = "Flash11";
+s.eVar66 = s.prop1;
+s.eVar67 = s.prop2;
+s.eVar68 = s.prop3;
+s.eVar69 = s.prop4;
+s.prop20 = s.eVar23 = Reporting.PageData.targetMarket;
+s.prop59 = s.eVar59 = Reporting.PageData.nudgeSegment;
+} else if (source.indexOf("DTVAPP/index.jsp") != -1) {
+Dtv.homepageSliderReporting.homepageSliderDisplayed = Dtv.homepageSliderReporting.homepageSliderDisplayed ? Dtv.homepageSliderReporting.homepageSliderDisplayed : {};
+Dtv.homepageSliderReporting.homepageSliderReported = Dtv.homepageSliderReporting.homepageSliderReported ? Dtv.homepageSliderReporting.homepageSliderReported : {};
+var sliderThumbs = $('slider_thumbs');
+var slide0;
+var slideData;
+if (sliderThumbs) {
+slide0 = sliderThumbs.down('li.slide-default');
+if (slide0) {
+slideData = slide0.getVar('slideData');
+}
+}
+var moduleName = slideData && slideData.reportingModuleName;
+var elementId = slideData && slideData.reportingElementId;
+var elementName = slideData && slideData.reportingElementName;
+if (moduleName && elementName && elementId) {
+Dtv.homepageSliderReporting.homepageSliderDisplayed['moduleName'] = moduleName;
+Dtv.homepageSliderReporting.homepageSliderDisplayed['elementId'] = elementId;
+Dtv.homepageSliderReporting.homepageSliderDisplayed['elementName'] = elementName;
+Dtv.homepageSliderReporting.homepageSliderReported[elementId] = elementId;
+s.prop51 = moduleName+"|"+elementName;
+} else {
+var singleOverlayProspectReportingDataContainer = $('singleOverlayProspectReportingDataContainer');
+if (singleOverlayProspectReportingDataContainer) {
+var overlayData = singleOverlayProspectReportingDataContainer.getVar('overlayReportingData');
+if (overlayData) {
+Dtv.homepageSliderReporting.homepageSliderDisplayed['moduleName'] = overlayData.reportingModuleName;
+Dtv.homepageSliderReporting.homepageSliderDisplayed['elementName'] = overlayData.reportingElementName;
+s.prop51 = overlayData.reportingModuleName+"|"+overlayData.reportingElementName;
+}
+}
+}
+}
+s.prop6 = Reporting.PageData.accountNumber;
+s.eVar31 = Reporting.PageData.accountNumber;
+s.eVar36 = Reporting.PageData.prospectAccountNumber;
+s.prop7 = Reporting.PageData.userType;
+s.eVar10 = Reporting.PageData.userType;
+s.prop26 = new String(document.location);
+s.prop58 = Reporting.PageData.language;
+s.eVar58 = Reporting.PageData.language;
+s.prop59 = Reporting.PageData.nudgeSegment;
+s.eVar59 = Reporting.PageData.nudgeSegment;
+s.prop54 = "";
+s.eVar43 = "No Cart"; 
+s.eVar64 = s.prop64;
+var currentLocation = new String(document.location).split('?')[0];
+if (!Reporting.errorPage) {
+s.pageName = Reporting.pageName;
+} else {
+s.pageType = "errorPage";
+}
+s.eVar49 = Reporting.pageName;
+var reportingItems = $('div.reportingContainer');
+if (!!reportingItems) {
+reportingItems.each(function(reportingElement) {
+var reportingData = reportingElement.getVar('reportingData');
+if (!!reportingData) {
+for (var name in reportingData) {
+s[name] = reportingData[name];
+}
+} 
+});
+}
+s.prop63 = s.eVar63 = Reporting.PageData.userPremiums;
+s.prop57 = s.eVar57 = 'Full Site';
+s.prop57 = "|" + s.prop57;
+s.eVar57 = "|" + s.eVar57;
+if (products.length > 0) {
+s.products = products.join();
+} else if (removeProducts.length > 0) {
+s.products = removeProducts.join();
+events[events.length] = "scRemove";
+removeProducts = [];
+}
+if (events.length > 0) {
+s.events = events.join();
+}
+s.prop14=Reporting.PageData.teaLeafId;
+// reset the values - they could have been changed since the initial setting
+// at the beginning of the code.
+if (!!s.prop1) {
+Reporting.PageData.siteSection = s.prop1;
+}
+if (!!s.prop2) {
+Reporting.PageData.siteSubsection = s.prop2;
+}
+if (!!s.prop3) {
+Reporting.PageData.siteSubsection2 = s.prop3;
+}
+if (!!s.prop4) {
+Reporting.PageData.siteSubsection3 = s.prop4;
+}
+function getParameterByName(name) {
+name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+results = regex.exec(location.search);
+return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var s_code;
+var blnBasePackage = + '';
+//var params = document.location.href.toQueryParams();
+var blnConfigure = false;
+blnBasePackage = blnConfigure ? blnBasePackage : false;
+var nflwsEligPage = false;
+if (getParameterByName("from") != "cart" && !blnBasePackage && !nflwsEligPage) {
+var s_code=s.t();
+if(s_code)document.write(s_code);
+}
+if (removeProducts.length > 0) {
+s = Reporting.UserActionManager.getCleanReportingObject();
+s.products = removeProducts.join();
+s.events = "scRemove";
+s_code=s.t();if(s_code)document.write(s_code);
+}
+// Dump reporting data
+if (Reporting.DEBUG) {
+console.log("----> Omniture: Reporting Data Object: ", s);
+}
+Reporting.pageReportSent = true;
+Reporting.UserActionManager.reportPageMessageKeys();
+jQuery(document).trigger(Reporting.Constants.DTV_REPORTING_DATA_SENT);
+}
+//document.observe('dom:loaded',Reporting.reportPageData);
+jQuery(Reporting.reportPageData);
+if ($profile.loggers.omniture) $profile.loggers.omniture.stop();
+
+
+window.tmParam.tm_custom_2='Prospect';
+window.tmParam.tm_u8='';
+window.tmParam.tm_custom_14='';
+window.tmParam.tm_custom_15='';
+window.tmParam.tm_custom_16='';
+

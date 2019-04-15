@@ -1,0 +1,25 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.jazzbooks.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.jazzbooks.com\/mm5\/json.mvc\u003F";
+var Store_Code = "JAJAZZ";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/jazzbooks.com\/jazz\/SRCH\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+jQuery.noConflict();
+//anylinkcssmenu.init("menu_anchors_class")//Pass in the CSS class of anchor links (that contain a sub menu)anylinkcssmenu.init("anchorclass")
+require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us1.list-manage.com","uuid":"029abfc13cd03b6c41bb2f70c","lid":"f5207de115"}) })
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+var $mcGoal = {'settings':{'uuid':'029abfc13cd03b6c41bb2f70c','dc':'us1'}};(function() {var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);})(); 
+var imgCount = 3;var dir = 'graphics/00000002/';var randomCount = Math.round(Math.random() * (imgCount - 1)) + 1;var images = new Arrayimages[1] = "hero-001.jpg",images[2] = "hero-002.jpg",images[3] = "hero-003.jpg",document.getElementById("splash").style.backgroundImage = "url(" + dir + images[randomCount] + ")"; 
+TrustLogo("https://jazzbooks.com/trusted-site-seal.png", "CL1", "none");
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+$(document).ready(function(){$(document).snowfall({deviceorientation : true, round : true, minSize: 1, maxSize:8, flakeCount : 250});});

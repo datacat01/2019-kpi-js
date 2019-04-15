@@ -1,0 +1,240 @@
+dataLayer = [];
+
+globalData = {"pageName":"Portal Page","pageCategory":"Portal Page","pageTemplate":"Portal Page","userCountry":"UA","userState":"30","userEmail":"","userID":"","userLoginState":"Not Logged In","server":"https://www.campingworld.com","ipAddress":"212.90.63.178","productsCartedNumber":0};
+
+
+pageData = {};
+//handled for productClick in quickview
+if (pageData && pageData.subcategory != undefined && pageData.subcategory != null) {
+window.pageDataImpressions = pageData.ecommerce.impressions?pageData.ecommerce.impressions:'';
+}
+if (pageData && (pageData.productPageType === 'PDP' || pageData.productPageType === 'quickview') && document.cookie.match('(^|;)\\s*list\\s*=\\s*([^;]+)')) {
+pageData.ecommerce.detail.actionField.list = document.cookie.match('(^|;)\\s*list\\s*=\\s*([^;]+)').pop();
+}
+
+
+var propertiesToOverride = ['productsCartedNumber'];
+for (var index in propertiesToOverride){
+if (propertiesToOverride[index] && pageData && pageData.hasOwnProperty(propertiesToOverride[index])) {
+pageData[propertiesToOverride[index]] = globalData[propertiesToOverride[index]];
+}
+delete globalData[propertiesToOverride[index]];
+}
+//Push page specific data to GTM if exists
+if (pageData && Object.keys(pageData).length !== 0) {
+if (pageData.event) {
+//Push global data to GTM
+dataLayer.push(globalData);
+if (pageData.event != 'productImpressions') {
+dataLayer.push(pageData);
+}
+} else {
+for (var prop in pageData) {
+if (prop && pageData.hasOwnProperty(prop)) {
+globalData[prop] = pageData[prop];
+}
+}
+dataLayer.push(globalData);
+}
+} else {
+//Push global data to GTM
+dataLayer.push(globalData);
+}
+
+
+WebFontConfig = {
+google: { families: [ 'Lato:100,300,700,100italic,300italic:latin', 'Crete+Round:400,400italic:latin' ] }
+};
+(function() {
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bcjk-CampingWorld';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/shop" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-CampingWorld-Site/default/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-CampingWorld-Site/default/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+var _caq = _caq || [];
+(function () {
+var ca = document.createElement("script");
+ca.type = "text/javascript";
+ca.async = true;
+ca.id = "_casrc";
+ca.src = "//t.channeladvisor.com/v2/12007174.js";
+var ca_script = document.getElementsByTagName("script")[0];
+ca_script.parentNode.insertBefore(ca, ca_script);
+})();
+
+
+var entranceJSON = [{"Source":"Camping World Web Entrance Overlay BounceX","Questions":[{"QuestionId":107,"QuestionText":"I would like to receive email information from affiliates of Camping World ","Order":0,"Preferences":null}]}];
+window.bouncexEmsPermissionsWebEntrance = entranceJSON;
+var exitJSON = [{"Source":"Camping World Web Exit Overlay BounceX","Questions":[{"QuestionId":107,"QuestionText":"I would like to receive email information from affiliates of Camping World ","Order":0,"Preferences":null}]}];
+window.bouncexEmsPermissionsWebExit = exitJSON;
+
+
+if (typeof pageData !== 'undefined' && pageData && pageData.event && pageData.event == 'productImpressions') {
+dataLayer.push(pageData);
+}
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","TRACKING_CONSENT":"Yes","TRACKING_NO_CONSENT":"No","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Enter Keyword or Item No.","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"QTY","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GOOD_SAM_CERT_MISSING":"Please enter a good sam club certificate code.","GIFT_CERT_MISSING":"Please enter a gift certificate code.","GIFT_CERT_KEY_MISSING":"Please enter PIN for gift card.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"Enter Zip Code, City or State","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter Zip Code","VALID_ZIP":"Please enter a valid Zip Code.","INVALID_ZIP":"Sorry, we couldn't find any stores within this zip code radius. Please try expanding your search radius or entering another zip code.","STORESAPI_ERROR":"There are no stores found for your search. You can try expanding your radius or entering a new zip code.","US_ZIP_ERROR":"The zip code you have entered is invalid.","SEARCH":"GO","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","CSRF_TOKEN_MISMATCH":"CSRF Token mismatch","VALIDATE_REQUIRED":"Error: This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_PASSWORD":"Whoops! Your password does not meet the requirements. Please make sure your password contains a minimum of 8 characters, at least 1 number, one uppercase letter, one lowercase letter & cannot contain the phrase 'password'.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_EMAILEQUALTO":"Email addresses do not match.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","INVALID_ZIPCODE":"Please enter a valid zip code","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Backorder","QTY_BACKORDER":"Backorder {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-CampingWorld-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-CampingWorld-Site/default/Page-Include","continueUrl":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/Home-Root","staticPath":"/on/demandware.static/Sites-CampingWorld-Site/-/default/v1555251387438/","addGiftCert":"/gift-card-purchase","minicartGC":"/on/demandware.store/Sites-CampingWorld-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-AddProduct","addWizardProduct":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-AddWizardProduct","minicart":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-MiniAddProduct","cartShow":"/cart","giftRegAdd":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.campingworld.com/wallet","addressesList":"https://www.campingworld.com/address-book","wishlistAddress":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-CampingWorld-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-Show","qasVerifyAddress":"/on/demandware.store/Sites-CampingWorld-Site/default/QAS-VerifyAddress","qasUpdateAddress":"/on/demandware.store/Sites-CampingWorld-Site/default/QAS-UpdateAddress","qasVerifyEmail":"/on/demandware.store/Sites-CampingWorld-Site/default/QAS-VerifyEmail","getBonusProducts":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-CampingWorld-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-CampingWorld-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-UpdateSummary","billingSelectCC":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-ResetPaymentForms","compareShow":"/compare","compareAdd":"/on/demandware.store/Sites-CampingWorld-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-CampingWorld-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-CampingWorld-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-RedeemGiftCertificateJson","redeemGSCert":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/COBilling-RedeemGoodSamCertificateJson","addCoupon":"https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-GetZipCode","billing":"/billing","setSessionCurrency":"/on/demandware.store/Sites-CampingWorld-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-CampingWorld-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-CampingWorld-Site/default/Page-Show?cid=cookie_hint","consentTracking":"/on/demandware.store/Sites-CampingWorld-Site/default/Page-Show?cid=consent_tracking_hint","consentTrackingSetSession":"/on/demandware.store/Sites-CampingWorld-Site/default/Account-ConsentTracking","rateLimiterReset":"/on/demandware.store/Sites-CampingWorld-Site/default/RateLimiter-HideCaptcha","csrffailed":"/on/demandware.store/Sites-CampingWorld-Site/default/CSRF-Failed","optionProductSuggestion":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-ProductOptionSuggestion","updateOptionProductLineItem":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-UpdateOptionProductLineItem","setStoreData":"/on/demandware.store/Sites-CampingWorld-Site/default/StoreInventory-SetStoreData","updateShippingMethods":"/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-updateShippingMethodsToBasket","updateMethodsInAJAX":"/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-Testing","updateCartLineItem":"/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-UpdateLineItemOnCart","StoreRefinements":"/on/demandware.store/Sites-CampingWorld-Site/default/Stores-StoreRefinements","useMyLocation":"/on/demandware.store/Sites-CampingWorld-Site/default/Stores-UseMyLocation","goodSamErrorPopUP":"/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-GoodSamErrorPopUP","goodSamValidate":"/on/demandware.store/Sites-CampingWorld-Site/default/COShipping-GoodSamValidate","cartMemValidate":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-GoodSamValidate","getAddToCartModalData":"/on/demandware.store/Sites-CampingWorld-Site/default/Product-GetAddToCartModalData","cartUpdatePliQty":"/on/demandware.store/Sites-CampingWorld-Site/default/Cart-UpdatePliQuantity"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":false,"COOKIE_HINT":false,"CONSENT_TRACKING_HINT":false,"CHECK_TLS":false,"WIZARD_BASE_URL":"https://tools.campingworld.com"};
+window.isGTMEnabled = true;
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+
+		liveagent.init('https://d.la1c1.salesforceliveagent.com/chat', '572C0000000L3K6', '00DC00000016tjK');
+
+
+	if (!window._laq) { window._laq = []; }
+	window._laq.push(function(){liveagent.showWhenOnline('573C0000000L3Ux', document.getElementById('liveagent_button_online_573C0000000L3Ux'));
+		liveagent.showWhenOffline('573C0000000L3Ux', document.getElementById('liveagent_button_offline_573C0000000L3Ux'));
+	});
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.campingworld.com/on/demandware.store/Sites-CampingWorld-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

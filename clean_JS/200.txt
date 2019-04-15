@@ -1,0 +1,15 @@
+
+    var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-40274063-1']);
+		_gaq.push(['_trackPageview']);
+	
+
+		window.cookieconsent_options = {"message":"We use cookies to improve your experience. By continuing to use our site, you accept our use of <a href=\"//www.getjar.com/info/cookie/\">Cookie Policy</a> and revised","dismiss":"OK!","learnMore":"Privacy Policy.","link":"//www.getjar.com/info/privacy/","theme":"light-bottom","container":".fixed-container"};
+	
+  (function() {
+    var ga = document.createElement('script');     ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    //ga.src = ('https:'   == document.location.protocol ? 'https://ssl'   : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    

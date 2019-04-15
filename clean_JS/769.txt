@@ -1,0 +1,133 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.officedesigns.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+
+    function nxtAddLoadListener(fn) {
+//mozilla and friends
+        if (typeof window.addEventListener != 'undefined') {
+            window.addEventListener('load', fn, false);
+        }
+//opera
+        else if (typeof document.addEventListener != 'undefined') {
+            document.addEventListener('load', fn, false);
+        }
+//innernetz exploder
+        else if (typeof window.attachEvent != 'undefined') {
+            window.attachEvent('onload', fn);
+        }
+//the rest is pretty much for browsers that I doubt your
+//CSS or anything else still supports like IE/Mac
+        else {
+            var oldfn = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = fn;
+            }
+            else {
+                window.onload = function() {
+                    oldfn();
+                    fn();
+                };
+            }
+        }
+    }
+    nxtAddLoadListener(function(){
+        document.getElementById("search_mini_form").action = "https://officedesigns.com/nsearch/";
+    });
+
+    //Nextopia initialization
+    if (typeof nxtOptions !== 'object') {
+        var nxtOptions = {};
+    }
+    if (!nxtOptions.customOptions) {
+        nxtOptions.customOptions = {};
+    }
+    nxtOptions.customOptions.formKey = 's1EEDVohgCe4Q0nW';
+    nxtOptions.customOptions.groupId = '';
+
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+var _sf_startpt=(new Date()).getTime()
+
+    jQuery(document).on('ready' , function(){
+        if($j('#cart-sidebar li.item').length > 3 ) {
+            $j('#header-cart').addClass('owl-active');
+            $j("#cart-sidebar").owlCarousel({
+                loop:false,
+                margin:10,
+                items:3,
+                nav:true,
+                dots:false,
+                responsive:{
+                    1024:{
+                        items:2
+                    },
+                    1440:{
+                        items:3
+                    }
+                }
+            });
+            // change product count when slider is active
+            $j(window).on('resize',function() {
+                changeCount();
+            }) ;
+            changeCount();
+            function changeCount() {
+                var $count = $j('#cart-sidebar .owl-item.active').length;
+                $j('.minicart-wrapper .changeable-items').text($count);
+            }
+        } else{
+            var owl = $j(".mini-products-list").data('owlCarousel');
+            if(owl) owl.destroy();
+        }
+        $j(document).on('click', '#cart-sidebar .remove',function () {
+            if($j('#cart-sidebar li.item').length == 3 ) {
+                $j('#header-cart').removeClass('owl-active');
+            }
+        })
+    })
+
+
+
+            //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+//            searchForm.initAutocomplete('//', 'search_autocomplete');
+            //]]>
+        
+
+var fieldMaps = {};
+
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', 'fd7a579798048d749f42509f54261cc4fe0dfdd27f62d0095a6d3ef05d8fbbd5']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/75eq1gpbxw9gzee8183s88u3iasu42zkx41kq7xv98ft56l9j9/fd7a579798048d749f42509f54261cc4fe0dfdd27f62d0095a6d3ef05d8fbbd5/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('https://officedesigns.com/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+
+
+    //<![CDATA[
+    var bta = new __bta('c1a8533146494d79cd9acd4674a83ce6');
+    //]]>
+

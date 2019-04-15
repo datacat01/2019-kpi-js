@@ -1,0 +1,28 @@
+
+	const f=document.getElementsByTagName("script")[0],j=document.createElement("script");j.async=!1,/MSIE \d|Trident.*rv:/.test(navigator.userAgent)?(!Array.prototype.forEach&&(Array.prototype.forEach=function(a){var b,c,d=Object(this),e=d.length>>>0;if("function"!=typeof a)throw new TypeError(a+" is not a function");for(1<arguments.length&&(b=arguments[1]),c=0;c<e;){var f;c in d&&(f=d[c],a.call(b,f,c,d)),c++}}),function(){return"function"!=typeof NodeList.prototype.forEach&&void(NodeList.prototype.forEach=Array.prototype.forEach)}(),j.src="/js/modernizr-custom.js",f.parentNode.insertBefore(j,f)):(j.src="https://polyfill.io/v3/polyfill.js?features=es5,es6,es7&flags=gated",f.parentNode.insertBefore(j,f));
+
+window.gtmEvents.trigger("init_gtm", 'GTM-KG9F3NG');
+
+            window.gtmEvents.trigger("load_datalayer_basic", { 'isLast' : true, 'fireTag' : true, 'data' : {"page":{"pageType":"start-page"},"user":{"userStatus":"not logged in"}}});
+        
+
+    PostAffTracker.setAccountId('default1');
+    try {
+    PostAffTracker.track();
+    } catch (err) { }
+
+
+    var _learnq = _learnq || [];
+    _learnq.push(['account', 'LXpYHX']);
+    (function () {
+        var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+        b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+        var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+    })();    
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        LoadCore('start');
+        eventSystem.triggerHandler("notify_load");
+    });
+

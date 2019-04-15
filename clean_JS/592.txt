@@ -1,0 +1,451 @@
+
+	/*(function(e,f){var b={},g=function(a){b[a]&&(f.clearInterval(b[a]),b[a]=null)};e.fn.waitUntilExists=function(a,h,j){var c=this.selector,d=e(c),k=d.not(function(){return e(this).data("waitUntilExists.found")});"remove"===a?g(c):(k.each(a).data("waitUntilExists.found",!0),h&&d.length?g(c):j||(b[c]=f.setInterval(function(){d.waitUntilExists(a,h,!0)},100)));return d}})(jQuery,window);*/
+
+	if (typeof dataLayer === "undefined") {
+		window.dataLayer = [];
+	}
+	
+	var isLocalStorageNameSupported = function() {
+	    var testKey = 'test', storage = window.localStorage;
+	    try {
+	        storage.setItem(testKey, '1');
+	        storage.removeItem(testKey);
+	        return true;
+	    } catch (error) {
+	        return false;
+	    }
+	}
+
+	var ab_setup = {
+		queryString : {},
+		abData : {},
+		maxAge : 3600, // seconds
+		freshnessDate : {},
+
+		init : function() {
+			var x = Math.floor((Math.random() * 1000) + 1);
+			var tmp = new Date().getTime();
+			ab_setup.queryString = ab_setup.getQueryString();
+			var getFreshABData = true;
+			try{
+				ab_setup.abData = JSON.parse(window.localStorage.getItem('ab_setup.abData'));
+				ab_setup.freshnessDate = window.localStorage.getItem('ab_setup.freshnessDate');
+			} catch (error) {}
+			
+			var curDate = new Date();
+			
+			if(isLocalStorageNameSupported() && ab_setup.abData && ab_setup.freshnessDate && (new Date()) < (new Date(ab_setup.freshnessDate)))
+				getFreshABData = false;
+			
+			if(getFreshABData) {
+				$.get('/ab/getABExperiences?token=' + x + tmp, function(data) {
+					ab_setup.setupAATest(data);
+					ab_setup.abData = data;
+					window.localStorage.setItem('ab_setup.abData', JSON.stringify(ab_setup.abData));
+					var newFreshnessDate = new Date();
+					newFreshnessDate.setSeconds(newFreshnessDate.getSeconds() + ab_setup.maxAge)
+					window.localStorage.setItem('ab_setup.freshnessDate', newFreshnessDate);
+				});
+			}
+		},
+
+		getQueryString : function() {
+			// This function is anonymous, is executed immediately and 
+			// the return value is assigned to QueryString!
+			var query_string = {};
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split("=");
+				// If first entry with this name
+				if (typeof query_string[pair[0]] === "undefined") {
+					query_string[pair[0]] = decodeURIComponent(pair[1]);
+					// If second entry with this name
+				} else if (typeof query_string[pair[0]] === "string") {
+					var arr = [ query_string[pair[0]],
+							decodeURIComponent(pair[1]) ];
+					query_string[pair[0]] = arr;
+					// If third or later entry with this name
+				} else {
+					query_string[pair[0]].push(decodeURIComponent(pair[1]));
+				}
+			}
+
+			return query_string;
+		},
+		
+		numAttempts : {},
+
+		waitForDataLoad : function(callback, interval, maxNumAttempts, callbackId) {
+			var curNumAttempts = ab_setup.numAttempts[callbackId];
+			if(typeof curNumAttempts == 'undefined' || curNumAttempts == null)
+				curNumAttempts = 0;
+			if ($.isEmptyObject(ab_setup.abData) && curNumAttempts < maxNumAttempts) {
+				window.setTimeout(ab_setup.waitForDataLoad, interval, callback, interval, maxNumAttempts, callbackId);
+			} else {
+				try {
+					callback(ab_setup.abData);
+				} catch (e) {}
+			}
+			
+			ab_setup.numAttempts[callbackId] = curNumAttempts + 1;
+		},
+
+		setupAATest : function(data) {
+			var thisTestId = '6';
+			var experience = data[thisTestId];
+			if (typeof experience !== 'undefined') {
+				dataLayer.push({
+	                'event':'AATestTrigger',
+	                'AATestVar': experience.trackingText
+	            });
+			}
+		}
+		
+		/*setupSearchButtonTest : function(data) {
+			var thisTestId = '1';
+			var expAId = 1;
+			var expBId = 2;
+			//var searchButton = $('#searchContainer .searchBtn.postfix.button')[0];
+			//console.log(JSON.stringify(data));
+			var experience = data[thisTestId];
+
+			// default experience if not assigned to test
+			if (typeof experience === 'undefined') {
+				// experience A code
+				if($('#searchContainer .searchBtn.postfix.button').length > 0) {
+					$('#searchContainer .searchBtn.postfix.button')[0].style['position'] = 'absolute';
+					$('#searchContainer .searchBtn.postfix.button')[0].style['opacity'] = 0;
+					$('<span class="searchBtn postfix button icon-search" style="font-size:2rem"></span>').insertBefore($('#searchContainer .searchBtn.postfix.button'));
+				}
+
+				if($("#subForm button").length > 0) {
+					$("#subForm button").append("<span class='icon-search icon-md'></span>");
+				}
+				
+				return;
+			}
+
+			var expId = experience.experienceId;
+			var overrideExpId = ab_setup.queryString['test' + thisTestId];
+			if (overrideExpId && (overrideExpId == expAId || overrideExpId == expBId)) {
+				expId = overrideExpId;
+			} else {
+				var abData = {};
+				abData[experience.cVarName] = experience.trackingText;
+				dataLayer.push(abData);
+			}
+			
+			if (expId == expAId) {
+				// experience A code
+				if($('#searchContainer .searchBtn.postfix.button').length > 0) {
+					$('#searchContainer .searchBtn.postfix.button')[0].style['position'] = 'absolute';
+					$('#searchContainer .searchBtn.postfix.button')[0].style['opacity'] = 0;
+					$('<span class="searchBtn postfix button icon-search" style="font-size:2rem"></span>').insertBefore($('#searchContainer .searchBtn.postfix.button'));
+				}
+
+				if($("#subForm button").length > 0) {
+					$("#subForm button").append("<span class='icon-search icon-md'></span>");
+				}
+			} else if (expId == expBId) {
+				// experience B code
+				if($('#searchContainer .searchBtn.postfix.button').length > 0) {
+					$('#searchContainer .searchBtn.postfix.button').val('find');
+				}
+				
+				if($("#subForm button").length > 0) {
+					$("#subForm button").text("find").css("width", "auto");
+				}
+			}
+		}*/
+	}
+
+	ab_setup.init();
+
+
+  var pageTracker;
+  var wait_for_gat = function() {
+    if (typeof _gat !== "undefined") {
+      pageTracker = _gat._createTracker("UA-134179-1");		// aheader 1
+      pageTracker._addIgnoredRef("find.uncommongoods.com");
+      pageTracker._addIgnoredRef("search.uncommongoods.com");
+      pageTracker._addIgnoredRef("search2.uncommongoods.com");
+      pageTracker._addIgnoredRef("uncommongoods.com");
+      pageTracker._addIgnoredRef("catalog.proemags.com");  //added on 09/17
+      pageTracker._addIgnoredRef("sandbox.paypal.com/");  //added on 09/29
+      pageTracker._addIgnoredRef("pages01.net/");  //added on 09/29
+      pageTracker._addIgnoredRef("paypal.com");
+      pageTracker._initData();
+    }
+    else {
+      setTimeout(wait_for_gat, 500);
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function() {
+    wait_for_gat()
+  })
+
+
+        var Ptoday = new Date();
+        var Pyear = Ptoday.getFullYear();
+        var Pmonth = Ptoday.getMonth();
+        var Pdate = Ptoday.getDate();
+        if (Pmonth == 5 && Pyear == 2018 && (Pdate == 22 || Pdate == 23 || Pdate == 24 )) {
+          document.getElementsByClassName('logo-container')[0].firstElementChild.innerHTML = '<svg enable-background="new 0 0 683.3 108" version="1.1" viewBox="0 0 683.3 108" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><style type="text/css">.st0{fill:#6A2C8A;}.st1{fill:#4E419A;}.st2{fill:#3E55A5;}.st3{fill:#006CD8;}.st4{fill:#00A3A3;}.st5{fill:#00A85C;}.st6{fill:#81B842;}.st7{fill:#F9DC06;}.st8{fill:#FCB017;}.st9{fill:#F68A1F;}.st10{fill:#F26622;}.st11{fill:#E42025;}</style><path class="st0" d="m682.2 68.5c0-15.3-24.6-14-24.6-21.9 0-3.9 1.6-5.7 7.7-5.7 2.2 0 3.9 0.3 5.5 0.7 0 7.5 1.7 8.5 4.5 8.5h1.2c3 0 4.5-1.2 4.5-9.5 0-4.1-4.1-7.6-14.8-7.6-11.3 0-18.5 3.9-18.5 14.5 0 14.4 24.4 12.8 24.4 21 0 3.8-1.5 5.6-7.5 5.6-3.6 0-5.6-0.5-7-1.4 0-7.5-1.7-8.2-4.5-8.2h-1.2c-3 0-4.5 1.2-4.5 9.5 0 4.1 5.6 7.9 16.3 7.9 11.2 0.1 18.5-2.5 18.5-13.4z"/><path class="st1" d="m643.8 73.6h-6.4c0.3-5 0.6-13.9 0.5-20.5 0.3-6.8 0.3-19.7 0.3-27 0-3.6 0-8.8-0.6-10.7-0.9-2.8-1.9-4.5-7.6-4.5-5 0-8.2 2.3-8.2 5.1v3.5h6.2c0 3.5-0.1 11.1-0.1 18.5-3-2.2-7.1-3.7-11.6-3.7-11.3 0-21.5 4.9-21.5 23.9s10.7 23.9 22 23.9c3.4 0 7.7-1.5 11-4.2 0.5 2.7 2.5 4 7.9 4 5 0 8.2-1.7 8.2-4.5l-0.1-3.8zm-27.1 0.3c-6 0-11.7-1.9-11.7-15.8 0-13.2 5.7-16 11.7-16 4.9 0 9.7 3 11.1 7.4v2.7c-0.1 3.7-0.2 10.8-0.2 16.5-3.1 3.5-6.5 5.2-10.9 5.2z"/><path class="st2" d="m589.2 58.5c0-20.7-12.2-24.8-23.5-24.8s-23.5 5.8-23.5 24.8 12.2 24.8 23.5 24.8c11.3-0.1 23.5-4.2 23.5-24.8zm-23.5 16.6c-6 0-13.2-2.8-13.2-16.7 0-13.2 7.2-17 13.2-17s13.2 3 13.2 17c0 14.3-7.2 16.7-13.2 16.7z"/><path class="st3" d="m538.4 58.5c0-20.7-12.2-24.8-23.5-24.8s-23.5 5.8-23.5 24.8 12.2 24.8 23.5 24.8c11.3-0.1 23.5-4.2 23.5-24.8zm-23.6 16.6c-6 0-13.2-2.8-13.2-16.7 0-13.2 7.2-17 13.2-17s13.2 3 13.2 17c0.1 14.3-7.1 16.7-13.2 16.7z"/><path class="st4" d="m490.1 40.2c0-2.8-3.3-5.1-8.2-5.1-4.8 0-7 1.1-7.5 3.3-3.1-2.4-7.3-4-12-4-11.3 0-21.5 4.9-21.5 23.9s10.7 23.9 22 23.9c3.7 0 7.7-1.1 10.9-2.7v2.5c0 13.9-6 15.7-12 15.7-3.3 0-10.5-1-12.9-2.2-2.2 0.1-4.5 5.3-2.2 6.8 2.7 1.8 9.3 3.4 15 3.4 11.3 0 22.3-4.9 22.3-23.9 0 0 0-30.5-0.1-38.2h6.2v-3.4zm-27.2 33.7c-6 0-11.7-1.9-11.7-15.8 0-13.2 5.7-16 11.7-16 4.7 0 9.2 2.7 10.9 6.7l-0.1 1.5c0 4.9 0 13.6 0.1 20.6-3.5 2-8.2 3-10.9 3z"/><path class="st5" d="m391.6 43.8c-0.1 7.7-0.3 34.8 0.1 37.5 1.4 1.1 8.2 1 9.6 0 0.5-3.5 0.5-21.6 0.6-30.8 2.2-3.5 8.4-6.9 13.4-6.9 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.2 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5v-3.8h-6.4c0.4-7.3 0.9-22.9 0.1-27.5-1.2-7.1-5.7-11.7-12.8-11.7-6.2 0-14 3.2-16.4 7.3h-0.3c0.2-0.5 0.3-1.3 0.3-2.2 0-3-1.9-4.5-7.6-4.5-5 0-8.2 2.3-8.2 5.1v3.5h6.2z"/><path class="st6" d="m384.2 58.5c0-20.7-12.2-24.8-23.5-24.8s-23.5 5.8-23.5 24.8 12.2 24.8 23.5 24.8c11.3-0.1 23.5-4.2 23.5-24.8zm-23.5 16.6c-6 0-13.2-2.8-13.2-16.7 0-13.2 7.2-17 13.2-17s13.2 3 13.2 17c0 14.3-7.2 16.7-13.2 16.7z"/><path class="st7" d="m334.5 73.8h-6.5c0.4-7.3 0.9-22.9 0.1-27.5-1.2-7.1-5.7-11.7-12.8-11.7-6.2 0-14 3.2-16.4 7.3h-0.7c-2-4.6-6-7.4-11.5-7.4-6.2 0-14 3.2-16.4 7.3h-0.7v0.1c-2-4.6-6-7.4-11.5-7.4-6.2 0-14 3.2-16.4 7.3h-0.7c-2-4.6-6-7.3-11.5-7.3-6.2 0-13.7 3.2-16.1 7.3h-0.3c0.2-0.5 0.3-1.3 0.3-2.2 0-3-1.9-4.5-7.6-4.5-5 0-8.2 2.3-8.2 5.1v3.5h6.2c-0.1 7.7-0.3 34.8 0.1 37.5 1.4 1.1 8.2 1 9.7 0 0.5-3.5 0.5-21.6 0.6-30.8 2.2-3.5 8.1-6.9 13.1-6.9 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.3 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5v-3.8h-6.4c0.3-5.9 0.7-17.2 0.4-23.8 2.4-3.4 8.3-6.5 13.1-6.5 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.3 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5v-3.8h-6.4c0.3-6 0.7-17.4 0.4-23.9v0.2c2.4-3.4 8.3-6.5 13.1-6.5 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.2 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5v-3.8h-6.4c0.3-5.9 0.7-17.3 0.4-23.8v0.1c2.4-3.4 8.3-6.5 13.1-6.5 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.2 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5l0.5-3.6z"/><path class="st8" d="m194.1 58.5c0-20.7-10.7-23.9-22-23.9s-22 4.9-22 23.9 10.7 23.9 22 23.9c11.3-0.1 22-3.3 22-23.9zm-22 15.7c-6 0-11.7-1.9-11.7-15.8 0-13.2 5.7-16 11.7-16s11.7 2.1 11.7 16c0 14.3-5.7 15.8-11.7 15.8z"/><path class="st9" d="m143.6 71.8c-2.4 1.2-9.6 2.2-12.9 2.2-6 0-11.7-1.9-11.7-15.8 0-13.2 5.7-16 11.7-16 2.2 0 4.2 0.3 5.8 0.7 0 7.5 1.7 8.5 4.5 8.5h1.2c3 0 4.5-1.2 4.5-9.5 0-4.1-4.4-7.6-15.1-7.6-11.3 0-23 4.9-23 23.9s10.7 23.9 22 23.9c5.7 0 12.4-1.7 15-3.4 2.5-1.7 0.1-6.9-2-6.9z"/><path class="st10" d="m61.3 43.8c-0.1 7.7-0.3 34.8 0.1 37.5 1.4 1.1 8.2 1 9.7 0 0.5-3.5 0.5-21.6 0.6-30.8 2.2-3.5 8.4-6.9 13.4-6.9 2.7 0 5.5 1.6 5.5 6.6 0 2.6-0.5 25.3-0.3 27.4 0.3 3 2.2 4.5 7.9 4.5 5 0 8.2-1.7 8.2-4.5v-3.8h-6.4c0.4-7.3 0.9-22.9 0.1-27.5-1.2-7.1-5.7-11.7-12.8-11.7-6.2 0-14 3.2-16.4 7.3h-0.3c0.2-0.5 0.3-1.3 0.3-2.2 0-3-1.9-4.5-7.6-4.5-5 0-8.2 2.3-8.2 5.1v3.5h6.2z"/><path class="st11" d="m48 73.9c0.1-7.7 0.3-34.8-0.1-37.5-1.4-1.1-8.2-1-9.7 0-0.5 3.5-0.5 21.6-0.6 30.8-2.2 3.6-8.4 6-13.4 6-2.7 0-5.5-1.7-5.5-5.7 0-2.6 0.5-25.3 0.3-27.4-0.3-3-2.2-4.5-7.9-4.5-5 0-8.2 1.7-8.2 4.5v3.8h6.4c-0.4 7.3-0.9 22.9-0.1 27.5 1.2 7.1 5.7 11.7 12.8 11.7 6.2 0 14-3.2 16.4-7.3h0.3c-0.2 0.5-0.3 1.3-0.3 2.2 0 3 1.9 4.5 7.6 4.5 5 0 8.2-2.3 8.2-5.1v-3.5h-6.2zm-40.8-60.4c-2.1-2.1-3.6-1.4-4.8-0.2s-1.7 2.9 0.2 4.8c1.6 1.6 8 6.3 11 7.7 0.8 0.4 1.8-0.5 1.4-1.3-1.4-2.9-6.2-9.4-7.8-11zm44.5-0.2c-1.2-1.2-2.7-1.9-4.8 0.2-1.6 1.6-6.4 8.1-7.7 11-0.4 0.8 0.6 1.7 1.4 1.3 2.9-1.4 9.4-6.1 11-7.7 1.8-1.9 1.3-3.6 0.1-4.8zm-24.7-10.6c-1.7 0-3.3 0.8-3.3 3.6 0 2.2 1.2 16.2 2.3 19.2 0.3 0.9 1.6 0.9 1.9 0.1 1.1-3 2.3-17.1 2.3-19.3 0.1-3.1-1.4-3.6-3.2-3.6z"/></svg>';
+        }
+      
+
+var pageTracker;
+var wait_for_gat = function() {
+	try {
+	    if (typeof _gat !== "undefined") {
+	        pageTracker = _gat._createTracker("UA-134179-1");
+	        pageTracker._addIgnoredRef("find.uncommongoods.com");
+	        pageTracker._addIgnoredRef("search.uncommongoods.com");
+	        pageTracker._addIgnoredRef("search2.uncommongoods.com");
+	        pageTracker._addIgnoredRef("uncommongoods.com");
+	        pageTracker._addIgnoredRef("catalog.proemags.com");  //added on 09/17
+	        pageTracker._addIgnoredRef("paypal.com");
+	        pageTracker._initData();
+	    }
+	    else {
+	        setTimeout(wait_for_gat, 500);
+	    }
+	} catch(err) {
+	
+	}
+}
+wait_for_gat();
+
+
+window['_fs_debug'] = false;
+window['_fs_host'] = 'www.fullstory.com';
+window['_fs_org'] = 'F5VK';
+(function(m,n,e,t,l,o,g,y){
+  g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+  o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+  y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+  g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){FS(l,v)};
+  g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;FS(o,v)};
+  g.clearUserCookie=function(d,i){d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
+  ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}
+})(window,document,'FS','script','user');
+window["_fs_ready"] = function() { FS.disableConsole(); }
+
+
+
+var customer = {};
+customer.customerId = '';
+customer.customerEmail = '';
+(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1241524-6dd5-442f-a670-1a648e87aaa71.js','script','ire',document,window);
+ire('identify', customer);
+
+
+	!function(e){if(!window.pintrk){
+		window.pintrk=function(){
+			window.pintrk.queue.push(Array.prototype.slice.call(arguments))
+		};
+		var	n=window.pintrk;n.queue=[],n.version="3.0";
+		var	t=document.createElement("script");
+		t.async=!0,t.src=e;
+		var	r=document.getElementsByTagName("script")[0];
+		r.parentNode.insertBefore(t,r)
+	}}
+	("https://s.pinimg.com/ct/core.js");
+
+	
+
+  !function(e,t,n,c,o){
+      var r,s;e[c]=function(t){
+          e[c]._token=t.token,e[c]._env=t.env
+      },
+      e[c].l=1*new Date,r=t.createElement("script"),
+      s=t.getElementsByTagName("script")[0],
+      r.async=1,
+      r.src="https://cross-border-tag.borderfree.com/v1/dist/cbt.js",
+      s.parentNode.insertBefore(r,s)
+  }
+  (window,document,0,"cbt"),
+  cbt(
+  {token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjaElkIjoiMzUyMSIsImNyZWF0ZWREYXRlIjoiMjAxOC0wNS0yM1QyMToyNzowOS4zMThaIiwiaWF0IjoxNTI3MTEwODI5fQ.tFAvCvjiMLxV0uj_ABIcb-wovjwJea-MkzUbJG8I14U",
+  env:"prd"});
+
+
+	var emailFields = document.querySelectorAll("input[type='email']");
+	for (var ef = 0; ef < emailFields.length; ef++) {
+	  emailFields[ef].onblur = function() {
+		  this.value = this.value.toLowerCase();
+		}
+	}
+
+
+	if (typeof productImpressionsUA !== 'undefined') {
+		if (productImpressionsUA.length > 0){
+			dataLayer.push({
+				'ecommerce':{
+					'impressions':productImpressionsUA
+				},
+				'event':'impression',
+				'eventCategory':'Ecommerce',
+				'eventAction':'Impression'
+			})
+		}
+	}
+	
+		
+		
+		
+		
+		
+		
+		
+	
+
+
+	(function(win, doc, sdk_url){
+	if(win.snaptr) return;
+	var tr=win.snaptr=function()
+
+	{ tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments); }
+	;
+	tr.queue = [];
+	var s='script';
+	var new_script_section=doc.createElement(s);
+	new_script_section.async=!0;
+	new_script_section.src=sdk_url;
+	var insert_pos=doc.getElementsByTagName(s)[0];
+	insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+	})(window, document, 'https://sc-static.net/scevent.min.js');
+
+
+var now = new Date();
+var month = now.getMonth();
+if (month > 1 && month < 10){
+	var fromGMT = 4; // or 5 if standard
+} else {
+	var fromGMT = 5; // or 4 if daylight savings
+}
+// careful if countdown in March or November
+var hourDifference = Math.ceil(now.getTimezoneOffset()/60)-fromGMT;// is this EST/DST bug?
+var bannerStart = new Date(2018, 10, 27, 00-hourDifference, 01);
+var bannerEnd = new Date(2018, 10, 27, 23-hourDifference, 59); // could probably calculate from bannerStart
+console.log(bannerStart, bannerEnd)
+if ((now >= bannerStart)&&(now < bannerEnd)){
+	var styleNode = document.createElement('style');
+	styleNode.setAttribute('type', 'text/css');
+	var styleContent = document.createTextNode('#givingBanner h3 span{display:inline}@media only screen and (max-width:40em){#givingBanner h3{font-size:.75rem;}.stickyHeader header.offScreen.giving{-webkit-transform:translateY(-7.5rem);	transform:translateY(-7.5rem);}#givingBanner h3 span{display:none}body.giving{padding-top:7.5rem;}}');
+	styleNode.appendChild(styleContent);
+	document.getElementsByTagName('body')[0].appendChild(styleNode);
+	document.getElementById('site-header').classList.add('giving');
+	document.getElementsByTagName('body')[0].classList.add('giving');
+	document.getElementById('mainNavBar').insertAdjacentHTML("afterend", "<div id='givingBanner' style='text-align:center;background-color: #E5F0F0;border-top: 1px solid #E8E4DF'><h3 style='margin: 0 .25rem;padding: .6875rem 0;font-style:italic;'><span style='margin:0 .5rem' class='icon-sm icon-gift'></span> Celebrate <b>Giving Tuesday</b> with us! We'll double our donation to your <a href='https://www.uncommongoods.com/static/better.jsp'><u>Better to Give</u></a> partner of choice. <span style='margin:0 .5rem' class='icon-sm icon-gift'></span></h3></div>")
+}
+
+
+function zopimOnDemand(element){
+	function returnLink(element, oldHTML, oldClick){
+		element.innerHTML = oldHTML;
+		element.setAttribute("onclick", oldClick);
+	}
+	/*
+	oldHTML = $(element).html();
+	oldClick = $(element).attr("onclick");
+	$(element).html("loading...")
+	$(element).attr("onclick", "")
+	*/
+	var oldHTML = element.innerHTML;
+	var oldClick = element.getAttribute('onclick');
+	element.innerHTML = ('loading...');
+	element.setAttribute('onclick', '');
+		window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","ugoods.zendesk.com");
+		var zopimInterval = setInterval(function () {
+		    if (typeof $zopim != 'undefined' && typeof $zopim.livechat != 'undefined'){
+				$zopim.livechat.window.show();
+				$zopim(function() {
+					$zopim.livechat.window.onShow( returnLink(element, oldHTML, oldClick) )
+				  });
+				clearInterval(zopimInterval);
+			}
+		}, 200);
+	}
+
+
+	if ('serviceWorker' in navigator){
+		navigator.serviceWorker.getRegistrations().then(function(registrations) {
+			for(let registration of registrations) {
+				registration.unregister()
+			}
+		})
+	}
+
+
+var pageTracker;
+var wait_for_gat = function() {
+    if (typeof _gat !== "undefined") {
+        pageTracker = _gat._createTracker("UA-134179-1");
+        pageTracker._addIgnoredRef("find.uncommongoods.com");
+        pageTracker._addIgnoredRef("search.uncommongoods.com");
+        pageTracker._addIgnoredRef("search2.uncommongoods.com");
+        pageTracker._addIgnoredRef("uncommongoods.com");
+        pageTracker._addIgnoredRef("catalog.proemags.com");  //added on 09/17
+		pageTracker._addIgnoredRef("paypal.com");
+        pageTracker._initData();
+    }
+    else {
+        setTimeout(wait_for_gat, 500);
+    }
+};
+$.fn.ready(
+	wait_for_gat() 
+	);
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-134179-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+var ewt_pagename;
+                   	
+         
+
+
+				/* <![CDATA[ */
+				 var google_conversion_id = 1072616117;
+				 var google_conversion_language = "en";
+				 var google_conversion_format = "3";
+				 var google_conversion_color = "666666";
+				 var google_conversion_label = "gdyoCMGW4AEQtaW7_wM";
+				 var google_conversion_value = 0;
+				/* ]]> */
+				//home page remarketing tag
+				
+
+				
+
+		function onPromoClick(id, name, creative, pos) {
+      dataLayer.push({
+        'event': 'promotionClick',
+        'ecommerce': {
+          'promoClick': {
+            'promotions': [
+              {
+                'id': id,
+                'name': name,
+                'creative': creative,
+                'position': pos
+              }
+            ]
+          }
+        }
+      });
+    };
+	

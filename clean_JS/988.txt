@@ -1,0 +1,1 @@
+(function() {var user = "info";var at = "@";var server = "cigars-of-cuba.com";document.write('<a href="' + 'mail' + 'to:' + user + at + server + '" class="">Contact Us</a>');})();

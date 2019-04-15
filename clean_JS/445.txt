@@ -1,0 +1,64 @@
+  // <!-- REPLACED BY YOTTAA INSTANTON=<script[id=data-mz-preload-apicontext][0]> --> 
+
+  // <!-- REPLACED BY YOTTAA INSTANTON=<script[id=data-mz-preload-pagecontext][0]> --> 
+
+  // <!-- REPLACED BY YOTTAA INSTANTON=<script[id=data-mz-preload-user][0]> --> 
+
+
+document.cookie="_mzvr=PTwAAj0VQEaJAbTpBQGbsQ;Path=/"
+document.cookie="_mzvs=nn;Path=/"
+document.cookie="_mzvt=rFy-CZDdKEaXlAvx3365hA;Path=/"
+document.cookie="_mzPc=eyJjb3JyZWxhdGlvbklkIjoiZmFiYjYxNDVkNmJiNDMzNGIzZTIzNTFkZDM1MzliM2QiLCJpcEFkZHJlc3MiOiIyMTIuOTAuNjMuMTc4IiwiaXNEZWJ1Z01vZGUiOmZhbHNlLCJpc0NyYXdsZXIiOmZhbHNlLCJpc01vYmlsZSI6ZmFsc2UsImlzVGFibGV0IjpmYWxzZSwiaXNEZXNrdG9wIjp0cnVlLCJ2aXNpdCI6eyJ2aXNpdElkIjoickZ5LUNaRGRLRWFYbEF2eDMzNjVoQSIsInZpc2l0b3JJZCI6IlBUd0FBajBWUUVhSkFiVHBCUUdic1EiLCJpc1RyYWNrZWQiOmZhbHNlLCJpc1VzZXJUcmFja2VkIjpmYWxzZX0sInVzZXIiOnsiaXNBdXRoZW50aWNhdGVkIjpmYWxzZSwidXNlcklkIjoiYjlhYWI0ZjJlYmExNDQ5MGFmMDY5YmVhMTVmOWNhNjYiLCJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsImVtYWlsIjoiIiwiaXNBbm9ueW1vdXMiOnRydWUsImJlaGF2aW9ycyI6WzEwMTQsMjIyXX0sInVzZXJQcm9maWxlIjp7InVzZXJJZCI6ImI5YWFiNGYyZWJhMTQ0OTBhZjA2OWJlYTE1ZjljYTY2IiwiZmlyc3ROYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJlbWFpbEFkZHJlc3MiOiIiLCJ1c2VyTmFtZSI6IiJ9LCJpc0VkaXRNb2RlIjpmYWxzZSwiaXNBZG1pbk1vZGUiOmZhbHNlLCJub3ciOiIyMDE5LTA0LTE0VDE0OjIwOjI2LjM1NzE1MzdaIiwiY3Jhd2xlckluZm8iOnsiaXNDcmF3bGVyIjpmYWxzZSwiY2Fub25pY2FsVXJsIjoiL21haW4ifSwiY3VycmVuY3lSYXRlSW5mbyI6e319;Path=/"
+document.cookie="sb-sf-at-prod-s=pt=&at=A1beQsym7TKnIntMVAckW/FBx8DIlw0avXtt1QHL879vfBaXCGZFJ1QtDtm+1lwL/E6BPtyVS6m2pSxOCHLPYHjYeNGyT/aKbcUvzhEiY6PEUnw99L/YtisscMsXojtPsLfCh9QyNfH4HjgweQWROPX9yu+AlNTrSO0k/7IFdfRiwoaal9EWknWhLnhVh4eYDwPUGoYIUZuLmPX1d2SohFLKKUmmDBgpPA7unfRTTdPWysKxfKXyvmnsS5LQntrEXodIiYj0jTmndeP/NsFCiu8vNz0W8ARGcvYjsxs+acgK2a8YNFihsbJV06B+1gL5&dt=2019-04-14T14:20:26.3415082Z;Path=/"
+document.cookie="sb-sf-at-prod=pt=&at=A1beQsym7TKnIntMVAckW/FBx8DIlw0avXtt1QHL879vfBaXCGZFJ1QtDtm+1lwL/E6BPtyVS6m2pSxOCHLPYHjYeNGyT/aKbcUvzhEiY6PEUnw99L/YtisscMsXojtPsLfCh9QyNfH4HjgweQWROPX9yu+AlNTrSO0k/7IFdfRiwoaal9EWknWhLnhVh4eYDwPUGoYIUZuLmPX1d2SohFLKKUmmDBgpPA7unfRTTdPWysKxfKXyvmnsS5LQntrEXodIiYj0jTmndeP/NsFCiu8vNz0W8ARGcvYjsxs+acgK2a8YNFihsbJV06B+1gL5;Expires=Thu, 14-Apr-2039 14:20:26 GMT;Path=/"
+
+    require.config({ 
+      cdnPrefix: "//cdn-tp1.mozu.com/9046-11441",
+      cacheKey: "64db0a7d0a62be6c669c942bf6324da0",
+      urlArgs: "theme=~30523~29880&cacheKey=64db0a7d0a62be6c669c942bf6324da0",
+      baseUrl: "//cdn-tp1.mozu.com/9046-11441/compiled/scripts",
+	  waitSeconds: 200,
+      paths: {
+        jquery: "vendor/jquery/1.11.1/jquery.min",
+    underscore: "vendor/underscore/underscore",
+    backbone: "vendor/backbone/backbone"
+      }
+    });
+    if(typeof Object.assign != 'function'){
+        Object.defineProperty(Object, "assign", {
+            value: function assign(target, varArgs) {
+                'use strict';
+                if (target == null) {
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
+                var to = Object(target);
+                for (var index = 1; index < arguments.length; index++) {
+                    var nextSource = arguments[index];
+                    if (nextSource != null) {
+                        for (var nextKey in nextSource) {
+                            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                                to[nextKey] = nextSource[nextKey];
+                            }
+                        }
+                    }
+                }
+                return to;
+            },
+            writable: true, 
+            configurable: true
+        });
+    }
+   
+    require(['jquery'], function() {
+        require(['modules/common'], function() {
+            require(['pages/jb-tealium-new','modules/lazy-load-desktop','modules/login-links','modules/contextify','modules/search-autocomplete','modules/cart-monitor','modules/minicart','modules/header-myaccount','pages/homepage','modules/common']);
+			require(['widgets/rti-observation','vendor/baynote']);
+        }); 
+    });
+  
+
+
+    document.addEventListener("load", function(){
+       
+    });
+

@@ -1,0 +1,17 @@
+
+        var fmg = window.fmg || {};
+        fmg.analytics = fmg.analytics || {};
+        fmg.analytics.pgdata = fmg.analytics.pgdata || {};
+        fmg.analytics.pgdata.pgName = "Browse";
+        fmg.analytics.pgdata.channel = "Shop";
+        fmg.analytics.pgdata.fullRefinement = "";
+        fmg.analytics.pgdata.lastRefinement = "";
+        fmg.analytics.pgdata.listPreference = 16;
+        fmg.analytics.pgdata.numResults = "0";
+        fmg.analytics.pgdata.pageNumber = 0;
+        fmg.analytics.pgdata.landingPage = true;
+		fmg.analytics.pgdata.searchTerm = "";
+		fmg.analytics.pgdata.searchCorrected = "";
+		fmg.analytics.pgdata.item = ""
+         wa.updateFromPgData();
+    

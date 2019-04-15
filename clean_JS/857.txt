@@ -1,0 +1,55 @@
+
+      <!--
+        cmSetProduction();
+      //-->
+    
+
+      cmCreateTechPropsTag("HOME PAGE", 100);
+    
+
+    function openNewWindow( link_URL, width, height, scrollbars ) {
+        openNewWindow(link_URL, width, height, scrollbars, 'no');
+    }
+
+    function openNewWindow( link_URL, width, height, scrollbars, resize ) {
+        windowAttributes ='width=' + width + ',height=' + height + ',scrollbars=' + scrollbars + ',resizable=' + resize;
+        window.open( link_URL, 'plain', windowAttributes);
+    }
+
+    function openWindow(linkURL, menubar, toolbar, location, status, scrollbars, resizable, width, height, top, left) {
+        windowAttributes = 'width=' + width + ',height=' + height + ',menubar=' + menubar + ',toolbar=' + toolbar + ',location=' + location + ',status=' + status + ',scrollbars=' + scrollbars + ',resizable=' + resizable + ',top=' + top + ',left=' + left;
+        window.open( linkURL, 'plain', windowAttributes);
+        return false;
+    }
+
+    function disableSubmit() {
+        /**
+         * Example of use: onClick="setTimeout('disableSubmit()', 1);" in the input tag
+         */
+        var formInputs = document.getElementsByTagName("INPUT");
+        for(var i = 0; i < formInputs.length; i++) {
+            var Element = formInputs[i];
+            if(Element.getAttribute('type') == "submit" || Element.getAttribute('type') == "image") {
+                Element.disabled = true;
+            }
+
+        }
+        return true;
+    }
+
+
+  if (ResponsiveHelper.isMobileAgent){
+    if (ResponsiveHelper.fullSiteCookie) {
+      ResponsiveHelper.initToggle();
+    } else {
+      ResponsiveHelper.limitResultsPerPage();
+    }
+  }
+
+  window.addEventListener("orientationchange", function() {
+    ResponsiveHelper.resizeToggle()
+  }, false);
+
+  SignOnServiceClient.init("en");
+  BasketCount.init("d");
+

@@ -1,0 +1,182 @@
+
+var SS_DL = "42850:1360468";
+
+
+var BH = BH || {};
+BH.globals = BH.globals || {};
+BH.globals.isExplora = false;
+
+
+	var HeaderFooterMLT = {
+		endsIn: "Ends In",
+		days: "day",
+		DealEnded: "Deal<br>Ended",
+		claimed: "Claimed",
+		starts: "STARTS IN",
+		flashDeal: "Flash Deal",
+		moreDealsin: "More in",
+		soldOut: "Sold Out!",
+		dontMissOut: "Don't Miss Out!",
+		AlsoIn: "Also in",
+		See_All: "See All",
+		Unbeatable_Specials: "Unbeatable Specials",
+		DealZone: "DealZone"
+	};
+
+
+						var homeMLT = {
+								Morning: "Good morning",
+								Afternoon: "Good afternoon",
+								Evening: "Good evening"
+						};
+							(function(){
+								hour = (new Date()).getHours();	
+								nightStart = 18;
+								nightEnd = 4;
+								greeting = hour > nightEnd && hour < 12 ? homeMLT.Morning : hour > 11 && hour < nightStart ?  homeMLT.Afternoon : homeMLT.Evening;00000000
+								document.getElementById("timeOfDay").textContent = greeting;
+								if (window.userFirstName)
+								{
+									document.getElementById("firstName").textContent = decodeURIComponent(window.userFirstName.replace(/%20/g, " "))+".";
+								} else {
+									document.querySelector('.welcome-msg p').innerText = document.querySelector('.welcome-msg p').innerText.replace(/,/g, '.');
+								
+								}
+							}());
+							
+						
+
+		lazyLoad.setOdUrl("https://www.bhphotovideo.com/find/javascripts.jsp?&min=Y&site=reg&v=release-WEB-20190411v10-BHJ-DVB17521-8&module=");
+	
+
+				BH.globals.moduleOrder = [
+					"PersonalizationOne"
+					
+						,"DealZone"
+					
+					
+					
+                    
+                    
+						,"Trending"
+					
+				];
+				var rootPageMLT = {
+						markedDown1: "Did you know? An item in your Cart has a new low price:",
+						markedDown2: "Psst! An item on your Wish List was just marked down:",
+						markedDown3: "Instant Savings on an item in your Cart expires in <span class='highlight' data-attach='expiringInTxt'>",
+						markedDown4: "Instant Savings on an item on your Wish List expires in <span class='highlight' data-attach='expiringInTxt'>",
+						markedDown5: "Mail-In Rebate on an item in your Cart expires in",
+						markedDown6: "Mail-In Rebate on an item on your Wish List expires in",
+						markedDown7: "Better hustle: Rebate Bonus for an item on your Wish List expires in ",
+						markedDown7: "Better hustle: Rebate Bonus for an item on your Wish List expires in ",
+						DontMissOut: "Don't Miss Out",
+						specialDeals: "Special deals & discounts on items you're interested in",
+						AddToCartCheckout: "Add to cart & checkout",
+						ViewCartCheckout: "View cart & checkout",
+						showing: "Showing",
+						stillShopping: "still on your list? Here are some more ideas",
+						relatedItems: "Related to items you've viewed",
+						basedItems: "Based on your recently viewed items",
+						moreDeals: "More Deals"
+					};
+			
+
+
+var dlo =
+
+          {
+
+            "portal" :  "MAIN",
+
+            "loc" :     "home",
+
+            "subLoc":  '',
+
+            "user": {"isTaxExempt":false,"bi":null,"cartID":"14529734320","language":"E","catalogue":"B&H-Regular","isUsed":false,"SSSC_C":"","referrer":"","cartTotal":"","jSessionId":"","cm_mmc":"","b2bCatalogue":"","rememberId":"","cookieId":"","ib":false,"isMobile":false,"dataLayerInfo":""},
+         "product": {"salesComment":"","isExpertPick":false,"itemCode":"","featuredItemCategory":"","source":"","category":"","sku":""},
+         	"used": {
+         		"products" :[]
+         	},
+            "list": {
+            	         "catId": "",
+            	         crowdType: '[]',
+            	         CrowdEligible:    'N',
+                         CrowdReceived:    'N',
+                         NLPType: '[]',
+            	         NLPMergeEligible:    'N',
+                         NLPMergeReceived:    'N',
+          	
+                    
+            	"products": [],
+   			                
+      		
+      			           /*end if  */
+
+
+            	           "page" : -1,
+   							
+   						
+
+                        },
+
+            "search":  {
+            	          "sts": "",
+                        "originalSearch":null,
+                        "changedSearch": null,
+                        "termTyped":     "",
+                        "searchCount":   "0",
+                        "isSearchUrl":   false ,
+                       	"CWREligible":    "",
+                        "CWRReceived":    "",
+                        "EndecaStrategy": "",
+                    	"NLPEligible":    "",
+                        "NLPReceived":    "",
+                        "NLPMessage1":	  "",
+                        "NLPMessage2":	  "",
+                        "NLPMessage3":	  "",
+                        "NLPAction":	  "",
+                    	"FTRuleName":    "",
+                    	"FTRuleId":      "",
+                    	"FTRuleType":    "",
+                    	"isPartialMatch":"false",
+                    	"searchedSKU": "null",
+                    	"suggestedReplacement": "null",
+                    	"isAccessoryLinkSearch": "false",
+                    	"searchFacetsEligible": "N",
+                    	"filterSortElligible":"N",
+                    	"messageTrigger":""
+                        },
+
+            "invoice": {
+            	        "shipMethod":   "",
+            	        "paymentMethod": ""
+                     },
+
+
+           "shipping": {
+                          	
+
+
+                    }
+
+
+          } ;
+
+
+
+
+<!--
+	
+			setTimeout(function() {
+				var xhr = new XMLHttpRequest();
+				xhr.open(
+					'GET',
+					'/__ssobj/ard.png?6679758272410590083_1-333-'+(12902*120543+6632)+'&n=1',
+					true
+				);
+				xhr.send();
+			}, 1500);
+		
+//-->
+<!-- // -->

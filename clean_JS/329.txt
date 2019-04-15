@@ -1,0 +1,112 @@
+
+    window.cookieconsent_options = {"message":"Archonia.com uses cookies to ensure you get the best experience on our website.","dismiss":"Got it!","learnMore":"More info","link":"mangashop/en/support/help/1/#wp_117","theme":"dark-top"};
+
+
+$(document).ready(function($){
+    $('.megamenu').megaMenuCompleteSet({
+        menu_speed_show : 300, // Time (in milliseconds) to show a drop down
+        menu_speed_hide : 200, // Time (in milliseconds) to hide a drop down
+        menu_speed_delay : 100, // Time (in milliseconds) before showing a drop down
+        menu_effect : 'hover_slide', // Drop down effect, choose between 'hover_fade', 'hover_slide', etc.
+        menu_click_outside : 1, // Clicks outside the drop down close it (1 = true, 0 = false)
+        menu_show_onload : 2 // Drop down to show on page load (type the number of the drop down, 0 for none)
+    });
+    
+});
+
+
+<!--
+ $(function(){
+
+    $viewport_width = $( window ).width();
+
+    if(  $viewport_width  <= 1050 )
+    {
+	  
+	  $l_w = '95%';
+	  $r_w = '100%';
+
+	  $("#start_left").css ( "width", $l_w ); //set width of left column
+	  $("#start_right").css( "width", $r_w  );
+	  
+    }
+	
+    $('#slides').slidesjs({
+		width: 550,
+        height: 240,
+        navigation: false,
+        play: {
+            active: false,
+            auto: true,
+            effect: "fade",
+            interval: 4000,
+            swap: true
+        },
+        callback: {
+          loaded: function(number) {
+            images = $('#slides').find('img');
+            $(images[0]).attr('src', $(images[0]).attr('data-src'));
+            $(images[1]).attr('src', $(images[1]).attr('data-src'));
+          },
+          start: function(number) {
+            images = $('#slides').find('img');
+            if (images[number+1] != "undefined" && typeof $(images[number+1]).attr('src') == "undefined") {  
+                $(images[number+1]).attr('src', $(images[number+1]).attr('data-src'));
+            }
+          },
+          complete: function(number) {
+          }
+        }
+    });
+    $('.slidesjs-pagination-item a').on('click', function() {
+        images = $('#slides').find('img');
+        number = $(this).attr('data-slidesjs-item');
+        if (images[number] != "undefined") {
+            $(images[number]).attr('src', $(images[number]).attr('data-src'));
+        }
+    });
+
+    
+    $.ajax({
+        url: "scripts/start_ajax.php",
+        dataType: 'json'
+    }).done(function(resp) {
+        if (resp.recommendations) {
+            $('#recommendations').html(resp.recommendations);
+        }
+        if (resp.newarrivals) {
+            $('#newarrivals').html(resp.newarrivals);
+        }
+        if (resp.latestnews) {
+            $('#latestnews').html(resp.latestnews);
+        }
+        if (resp.month && resp.year) {
+            $('#rssLinks').show();
+            $('#rssLinks a:first').attr('href', "mangashop/en/news/" + resp.year + "/" + resp.month + "/");
+        }
+    });
+    
+    
+  });
+-->
+
+
+$(function() {
+  
+  $('.liquid2').liquidcarousel({height:160, duration: 700});
+});
+
+
+try{
+ga('send', 'pageview');} catch(err) {}
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1038119764;
+var google_conversion_label = "Ff1xCJTD3QQQ1OaB7wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

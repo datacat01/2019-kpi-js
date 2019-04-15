@@ -1,0 +1,128 @@
+
+/*
+* Plugin: getQueryParam 2.3
+*/ 
+s.getQueryParam=new Function("p","d","u","" +"var s=this,v='',i,t;d=d?d:'';u=u?u:(s.pageURL?s.pageURL:s.wd.locati"
++"on);if(u=='f')u=s.gtfs().location;while(p){i=p.indexOf(',');i=i<0?p"
++".length:i;t=s.p_gpv(p.substring(0,i),u+'');if(t){t=t.indexOf('#')>-"
++"1?t.substring(0,t.indexOf('#')):t;}if(t)v+=v?d+t:t;p=p.substring(i="
++"=p.length?i:i+1)}return v"); s.p_gpv=new Function("k","u","" +"var s=this,v='',i=u.indexOf('?'),q;if(k&&i>-1){q=u.substring(i+1);v"
++"=s.pt(q,'&','p_gvf',k)}return v"); s.p_gvf=new Function("t","k","" +"if(t){var s=this,i=t.indexOf('='),p=i<0?t:t.substring(0,i),v=i<0?'T"
++"rue':t.substring(i+1);if(p.toLowerCase()==k.toLowerCase())return s." +"epa(v)}return ''");
+
+s.campaign=s.getQueryParam("ET_CID"); //places query param value from cid in campaign variable 
+s.eVar2=s.getQueryParam("ET_RID"); //places query param value from rid in eVar2 variable
+
+<!--
+/* Fill in variables here */
+s.eVar11=""
+//-->
+	
+        (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+        else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+        if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+            /********** Begin Custom Code **********/
+            _ltk.Activity.AddPageBrowse();
+            _ltk.Activity.Submit();
+            /********** End Custom Code **********/
+        });
+    
+
+    pr_zip_location="//cdn.powerreviews.com/repos/10353/pr";
+    pr_style_sheet="../userportal/common/pr_list_styles_review.css";
+    var pr_snippet_min_reviews = "1";
+
+
+<!--
+
+// main panels
+if (document.images) {
+    img1 = new Image();
+    img1.src = "./images/play-btn.png";
+}
+$(function() {
+  jQuery(function($) {  
+    $('#bannerPanel').cycle({
+        speed:  'fast',
+        timeout: 7000,
+        pager:  '#bpNav',
+	slideExpr: 'img'
+    });
+    
+    $('#bpNav').append("<span id='pauseplay'><img src='./images/pause-btn.png' width='15' height='15' alt='Pause' title='Pause' /></span>");
+    $('#pauseplay').toggle(
+    function(){
+        $('#pauseplay').html("<img src='./images/play-btn.png' alt='Play' title='Play' />");
+        $('#bannerPanel').cycle('pause'); return false;
+    }, function(){
+        $('#pauseplay').html("<img src='./images/pause-btn.png' width='15' height='15' alt='Pause' title='Pause' />");
+        $('#bannerPanel').cycle('resume'); return false;
+    }
+    );
+    jQuery.noConflict(false);
+  })
+});
+//-->
+
+<!--
+/* Fill in variables here */
+s.channel="Homepage"
+s.prop1="Homepage"
+s.prop2="Homepage"
+s.prop3="Homepage"
+s.pageName="Homepage"
+//-->
+    
+    (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+        else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+        if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+            /********** Begin Custom Code **********/
+            _ltk.SCA.CaptureEmail('footerEmail');
+            /********** End Custom Code **********/
+            
+            //SUBSCRIPTION CALLS GO HERE
+            _ltk.Signup.New('Miniform', 'footerEmail', _ltk.Signup.TYPE.CLICK, 'btnFooterSubmit');
+            //_ltk.Signup.SetField('Miniform', 'FIRSTNAME');
+            //_ltk.Signup.SetField('Miniform', 'LASTNAME');
+            //end subscription calls 
+        });
+
+<!--
+var s_code=s.t();if(s_code)document.write(s_code)
+//-->
+
+
+    adroll_adv_id = "74OPAQCKINC4PEZ5WULAJC";
+    adroll_pix_id = "HY35AGKCEBFUZJFBXIJY35";
+    (function () {
+    var oldonload = window.onload;
+    window.onload = function(){
+       __adroll_loaded=true;
+       var scr = document.createElement("script");
+       var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+       scr.setAttribute('async', 'true');
+       scr.type = "text/javascript";
+       scr.src = host + "/j/roundtrip.js";
+       ((document.getElementsByTagName('head') || [null])[0] ||
+            document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+       if(oldonload){oldonload()}};
+    }());
+
+
+var _mfq = _mfq || [];
+(function() {
+var mf = document.createElement("script");
+mf.type = "text/javascript"; mf.async = true;
+mf.src = "//cdn.mouseflow.com/projects/b52351e5-17b1-4022-80a5-da2d04f7d2b1.js";
+document.getElementsByTagName("head")[0].appendChild(mf);
+})();
+
+
+    var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+    (function (d, s, id, tid, vid) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+        js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'F8JM2qj9cUKS', '1');
+

@@ -1,0 +1,425 @@
+var monetateT = new Date().getTime();
+
+
+    // This code executes very early, you need to
+    // Define the Oakley object
+    var Oakley = Oakley || {};
+		window.monetateData = {};
+
+    Oakley.monetateTracking = function(type) {
+        window.monetateQ = window.monetateQ || [];
+
+        var path = location.pathname;
+        var currentPageType = "unknown";
+        if (path.indexOf("login") != -1) {
+            window.monetateQ.push([ "setPageType", "login" ]);
+        } else if (path.indexOf("my-account") != -1) {
+            window.monetateQ.push([ "setPageType", "account" ]);
+        } else if (path.indexOf("checkout") != -1
+                && path.indexOf("orderConfirmation") == -1) {
+            window.monetateQ.push([ "setPageType", "checkout" ]);
+        } else if (path.indexOf("orderConfirmation") != -1) {
+            window.monetateQ.push([ "setPageType", "purchase" ]);
+        }
+
+        
+        currentPageType = "homepage";
+        
+				window.monetateData['pageType'] = currentPageType;
+        window.monetateQ.push([ "setPageType", currentPageType.toLowerCase() ]);
+
+        
+        
+        
+        function trackAddToCart_monetate(cartData) {
+            var cartDetails = [];
+            for ( var i = 0; i < cartData.products.length; i++) {
+                cartDetails.push({
+                    "productId" : cartData.products[i].code,
+                    "quantity" : cartData.products[i].qty,
+                    "unitPrice" : cartData.products[i].price
+                });
+            }
+            window.monetateQ.push([ "setPageType", currentPageType.toLowerCase() ]);
+            window.monetateQ.push([ "addProductDetails", [ "" ] ]);
+            window.monetateQ.push([ "addCategories", categoryName ]);
+            if(cartDetails.length > 0){
+                window.monetateQ.push([ "addCartRows", cartDetails ]);
+            }
+            window.monetateQ.push([ "trackData" ]);
+
+        };
+
+        window.mediator.subscribe('trackAddToCart', function(data) {
+            if (data.cartData) {
+                trackAddToCart_monetate(data.cartData);
+            }
+        });
+        
+        
+        
+        var categoryName = [];
+        
+				window.monetateData['categories'] = categoryName;
+        window.monetateQ.push([ "addCategories", categoryName ]);
+
+        
+        window.monetateQ.push([ "trackData" ]);
+    }
+
+    Oakley.monetateTracking('monetateTracking.tag');
+
+
+
+    /*<![CDATA[*/
+        
+        var ACC = { config: {} };
+        ACC.config.contextPath = "/en-us";
+        ACC.config.commonResourcePath = "/_ui/desktop/common";
+        ACC.config.themeResourcePath = "/_ui/desktop/theme-oakley";
+        ACC.config.siteResourcePath = "/_ui/desktop/site-oakleyus";
+        ACC.config.rootPath = "/_ui/desktop";
+        ACC.pwdStrengthVeryWeak = 'Very weak';
+        ACC.pwdStrengthWeak = 'Weak';
+        ACC.pwdStrengthMedium = 'Medium';
+        ACC.pwdStrengthStrong = 'Strong';
+        ACC.pwdStrengthVeryStrong = 'Very strong';
+        ACC.pwdStrengthUnsafePwd = 'password.strength.unsafepwd';
+        ACC.pwdStrengthTooShortPwd = 'Too short';
+        ACC.pwdStrengthMinCharText = 'Minimum length is %d characters';
+        ACC.accessibilityLoading = 'Loading... Please wait...';
+        ACC.accessibilityStoresLoaded = 'Stores loaded';
+        
+        ACC.autocompleteUrl = '/en-us/search/autocompleteSecure';
+
+
+        
+    /*]]>*/
+    var Oakley = Oakley || {};
+    Oakley.messages = {
+    	jsSite: 'oakleyus',
+        jsValidationRequired: 'This field is required',
+        jsValidationEmployeeIdRequired: 'Please enter your employee ID',
+        jsValidationBodMonthRequired: 'Please enter the month of your date of birth',
+        jsValidationBodDayRequired: 'Please enter the day of your date of birth',
+        jsValidationBodYearRequired: 'Please enter the year of your date of birth',
+        jsValidationSerialNumberRequired: 'Please enter your serial number',
+        // Move from messages.tag
+        currentCountryIsocode : 'US',
+        jsValidationAddress1Required : 'Address is required',
+        jsValidationAddresslinePobox : 'Address line cannot contain PO Box',
+        jsValidationCityRequired : 'City is required',
+        jsValidationCheckRequired : 'Please check box',
+        jsValidationCountryRequired : 'Please select a country',
+        jsValidationCreditCardCvvRequired : 'Please provide a CVV',
+        jsValidationTermsCheck : 'Please agree to Terms & Conditions and Privacy policy to Proceed',
+        jsValidationCreditCardCvvInvalid : 'Please enter CVV',
+        jsValidationCreditCardMonthRequired : 'Credit card month is required',
+        jsValidationCreditCardNameRequired : 'A name is required',
+        jsValidationCreditCardNameInvalid : 'Please enter your Name',
+        jsValidationCreditCardExpiryDateInvalid : 'Please enter the expiry date',
+        jsValidationCreditCardNumberInvalid : 'A valid credit card number is required',
+        jsValidationCreditCardNumberCheckoutInvalid : 'Please enter a valid credit card number',
+        jsValidationCreditCardTypeInvalid : 'A valid credit card type is required',
+        jsValidationCreditCardNumberRequired : 'A card number is required',
+        jsValidationCreditCardYearRequired : 'Credit card year is required',
+        jsValidationEmailInvalid : 'Please enter a valid email address',
+        jsValidationEmailRequired : 'Email address is required',
+        jsValidationEmailConfirmRequired : 'Please enter your email address again for confirmation',
+        jsValidationEmailConfirmNotMatching : 'Please enter your email address correctly',
+        jsValidationEmailMatch : 'You have entered an invalid e-mail address or the addresses you entered do not match.',
+        jsValidationFirstNameRequired : 'Please enter your first name',
+        jsValidationFirstNameMaxRequired : 'Maximum name length is 17 characters',
+        jsValidationGiftCardAmountGreater: 'Amount inserted is greater than maximum allowed',
+        jsValidationGiftCardAmountLower: 'Amount inserted is lower than minimum allowed',
+        jsValidationGiftCardNumberGenericError : 'Enter a valid card number',
+        jsValidationGiftCardNumberInvalid : 'Please enter 19 digit number',
+        jsValidationGiftCardNumberRequired : 'Please enter gift card number',
+        jsValidationGiftCardPinInvalid : 'Please enter 4 digit number',
+        jsValidationGiftCardPinRequired : 'Please enter gift pin number',
+        jsValidationLastNameRequired : 'Please enter your last name',
+        jsValidationLastNameMaxRequired : 'Maximum name length is 17 characters',
+        jsValidationNumberInvalid : 'Please numbers only',
+        jsValidationOrderNumberRequired : 'Please enter an order number',
+        jsValidationPasswordCurrentRequired : 'Please input your current password',
+        jsValidationPasswordMinimumLength : 'Required password length is a minimum of 8 characters',
+        jsValidationPasswordRequired : 'This field is required',
+        jsValidationPasswordRegex : 'Password should have any three of an uppercase letter, lowercase letter, number, or special character',
+        jsValidationPasswordMatch : 'Passwords do not match',
+        jsValidationPasswordMatchRequired : 'Please provide a matching password',
+        jsValidationFiscalCode : '',
+        jsValidationCreateAccountTerms : 'Agree to our Terms & Conditions and Privacy policy*',
+        jsValidationPhoneInvalid : 'Phone number is not correct format',
+        jsValidationPhoneCheckoutInvalid : 'Please enter your Telephone Number',
+        jsValidationAddressCheckoutInvalid : 'Please enter Address Line 1',
+        jsValidationZipCheckoutInvalid : 'Please enter your Zip code',
+        jsValidationCityCheckoutInvalid : 'Please enter your City',
+        jsValidationStateCheckoutInvalid : 'Please select your State',
+        jsValidationStateCheckoutInvalidOSI : 'Please change State to ship your order',
+        jsValidationCheckoutErrorRestrictionsdOSI : 'One or more items in your cart cannot be delivered to selected location due to law restrictions.',
+        jsValidationPhoneRequiredBox1 : 'Please enter the area code',
+        jsValidationPhoneRequiredBox2 : 'Please enter the phone number in the second box',
+        jsValidationPhoneRequiredBox3 : 'Please enter the phone number in the third box',
+        jsValidationPhoneRequiredBoxTotalMin : 'Please enter the phone number with 10 digits or 11 digits',
+        jsValidationPhoneRequiredBoxTotalMax : 'Please enter the phone number with 10 digits or 11 digits',
+        jsShippingValidationPhoneRequiredBoxTotalMin : 'Please enter the phone number with 10 to 15 digits',
+        jsShippingValidationPhoneRequiredBoxTotalMax : 'Please enter the phone number with 10 to 15 digits',
+        jsValidationPhoneRequired : 'Phone number required',
+        jsValidationPromoCodeMinimumLength : 'Promo code 4 character min',
+        jsValidationStateRequired : 'A state is required',
+        jsValidationZipRequired : 'Zip is required',
+        jsValidationIdealBankRequired : 'Please select a bank',
+        jsValidationZipMaxLength : 'Postal codes cannot be more than 10 characters',
+        jsValidationAddressNameRequired : 'Please enter an address name',
+        fluidConfigurationEnvironment : 'prod',
+        fluidImplementationEnvironment : 'prod',
+        fluidJsUrlEnvironment : '//configure-published.fluidretail.net/prod/prod/customers/c1479/configureHtml/etc/assets/js/fluidConfigure-oak.min',
+        jsValidationUrlRequired : 'url required',
+        jsValidationUrlInvalid : 'url invalid',
+        jsValidationPageShareSuccess : 'Your Message Has Been Sent',
+        jsValidationLocalNameRequired : 'Local name is required',
+        jsValidationLocalName2Required : 'Please enter your name in kanji',
+        jsValidationReportFakesSuccess : 'success!',
+        jsInitialSearchResultsDisplay : '12',
+        jsMoreSearchResultsDisplay : '20',
+        jsValidationCookiesRequired : 'Please enable cookies to continue',
+        callForProductAvailability : '* Call for product availability',
+        addressLinePoboxAu : 'Call Customer Care on 1 800 625 539 to discuss PO BOX delivery options',
+        cartPopupMessageTitle : 'Are you sure?',
+        cartPopupMessageContent : 'Do you really want to remove this product',
+        cartPopupMessageYes : 'yes',
+        cartPopupMessageNo : 'no',
+        cartMergeSuccess : 'In your Cart there are product selected during your previous visit, Please verify.',
+        shoprunnerCartMerge : 'After having logged-in, your cart now includes some products not eligible for Shop Runner. Because of that, the shipping method has been modified from \"2 Days\" to \"Standard\".',
+        cartZipcodeError: 'Enter a valid Zip Code',
+        jsValidationPostRequired : 'Post Code is required',
+        jsValidationZipRequiredMessage : 'Zip is required',
+        jsWarningAccountExpiring: 'Your membership account \u003Cstrong\u003Ewill expire in {0} days\u003C\/strong\u003E. Please \u003Ca class=\"popover-link\" href=\"\/my-account\/profile\/\"\u003Erenew now\u003C\/a\u003E to continue receiving your membership benefits.',
+        jsWarningMyAccountExpiring: 'Your membership account \u003Cstrong\u003Ewill expire in {0} days\u003C\/strong\u003E. Please select the Profile option and renew your Service Branch information.',
+        jsWarningAccountExpired: 'Your account has expired. Please select the Profile option and renew your Service Branch information.',
+        jsWarningAccountMigratedPwd: 'We recommend you update your password as it no longer meets security standards.',
+        jsPdpZoomImageAltText: 'To define',
+        jsValidationOverAge: 'You must be at least 16 years old to register on Oakley.com',
+        jsValidationInvalidDate: 'Please enter a valid date.',
+        jsValidationBalanceCardNumberRequired: 'The card number is not correct. Please check it on the card and try again.',
+        jsValidationBalancePinRequired: 'The PIN is not correct. Please check it on the card and try again.',
+        jsPickupPaginationNext: 'Next',
+        jsPickupPaginationPrevious: 'Previous',
+        jsBirthDateValid: 'Please enter a valid date.',
+        jsVmPagination: '#Page \u003Cstrong\u003E{0}\u003C\/strong\u003E of \u003Cstrong\u003E{1}\u003C\/strong\u003E',
+        jsSearchOptimizationTotalLabelAll: 'View all products',
+        jsSearchOptimizationTotalLabelThese: 'View these products',
+        jsSearchOptimizationTotalLabelSingular: 'View this product',
+        jsOSILoginAnchor: 'Login/Register',
+        productPriceComingSoon: 'Coming Soon',
+        countrySelectorTitle: 'Select your store',
+        countrySelectorDescription: 'Seems like you are on a different store compared to your position. On which store would you like to shop?',
+        countrySelectorSelectStore: 'Select a different store'
+    };
+    Oakley.messages.hours = 'Hours';
+    Oakley.messages.OakleyStore = 'Oakley Store';
+    Oakley.messages.OakleyVaultStore = 'Oakley Vault Store';
+    Oakley.messages.detailsDirections = 'Details &amp; Directions';
+    Oakley.messages.defaultLocation = 'Make this my default location';
+    Oakley.messages.callForProduct = 'Store number:';
+    Oakley.messages.reserveYourProduct = 'Store number:';
+    Oakley.messages.reserveInStore = 'Reserve your product and pick up in store:';
+    Oakley.messages.reserveInStoreButton = 'Reserve at this store';
+    Oakley.messages.findInStore = 'Try a different location or call a store near you for similar products.';
+    Oakley.messages.tryDifferentLocation = 'Try a different location or call a store near you for similar products.';
+    Oakley.messages.enterCityState = 'Enter a City &amp; State or Zip to find a store';
+    Oakley.messages.thereAreNoStores = 'There are no stores in your area. Try another location or expand search radius.';
+    Oakley.messages.outOfStock = 'Out of Stock';
+    Oakley.messages.lowStock = 'Low Stock';
+    Oakley.messages.inStock = 'In Stock';
+    Oakley.messages.callAvailability = 'Store number:';
+    Oakley.messages.findStore = 'Find a Store';
+    Oakley.messages.changeStore = 'Change Store';
+    Oakley.messages.findInStoreForPdp = 'Find or Reserve in Store';
+    Oakley.messages.findInStoreTitle = 'Find In Store';
+    Oakley.messages.giftCardlabel = 'Oakley Gift Card';
+    Oakley.messages.giftCardcardNumber = 'Card Number';
+    Oakley.messages.callForAvailability = 'Reserve for pickup unavailable';
+    Oakley.categories = {
+        '100000000m': 'In Men',
+        '200000000w': 'In Women'
+    };
+    Oakley.variables = {
+        siteLanguage: 'en',
+        contextPath: '/en-us',
+        gmapsUrl: 'https://maps.googleapis.com/maps/api/js?client=gme-luxottica1&v=3&callback=googleMapsCallback',
+        isReserveEnabled : false,
+        chatUrl : 'https://livechat.oakley.com/I3Root/',
+        country: 'US',
+        countdownUrl : '/en-us/countdown'
+    };
+    var productName = '';
+    var productImage = '';
+    var productPrice = '<format:price priceData=""/>';
+    var productCode = '';
+    var addToCartUrl = '/en-us/cart/add';
+    var cartItems = '';
+    // var cartDataUrl = '';
+    var rolloverPopupUrl = '';
+    var cartRemoveUrl = '/en-us/cart/remove';
+    
+    var cartText = 'Cart';
+    
+    var isExcludeBaynote = false;
+
+    Oakley.siteId = 'oakleyus';
+    Oakley.debugMode = false;
+    
+    Oakley.buildNumber = '2019_R2.1.1-2';
+    Oakley.variables.shoprunnerEnvironmentID = 2;
+
+    
+
+    Oakley.messages.gdprDateJsPattern = 'mm\/dd\/yy';
+    Oakley.variables.isGdprSite = '';
+
+    Oakley.variables.gdprMinAgeLimit = '';
+    Oakley.variables.gdprPopup='false';
+
+    
+    window.ClickTalePIISelector = "#registerForm input, #loginForm input, .login-button .logged-in, .personal-info__body span, #profile-form input, #forgottenPwdForm input, .personalinfo-wrapper-reg input, .shipping-address-wrapper-reg input, .billing-form-wrapper input, .payment-form-wrapper input, #checkoutThankyou .sub-headline strong, .order-details h5, .order-details p span, .account-card span, .address-book input, .qas-form p, .account-card .title, #profile-menu-modal .modal-box-title, .order-number, .bill-ship-total-wrapper div, .bill-ship-total-wrapper div, .bill-ship-total-wrapper .vcard, .billing-payment-wrapper span, #rendering_canvas, .email-signup input, .js_zip input, #verifyForm input, #verifyForm select, #SignUpModal input, #shippingAddressForm input, .account-info .field-view span, .login-dropdown .category-link , .registration-field , .payment-method .account span , .order-shipping p , .inputForm #term , .form-field #term, .personal-info-section input , #password-change-form input, #vto-portal-container .canvas-container, .capture-page-content video , .vto-application #rendering_canvas , #footer-storelocator-input , #footer-newsletter-locator-form input, .thankyou .sub-headline strong";
+    
+	
+
+  require.config({
+      urlArgs: "v=" + Oakley.buildNumber
+  });
+  require(['picturefill', 'pageCommon']);
+
+
+    var tealiumEnvironment = "//tags.tiqcdn.com/utag/luxottica/oakley/prod/utag.js"; //"//tags.tiqcdn.com/utag/luxottica/oakley/prod/utag.js";
+
+
+	var utag_data = 
+{
+	"customer_type":"anonymousus",
+	"site_region":"US",
+	"page_type":"",
+	"ip_remote_address":"48529",
+	"page_category":"Homepage",
+	"ip_address":"10.16.126.206",
+	"ip_remote_host":"10.16.126.206",
+	"site_currency":"USD",
+	"site_country":"US",
+	"page_name":"Homepage",
+	"Page_Type":"home",
+	"site_language":"en",
+	"domain_language":"en",
+	
+  "User_LoginStatus": "Guest",
+  "Page_DeviceType": "X",
+  "Order_Currency": "USD",
+  "Page_Country": "US",
+  "customerType": "anonymousus",
+  "Page_Brand": "OO",
+  "Page_Code": "US:en:X::",
+  "User_Segments": "",
+  "Page_Language": "en",
+  "User_CrmId": "",
+  "User_Id": "7742c0d6-ddad-41be-adfa-6accd69b2cc8",
+  "Page_Platform": "Hybris",
+  "User_EmailOptin": "1"
+}
+
+
+        // This file is called before the man header module script
+        var feedback_msgs = {
+            cookies:[
+                "Your browser appears to have cookies disabled.",
+                "Please enable cookies for a better experience."],
+            update:[
+                "Your browser appears to be {0}",
+                "Please update your web browser for a better experience."]
+        };
+    
+
+                require(['autocomplete'], function (autocomplete) {
+                    autocomplete('.search-header-wrapper').init();
+                });
+            
+
+var rolloverPopupUrl = '/en-us/cart/rollover/miniCartComponent';
+var refreshMiniCartUrl = '/en-us/cart/miniCart//?';
+var numItems = '0';
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        /*
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadGeneralBanner');
+        this.lazyLoadImages.scrollEventBind();
+        */
+	});
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        /*
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadGeneralBanner');
+        this.lazyLoadImages.scrollEventBind();
+        */
+	});
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        /*
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadGeneralBanner');
+        this.lazyLoadImages.scrollEventBind();
+        */
+	});
+
+
+    require(['rotatingBanner']);
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadMerchandisingBanner');
+        this.lazyLoadImages.scrollEventBind();
+	});
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadMerchandisingBanner');
+        this.lazyLoadImages.scrollEventBind();
+	});
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadMerchandisingBanner');
+        this.lazyLoadImages.scrollEventBind();
+	});
+
+
+    require(['jquery', 'lazyLoadImages'], function(jquery, lazyLoadImages) {
+        this.lazyLoadImages = new lazyLoadImages();
+        this.lazyLoadImages.init('lazyLoadSimpleBanner');
+        this.lazyLoadImages.scrollEventBind();
+	});
+
+
+    var arr = [];
+    
+        arr.push("homepage");
+    
+    require(arr);
+
+
+            require(['countdown']);
+        
+
+                var Oakley = Oakley || {},
+                    originalContextPath = '/',
+                    requireJsNames = '',
+                    arr = [];
+                
+                Oakley.region = "US".toLowerCase();
+            

@@ -1,0 +1,169 @@
+
+      document.addEventListener = document.addEventListener || function(e, f){ document.attachEvent('on' + e, f); };
+      document.addEventListener('easysearch_init', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        easysearch.dbSRC = "//cdn.shopify.com/s/files/1/1101/5888/t/2/assets/highbaylights_myshopify_com_database.csv?12806";
+        easysearch.tree = {};
+
+        easysearch.jq(document).ready(function() {
+          
+          easysearch.jq('body').on('change', 'div[id=easysearch-holder] select, div[class*=easysearch-holder] select', function(event) {
+            var $holder = easysearch.jq(this).parent().closest('#easysearch-holder, .easysearch-holder');
+            var $container = easysearch.jq(this).parent().closest('.easysearch-select-holder');
+            var $nextSelContainers = $container.nextAll('.easysearch-select-holder');
+            var $prevSelContainers = $container.prevAll('.easysearch-select-holder');
+            var $btn = $holder.find('#easysearch-search');
+
+            // prev selects
+            var index = '';
+            if( $prevSelContainers.length ) {
+              $prevSelContainers = $prevSelContainers.get().reverse();
+              easysearch.jq.each($prevSelContainers, function(i, el){
+                index += easysearch.jq(el).find('select').val() + ',';
+              });
+            }
+            index += easysearch.jq(this).val() + ',';
+
+            // next selects
+            var nextIndex = index;
+            if( $nextSelContainers.length ) {
+              easysearch.jq.each($nextSelContainers, function(i, el){
+                var $sel = easysearch.jq(el).find('select');
+                $sel.children('option:first').nextAll().remove();
+                $sel.attr('disabled', true);
+
+                if( typeof easysearch.tree[nextIndex] !== 'undefined' && typeof easysearch.tree[nextIndex][0] !== 'undefined' ) {
+                  easysearch.fillSelect($sel, nextIndex);
+                }
+
+                $sel.trigger('easysearch_select_change'); // API method for custom selects
+                nextIndex += ',';
+              });
+            }
+
+            easysearch.curIndex = nextIndex;
+            $holder.data('searchparams', nextIndex);
+
+            if( typeof easysearch.tree[nextIndex] !== 'undefined' && typeof easysearch.tree[nextIndex][0] !== 'undefined' && easysearch.tree[nextIndex][0] ) {
+              var gotoUrl = easysearch.tree[nextIndex][0];
+                              gotoUrl = easysearch.collectionUrlHandleChecker( gotoUrl );
+              
+              
+                            if( $btn.length ) $btn.attr('disabled', false).attr('href', gotoUrl).attr('onclick', "easysearch.saveSearchParams(this);");
+
+            } else {
+              if( $btn.length ) {
+                $holder.removeData('search_params');
+                $btn.attr('disabled', true).attr('href', 'javascript:void(0);').removeAttr('onclick');
+              }
+            }
+          });
+
+          easysearch.initSearchTree(false, false);
+        });
+      });
+    
+
+window.mwProductOptionsObjects = {
+  product: null,
+  cart: {"token":"6482a31027513bba0c6e48697a4941d3","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]},
+  template_name: "index",
+  shop: {
+    domain: "highbaylights.myshopify.com",
+    money_format : "\u003cspan class=money\u003e${{amount}}\u003c\/span\u003e",
+    money_with_currency_format : "\u003cspan class=money\u003e${{amount}} USD\u003c\/span\u003e"
+  }
+};
+
+
+
+function mwShowInitSpinner() {
+  var opt = document.getElementsByClassName('mw-product-options');
+  if (opt.length > 0) {
+    var timeSpinner = 6000;
+    opt[0].innerHTML = '<div id="mw-apo-init-spinner" class="mw-init-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
+    setTimeout(function(){ var spinner = document.getElementById('mw-apo-init-spinner'); spinner && spinner.parentNode.removeChild(spinner); }, timeSpinner);
+  }
+}
+mwShowInitSpinner();
+  
+window.onload = function () {
+    jQuery("body").on("mw_apo", function (event, action) {
+        if (action === "end-initialize") {
+
+            $('.mw-product-options').on('input change', function () {
+                $('.mw-product-options').find(':selected').each(function (index, item) {
+                    var $this = $(this);
+                    var $selected = $this.attr('data-value-id');
+                    var $selectedImg = $('.mw-product-options').find('[data-value-id="' + $selected + '"]');
+
+
+                    if ($selectedImg.hasClass("active")) {
+                        $(".active").removeClass("active");
+                        $selectedImg.addClass("active");
+                    } else {
+                        $selectedImg.addClass("active").siblings().removeClass('active');
+                    }
+
+                })
+            })
+
+
+            window.mwProductOptions.RefreshSettings().then(function (res) {
+                if (res) {
+                    var options = res.options;
+
+                    for (var option in options) {
+                        var values = options[option].values;
+
+                        for (var value in values) {
+                            var val = values[value];
+
+                            if (typeof val.sku !== 'undefined') {
+                                var $opt = $('option[data-value-id="' + val.id + '"]');
+                                var optionHtml = $opt.html();
+                                var optionValue = $opt.val();
+                                $opt.val(optionValue + ' (SKU: ' + val.sku + ')').trigger('change');
+                                $opt.html(optionHtml + ' (SKU: ' + val.sku + ')');
+                                $opt.attr('data-sku', val.sku);
+
+                            }
+                        }
+                    }
+                } else {
+                    console.error("Can't get APO settings");
+                    return;
+                }
+            });
+
+            var $sku = $('.product-single__sku').text();
+
+            $('.mw-product-options').on('input change', function () {
+                var $selected = $('.mw-product-options option:selected');
+
+                if ($selected.length) {
+                    var skus = [];
+
+                    $selected.each(function (index, item) {
+                        skus.push($(item).attr('data-sku'));
+                    });
+
+                    skus = skus.filter(function (item) {
+                        return item !== '' && typeof item !== 'undefined';
+                    });
+
+
+                    if (skus.length) {
+                        var $newsku = $('.product-single__sku');
+                        $newsku.text($sku + skus.join(''));
+                    }
+
+                }
+            });
+        }
+    });
+};
+  
+

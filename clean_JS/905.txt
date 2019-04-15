@@ -1,0 +1,486 @@
+
+	var addressHelperCommonParam = {"storeIdentifier":"HHobby","langId":"-1"};
+	
+	var WCParamJS = {
+		"storeId":'10151',
+		"catalogId":'10051',
+		"langId":'-1',
+		"pageView":'',
+		"orderBy":'',
+		"pageSize":'',
+		"orderByContent":'',
+		"searchTerm":''
+	};
+	var absoluteURL = "https://www.horizonhobby.com/webapp/wcs/stores/servlet/", imageDirectoryPath = "/wcsstore/AuroraStorefrontAssetStore/", styleDirectoryPath = "images/colors/color1/",
+	supportPaymentTypePromotions = false, subsFulfillmentFrequencyAttrName = "fulfillmentFrequency", 
+	subsPaymentFrequencyAttrName = "paymentFrequency", subsTimePeriodAttrName = "timePeriod", storeNLS = null,
+	storeUserType = "G", ios = true, android = false;	
+	
+	var inactivityTimeout = 1800000, inactivityWarningDialogDisplayTimer = 20000,
+	inactivityWarningDialogBuffer = 30000, inactivityTimeoutTracker = null, dialogTimeoutTracker = null;	
+	
+	function getAbsoluteURL() {
+		if (absoluteURL != "") {
+			var currentURL = document.URL;
+			var currentProtocol = "";		
+			if (currentURL.indexOf("://") != -1) {currentProtocol = currentURL.substring(0, currentURL.indexOf("://"));}			
+			var savedProtocol = "";
+			if (absoluteURL.indexOf("://") != -1) {savedProtocol = absoluteURL.substring(0, absoluteURL.indexOf("://"));}			
+			if (currentProtocol != savedProtocol) {absoluteURL = currentProtocol + absoluteURL.substring(absoluteURL.indexOf("://"));}
+		}		
+		return absoluteURL;
+	}
+	
+	function getImageDirectoryPath() {return imageDirectoryPath;}
+	
+	function getStyleDirectoryPath() {return styleDirectoryPath;}
+
+
+ //Set the default NLS to use in the store.
+ if(storeNLS == null) {
+	 dojo.requireLocalization("storetext", "StoreText");
+	 storeNLS = dojo.i18n.getLocalization("storetext","StoreText");
+ }
+ initializeInactivityWarning();
+ var ie6 = false;
+ if (navigator != null && navigator.userAgent != null) {
+	 ie6 = (navigator.userAgent.toLowerCase().indexOf("msie 6.0") > -1); 
+ }
+ if (location.href.indexOf('UnsupportedBrowserErrorView') == -1 && ie6) {
+	 document.write('<meta http-equiv="Refresh" content="0;URL=https://www.horizonhobby.com/UnsupportedBrowserErrorView?catalogId=10051&amp;langId=-1&amp;storeId=10151"/>');
+ }
+
+
+$( document ).ready(function() {
+   setTimeout(function(){ $( "span.custom.checkbox" ).attr("tabindex","0")},1500);
+});
+	dojo.addOnLoad(function() { 
+		if(typeof AddressHelper != "undefined")
+		{
+			AddressHelper.validateSpecialCharactersOnKeyPress();
+		}
+		shoppingActionsJS.setCommonParameters('-1','10151','10051','G','$');
+/////ShoppingActionsServicesDeclaration.js
+		wc.service.declare({
+			  id: "AjaxGetSpektrumDDServiceCmd",
+			  actionId: "AjaxGetSpektrumDDServiceCmd",
+			  url: "AjaxGetSpektrumDDServiceCmd",
+			  formId: "",
+			successHandler: function(serviceResponse) {
+			      console.info("success");
+			     //alert("ResponseStatusCode: "+JSON.stringify(serviceResponse));
+			     document.getElementById("ddSuccessOrErrorMsgDiv").innerHTML="";
+			     document.getElementById("verifiedSerialNumber").value="";
+			     var msgNode;  
+			     if(serviceResponse.ResponseStatusCode == 1)
+			     {
+			     	document.getElementById("verifiedSerialNumber").value = serviceResponse.serialNumber;
+			     	msgNode = document.createTextNode('Eligible for upgrade!');
+			     	document.getElementById("ddSuccessOrErrorMsgDiv").style.color="#197b30";
+			     	dojo.removeAttr("add2CartBtn", "disabled");
+			     	dojo.removeClass(dojo.byId("add2CartBtn"), "btn_addToCartDisable");
+			     }
+			     else if(serviceResponse.ResponseStatusCode == 0)
+			     {
+			     	console.info("Upgrade service ErrorCode= " + serviceResponse.ErrorCode);
+			     	if(serviceResponse.ErrorCode==0){
+			     		msgNode = document.createTextNode('Verification service is unavailable.');
+			     	}else{
+			     		msgNode = document.createTextNode('Invalid serial number.');
+			     	}
+			     	document.getElementById("ddSuccessOrErrorMsgDiv").style.color="#d13d2f";
+			     	dojo.attr("add2CartBtn", "disabled", "disabled");
+			     	dojo.addClass(dojo.byId("add2CartBtn"), "btn_addToCartDisable");
+			     }	
+				 document.getElementById("ddSuccessOrErrorMsgDiv").appendChild(msgNode);
+				 document.getElementById("ddSuccessOrErrorMsgDiv").style.display="block";
+			      cursor_clear();
+			    },
+			failureHandler: function(serviceResponse) {
+			    	console.info("Failure");	
+					if (serviceResponse.errorMessage) {
+						MessageHelper.displayErrorMessage(serviceResponse.errorMessage);
+					} 
+					else {
+						 if (serviceResponse.errorMessageKey) {
+							MessageHelper.displayErrorMessage(serviceResponse.errorMessageKey);
+						 }
+					}
+					cursor_clear();
+			  } 
+		});
+		wc.service.declare({
+		id: "AddOrderItem_DDProd",
+		actionId: "AddOrderItem_DDProd",
+		url: getAbsoluteURL() + "AjaxOrderChangeServiceItemAdd",
+		formId: ""
+     /**
+     * display a success message
+     * @param (object) serviceResponse The service response object, which is the
+     * JSON object returned by the service invocation
+     */
+		,successHandler: function(serviceResponse) {
+			console.info("serviceResponse = " + serviceResponse.ResponseStatusCode);
+			MessageHelper.hideAndClearMessage();
+			if(serviceResponse.ResponseStatusCode == 0 || serviceResponse.ResponseStatusCode == 2)
+			{
+				 document.getElementById("ddSuccessOrErrorMsgDiv").innerHTML="";
+				 var msgNode1;
+				 if(serviceResponse.ResponseStatusCode == 2){
+				 	msgNode1 = document.createTextNode('Product with Serial number already purchased or added to cart.');
+				 }else {
+				 	msgNode1 = document.createTextNode('Invalid serial number.');
+				 }
+			     document.getElementById("ddSuccessOrErrorMsgDiv").style.color="#d13d2f";
+				 document.getElementById("ddSuccessOrErrorMsgDiv").appendChild(msgNode1);
+				 document.getElementById("ddSuccessOrErrorMsgDiv").style.display="block";
+				 cursor_clear();
+				 throw new Error("Stop execution");
+			}
+			else
+			{ 
+				// Do not show this message. When item is added, we open up mini cart to display the currently added item.
+				// MessageHelper.displayStatusMessage(storeNLS["SHOPCART_ADDED"]);
+				if(QuickInfoJS)
+					QuickInfoJS.close();
+				if(shoppingActionsJS){
+				var attributes = document.getElementsByName("attrValue");
+				var singleSKU = true;
+				for(var i=0; i<attributes.length; i++){
+					if (attributes[i].options.length > 1)
+					{
+						singleSKU = false;
+					}
+				}
+				if (!singleSKU)
+				{
+					shoppingActionsJS.selectedAttributes = new Object();
+					dojo.publish('attributesChanged_'+ shoppingActionsJS.baseCatalogEntryId, [dojo.toJson(shoppingActionsJS.selectedAttributes)]);
+					for(var i=0; i<attributes.length; i++){
+						if(attributes[i] != null){
+							attributes[i].value = "";
+							attributes[i].onchange();
+						}
+					}
+				}
+			}
+				if(typeof(ShipmodeSelectionExtJS)!= null && typeof(ShipmodeSelectionExtJS)!='undefined'){
+					ShipmodeSelectionExtJS.setOrderItemId(serviceResponse.orderItemId[0]);
+				}
+				dojo.publish("CMAddToCart");
+				cursor_clear();
+			}
+		}
+     /**
+     * display an error message
+     * @param (object) serviceResponse The service response object, which is the
+     * JSON object returned by the service invocation
+     */
+		,failureHandler: function(serviceResponse) {
+			if (serviceResponse.errorMessage) {
+			 	if(serviceResponse.errorMessageKey == "_ERR_NO_ELIGIBLE_TRADING"){
+			 		MessageHelper.displayErrorMessage(storeNLS["ERROR_CONTRACT_EXPIRED_GOTO_ORDER"]);
+ 				} else if (serviceResponse.errorMessageKey == "_ERR_RETRIEVE_PRICE") {
+					var tempString = storeNLS["GENERICERR_MAINTEXT"];
+					tempString = dojo.string.substitute(tempString,{0:storeNLS["GENERICERR_CONTACT_US"]});
+ 					MessageHelper.displayErrorMessage(tempString);
+ 				} else {
+ 					MessageHelper.displayErrorMessage(serviceResponse.errorMessage);
+ 				}
+			} 
+			else {
+				 if (serviceResponse.errorMessageKey) {
+					MessageHelper.displayErrorMessage(serviceResponse.errorMessageKey);
+				 }
+			}
+			cursor_clear();
+		}
+	});	
+	});
+	// will be moved in common file, like storecommon.min.js
+	function VerifyDDSerialNumber() {
+		if(document.getElementById("ddSerialNumberTxt").value != null && document.getElementById("ddSerialNumberTxt").value === '')
+			{
+				alert("Please enter serial number.");
+				return;
+			}
+		var params = {storeId:'10151',catalogId:'10051'};
+		params.langId = '-1';
+		params.authToken = document.getElementById("WC_DD_FormInput_authToken_1").value;
+		//pass the parameter which service to call.
+		params.serviceRequestType = "validateSNUpgrade";
+		if(document.getElementById("ddSerialNumberTxt"))
+		{
+			params.serialNumber = document.getElementById("ddSerialNumberTxt").value;
+			params.upgradeSku = document.getElementById("upgradeSku").value;
+		}
+		if(!submitRequest()){
+			return;
+		}
+		/*console.info("Verifying digital download SN= " +serialNumber);*/
+		cursor_wait();			  
+		wc.service.invoke("AjaxGetSpektrumDDServiceCmd", params);
+	}
+	/* below code will only be used from quick view page for digital download prod*, it will be moved in common files*/ 
+		function add2ShopCartDDProd(customParams){
+			if(QuickInfoJS !== undefined && QuickInfoJS != null)
+			{
+			QuickInfoJS.params = null;
+			QuickInfoJS.setValues();
+			if(!QuickInfoJS.validate()){
+				return;
+			}
+			/* 
+			 * params is null means, no product is waiting to be added to shopping cart.
+			 * params will not be null if the call originated from merchandising association
+			 */ 
+			if(null == QuickInfoJS.params){
+				QuickInfoJS.params = QuickInfoJS.setCommonParams();
+				QuickInfoJS.params.orderId		= ".";
+				QuickInfoJS.params.calculationUsage = "-1,-2,-5,-6,-7";
+				QuickInfoJS.params.inventoryValidation = "true";
+			}
+			if(document.getElementById("verifiedSerialNumber"))
+			{
+				QuickInfoJS.params.verifiedSerialNumber = document.getElementById("verifiedSerialNumber").value;
+			}
+			if(document.getElementById("upgradeSku"))
+			{
+				QuickInfoJS.params.upgradeSku = document.getElementById("upgradeSku").value;
+			}
+			var productId = '';
+			/* Add the catalog entry to the cart. */
+			if(QuickInfoJS.catEntryParams.type.toLowerCase() == 'itembean'
+				|| QuickInfoJS.catEntryParams.type.toLowerCase() == 'packagebean'
+				|| QuickInfoJS.catEntryParams.type.toLowerCase() == 'dynamickitbean'){
+				updateParamObject(QuickInfoJS.params,"catEntryId",QuickInfoJS.catEntryParams.id,false,-1);
+				updateParamObject(QuickInfoJS.params,"quantity",QuickInfoJS.catEntryQuantity,false,-1);
+				productId = QuickInfoJS.catEntryParams.id;
+			} else {
+				/*  Resolve ProductBean to an ItemBean based on the attributes in the main page */
+				var sku = QuickInfoJS.resolveSKU();
+				if(-1 == sku){
+					MessageHelper.displayErrorMessage(storeNLS['ERR_RESOLVING_SKU']);
+					return;
+				} else {
+					updateParamObject(QuickInfoJS.params,"catEntryId",sku,false,-1);
+					updateParamObject(QuickInfoJS.params,"quantity",QuickInfoJS.catEntryQuantity,false,-1);
+				}
+				productId = sku;
+			}
+			var shopCartService = "AddOrderItem_DDProd";
+			/* Pass any other customParams set by other add on features */
+			if(customParams != null && customParams != 'undefined'){
+				for(i in customParams){
+					QuickInfoJS.params[i] = customParams[i];
+				}
+				if(customParams['catalogEntryType'] == 'dynamicKit' ){
+					shopCartService = "AddPreConfigurationToCart";
+				}
+			}
+			if(QuickInfoJS.params['catalogEntryType'] == 'dynamicKit' ){
+				shopCartService = "AddPreConfigurationToCart";
+			}
+			shoppingActionsJS.saveAddedProductInfo(QuickInfoJS.catEntryQuantity, QuickInfoJS.catEntryParams.id, productId, QuickInfoJS.selectedAttributes);
+			/* For Handling multiple clicks */
+			if(!submitRequest()){
+				return;
+			}   
+			cursor_wait();		
+			wc.service.invoke(shopCartService, QuickInfoJS.params);
+			}
+		}	
+
+
+			dojo.addOnLoad(function() { 
+				shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10151','10051');
+				});
+		
+
+
+	function formatNumberInGrouping(num) {return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");}	
+	function formatNumberWithTwoDecimalPlaces(num) {
+		var finalNum = 0.0;
+		try
+		{
+			finalNum = Number(num).toFixed(2);
+		}catch(err) {
+			finalNum = num;
+		}
+		return formatNumberInGrouping(finalNum);
+	}	
+
+
+                var _caq = _caq || [];
+                (function () {
+                                var ca = document.createElement("script"); 
+                                ca.type = "text/javascript"; 
+                                ca.async = true;
+                                ca.id = "_casrc"; 
+                                ca.src = "https://t.channeladvisor.com/v2/32001198.js";
+                                var ca_script = document.getElementsByTagName("script")[0]; 
+                                ca_script.parentNode.insertBefore(ca, ca_script);
+                })();
+		
+
+	var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+
+
+		window.criteo_q = window.criteo_q || [];
+		window.criteo_q.push(
+		{ event: "setAccount", account: 23507 },
+			
+		{ event: "setEmail", email: "" }, 
+
+		 { event: "setSiteType", type: deviceType },
+		
+			{ event: "viewHome" }
+		
+		);
+		
+
+	var isFacebookPixelEnabledByCode =false;
+	var partNumberList = new Array();
+
+
+	var isFacebookPixelEnabledByCode =true;
+
+
+		var kenshooParamJS_2 = 0.0;
+	
+
+var hhbf={
+	welcomeUrl: "https://embassy.borderfree.com/welcome/welcome.srv?merchId=4241",
+	intCountry: "US",
+	isIntCustomer: "false"
+};
+
+
+	dojo.addOnLoad(function() {
+		analyticsJS.storeId=10151;
+		analyticsJS.catalogId=10051;
+		analyticsJS.loadShopCartHandler();
+		analyticsJS.loadPagingHandler();
+		analyticsJS.loadProductQuickInfoHandler('productIdQuickInfo');
+		analyticsJS.loadStoreLocatorPageViews();
+		analyticsJS.loadWishlistHandler();
+		dojo.require("wc.analytics.CoremetricsEventListener");		
+			(new wc.analytics.CoremetricsEventListener()).load(false);
+			});
+	
+
+  dojo.addOnLoad(function() {
+  		setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10151&catalogId=10051&langId=-1');
+  	});
+
+
+  dojo.addOnLoad(function() {
+		//wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=10151&catalogId=10051&langId=-1&page_view=dropdown';
+		if(dojo.byId('MiniShoppingCart') != null){
+			loadMiniCart("$","-1");
+		}		
+		showMiniShopCartDropDown('widget_minishopcart','quick_cart','orderItemsListAutoClose');
+	});
+
+
+				dojo.addOnLoad(function(){
+					SearchJS.init();
+					SearchJS.setCachedSuggestionsURL('SearchComponentCachedSuggestionsView?langId=-1&amp;storeId=10151&amp;catalogId=10051');
+					SearchJS.setAutoSuggestURL('SearchComponentAutoSuggestView?coreName=MC_10001_CatalogEntry_en_US&amp;serverURL=http%3a%2f%2fsearch.horizonhobby.com%3a3737%2fsolr%2fMC_10001_CatalogEntry_en_US&amp;langId=-1&amp;storeId=10151&amp;catalogId=10051');
+				});
+				// The primary Array to hold all static search suggestions
+				var staticContent = new Array();
+				// The titles of each search grouping
+				var staticContentHeaders = new Array();
+		
+
+	/* dojo.addOnLoad(function() {
+		if(document.getElementById("widget_departments")){
+			document.getElementById("widget_departments").style.display = "block";
+		}
+		DepartmentJS.init();
+		wc.render.getRefreshControllerById("DepartmentDropdownController").url = getAbsoluteURL()+"DepartmentDropdownView?storeId=10151&catalogId=10051&langId=-1&isFirstRefresh=true";
+	});
+	dojo.addOnUnload(function() {
+		if(document.getElementById("drop_down")){
+			document.getElementById("drop_down").style.display = "none";
+		}
+	});*/
+
+
+	dojo.addOnLoad(function() { 
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		requestSubmitted = false;
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+		dojo.query('div[dojoType]').forEach(function(node, index, arr){
+			addToWidgetsList(node.id);
+		});
+		parseAllWidgets();
+	}); 	
+
+
+					document.write(unescape("%3Cscript src='"
+					+ ((document.location.protocol == "https:") ? "https:" : "http:")
+					+ "//p.bm23.com/bta.js"+"' type='text/javascript'%3E%3C/script%3E"));
+				
+
+					var bta = new __bta('bhaomiivuqeotugqlthiujiterzdbio');
+					bta.setHost('app.bronto.com');
+				
+
+	dojo.addOnLoad(function() { 
+		CommonControllersDeclarationJS.setControllerURL('QuickInfoDetailsController', 'https://www.horizonhobby.com/QuickInfoDetailsView?catalogId=10051&amp;langId=-1&amp;storeId=10151');
+	});        
+
+
+  var gts = gts || [];
+  //gts.push(["id", "32198"]);- Commented for Requirement # 11945
+  
+		gts.push(["badge_position", "BOTTOM_RIGHT"]);
+	
+  gts.push(["locale", "en_US"]);
+  
+  //gts.push(["google_base_subaccount_id", "1209399"]); - Commented for Requirement # 11945
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+var google_tag_params = {
+
+			ecomm_pagetype: 'home' 
+		
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071079513;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+	
+	
+	
+
+	/*This is the Behavior Tracking Script. It must come before the conversion logging script below.*/
+		(function(m,o,v,a,b,l,e) {
+		  if (typeof m['MovableInkTrack'] !== 'undefined') { return; }
+		  m['MovableInkTrack'] = b;
+		  l = o.createElement(v);
+		  e = o.getElementsByTagName(v)[0];
+		  l.type = 'text/javascript'; l.async = true;
+		  l.src = '//' + a + '/p/js/1.js';
+		  m[b] = m[b] || function() { (m[b].q=m[b].q||[]).push(arguments); };
+		  e.parentNode.insertBefore(l, e);
+		})(window, document, 'script', 'vr4qclon.micpn.com', 'mitr');
+	

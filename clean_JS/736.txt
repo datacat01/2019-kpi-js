@@ -1,0 +1,51 @@
+
+// <![CDATA[
+	(function(d,e,c,i,b,el,it) {
+		d._da_=d._da_||[];_da_.oldErr=d.onerror;_da_.err=[];
+		d.onerror=function(){_da_.err.push(arguments);_da_.oldErr&&_da_.oldErr.apply(d,Array.prototype.slice.call(arguments));};
+		d.DecibelInsight=b;d[b]=d[b]||function(){(d[b].q=d[b].q||[]).push(arguments);};
+		el=e.createElement(c),it=e.getElementsByTagName(c)[0];el.async=1;el.src=i;it.parentNode.insertBefore(el,it);
+	})(window,document,'script','https://cdn.decibelinsight.net/i/13788/126395/di.js','decibelInsight');
+// ]]>
+
+
+    var _gtmAdditionalParams = {};
+    var gtmAccountId = "GTM-TKGG2R";
+    var dataLayer = [];
+
+    (function () {
+        _gtmAdditionalParams.core = {
+            title: "Custom Online Business Printing & Design | MOO EU",
+            website: "MOO_EU",
+            websiteId: "4",
+            language: "en",
+            isMobile: false,
+            source: "browse-cms"
+        };
+        dataLayer.push({data: _gtmAdditionalParams});
+    })();
+
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];w[l].push({
+            'gtm.start': new Date().getTime(),
+            event:'gtm.js'
+        });
+        var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f.nextSibling);
+    })(window,document,'script','dataLayer',gtmAccountId);
+
+
+        window.__lc = window.__lc || {};
+        window.__lc.license = 2070511;
+        (function () {
+            var lc = document.createElement('script');
+            lc.type = 'text/javascript';
+            lc.async = true;
+            lc.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(lc, s);
+        })();
+    

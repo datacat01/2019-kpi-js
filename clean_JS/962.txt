@@ -1,0 +1,71 @@
+
+        adrma = window.adrma || {};
+
+        adrma.siteSettings = {"UseHolidayDesign":false,"AbsoluteSiteUrl":"https://www.leisurepro.com","AbsoluteSecureBase":"https://www.leisurepro.com/","Base":"https://www.leisurepro.com/","CompanyEmailCustomerService":"custserv@leisurepro.com","CompanyEmailAddress":"custserv@leisurepro.com","CompanyName":"LeisurePro","CompanyCallFreePhone":"800.637.6880","SendCartItemPriceDroppedEmails":"True","DisplayPriceAlerts":true,"RichRelevanceApiKey":"6b49f984bdf7c3f1","RichRelevanceIntegrationMode":"1","EnableTurnTo":true,"TurnToSiteKey":"oJllY1F5GTpyE3Gsite","EnableIovation":true,"HideTurnToButtons":false,"EnableListingPageLazyLoading":true,"SPCPixAbsolutreUrl":"https://www.leisurepro.com/nspc","GoogleAnalyticsID":"UA-30760-5","NotSecuredSPCPixAbsolutreUrl":"https://www.leisurepro.com/nspc","VEinteractiveCode":"08986EEF-979C-4491-B6E8-AF05ABD56641","FacebookAppID":"113647251989498","bizrateID":"20881","ChannelIntelligenceID":"29122858","googleConversionId":"1069208937","googleConversionLabel":"uZHqCOWSnwIQ6arr_QM","GcsAutoCompleteEnabled":false,"IsTurnToReceiptWidgetEnabled":true,"enableCheckoutCrossRoads":true,"EnableCartCouponEntry":false,"IsWishListEnabled":1,"ZipCodeAPIKey":"js-rSIdFVcWC0YKQtwiy928gvSwsioXq3HSVq5BlixYjvIaZesxouGFZybsQzqhC89y","PrivacyURL":"/sup/static/privacy-policy.html","EnablePreventFraudster":true,"IsEmailMyCartEnabled":true,"ShoppingCartUrl":"https://www.leisurepro.com/nspc/ShoppingCart","IsRMAEnabled":true,"enableNeedleChat":true,"EnableGlobalLoader":false,"enableAdrum":true,"enableDdosMode":false,"IsRevisedPriceAlertEnabled":true,"FiltersPerGroupLimit":10,"LoginFAQLink":"/sup/static/loginFAQ.html","LazyLoadingItemsCount":20,"SurveyPopupDelay":20,"IsDiscountGroupsEnabled":true,"IDMeClientID":"91e72bab1f4eea5192514c4ac85dd0cd","EnableLazyLoadImages":true,"AvantLinkTrackingMerchantSiteID":"1013642","DefaultNoPicImageName":"NOPIC.JPG","IsRevisedNotifyMeInStockEnabled":false,"DailyDealStartTime":"00:01","ExpressCheckoutEnabled":true,"DisplayUsedConditionOnCheckout":true,"UseUsedPopupFromDatabase":true,"EnableSkuOnCartPage":true,"IsAccountSyncEnabled":false,"IsSendMeDealsSectionEnabled":true,"GLPSitePageUrl":"https://www.leisurepro.com/g/","EnableCMSWizardSocialSection":true,"EnableConfigurationPreSelect":true,"EnableIdMeVerificationForTempUser":true,"EnableCMSWidgetExpirationDate":true,"CheckoutPageUrl":"https://www.leisurepro.com/nspc","EnableCMSVendorLogo":true,"SessionKeys":"[\"sid3\", \"ASP.NET_SessionId\"]","IsUseClientUtcOffset":true,"RevisedSessionHandling":true,"AllowCMSStaticItemsItemBelt":true,"EnableVIPTwoDaysDelivery":false,"EnableVIP360DesignChanges":false,"VIP360ProductSku":"VIP360","DefaultNoPicColorImageName":"NOPIC-COLOR.JPG","CartDisplayUrl":"https://www.leisurepro.com/cartdisplay.html","criteoKey":"31040","HidePackagesBreadCrumb":false,"EnableRevisedViewForPackageItems":true,"ShowThisProductOnlyFlagShipping":true,"enableNeedleChatForMobile":true,"IsBMLMigrationEnabled":true,"perimeterxId":"PXxlPhC6N3","UnifiedCategoryTreeEnabled":true,"EnableAdditionalAccessories":false,"KeepSearchTermEnabled":true,"UseAjaxListingPage":true,"SEORichSnippetMarkUpEnabled":false,"EnableFundsAvailablePaymentMethod":true,"AllowToHidePaymentsSection":true,"FundsAvailableLabel":"Leisure Pro Credit","CreditCardExplanation":"","UnifiedCategoryOnSearchPageEnabled":true,"SearchPageUrl":"/l/","CartIdDigitsCount":7,"FindRelevantSearchCategory":true,"GeoCookieName":"adgeo","enableReflektionBeacon":true,"EditOrderOnlineEnabled":false,"PurgeFastlyApiEmailForHomepageBanners":"purgefastlyapiemailforheaderglob@yahoo.com","PurgeFastlyApiKeyForHomepageBanners":"/","EnableShippingInsideCheckoutSummary":true,"IsPushNotificationEnabled":true,"VizuryAccountId":"VIZVRM5230","VizurySWpermissionUrl":"//cdn25.vizury.com/ssp/US_LeisurePro/wpn5230.js","KillSW":false,"NotificationResolvingPopupAppearingFrequency":2.0,"PushNotificationFaqLink":"/i/BrowserNotifications","ShippingNotificationDeeplink":"","DeliveryNotificationDeeplink":"","PriceDropNotificationDeeplink":"","IsTypeAheadEnabled":true,"enableEndecaSearchLogging":true,"reflektionApiKey":"00-22299174-DLN_IYj0Du73TV8Dq6olIdGqLKcr0OmigyIIUCfD_GHaQQy8","reflektionSearchApi":"https://apis.rfksrv.com/search-rec/11248-22299174/3","reflektionAnalyticsApi":"https://apis.rfksrv.com/event/11248-22299174/3","reflektionBeacon":"//22299174-prod.rfksrv.com/rfk/js/11248-22299174/init.js","enableReflektionRecommendedItems":true,"IsImportProductClipsRunning":false,"ShowSaveForLaterOnCart":true,"ShowSaveForLaterAsWishList":false,"isAskPushNotificationPermission":false,"IsTimeMachineEnabled":false,"ShowUsedLink":true,"UsedItemNotFoundMessage":"Sorry this item is not available anymore","LinkToHelpReturnPolicy":"https://www.leisurepro.com/i/returnpolicy","ContactUsPageLink":"https://www.leisurepro.com/i/contact","CompanyPhoneNumberForRMA":"800-637-6880","MyAccountLink":"/myaccount","IsNoCategoryLimitsToRMAExchange":false,"RMALinkToExchange":"https://www.leisurepro.com/l/","IsMinimumOrderAmountEnabled":false,"ProcessingFeeAmount":25.00,"MinimumOrderAmount":100.00,"FinancingEnabled":false,"EnableCriteo":false,"IsUseCacheForSessionAndProfile":false,"RemoveFromCartTimeout":4,"EnableRemoveFromCartDelay":false,"ShowUploadImageSectionOnUsedQuotePage":true,"UsedQuoteDescriptionFieldName":"Description","UseTypeAheadInUsedQuoteDescription":true,"ShowSubscriptionOptionsOnUsedQuotePage":true,"EnableCompareProducts":false,"SEOBrandEnabled":true,"UseReviseTopCategoryPage":"True","GaDimensionProps":true,"GaMetricProps":true,"EnableEnhancedECommerce":true,"EnableMobilePhonesReplacement":false,"EndecaSearchNameSeparators":"EndecaSearchNameSeparators","ReturnWishListInJSONFormat":true,"EnableAdditionalShippingStatuses":false,"CountWishListItemsOnDashboardPage":4,"CountWishListItemsOnTopBar":3,"CountOrderItemsOnDashboardPage":3,"false":true,"SpecialsPageUrl":"/Specials/l/","CustomerServicePhone":"800-637-6880","getDataVersionUrl":"/nspc/DataVersionAdmin/GetVersions","updateDataVersionUrlTemplate":"/nspc/DataVersionAdmin/UpdateVersion","sendCommerceConnectorPixel":false,"ShowEnhancedPDPContent":true,"productMinOverMaxPrice":100000,"enableSecuredvisit":true,"securedvisitAccount":"3651_04134","MaxLengthOfTitleCMSPage":70.0,"DescSortCartItemsById":true,"enableSR":true,"SR_environment":"1","enableSRpdpPlacement":true,"enableOptimove":true,"OptimoveTenantToken":"6b213d7905f41a25f01d53df9d00ea20439454f05ee7296d3c4a3aa998561f2e","OptimoveConfigVersion":"leisurepro.1.0.0","OptimoveSFTPHostForWishList":"Adorama.us.vault.optimove.net","OptimoveSFTPUserNameForWishList":"Adorama","OptimoveSFTPPasswordForWishList":"DAHS%S!E|[:6","OptimoveSFTPDestinationPathForWishList":"/","ShippingNewMsgResrictFunctionality":true,"PriceLowesttoHighestEnabled":true,"enableSocialShareOnReceipt":false,"AvalaraTaxCompanyName":"LEISUREPRO","ShippingTaxCode":"FR030000","Admin_statusUpdate":false,"PrintReturnsAsXMLFeed":false,"PrintReturnsAsNotesFeed":true,"StorePickGiftOrCouponEnabled":true,"CurrentActiveCarrier":"UPS","imagePaths":{"product":"//www.leisurepro.com/Image/Product/Full/","full":"//www.leisurepro.com/Image/Product/Full/","large":"//www.leisurepro.com/Image/Product/Large/","xLarge":"//www.leisurepro.com/Image/Product/XLarge/","thumb":"//www.leisurepro.com/Image/Product/Thumb/","medium":"//www.leisurepro.com/image/Product/Medium/"},"cmsImagePathes":{"templateLarge":"/adminImages/cms/","templateSmall":"/adminImages/cms/","originalSize":"/adminImages/cms/"},"gaDimensionProps":{"siteMod":"","bundleFlag":"","alc":"","stockStatus":"dimension4","productOptions":"","loggedIn":"dimension5","vip":"","bundleParentSKU":"","productPriceBadge":"dimension6","map":"dimension7","itemCondition":"dimension8","siteSearchType":"dimension1","searchTerm":"dimension2","freeGift":"","upsellit":"","enhancedContent":"","bundledSKU":"","siteSpect":"","fullStory":"","buyer":"","test":"","criteoSponsoredProducts":"","searchTermSERPLoad":"dimension3","priceType":"dimension9","optionsAvailable":"dimension10"},"gaMetricProps":{"searches":"metric1","searchResultsClickthru":"metric2","usedQuoteFormSubmit":"","timingResponseEnd":"","timingDomLoaded":"","timingWindowLoad":"","timingStartPaint":"","searchesSERPLoad":"metric3"},"IsAdoramaSite":false,"MaxFileUploadSize":2147483647,"ServerUtcOffset":-4.0};
+
+        adrma.pageInfo =
+        {
+            siteId: "LP",
+            gaID: "UA-30760-5",
+            version: "1.0",
+            servedBy: "1",
+            cacheVersion: 523,
+            calendarVersion: 0,
+            pageType: "homePage",
+            
+            pageGroup: "catalog-non-product",
+            isNeedTrackPage: "False",
+            mobileUrl: adrma.siteSettings.MobileAbsoluteSiteUrl,
+            id: "",
+            pageId: "",
+            priceMode: "",
+            shortTitle: "",
+            productVersion: 3703330,
+            webCollageContent: false,
+            allowSellPointContent: false,
+            hasZoomImage: true,
+            isEmailPrice: false,
+            urlParams: {  },
+            
+            perPage: 20,
+            
+            isWaitLoadDispatcher: false,
+            
+            mode:"",
+            searchCategory:'',
+            searchSelParam:'',
+            
+            cKeys:{ 
+                        priceMode:"0|0|0|0|0",pagePriceMode:"0|0|0|0|0",
+                    
+                country:"UA",
+                productVersion : 3703330,
+                perPage : 20,
+                sort : "Relevance",
+                descSort : "",
+                isVip : false,
+                isLoggedIn : false,
+                isVip360 : false,
+
+                
+                    isFreeShipPromo:false
+                    },
+
+            
+            hasRebates: false,
+            isNeedFreeItemPopup: false,
+            allowCnetContent: false,
+            allowFlixmediaContent: false,
+            hideNeedleChat: false,
+            enableVip360ForCurrentMode: false,
+            enableVip2DayDeliveryForCurrentMode: false,
+            lcuVersion: 15246,
+              
+        };
+
+
+        adrma.mobileReplacements = [];
+    
+
+            adrma.productData = {}
+        

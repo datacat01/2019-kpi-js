@@ -1,9 +1,0 @@
-
-function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".pottymd.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"e8dffe3ef4614b0baf64448cd7c399c1ae0f9bcc","type":"ANONYMOUS","visit_id":"75374d18-44b8-4e38-9ad7-d55c68bb034a","visitor_id":"4e30ef54-3f43-440c-94cf-a6b67b0b6da8"},"referer":{"url":""},"request":{"url":"https:\/\/www.pottymd.com\/"}}, '', 1588799, "other", {"customer":{"id":"anonymous"}}, '75374d18-44b8-4e38-9ad7-d55c68bb034a', '4e30ef54-3f43-440c-94cf-a6b67b0b6da8');}
-
-
-(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
-
-
-var BCData = {"csrf_token":"af10ad3a4cfc4e3b2ecbc59e0a82375cbe67adaa197f48e4692f943edcbcd9f6"};
-

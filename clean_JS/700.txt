@@ -1,0 +1,325 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.armysurplusworld.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["AS","CA","GU","MP","PR","AE","VI"];
+//]]>
+
+
+//<![CDATA[
+    var AWACP_CONFIG = {
+        mageVersion: '1.9.3.2',
+        useProgress : 1,
+        popupForAllProducts : 0,
+        addProductConfirmationEnabled : 1,
+        removeProductConfirmationEnabled : 1,
+        dialogsVAlign: 'center',
+        cartAnimation: 'opacity',
+        addProductCounterBeginFrom : 0,
+        removeProductCounterBeginFrom : 0,
+
+                
+        hasFileOption : false    };
+
+    Event.observe(document, 'dom:loaded', function(){
+        AW_AjaxCartPro.init(AWACP_CONFIG);
+    });
+
+//]]>
+
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-83129935-1', 'www.armysurplusworld.com');
+        //ga('set', 'anonymizeIp', false);
+                ga('require', 'displayfeatures');
+                ga('require', 'linkid', 'linkid.js');
+                                                ga('send', 'pageview');
+                    
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.armysurplusworld.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+// <![CDATA[
+	jQuery(window).load(function() {                   
+	    var slider = jQuery("#divSimpleSlider").cycle({
+	        fx: 'none, none, ',
+	        speed: 1000,
+	        timeout: 5000,
+	        prev: '.prev',
+	        next: '.next',
+	        pagerEvent: 'click',
+	        fastOnEvent: false,
+	        pause: 0,
+			width: '100%',
+			fit: 1,
+	        pause_btn: '#pause_btn',
+	        play_btn: '#play_btn',
+			randomizeEffects: false
+	    });                                
+	});
+	// ]]>
+
+
+//<![CDATA[
+jQuery(document).ready(function(){
+  jQuery(".owl-carousel").owlCarousel({
+	  loop:true,
+	  nav:true,
+	  dots:false,
+	  items:1
+  });
+});
+//]]>
+
+
+jQuery(document).ready(function($){
+	var baseUrl = 'https://www.armysurplusworld.com/';
+	var containerClass = 'category-products'; 
+	$('.'+containerClass+' .item').each(function(e){
+		var productId = $(this).find('.quick_view_btn').attr('id');
+		$(this).find('.quick_view_btn').click(function(){
+			$(this).html('Loading..');
+			$.ajax({
+				type: "POST",
+				url: baseUrl+"quickview",
+				data: "id="+productId,
+				success: function(msg){
+					$('.'+containerClass+' .item .quick_view_btn').html('Quickview');
+					$('#modal .main-content').empty().append(msg);
+					$('#modal').css({'top':'50%','visibility':'visible','opacity':'1'});
+					// popup submit validation
+					$('#modal .main-content form').submit(function(e){
+						var valSelect = $('.validate-quickview-select').val();
+						if(valSelect == ''){
+							alert('please select option values');
+							return false;
+						}else{
+							return true;
+						}		
+					});
+				}
+			});
+		});   
+	});
+	$('.btn_close').click(function(){
+		$('#modal').css({'top':'-50%','visibility':'hidden','opacity':'0'});
+		//ProductMediaManager.destroyZoom('.quick-view .product-image-gallery img');
+	});	
+ });
+
+
+//<![CDATA[
+jQuery(document).ready(function(){
+  jQuery(".owl-carousel").owlCarousel({
+	  loop:true,
+	  nav:true,
+	  dots:false,
+	  items:1
+  });
+});
+//]]>
+
+
+jQuery(document).ready(function($){
+	var baseUrl = 'https://www.armysurplusworld.com/';
+	var containerClass = 'category-products'; 
+	$('.'+containerClass+' .item').each(function(e){
+		var productId = $(this).find('.quick_view_btn').attr('id');
+		$(this).find('.quick_view_btn').click(function(){
+			$(this).html('Loading..');
+			$.ajax({
+				type: "POST",
+				url: baseUrl+"quickview",
+				data: "id="+productId,
+				success: function(msg){
+					$('.'+containerClass+' .item .quick_view_btn').html('Quickview');
+					$('#modal .main-content').empty().append(msg);
+					$('#modal').css({'top':'50%','visibility':'visible','opacity':'1'});
+					// popup submit validation
+					$('#modal .main-content form').submit(function(e){
+						var valSelect = $('.validate-quickview-select').val();
+						if(valSelect == ''){
+							alert('please select option values');
+							return false;
+						}else{
+							return true;
+						}		
+					});
+				}
+			});
+		});   
+	});
+	$('.btn_close').click(function(){
+		$('#modal').css({'top':'-50%','visibility':'hidden','opacity':'0'});
+		//ProductMediaManager.destroyZoom('.quick-view .product-image-gallery img');
+	});	
+ });
+
+// <![CDATA[
+jQuery(window).load(function() {                   
+	    var slider = jQuery("#hpdealbanners").cycle({
+	        fx: 'none, none, ',
+	        speed: 1000,
+	        timeout: 5000,
+	        prev: '.bottom-prev',
+	        next: '.bottom-next',
+	        pagerEvent: 'click',
+	        fastOnEvent: false,
+	        pause: 0,
+	        width: '100%',
+		fit: 1,
+	        pause_btn: '#pause_btn',
+	        play_btn: '#play_btn',
+			randomizeEffects: false
+	    });                                
+	});
+// ]]>
+
+//<![CDATA[
+jQuery(document).ready(function(){
+  jQuery(".owl-carousel").owlCarousel({
+	  loop:true,
+	  nav:true,
+	  dots:false,
+	  items:1
+  });
+});
+//]]>
+
+
+jQuery(document).ready(function($){
+	var baseUrl = 'https://www.armysurplusworld.com/';
+	var containerClass = 'category-products'; 
+	$('.'+containerClass+' .item').each(function(e){
+		var productId = $(this).find('.quick_view_btn').attr('id');
+		$(this).find('.quick_view_btn').click(function(){
+			$(this).html('Loading..');
+			$.ajax({
+				type: "POST",
+				url: baseUrl+"quickview",
+				data: "id="+productId,
+				success: function(msg){
+					$('.'+containerClass+' .item .quick_view_btn').html('Quickview');
+					$('#modal .main-content').empty().append(msg);
+					$('#modal').css({'top':'50%','visibility':'visible','opacity':'1'});
+					// popup submit validation
+					$('#modal .main-content form').submit(function(e){
+						var valSelect = $('.validate-quickview-select').val();
+						if(valSelect == ''){
+							alert('please select option values');
+							return false;
+						}else{
+							return true;
+						}		
+					});
+				}
+			});
+		});   
+	});
+	$('.btn_close').click(function(){
+		$('#modal').css({'top':'-50%','visibility':'hidden','opacity':'0'});
+		//ProductMediaManager.destroyZoom('.quick-view .product-image-gallery img');
+	});	
+ });
+
+
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    
+
+function klevu_addtocart(id,url,qty) {
+    var form_key = 'yBuPgkBFD5LeHRuq';
+    var url = 'https://www.armysurplusworld.com/checkout/cart/add/'+'product/'+id+'/qty/'+qty+'/form_key/'+form_key;
+    window.location.assign(url);
+}
+
+//var klevu_addtocartLbl = "More Info";
+
+
+	var klevu_sessionId = '4a9b6b1cba901d0beb809039d86d1eae';
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.2.15';
+    		(function () {
+			// Remove Magento event observers from the search box
+			// Redirect to klevu js page
+			for( i = 0, len = allInputs.length; i < len; i++ ){
+				if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+					if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+						var search_input = allInputs[i];
+						search_input.stopObserving('click');
+						search_input.stopObserving('keydown');
+						search_input.form.action='https://www.armysurplusworld.com/search/' ;//?q="+search_input.value;
+						search_input.form.observe('submit', function (e) {
+							//if(search_input.value.length!= 0){
+								//Event.stop(e);
+								//return false;
+							//}
+						});
+					}
+				}
+			}
+			
+		})();
+		 var klevu_storeLandingPageUrl = 'https://www.armysurplusworld.com/search/';
+		 var klevu_showQuickSearchOnEnter=false;
+    		// call store js
+		var klevu_apiKey = 'klevu-15066166021256753',
+			searchTextBoxName = 'search',
+			klevu_lang = 'en',
+			klevu_result_top_margin = '',
+			klevu_result_left_margin = '';
+		(function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+    var klevu_cms_module_enabled=true;
+
+
+// Enable cms for klevu template
+        var klevu_cmsSearchEnabled = true;
+          
+
+
+    (function() {
+        var referrer, search_term, klevu_search_product_tracking;
+        referrer = document.referrer;
+        search_term = referrer.toQueryParams().q;
+        if (referrer.indexOf('content/index') > -1 && search_term) {
+            klevu_search_product_tracking = {"klevu_apiKey":"klevu-15066166021256753","klevu_term":"","klevu_type":"clicked","klevu_productId":"2","klevu_productName":"Military Gear & Army Surplus Gear Online","klevu_productUrl":"home","Klevu_typeOfRecord":"KLEVU_CMS"};
+            klevu_search_product_tracking.klevu_term = search_term;
+
+            // Send the ajax request
+            new Ajax.Request('//stats.klevu.com/analytics/productTracking', {
+                method: "GET",
+                parameters: klevu_search_product_tracking,
+
+                // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                }
+            });
+        }
+    })();
+

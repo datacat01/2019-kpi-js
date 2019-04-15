@@ -1,0 +1,65 @@
+
+      function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      if (location.href.indexOf("redir") == -1 && document.referrer.indexOf('lmr.com') == -1) {
+        var defaultHomes = ["1979-93-Mustang", "1994-04-Mustang", "2005-09-Mustang", "2010-14-Mustang", "2015-Mustang", "Ford-Lightning"];
+        var myDefaultHome = readCookie("defaultHomeV2");
+        if (myDefaultHome != null) {
+          for (var i = 0; i < defaultHomes.length; i++) {
+            if (defaultHomes[i] == myDefaultHome) location.href = "/" + defaultHomes[i];
+          }
+        }
+      }
+    
+
+    var baseHttpHref = "https://lmr.com";
+    var baseHttpsHref = "https://lmr.com";
+  
+
+    var ScarabQueue = ScarabQueue || [];
+    (function (id) {
+      if (document.getElementById(id)) return;
+      var js = document.createElement('script'); js.id = id;
+      js.src = '//cdn.scarabresearch.com/js/14BB7EDD1D20B29B/scarab-v2.js';
+      var fs = document.getElementsByTagName('script')[0];
+      fs.parentNode.insertBefore(js, fs);
+    })('scarab-js-api');
+  
+ function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } saLoadScript('//www.shopperapproved.com/widgets/group2.0/24852.js'); 
+ function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } saLoadScript('//www.shopperapproved.com/widgets/group2.0/24852.js'); 
+ function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } saLoadScript('//www.shopperapproved.com/widgets/group2.0/24852.js'); 
+ function saLoadScript(src) { var js = window.document.createElement('script'); js.src = src; js.type = 'text/javascript'; document.getElementsByTagName("head")[0].appendChild(js); } saLoadScript('//www.shopperapproved.com/widgets/group2.0/24852.js'); 
+
+    var sa_interval = 5000;
+
+    function saLoadScript(src) {
+        var js = window.document.createElement('script');
+        js.src = src;
+        js.type = 'text/javascript';
+        document.getElementsByTagName("head")[0].appendChild(js);
+    }
+
+    if (typeof (shopper_first) == 'undefined') {
+        saLoadScript('//www.shopperapproved.com/widgets/testimonial/3.0/24852.js');
+        shopper_first = true;
+    }
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1052120396;
+var google_conversion_label = "XIP4CPzI6QIQzKrY9QM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

@@ -1,0 +1,83 @@
+ //<![CDATA[ 
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32344435-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+
+$(function(){
+  $('#top_nav_menu ul li:first').mouseover(function(){
+    $('#top_nav_left').removeClass('left_nav');
+    $('#top_nav_left').addClass('left_nav_hover');
+    return false;
+  });
+  $('#top_nav_menu ul li:first').mouseout(function(){
+    $('#top_nav_left').removeClass('left_nav_hover');
+    $('#top_nav_left').addClass('left_nav');
+    return false;
+  });
+});
+
+$(function(){
+  $('#top_nav_menu ul li:last').mouseover(function(){
+    $('#top_nav_right').removeClass('right_nav');
+    $('#top_nav_right').addClass('right_nav_hover');
+    return false;
+  });
+  $('#top_nav_menu ul li:last').mouseout(function(){
+    $('#top_nav_right').removeClass('right_nav_hover');
+    $('#top_nav_right').addClass('right_nav');
+    return false;
+  });
+});
+
+
+
+
+
+$(function(){	
+  $('#lcatHeader').click(function(){
+    $('#categoryList').toggle('slow');
+    return false;
+});
+}); 
+
+$(function(){	
+  $('#categoryList ul li.has_subcats > a').click(function(){
+    $(this).parent().children('ul').toggle('fast');
+    return false;
+});
+});
+
+$(function(){	
+  $('#lcatHeader2').click(function(){
+    $('#filterResults').toggle('slow');
+    return false;
+});
+});
+
+
+
+
+TrustLogo("https://s3.amazonaws.com/cdn.hartvilletool.com/images/comodo_secure_seal.png", "CL1", "none");
+
+  $(function() {
+   $('#slideshow').cycle({
+    fx: 'fade',
+    timeout: 7000,
+    pager:  '#nav'
+   });
+  });
+ 

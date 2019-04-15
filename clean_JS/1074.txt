@@ -1,0 +1,82 @@
+
+  /* Smart Ecommerce App (SEA Inc)
+   * http://www.secomapp.com
+   * Do not reuse those source codes if don't have permission of us.
+   * */
+  
+  (function(){if(!Array.isArray){Array.isArray=function(e){return Object.prototype.toString.call(e)==="[object Array]"}}"function"!==typeof Object.create&&(Object.create=function(e){function t(){}t.prototype=e;return new t});if(!Object.keys){Object.keys=function(e){var t=[],i;for(i in e){if(Object.prototype.hasOwnProperty.call(e,i)){t.push(i)}}return t}}if(!String.prototype.endsWith){Object.defineProperty(String.prototype,"endsWith",{value:function(e,t){var i=this.toString();if(t===undefined||t>i.length){t=i.length}t-=e.length;var r=i.indexOf(e,t);return r!==-1&&r===t},writable:true,enumerable:true,configurable:true})}if(!Array.prototype.indexOf){Array.prototype.indexOf=function(e,t){var i;if(this==null){throw new TypeError('"this" is null or not defined')}var r=Object(this);var o=r.length>>>0;if(o===0){return-1}var n=+t||0;if(Math.abs(n)===Infinity){n=0}if(n>=o){return-1}i=Math.max(n>=0?n:o-Math.abs(n),0);while(i<o){if(i in r&&r[i]===e){return i}i++}return-1}}if(!Array.prototype.forEach){Array.prototype.forEach=function(e,t){var i,r;if(this==null){throw new TypeError(" this is null or not defined")}var o=Object(this);var n=o.length>>>0;if(typeof e!=="function"){throw new TypeError(e+" is not a function")}if(arguments.length>1){i=t}r=0;while(r<n){var a;if(r in o){a=o[r];e.call(i,a,r,o)}r++}}}console=console||{};console.log=console.log||function(){};if(typeof Shopify==="undefined"){Shopify={}}if(typeof Shopify.onError!=="function"){Shopify.onError=function(){}}if(typeof SECOMAPP==="undefined"){SECOMAPP={}}SECOMAPP.removeGiftsVariant=function(e){setTimeout(function(){try{e("select option").not(".sca-fg-cart-item select option").filter(function(){var t=e(this).val();var i=e(this).text();if(i.indexOf(" - ")!==-1){i=i.slice(0,i.indexOf(" - "))}var r=[];if(i.indexOf(" / ")!==-1){r=i.split(" / ");i=r[r.length-1]}if(typeof SECOMAPP.gifts_list_avai!=="undefined"&&typeof SECOMAPP.gifts_list_avai[t]!=="undefined"||i.endsWith("% off)")){e("select option").not(".sca-fg-cart-item select option").filter(function(){var r=e(this).val();var o=e(this).text();return o.endsWith(i)||r==t||o.endsWith("% off)")}).remove();e(".dropdown *,ul li,label,div").filter(function(){var r=e(this).html(),o=e(this).data("value");return r&&r.endsWith(i)||r&&r.endsWith("% off)")||o==t}).remove();return true}return false})}catch(e){console.log(e)}},500)};SECOMAPP.formatMoney=function(e,t){if(typeof e=="string"){e=e.replace(".","")}var i="";var r=typeof Shopify!=="undefined"&&typeof Shopify.money_format!=="undefined"?Shopify.money_format:"{{amount}}";var o=/\{\{\s*(\w+)\s*\}\}/;var n=t||(typeof this.fgsettings.sca_currency_format==="string"&&this.fgsettings.sca_currency_format.indexOf("amount")>-1?this.fgsettings.sca_currency_format:null)||r;if(n.indexOf("amount_no_decimals_no_comma_separator")<0&&n.indexOf("amount_no_comma_separator_up_cents")<0&&n.indexOf("amount_up_cents")<0&&typeof Shopify.formatMoney==="function"){return Shopify.formatMoney(e,n)}function a(e,t){return typeof e=="undefined"?t:e}function f(e,t,i,r,o,n){t=a(t,2);i=a(i,",");r=a(r,".");if(isNaN(e)||e==null){return 0}e=(e/100).toFixed(t);var f=e.split("."),c=f[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1"+i),s=f[1]?!o||!n?r+f[1]:o+f[1]+n:"";return c+s}switch(n.match(o)[1]){case"amount":i=f(e,2);break;case"amount_no_decimals":i=f(e,0);break;case"amount_with_comma_separator":i=f(e,2,",",".");break;case"amount_no_decimals_with_comma_separator":i=f(e,0,",",".");break;case"amount_no_decimals_no_comma_separator":i=f(e,0,"","");break;case"amount_up_cents":i=f(e,2,",","","<sup>","</sup>");break;case"amount_no_comma_separator_up_cents":i=f(e,2,"","","<sup>","</sup>");break}return n.replace(o,i)};SECOMAPP.setCookie=function(e,t,i,r,o){var n=new Date;n.setTime(n.getTime()+i*24*60*60*1e3+r*60*1e3);var a="expires="+n.toUTCString();document.cookie=e+"="+t+";"+a+(o?";path="+o:";path=/")};SECOMAPP.getCookie=function(e){var t=e+"=";var i=document.cookie.split(";");for(var r=0;r<i.length;r++){var o=i[r];while(o.charAt(0)==" ")o=o.substring(1);if(o.indexOf(t)==0)return o.substring(t.length,o.length)}return""};SECOMAPP.getQueryString=function(){var e={};var t=window.location.search.substring(1);var i=t.split("&");for(var r=0;r<i.length;r++){var o=i[r].split("=");if(typeof e[o[0]]==="undefined"){e[o[0]]=decodeURIComponent(o[1])}else if(typeof e[o[0]]==="string"){var n=[e[o[0]],decodeURIComponent(o[1])];e[o[0]]=n}else{e[o[0]].push(decodeURIComponent(o[1]))}}return e};SECOMAPP.freegifts_product_json=function(e){if(e){for(var t=0;t<e.options.length;t++){option=e.options[t];if(option.values)for(var i=0;i<option.values.length;i++){if(option.values[i].endsWith("(Freegifts)")||option.values[i].endsWith("% off)")){option.values.splice(i,1);i--}}}for(var r=function(e){for(var t in e)if(e.hasOwnProperty(t))return!1;return!0},o=e.price,n=e.price_max,a=e.price_min,f=e.compare_at_price,c=e.compare_at_price_max,s=e.compare_at_price_min,t=0;t<e.variants.length;t++){var i=e.variants[t],p=!i.option3?!i.option2?i.option1:i.option2:i.option3;"undefined"!=typeof SECOMAPP&&"undefined"!=typeof SECOMAPP.gifts_list_avai&&!r(SECOMAPP.gifts_list_avai)&&"undefined"!=typeof SECOMAPP.gifts_list_avai[i.id]||p.endsWith("(Freegifts)")||p.endsWith("% off)")?(e.variants.splice(t,1),t-=1):(n>=i.price&&(n=i.price,o=i.price),a<=i.price&&(a=i.price),i.compare_at_price&&(c>=i.compare_at_price&&(c=i.compare_at_price,f=i.compare_at_price),s<=i.compare_at_price&&(s=i.compare_at_price)),1==i.available&&(e.available=!0))}e.price=o,e.price_max=a,e.price_min=n,e.compare_at_price=f,e.compare_at_price_max=s,e.compare_at_price_min=c,e.price_varies=a>n?!0:!1,e.compare_at_price_varies=s>c?!0:!1}return e};SECOMAPP.fg_codes=[];if(SECOMAPP.getCookie("sca_fg_codes")!==""){SECOMAPP.fg_codes=JSON.parse(SECOMAPP.getCookie("sca_fg_codes"))}var e=SECOMAPP.getQueryString();if(e["freegifts_code"]&&SECOMAPP.fg_codes.indexOf(e["freegifts_code"])===-1){if(typeof SECOMAPP.activateOnlyOnePromoCode!=="undefined"&&SECOMAPP.activateOnlyOnePromoCode===true){SECOMAPP.fg_codes=[]}SECOMAPP.fg_codes.push(e["freegifts_code"]);SECOMAPP.setCookie("sca_fg_codes",JSON.stringify(SECOMAPP.fg_codes))}})();
+  
+  ;SECOMAPP.customer={};SECOMAPP.customer.orders=[];SECOMAPP.customer.freegifts=[];;null;SECOMAPP.customer.email=null;SECOMAPP.customer.first_name=null;SECOMAPP.customer.last_name=null;SECOMAPP.customer.tags=null;SECOMAPP.customer.orders_count=null;SECOMAPP.customer.total_spent=null;
+
+var HE_DOMAIN='https://growave.io';Ssw={};function sswRun(application){if(typeof ssw!=typeof'function'){var _loadSswLib=setInterval(function(){if(typeof ssw!='undefined'&&ssw){clearInterval(_loadSswLib);window.sswIsAppPro=function(app){return(typeof window.ssw.apps.default!=='undefined'&&window.ssw.apps.default!='lite'&&window.ssw.apps.default!='starter')||(typeof window.ssw.apps[app]!=='undefined'&&window.ssw.apps[app]!='free'&&window.ssw.apps[app]!='starter')};application(ssw)}},10)}else application(ssw)}sswApp={"default":1,"cart_item_count":0,"accounts_enabled":1};var currency_format="${{amount}}";var shop_name="Sherpani";sswProxyUrl="\/apps\/ssw";sswLangs={data:{},add:function(key,value){this.data[key]=value},t:function(key,params){var value=key;if(typeof this.data[key]!=='undefined'){value=this.data[key]}value=(value&&value.indexOf("translation missing:")<0)?value:key;if(params){value=value.replace(/%(\d+)%/g,function(match,number){return(typeof params[number]!='undefined')?params[number]:match})}return value},p:function(key_singular,key_plural,count,params){if(count==1){return this.t(key_singular,params)}else{return this.t(key_plural,params)}}};
+
+
+sswLangs.data = {"fave_view_product": "View Product", "checkout":"Checkout", "sold_out":"Sold Out","add_to_cart":"Add To Cart","view_more":"view more","unfollow":"Unfollow","cancel":"cancel","following":"Following","pending":"Pending","follow":"Follow","already_faved":"Already added to wishlist!","already_unfaved":"Already removed from wishlist!","fave":"Add to wishlist","faved":"in wishlist","fave_icon":"Add to Wishlist","faved_icon":"In Wishlist","my_faves":"My Wishlist","unfave":"Remove from Wishlist","untitled_favelist":"Untitled List","drop_to_add":"Drop to add","add_new_favelist":"Add a new list","drop_remove_fave":"Drop to remove","already_registered_and_sent_invite_message":"Please check your e-mail, account activation message has already been sent here - `%0%`","favelist_default":"Favorites","drop_create_favelist":"Drop to create a board","favelist_title":"Board Title","confirm_remove_favelist":"Delete this list?","add_to_faves":"Add to Wishlist","remove_from_faves":"Remove from Wishlist","fave_empty_board":"This list is empty","fave_empty_list":"Your wishlist is empty","added_to_wishlist":"added to Wishlist","sunday":"Sunday","monday":"Monday","tuesday":"Tuesday","wednesday":"Wednesday","thursday":"Thursday","friday":"Friday","saturday":"Saturday","sun":"Sun","mon":"Mon","tue":"Tue","wed":"Wed","thu":"Thu","fri":"Fri","sat":"Sat","su":"Su","mo":"Mo","tu":"Tu","we":"We","th":"Th","fr":"Fr","sa":"Sa","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December","jan":"Jan","feb":"Feb","mar":"Mar","apr":"Apr","may":"May","jun":"Jun","jul":"Jul","aug":"Aug","sep":"Sep","oct":"Oct","nov":"Nov","dec":"Dec","required_field":"This field is required.","not_valid_email_address":"Please enter a valid email address.","no_more_than_count_characters":"Please enter no more than %0% characters.","at_least_count_characters":"Please enter at least %0% characters.","quantity_new_update":"%0% new update","quantity_new_updates":"%0% new updates","message_or_upload_any_media_to_share":"Please type your message or upload any media to share","not_valid_url":"Not valid URL. Please check URL %0%","feed_is_empty":"The feed is empty. Be first to share\/post anything.","already_registered_to_social_service":"You already have an account registered to \"%0%\". This is the first time you're logging in via %1%. Please type your password below:","already_registered_to_social_service2":"You already have an account registered to \"%0%\". This is the first time you're logging in using your social account. Please type your password.","already_registered_and_disabled_account":"Account is not activated yet. Please contact the site administrator.","permission_share_to_facebook":"Do you wanna share your %0% with your friends on Facebook?","log_in_to_fave":"Please log in to save your wishlist.","sign_up_to_fave":"Please sign up to save your wishlist.","in_quantity":"in %0%","quantity_ago":"%0% ago","a_few_seconds":"a few seconds","a_minute":"a minute","quantity_minutes":"%0% minutes","an_hour":"an hour","quantity_hours":"%0% hours","a_day":"a day","quantity_days":"%0% days","a_month":"a month","quantity_months":"%0% months","a_year":"a year","quantity_years":"%0% years","remove_this_board":"Remove this board","successfully_shared_faves":"You have successfully shared your wishlist","quantity_review2":"{{ ssw_count_rate }} Review","quantity_reviews2":"{{ ssw_count_rate }} Reviews","this_email_is_already_used":"Already have an account? Please login to bind your account to your customer account.","incorrect_data":"Incorrect data","tumblr_user_not_found":"Tumblr user not found","not_created_customer_on_shopify":null,"problem_on_create_user":"Problem on create user","not_able_to_log_in_you_socially":"Right now we're not able to log you in socially. Please type your email and password in the form below to log in.","invalid_login_credentials":"Invalid log in credentials.","email_is_already_associated":"This email address is already associated with an account. If this account is yours, you can reset your password.","unavailable":"Unavailable","fave_variant_adding_to_cart":"Adding...","fave_variant_added_to_cart":"Added","login_to_leave_comment":"Please log in to  leave comments.","valid_until_coupon":"Valid until %0%","buy":"Buy", "view_cart":"View Cart", "remove_from_list":"Remove from list", "earn_points_to_get_discount":"Earn %0% more %1% to get discount", "redeem_for_points":"Redeem for %0% %1%", "count_points":"\u003cspan class=\"ssw-points-count\"\u003e%0%\u003c\/span\u003e %1%", "discount_copied":"Discount has been copied to clipboard!", "enter_coupon_in_cart_page":"Enter the coupon at the shopping cart page.","redeem":"Redeem","earn_rewards":"Earn %0%", "reward_redeem_confirmation_message":"Get %0%%1% off your next purchase for %2% %3%", "reward_redeem_confirmation_message_free_shipping":"Get free shipping of your next purchase for %0% %1%", "popup_title_faq": "Faq","popup_title_discount": "Refer a friend","popup_title_tiers": "Vip tiers","popup_title_history": "History", "c": "Copied", "count_points_clear": "\u003cspan class=\"ssw-points-count\"\u003e%0%\u003c\/span\u003e", "earn_popup": "Earn"};
+var ssw_scripts=["https:\/\/img0.socialshopwave.com\/scripts\/socialshopwave_l_cm_f_i_s_r_1555061926.js"];
+
+  (function () {
+    var _sswAddEventListener = window.addEventListener;
+    if(typeof sswAddEventListener === 'function'){
+      _sswAddEventListener = sswAddEventListener;
+    }
+    _sswAddEventListener('sswsharingjsloaded', function () {
+      var callback;
+      var campaign_id = 1;
+      callback = function (ssw) {
+        if (campaign_id && ssw.usercheckResponse.sharing && ssw.usercheckResponse.sharing.campaign_ids && ssw.usercheckResponse.sharing.campaign_ids.indexOf(campaign_id) !== -1) {
+          var ogimg = ssw("meta[property='og:image:secure_url']").attr("content");
+          if (!ogimg || ogimg.length <= 0) {
+            ogimg = ssw('img')[0].src;
+          }
+          sswLoadCampaignShareLinks(campaign_id, ssw.usercheckResponse.sharing.campaigns[ssw.usercheckResponse.sharing.campaign_ids.indexOf(campaign_id)].campaign_type, {
+            product_id: '1928084914273',
+            handle: 'sadie-9',
+            location: location.pathname,
+            ogimg: ogimg
+          });
+        }
+      };
+      sswUserChecked(callback);
+    });
+  })();
+
+
+  
+  window.saso = {
+    shop_slug: "sherpani",
+    money_format: "${{amount}}",
+    customer: null,
+    cart: null,
+  }
+  window.saso_extras = {}
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  	window.saso.cart = {"token":"c36d518e65fa449ba2eac90a88c80f4f","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]}
+    delete window.saso.cart.note
+    window.saso.cart_collections = {}
+    
+	if (typeof window.saso.cart.items == "object") {
+    	for (var i=0; i<window.saso.cart.items.length; i++) {
+        	["sku", "grams", "vendor", "url", "image", "handle", "requires_shipping", "product_type", "product_description"].map(function(a) {
+          		delete window.saso.cart.items[i][a]
+        	})
+    	}
+    }
+  
+
+  window.saso.page_type = ""
+  if (typeof window.location == "object" && typeof window.location.pathname == "string") {
+    if (window.location.pathname.indexOf('/checkouts/') > -1) {
+      window.saso.page_type = "checkout"
+    }
+  }
+

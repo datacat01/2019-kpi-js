@@ -1,0 +1,205 @@
+
+//<![CDATA[
+  /* This adds the class js to the html tag. Allowing us
+        to apply different styles if javascript is enabled.*/
+    document.documentElement.className = "js";
+    document.documentElement.id = "";
+
+	var logged_in_html = '<a href="https://www.scotweb.co.uk/account/" onclick="toggleAccountMenu();return false;">Account</a><div id="account_menu"><a href="https://www.scotweb.co.uk/account/">My Account</a><a href="">Logout</a></div>';
+	var where_am_i = "";
+
+	function loginSubmit(selector){
+		if ( typeof(selector) == 'undefined' ){
+			selector = '#login_form';
+		}
+		var email = $(selector).find('input:text[name=email]').val();
+		var pass  = $(selector).find('input:password[name=pass]').val();
+		$.ajax({
+			type: "POST",
+			url: "https://www.scotweb.co.uk/ajax/login",
+			data: {login_attempt: 1, email: email, pass: pass},
+			cache: false,
+			success: function(msg){
+				$('#login_reg').html(msg);
+				if (/Thanks/.test(msg)) {
+					$('#login').html(logged_in_html);
+					setTimeout('tb_remove()', 2000);
+				}
+			}
+		});
+		return false;
+	}
+
+	function regSubmit(selector){
+		if ( typeof(selector) == 'undefined' ){
+			selector = '#login_form';
+		}
+		$.ajax({
+			type: "POST",
+			url: "https://www.scotweb.co.uk/ajax/register",
+			data: {
+				reg_attempt: 1,
+				email: $(selector).find('input:text[name=email]').val(),
+				email2: $(selector).find('input:text[name=email2]').val(),
+				pass: $(selector).find('input:password[name=pass]').val(),
+				pass2: $(selector).find('input:password[name=pass2]').val()
+			},
+			cache: false,
+			success: function(msg){
+				$('#login_reg').html(msg);
+				if (/Thanks/.test(msg)) {
+					$('#login').html(logged_in_html);
+					setTimeout('tb_remove()', 2000);
+				}
+			}
+		});
+		return false;
+	}
+
+	function showReg(){
+		$.ajax({
+			type: "POST",
+			url: "https://www.scotweb.co.uk/ajax/register",
+			data: 'just_show=1',
+			cache: false,
+			success: function(msg){
+				$('#login_reg').html(msg);
+			}
+		});
+		return false;
+	}
+	//]]>
+
+
+//<![CDATA[
+	var sw_ie_version = 0;
+	//]]>
+
+
+	//<![CDATA[
+		function setCookie(name,value,days) {
+			var expires = "";
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime() + (days*24*60*60*1000));
+				expires = "; expires=" + date.toUTCString();
+			}
+			document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+		}
+
+		function getCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for (var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') {
+					c = c.substring(1,c.length);
+				}
+				if (c.indexOf(nameEQ) == 0) { return c.substring(nameEQ.length,c.length) }
+			}
+			return null;
+		}
+
+		function eraseCookie(name) {
+			document.cookie = name+'=; Max-Age=-99999999;';
+		}
+
+		function _setCookie(name) {
+        	setCookie(name, 'prompted', 7);
+    	}
+
+
+
+		var url = 'https://clan.com';
+
+		function goToClan() {
+			_sendGAEvent('Clan', url);
+			window.location.href = url;	
+		}
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-328131-8']);
+		function _sendGAEvent(choice, destination) {
+			_gaq.push(['_trackEvent', 'Interstitial', choice, destination]);
+		}
+
+		var page = 'index';
+		var qry_string = '';
+		
+		var re = /fwd=no/i;
+		var dont_show_param = qry_string.match(re);
+
+		
+		
+		if (dont_show_param) { _setCookie('hide_cookie'); }
+		var hide_cookie = getCookie('hide_cookie');
+		if (page !== 'clearance' && !dont_show_param && !hide_cookie) { 
+			var md = new MobileDetect('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko)');
+			var mobile_name = md.mobile();
+			
+			if (mobile_name) {
+				document.body.className += ' mobile';
+
+				
+				var mf_page_href = '';
+				var fab_search_term = '';
+				var prod_search_term = '';
+
+				var sku = '';
+				var sw_url = '/';
+				var api_url = 'https://clan.com/clan/api/ajaxGetUrl';
+
+				var params = {};
+
+				if (mf_page_href === 'tartan' && fab_search_term) {
+					params = {fabric_search_term: fab_search_term};
+				} else if (sku) {
+					params = {sku: sku};
+				} else if (sw_url.substring(1, 12) == 'multisearch' && prod_search_term) {
+					params = {prod_search_term: prod_search_term};
+				} else if (sw_url) {
+					sw_url = sw_url.replace(/^\//g, ''); // remove leading /
+					params = {url: sw_url};
+				}
+				if (params) {
+					$(document).ajaxError(function(ev, xhr, settings, err) {
+						console.log('** Request to ' + settings.url + ' failed **\n' + xhr.status + ': ' + err);
+					});
+					$.post(
+						api_url,
+						params,
+						function(response) {
+							url = response.url;
+						},
+						'json'
+					);
+				}
+
+				var collapse_cookie = getCookie('collapse_cookie');
+				var debug = false;
+				if (debug || !collapse_cookie) {
+					_setCookie('collapse_cookie');	
+					var elem = document.getElementById('clan-promo-mobile-header');
+					elem.style.display = 'block';	
+				} else {
+					var elem = document.getElementById('clan-promo-mobile-header-collapsed');
+					elem.style.display = 'block';
+				}
+			}
+		}
+	//]]>
+
+ /*<![CDATA[*/ magical_tweed_finder = function() { /* N.B. The busy = true false code is to handle how IE6 works with the change event when you modified the DOM. */ var tw_jsonstr='{"tw_data":[{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Blue"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Blue"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Green"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Grey"},{"pattern":"Plain Herringbone","type":"Harris Tweed","shade":"Grey"},{"pattern":"Striped","type":"Harris Tweed","shade":"Blue"},{"pattern":"Striped","type":"Harris Tweed","shade":"Grey"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Black"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Blue"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Blue"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Blue"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Brown"},{"pattern":"Unpatterned","type":"Harris Tweed","shade":"Green"},{"pattern":"Checked","type":"Islay Tweed","shade":"Black"},{"pattern":"(Film)","type":"Islay Tweed","shade":"Authentic"},{"pattern":"Overcheck Herringbone","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Herringbone","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Herringbone","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Herringbone","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Tan"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Tan"},{"pattern":"Overcheck Twill","type":"Islay Tweed","shade":"Tan"},{"pattern":"Plaid","type":"Islay Tweed","shade":"Authentic"},{"pattern":"Unpatterned","type":"Islay Tweed","shade":"Blue"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Blossom"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Cove"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Harvest"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Lichen"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Mist"},{"pattern":"Airedale Hanger","type":"Tweed","shade":"Orchard"},{"pattern":"Checked","type":"Tweed","shade":"Black"},{"pattern":"Checked","type":"Tweed","shade":"Black"},{"pattern":"Checked","type":"Tweed","shade":"Blue"},{"pattern":"Checked","type":"Tweed","shade":"Blue"},{"pattern":"Checked","type":"Tweed","shade":"Brown"},{"pattern":"Checked","type":"Tweed","shade":"Brown"},{"pattern":"Checked","type":"Tweed","shade":"Brown"},{"pattern":"Checked","type":"Tweed","shade":"Brown"},{"pattern":"Checked","type":"Tweed","shade":"Brown"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Green"},{"pattern":"Checked","type":"Tweed","shade":"Red"},{"pattern":"Checked","type":"Tweed","shade":"Red"},{"pattern":"Checked","type":"Tweed","shade":"Red"},{"pattern":"Nidderdale","type":"Tweed","shade":"BB"},{"pattern":"Nidderdale","type":"Tweed","shade":"Black"},{"pattern":"Nidderdale","type":"Tweed","shade":"Bog"},{"pattern":"Nidderdale","type":"Tweed","shade":"Bracken"},{"pattern":"Nidderdale","type":"Tweed","shade":"Brave"},{"pattern":"Nidderdale","type":"Tweed","shade":"Charcoal"},{"pattern":"Nidderdale","type":"Tweed","shade":"Crag"},{"pattern":"Nidderdale","type":"Tweed","shade":"Crag"},{"pattern":"Nidderdale","type":"Tweed","shade":"Crossbill"},{"pattern":"Nidderdale","type":"Tweed","shade":"Dunlin"},{"pattern":"Nidderdale","type":"Tweed","shade":"Fen"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flannel"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flintstone"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flintstone"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flintstone"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flintstone"},{"pattern":"Nidderdale","type":"Tweed","shade":"Flintstone"},{"pattern":"Nidderdale","type":"Tweed","shade":"Grey"},{"pattern":"Nidderdale","type":"Tweed","shade":"Heath"},{"pattern":"Nidderdale","type":"Tweed","shade":"Heath"},{"pattern":"Nidderdale","type":"Tweed","shade":"Heath"},{"pattern":"Nidderdale","type":"Tweed","shade":"Heath"},{"pattern":"Nidderdale","type":"Tweed","shade":"Heath"},{"pattern":"Nidderdale","type":"Tweed","shade":"Jacksnipe"},{"pattern":"Nidderdale","type":"Tweed","shade":"Jay"},{"pattern":"Nidderdale","type":"Tweed","shade":"Lapwing"},{"pattern":"Nidderdale","type":"Tweed","shade":"Loden"},{"pattern":"Nidderdale","type":"Tweed","shade":"Loden"},{"pattern":"Nidderdale","type":"Tweed","shade":"Loden"},{"pattern":"Nidderdale","type":"Tweed","shade":"Loden"},{"pattern":"Nidderdale","type":"Tweed","shade":"Lovat"},{"pattern":"Nidderdale","type":"Tweed","shade":"Lovat"},{"pattern":"Nidderdale","type":"Tweed","shade":"Lovat"},{"pattern":"Nidderdale","type":"Tweed","shade":"Lovat"},{"pattern":"Nidderdale","type":"Tweed","shade":"Mallard"},{"pattern":"Nidderdale","type":"Tweed","shade":"Merlin"},{"pattern":"Nidderdale","type":"Tweed","shade":"Midnight"},{"pattern":"Nidderdale","type":"Tweed","shade":"Mocha"},{"pattern":"Nidderdale","type":"Tweed","shade":"Mocha"},{"pattern":"Nidderdale","type":"Tweed","shade":"Mocha"},{"pattern":"Nidderdale","type":"Tweed","shade":"Natural"},{"pattern":"Nidderdale","type":"Tweed","shade":"Nuthatch"},{"pattern":"Nidderdale","type":"Tweed","shade":"Peregrine"},{"pattern":"Nidderdale","type":"Tweed","shade":"Pheasant"},{"pattern":"Nidderdale","type":"Tweed","shade":"Pheasant"},{"pattern":"Nidderdale","type":"Tweed","shade":"Pheasant"},{"pattern":"Nidderdale","type":"Tweed","shade":"Pheasant"},{"pattern":"Nidderdale","type":"Tweed","shade":"Rave"},{"pattern":"Nidderdale","type":"Tweed","shade":"Sea"},{"pattern":"Nidderdale","type":"Tweed","shade":"Sea"},{"pattern":"Nidderdale","type":"Tweed","shade":"Seagull"},{"pattern":"Nidderdale","type":"Tweed","shade":"Wagtail"},{"pattern":"Nidderdale","type":"Tweed","shade":"Zest"},{"pattern":"Overcheck Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Blue"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Blue"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Green"},{"pattern":"Overcheck Twill","type":"Tweed","shade":"Green"},{"pattern":"Plaid","type":"Tweed","shade":"Tan"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Black"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Blue"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Blue"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Blue"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Brown"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Charcoal"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Green"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Grey"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Grey"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Purple"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Red"},{"pattern":"Plain Herringbone","type":"Tweed","shade":"Red"},{"pattern":"Ribblesdale Hanger","type":"Tweed","shade":"Autumn"},{"pattern":"Ribblesdale Hanger","type":"Tweed","shade":"Coast"},{"pattern":"Ribblesdale Hanger","type":"Tweed","shade":"Forest"},{"pattern":"Ribblesdale Hanger","type":"Tweed","shade":"Meadow"},{"pattern":"Ribblesdale Hanger","type":"Tweed","shade":"Seaside"},{"pattern":"Wharfedale","type":"Tweed","shade":"Barn"},{"pattern":"Wharfedale","type":"Tweed","shade":"Bramble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Bramble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Bramble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Chiffchaff"},{"pattern":"Wharfedale","type":"Tweed","shade":"Curlew"},{"pattern":"Wharfedale","type":"Tweed","shade":"Dove"},{"pattern":"Wharfedale","type":"Tweed","shade":"Greenfinch"},{"pattern":"Wharfedale","type":"Tweed","shade":"Greylag"},{"pattern":"Wharfedale","type":"Tweed","shade":"Grouse"},{"pattern":"Wharfedale","type":"Tweed","shade":"Heath"},{"pattern":"Wharfedale","type":"Tweed","shade":"Jackdaw"},{"pattern":"Wharfedale","type":"Tweed","shade":"Lovat"},{"pattern":"Wharfedale","type":"Tweed","shade":"Moorhen"},{"pattern":"Wharfedale","type":"Tweed","shade":"Moss"},{"pattern":"Wharfedale","type":"Tweed","shade":"Ocean"},{"pattern":"Wharfedale","type":"Tweed","shade":"Ocean"},{"pattern":"Wharfedale","type":"Tweed","shade":"Ocean"},{"pattern":"Wharfedale","type":"Tweed","shade":"Partridge"},{"pattern":"Wharfedale","type":"Tweed","shade":"Peacock"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Pebble"},{"pattern":"Wharfedale","type":"Tweed","shade":"Plover"},{"pattern":"Wharfedale","type":"Tweed","shade":"Red"},{"pattern":"Wharfedale","type":"Tweed","shade":"Redstart"},{"pattern":"Wharfedale","type":"Tweed","shade":"Rosefinch"},{"pattern":"Wharfedale","type":"Tweed","shade":"Sandpiper"},{"pattern":"Wharfedale","type":"Tweed","shade":"Siskin"},{"pattern":"Wharfedale","type":"Tweed","shade":"Starling"},{"pattern":"Wharfedale","type":"Tweed","shade":"Woodpecker"},{"pattern":"Wharfedale","type":"Tweed","shade":"Wren"}],"title":{"pattern":"Pattern","shade":"Shade","type":"Tweed"}}'; var tweedfilter = eval('('+tw_jsonstr+')'); var tw_modified = {}; var selects = $('#tweed_search').find('select'); var busy = false; selects.change(function(){ if ( busy ) { return; } var tw_filter = tweedfilter['tw_data'].slice(0); busy = true; selects.each(function(index){ var val = $(this).find('option:selected').val(); if ( val ) { var name = $(this).attr('name').substring(3); tw_modified[name] = 1; $('#tweed_search').find('input:reset').filter("[name='tw_reset_"+name+"']").removeClass('vhidden'); for (var i = tw_filter.length - 1; i >= 0; i -= 1) { if ( tw_filter[i][name] != val ){ tw_filter.splice(i,1); } } } }); var values = {}; for (var i = tw_filter.length - 1; i >= 0; i -= 1) { for (var key in tw_filter[i]) { if(typeof(values[key]) == 'undefined'){ values[key] = {}; } if(typeof(values[key][tw_filter[i][key]]) == 'undefined'){ values[key][tw_filter[i][key]] = 0; } values[key][tw_filter[i][key]]++; } } for (var key in values){ var select = selects.filter("[name='tw_"+key+"']"); var curval = select.find('option:selected').val(); var total = 0; var html = ''; for (var option in values[key]){ html += '<option value="'+option+'" '+(curval == option ? 'selected="selected"' : '') +'>'+option+'</option>'; total++; } if (total > 1){ html = '<option value=""> Any '+tweedfilter['title'][key]+'</option>' + html; } select.html(html); } /* IE6 compatibility - see function documentation */ setTimeout(function(){ busy = false; },0); }); $('#tweed_search').find('input:reset').click(function(){ busy = true; var name = $(this).attr('name').substring(9); delete tw_modified[name]; for (var i = selects.length - 1; i >= 0; i-- ){ var key = selects.eq(i).attr('name').substring(3); if (typeof tw_modified[key] == "undefined"){ selects.eq(i).html(''); $('#tweed_search').find('input:reset').filter("[name='tw_reset_"+key+"']").addClass('vhidden'); } } /* IE6 compatibility - see function documentation */ setTimeout(function(){ busy = false; selects.eq(0).change(); },0); return false; }); /*$('#tweed_search input:submit').click(function(){ var selvals = ''; $('#tweed_search select').each(function(){ selvals += $(this).val() }); if (selvals == '') { $('#tweed_search form').append('<input type="hidden" name="filter_searchterm" value="tweed" />'); } });*/ }; magical_tweed_finder(); /*]]>*/ 
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-328131-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+

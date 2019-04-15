@@ -1,0 +1,52 @@
+var rumMOKey = '7cc23258fcc5e1e4c90be6e7cd053138'; (function () { if (window.performance && window.performance.timing && window.performance.navigation) { var site24x7_rum_beacon = document.createElement('script'); site24x7_rum_beacon.async = true; site24x7_rum_beacon.setAttribute('src', '//static.site24x7rum.com/beacon/site24x7rum-min.js?appKey=' + rumMOKey); document.getElementsByTagName('head')[0].appendChild(site24x7_rum_beacon); } })(window)
+
+            //SOCIAL SHARING
+            $(document).ready(function () {
+                Questionify();
+            });
+
+            function Questionify() {
+                $('.COD_questionnaire').bootstrapWizard({
+                    onTabShow: function (tab, navigation, index) {
+
+                        var $total = navigation.find('li').length;
+                        var $current = index + 1;
+                        var $percent = ($current / $total) * 100;
+                        $('.COD_questionnaire .progress-bar').width($percent + '%');
+                        if ($current == 1) {
+                            $('.previousbtndiv').hide();
+
+                        }
+                        else {
+                            $('.previousbtndiv').show();
+                        }
+
+                        if (($("#tab_" + $current).find("input:checked").length == 0 && $("#tab_" + $current).find('.othertextfield').val() == "") || ($("#tab_" + $current).find('.othertextfield').length == 0 && $("#tab_" + $current).find("input:checked").length == 0)) {
+                            $('.COD_next').addClass("cd-disabled-btn");
+                            $('.COD_next').attr("disabled", "disabled");
+                        }
+                        else {
+                            $(".COD_Alerts").hide();
+                            $('.COD_next').removeAttr("disabled").removeClass("cd-disabled-btn");
+                        }
+
+                        if ($("#tab_" + $current).find(".COD_textbox").val() !== "") {
+                            $('.COD_textbox').removeAttr("disabled");
+                        }
+                        else {
+                            $('.COD_textbox').attr("disabled", "disabled");
+                        }
+                    }, onNext: function (tab, navigation, index) {
+                        if ($(".active").find("input:checked").length == 0 && $('.active').find('.othertextfield').prop('disabled')) {
+                            return false;
+                        }
+                        if ($('.active').find('.othertextfield').length > 0 && !$('.active').find('.othertextfield').prop('disabled') && $('.active').find('.othertextfield').val() == "") {
+                            return false;
+                        }
+                    }
+                });
+            }
+            $(function () {
+                $('.checkradiofy input[type="checkbox"], .checkradiofy input[type="radio"]').customInput();
+            });
+        

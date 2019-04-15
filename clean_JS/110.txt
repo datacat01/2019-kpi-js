@@ -1,0 +1,26 @@
+stLight.options({publisher: "80b0fe26-9a44-4ba9-aec7-d040be831c76", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    
+
+
+
+// Home Page
+var google_tag_params = {
+ecomm_pagetype: 'home'
+};
+
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071851400;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+var google_conversion_format = 3;
+/* ]]> */
+

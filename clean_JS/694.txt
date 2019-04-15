@@ -1,0 +1,855 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.thedjshop.co.uk';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+	/** 
+	* Magento Enhanced Ecommerce Event Tracking for Google Tag Manager
+	*
+	* @author Angel Kostadinov
+	* @see http://www.anowave.com/marketplace/magento-extensions/magento-google-tag-manager-enhanced-ecommerce-ua-tracking/
+	* @copyright Anowave
+	* @version 1.0
+	*/
+	var EC = [], Purchase = [], AEC = {}
+
+	window.dataLayer = window.dataLayer || []
+	
+	/**
+	* EC Purchase
+	*
+	*/
+	
+	if (Purchase.length)
+	{			
+		EC.push(function(dataLayer)
+		{
+			var response = [];
+			
+			for (i = 0, l = Purchase.length; i < l; i++)
+			{
+				dataLayer.push(Purchase[i]);
+			}
+		});
+	}			
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+
+	window.dataLayer = window.dataLayer || []
+
+    AEC.debug = parseInt(0);
+
+	AEC.ajax = function(context,dataLayer)
+	{
+		var element = jQuery(context), qty = jQuery(':radio[name=qty]:checked, :text[name=qty]').val();
+		
+		var data = 
+		{
+			'event': 'addToCart',
+			'ecommerce': 
+			{
+				'currencyCode': 'GBP',
+				'add': 
+				{
+					'products': 
+					[
+						{
+							'name': 		element.data('name'),
+							'id': 		    element.data('id'),
+							'price': 		element.data('price'),
+							'category': 	element.data('category'),
+							'variant':		element.data('variant'),
+							'quantity': 	qty
+						}
+					]
+				}
+			},
+			'eventCallback': function()
+			{
+				if (AEC.debug)
+				{
+					alert('dataLayer Add To Cart fired');
+				}
+				else return true;
+			}
+		}
+		
+		dataLayer.push(data);
+
+		if (AEC.debug)
+		{
+    		console.log('GTM: Fired GTM event - ' + data.event);
+		}
+
+		return productAddToCartForm.submit(context);
+	}
+	
+	
+	AEC.remove = function(context, dataLayer)
+	{
+		var element = jQuery(context);
+
+		var data = 
+		{
+			'event': 'removeFromCart',
+			'ecommerce': 
+			{
+				'remove': 
+				{   
+					'products': 
+					[
+						{ 
+							'name': 		element.data('name'),
+							'id': 			element.data('id'),
+							'price': 		element.data('price'),
+							'category': 	element.data('category'),
+							'quantity': 	element.data('quantity')
+						}
+					]
+				}
+			},
+			'eventCallback': function()
+			{
+				if (AEC.debug)
+				{
+					console.log('GTM: Fired GTM event - ' + data.event);
+				}
+				else return true;
+			}
+		}
+
+		
+		if (confirm('Are you sure you would like to remove this item from the shopping cart?'))
+		{
+			dataLayer.push(data);
+
+			if (AEC.debug)
+			{
+	    		console.log('GTM: Fired GTM event - ' + data.event);
+			}
+			
+			return true;	
+		}
+		
+		return false;
+	}
+
+	AEC.click = function(context,dataLayer)
+	{
+		var element = jQuery(context);
+
+		var data = 
+		{
+			'event': 'productClick',
+			'ecommerce': 
+			{
+				'click': 
+				{
+					'actionField': {'list': 'Search Results'},
+					'products': 
+					[
+						{
+							'name': 		element.data('name'),
+							'id': 			element.data('id'),
+							'price': 		element.data('price'),
+							'category': 	element.data('category'),
+							'quantity': 	element.data('quantity')
+						}
+					]
+				}
+			},
+			'eventCallback': function() 
+			{
+				if (AEC.debug)
+				{
+					console.log('GTM: Fired GTM event - ' + data.event);
+				}
+				
+				return true;
+			}
+		};
+
+		dataLayer.push(data);
+	}
+	
+	AEC.placeOrder = function(context, review)
+	{
+		review.save();
+		
+		return true;
+	}
+
+
+function closeCookieAlert() {
+    Mage.Cookies.set('cookieAlertClosedFlag', 1, new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 364)));
+    document.getElementById('cookiealert').style.display = 'none';
+}
+
+function acceptCookieAlert() {
+    closeCookieAlert();
+    Mage.Cookies.set('cookieAlertState', 1, new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 364)));
+    loadCookieScript();
+}
+
+function declineCookieAlert() {
+    closeCookieAlert();
+    Mage.Cookies.set('cookieAlertState', 0, new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 364)));
+}
+
+function loadCookieScript() {
+}
+
+if (!Mage.Cookies.get('cookieAlertClosedFlag')) {
+    document.getElementById('cookiealert').style.display = '';
+}
+
+if (Mage.Cookies.get('cookieAlertState') == 1) {
+    loadCookieScript();
+}
+
+
+    if (typeof GtsValidator != 'undefined')
+        GtsValidator.badge = true;
+
+
+
+    var gts = gts || [];
+    gts.push(["id", "546293"]);
+        gts.push(["badge_position", "BOTTOM_RIGHT"]);
+    gts.push(["google_base_offer_id", "-1"]);
+    gts.push(["locale", "en_GB"]);
+    gts.push(["google_base_subaccount_id", "1470746"]);
+    gts.push(["google_base_country", "GB"]);
+    gts.push(["google_base_language", "en"]);
+
+    (function () {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('https://www.thedjshop.co.uk/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+                if (typeof jQuery === 'undefined') {
+                    alert('jQuery library is not found. Please enable it from Easyslider configuration');
+                }
+            
+
+        jQuery(document).ready(function(){
+            jQuery('#slider-15001').nivoSlider({
+                'effect': 'fold',
+                'slices': 15, // For slice animations
+                'boxCols': 8, // For box animations
+                'boxRows': 4, // For box animations
+                'animSpeed': 400, // Slide transition speed
+                'pauseTime': 3000, // How long each slide will show
+                'directionNav': true, // Next & Prev navigation
+                'controlNav': false, // 1,2,3... navigation
+                'pauseOnHover': true, // Stop animation while hovering
+                'manualAdvance': false, // Force manual transitions
+                'prevText': 'Prev',
+                'nextText': 'Next'
+            });
+        });
+    
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+
+	EC.push(function(dataLayer)
+	{
+		var impressions = [], postion = 0, response = [];
+		
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Akai MPC X Standalone Music Production Center',
+			'id': 		    'AKAI-MPCX',
+			'price': 		'1749.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer XDJ-RX2 Rekordbox DJ System with FREE HDJ-X5BT',
+			'id': 		    'Pioneer XDJ-RX2 Rekordbox DJ System',
+			'price': 		'1529.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer DDJ-1000 DJ Controller with Free Case',
+			'id': 		    'Pioneer DDJ-1000 DJ Controller',
+			'price': 		'1129.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer XDJ-RR Rekordbox DJ System with FREE HDJ-X5BT Headphones',
+			'id': 		    'Pioneer XDJ-RR 2-Channel All-In-One Rekordbox DJ System',
+			'price': 		'1019.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Music Production Hardware Package',
+			'id': 		    'Music Production Hardware Package',
+			'price': 		'605.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Humpter Red Console Pro w/Pro60 Expansion Pack - B-Stock',
+			'id': 		    'Red Console Pro w/Pro60 Expansion Pack',
+			'price': 		'2497.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Native Instruments Maschine Studio (Black)',
+			'id': 		    'NI Maschine Studio (Black) thedjshop',
+			'price': 		'769.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer CDJ-2000NXS2 and DJM-900NXS2 Pro DJ Package with FREE HDJ-X10 Headphones',
+			'id': 		    'Pioneer CDJ-2000NXS2 and DJM-900NXS2 Pro DJ Package',
+			'price': 		'5799.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer PLX-500 Turntable and DJM-250Mk2 DJ Equipment Package',
+			'id': 		    'PLX-500 Turntable and DJM-250Mk2',
+			'price': 		'849.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Ibiza Light LMH330 Mini Beam Moving Head Lighting Effect',
+			'id': 		    'Ibiza Light LMH330 Mini Beam Moving Head Lighting Effect',
+			'price': 		'210.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Focusrite iTrack One Pre Audio Interface for iPhone/iPad ',
+			'id': 		    'Focusrite iTrack One Pre Audio Interface for iPhone/iPad ',
+			'price': 		'119.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Native Instruments Maschine Mk3 ',
+			'id': 		    'Native Instruments Maschine Mk3 24756',
+			'price': 		'469.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Propellerhead Reason 10 Premium Music Production Software',
+			'id': 		    'Propellerhead Reason 10 Premium Music Production Software',
+			'price': 		'299.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Native Instruments Maschine Mikro Mk3',
+			'id': 		    'Native Instruments Maschine Mikro Mk3',
+			'price': 		'189.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Akai MPK Mini MK2 Limited Edition Black MIDI Keyboard',
+			'id': 		    'Akai MPK Mini MK2 Limited Edition Black MIDI Keyboard',
+			'price': 		'79.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Kam Par Kit WFS 4 x LED Par Cans + Footswitch',
+			'id': 		    'Kam Par Kit WFS 4 x LED Par Cans + Footswitch',
+			'price': 		'399.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		var data = 
+		{
+			'ecommerce': 
+			{
+				'currencyCode': 'GBP',
+				'impressions': 	impressions
+			}
+		}
+
+		dataLayer.push(data);
+
+		if (AEC.debug)
+		{
+    		console.log('GTM: Tracked product impression(s)');
+		}
+	})
+
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+
+	EC.push(function(dataLayer)
+	{
+		var impressions = [], postion = 0, response = [];
+		
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Denon DJ Prime 4 Standalone DJ System with 10-inch Multi-Touch Display',
+			'id': 		    'Denon DJ Prime 4 Standalone DJ System',
+			'price': 		'1469.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'FBT JMaxX 112A 2-Way Active Loudspeaker',
+			'id': 		    'FBT JMaxX 112A 2-Way Active Loudspeaker',
+			'price': 		'499.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Akai Force Standalone Music Production/DJ Performance System',
+			'id': 		    'Akai Force Standalone Music Production/DJ Performance System',
+			'price': 		'1299.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Reloop Elite 2-channel DVS Mixer for Serato DJ Pro',
+			'id': 		    'Reloop Elite 2-channel DVS Mixer for Serato DJ Pro',
+			'price': 		'1099.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'KRK Rokit RP7 G4 Active Monitor Speaker',
+			'id': 		    'KRK Rokit RP7 G4 Active Monitor Speaker',
+			'price': 		'209.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Pioneer HDJ-X10C Limited Edition DJ Headphones',
+			'id': 		    'Pioneer HDJ-X10C Limited Edition DJ Headphones',
+			'price': 		'539.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Korg Volca Drum Digital Percussion Synthesizer',
+			'id': 		    'Korg Volca Drum Digital Percussion Synthesiser',
+			'price': 		'150.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Mixars Primo 2-Channel 4-Deck Serato DJ Controller',
+			'id': 		    'Mixars Primo 2-Channel 4-Deck Serato Pro DJ Controller',
+			'price': 		'449.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Reloop RP-8000 MK2 Direct Drive Hybrid DJ Turntable',
+			'id': 		    'Reloop RP-8000 MK2 Direct Drive Hybrid DJ Turntable',
+			'price': 		'525.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Alto Uber LT Complete Portable PA System with Rechargeable Battery',
+			'id': 		    'Alto Uber LT Portable PA System Rechargeable Battery',
+			'price': 		'129.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'KRK Rokit RP5 G4 Active Monitor Speaker',
+			'id': 		    'KRK Rokit RP5 G4 Active Monitor Speaker',
+			'price': 		'159.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Native Instruments Komplete Kontrol A25 Keyboard Controller',
+			'id': 		    'Native Instruments Komplete Kontrol A25 Keyboard Controller',
+			'price': 		'109.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		impressions.push(
+		{
+			'list': 		'Search Results',
+			'name': 		'Akai MPK Mini Play Standalone Keyboard & USB MIDI Controller',
+			'id': 		    'Akai MPK Mini Play Standalone Keyboard & USB MIDI Controller',
+			'price': 		'109.0000',
+			'category': 	'Default Category',
+			'variant':		'No',
+			'position':     '0'
+		});
+			
+				
+		var data = 
+		{
+			'ecommerce': 
+			{
+				'currencyCode': 'GBP',
+				'impressions': 	impressions
+			}
+		}
+
+		dataLayer.push(data);
+
+		if (AEC.debug)
+		{
+    		console.log('GTM: Tracked product impression(s)');
+		}
+	})
+
+
+ jQuery(document).ready(function(){
+  jQuery('ul#sidebar-nav-menu li a').each(function(){         
+    jQuery(this).mouseover(function(){      
+      var height = jQuery(this).parent().next('ul').height();
+      //var height = jQuery(this).height();     
+      var nwheight = height / 3;      
+     //jQuery(this).parent().next('ul').css("height", nwheight+"px");  
+        jQuery(this).parent().next('ul').css("top", "-"+nwheight+"px");       
+    });
+  });
+});
+
+// <![CDATA[
+	    function showPopup(url) {
+	    newwindow=window.open(url,'name','height=500,width=900,top=300,left=300,resizable');
+	    if (window.focus) {newwindow.focus()}
+	    }
+// ]]>
+
+    adroll_adv_id = "7FSUAEA5ZREZ3OD3P6Z56A";
+    adroll_pix_id = "QEYZZQWE3JCU7POVDVSNGZ";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+	if (typeof dataLayer !== "undefined")
+	{
+		for (a = 0, b = EC.length; a < b; a++)
+		{
+			EC[a].apply(this,[dataLayer]);
+		}
+	}
+	else
+	{
+		console.log('dataLayer[] is not intialized. Check if GTM is installed properly');
+	}
+
+
+	var google_tag_params = {ecomm_pagetype:"home"};
+
+
+/* <![CDATA[ */
+	var google_conversion_id = 1071645722;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+/* ]]> */
+
+
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+        var checkedForms = [];
+        var hasFormsChanged = false;
+
+        var onSubmit = function (token) {
+            currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+            if (typeof(recaptchaObject) !== 'undefined'
+                && 'post' !== currentForm.method
+            ) {
+                recaptchaObject.submit();
+            } else {
+                currentForm.submit();
+            }
+        };
+
+        function checkForms() {
+            formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"newsletter\/subscriber\/new\"]","form[action*=\"customer\/account\/loginPost\"]","form[action*=\"review\/product\/post\"]","form[action*=\"contacts\/index\/post\"]"];
+            formsToProtect.forEach(function (item) {
+                var continueWorking = true;
+                formsSearchedBySelector = $$(item);
+                checkedForms.forEach(function (element) {
+                    if (element[0] == formsSearchedBySelector[0]) {
+                        continueWorking = false;
+                        return;
+                    }
+                })
+                if (formsSearchedBySelector.length != 0 && continueWorking) {
+                    checkedForms.push(formsSearchedBySelector);
+                    formsSearchedBySelector.forEach(function (formToProtect) {
+                        formsToProtectOnPage.push(formToProtect);
+                        hasFormsChanged = true;
+                    });
+                }
+            });
+            if (hasFormsChanged) {
+                for (var index in formsToProtectOnPage) {
+                    if (formsToProtectOnPage.hasOwnProperty(index)) {
+                        var formToProtectOnPage = formsToProtectOnPage[index];
+                        if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                            formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                            if (0 < formToProtectOnPage.length) {
+                                formToProtectOnPage = formToProtectOnPage[0];
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        if (1 > formToProtectOnPage.getElementsByClassName('amasty_recaptcha').length) {
+                            var recaptchaBlock = document.createElement('div');
+                            recaptchaBlock.className = 'amasty_recaptcha';
+                            formToProtectOnPage.appendChild(recaptchaBlock);
+                        }
+
+                        if (1 > formToProtectOnPage.getInputs(formToProtectOnPage, 'hidden', 'amasty_invisible_token').length) {
+                            var tokenInput = document.createElement('input');
+                            tokenInput.type = 'hidden';
+                            tokenInput.name = 'amasty_invisible_token';
+                            tokenInput.value = '';
+                            formToProtectOnPage.appendChild(tokenInput);
+                        }
+
+                        formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                            currentForm = event.target;
+                            currentValidationForm = new VarienForm(currentForm.id, false);
+                            recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                            if (recaptchaBlock.innerHTML == '') {
+                                if (currentValidationForm && currentValidationForm.validator
+                                    && currentValidationForm.validator.validate()
+                                ) {
+                                    recaptcha = grecaptcha.render(recaptchaBlock, {
+                                        'sitekey': '6Le1wGgUAAAAAIOGI2S16ARI2za_cR0llv4D7AgK',
+                                        'callback': onSubmit,
+                                        'size': 'invisible',
+                                        'theme': 'light',
+                                        'badge': 'bottomleft'
+                                    });
+                                }
+                            }
+                            if (!recaptcha) {
+                                grecaptcha.reset(recaptcha);
+                                grecaptcha.execute(recaptcha);
+
+                            }
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        document.observe("dom:loaded", function () {
+            var formsCount = 0;
+            setInterval(function () {
+                var formLength = $$('form').length;
+                if (formsCount != formLength) {
+                    formsCount = formLength;
+                    checkForms();
+                }
+            }, 1000);
+        });
+    
+
+    window.clerkAsyncInit = function() {
+        Clerk.config({
+            key: 'TLrhtnDaUsx56uaepyMsID8ki99vMKc1',
+            collect_email: true,
+            templateFormatters: {
+                form_key: function () {
+                    return '5kBhtZq31U3AKKEP';
+                },
+                            }
+        });
+    };
+    (function(){
+        var e = document.createElement('script'); e.type='text/javascript'; e.async = true;
+        e.src = document.location.protocol + '//api.clerk.io/static/clerk.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(e, s);
+    })();
+

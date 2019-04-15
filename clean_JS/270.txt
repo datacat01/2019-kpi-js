@@ -1,0 +1,236 @@
+
+/* Web Site Advantage Event Tracking */
+// https://websiteadvantage.com.au/Bigcommerce-SEO-Service
+jQuery( document ).ready(function() {
+    // track tel: links
+    jQuery("a[href^='tel:']").each(function() {
+        var url = jQuery(this).attr('href');
+        jQuery(this).click(function() {ga('send', 'event', 'Phone', 'Click', url);});
+    });
+    // track mailto: links
+    jQuery("a[href^='mailto:']").each(function() {
+        var url = jQuery(this).attr('href');
+        jQuery(this).click(function() {ga('send', 'event', 'Email', 'Click', url);});
+    });
+    
+    // track downloads
+    jQuery("a[href$='.pdf'], a[href$='.zip'], a[href$='.docx'], a[href$='.doc'], a[href$='.txt']").each(function(index) {
+      var jThis = jQuery( this );
+      var thePage = jThis.prop('href');
+    
+      if (thePage.length > 0) {
+        var theTitle = jThis.text();
+    
+        if (theTitle.length == 0) {
+           theTitle = thePage;
+        }
+    
+        jThis.attr('target','_blank');
+      
+        jThis.click(function() {
+          ga('send','pageview', {location: thePage, title: theTitle});
+        }); 
+      }
+    });
+
+    // Social links
+    jQuery('a').each(function() {
+        var jThis = jQuery( this );
+        var url = jThis.attr('href');
+        
+        if (url) {
+            if (url.indexOf('facebook.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'Facebook');});
+            };    
+            if (url.indexOf('plus.google.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'Google+');});
+            };    
+            if (url.indexOf('linkedin.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'LinkedIn');});
+            };    
+            if (url.indexOf('youtube.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'YouTube');});
+            };    
+            if (url.indexOf('twitter.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'Twitter');});
+            };    
+            if (url.indexOf('pinterest.com/') > -1) {
+                jThis.attr('target','_blank');
+                jThis.click(function() {ga('send', 'event', 'Social', 'Click', 'Pinterest');});
+            };
+        };        
+    });
+});
+
+
+/* Track outbound links in Google Analytics */
+// Source: https://ssl.sitepoint.com/track-outbound-links-google-analytics/
+// With modifications to fix it from breaking target="_blank"
+jQuery( document ).ready(function() {
+
+ 'use strict';
+
+ // current page host
+ var baseURI = window.location.host;
+
+ // click event on body
+ jQuery('body').on('click', function(e) {
+
+ // abandon if link already aborted or analytics is not available
+ if (e.isDefaultPrevented() || typeof ga !== 'function') return;
+
+ // abandon if no active link or link within domain
+ var link = jQuery(e.target).closest('a');
+ if (link.length != 1 || baseURI == link[0].host) return;
+ 
+ var targetBlank = link[0].target == '_blank';
+ 
+ var distributor = jQuery(link[0]).hasClass('distributor');
+
+ if (targetBlank) {
+ // trigger event then let the link open in a new tab
+ 
+ var href = link[0].href;
+ ga('send', {
+ 'hitType': 'event',
+ 'eventCategory': 'Outbound Link',
+ 'eventAction': 'Click',
+ 'eventLabel': href
+ });
+ if (distributor) {
+ ga('send', 'event', 'Distributor', 'Click', href);
+ }
+ } else {
+ 
+ // cancel event and record outbound link
+ 
+ e.preventDefault();
+ 
+ var href = link[0].href;
+ 
+ if (distributor) {
+ ga('send', 'event', 'Distributor', 'Click', href);
+ }
+ ga('send', {
+ 'hitType': 'event',
+ 'eventCategory': 'Outbound Link',
+ 'eventAction': 'Click',
+ 'eventLabel': href,
+ 'hitCallback': loadPage
+ });
+
+ // redirect after one second if recording takes too long
+ setTimeout(loadPage, 1000);
+ }
+
+ // redirect to outbound page
+ function loadPage() {
+ document.location = href;
+ }
+
+ });
+
+}); // pass another library here if required
+
+/* Track JavaScript errors */
+window.onerror = function (message, file, line) {
+    ga('send', 'event', 'JavaScript Error', file + ':' + line + '\n\n' + message);
+};
+  
+
+
+(function() {
+window.__insp = window.__insp || [];
+__insp.push(['wid', 1355606891]);
+var ldinsp = function(){
+if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1355606891&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 0);
+})();
+
+
+function beacon_deferred(beacon_api) { beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"da00fb9b430678965670dadf77a6373400080bfa","type":"ANONYMOUS","visit_id":"a4c27202-1897-4dc9-a0d2-e3b897ad9177","visitor_id":"4f7ff703-faee-4a2a-95c8-00bbfa2c1ee6"},"referer":{"url":""},"request":{"url":"https:\/\/www.evrmemories.com\/"}}, []);}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/shared/js/beacon_api-d53f0a39a11dacaa85063ca4f4aba159a609185d.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"0e891024c33eb0220deedb9f63a8ff7d077b0730d46a996e078b0bca30dd529d"};
+
+var seDzUi=document.createElement("script");seDzUi.type="text/javascript";var seDzUis=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/0zge8ekphc3cb1i3m01ef2xtgi/safe-monitor.js?ps_h=DzUi&ps_t="+new Date().getTime();setTimeout("seDzUi.src=seDzUis;document.getElementById('sdDzUi').appendChild(seDzUi)",1)
+
+    var QuickSearchAlignment = 'right';
+    var QuickSearchWidth = '390px';
+    lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+    // uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+    $(document).ajaxComplete(function() {
+        $('input[type=checkbox], select').not('.UniApplied').uniform();
+    });
+
+
+    $(window).load(function() {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "fade",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: true,
+            useCSS3: true
+        });
+    });
+
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+
+    /*$('#SideCategoryList .SideCategoryListFlyout > .sf-menu > li > a.hasSub').attr('href','javascript:void(0)');
+    $('#SideCategoryList .SideCategoryListFlyout > .sf-menu > li > a.hasSub').click(function(){
+        $(this).parent().toggleClass('is_open');
+        $(this).parent().siblings().removeClass('is_open');
+    });*/
+
+$(document).ready(function(){
+  $('.arrow_boxWrapBorder').slick({
+      slide: 'div',
+      autoplay: true,
+      dots: false
+  });
+});
+
+
+    jQuery(document).ready(function($){
+        $(window).scroll(function() {
+            (getScrollTop() > 290) ? $('.header_mobile').addClass('fixed') : $('.header_mobile').removeClass('fixed');
+            (getScrollTop() > 200) ? $('.header_mob_fix').addClass('header_mob_fix_cl') : $('.header_mob_fix').removeClass('header_mob_fix_cl');
+            (getScrollTop() > 200) ? $('body').addClass('header_body_fix_cl') : $('body').removeClass('header_body_fix_cl');
+            //(getScrollTop() > 310) ? $('body').addClass('body_top') : $('body').removeClass('body_top');
+        });    
+    });
+
+function getScrollTop() {
+if(typeof pageYOffset!= 'undefined'){
+return pageYOffset;
+} else {
+var B = document.body;
+var D = document.documentElement;
+D = (D.clientHeight)? D : B;
+return D.scrollTop;
+}
+}
+

@@ -1,0 +1,246 @@
+
+        // Initialize variables for later use
+        var itemJson = {};
+
+        if (Cookies.get('dealerloggedin')) {
+            $('head').append($('<link rel="stylesheet"/>').attr('href', '/css/dist/dealer-only.css'));
+            document.write("<script src='/js/dist/dealer-only.js'><\/script>");
+
+            wholesalesolar.dealer = [];
+            wholesalesolar.dealer.loggedIn = true;
+        }
+    
+
+  var oldIE = false;
+
+
+// When the user scrolls the page, execute getSticky
+    var logoScroll = 0;
+    window.onscroll = function() {getSticky()};
+    // Get the header
+    var header = document.getElementById("headerBottom");
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function getSticky() {
+
+      if (window.pageYOffset >= sticky + 2) {
+        logoScroll += 1;
+        header.classList.add("sticky");
+        if (logoScroll < 30) {
+
+        } else {
+          $('#miniLogo').show();
+        }
+
+      } else {
+        header.classList.remove("sticky");
+        $('#miniLogo').hide();
+      }
+    }
+
+    // jquery for the click styling on the dropdown menu
+
+    $( ".submenu" ).click(function(e) {
+      if($(this).children('.megamenu').is(':visible')) {
+        $('.submenu').removeClass('sub-background');
+        $('.submenu').children('a').addClass('white');
+        $('.submenu').children('a').removeClass('grey');
+        $('.megamenu').hide();
+      } else {
+        $('.submenu').removeClass('sub-background');
+        $('.submenu').children('a').addClass('white');
+        $('.submenu').children('a').removeClass('grey');
+        $('.megamenu').hide();
+        e.stopPropagation();
+        $(this).addClass('sub-background');
+        $(this).children('.megamenu').show();
+        $(this).children('a').removeClass('white');
+        $(this).children('a').addClass('grey');
+      }
+    });
+
+    $(document).click(function() {
+      if($('.megamenu').is(':visible')) {
+        $('.submenu').removeClass('sub-background');
+        $('.submenu').children('a').addClass('white');
+        $('.submenu').children('a').removeClass('grey');
+        $('.megamenu').hide();
+      }
+    });
+
+    $('.com-cta-box').hover(function() {
+      $(this).find('.com-cta').css('background-color', '#fe7800');
+      $(this).find('img').css('opacity', '0.8');
+    }, function() {
+      $(this).find('.com-cta').css('background-color', '#d17100');
+      $(this).find('img').css('opacity', '1');
+    });
+
+
+
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','sk_yVM8uPanpZmei1xfS','2.0.0');
+
+
+  $(function() {
+    $('.lazy-delay').lazy({
+        delay: 2000
+    });
+  });
+  $(function() {
+    $('.lazy').lazy();
+  });
+
+
+  var subscribersSiteId = 'd73403d4-2c78-436b-9820-6acded1e25a2';
+  function loadSubscribers() {
+    var element = document.createElement("script");
+    element.src = "https://cdn.subscribers.com/assets/subscribers.js";
+    document.body.appendChild(element);
+  }
+  setTimeout(function(){
+    loadSubscribers();
+  }, 5000);
+
+
+	var cartLinkText = "View Cart / Checkout",
+		cartLink = '/cart-checkout',
+		cartLinkButton = $('#modalButtonViewCart');
+
+	// for dealers
+	if (wholesalesolar.dealer && wholesalesolar.dealer.loggedIn === true && Cookies.get('dealerPortal.currentProjectId') != 'undefined') {
+		var currentProjectId = Cookies.get('dealerPortal.currentDealerProject'),
+
+		cartLinkText = '<b class="fa fa-list"></b> View Project';
+		cartLink = '/dealers/#/projects/' + currentProjectId;
+		cartLinkButton.on('click', function (event) {
+			event.preventDefault();
+			wholesalesolar.dealer.goToProjectDetails()
+		});
+		cartLinkButton.addClass('dealer-purple');
+	}
+
+	$('#view-cart-modal').attr("href", cartLink);
+	cartLinkButton.html(cartLinkText);
+
+
+    var carItems = [];
+    var threeCarItems = [];
+    $('div').each(function (index, element) {
+      if ($(element).hasClass('car-item')) {
+        carItems.push(element);
+      }
+    });
+    if (document.body.clientWidth < 991) {
+      $(carItems).each(function (index, element) {
+        if(index === 0) {
+          $(element).addClass('item active');
+        } else {
+          $(element).addClass('item');
+        }
+      });
+    } else {
+      for(var i = 0; i < carItems.length; i+=3) {
+        var carThree = carItems.slice(i, i+3);
+        $(carThree).wrapAll("<div class='item'></div>");
+      }
+      $('div').each(function (index, element) {
+        if ($(element).hasClass('item')) {
+          threeCarItems.push(element);
+        }
+      });
+      $(threeCarItems).each(function (index, element) {
+        if(index === 0) {
+          $(element).addClass('active');
+        }
+      });
+    }
+  
+
+    $('#carousel-testimonials').carousel({wrap:true});
+  
+
+    $(document).ready(function () {
+      $('#home-one').click( function () {
+        $('.home-one').show();
+        $('.home-two').hide();
+        $('.home-three').hide();
+        $('.home-four').hide();
+        $('#home-two').removeClass('tabnav__item--active');
+        $('#home-three').removeClass('tabnav__item--active');
+        $('#home-four').removeClass('tabnav__item--active');
+        $(this).addClass('tabnav__item--active');
+      });
+      $('#home-two').click( function () {
+        $('.home-one').hide();
+        $('.home-two').show();
+        $('.home-three').hide();
+        $('.home-four').hide();
+        $('#home-one').removeClass('tabnav__item--active');
+        $('#home-three').removeClass('tabnav__item--active');
+        $('#home-four').removeClass('tabnav__item--active');
+        $(this).addClass('tabnav__item--active');
+      });
+      $('#home-three').click( function () {
+        $('.home-one').hide();
+        $('.home-two').hide();
+        $('.home-three').show();
+        $('.home-four').hide();
+        $('#home-one').removeClass('tabnav__item--active');
+        $('#home-two').removeClass('tabnav__item--active');
+        $('#home-four').removeClass('tabnav__item--active');
+        $(this).addClass('tabnav__item--active');
+      });
+      $('#home-four').click( function () {
+        $('.home-one').hide();
+        $('.home-two').hide();
+        $('.home-three').hide();
+        $('.home-four').show();
+        $('#home-one').removeClass('tabnav__item--active');
+        $('#home-two').removeClass('tabnav__item--active');
+        $('#home-three').removeClass('tabnav__item--active');
+        $(this).addClass('tabnav__item--active');
+      });
+});
+
+  
+
+    function loadWistia1() {
+    var element = document.createElement("script");
+    element.src = "https://fast.wistia.com/embed/medias/6nhm826u6r.jsonp";
+    document.body.appendChild(element);
+    }
+    function loadWistia2() {
+    var element = document.createElement("script");
+    element.src = "https://fast.wistia.com/assets/external/E-v1.js";
+    document.body.appendChild(element);
+    }
+    function loadHSForms() {
+    var element = document.createElement("script");
+    element.src = "//js.hsforms.net/forms/v2.js";
+    document.body.appendChild(element);
+    }
+    $( document ).ready(function() {
+      setTimeout(function(){
+        loadWistia1();
+        // loadHSForms();
+      }, 4500);
+      setTimeout(function(){
+        loadWistia2();
+      }, 5000);
+      setTimeout(function(){
+        hbspt.forms.create({
+          portalId: "3074183",
+          formId: "c4daf0c4-3aad-43c3-8459-bdf357ac2449",
+          css: "",
+          target: '#hs_consult_form',
+        });
+      }, 6000);
+    });
+
+  

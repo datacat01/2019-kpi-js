@@ -1,0 +1,182 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.festive-lights.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["AO","AQ","AG","BS","BZ","BJ","BW","BF","BI","CF","KM","CG","CD","CK","CI","DJ","DM","GQ","ER","FJ","TF","GM","GH","GD","GN","GY","HK","JM","KI","MO","MW","ML","MR","MU","MS","NA","NR","AN","NU","KP","PA","QA","RW","KN","LC","ST","SC","SL","SB","SO","SR","SY","TZ","TK","TO","TT","TV","UG","AE","VU","YE","ZW"];
+//]]>
+
+ 
+//<![CDATA[
+(function(){function a(a){var b,c,d=window.document.createElement("iframe");d.src="javascript:false",(d.frameElement||d).style.cssText="width: 0; height: 0; border: 0";var e=window.document.createElement("div");e.style.display="none";var f=window.document.createElement("div");e.appendChild(f),window.document.body.insertBefore(e,window.document.body.firstChild),f.appendChild(d);try{c=d.contentWindow.document}catch(g){b=document.domain,d.src="javascript:var d=document.open();d.domain='"+b+"';void(0);",c=d.contentWindow.document}return c.open()._l=function(){b&&(this.domain=b);var c=this.createElement("scr".concat("ipt"));c.src=a,this.body.appendChild(c)},c.write("<bo".concat('dy onload="document._l();">')),c.close(),d}var b="nostojs";window[b]=window[b]||function(a){(window[b].q=window[b].q||[]).push(a)},window[b].l=new Date;var c=function(d,e){if(!document.body)return setTimeout(function(){c(d,e)},30);e=e||{},window[b].o=e;var f=document.location.protocol,g=["https:"===f?f:"http:","//",e.host||"connect.nosto.com",e.path||"/include/",d].join("");a(g)};window[b].init=c})();
+nostojs.init('magento-395ee240', { host: 'connect.nosto.com'});
+//]]>	
+
+
+    if (typeof Nosto === "undefined") {
+    var Nosto = {};
+    }
+    Nosto.addProductToCart = function (productId) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "https://www.festive-lights.com/checkout/cart/add/");
+
+        var hiddenFields = {
+            "product": productId,
+            "form_key": "nCdNxN29XqAmuV23"
+        };
+
+        for(var key in hiddenFields) {
+            if(hiddenFields.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", hiddenFields[key]);
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    };
+
+
+        
+            window.ometria = window.ometria || {};
+            window.ometria.raw_data = {"store":"1","store_url":"https:\/\/www.festive-lights.com\/","route":"cms","controller":"index","action":"index","type":"homepage"};
+
+                        (function(){
+            var url=window.location.protocol+"//cdn.ometria.com/tags/a515a55cdbf9029e.js";
+            setTimeout(function(){var sc=document.createElement('script');sc.src=url;sc.setAttribute('async','true');
+            document.getElementsByTagName("head")[0].appendChild(sc);},50);
+        })();
+            
+
+	newsletterPopup = new newsletterPopupClass({
+		enable_analytics: 0,
+		area: 'home',
+		cmsPage: 'home',
+		categoryId: 0,
+		productId: 0,
+		action_url: 'https://www.festive-lights.com/newsletterpopup/index/subscribe/',
+		cancel_url: 'https://www.festive-lights.com/newsletterpopup/index/cancel/',
+		block_url: 'https://www.festive-lights.com/newsletterpopup/index/block/',
+		history_url: 'https://www.festive-lights.com/newsletterpopup/index/history/'
+	});
+
+
+	(function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+	a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+	f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+	tp('register','BV2TOn57LppMQd7S');
+
+
+        var w = document.createElement("script");
+        w.type = "text/javascript";
+        w.onload = "wgxpath.install();";
+        w.src = "https://www.festive-lights.com/js/trustpilot/wgxpath.install.js";
+        document.head.append(w);
+
+
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+        s.async = true;
+        document.head.append(s);
+	
+
+      var _vwo_url_prefix = '/ctrl_index/act_index/rt_cms/mod_cms';
+      var _vis_opt_url = document.location.origin + _vwo_url_prefix + document.location.pathname + document.location.search;
+
+
+var _vwo_code=(function(){
+var account_id=284048,
+_vis_opt_url = window._vis_opt_url || document.URL,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+code_source='magento',
+// DO NOT EDIT BELOW THIS LINE
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(_vis_opt_url)+'&s='+code_source+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+//<![CDATA[
+        var Translator = new Translate({"Please enter a valid email address. For example johndoe@domain.com.":"Please enter a valid email address, for example johndoe@domain.com.<br\/>If the issue persists please contact us.","Add to Cart":"Add to Bag"});
+        //]]>
+
+    var footer_social = '';
+    var contact_form = '';
+
+    function trackUAEvent(evCat,evAc,evLab,evVal,evNonInt){
+        evLab = typeof evLab !== 'undefined' ? evLab : "";
+        evVal = typeof evVal !== 'undefined' ? evVal : 0;
+        evNonInt = typeof evNonInt !== 'undefined' ? evNonInt : false;
+
+        window.dataLayer.push({
+            "event"                 :"UAEvent",
+            "eventCategory"         :evCat,
+            "eventAction"           :evAc,
+            "eventLabel"            :evLab,
+            "eventValue"            :evVal,
+            "eventNonInteraction"   :evNonInt
+        })
+    }
+
+    function trackUAPView(PVurl){
+        window.dataLayer.push({
+            "event"     : "UAPaView",
+            "location"  : PVurl
+        })
+    }
+
+    function trackUASocial(socNet,socAc,socTar){
+        socTar = typeof socTar !== 'undefined' ? socTar : "";
+        window.dataLayer.push({
+            "event"         :"UASocial",
+            "socialNetwork" :socNet,
+            "socialAction"  :socAc,
+            "socialTarget"  :socTar
+        })
+    }
+
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+      'siteLocation' : "Homepage",
+      'pageCategory' : "Homepage",
+      'userId' : "",
+      'lastViewedProduct' : "",
+  });
+var skywire_datalayer_debug = false;
+
+
+    if (typeof GtsValidator != 'undefined')
+        GtsValidator.badge = true;
+
+
+
+    var gts = gts || [];
+    gts.push(["id", ""]);
+        gts.push(["badge_position", "BOTTOM_LEFT"]);
+    gts.push(["google_base_offer_id", "-1"]);
+    gts.push(["locale", "en_GB"]);
+    gts.push(["google_base_subaccount_id", "5690285"]);
+    gts.push(["google_base_country", "GB"]);
+    gts.push(["google_base_language", "en"]);
+
+    (function () {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+
+window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'86634493'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;}
+
+
+function OptanonWrapper() { }
+
+

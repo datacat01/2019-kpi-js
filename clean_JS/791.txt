@@ -1,0 +1,10 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.gundogsupply.com/&h=www.gundogsupply.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/fc36163da6858267f89521e7d7c55f84?id=355e214993ec'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

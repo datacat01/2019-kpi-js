@@ -1,0 +1,604 @@
+
+	// Convert the WCParam object which contains request properties into javascript object
+	var WCParamJS = {
+		"storeId":'715838034',
+		"catalogId":'3074457345616676718',
+		"langId":'-1',
+		"pageView":'',
+		"orderBy":'',
+		"orderByContent":'',
+		"searchTerm":'',
+		"homePageURL" : 'https://www.pokemoncenter.com/',
+		"commandContextCurrency": "USD"
+	};
+	var absoluteURL = "http://www.pokemoncenter.com/";
+	var imageDirectoryPath = "/wcsstore/AuroraStorefrontAssetStore/";
+	var styleDirectoryPath = "images/colors/color1/";
+	var supportPaymentTypePromotions = false;
+	
+	var subsFulfillmentFrequencyAttrName = "fulfillmentFrequency";
+	var subsPaymentFrequencyAttrName = "paymentFrequency";
+	var subsTimePeriodAttrName = "timePeriod";
+	
+	var storeNLS = null;
+	var storeUserType = "G";
+	var ios = false;
+	var android = true;
+	var multiSessionEnabled = true;
+	
+	// Store the amount of time of inactivity before a re-login is required, this value is retrieved from wc-server.xml, default is 30 mins
+	var inactivityTimeout = 1800000;
+	
+	// Store the amount of time the inactivity warning dialog will be displayed before it closes itself, default is 20 seconds
+	var inactivityWarningDialogDisplayTimer = 20000;
+	
+	// Store the amount of time to display a inactivity warning dialog before a re-login is required, default is 30 seconds
+	var inactivityWarningDialogBuffer = 30000;
+	
+	// Store the timing event to display the inactivity dialog
+	var inactivityTimeoutTracker = null;
+
+	// Store the timing event to close the inactivity dialog
+	var dialogTimeoutTracker = null;
+	
+	//browse only mode for Web Call Centre integration
+	var browseOnly = false;
+	
+	//Summary: Returns the absolute URL to use for prefixing any Ajax URL call.
+	//Description: Dojo does not handle the case where the parameters in the URL are delimeted by the "/" forward slash. Therefore, in order to
+	//             workaround the issue, all AJAX requests must be done using absolute URLs rather than relative.
+	//Returns: The absolute URL to use for prefixing any Ajax URL call.
+	function getAbsoluteURL() {
+		if (absoluteURL != "") {
+			var currentURL = document.URL;
+			var currentProtocol = "";
+		
+			if (currentURL.indexOf("://") != -1) {
+				currentProtocol = currentURL.substring(0, currentURL.indexOf("://"));
+			}
+			
+			var savedProtocol = "";
+			if (absoluteURL.indexOf("://") != -1) {
+				savedProtocol = absoluteURL.substring(0, absoluteURL.indexOf("://"));
+			}
+			
+			if (currentProtocol != savedProtocol) {
+				absoluteURL = currentProtocol + absoluteURL.substring(absoluteURL.indexOf("://"));
+			}
+		}
+		
+		return absoluteURL;
+	}
+	//Summary: Returns the path pointing to the shared image directory.
+	//Description: In order to get the image directory path in any javascript file, this function can be used.
+	//Returns: The path to reference images.
+	function getImageDirectoryPath() {
+		return imageDirectoryPath;
+	}
+	//Summary: Returns the path pointing to the directory containing color-dependant image files.
+	//Description: In order to get the directory containing color-dependant image files in any javascript file, this function can be used.
+	//Returns: The path to reference color-dependant image files.
+	function getStyleDirectoryPath() {
+		return styleDirectoryPath;
+	}
+
+	
+	
+
+
+ //Set the default NLS to use in the store.
+ if(storeNLS == null) {
+	 dojo.requireLocalization("storetext", "StoreText");
+	 storeNLS = dojo.i18n.getLocalization("storetext","StoreText");
+ }
+ initializeInactivityWarning();
+ var ie6 = false;
+ var ie7 = false;
+ if (navigator != null && navigator.userAgent != null) {
+	 ie6 = (navigator.userAgent.toLowerCase().indexOf("msie 6.0") > -1);
+	 ie7 = (navigator.userAgent.toLowerCase().indexOf("msie 7.0") > -1); 
+ }
+ if (location.href.indexOf('UnsupportedBrowserErrorView') == -1 && (ie6 || ie7)) {
+	 document.write('<meta http-equiv="Refresh" content="0;URL=http://www.pokemoncenter.com/UnsupportedBrowserErrorView?catalogId=3074457345616676668&amp;langId=-1&amp;storeId=715838034"/>');
+ }
+
+
+$(document).ready(function(){
+	$('#siteContentTab').on('click',function(event){
+		event.preventDefault();
+
+$('html, body').animate({
+        scrollTop: $('#contentWrapper').offset().top  
+    }, 'slow');
+       
+       $('#contentWrapper').focus();
+/*        
+window.scrollTo({
+   Top:$('#contentWrapper').offset().top
+   
+});   */
+      
+	   });
+	
+	});
+
+
+
+	dojo.addOnLoad(function() { 
+		shoppingActionsJS.setCommonParameters('-1','715838034','3074457345616676718','G','$');
+		
+		var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+		var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+		if (isChrome || isSafari) {
+			var hiddenFields = dojo.query('input[type=\"hidden\"]');
+			for (var i = 0; i < hiddenFields.length; i++) {
+				hiddenFields[i].autocomplete="off"
+			}
+		}
+		if (dojo.has("ios") || dojo.has("android")){
+			dojo.attr(dojo.body(),"data-wc-device","mobile");
+		}	
+			
+	});
+	dojo.addOnLoad(function(){
+		if($('.contentCarouselWidget.carousel').length > 0){
+			$('.carousel-play-pause').on('click',function(e){
+
+				$(this).toggleClass('autoplay');
+				var carouselWidget = dijit.byId($(this).closest('.contentCarouselWidget.carousel').attr('id'));
+				if($(this).hasClass('autoplay')){
+					carouselWidget.set('auto',5000);
+				} else {
+					carouselWidget.set('auto',0);
+				};
+				e.preventDefault();
+			});
+		}
+		
+		
+		$(".carousel .content > ul").each(function( i ) {
+			var count = $(this).children().length;
+		    if ( count == 1 ) {
+		      $(this).parent().siblings(".carousel-play-pause").hide();
+		    } 
+		});
+		
+	});
+
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/12NaMZHdGcfHqPsBaDdcGMthwheuD4jzEUCrYzeV/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+ // start Cookie Policy popup
+       
+      var dropCookie = true;
+      var cookieDuration = 14;
+      var cookieName = 'complianceCookie'; 
+      var cookieValue = 'on';
+       
+      function createDiv(){
+          var bodytag = document.getElementsByTagName('body')[0];
+          var div = document.createElement('div');
+          div.setAttribute('id','cookie-law');
+          div.innerHTML = '<p>This site uses cookies for analytics and personalized content. By continuing to browse this site, you agree to this use. <a href="https://www.pokemon.com/us/privacy-notice/" target="_blank" style="text-decoration:underline;"  onclick="removeMe();">Learn more</a> about our use of cookies and how to configure them. <a class="close-cookie-banner" href="javascript:void(0);" onclick="removeMe();"><span>X</span></a></p>';    
+           
+          bodytag.appendChild(div);
+           
+          document.getElementsByTagName('body')[0].className+=' cookiebanner';
+           
+        
+      }
+       
+       
+      function createCookie(name,value,days) {
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime()+(days*24*60*60*1000)); 
+              var expires = "; expires="+date.toGMTString(); 
+          }
+          else var expires = "";
+          if(window.dropCookie) { 
+              document.cookie = name+"="+value+expires+"; path=/"; 
+          }
+      }
+       
+      function checkCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+       
+      function eraseCookie(name) {
+          createCookie(name,"",-1);
+      }
+       
+      $(document).ready(function (){
+          if(checkCookie(window.cookieName) != window.cookieValue){
+              createDiv(); 
+          }
+      });
+
+      function removeMe(){
+        var element = document.getElementById('cookie-law');
+        element.parentNode.removeChild(element);
+          createCookie(window.cookieName,window.cookieValue, window.cookieDuration);
+      }
+      
+    // end Cookie Policy popup
+
+
+	$(document).ready(function () {
+		// Scroll to top animation.
+		$('.scrollToTop').click(function(){
+			$('html, body').animate({scrollTop : 0},800);
+			return false;
+		});
+		
+		// Activate responsive image maps
+		$('img[usemap]').rwdImageMaps();
+		
+		$("img").unveil();
+	});
+	
+	//$(window).load(function() {
+	//	$("img").unveil();
+	//});
+
+
+(function ( $ ) {
+	
+	var updateValidation = function(event, data){
+		var element = event.target;
+
+		if(data && data.isValid){
+			hideValidationError(element);
+		} else {
+			showValidationError(element, data.message);
+		}
+	};
+
+	var showValidationError = function(element, message){
+
+		var errorContainer;
+	
+		if($(element).data('errorContainer')){
+			errorContainer = $('#'+$(element).data('errorContainer'));
+		} else {
+			errorContainer = $('<div/>', {
+				id : $(element).attr('id')+'_error',
+				class : 'adaError',
+				'aria-describedby' : $(element).attr('id'),
+				'aria-role' : 'alert'
+			});
+			$(element).after(errorContainer);
+			$(element).data('errorContainer', errorContainer.attr('id'));
+		}
+		
+		$(errorContainer).html(message);
+		
+		$(errorContainer).show();
+		$(errorContainer).attr('aria-hidden', 'false');
+		$(errorContainer).attr('role','alert');
+		$(element).focus();
+	};
+
+	var hideValidationError = function(element){
+		var target = $(element).data('errorContainer');
+		target = $('#'+target);
+		if(target){
+			target.hide();
+			target.attr('aria-hidden', 'true');
+			target.attr('role','');
+		}
+	};
+
+	$.fn.bstpFormValidator = function(){
+		var elements;
+		if(arguments[0]){
+			elements = $(arguments[0]);
+		} else {
+			elements = $(':input:not([type=hidden])');
+		}
+
+		$(elements).on('bstpValidate',updateValidation);
+	};
+
+	$.fn.bstpFormValidator.submitValidations = function(data){
+		for(var key in data){
+			$('[name='+key+']').trigger('bstpValidate',{
+				isValid : data[key].isValid,
+				message : data[key].message
+			});
+		}
+	};
+	
+}( jQuery ));
+
+
+$(document).ready(function(){
+	$().bstpFormValidator();
+	$('.top-promo a, #freeShippingMessage a ').attr('href', 'javascript:void(0)');
+});
+
+
+			dojo.addOnLoad(function() { 
+				shoppingActionsJS.setCommonParameters('-1','715838034','3074457345616676718','G','$');
+				shoppingActionsServicesDeclarationJS.setCommonParameters('-1','715838034','3074457345616676718');
+				});
+			
+		
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.setCommonParameters('-1','715838034','3074457345616676718');																		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_controller', getAbsoluteURL() + 'GlobalLoginView?langId=-1&amp;storeId=715838034&amp;catalogId=3074457345616676718&amp;ajaxStoreImageDir=%2fwcsstore%2fAuroraStorefrontAssetStore%2f');		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_SignIn_controller', getAbsoluteURL() + 'GlobalLoginSignInView?langId=-1&amp;storeId=715838034&amp;catalogId=3074457345616676718&amp;ajaxStoreImageDir=%2fwcsstore%2fAuroraStorefrontAssetStore%2f');
+		GlobalLoginShopOnBehalfJS.setBuyerSearchURL('/wcs/resources/store/715838034/person?q=usersICanAdmin');
+		GlobalLoginShopOnBehalfJS.setControllerURL('GlobalLoginShopOnBehalfDisplayView?langId=-1&storeId=715838034&catalogId=3074457345616676718&ajaxStoreImageDir=%2fwcsstore%2fAuroraStorefrontAssetStore%2f');
+	});			
+
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.registerWidget('Header_GlobalLogin');
+		GlobalLoginShopOnBehalfJS.registerShopOnBehalfPanel('Header_GlobalLogin_WC_B2B_ShopOnBehalf', 'Header_GlobalLogin_WC_B2B_ShopForSelf');
+	});
+
+
+	dojo.addOnLoad(function(){		
+			
+		
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2000", "Type a logon ID in the Logon ID field.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2010", "Either the email address or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2020", "Either the email address or the password entered is incorrect. Enter the information again.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2030", "Either the email address or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2110", "Due to 6 unsuccessful password attempts, you will be unable to sign in.  Contact a store representative to enable your user account.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2300", "Wait a few seconds before attempting to sign in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2400", "Your organization is locked. You cannot sign in at this time. ");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2410", "You do not have the proper authority to sign in. Contact the store for further information.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2420", "You have not activated your account. Respond to the activation email you received.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2430", "Your password has been reset. Retrieve the temporary password from your email and try signing in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2570", "Your account is not activated. If you have already responded to the activation email your received, contact our store for assistance.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2340", "You are not allowed to login from an external network.");		
+	});
+
+
+var pkmlogoncookie = getCookie("PKM_UserLoggedInSession_"+WCParamJS.storeId);
+if (pkmlogoncookie != undefined && pkmlogoncookie != null && pkmlogoncookie != ""){
+	
+	var signInQuickLink_Node = dojo.byId("Header_GlobalLogin_signInQuickLink");
+	var signInQuickLink_parentNode = signInQuickLink_Node.parentNode;
+	signInQuickLink_parentNode.removeChild(signInQuickLink_Node);
+	
+	dojo.byId("Header_GlobalLogin").setAttribute("controllerId", "GlobalLogin_controller");
+	dojo.byId("Header_GlobalLogin").setAttribute("data-toggle-control", "Header_GlobalLogin_signOutQuickLink");
+	dojo.byId("Header_GlobalLogin").setAttribute("aria-label", "Sign Out Drop Down Panel");	
+}else{
+	
+	var signOutQuickLink_Node = dojo.byId("Header_GlobalLogin_signOutQuickLink");
+	var signOutQuickLink_parentNode = signOutQuickLink_Node.parentNode;
+	signOutQuickLink_parentNode.removeChild(signOutQuickLink_Node);
+	
+	dojo.byId("Header_GlobalLogin").setAttribute("controllerId", "GlobalLogin_SignIn_controller");
+	dojo.byId("Header_GlobalLogin").setAttribute("data-toggle-control", "Header_GlobalLogin_signInQuickLink");
+	dojo.byId("Header_GlobalLogin").setAttribute("aria-label", "Sign In Drop Down Panel");
+}
+
+
+						var pkmLogoncookie = getCookie("PKM_UserLoggedInSession_"+WCParamJS.storeId);
+						if (pkmLogoncookie == undefined || pkmLogoncookie == null || pkmLogoncookie == ""){
+							dojo.byId("myAccountQuickLink").parentNode.style.display = "none";
+						}
+					
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.registerWidget('QuickLinks_GlobalLogin');
+		GlobalLoginShopOnBehalfJS.registerShopOnBehalfPanel('QuickLinks_GlobalLogin_WC_B2B_ShopOnBehalf', 'QuickLinks_GlobalLogin_WC_B2B_ShopForSelf');
+	});
+
+
+	dojo.addOnLoad(function(){		
+			
+		
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2000", "Type a logon ID in the Logon ID field.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2010", "Either the email address or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2020", "Either the email address or the password entered is incorrect. Enter the information again.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2030", "Either the email address or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2110", "Due to 6 unsuccessful password attempts, you will be unable to sign in.  Contact a store representative to enable your user account.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2300", "Wait a few seconds before attempting to sign in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2400", "Your organization is locked. You cannot sign in at this time. ");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2410", "You do not have the proper authority to sign in. Contact the store for further information.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2420", "You have not activated your account. Respond to the activation email you received.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2430", "Your password has been reset. Retrieve the temporary password from your email and try signing in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2570", "Your account is not activated. If you have already responded to the activation email your received, contact our store for assistance.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2340", "You are not allowed to login from an external network.");		
+	});
+
+
+var pkmlogoncookie = getCookie("PKM_UserLoggedInSession_"+WCParamJS.storeId);
+if (pkmlogoncookie != undefined && pkmlogoncookie != null && pkmlogoncookie != ""){
+	
+	var signInQuickLink_Node = dojo.byId("QuickLinks_GlobalLogin_signInQuickLink");
+	var signInQuickLink_parentNode = signInQuickLink_Node.parentNode;
+	signInQuickLink_parentNode.removeChild(signInQuickLink_Node);
+	
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("controllerId", "GlobalLogin_controller");
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("data-toggle-control", "QuickLinks_GlobalLogin_signOutQuickLink");
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("aria-label", "Sign Out Drop Down Panel");	
+}else{
+	
+	var signOutQuickLink_Node = dojo.byId("QuickLinks_GlobalLogin_signOutQuickLink");
+	var signOutQuickLink_parentNode = signOutQuickLink_Node.parentNode;
+	signOutQuickLink_parentNode.removeChild(signOutQuickLink_Node);
+	
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("controllerId", "GlobalLogin_SignIn_controller");
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("data-toggle-control", "QuickLinks_GlobalLogin_signInQuickLink");
+	dojo.byId("QuickLinks_GlobalLogin").setAttribute("aria-label", "Sign In");
+}
+
+
+					function removeNode(node) { var parentNode = node.parentNode; parentNode.removeChild(node); }
+					function removeParentNode(node){ var grandparentNode = node.parentNode.parentNode;	grandparentNode.removeChild(node.parentNode); }	
+					var pkmLogoncookie = getCookie("PKM_UserLoggedInSession_"+WCParamJS.storeId);
+					if (pkmLogoncookie == undefined || pkmLogoncookie == null || pkmLogoncookie != "pkmcsr") {
+						removeNode(dojo.byId("confirmationPopup"));
+						removeParentNode(dojo.byId("customerServiceLink1"));
+						removeParentNode(dojo.byId("customerServiceLink2"));
+					} else {
+						var shopOnBehalfCookie = getCookie("WC_OnBehalf_Role_"+WCParamJS.storeId);
+						if (shopOnBehalfCookie != undefined && shopOnBehalfCookie != null && shopOnBehalfCookie == "CSR") {
+							removeParentNode(dojo.byId("customerServiceLink1"));
+						} else {
+							removeParentNode(dojo.byId("customerServiceLink2"));
+						}
+					}
+				
+
+  dojo.addOnLoad(function() {
+  		var miniCartContent = "false";
+  		var enableToLoad = "true";
+		if (miniCartContent == "true" || miniCartContent == true){
+			setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838034&catalogId=3074457345616676718&langId=-1&miniCartContent=true');			
+			wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838034&catalogId=3074457345616676718&langId=-1&page_view=dropdown&miniCartContent=true';
+		}else{
+			setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838034&catalogId=3074457345616676718&langId=-1');
+			wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838034&catalogId=3074457345616676718&langId=-1&page_view=dropdown';
+		}				
+		
+		// var currentUserId = getCookieName_BeginningWith("WC_USERACTIVITY_").split("WC_USERACTIVITY_")[1];
+		
+			//if(dojo.byId('MiniShoppingCart') != null && !multiSessionEnabled && (enableToLoad == "true" || enableToLoad == true)){
+			if(dojo.byId('MiniShoppingCart') != null && (enableToLoad == "true" || enableToLoad == true)){
+				loadMiniCart("USD","-1");
+			}
+		
+	});
+
+
+	dojo.addOnLoad(function() { 
+		shoppingActionsJS.setCommonParameters('-1','715838034','3074457345616676718','G','$');
+		shoppingActionsServicesDeclarationJS.setCommonParameters('-1','715838034','3074457345616676718');
+	});
+	//Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
+	wc.render.declareRefreshController({
+		id: "prodRecommendationRefresh_controller_Widget_CatalogEntryRecommendation_Pokemon_3074457345618284057",
+		renderContext: wc.render.getContextById("searchBasedNavigation_context"),
+		url: "",
+		formId: ""
+	
+		,renderContextChangedHandler: function(message, widget) {
+			var controller = this;
+			var renderContext = this.renderContext;
+			var resultType = renderContext.properties["resultType"];
+			if(resultType == "products" || resultType == "both"){
+				widget.refresh(renderContext.properties);
+				console.log("espot refreshing");
+			}
+		}
+			
+		/**
+		 * Clears the progress bar after a successful refresh.
+		 *
+		 * @param {Object} widget The refresh area widget.
+		 */
+		,postRefreshHandler: function(widget) {
+			var controller = this;
+			var renderContext = this.renderContext;
+			cursor_clear();
+			
+			var refreshUrl = controller.url;
+			var emsName = "";
+			var indexOfEMSName = refreshUrl.indexOf("emsName=", 0);
+			if(indexOfEMSName >= 0){
+				emsName = refreshUrl.substring(indexOfEMSName+8);
+				if (emsName.indexOf("&") >= 0) {
+					emsName = emsName.substring(0, emsName.indexOf("&"));
+					emsName = "script_" + emsName;
+				}
+			}
+				
+			if (emsName != "") {
+				if (dojo.byId(emsName) != null) {
+					var espot = dojo.query('.genericESpot',dojo.byId(emsName).parentNode)[0];
+					if (espot != null) {
+						dojo.addClass(espot,'emptyESpot');
+					}
+				}
+			}
+			dojo.publish("CMPageRefreshEvent");
+		}
+	});
+
+
+	dojo.addOnLoad(function() { 
+		shoppingActionsJS.setCommonParameters('-1','715838034','3074457345616676718','G','$');
+		shoppingActionsServicesDeclarationJS.setCommonParameters('-1','715838034','3074457345616676718');
+	});
+	//Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
+	wc.render.declareRefreshController({
+		id: "prodRecommendationRefresh_controller_Widget_CatalogEntryRecommendation_Pokemon_3074457345618284081",
+		renderContext: wc.render.getContextById("searchBasedNavigation_context"),
+		url: "",
+		formId: ""
+	
+		,renderContextChangedHandler: function(message, widget) {
+			var controller = this;
+			var renderContext = this.renderContext;
+			var resultType = renderContext.properties["resultType"];
+			if(resultType == "products" || resultType == "both"){
+				widget.refresh(renderContext.properties);
+				console.log("espot refreshing");
+			}
+		}
+			
+		/**
+		 * Clears the progress bar after a successful refresh.
+		 *
+		 * @param {Object} widget The refresh area widget.
+		 */
+		,postRefreshHandler: function(widget) {
+			var controller = this;
+			var renderContext = this.renderContext;
+			cursor_clear();
+			
+			var refreshUrl = controller.url;
+			var emsName = "";
+			var indexOfEMSName = refreshUrl.indexOf("emsName=", 0);
+			if(indexOfEMSName >= 0){
+				emsName = refreshUrl.substring(indexOfEMSName+8);
+				if (emsName.indexOf("&") >= 0) {
+					emsName = emsName.substring(0, emsName.indexOf("&"));
+					emsName = "script_" + emsName;
+				}
+			}
+				
+			if (emsName != "") {
+				if (dojo.byId(emsName) != null) {
+					var espot = dojo.query('.genericESpot',dojo.byId(emsName).parentNode)[0];
+					if (espot != null) {
+						dojo.addClass(espot,'emptyESpot');
+					}
+				}
+			}
+			dojo.publish("CMPageRefreshEvent");
+		}
+	});
+
+
+	dojo.addOnLoad(function() { 
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		resetRequest();
+
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+		dojo.query('div[dojoType]').forEach(function(node, index, arr){
+			addToWidgetsList(node.id);
+		});
+		parseAllWidgets();
+	}); 	
+

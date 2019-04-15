@@ -1,0 +1,376 @@
+var monetateT = new Date().getTime();
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$ContentPlaceHolder1$HeaderControl$upd_loginInCustomer','','tctl00$ContentPlaceHolder1$HeaderControl$upd_ShoppingBag','','tctl00$FooterPlaceHolder$LogInPopupControl$panelLogin','','tctl00$FooterPlaceHolder$LogInPopupControl$panelCreateAccount','','tctl00$FooterPlaceHolder$LogInPopupControl$PanelResetPassword',''], ['ctl00$ContentPlaceHolder1$HeaderControl$btn_updateloginpanel','','ctl00$ContentPlaceHolder1$HeaderControl$btn_updatepanel','','ctl00$FooterPlaceHolder$LogInPopupControl$btnLoginSubmit','','ctl00$FooterPlaceHolder$LogInPopupControl$btnSaveAccount','','ctl00$FooterPlaceHolder$LogInPopupControl$btnResetPswd',''], [], 90, 'ctl00');
+//]]>
+
+
+    function cls() {
+        var o = document.getElementById('ctl00_ContentPlaceHolder1_HeaderControl_SearchTextBoxControl_searchTextBox');
+        if (o.value == o.defaultValue) {
+            o.value = "";
+        }
+    }
+
+
+            var celebrosEnabled = true;
+        
+
+        CelebrosAutoComplete("Hammacher", "ctl00_ContentPlaceHolder1_HeaderControl_SearchTextBoxControl_searchTextBox", onSelect, "Hammacher-ac.celebros.com", "Hammacher-ac.celebros.com");
+        function onSelect(aParameter) {
+            if ((aParameter["SelectedURL"] != "") && (aParameter["IsAutoComplete"])) {
+                window.location = aParameter["SelectedURL"] + "&cmp=cel&trigger=ac&query=" + aParameter["EnteredQuery"];
+            }
+            else {
+                //check if search term is really a SKU to decide on redirection routine:
+                var query = aParameter["SelectedQuery"].trim();
+                var doRedirect = true;
+                if ($.isNumeric(query) && Math.floor(query) == query && query.length == 5) {
+                    var prodUrl = "/product/default.aspx?sku=Search".replace(new RegExp("Search", "g"), query);
+                    prodUrl += "&promo=search";
+                    doRedirect = false;
+                    window.location = prodUrl.toLowerCase();
+                }
+                if (doRedirect) {
+                    var targetLocation = "/search/default.aspx?query=" + encodeURI(aParameter["SelectedQuery"]); // + "&s=1";
+                    if (aParameter["IsAutoComplete"].toString().toLowerCase() == "true") {
+                        targetLocation += "&Trigger=ac";
+                    }
+                    window.location = targetLocation.toLowerCase();
+                }
+            }
+        }
+    
+
+    function clj() {var o = document.getElementById('ctl00_FooterPlaceHolder_FooterControl_JoinEmailTextBoxControl_emailAddressTextBox');if(o.value==o.defaultValue){o.value=""}}
+
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_regEmail"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valEmail"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valPassword"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_comPassword"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd"), document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd"));
+//]]>
+
+
+//<![CDATA[
+var ctl00_FooterPlaceHolder_LogInPopupControl_regEmail = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_regEmail"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_regEmail");
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtEmail";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.errormessage = "Invalid Email";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.validationGroup = "loginForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmail.validationexpression = "^[a-zA-Z-_0-9]+(\\.[a-zA-Z-_0-9]+)*@[a-zA-Z-_0-9]+(\\.\\w+)+$";
+var ctl00_FooterPlaceHolder_LogInPopupControl_valEmail = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_valEmail"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valEmail");
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtEmail";
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.validationGroup = "loginForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_valEmail.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_valPassword = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_valPassword"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valPassword");
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtPassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.validationGroup = "loginForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_valPassword.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtFirstName";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.errormessage = "Contains invalid characters, Only the following characters are allowed: -,#.()_";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator.validationexpression = "^[A-Za-z\\-\\,\\s\\#\\.\\(\\)_]{1,16}?$";
+var ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtFirstName";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtLastName";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.errormessage = "Contains invalid characters, Only the following characters are allowed: -,#.()_";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator.validationexpression = "^[A-Za-z\\-\\,\\s\\\'\\#\\.\\(\\)_]{1,16}?$";
+var ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtLastName";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtCreateAccountEmail";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.errormessage = "Invalid Email";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator.validationexpression = "^[a-zA-Z-_0-9]+(\\.[a-zA-Z-_0-9]+)*@[a-zA-Z-_0-9]+(\\.\\w+)+$";
+var ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtCreateAccountEmail";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid");
+ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtCreateAccountEmail";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator");
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtAccountPassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid");
+ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtAccountPassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid.clientvalidationfunction = "ValidateLoginPassword";
+var ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword");
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtRetypePassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword.initialvalue = "";
+var ctl00_FooterPlaceHolder_LogInPopupControl_comPassword = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_comPassword"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_comPassword");
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtRetypePassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.errormessage = "Retyped password is not the same";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.validationGroup = "createForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.evaluationfunction = "CompareValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.controltocompare = "ctl00_FooterPlaceHolder_LogInPopupControl_txtAccountPassword";
+ctl00_FooterPlaceHolder_LogInPopupControl_comPassword.controlhookup = "ctl00_FooterPlaceHolder_LogInPopupControl_txtAccountPassword";
+var ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd");
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtEmailPswd";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.errormessage = "Invalid Email";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.validationGroup = "resetForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd.validationexpression = "^[a-zA-Z-_0-9]+(\\.[a-zA-Z-_0-9]+)*@[a-zA-Z-_0-9]+(\\.\\w+)+$";
+var ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd = document.all ? document.all["ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd"] : document.getElementById("ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd");
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.controltovalidate = "ctl00_FooterPlaceHolder_LogInPopupControl_txtEmailPswd";
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.errormessage = "This field is required";
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.display = "Dynamic";
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.validationGroup = "resetForm";
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd.initialvalue = "";
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_regEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_regEmail'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valEmail'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valPassword').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valPassword'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRegexValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_firstNameRequiredValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRegexValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_lastNameRequiredValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_EmailRegularExpressionValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_EmailRequiredFieldValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_cvEmailInvalid'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_PasswordRequiredFieldValidator'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_cvPasswordInvalid'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_valRetypePassword'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_comPassword').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_comPassword'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_regEmailPswd'));
+}
+
+document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_FooterPlaceHolder_LogInPopupControl_reqEmailPswd'));
+}
+//]]>
+
+
+            
+            window.universal_variable = {  
+                "version" : "1.1.1", 
+                  
+                "page": {  
+                    "category": "Home page",  
+                    "subcategory": "",  
+                    "environment": "production"  
+                } ,  
+                "user" : { } , 
+                "basket": { 
+                    "currency": "USD",
+                    "subtotal": 0, 
+                    "total" : 0,
+                    "tax" : 0,
+                    "line_items" : [  ]
+                  } 
+            } 
+            
+<!--
+
+s.pageName="Homepage";
+s.server="W108N";
+s.channel="Home";
+s.pageType="";
+s.prop1="";
+s.prop2="";
+s.prop3="";
+s.prop4="";
+s.prop5="Home";
+s.prop6="";
+s.prop7="";
+/* Conversion Variables */
+s.campaign="";
+s.state="";
+s.zip="";
+s.events="";
+s.products="";
+s.purchaseID="";
+s.eVar2="";
+s.eVar3="";
+s.eVar4="";
+s.eVar5="";
+s.eVar6="";
+s.eVar7="";
+s.eVar8="";
+s.eVar9="";
+s.eVar10="";
+s.eVar11="";
+s.eVar12="";
+s.eVar13="";
+s.eVar14="";
+s.eVar15="";
+s.eVar16="";
+s.eVar17="";
+s.eVar18="W108N";
+s.eVar19="";
+s.eVar20="";
+s.eVar21="";
+s.eVar22="";
+s.eVar23="";
+s.eVar24="212.90.63.178, 95.101.23.76";
+s.eVar25="D=User-Agent";
+s.eVar26="CTRL";
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//-->
+<!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//-->
+
+
+        function downloadJSAtOnload() {
+            $src = $('[id$=hdnLazyLoad]').val();
+
+            if ($src) {
+                $src.split(',').forEach(function (src) {
+                    insertScript(src);
+                });
+            }
+
+        }
+
+        function insertScript(src, callback) {
+            var s = document.createElement("script");
+            s.type = 'text/javascript';
+            s.src = src;
+            s.async = 'true'; 
+            if (callback) {
+                s.onload = callback;
+            }
+            document.body.appendChild(s);
+        }
+
+        //window.onload = downloadJSAtOnload;
+        if (window.addEventListener) {
+            window.addEventListener("load", downloadJSAtOnload, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onload", downloadJSAtOnload);
+        }
+        else {
+            window.onload = downloadJSAtOnload;
+        }
+    

@@ -1,0 +1,253 @@
+
+  window.atwlLoginRecaptchaCallback = function( token ) {
+    $( "#atwlLogin .js-recaptcha-token" ).val(token);
+    $( "#atwlLogin .js-recaptcha-token" ).click();
+    for (i = 0; i < ___grecaptcha_cfg.count; i++) { 
+        grecaptcha.reset(i);
+    }
+  };
+
+
+    CDNstatic = 'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com';
+    CDNbrandLogo = 'https://c1521972.ssl.cf0.rackcdn.com';
+
+    // Object.keys polyfill to work around IE11 issue
+    Object.keys = function(obj) {
+        var keys = [];
+
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                keys.push(i);
+            }
+        }
+
+        return keys;
+    };
+
+    var registerScriptLoadCallback;
+    (function() {
+        var scriptsLoaded = false;
+        var callbacks = [];
+        var onScriptLoad = function() {
+            for(var i = 0; i < callbacks.length; i ++) {
+                callbacks[i]();
+            }
+        };
+        registerScriptLoadCallback = function(callback) {
+            if(scriptsLoaded) {
+                callback();
+            }
+            else {
+                callbacks.push( callback );
+            }
+        };
+        registerScriptLoadCallback(function() {
+            scriptsLoaded = true;
+        });
+
+        $script([
+            'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com/releases/21953/assets/build/tms/js/app.min.js',
+            'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com/releases/21953/includes/js/A573G988.js',
+        ], 'appJs');
+
+        $script.ready('appJs', function() {
+            $.browser = {}; /**/
+            /**/
+            $.browser.msie = false;
+            $.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                $.browser.msie = true;
+                $.browser.version = RegExp.$1;
+            }
+            $script([
+                'https://apis.google.com/js/platform.js',
+                'https://www.googleadservices.com/pagead/conversion_async.js',
+                'https://google-analytics.com/ga.js',
+                'https://www.recaptcha.net/recaptcha/api.js',
+                
+                 'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com/releases/21953/includes/js/common.min.js',
+                
+                
+                 'https://cdn.listrakbi.com/scripts/script.js?m=FbCLSn7Ez6Nk&v=1',
+                
+                'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com/releases/21953/includes/js/endeca-auto-suggest.min.js',
+                //Template specific includes
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                 'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com/releases/21953/includes/js/addToCart-v2.min.js',
+                
+            ], 'scripts');
+        });
+
+        $script.ready('scripts', function() {
+            onScriptLoad();
+        });
+        
+    })();
+    
+    
+    var brandSmallLogoTpl = 'https://c1521972.ssl.cf0.rackcdn.com/img/brands/[BRANDNAME].gif';
+    registerScriptLoadCallback(function() {
+        jQuery(document).ready( function() {
+            jQuery('.js-endeca-auto-suggest').endecaSearchSuggest();
+        });
+    });
+    
+
+    var vehicleInit = false,
+        selectedSteps = [],
+        contentForm,
+        CDNpath = 'https://1c2a8a2161d644d95009-22d26b38e78c173d82b3a9a01c774ffa.ssl.cf1.rackcdn.com',
+        CDNproduct = 'https://3a663eb0fef48c6d2d60-a88f8ebfcdb877ad223e888bfcb7f7ec.ssl.cf1.rackcdn.com',
+        checkoutEndpoint = '/includes/checkout.cgi',
+        online_display = 'online',
+        offline_display = 'offline',
+        enable_invitation = false,
+        define_url = '',
+        pageTracker,
+        total=0,
+        affirmConfig = {
+            public_api_key:  "IAXWN05KOTAU2I9T",
+            script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+        }
+        , snapEngageWidgets = [{"id":"408c530e-a024-4e3e-ac25-d567f5182eec","label":"Sales","default":1},{"id":"5b7bfd82-1048-4b70-a337-08b4bbf882ee","label":"Customer Service"},{"id":"531a62bb-1d57-46a5-902f-e57db5d5e1ce","label":"Billing"}]
+    , isSales = false
+    , currentPageURL = "/"
+        , getChat = 0
+    , siteInitSelectSteps = []
+    , headInitSelectSteps = []
+    , headVehicleMenu = [{"URL":"/","label":"Home"},{"children":[{"URL":"c-1-bmw-exterior-body","label":"Exterior / Body"},{"URL":"c-10-bmw-lighting","label":"Lighting"},{"URL":"c-11-bmw-maintenance-filters","label":"Maintenance"},{"URL":"c-13-bmw-suspension","label":"Suspension"},{"URL":"c-15-bmw-engine-chips","label":"Engine Software"},{"URL":"c-16-bmw-wheels","label":"Wheels"},{"URL":"c-17-bmw-clothing-gifts","label":"Gifts & Clothing"},{"URL":"c-174-bmw-tools","label":"Tools"},{"URL":"c-2-bmw-brakes","label":"Brakes"},{"URL":"c-21-bmw-car-care-accessories","label":"Car Care & Accessories"},{"URL":"c-3-bmw-drivetrain","label":"Drivetrain"},{"URL":"c-4-bmw-engine-parts","label":"Engine Parts"},{"URL":"c-463-bmw-track-safety","label":"Track Safety"},{"URL":"c-5-bmw-exhaust-systems-and-parts","label":"Exhaust"},{"URL":"c-8-bmw-intake","label":"Intake"},{"URL":"c-9-bmw-interior","label":"Interior"}],"label":"Categories"},{"children":[{"URL":"bmw-1-series","children":[{"URL":"/BMW-E82","label":"(E82) 1-series Coupe 2008+"},{"URL":"/BMW-E88","label":"(E88) 1-series Convertible 2008+"}],"label":"BMW 1 Series"},{"URL":"bmw-2-series","children":[{"URL":"/BMW-F22","label":"(F22) 2-Series Coupe 2014+"},{"URL":"/BMW-F23","label":"(F23) 2-Series Convertible 2014+"},{"URL":"/BMW-F87-M2","label":"(F87) M2 2016+"},{"URL":"/BMW-F87-M2-Competition","label":"F87 M2 (2016+)"}],"label":"BMW 2 Series"},{"URL":"bmw-3-series","children":[{"URL":"/BMW-E21","label":"(E21) 3-Series 1977-1983"},{"URL":"/BMW-E30-Parts","label":"(E30) 3-series 1984-1991"},{"URL":"/BMW-E30-M3","label":"(E30) M3 1988-1991"},{"URL":"/BMW-E36-Parts","label":"(E36) 3-series 1992-1999"},{"URL":"/BMW-E36-M3-Parts","label":"(E36) M3 1995-1999"},{"URL":"/BMW-E46-Parts","label":"(E46) 3-Series 1999-2005"},{"URL":"/BMW-E46-M3-Parts","label":"(E46) M3 2001-2006"},{"URL":"/BMW-E90-Parts","label":"(E90) 3-Series Sedan 2006-2011"},{"URL":"/BMW-E90-M3","label":"(E90) M3 Sedan 2008-2013"},{"URL":"/BMW-E91","label":"(E91) 3-Series Touring 2006-2013"},{"URL":"/BMW-E92-Parts","label":"(E92) 3-Series Coupe 2007-2013"},{"URL":"/BMW-E92-M3","label":"(E92) M3 Coupe 2008-2013"},{"URL":"/BMW-E93","label":"(E93) 3-Series Convertible 2007-2013"},{"URL":"/BMW-E93-M3","label":"(E93) M3 Convertible 2008-2013"},{"URL":"/BMW-F30-Parts","label":"(F30) 3-Series Sedan 2012+"},{"URL":"/BMW-F31","label":"(F31) 3-Series Touring 2014+"},{"URL":"/BMW-F80","label":"(F80) M3 2015+"},{"URL":"/BMW-G20","label":"(G20) 3-Series Sedan 2019+"}],"label":"BMW 3 Series"},{"URL":"bmw-4-series","children":[{"URL":"/BMW-F32","label":"(F32) 4-Series Coupe 2014+"},{"URL":"/BMW-F33","label":"(F33) 4-Series Convertible 2015+"},{"URL":"/BMW-F34","label":"(F34) 3-Series Gran Turismo 2014+"},{"URL":"/BMW-F82","label":"(F82) M4 Coupe 2015+"},{"URL":"/BMW-F83","label":"(F83) M4 Convertible 2015+"},{"URL":"/BMW-F36","label":"(F36) 4-Series Gran Coupe 2015+"}],"label":"BMW 4 Series"},{"URL":"bmw-5-series","children":[{"URL":"/BMW-E34-M5","label":"(E34) M5 1991-1993"},{"URL":"/BMW-E39-M5-Parts","label":"(E39) M5 2000-2003"},{"URL":"/BMW-E60-M5","label":"(E60) M5 2006-2010"},{"URL":"/BMW-E28","label":"(E28) 5-Series 1982-1988"},{"URL":"/BMW-E34","label":"(E34) 5-Series 1989-1995"},{"URL":"/BMW-E39-Parts","label":"(E39) 5-Series 1996-2003"},{"URL":"/BMW-E60","label":"(E60) 5-Series Sedan 2004-2010"},{"URL":"/BMW-E61","label":"(E61) 5-Series Touring 2006-2010"},{"URL":"/BMW-F10-Parts","label":"(F10) 5-Series 2011+"},{"URL":"/BMW-F07","label":"(F07) 5-Series GT 2010+"},{"URL":"/BMW-F90-M5","label":"(F90) M5 2018+"},{"URL":"/BMW-G30","label":"(G30) 5-Series 2017+"}],"label":"BMW 5 Series"},{"URL":"bmw-6-series","children":[{"URL":"/BMW-E24","label":"(E24) 6-Series 1977-1989"},{"URL":"/BMW-E63","label":"(E63) 6-Series Coupe 2004-2010"},{"URL":"/BMW-E64","label":"(E64) 6-Series Convertible 2004-2010"},{"URL":"/BMW-F06","label":"(F06) 6-Series Gran Coupe 2013+"},{"URL":"/BMW-F12","label":"(F12) 6-Series Convertible 2012+"},{"URL":"/BMW-F13","label":"(F13) 6-Series Coupe 2012+"},{"URL":"/BMW-G32-640ixDrive","label":"(G32) 6-Series Gran Turismo 2018+"}],"label":"BMW 6 Series"},{"URL":"bmw-7-series","children":[{"URL":"/BMW-E23","label":"(E23) 7-Series 1978-1987"},{"URL":"/BMW-E32","label":"(E32) 7-Series 1988-1994"},{"URL":"/BMW-E38","label":"(E38) 7-Series 1995-2001"},{"URL":"/BMW-E65","label":"(E65) 7-Series SWB 2002-2007"},{"URL":"/BMW-E66","label":"(E66) 7-Series LWB 2002-2007"},{"URL":"/BMW-F01","label":"(F01) 7-Series SWB 2009+"},{"URL":"/BMW-F02","label":"(F02) 7-Series LWB 2009+"},{"URL":"/BMW-G11","label":"(G11) 7-Series 2016+"}],"label":"BMW 7 Series"},{"URL":"/BMW-E31","label":"BMW 8 Series"},{"URL":"bmw-classics","children":[{"URL":"/BMW-E10-1602","label":"1602"},{"URL":"/BMW-E3-2500","label":"2500"},{"URL":"/BMW-E3-2800","label":"2800"},{"URL":"/BMW-E3-30S","label":"3.0S"},{"URL":"/BMW-E3-30Si","label":"3.0Si"},{"URL":"/BMW-E3-Bavaria","label":"Bavaria"},{"URL":"/BMW-E9-2800CS","label":"2800CS"},{"URL":"/BMW-E9-30CS","label":"3.0CS"},{"URL":"/BMW-E10-2002","label":"2002"},{"URL":"/BMW-E10-2002tii","label":"2002tii"},{"URL":"/BMW-E12-528i","label":"(E12) 528i 1977-1981"},{"URL":"/BMW-E12-530i","label":"(E12) 530i 1975-1978"},{"URL":"/BMW-G15","label":"G15 8-Series Coupe 2019+"},{"URL":"/BMW-G14","label":"G14 8-Series Convertible 2019+"}],"label":"BMW Classics"},{"URL":"bmw-x-series","children":[{"URL":"/BMW-E84","label":"(E84) X1 Series 2013+"},{"URL":"/BMW-X3","label":"(E83) X3 2004-2010"},{"URL":"/BMW-X3-F25","label":"(F25) X3 2011+"},{"URL":"/BMW-F26","label":"(F26) X4 2015+"},{"URL":"/BMW-E53","label":"(E53) X5 2000-2006"},{"URL":"/BMW-E70","label":"(E70) X5 2007-2013"},{"URL":"/BMW-F15","label":"(F15) X5 2014+"},{"URL":"/BMW-F85","label":"(F85) X5 M 2015+"},{"URL":"/BMW-E71","label":"(E71) X6 2008+"},{"URL":"/BMW-E72","label":"(E72) X6 ActiveHybrid (2010)"},{"URL":"/BMW-F16","label":"(F16) X6 2015+"},{"URL":"/BMW-F86","label":"(F86) X6 M 2015+"},{"URL":"/BMW-F48-X1","label":"(F48) X1 2016+"},{"URL":"/BMW-F25-X3xDrive28i","label":"(F25) X3 2011+"},{"URL":"/BMW-F39-X2","label":"(F39) X2 2018+"},{"URL":"/BMW-G01-X3","label":"(G01) X3 2018+"}],"label":"BMW X Series"},{"URL":"bmw-z-series","children":[{"URL":"/BMW-Z3","label":"(E36/7) Z3 1997-2002"},{"URL":"/BMW-MZ4","label":"(E85) Z4 M Roadster"},{"URL":"/BMW-E85","label":"(E85/E86/E89) Z4 2003+"},{"URL":"/BMW-E86","label":"(E86) Z4 M Coupe"},{"URL":"/BMW-Z8","label":"(E52) Z8 2000-2003"},{"URL":"/BMW-G29","label":"G29 Z4 Roadster 2019+"}],"label":"BMW Z Series"},{"URL":"bmw-i-series","children":[{"URL":"/BMW-I01-i3","label":"(I01) i3 2014+"},{"URL":"/BMW-I12-i8","label":"(I12) i8 2014+"}],"label":"BMW i Series"},{"URL":"/BMW-MINI","label":"MINI Cooper and Cooper S"}],"label":"Choose BMW"},{"URL":"/t-racing-home","children":[{"URL":"/t-racing-home","label":"Racing Home"},{"URL":"/t-race-news","label":"Racing News"},{"URL":"/t-race-schedule","label":"Racing Schedule"},{"URL":"/t-race-photo-gallery","label":"Racing Photo Gallery"}],"label":"Racing"},{"children":[{"URL":"/t-photo-gallery-home","label":"Photo Gallery"},{"URL":"/t-wallpaper","label":"Wallpaper"},{"children":[{"URL":"/t-project-i12-i8","label":"Project i8"},{"URL":"/t-project_F80_m3","label":"Project F80 M3"},{"URL":"/t-project_F82_m4","label":"Turner F82 M4"},{"URL":"/t-project_F85_X5M","label":"Turner X5 M"},{"URL":"/t-project-f22-228i","label":"Turner F22 2 Series"},{"URL":"/t-project_F13_m6","label":"Turner F13 M6"},{"URL":"/t-project_F10_m5","label":"Turner F10 M5"},{"URL":"/t-project_F30_335","label":"Turner F30 335i"},{"URL":"/t-project-E90-E92-M3","label":"Turner E9X M3"},{"URL":"/t-project_e92_335i_n54","label":"Turner E92 335i"},{"URL":"/t-project-e82-128i-coupe","label":"Turner E82 1 Series"},{"URL":"/t-project_activeE","label":"Turner ActiveE (100% Electric)"},{"URL":"/t-project-e46-m3","label":"Turner E46 M3"},{"URL":"/t-project-e46-330i-zhp","label":"Turner E46 330i ZHP"},{"URL":"/t-project-e36-m3-supercharged","label":"Turner E36 M3"},{"URL":"/t-project-e30-m3","label":"Turner E30 M3"},{"URL":"/t-project-mini","label":"Turner MINI Cooper S"},{"URL":"/t-project-mclaren","label":"McLaren F1"},{"URL":"/t-turner_lime_rock_e92_m3_project_car","label":"Turner E92 M3 Lime Rock"},{"URL":"/t-project_F80_M3_Silverstone","label":"Turner F80 M3 Silverstone"}],"label":"Project Cars"},{"URL":"/t-bmw-videos","label":"Video Gallery"}],"label":"Gallery"},{"children":[{"URL":"/t-project-i12-i8","label":"Turner BMW i8"},{"URL":"/t-project_F80_m3","label":"Turner BMW F80 M3"},{"URL":"/t-project_F82_m4","label":"Turner BMW F82 M4"},{"URL":"/t-project_F85_X5M","label":"Turner BMW X5 M"},{"URL":"/t-project-f22-228i","label":"Turner BMW F22 2 Series"},{"URL":"/t-project_F13_m6","label":"Turner BMW F13 M6"},{"URL":"/t-project_F10_m5","label":"Turner BMW F10 M5"},{"URL":"/t-project_F30_335","label":"Turner BMW F30 335i"},{"URL":"/t-project-E90-E92-M3","label":"Turner BMW E9X M3"},{"URL":"/t-project_e92_335i_n54","label":"Turner BMW E92 335i"},{"URL":"/t-project-e82-128i-coupe","label":"Turner BMW E82 1 Series"},{"URL":"/t-project_activeE","label":"Turner BMW ActiveE"},{"URL":"/t-project-e46-m3","label":"Turner BMW E46 M3"},{"URL":"/t-project-e46-330i-zhp","label":"Turner BMW E46 330i ZHP"},{"URL":"/t-project-e36-m3-supercharged","label":"Turner BMW E36 M3"},{"URL":"/t-project-e30-m3","label":"Turner BMW E30 M3"},{"URL":"/t-project-mini","label":"Turner MINI Cooper S"},{"URL":"/t-project-mclaren","label":"McLaren F1"},{"URL":"/t-turner_lime_rock_e92_m3_project_car","label":"Turner BMW E92 M3 Lime Rock"},{"URL":"/t-project_F80_M3_Silverstone","label":"Turner BMW F80 M3 Silverstone"},{"URL":"/t-keys_to_performance","label":"Turner Keys To Performance Library"},{"URL":"/t-TMS_Weekly","label":"Turner Motorsport Weekly"}],"label":"Projects"},{"URL":"/t-about","children":[{"URL":"/t-about","label":"About Turner Motorsport"},{"URL":"/t-customer-feedback","label":"Customer Feedback"},{"URL":"/t-about#team","label":"The Turner Team"},{"URL":"/t-returns","label":"Returns Policy"},{"URL":"/t-shipping","label":"Shipping Info"},{"URL":"/t-contact","label":"Contact Us"},{"URL":"/t-privacy","label":"Privacy Policy"},{"URL":"/t-security","label":"Security Policy"},{"URL":"/t-faq","label":"FAQs"}],"label":"About Us"}]
+    , siteRefreshOnCompleteVehicle = Boolean(0)
+    , chatInitSelectSteps = []
+    , selectedVehicleGroupIconURL
+        , searchResultCountDropDownList = ''
+        , searchSortingDropDownList = ''
+        , customerLoggedIn = false
+    , customerEmail = ""
+        , searchEngine = "";
+
+    
+
+	
+
+    
+
+    registerScriptLoadCallback(function() {
+        contentForm = $('#contentform');
+        pageTracker = new PageTracker({"__CLASS__":"Website::PageTracker","adWordsAccounts":[{"ID":1068045422,"label":"yUB9CKylQxDuqKT9Aw"}],"ebayMerchantID":null,"isInternalUser":0});
+        pageTracker.track();
+        
+        checkAutoWL();
+        
+        if ($('#atwlLogin #nc-password').length) {
+            setupPasswordFields('#atwlLogin #nc-password');
+        }
+    });
+
+	// Array.from polyfill
+	if (!Array.from) {
+		Array.from = (function () {
+			var toStr = Object.prototype.toString;
+			var isCallable = function (fn) {
+				return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+			};
+			var toInteger = function (value) {
+				var number = Number(value);
+				if (isNaN(number)) { return 0; }
+				if (number === 0 || !isFinite(number)) { return number; }
+				return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+			};
+			var maxSafeInteger = Math.pow(2, 53) - 1;
+			var toLength = function (value) {
+				var len = toInteger(value);
+				return Math.min(Math.max(len, 0), maxSafeInteger);
+			};
+			return function from(arrayLike/*, mapFn, thisArg */) {
+				var C = this;
+				var items = Object(arrayLike);
+				if (arrayLike == null) {
+					throw new TypeError('Array.from requires an array-like object - not null or undefined');
+				}
+				var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+				var T;
+				if (typeof mapFn !== 'undefined') {
+					if (!isCallable(mapFn)) {
+						throw new TypeError('Array.from: when provided, the second argument must be a function');
+					}
+					if (arguments.length > 2) {
+						T = arguments[2];
+					}
+				}
+				var len = toLength(items.length);
+				var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+				var k = 0;
+				var kValue;
+				while (k < len) {
+					kValue = items[k];
+					if (mapFn) {
+						A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+					} else {
+						A[k] = kValue;
+					}
+					k += 1;
+				}
+				A.length = len;
+				return A;
+			};
+		}());
+	}
+	
+	// select both source and image elements -> more on this later
+	var images = Array.from(window.document.querySelectorAll("source, img"));
+	// Some config parameters for the IntersectionObserve
+	var config = {
+		// If the image gets within 50px in the Y axis, start the download.
+		rootMargin: "50px 0px",
+		threshold: 0.01
+	};
+	var observer = void 0;
+	var onIntersection = function onIntersection(entries) {
+		entries.forEach(function(entry) {
+			if (entry.intersectionRatio > 0) {
+				// Stop watching and load the image
+				observer.unobserve(entry.target);
+				// call our method: preloadImage
+				preloadImage(entry.target);
+			}
+		});
+	};
+	// Replace the data-src attribute with the value of the data-src attribute
+	var preloadImage = function preloadImage(element) {
+		if (element.dataset && element.dataset.src) {
+			element.src = element.dataset.src;
+			element.removeAttribute("data-src");
+		}
+		if (element.dataset && element.dataset.srcset) {
+			element.srcset = element.dataset.srcset;
+			element.removeAttribute("data-srcset");
+		}
+	};
+	// If we don't have support for intersection observer, load the images immediately
+	if (!("IntersectionObserver" in window)) {
+		images.forEach(function(image) {
+			return preloadImage(image);
+		});
+	} else {
+		// It is supported, load the images by calling our method: onIntersection
+		observer = new IntersectionObserver(onIntersection, config);
+		images.forEach(function(image) {
+			observer.observe(image);
+		});
+	}
+

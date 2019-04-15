@@ -1,0 +1,373 @@
+var _0x8947=["\x6D\x44\x63\x4E\x69\x56\x65\x44"];
+
+//<![CDATA[
+    var BLANK_URL = 'https://www.aquacave.com/js/blank.html';
+    var BLANK_IMG = 'https://www.aquacave.com/js/spacer.gif';
+    var SKIN_URL = 'https://www.aquacave.com/skin/frontend/default/health-and-beauty/';
+//]]>
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.aquacave.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["AF","AL","DZ","AS","AD","AO","AI","AQ","AG","AR","AM","AW","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BZ","BJ","BM","BT","BO","BA","BW","BV","BR","IO","VG","BN","BG","BF","BI","KH","CM","CV","KY","CF","TD","CL","CN","CX","CC","CO","KM","CG","CD","CK","CR","HR","CU","CY","CZ","CI","DK","DJ","DM","DO","EC","EG","SV","GQ","ER","EE","ET","FK","FO","FJ","FI","FR","GF","PF","TF","GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GG","GN","GW","GY","HT","HM","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM","JP","JE","JO","KZ","KE","KI","KW","KG","LA","LV","LB","LS","LR","LY","LI","LT","LU","MO","MK","MG","MW","MY","MV","ML","MT","MH","MQ","MR","MU","YT","MX","FM","MD","MC","MN","ME","MS","MA","MZ","MM","NA","NR","NP","NL","AN","NC","NZ","NI","NE","NG","NU","NF","KP","MP","NO","OM","PK","PW","PS","PA","PG","PY","PE","PH","PN","PL","PT","PR","QA","RO","RU","RW","RE","BL","SH","KN","LC","MF","PM","VC","WS","SM","SA","SN","RS","SC","SL","SG","SK","SI","SB","SO","ZA","GS","KR","ES","LK","SD","SR","SJ","SZ","SE","CH","SY","ST","TW","TJ","TZ","TH","TL","TG","TK","TO","TT","TN","TR","TM","TC","TV","UM","VI","UG","UA","AE","GB","UY","UZ","VU","VA","VE","VN","WF","EH","YE","ZM","ZW","AX"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-454017-2']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+    //<![CDATA[
+    window.HDUSeed = '2d3207cda25f825bab8111ea86190c6e';
+    window.HDUSeedIntId = setInterval(function() {
+        if (document.observe) {
+            document.observe('dom:loaded', function() {
+                for (var i = 0; i < document.forms.length; i++) {
+                    if (document.forms[i].getAttribute('action') && document.forms[i].getAttribute('action').match('contacts/index/post')) {
+                        var el = document.createElement('input');
+                        el.type = ('hidden');
+                        el.name = 'hdu_seed';
+                        el.value = window.HDUSeed;
+                        document.forms[i].appendChild(el);
+
+                    }
+                }
+            });
+            clearInterval(window.HDUSeedIntId)
+        }
+    }, 100)
+    //]]>
+
+
+	MagicZoomPlus.options = {
+		'caption-source':'span',
+		'zoom-width':'300',
+		'zoom-height':'300',
+		'zoom-position':'right',
+		'zoom-align':'top',
+		'zoom-distance':15,
+		'expand-size':'fit-screen',
+		'expand-position':'center',
+		'expand-align':'screen',
+		'expand-effect':'back',
+		'restore-effect':'linear',
+		'expand-speed':500,
+		'restore-speed':500,
+		'expand-trigger':'click',
+		'expand-trigger-delay':200,
+		'restore-trigger':'auto',
+		'keep-thumbnail':true,
+		'opacity':50,
+		'opacity-reverse':false,
+		'zoom-fade':true,
+		'zoom-window-effect':'shadow',
+		'zoom-fade-in-speed':200,
+		'zoom-fade-out-speed':200,
+		'fps':25,
+		'smoothing':true,
+		'smoothing-speed':40,
+		'pan-zoom':true,
+		'selectors-change':'click',
+		'selectors-class':'',
+		'preload-selectors-small':true,
+		'preload-selectors-big':false,
+		'selectors-effect':'dissolve',
+		'selectors-effect-speed':400,
+		'selectors-mouseover-delay':60,
+		'initialize-on':'load',
+		'click-to-activate':false,
+		'click-to-deactivate':false,
+		'show-loading':true,
+		'loading-msg':'Loading zoom...',
+		'loading-opacity':75,
+		'loading-position-x':-1,
+		'loading-position-y':-1,
+		'entire-image':false,
+		'show-title':'top',
+		'caption-width':300,
+		'caption-height':300,
+		'caption-position':'bottom',
+		'caption-speed':250,
+		'right-click':'false',
+		'background-opacity':30,
+		'background-color':'#000000',
+		'background-speed':200,
+		'buttons':'show',
+		'buttons-display':'previous, next, close',
+		'buttons-position':'auto',
+		'always-show-zoom':false,
+		'drag-mode':false,
+		'move-on-click':true,
+		'x':-1,
+		'y':-1,
+		'preserve-position':false,
+		'fit-zoom-window':true,
+		'slideshow-effect':'dissolve',
+		'slideshow-loop':true,
+		'slideshow-speed':800,
+		'z-index':10001,
+		'keyboard':true,
+		'keyboard-ctrl':false,
+		'hint':true,
+		'hint-text':'Zoom',
+		'hint-position':'tl',
+		'hint-opacity':75,
+		'disable-expand':false,
+		'disable-zoom':false
+	}
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+//<![CDATA[
+  var gts = gts || [];
+
+  gts.push(["id", "38919"]);
+  gts.push(["google_base_subaccount_id", "482093"]);
+
+
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+//]]>
+
+
+    var slider_1389575295_opts = {
+                slideResize:        true,
+        containerResize:    false,
+        fit:                1,
+                fx:                 'scrollLeft',
+        pause:              1,
+        pauseOnPagerHover:  1,
+        random:             0,
+        timeout:            4000,
+        speed:              400,
+        pager:              '#slider_1389575295_pager',
+        next:               '#stripNavR_1389575295',
+        prev:               '#stripNavL_1389575295'
+    }
+    jqAdvSlider(document).ready(function() {
+                jqAdvSlider('#slider_1389575295_content').before('<div id="slider_1389575295_pager" class="stripNav">');
+                        function slider_1389575295_resize() {
+            var baseWidth   = 568;
+            var baseHeight  = 214;
+            var xWidth  = jqAdvSlider('#slider_1389575295_content').parent().width();
+            var xHeight = baseHeight * xWidth / baseWidth;
+            var arrowLeft = jqAdvSlider('#stripNavL_1389575295');
+            if (typeof arrowLeft != 'undefined')
+                var arrowLeftTop = xHeight / 2 - arrowLeft.height() / 2;
+            var arrowRight = jqAdvSlider('#stripNavR_1389575295');
+            if (typeof arrowRight != 'undefined')
+                var arrowRightTop = xHeight / 2 - arrowRight.height() / 2;
+            slider_1389575295_opts.width = xWidth;
+            slider_1389575295_opts.height = xHeight;
+            jqAdvSlider('#slider_1389575295_content img').each(function() {
+                var xSliderImg = jqAdvSlider(this);
+                xSliderImg.attr('width', xWidth);
+                xSliderImg.attr('height', xHeight);
+            });
+            jqAdvSlider('#slider_1389575295_content').cycle('destroy');
+            jqAdvSlider('#slider_1389575295_content').cycle(slider_1389575295_opts);
+            if (typeof arrowLeft != 'undefined')
+                arrowLeft.css('top', arrowLeftTop);
+            if (typeof arrowRight != 'undefined')
+                arrowRight.css('top', arrowRightTop);
+        }
+        slider_1389575295_resize();
+        jqAdvSlider(window).resize(function(){
+            slider_1389575295_resize();
+        });
+            });
+
+// <![CDATA[
+jQueryAC(window).load(function() { jQueryAC('.slider-wrap').show('fade', 100); });
+// ]]>
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+            searchForm.initAutocomplete('https://www.aquacave.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+    <!--
+    Event.observe(window, 'load', function () {
+        new Advancednewsletter($('advancednewsletter-button-1'), 'https://www.aquacave.com/advancednewsletter/index/subscribeajax/an_category_id/0/');
+    });
+    //-->
+
+var ANS_customer_id="2ec7d07a-d8d9-43c8-8f7a-0bf5a93440de";
+var se83nk=document.createElement("script");se83nk.type="text/javascript";var se83nks=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/04i58r0npnukg0q05qtkx7h5pl/safe-standard.js?ps_h=83nk&ps_t="+new Date().getTime();setTimeout("se83nk.src=se83nks;document.getElementById('sd83nk').appendChild(se83nk)",1)
+
+			//<![CDATA[
+			var ajaxcartLogin = new AjaxcartLogin({
+				login: 'https://www.aquacave.com/ajaxcart/index/login/',
+				post_login: 'https://www.aquacave.com/ajaxcart/index/loginPost/',
+				logout: 'https://www.aquacave.com/customer/account/logout/',
+				logout_text: 'Log Out'
+			});
+			//]]>
+			
+					
+					var productMinMax = new Array();productMinMax['4905'] = new Array();productMinMax['4905']['min'] = 1;productMinMax['4905']['max'] = 9999999999;productMinMax['7654'] = new Array();productMinMax['7654']['min'] = 1;productMinMax['7654']['max'] = 9999999999;productMinMax['7638'] = new Array();productMinMax['7638']['min'] = 1;productMinMax['7638']['max'] = 9999999999;productMinMax['7520'] = new Array();productMinMax['7520']['min'] = 1;productMinMax['7520']['max'] = 9999999999;productMinMax['7484'] = new Array();productMinMax['7484']['min'] = 1;productMinMax['7484']['max'] = 9999999999;productMinMax['6749'] = new Array();productMinMax['6749']['min'] = 1;productMinMax['6749']['max'] = 9999999999;productMinMax['6523'] = new Array();productMinMax['6523']['min'] = 1;productMinMax['6523']['max'] = 9999999999;productMinMax['6298'] = new Array();productMinMax['6298']['min'] = 1;productMinMax['6298']['max'] = 9999999999;productMinMax['6020'] = new Array();productMinMax['6020']['min'] = 1;productMinMax['6020']['max'] = 9999999999;productMinMax['5925'] = new Array();productMinMax['5925']['min'] = 1;productMinMax['5925']['max'] = 9999999999;productMinMax['5685'] = new Array();productMinMax['5685']['min'] = 1;productMinMax['5685']['max'] = 9999999999;productMinMax['7675'] = new Array();productMinMax['7675']['min'] = 1;productMinMax['7675']['max'] = 9999999999;
+
+					//<![CDATA[
+					//Preload loader image
+					var images = new Array();
+					images[0] = new Image();
+					images[0].src = "https://www.aquacave.com/skin/frontend/default/default/ajaxcart/images/opc-ajax-loader.gif";var dragDropProducts = new Array();ajaxcartLogin.isLoggedIn = false;
+				  ajaxcartLogin.defaultWelcomeMsg = 'Welcome to AquaCave!';var ajaxcart = new Ajaxcart({
+					urls: {
+						initialize: 'https://www.aquacave.com/ajaxcart/index/init/',
+						updateCart: 'https://www.aquacave.com/ajaxcart/cart/updatePost/form_key/E6wvmPkBXsvuvMok/',
+						clearCart: 'https://www.aquacave.com/ajaxcart/cart/clearCart/',
+						addWishlistItemToCart: 'https://www.aquacave.com/wishlist/index/cart/item/%item%/uenc/aHR0cHM6Ly93d3cuYXF1YWNhdmUuY29tLz9fX19TSUQ9VQ,,/form_key/E6wvmPkBXsvuvMok/',
+						addAllItemsToCart: 'https://www.aquacave.com/ajaxcart/wishlist/allcart/'
+					},
+					configuration: {
+						show_notification: '1',
+						autohide_notification_time: '10',
+						notification_bkg: '0',
+						notification_wrapper_bkg: '255, 255, 255',
+						box_shadow_color: '35, 169, 247',
+						is_mobile: false
+					},
+					qtys: {
+						category_qty: '0',
+						category_qty_buttons: '0',				
+						product_qty_buttons: '1',
+						popup_qty_buttons: '1',
+						cartpage_qty_buttons: '1',
+						sidebar_qty: '1',
+						wishlist_qty_buttons: '0'
+					},
+					dragdrop: {
+						dragdrop_enable_category : '0',
+						dragdrop_drop_effect : 'puff',
+						tooltip_enable : '0'
+					}
+				});
+				
+				ajaxcart.ajaxCartLoadingHtml = '<span id="ajax-cart-please-wait" class="please-wait" ><img src="https://www.aquacave.com/skin/frontend/default/default/ajaxcart/images/opc-ajax-loader.gif" alt="Please wait..." title="Please wait..." class="v-middle" /><span>Please wait...</span></span>';
+				
+				Translator.add('The requested quantity is not available.','The requested quantity is not available.');
+				Translator.add('The minimum quantity allowed for purchase is ','The minimum quantity allowed for purchase is ');
+				Translator.add('The maximum quantity allowed for purchase is ','The maximum quantity allowed for purchase is ');
+				Translator.add('Are you sure you would like to remove this item from the shopping cart?','Are you sure you would like to remove this item from the shopping cart?');
+				Translator.add('Are you sure you would like to remove this item from the wishlist?','Are you sure you would like to remove this item from the wishlist?');
+				Translator.add('Update Cart','Update Cart');
+				Translator.add('Empty Cart','Empty Cart');
+				Translator.add('Are you sure you would like to remove all the items from the shopping cart?','Are you sure you would like to remove all the items from the shopping cart?');
+				Translator.add('Update Wishlist','Update Wishlist');				
+				
+				Translator.add('Drag me','DRAG ME');
+				Translator.add('Buy Me!','BUY ME');
+				Translator.add('Wish Me!','WISH ME');
+				Translator.add('Compare Me!','COMPARE ME');
+			//]]>
+			
+
+					var disablePopupProductLoader = false;
+					var cartLink = false;
+					var wishlistLink = false;
+					function dispatchBlockUpdates(response){}
+					function dispatchButtonUpdates(button, onClick){}
+					function dispatchLinkUpdates(button, onClick){}
+					function dispatchLiveUpdates(type){}
+				  
+ajaxcart.updateAjaxCartBlocks();
+
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId  : 0,
+          cookie : true,
+          status : true,
+          oauth  : true,
+          xfbml  : true
+        });
+
+        FB.Event.subscribe('edge.create',
+            function(response) {
+                //alert('You liked the URL: ' + response);
+                new Ajax.Request("https://www.aquacave.com/rewardpoints/rewardpoints/setpointsfblike/", {
+      			   method: 'post',
+      			   postBody: "pageurl="+response,
+      	
+      		});
+                
+            }
+        );
+        FB.Event.subscribe('message.send',
+                function(response) {
+                    //alert('You send the URL: ' + response);
+                    new Ajax.Request("https://www.aquacave.com/rewardpoints/rewardpoints/setpointsfbsend/", {
+          			   method: 'post',
+          			   postBody: "pageurl="+response,
+          	
+          		});
+                    
+                }
+            );
+    };
+
+    (function(d){
+        var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+        var locale = 'en_US';
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/" + locale + "/all.js";
+        d.getElementsByTagName('head')[0].appendChild(js);
+      }(document));
+
+
+
+//<![CDATA[
+jqBackToTop(function($) {
+    // --- scroll to top ---
+    var $body = $('body');
+    $body.append('<a class="go-to-top hidden" href="javascript:;" onclick="jQuery(\'html, body\').animate({ scrollTop: 0 }, \'slow\');" title="Scroll to top">Back to top</a>');
+    if (typeof $.fn.waypoint != 'undefined') {
+        $body.waypoint(function(direction) {
+            $('.go-to-top').toggleClass('hidden', direction === "up");
+        }, {
+            offset: '-50%'
+        });
+    }
+});
+//]]>
+
+
+/* <![CDATA[ */
+var google_tag_params = {
+	ecomm_pagetype: "home"
+};
+var google_conversion_id = 1067087643;
+var google_custom_params = google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+

@@ -1,0 +1,229 @@
+//<![CDATA[
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	var gtm4wp_use_sku_instead        = 1;
+	var gtm4wp_id_prefix              = '';
+	var gtm4wp_remarketing            = 1;
+	var gtm4wp_eec                    = 1;
+	var gtm4wp_classicec              = 1;
+	var gtm4wp_currency               = 'USD';
+	var gtm4wp_product_per_impression = 0;
+//]]>
+
+
+			if(!document.cookie.match(/aviaPrivacyGoogleWebfontsDisabled/)){
+				(function() {
+					var f = document.createElement('link');
+					
+					f.type 	= 'text/css';
+					f.rel 	= 'stylesheet';
+					f.href 	= '//fonts.googleapis.com/css?family=Lato:300,400,700';
+					f.id 	= 'avia-google-webfont';
+					
+					document.getElementsByTagName('head')[0].appendChild(f);
+				})();
+			}
+			
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.stevespanglerscience.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+/* <![CDATA[ */
+var wishlist_params = {"root_url":"https:\/\/www.stevespanglerscience.com","current_url":"\/","are_you_sure":"Are you sure?","quantity_prompt":"How Many Would You Like to Add?"};
+/* ]]> */
+
+
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+
+
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+
+//<![CDATA[
+	dataLayer.push({"pagePostType":"frontpage","pagePostType2":"single-page","pagePostAuthor":"Blake Sumrall","ecomm_prodid":[],"ecomm_pagetype":"home","ecomm_totalvalue":0});//]]>
+
+
+            if (typeof woof_lang_custom == 'undefined') {
+                var woof_lang_custom = {};//!!important
+            }
+            woof_lang_custom.woof_author = "By author";
+        
+
+            if (typeof woof_lang_custom == 'undefined') {
+                var woof_lang_custom = {};//!!important
+            }
+            woof_lang_custom.byrating = "By rating";
+        
+
+	    if (typeof woof_lang_custom == 'undefined') {
+		var woof_lang_custom = {};//!!important
+	    }
+	    woof_lang_custom.woof_sku = "by SKU";
+
+	    var woof_sku_autocomplete = 0;
+	    var woof_sku_autocomplete_items = 10;
+		        woof_sku_autocomplete =1;
+	        //woof_sku_autocomplete_items =10;
+	        woof_sku_autocomplete_items =10;
+		
+
+	    if (typeof woof_lang_custom == 'undefined') {
+		var woof_lang_custom = {};//!!important
+	    }
+	    woof_lang_custom.woof_text = "By text";
+
+	    var woof_text_autocomplete = 0;
+	    var woof_text_autocomplete_items = 10;
+		        woof_text_autocomplete =0;
+	        woof_text_autocomplete_items =10;
+	
+	    var woof_post_links_in_autocomplete = 0;
+		        woof_post_links_in_autocomplete =0;
+	
+	    var how_to_open_links = 0;
+		        how_to_open_links =0;
+	
+	
+
+	    var woof_is_permalink =1;
+
+	    var woof_shop_page = "";
+	
+	    var woof_really_curr_tax = {};
+	    var woof_current_page_link = location.protocol + '//' + location.host + location.pathname;
+	    //***lets remove pagination from woof_current_page_link
+	    woof_current_page_link = woof_current_page_link.replace(/\page\/[0-9]+/, "");
+			    woof_current_page_link = "https://www.stevespanglerscience.com/store/";
+			    var woof_link = 'https://www.stevespanglerscience.com/wp-content/plugins/woocommerce-products-filter/';
+
+		
+
+				jQuery(document).ready(function () {
+										jQuery('#s').keyup(function(e){
+						if (e.target.value.length < 3) {
+							jQuery('.ajax_search_response').hide()
+						} else {
+							jQuery('.ajax_search_response').show()
+						}
+					})
+										jQuery(window).scroll(function(e) {
+						if (jQuery(window).scrollTop() >= 30) {
+							jQuery('#sss-header').addClass('sss-stuck')
+						} else {
+							jQuery('#sss-header').removeClass('sss-stuck')
+						}
+					})
+				})
+			
+
+                var deviceType = (window.innerWidth <= 767) ? 'm' : (window.innerWidth >= 980) ? 'd' : 't';
+                window.criteo_q = window.criteo_q || [];
+                window.criteo_q.push({"event": "setSiteType", "type": deviceType, "ecpplugin": "woocommerce-1.3.2"});
+                window.criteo_q.push(  {"event":"setAccount","account":"52851"},
+{"event":"setEmail","email":""},
+{"event":"viewHome"} );
+
+            
+
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    "event": "crto_homepage",
+                    "crto": {"email":""}
+                });
+            
+
+ /* <![CDATA[ */  
+var avia_framework_globals = avia_framework_globals || {};
+    avia_framework_globals.frameworkUrl = 'https://www.stevespanglerscience.com/wp-content/themes/enfold/framework/';
+    avia_framework_globals.installedAt = 'https://www.stevespanglerscience.com/wp-content/themes/enfold/';
+    avia_framework_globals.ajaxurl = 'https://www.stevespanglerscience.com/wp-admin/admin-ajax.php';
+/* ]]> */ 
+
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */
+var wc_swatches_params = {"ajax_url":"https:\/\/www.stevespanglerscience.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var mailchimp_public_data = {"site_url":"https:\/\/www.stevespanglerscience.com","ajax_url":"https:\/\/www.stevespanglerscience.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var pum_vars = {"version":"1.8.3","ajaxurl":"https:\/\/www.stevespanglerscience.com\/wp-admin\/admin-ajax.php","restapi":"https:\/\/www.stevespanglerscience.com\/wp-json\/pum\/v1","rest_nonce":null,"default_theme":"300535","debug_mode":"","disable_tracking":"","home_url":"\/","message_position":"top","core_sub_forms_enabled":"1","popups":[]};
+var ajaxurl = "https:\/\/www.stevespanglerscience.com\/wp-admin\/admin-ajax.php";
+var pum_debug_vars = {"debug_mode_enabled":"Popup Maker: Debug Mode Enabled","debug_started_at":"Debug started at:","debug_more_info":"For more information on how to use this information visit https:\/\/docs.wppopupmaker.com\/?utm_medium=js-debug-info&utm_campaign=ContextualHelp&utm_source=browser-console&utm_content=more-info","global_info":"Global Information","localized_vars":"Localized variables","popups_initializing":"Popups Initializing","popups_initialized":"Popups Initialized","single_popup_label":"Popup: #","theme_id":"Theme ID: ","label_method_call":"Method Call:","label_method_args":"Method Arguments:","label_popup_settings":"Settings","label_triggers":"Triggers","label_cookies":"Cookies","label_delay":"Delay:","label_conditions":"Conditions","label_cookie":"Cookie:","label_settings":"Settings:","label_selector":"Selector:","label_mobile_disabled":"Mobile Disabled:","label_tablet_disabled":"Tablet Disabled:","label_event":"Event: %s","triggers":{"click_open":"Click Open","auto_open":"Time Delay \/ Auto Open"},"cookies":{"on_popup_close":"On Popup Close","on_popup_open":"On Popup Open","pum_sub_form_success":"Subscription Form: Successful","pum_sub_form_already_subscribed":"Subscription Form: Already Subscribed","manual":"Manual JavaScript"}};
+var pum_sub_vars = {"ajaxurl":"https:\/\/www.stevespanglerscience.com\/wp-admin\/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-300545":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"auto_open","settings":{"cookie_name":["pum-300545"],"delay":"0"}}],"cookies":[{"event":"on_popup_close","settings":{"name":"pum-300545","key":"","session":false,"time":"364 days","path":true}},{"event":"pum_sub_form_success","settings":{"name":"pum-300545","key":"","session":false,"time":"364 days","path":true}},{"event":"pum_sub_form_already_subscribed","settings":{"name":"pum-300545","key":"","session":false,"time":"364 days","path":true}}],"theme_id":"300536","size":"medium","responsive_min_width":"0%","responsive_max_width":"690px","custom_width":"640px","custom_height":"380px","animation_type":"none","animation_speed":"350","animation_origin":"center top","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","theme_slug":"lightbox","id":300545,"slug":"sss-home-page-mc-subscribe-popup"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var mc4wp_forms_config = [];
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"$","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"%s%v"};
+/* ]]> */
+
+
+jQuery(function($) { 
+tvc_lc="USD";
+
+tvc_h_a=[];
+
+tvc_fp=[];
+
+tvc_rcp=[];
+
+tvc_rdp=[];
+
+tvc_p_a=[];
+
+tvc_pgc={"https:\/\/www.stevespanglerscience.com\/store\/instant-snow-powder.html":{"tvc_id":"16579","tvc_i":"GSNO","tvc_n":"Insta-Snow Powder","tvc_p":"","tvc_c":"Best Sellers,Chemistry,Great Gift Ideas,Insta-Snow Products,Polymers,Spring,Staff Picks,Steve's Top 12,Steve's Top 8 Gift Ideas,Stocking Stuffers,Teacher Appreciation,Top Gifts Under 20,Top Picks","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":13,"tvc_rs":"4.92","tvc_po":1},"https:\/\/www.stevespanglerscience.com\/store\/uv-color-changing-beads.html":{"tvc_id":"19698","tvc_i":"GUVB","tvc_n":"UV Color Changing Beads","tvc_p":"","tvc_c":"4th of July,Color Science,Earth Science,Solar,Spring,Stocking Stuffers,Summer,Top Gifts Under 20,Top Picks,Valentine's Day Science","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":15,"tvc_rs":"4.93","tvc_po":2},"https:\/\/www.stevespanglerscience.com\/store\/geyser-tube-fountain-fan-run.html":{"tvc_id":"16449","tvc_i":"WGEY-100","tvc_n":"Deluxe Geyser Tube","tvc_p":"6.99","tvc_c":"4th of July,Best Sellers,Chemistry,Force &amp; Motion,Great Gift Ideas,Physics,Spring,Stocking Stuffers,Top Gifts Under 20","tvc_ss":true,"tvc_st":703,"tvc_pd":"0","tvc_tst":703,"tvc_rc":3,"tvc_rs":"3.67","tvc_po":3},"https:\/\/www.stevespanglerscience.com\/store\/sun-sensitive-paper.html":{"tvc_id":"16594","tvc_i":"WSUN-600","tvc_n":"30 Pack of Sun Sensitive Paper","tvc_p":"12.99","tvc_c":"4th of July,Chemistry,Color Science,Earth Science,Solar,Spring,Summer,Weather","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":0,"tvc_rs":"0","tvc_po":4},"https:\/\/www.stevespanglerscience.com\/store\/solar-bag.html":{"tvc_id":"16575","tvc_i":"WSLR-200","tvc_n":"Solar Bag 25 or 50-foot Length","tvc_p":"","tvc_c":"All About Air,Earth Science,Solar,Spring,Teacher Appreciation,Weather","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":7,"tvc_rs":"4.86","tvc_po":5},"https:\/\/www.stevespanglerscience.com\/store\/mentos-geyser-tube-event-packs.html":{"tvc_id":"16450","tvc_i":"GGEY","tvc_n":"Geyser Tube","tvc_p":"","tvc_c":"4th of July,Best Sellers,Chemistry,Force &amp; Motion,Physics,Spring,Staff Picks,STEM Gifts,Stocking Stuffers,Summer,Top Picks","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":4,"tvc_rs":"4.75","tvc_po":6},"https:\/\/www.stevespanglerscience.com\/store\/big-bag-of-science.html":{"tvc_id":"16381","tvc_i":"WBBS-500","tvc_n":"Big Bag of Science","tvc_p":"39.99","tvc_c":"All About Air,Biology,Chemistry,Color Science,Party Planning,Physics,Polymers,Spring,Staff Picks","tvc_ss":true,"tvc_st":331,"tvc_pd":"0","tvc_tst":331,"tvc_rc":11,"tvc_rs":"4.73","tvc_po":7},"https:\/\/www.stevespanglerscience.com\/store\/film-canisters.html":{"tvc_id":"19652","tvc_i":"GFLM","tvc_n":"Film Canisters","tvc_p":"","tvc_c":"4th of July,Lab Supplies,Spring","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":2,"tvc_rs":"5.00","tvc_po":8},"https:\/\/www.stevespanglerscience.com\/store\/amazing-square-bubble.html":{"tvc_id":"16555","tvc_i":"WSKS-108","tvc_n":"Amazing Square Bubble","tvc_p":"15.99","tvc_c":"All About Air,Force &amp; Motion,Physics,Spring,Summer,Top 10 under $20,Top Picks","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":0,"tvc_rs":"0","tvc_po":9},"https:\/\/www.stevespanglerscience.com\/store\/water-jelly-crystals.html":{"tvc_id":"19881","tvc_i":"GSAC","tvc_n":"Water Jelly Crystals","tvc_p":"","tvc_c":"Chemistry,Color Science,Earth Science,Going Green,Lab Supplies,Polymers,Stocking Stuffers,Summer,Top Gifts Under 20","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":2,"tvc_rs":"5.00","tvc_po":10},"https:\/\/www.stevespanglerscience.com\/store\/tie-dye-classroom-kit-with-dvd.html":{"tvc_id":"16599","tvc_i":"GTDK","tvc_n":"Tie-Dye Classroom Kit","tvc_p":"","tvc_c":"Color Science,Lab Supplies,Party Planning,Spring,Top Picks","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":2,"tvc_rs":"4.50","tvc_po":11},"https:\/\/www.stevespanglerscience.com\/store\/film-canister-rocket-launcher.html":{"tvc_id":"19887","tvc_i":"WCRL-015","tvc_n":"Film Canister Rocket Launcher","tvc_p":"16.99","tvc_c":"Lab Supplies,Spring","tvc_ss":true,"tvc_st":null,"tvc_pd":"0","tvc_tst":null,"tvc_rc":5,"tvc_rs":"4.20","tvc_po":12}};
+
+tvc_c_a={"https:\/\/www.stevespanglerscience.com\/store\/instant-snow-powder.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/instant-snow-powder.html"},"https:\/\/www.stevespanglerscience.com\/store\/uv-color-changing-beads.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/uv-color-changing-beads.html"},"\/?add-to-cart=16449":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/geyser-tube-fountain-fan-run.html"},"\/?add-to-cart=16594":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/sun-sensitive-paper.html"},"https:\/\/www.stevespanglerscience.com\/store\/solar-bag.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/solar-bag.html"},"https:\/\/www.stevespanglerscience.com\/store\/mentos-geyser-tube-event-packs.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/mentos-geyser-tube-event-packs.html"},"\/?add-to-cart=16381":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/big-bag-of-science.html"},"https:\/\/www.stevespanglerscience.com\/store\/film-canisters.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/film-canisters.html"},"\/?add-to-cart=16555":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/amazing-square-bubble.html"},"https:\/\/www.stevespanglerscience.com\/store\/water-jelly-crystals.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/water-jelly-crystals.html"},"https:\/\/www.stevespanglerscience.com\/store\/tie-dye-classroom-kit-with-dvd.html":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/tie-dye-classroom-kit-with-dvd.html"},"\/?add-to-cart=19887":{"tvc_u":"https:\/\/www.stevespanglerscience.com\/store\/film-canister-rocket-launcher.html"}};
+
+
+                //Set Impression Threshold
+                tvc_thr =6;
+               //call featured product impression
+                if(typeof(hmpg_impressions_FP)!=="undefined" && typeof(hmpg_impressions_FP) === "function"){
+                    hmpg_impressions_FP();
+        }else{
+                    t_hmpgImprFP_call=true; 
+                }
+                //call recent product impression
+                if(typeof(hmpg_impressions_RP)!=="undefined" && typeof(hmpg_impressions_RP) === "function"){
+                    hmpg_impressions_RP();
+        }else{
+                    t_hmpgImprRP_call=true; 
+                }
+                //to measure product click on home page
+                if(typeof(t_products_clicks)!=="undefined" && typeof(t_products_clicks) === "function"){
+                    t_products_clicks(tvc_fp,"fp","Featured Products"); //json name , action name , list name
+        }else{
+                    t_hmpgClick_call=true;
+        }              
+              
+                //to measure product ATC on home page
+                if(typeof(t_products_ATC)!=="undefined" && typeof(t_products_ATC) === "function"){
+                    t_products_ATC(tvc_h_a,tvc_fp);
+        }else{
+                    t_hmpgATC_call=true;
+        } 
+                
+                
+
+tvc_smd={"tvc_wcv":"3.5.7","tvc_wpv":"5.1.1","tvc_eev":"CC-V3-2.2","tvc_cnf":{"t_ee":"yes","t_df":false,"t_thr":6,"t_uid":false,"t_ip":false,"t_ipa":false,"t_ff":false,"t_cg":true,"t_404":false}};
+ });
+

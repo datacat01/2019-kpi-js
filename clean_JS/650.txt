@@ -1,0 +1,579 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.urbanbodyjewelry.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/66eVF8LNTJsaguythg9jH3jOdJ8PB3sQj997fyVT/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+		jQuery(window).load(function() {
+			if(!((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i)))){
+				jQuery().UItoTop({
+					text: "Top"
+				});
+			}
+		});
+	
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+				//<![CDATA[
+					var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+					searchForm.initAutocomplete('https://www.urbanbodyjewelry.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+				//]]>
+				if(jQuery('body').hasClass('floating-header')){
+					/* Touch behavior */
+					function searchListener(e){
+						var touch = e.touches[0];
+						if(jQuery(touch.target).parents('#search_mini_form').length == 0){
+							jQuery('#search_mini_form').removeClass('show');
+							document.removeEventListener('touchstart', searchListener, false);
+						}
+					}
+					
+					jQuery('#search_mini_form .search-open').on('click', function(event){
+						event.stopPropagation();
+						jQuery('#search_mini_form').toggleClass('show');
+						document.addEventListener('touchstart', searchListener, false);
+						
+						jQuery(document).on('click.searchEvent', function(e) {
+							if (jQuery(e.target).parents('#search_mini_form').length == 0) {
+								jQuery('#search_mini_form').removeClass('show');
+								jQuery(document).off('click.searchEvent');
+							}
+						});
+					});
+				}
+            
+
+	/* Top Cart */
+		topCart();
+		
+	/* Cart Products Remover */
+	function cartProductRemove(element, text){
+		jQuery(element).on('click', function(event){
+			event.preventDefault();
+			jQuery('body').append('<div class="cart-remove-box">'+ text.confirm +'<br/><a href="'+ jQuery(this).attr('href') +'" class="confirm"><span>'+ text.submit + '</span></a><a href="javascript:void(0);" class="cancel"><span>' + text.calcel + '</span></a></div>');
+			jQuery('.cart-remove-box a').on('click', function(){
+				jQuery('.cart-remove-box').remove();
+			});
+		});
+	}
+	cartProductRemove('.top-cart #mini-cart li.item a.btn-remove', {
+		confirm: 'Are you sure you would like to remove this item from the shopping cart?',
+		submit: 'Ok',
+		calcel: 'Cancel'
+	});
+	
+	jQuery('#mini-cart li:nth-child(2)').addClass('second');
+	jQuery('#mini-cart li:nth-child(3)').addClass('last');
+
+
+	/* Slider Preloader */
+	var sliderHolder = jQuery('.header-slider-holder');
+	var sliderLoader = sliderHolder.find('.loader');
+	
+	var progress = 0;
+	function animateFunc(){
+		if(progress > 100){
+			return false;
+		}
+		sliderLoader.html(progress+'%');
+		progress+=5;
+		setTimeout(animateFunc, 25);
+	}
+	setTimeout(animateFunc, 25);
+	
+	function loaded(){
+		setTimeout(function(){
+		
+			img =  jQuery('.header-slider-container .iosSlider .slider .item img:first');
+			height = img.height();
+			if(img.parent('a').length){
+				height = img.parent('a').outerHeight();
+			}
+		
+			sliderLoader.html('');
+			sliderLoader.fadeOut(1500, function(){
+				jQuery(this).remove();
+				sliderHolder.removeClass('loading').css('height', 'auto');
+			});
+			
+			sliderHolder.animate({
+			  height: height
+			}, 500, "easeOutExpo");
+			
+		}, 1000);
+	}
+	
+	jQuery(window).load(function(){
+	/* slider_items_length = jQuery('.slider .item').size();
+	if(slider_items_length > 1){
+		var slider_bullets = '<ul class="slideSelectors">';
+		for(i=1; i<=slider_items_length; i++){
+			if(i==1){selected_item = ' selected'}else{selected_item = ''}
+			slider_bullets += '<li class="button-item' + selected_item + '" id="item' + i + '">' + i + '</li>'
+		}
+		slider_bullets += '</ul>';
+		jQuery('.header-slider-container .iosSlider .prev').after(slider_bullets);
+	} */
+  
+	//Slider Container Ratio
+	var slider_container = jQuery('.header-slider-container');
+	var slider_img =  jQuery('.header-slider-container .iosSlider .slider .item img:first');
+	var sliderHeight = slider_img.height();
+	if(slider_img.parent('a')){
+		sliderHeight = slider_img.parent('a').outerHeight();
+	}
+	var ratio = Math.round((sliderHeight/slider_img.width())*100);
+	slider_container.css({
+		'padding-bottom': ratio + '%'
+	});
+	
+  
+    jQuery('.iosSlider').iosSlider({
+      responsiveSlideWidth: true,
+      snapToChildren: true,
+      desktopClickDrag: true,
+      infiniteSlider: true,
+      /* navSlideSelector: '.slideSelectors .button-item', */
+      	  navNextSelector: '.iosSlider .next',
+      navPrevSelector: '.iosSlider .prev',
+	        onSlideComplete: slideComplete,
+	  onSliderLoaded: sliderLoaded,
+	  onSlideChange: slideChange,
+      autoSlide: 1      , autoSlideTimer: 5000	  , autoSlideTransTimer: 750	  , desktopClickDrag: 1	  , infiniteSlider: 0    });
+    
+	
+	function slideChange(args) {
+	
+		/* jQuery('.slideSelectors .button-item').removeClass('selected');
+		jQuery('.slideSelectors .button-item:eq(' + (args.currentSlideNumber-1) + ')').addClass('selected'); */
+		
+	}
+	
+	function slideComplete(args) {
+			/* Slides Animation Presets */
+						if(jQuery('.header-slider-container.boxed-slider').length){
+			/* Boxed Slider */
+				var slideTitle = [{left: '0%', opacity: '1'}, 400]; // example: Animation settings: left = 50%, opacity = 100%;  Animation speed: 400ms
+				var slideTitle2 = [{left: '0%', opacity: '1'}, 600];
+				var slideTitle3 = [{left: '0%', opacity: '1'}, 600];
+				var slideTitle4 = [{left: '0%', opacity: '1'}, 600];
+				var slideText = [{left: '0%', opacity: '1'}, 600];
+				var slideList = [{left: '0%', opacity: '1'}, 600];
+				/* slide-skin animation type */
+				if(args.currentSlideObject.find('.slide-skin').length){
+					delete slideTitle[0].left; //delete left animation option
+					slideTitle[0].top = '0px'; //add right animation option
+					delete slideTitle2[0].left;
+					slideTitle2[0].right = '0%';
+					delete slideTitle4[0].left;
+					slideTitle4[0].right = '0%';
+					delete slideText[0].left;
+					slideText[0].top = '0px';
+					delete slideList[0].left;
+					slideList[0].right = '0%';
+				}
+				/* slide-skin-2 animation type */
+				if(args.currentSlideObject.find('.slide-skin-2').length){
+					delete slideTitle2[0].left;
+					slideTitle2[0].right = '0%';
+					delete slideTitle3[0].left;
+					slideTitle3[0].bottom = '0px';
+					delete slideText[0].left;
+					slideText[0].top = '0px';
+				}
+				/* slide-skin-3 animation type */
+				if(args.currentSlideObject.find('.slide-skin-3').length){
+					delete slideTitle[0].left;
+					slideTitle[0].top = '0px';
+					delete slideTitle3[0].left;
+					slideTitle3[0].bottom = '0px';
+					delete slideText[0].left;
+					slideText[0].bottom = '0px';
+				}
+			}else{
+			/* Wide Slider */
+				var slideTitle = [{left: '0%', opacity: '1'}, 400]; // example: Animation settings: left = 50%, opacity = 100%;  Animation speed: 400ms
+				var slideTitle2 = [{left: '0%', opacity: '1'}, 600];
+				var slideTitle3 = [{left: '0%', opacity: '1'}, 600];
+				var slideTitle4 = [{left: '0%', opacity: '1'}, 600];
+				var slideText = [{left: '0%', opacity: '1'}, 600];
+				var slideList = [{left: '0%', opacity: '1'}, 600];
+				/* slide-skin animation type */
+				if(args.currentSlideObject.find('.slide-skin').length){
+					delete slideTitle[0].left; //delete left animation option
+					slideTitle[0].top = '0px'; //add right animation option
+					delete slideTitle2[0].left;
+					slideTitle2[0].right = '0%';
+					delete slideTitle4[0].left;
+					slideTitle4[0].right = '0%';
+					delete slideText[0].left;
+					slideText[0].top = '0px';
+					delete slideList[0].left;
+					slideList[0].right = '0%';
+				}
+				/* slide-skin-2 animation type */
+				if(args.currentSlideObject.find('.slide-skin-2').length){
+					delete slideTitle2[0].left;
+					slideTitle2[0].right = '0%';
+					delete slideTitle3[0].left;
+					slideTitle3[0].bottom = '0px';
+					delete slideText[0].left;
+					slideText[0].top = '0px';
+				}
+				/* slide-skin-3 animation type */
+				if(args.currentSlideObject.find('.slide-skin-3').length){
+					delete slideTitle[0].left;
+					slideTitle[0].top = '0px';
+					delete slideTitle3[0].left;
+					slideTitle3[0].bottom = '0px';
+					delete slideText[0].left;
+					slideText[0].bottom = '0px';
+				}
+			}
+						
+			/* ============================================ */
+			
+			
+			/* Animation Elements */
+			/* ===slide title element=== */
+			jQuery(args.sliderObject).find('h2').attr('style', '');
+			jQuery(args.currentSlideObject).find('h2').animate(slideTitle[0], slideTitle[1], 'easeOutQuint');
+			/* ========================== */
+			
+			/* ===slide title 2 element=== */
+			jQuery(args.sliderObject).find('h3').attr('style', '');
+			jQuery(args.currentSlideObject).find('h3').animate(slideTitle2[0], slideTitle2[1], 'easeOutQuint');
+			/* ========================== */
+			
+			/* ===slide title 3 element=== */
+			jQuery(args.sliderObject).find('h4').attr('style', '');
+			jQuery(args.currentSlideObject).find('h4').animate(slideTitle3[0], slideTitle3[1], 'easeOutQuint');
+			/* ========================== */
+			
+			/* ===slide title 4 element=== */
+			jQuery(args.sliderObject).find('h5').attr('style', '');
+			jQuery(args.currentSlideObject).find('h5').animate(slideTitle4[0], slideTitle4[1], 'easeOutQuint');
+			/* ========================== */
+			
+			/* ===slide text element=== */
+			jQuery(args.sliderObject).find('p').attr('style', '');
+			jQuery(args.currentSlideObject).find('p').animate(slideText[0], slideText[1], 'easeOutQuint');
+			/* ========================== */
+			
+			/* ===slide list element=== */
+			jQuery(args.sliderObject).find('ul').attr('style', '');
+			jQuery(args.currentSlideObject).find('ul').animate(slideList[0], slideList[1], 'easeOutQuint');
+			/* ========================== */
+			
+			
+	  }
+	
+	function sliderLoaded(args) {
+		slideComplete(args);
+		slideChange(args);
+			}
+    
+	jQuery(window).on('orientationchange', function(e){
+		setTimeout(function(){
+			jQuery('.iosSlider').iosSlider('update');
+		}, 500);
+	});
+	
+  });
+
+
+		/* Login ajax */
+		jQuery('.top-link-login').on('click', function(){
+						ajaxLogin("https://www.urbanbodyjewelry.com/meigeeactions/login/", false);
+						return false;
+		});
+	
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+		if(!jQuery('body').hasClass('mobile-device')){
+			setTimeout(function(){
+				function widthCorrector(){
+						var widget = jQuery('#home-slider-3448');
+						widget.children('style').remove();
+						var widgetWidth = widget.width();
+						//widget.find('.widget-slider li.item:first').attr('style', '');
+						var widgetItemWidth = widget.find('.widget-slider li.item:first').width();
+						setTimeout(function(){
+							var columnsCount = Math.round(widgetWidth/widgetItemWidth);
+							var columnWidth = Math.floor(widgetWidth/columnsCount);
+							var widgetItemsCss = '<style type="text/css">#home-slider-3448 .widget-slider li.item{width:'+ columnWidth +'px;}</style>';
+							widget.append(widgetItemsCss);
+						}, 300);
+				}
+				widthCorrector();
+				jQuery(window).resize(function(){widthCorrector()});
+			}, 300);
+		}
+					jQuery(window).load(function(){
+				jQuery('#home-slider-3448 .widget-slider').iosSlider({
+				  responsiveSlideWidth: true,
+				  snapToChildren: true,
+				  desktopClickDrag: true,
+				  infiniteSlider: false
+				  ,
+
+				  				  navNextSelector: '#home-slider-3448 .next',
+				  navPrevSelector: '#home-slider-3448 .prev'
+				  				  				  				});
+				
+				function widget_slider_height_3448(){
+					setTimeout(function(){
+						var widget_slider_height = 0;
+						jQuery('.widget-container #home-slider-3448 .products-grid li.item').each(function(){
+							if(jQuery(this).height() > widget_slider_height){
+								widget_slider_height = jQuery(this).height();
+							}
+						})
+						jQuery('.widget-container #home-slider-3448 .widget-slider').css({
+							'min-height': (widget_slider_height+2),
+							'height': 'auto'
+						});
+						
+					}, 1000);
+				}
+				widget_slider_height_3448();
+				
+				jQuery(window).resize(function(){
+					widget_slider_height_3448();
+					resizer();
+				});
+				var resflag = true;
+				function resizer(){
+					if(resflag == true){
+						resflag = false;
+						setTimeout(function(){
+							jQuery(window).trigger('resize');
+							setTimeout(function(){
+								resflag = true;
+							}, 500);
+						}, 1000);
+					}
+				}
+			});
+				  
+		  
+		  jQuery(document).ready(function(){
+				jQuery('.widget-container').each(function(){
+					if(!jQuery(this).prev().hasClass('page-title')){
+						jQuery(this).addClass('no-title');
+					}
+				});
+				
+				jQuery('.ajax-fancybox').fancybox(
+					{
+					   hideOnContentClick : true,
+					   width:600,
+					   autoDimensions: true,
+					   type : 'iframe',
+					   showTitle: false,
+					   scrolling: 'no',
+					   afterLoad: function(){
+							setTimeout(function(){
+								var frameBodyHeight = jQuery('.fancybox-iframe').contents().find('body').height();
+								if(jQuery(window).height() > frameBodyHeight+30){
+									jQuery('.fancybox-inner').css('height', frameBodyHeight);
+								}
+							}, 1000);
+						}
+					}
+				);
+				
+							});
+			function showOptions(id){
+				jQuery('#fancybox'+id).trigger('click');
+			}
+			function setAjaxData(data,iframe,name,image){
+			if(data.status == 'ERROR'){
+				jQuery('body').append('<div class="add-to-cart-success">' + data.message+'<a href="#" class="btn-remove"><i class="fa fa-times" /></a></div>');
+			}else{
+				if(data.sidebar){
+					if(jQuery('.top-cart')){
+						jQuery('.top-cart').replaceWith(data.sidebar);
+						if(jQuery('#cart-sidebar').length){
+							jQuery('#cart-sidebar').html(jQuery(data.sidebar).find('#mini-cart'));
+						}
+					}
+					jQuery.fancybox.close();
+					jQuery('body').append('<div class="add-to-cart-success"><span class="product-image"><img src='+ image+' alt=""></span>' + data.message +' <br /><a href="https://www.urbanbodyjewelry.com/checkout/cart/"><span>View Cart</span></a><a href="#" class="btn-remove"><i class="fa fa-times"></i></a></div>');
+					
+				}else{
+					jQuery.ajax({
+						url: "https://www.urbanbodyjewelry.com/meigeeactions/updatecart/",
+						cache: false
+					}).done(function(html){
+						jQuery('header#header .top-cart').replaceWith(html);
+						jQuery('.top-cart #mini-cart li.item a.btn-remove').on('click', function(event){
+							event.preventDefault();
+							jQuery('body').append('<div class="cart-remove-box">Are you sure you would like to remove this item from the shopping cart?<br/><a href="'+ jQuery(this).attr('href') +'" class="confirm"><span>Ok</span></a><a href="#" class="cancel"><span>Cancel</span></a></div>');
+							jQuery('.cart-remove-box a').on('click', function(){
+								link = jQuery(this).attr('href');
+								jQuery.ajax({
+									url: link,
+									cache: false
+								});
+								jQuery('.cart-remove-box').remove();
+								setTimeout(function(){window.location.reload();}, 800);
+							});
+						});
+					});
+					jQuery.fancybox.close();
+					jQuery('body').append('<div class="add-to-cart-success"><span class="product-image"><img src='+ image+' alt=""></span>' + name +' was added to your shopping cart. <br /><a href="https://www.urbanbodyjewelry.com/checkout/cart/"><span>View Cart</span></a><a href="#" class="btn-remove"><i class="fa fa-times"></i></a></div>');
+				}
+			}
+			setTimeout(function () {jQuery('.add-to-cart-success').slideUp(500)}, 5000);
+			jQuery('.add-to-cart-success a.btn-remove').click(function(){
+				jQuery(this).parent().slideUp(500);
+				return false;
+			});
+		}
+		function setLocationAjax(url,id,name,image){
+			url += 'isAjax/1';
+			url = url.replace("checkout/cart","ajax/index");
+			jQuery('#ajax_loader'+id).show();
+			try {
+				jQuery.ajax({
+					url : url,
+					dataType : 'json',
+					success : function(data) {
+						jQuery('#ajax_loader'+id).hide();
+						jQuery('.products-grid li.item').removeClass('active');
+						setAjaxData(data,false,name,image);
+					}
+				});
+			} catch (e) {
+			}
+		}
+		
+
+		jQuery(document).ready(function(){
+			jQuery('.ajax-fancybox').fancybox(
+				{
+				   hideOnContentClick : true,
+				   width:600,
+				   autoDimensions: true,
+				   type : 'iframe',
+				   showTitle: false,
+				   scrollbarWidth :0,
+				   scrolling: 'no',
+				   afterLoad: function(){
+						setTimeout(function(){
+							var frameBodyHeight = jQuery('.fancybox-iframe').contents().find('body').height();
+							if(jQuery(window).height() > frameBodyHeight+30){
+								jQuery('.fancybox-inner').css('height', frameBodyHeight);
+							}
+						}, 1000);
+					}
+				}
+			);
+			
+					});
+		function showOptions(id){
+			jQuery('#fancybox'+id).trigger('click');
+		}
+		function setAjaxData(data,iframe,name,image){
+			if(data.status == 'ERROR'){
+				jQuery('body').append('<div class="add-to-cart-success">' + data.message+'<a href="#" class="btn-remove"><i class="fa fa-times" /></a></div>');
+			}else{
+				if(data.sidebar){
+					if(jQuery('.top-cart')){
+						jQuery('.top-cart').replaceWith(data.sidebar);
+						if(jQuery('#cart-sidebar').length){
+							jQuery('#cart-sidebar').html(jQuery(data.sidebar).find('#mini-cart'));
+						}
+					}
+					jQuery.fancybox.close();
+					jQuery('body').append('<div class="add-to-cart-success"><span class="product-image"><img src='+ image+' alt=""></span>' + data.message +' <br /><a href="https://www.urbanbodyjewelry.com/checkout/cart/"><span>View Cart</span></a><a href="#" class="btn-remove"><i class="fa fa-times"></i></a></div>');
+					
+				}else{
+					jQuery.ajax({
+						url: "https://www.urbanbodyjewelry.com/meigeeactions/updatecart/",
+						cache: false
+					}).done(function(html){
+						jQuery('header#header .top-cart').replaceWith(html);
+						jQuery('.top-cart #mini-cart li.item a.btn-remove').on('click', function(event){
+							event.preventDefault();
+							jQuery('body').append('<div class="cart-remove-box">Are you sure you would like to remove this item from the shopping cart?<br/><a href="'+ jQuery(this).attr('href') +'" class="confirm"><span>Ok</span></a><a href="#" class="cancel"><span>Cancel</span></a></div>');
+							jQuery('.cart-remove-box a').on('click', function(){
+								link = jQuery(this).attr('href');
+								jQuery.ajax({
+									url: link,
+									cache: false
+								});
+								jQuery('.cart-remove-box').remove();
+								setTimeout(function(){window.location.reload();}, 800);
+							});
+						});
+					});
+					jQuery.fancybox.close();
+					jQuery('body').append('<div class="add-to-cart-success"><span class="product-image"><img src='+ image+' alt=""></span>' + name +' was added to your shopping cart. <br /><a href="https://www.urbanbodyjewelry.com/checkout/cart/"><span>View Cart</span></a><a href="#" class="btn-remove"><i class="fa fa-times"></i></a></div>');
+				}
+			}
+			setTimeout(function () {jQuery('.add-to-cart-success').slideUp(500)}, 5000);
+			jQuery('.add-to-cart-success a.btn-remove').click(function(){
+				jQuery(this).parent().slideUp(500);
+				return false;
+			});
+		}
+		function setLocationAjax(url,id,name,image){
+			url += 'isAjax/1';
+			url = url.replace("checkout/cart","ajax/index");
+			jQuery('#ajax_loader'+id).show();
+			try {
+				jQuery.ajax({
+					url : url,
+					dataType : 'json',
+					success : function(data) {
+						jQuery('#ajax_loader'+id).hide();
+						jQuery('.products-grid li.item').removeClass('active');
+						setAjaxData(data,false,name,image);
+					}
+				});
+			} catch (e) {
+			}
+		}
+	
+
+function disableCardInIframe(){
+	jQuery("iframe[id^='twitter-widget']").contents().find(".MediaCard-media").hide();
+	jQuery("iframe[id^='twitter-widget']").css("height","250px");
+}
+jQuery(document).ready(function(){
+	disableCardInIframe();
+	setTimeout(disableCardInIframe,100);
+	setTimeout(disableCardInIframe,3000);
+});
+
+
+  var gts = gts || [];
+  gts.push(["id", "563172"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_US"]);
+  gts.push( ['google_base_offer_id', "Belly-04"] );
+  gts.push( ['google_base_subaccount_id', '6879328'] );
+  gts.push( ['google_base_country', 'USA'] );
+  gts.push( ['google_base_language', 'english'] );
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+

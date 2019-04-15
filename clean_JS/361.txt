@@ -1,0 +1,52 @@
+ (function (d, t) {
+"use strict";
+var s = d.getElementsByTagName(t)[0], n = d.createElement(t);
+n.src = "//paypal.adtag.where.com/merchant.js";
+s.parentNode.insertBefore(n, s);
+}(document, "script"));
+     
+var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-westflorida.bbb.org' + unescape('%2Flogo%2Fits-a-black-thangcom-48000830.js') + "' type='text/javascript'%3E%3C/script%3E"));
+
+
+// ****************************************************************************
+// Detect our depends; add them as needed
+// ****************************************************************************
+
+if (typeof sessvars === "undefined") {
+	document.write("\u003cscript src=\"\/\/cdn.shopify.com\/s\/files\/1\/0510\/3737\/t\/14\/assets\/sessvars.js?56\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");
+}
+
+if (!(window.jQuery && jQuery.fn)) {
+	document.write("\u003cscript src=\"http:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.10.2\/jquery.min.js\" type=\"text\/javascript\"\u003e\u003c\/script\u003e");
+}
+
+// ****************************************************************************
+// Submit a form to the wishlist server
+// ****************************************************************************
+
+function wishlist_post_to_url(path, params, method) {
+	method = method || "post";
+	var form = document.createElement("form");
+	form._submit_function_ = form.submit;
+	form.setAttribute("method", method);
+	form.setAttribute("action", path);
+	for (var key in params) {
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", key);
+		hiddenField.setAttribute("value", params[key]);
+		form.appendChild(hiddenField);
+	}
+	document.body.appendChild(form);
+	form._submit_function_();
+}
+
+
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'www.itsablackthang.com';
+
+window.sloyalty.customer_id = '';
+window.sloyalty.digest = '';
+
+

@@ -1,0 +1,29 @@
+
+	<!-- Copy Right by Frehhshopify -->
+	if ( 'undefined' == (typeof FHSPROD) ) {
+	    var FHSPROD = {};
+	}
+	if ('undefined' == (typeof FHSPROD.labelme)) {
+	    FHSPROD.labelme = {};
+	}
+	FHSPROD.labelme.server_date = '04/14/2019';
+
+
+  	FHSPROD.labelme.pg = 'collection';   
+
+
+  	if('undefined' == (typeof FHSPROD.labelme.product_list))
+  		FHSPROD.labelme.product_list = [];
+  
+
+   FHSPROD.labelme.product_main = null;
+
+  
+
+
+	var SCPB = new Object();
+  	SCPB.page="index";  
+    
+		var sc_pb_money_format = "${{amount_no_decimals}}";
+		var product_select_index= 0;
+

@@ -1,0 +1,31 @@
+$(document).ready(function() {$('#coin-slider').coinslider({ width: 600, height: 250, navigation: true, delay: 4000, effect: 'straight', hoverPause: true });});
+$('.productListTable tr:nth-child(even)').addClass('alt');
+
+/* <![CDATA[ */
+var google_conversion_id = 1067567932;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3999284-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+var google_conversion_id = 1053028090;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "nMMQCOaX8wIQ-t2P9gM";
+var google_conversion_value = 0;
+
+
+

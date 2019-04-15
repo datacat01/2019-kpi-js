@@ -1,0 +1,15 @@
+function SaveScrWidthCookie() { var width = screen.width; document.cookie = 'ScreenWidthInitial='+width; } SaveScrWidthCookie();
+
+            document.cookie = 'JSCheck=1'
+        
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-3904365-1']);
+_gaq.push(['_trackPageview']);
+_gaq.push(['_setSampleRate(50)']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+})();
+

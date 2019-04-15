@@ -1,0 +1,57 @@
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/HTPA0QFbpJz70Is8NW67fhEEpsWmGldE0K0aklrR/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".precision-camera.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"7f548075e2faf0f2d9d17ebe7ecd26062f2796ca","type":"ANONYMOUS","visit_id":"7564e9a1-8a93-48fc-8796-eb8e4ede21ba","visitor_id":"59bd4fab-c300-407a-b963-453c671475b8"},"referer":{"url":""},"request":{"url":"https:\/\/www.precision-camera.com\/"}}, '', 1368069, "other", {"customer":{"id":"anonymous"}}, '7564e9a1-8a93-48fc-8796-eb8e4ede21ba', '59bd4fab-c300-407a-b963-453c671475b8');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"ebb72cb3d30a2a1780628123fa23cd602d29ccf18133bddab1f858eb5cd4a991"};
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+
+
+    $(window).on('load', function(e) {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "fade",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: false
+        });
+    });
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+

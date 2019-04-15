@@ -1,0 +1,25 @@
+
+    $(document).ready(function () {
+        var openButton = $('.open-search-button');
+        var searchBox = $('.search-box');
+        var closeButton = $('.close-search-button');
+        var openMobileButton = $('#tools-search');
+        var textBox = $('.searchWidgetInput');
+
+        openButton.on('click', function() {
+            openButton.addClass('closed');
+            searchBox.removeClass('closed');
+            setTimeout(function () {textBox.focus();}, 400);
+        });
+
+        closeButton.on('click', function() {
+            openButton.removeClass('closed');
+            searchBox.addClass('closed');
+        });
+
+        openMobileButton.on('click', function () {
+            openMobileButton.toggleClass('opened');
+        });
+    });
+
+window.onload = function(){$(".menu.menu-footer-menu .dropdown > a").attr("href", "").hover(function() { $(this).css("color", "#909090").css("cursor", "default") }).click(function(e) { e.preventDefault(); })};

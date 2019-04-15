@@ -1,0 +1,285 @@
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/hollidayflowers.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+(function(a,d){if(a._nsl===d){a._nsl=[];var c=function(){if(a.jQuery===d)setTimeout(c,33);else{for(var b=0;b<a._nsl.length;b++)a._nsl[b].call(a,a.jQuery);a._nsl={push:function(b){b.call(a,a.jQuery)}}}};c()}})(window);
+
+/* <![CDATA[ */
+var bwg_objectsL10n = {"bwg_field_required":"field is required.","bwg_mail_validation":"This is not a valid email address.","bwg_search_result":"There are no images matching your search.","bwg_select_tag":"Select Tag","bwg_order_by":"Order By","bwg_search":"Search","bwg_show_ecommerce":"Show Ecommerce","bwg_hide_ecommerce":"Hide Ecommerce","bwg_show_comments":"Show Comments","bwg_hide_comments":"Hide Comments","bwg_restore":"Restore","bwg_maximize":"Maximize","bwg_fullscreen":"Fullscreen","bwg_exit_fullscreen":"Exit Fullscreen","bwg_search_tag":"SEARCH...","bwg_tag_no_match":"No tags found","bwg_all_tags_selected":"All tags selected","bwg_tags_selected":"tags selected","play":"Play","pause":"Pause","is_pro":"","bwg_play":"Play","bwg_pause":"Pause","bwg_hide_info":"Hide info","bwg_show_info":"Show info","bwg_hide_rating":"Hide rating","bwg_show_rating":"Show rating","ok":"Ok","cancel":"Cancel","select_all":"Select all"};
+/* ]]> */
+
+
+				jQuery(document).ready(function(){
+
+					// Set JWPlayer License Key
+					jwplayer.key="STVfNw457f3wsKkcZd827uNIrrQcEJQOZxbrmw==";
+				});
+			
+function setREVStartSize(e){									
+						try{ e.c=jQuery(e.c);var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+							if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})					
+						}catch(d){console.log("Failure at Presize of Slider:"+d)}						
+					};
+
+jQuery(function($){
+    if (jQuery().yithautocomplete) {
+        $('#182681920_yith-s').yithautocomplete({
+            minChars: 3,
+            appendTo: '.182681920_container',
+            serviceUrl: woocommerce_params.ajax_url + '?action=yith_ajax_search_products',
+            onSearchStart: function(){
+                $('.182681920_container').append('<div class="ux-loading"></div>');
+            },
+            onSearchComplete: function(){
+                $('.182681920_container .ux-loading').remove();
+
+            },
+            onSelect: function (suggestion) {
+                if( suggestion.id != -1 ) {
+                    window.location.href = suggestion.url;
+                }
+            }
+        });
+
+    } else {
+        $('#182681920_yith-s').autocomplete({
+            minChars: 3,
+            appendTo: '.182681920_container',
+            serviceUrl: woocommerce_params.ajax_url + '?action=yith_ajax_search_products',
+            onSearchStart: function(){
+                $('.182681920_container').append('<div class="ux-loading"></div>');
+            },
+            onSearchComplete: function(){
+                $('.182681920_container .ux-loading').remove();
+
+            },
+            onSelect: function (suggestion) {
+                if( suggestion.id != -1 ) {
+                    window.location.href = suggestion.url;
+                }
+            }
+        });
+
+    }
+});
+
+
+if (setREVStartSize!==undefined) setREVStartSize(
+	{c: '#rev_slider_4_1', responsiveLevels: [1240,1024,778,480], gridwidth: [1240,1024,778,480], gridheight: [600,600,500,400], sliderLayout: 'auto'});
+			
+var revapi4,
+	tpj;	
+(function() {			
+	if (!/loaded|interactive|complete/.test(document.readyState)) document.addEventListener("DOMContentLoaded",onLoad); else onLoad();	
+	function onLoad() {				
+		if (tpj===undefined) { tpj = jQuery; if("off" == "on") tpj.noConflict();}
+	if(tpj("#rev_slider_4_1").revolution == undefined){
+		revslider_showDoubleJqueryError("#rev_slider_4_1");
+	}else{
+		revapi4 = tpj("#rev_slider_4_1").show().revolution({
+			sliderType:"standard",
+			jsFileLocation:"//hollidayflowers.com/wp-content/plugins/revslider/public/assets/js/",
+			sliderLayout:"auto",
+			dottedOverlay:"none",
+			delay:9000,
+			navigation: {
+				keyboardNavigation:"off",
+				keyboard_direction: "horizontal",
+				mouseScrollNavigation:"off",
+ 							mouseScrollReverse:"default",
+				onHoverStop:"off",
+				touch:{
+					touchenabled:"on",
+					touchOnDesktop:"off",
+					swipe_threshold: 75,
+					swipe_min_touches: 50,
+					swipe_direction: "horizontal",
+					drag_block_vertical: false
+				}
+				,
+				arrows: {
+					style:"gyges",
+					enable:true,
+					hide_onmobile:true,
+					hide_under:600,
+					hide_onleave:false,
+					tmp:'',
+					left: {
+						h_align:"left",
+						v_align:"center",
+						h_offset:30,
+						v_offset:0
+					},
+					right: {
+						h_align:"right",
+						v_align:"center",
+						h_offset:30,
+						v_offset:0
+					}
+				}
+				,
+				bullets: {
+					enable:true,
+					hide_onmobile:true,
+					hide_under:600,
+					style:"hephaistos",
+					hide_onleave:true,
+					hide_delay:200,
+					hide_delay_mobile:1200,
+					direction:"horizontal",
+					h_align:"center",
+					v_align:"bottom",
+					h_offset:0,
+					v_offset:30,
+					space:5,
+					tmp:''
+				}
+			},
+			viewPort: {
+				enable:true,
+				outof:"wait",
+				visible_area:"80%",
+				presize:false
+			},
+			responsiveLevels:[1240,1024,778,480],
+			visibilityLevels:[1240,1024,778,480],
+			gridwidth:[1240,1024,778,480],
+			gridheight:[600,600,500,400],
+			lazyType:"smart",
+			parallax: {
+				type:"mouse",
+				origo:"slidercenter",
+				speed:2000,
+				speedbg:0,
+				speedls:0,
+				levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],
+			},
+			shadow:0,
+			spinner:"off",
+			stopLoop:"off",
+			stopAfterLoops:-1,
+			stopAtSlide:-1,
+			shuffle:"off",
+			autoHeight:"on",
+			disableProgressBar:"on",
+			hideThumbsOnMobile:"off",
+			hideSliderAtLimit:0,
+			hideCaptionAtLimit:0,
+			hideAllCaptionAtLilmit:0,
+			debugMode:false,
+			fallbacks: {
+				simplifyAll:"off",
+				nextSlideOnWindowFocus:"off",
+				disableFocusListener:false,
+			}
+		});
+	}; /* END OF revapi call */
+	
+ }; /* END OF ON LOAD FUNCTION */
+}()); /* END OF WRAPPING FUNCTION */
+
+jQuery(document).ready(function() {jQuery('.pins-feed-item img').nailthumb({width:75,height:75})}); 
+
+jQuery(function($){
+    if (jQuery().yithautocomplete) {
+        $('#2062051366_yith-s').yithautocomplete({
+            minChars: 3,
+            appendTo: '.2062051366_container',
+            serviceUrl: woocommerce_params.ajax_url + '?action=yith_ajax_search_products',
+            onSearchStart: function(){
+                $('.2062051366_container').append('<div class="ux-loading"></div>');
+            },
+            onSearchComplete: function(){
+                $('.2062051366_container .ux-loading').remove();
+
+            },
+            onSelect: function (suggestion) {
+                if( suggestion.id != -1 ) {
+                    window.location.href = suggestion.url;
+                }
+            }
+        });
+
+    } else {
+        $('#2062051366_yith-s').autocomplete({
+            minChars: 3,
+            appendTo: '.2062051366_container',
+            serviceUrl: woocommerce_params.ajax_url + '?action=yith_ajax_search_products',
+            onSearchStart: function(){
+                $('.2062051366_container').append('<div class="ux-loading"></div>');
+            },
+            onSearchComplete: function(){
+                $('.2062051366_container .ux-loading').remove();
+
+            },
+            onSelect: function (suggestion) {
+                if( suggestion.id != -1 ) {
+                    window.location.href = suggestion.url;
+                }
+            }
+        });
+
+    }
+});
+
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+				function revslider_showDoubleJqueryError(sliderID) {
+					var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
+					errorMessage += "<br> This includes make eliminates the revolution slider libraries, and make it not work.";
+					errorMessage += "<br><br> To fix it you can:<br>&nbsp;&nbsp;&nbsp; 1. In the Slider Settings -> Troubleshooting set option:  <strong><b>Put JS Includes To Body</b></strong> option to true.";
+					errorMessage += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jquery.js include and remove it.";
+					errorMessage = "<span style='font-size:16px;color:#BC0C06;'>" + errorMessage + "</span>";
+						jQuery(sliderID).show().html(errorMessage);
+				}
+			
+
+/* <![CDATA[ */
+var yith_wcwl_l10n = {"ajax_url":"\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/hollidayflowers.com\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/hollidayflowers.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/hollidayflowers.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_0e00a67c63742b06d9d88e79d5c3600e","fragment_name":"wc_fragments_0e00a67c63742b06d9d88e79d5c3600e"};
+/* ]]> */
+
+
+		jQuery( 'body' ).bind( 'wc_fragments_refreshed', function() {
+			jQuery( 'body' ).trigger( 'jetpack-lazy-images-load' );
+		} );
+	
+
+
+/* <![CDATA[ */
+var ajaxURL = {"ajaxurl":"https:\/\/hollidayflowers.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var newsletter = {"messages":{"email_error":"The email is not correct","name_error":"The name is not correct","surname_error":"The last name is not correct","privacy_error":"You must accept the privacy statement"},"profile_max":"20"};
+/* ]]> */
+
+
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.2.1',blog:'82596117',post:'46',tz:'-5',srv:'hollidayflowers.com'} ]);
+	_stq.push([ 'clickTrackerInit', '82596117', '46' ]);
+

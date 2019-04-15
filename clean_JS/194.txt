@@ -1,0 +1,35 @@
+
+    var utag,
+        utag_data = {
+            "page_name": "en",
+            "page_market": "IE",
+            "page_type": "",
+            "visitor_login_status": "Logged Out",
+            "page_site_section_lvl_2": "",
+            "page_site_section_lvl_3": "",
+            "page_site_section_lvl_4": "",
+            "page_market_evar": "EN",
+            "page_hierarchy": "en",
+            "page_channel": "en",
+            "page_errors": "",
+            "page_master_tab": "personal",
+            "service_application_name": "Home",
+            "service_application_type": "Home",
+            "visitor_business_type": "",
+            "visitor_subscription_type": "",
+            "visitor_customer_id": ""
+        };
+
+
+        (function(a,b,c,d){
+            a='//tags.tiqcdn.com/utag/vodafone/ie-main/prod/utag.js';
+            b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+            a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+        })();
+    
+
+    var mCareHelper = {
+        "mcareorigin" : "false",
+        "paymentallow" : "true"
+    };
+

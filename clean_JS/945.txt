@@ -1,0 +1,9 @@
+
+		//<![CDATA[
+	    cmSetClientID("60207374;60358752", false, "testdata.coremetrics.com", "qa.reebok.com");
+
+	    cmCreatePageviewTag("QA US Site down", "/US/site_down/");
+
+
+		//]]>
+

@@ -1,0 +1,89 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+    HWW.Debug = 0;
+    var HwwShowCouponPrompt = 1;   // 0 to suppress coupon prompt;  1 to show coupon prompt
+    // jQuery(document).on('popstate', function() {console.log('popstate');});
+
+
+
+    if (typeof(HWW) == 'undefined')
+        HWW = {};
+
+    HWW.Debug = false;
+
+    //  Rotating banner configuration:
+    //  The first banner is configured in the HTML (in case there's no javascript).
+    //  the alternate banners are here, each element being a (nested) Array of (href, src, alt).
+
+    HWW.AltBanners = Array(
+        
+        Array('/sawstop-price-increase.html',
+            '/blasts2014/sawstopbanner7.jpg', 'SawStop - your fingers are worth it'),
+        Array('/wood-slicer-resaw-bandsaw-blades.aspx',
+            '/blasts2017/woodslicerbanner.jpg', 'Get Superior Quality Cut with a Wood Slicer')
+    );
+
+    HWW.BannerDuration = 5500;      // milliseconds between rotates
+
+
+ SiteSeal("https://seal.networksolutions.com/images/netsolsiteseal.png", "NETEV", "none");
+
+//<![CDATA[
+<!--
+function queryString(imageNum) {
+       getString = window.location.search.substring(1);
+       splitString = getString.split("&");
+       for (i=0;i<splitString.length;i++) {
+              stringVal = splitString[i].split("=");
+              if (stringVal[0] == imageNum) {
+              return stringVal[1];
+              }
+      }
+
+  return 0;
+}
+function queryString2(imageNum) {
+       getString = window.location.search.substring(1);
+       splitString = getString.split("&");
+       for (i=0;i<splitString.length;i++) {
+              stringVal = splitString[i].split("=");
+              if (stringVal[0] == imageNum) {
+              return stringVal[1];
+              }
+      }
+
+  return '';
+}
+document.write ('<img src="https://www.woodnewsonline.com/AffiliateWiz/aw.aspx?Task=COOK&A=' + queryString('A') + '&B=' + queryString('B') + '&SubAffiliateID=' + queryString2('SubAffiliateID') + '&G=' + queryString('G') + '&Rand=' +(new Date()).getTime() +  '" width="1" height="1" border="0"><\/img>');
+//-->
+//]]>
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072387498;
+var google_conversion_label = "lvoVCO7n5AQQqqut_wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+    var pageTracker = _gat._getTracker("UA-1034325-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  

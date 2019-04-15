@@ -1,0 +1,1105 @@
+ 
+ 
+ 
+ 
+
+/* * * CONFIGURATION * * */
+var UnbxdSiteName = "brooksbrothers-com701001507809290";
+var UnbxdApiKey = "3182074650662ecef1d1932d6fa7154e";
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var ubx = document.createElement('script'); ubx.type = 'text/javascript'; ubx.async = true;
+ubx.src = '//d21gpk1vhmjuf5.cloudfront.net/unbxdAnalytics.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ubx);
+})();
+
+ 
+
+/**
+* jQuery.browser.mobile (http://detectmobilebrowser.com/)
+* jQuery.browser.mobile will be true if the browser is a mobile device
+*
+**/
+(function(a){
+(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
+})(navigator.userAgent||navigator.vendor||window.opera);
+(function() {
+if (jQuery.browser.mobile) {
+jQuery("html").addClass("mobile");
+}
+})();
+
+var deviceType = 'mobile';
+$(document).ready(function() {
+if (!$.cookie('dtype')) {
+$.cookie("dtype", 'mobile');
+}
+});
+
+
+ 
+
+(function() {
+var config = {
+kitId: 'ytz0umj',
+scriptTimeout: 6000
+};
+var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+})();
+
+
+(function ($) {
+$(document).ready(function() {
+if(typeof document.ontouchend !== 'undefined') {
+var lvl1Links = $('ul.level-1 > li');
+lvl1Links.each(function(){
+var touchBtn = $('<div class="touch-nav-btn" />')
+.css({
+'position' : 'relative',
+'top' : '-30px',
+'left' : 0,
+'width' : '100%',
+'height' : '100%'
+});
+$(this).append(touchBtn);
+var anchor = $(this).children('a');
+var href = anchor.attr('href');
+anchor.attr({
+'data-href': href,
+'href': 'javascript:void(0);'
+}).addClass('no-hover');
+}).find('.touch-nav-btn').bind('touchend', function(e) {
+var anchor = $(this).siblings('a'),
+sibs = anchor.siblings("div.level-2");
+if(sibs.hasClass("active")) {
+sibs.removeClass('active');
+setTimeout(function(){ location.href = anchor.data('href'); },200);
+} else {
+$("div.level-2").removeClass('active');
+if(sibs.length > 0 && !sibs.hasClass("active")) {
+sibs.addClass("active");
+} else {
+$("div.level-2").removeClass('active');
+setTimeout(function(){ location.href = anchor.data('href'); },200);
+}
+}
+});
+$("div.level-2 a").bind('touchend', function(e){
+e.preventDefault();
+var self = $(this);
+$(this).parents('div.level-2').removeClass('active');
+setTimeout(function(){ location.href = self.attr('href'); },200);
+});
+} else {
+$("ul.level-1 > li").hover(function () {
+var $this = this;
+$($this).data('timeout', setTimeout( function () {
+$($this).children("div.level-2").addClass("active");
+}, 100));
+}, function () {
+var $this = this;
+clearTimeout($($this).data('timeout'));
+$($this).children("div.level-2").removeClass("active");
+});
+//$(".level-2 .menu-wrapper").hover(function () {
+//}, function () {
+// $(this).parent().removeClass("active")
+//});
+}
+var link = '';
+var pageQueryString = '';
+$("a.omnitoplink").each(function() {
+link = $(this).attr('href');
+((link.indexOf("?") != -1) ? pageQueryString = '&lid=topnav-menu' : pageQueryString = '?lid=topnav-menu');
+href = $(this).attr('href');
+href += pageQueryString;
+$(this).attr('href', href);
+});
+$("a.omnileftlink").each(function() {
+link = $(this).attr('href');
+((link.indexOf("?") != -1) ? pageQueryString = '&lid=leftnav-menu' : pageQueryString = '?lid=leftnav-menu');
+href = $(this).attr('href');
+href += pageQueryString;
+$(this).attr('href', href);
+});
+});
+})(jQuery);
+
+ 
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aahx-brooksbrothers';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+try{Typekit.load();}catch(e){}
+
+    (function(app) {
+        app.CurrentCustomer = {"anonymous":true,"authenticated":false,"registered":false,"RememberedItems":{"h":"97d170e1550eee4afc0af065b78cda302a97674c","c":"0"},"SavedPreferences":{"e":false,"h":"97d170e1550eee4afc0af065b78cda302a97674c"}};
+    }(window.app = window.app || {}));
+
+ 
+
+	function checkForm(){
+		var theQ = decodeURI(app.util.getQueryStringParams(window.location.search)['q']);
+	    var theVal = $('input.searchField').val();
+	    
+	    if( !theVal || (theVal == "") || (theVal == "Search") || (theVal == theQ)) {
+	        return false;
+	    }
+	}
+
+
+$(window).on('load',function() {
+    
+    //  PRIVATE SALE - HIDE-ALL-OTHER-SLIDES FUNCTIONALITY - UNCOMMENT AND SET VAR/ID'S WHEN NEEDED
+    // Initialize Param Variable
+    // var cmpParam = app.util.getQueryStringParams(window.location.search.substr(1))['CMP'] || app.util.getQueryStringParams(window.location.search.substr(1))['cmp'];
+    // var bannerParam = app.util.getQueryStringParams(window.location.search.substr(1))['bbbanner'];
+
+    // Set Cookie
+    // if(cmpParam == 'EMC_20171201_PrivateSaleV1_RET_PR_F' || cmpParam=='BAC_US_FB_RM_PRIVATESALEPERCENT' || bannerParam == "1"){
+    //     $.cookie("pvs", "1", {expires:30, path : '/'});
+    // }else if(cmpParam == 'EMC_20171201_PrivateSaleV2_RET_PR_F' || cmpParam=='BAC_US_FB_RM_PRIVATESALEDOLLAR' || bannerParam == "2"){
+    //     $.cookie("pvs", "2", {expires:30, path : '/'});
+    // }
+
+    //Get cookie
+    // var pvCookieVal = $.cookie("pvs");
+
+    // Set Loyalty Status - Member & Tier
+    var $loyaltyMbr = app.customerSettings.rewardsMember;
+    var $loyaltyTier = app.customerSettings.rewardsTier; 
+
+    //Promo Duration Cookies
+    var $promoDurBCE = $.cookie("ckPromoBCE");
+    var $promoURLString;
+    if ( 
+        (window.location.href.indexOf("EMC_20190411_MBRLoyaltyBestCustomerPreview_RET_LOYALTY_L") > -1) || 
+        (window.location.href.indexOf("EMC_20190412_MBRLoyaltyBestCustomer_RET_LOYALTY_L") > -1) || 
+        (window.location.href.indexOf("EMC_20190412_BestCustomerNonLoy_RET_PR_F") > -1) || 
+        (window.location.href.indexOf("EMC_20190415_MBRLoyaltyBestCustomerPM_RET_LOYALTY_L") > -1) || 
+        (window.location.href.indexOf("EMC_20190415_BestCustomerNonLoyPM_RET_PR_F") > -1) || 
+        (window.location.href.indexOf("EMC_20190419_MBRLoyaltyBestCustomerPM_RET_LOYALTY_L") > -1) || 
+        (window.location.href.indexOf("EMC_20190419_BestCustomerNonLoyPM_RET_PR_F") > -1) || 
+        (window.location.href.indexOf("EMC_20190422_MBRLoyaltyBestCustomer_RET_LOYALTY_L") > -1) || 
+        (window.location.href.indexOf("EMC_20190422_BestCustomerNonLoy_RET_PR_F") > -1) || 
+        (window.location.href.indexOf("BAC_US_MX_DR_RM_All_Private_Best_Customer_Promo_-_Early_Access_All_a") > -1) || 
+        (window.location.href.indexOf("BAC_US_MX_DR_RM_All_Private_Best_Customer_Promo_-_Regular_Access_All_a") > -1)
+    ) {
+        // console.log('URL String Found');
+        $promoURLString = 'true';
+    }
+
+    // Get promo boxes
+    var $promoBcePre = $("li.promoBcePre");
+    var $promoMaw = $("li.promoMaw");
+    var $promoOnline60 = $("li.promoOnline60");
+    var $promoFreeShip250 = $("li.promoFreeShip250");
+    var $mybr = $("li.myBrooksRewards");
+    var $freeShipLoy = $("li.freeShippingLoy");
+    var $freeShipLoyVip = $("li.freeShippingLoyVip");
+
+    // If Member is Loyalty standard
+    if($loyaltyMbr == true){
+        // console.log('Is A Loyalty Member - True');
+
+        // Tier 1-4 BREAKOUT
+        if($loyaltyTier == "TIER_1_LOY"){
+                // console.log('Loyalty Member is True & Tier is 1 - INSIDER');
+                // URL CMP value detect & display per-role
+                if ($promoURLString == 'true') {
+                        // console.log('URL String Found - Show BCE');
+                        $promoBcePre.show();
+                        $.cookie('ckPromoBCE', 'true',{path : '/'});
+                        // console.log('Cookie set to True after URL string found');
+                        // console.log($.cookie("ckPromoBCE"));
+
+                } else if($promoDurBCE == 'true'){
+                    $promoBcePre.show();
+                    // console.log('Cookie promoDurBCE exists - Show BCE');
+                } else {
+                    // console.log('No Cookie or URL String Found - HIDE BCE');
+                    $promoBcePre.remove();
+                }
+                $promoMaw.show();
+                $promoOnline60.show();
+                $promoFreeShip250.show();
+                $mybr.remove();
+                $freeShipLoy.remove();
+                $freeShipLoyVip.remove();
+                
+            } else if($loyaltyTier == "TIER_2_LOY"){
+                // console.log('Loyalty Member is True & Tier is 2 - PREFERRED');
+                if ($promoURLString == 'true') {
+                        // console.log('URL String Found - Show BCE');
+                        $promoBcePre.show();
+                        $.cookie('ckPromoBCE', 'true',{path : '/'});
+                        // console.log('Cookie set to True after URL string found');
+                        // console.log($.cookie("ckPromoBCE"));
+
+                } else if($promoDurBCE == 'true'){
+                    $promoBcePre.show();
+                    // console.log('Cookie promoDurBCE exists - Show BCE');
+                } else {
+                    // console.log('No Cookie or URL String Found - HIDE BCE');
+                    $promoBcePre.remove();
+                }
+                $promoMaw.show();
+                $promoOnline60.show();
+                $promoFreeShip250.remove();
+                $mybr.remove();
+                $freeShipLoy.show();
+                $freeShipLoyVip.remove();
+
+            } else if($loyaltyTier == "TIER_3_LOY"){
+                if ($promoURLString == 'true') {
+                        // console.log('URL String Found - Show BCE');
+                        $promoBcePre.show();
+                        $.cookie('ckPromoBCE', 'true',{path : '/'});
+                        // console.log('Cookie set to True after URL string found');
+                        // console.log($.cookie("ckPromoBCE"));
+
+                } else if($promoDurBCE == 'true'){
+                    $promoBcePre.show();
+                    // console.log('Cookie promoDurBCE exists - Show BCE');
+                } else {
+                    // console.log('No Cookie or URL String Found - HIDE BCE');
+                    $promoBcePre.remove();
+                }
+                // console.log('Loyalty Member is True & Tier is 3 - VIP');
+                $promoMaw.show();
+                $promoOnline60.show();
+                $promoFreeShip250.remove();
+                $mybr.remove();
+                $freeShipLoy.remove();
+                $freeShipLoyVip.show();
+
+            } else if($loyaltyTier == "TIER_4_LOY"){
+                // console.log('Loyalty Member is True & Tier is 4 - ELITE');
+                if ($promoURLString == 'true') {
+                        // console.log('URL String Found - Show BCE');
+                        $promoBcePre.show();
+                        $.cookie('ckPromoBCE', 'true',{path : '/'});
+                        // console.log('Cookie set to True after URL string found');
+                        // console.log($.cookie("ckPromoBCE"));
+
+                } else if($promoDurBCE == 'true'){
+                    $promoBcePre.show();
+                    // console.log('Cookie promoDurBCE exists - Show BCE');
+                } else {
+                    // console.log('No Cookie or URL String Found - HIDE BCE');
+                    $promoBcePre.remove();
+                }
+                $promoMaw.show();
+                $promoOnline60.show();
+                $promoFreeShip250.show();
+                $mybr.remove();
+                $freeShipLoy.show();
+                $freeShipLoyVip.remove();
+
+        } else {
+            // console.log('Loyalty Member is True, but no Tier is defined');
+            if ($promoURLString == 'true') {
+                    // console.log('URL String Found - Show BCE');
+                    $promoBcePre.show();
+                    $.cookie('ckPromoBCE', 'true',{path : '/'});
+                    // console.log('Cookie set to True after URL string found');
+                    // console.log($.cookie("ckPromoBCE"));
+
+            } else if($promoDurBCE == 'true'){
+                $promoBcePre.show();
+                // console.log('Cookie promoDurBCE exists - Show BCE');
+            } else {
+                // console.log('No Cookie or URL String Found - HIDE BCE');
+                $promoBcePre.remove();
+            }
+            $promoMaw.show();
+            $promoOnline60.show();
+            $promoFreeShip250.show();
+            $mybr.remove();
+            $freeShipLoy.remove();
+            $freeShipLoyVip.remove();
+            // URL CMP value detect & display per-role
+        } 
+    } else{
+        // console.log('Not Member, no Tier');
+        if ($promoURLString == 'true') {
+                // console.log('URL String Found - Show BCE');
+                $promoBcePre.show();
+                $.cookie('ckPromoBCE', 'true',{path : '/'});
+                // console.log('Cookie set to True after URL string found');
+                // console.log($.cookie("ckPromoBCE"));
+
+        } else if($promoDurBCE == 'true'){
+            $promoBcePre.show();
+            // console.log('Cookie promoDurBCE exists - Show BCE');
+        } else {
+            // console.log('No Cookie or URL String Found - HIDE BCE');
+            $promoBcePre.remove();
+        }
+        $promoMaw.show();
+        $promoOnline60.show();
+        $promoFreeShip250.show();
+        $mybr.show();
+        $freeShipLoy.remove();
+        $freeShipLoyVip.remove();
+    }
+    
+    // DEFAULT PROMOBOX SLIDER CONFIG/INIT
+    // Listen for orientation changes
+    // window.addEventListener("orientationchange", function() {
+    //     console.log(screen.orientation);
+    // }, false);
+    
+    var $sliderParent = $('#sub-header'),
+    $sliderCont = $('#sub-header-promo'),
+    $slider = $('#sub-header-promo-slideshow'),
+    $slide = $slider.find('.promo-item'),
+    $slideHeading = $slide.find('.promo-heading'),
+    $slideContent = $slide.find('.promo-content'),
+    $expandBtn =  $slideHeading.find('a.expand'),
+    $closeBtn = $slideContent.find('a.close-promo'),
+    $viewDetails = $slideContent.find('a.view-details');
+
+    // default load state check & attributes set
+    if( $slider.hasClass('expanded')){
+        $slider.attr('aria-expanded', 'true');
+        $slideContent.attr('aria-expanded', 'true');
+        $slideContent.attr('aria-hidden', 'false');
+    } else {
+        $slider.attr('aria-expanded', 'false');
+        $slideContent.attr('aria-expanded', 'false');
+        $slideContent.attr('aria-hidden', 'true');
+    }
+
+
+    // If PromoBox is Open, enable click-anywhere-else-to-close statements
+    $('body').on('click touch', function(evt) { 
+        if( $('#sub-header-promo-slideshow').hasClass('expanded') ){
+        //console.log('PromoBox Expanded/Open - run click-to-close statements');          
+
+           if( (evt.target.id == "promoContent") || (evt.target.id == "openPromo") || (evt.target.className == "flex-next") || (evt.target.className == "flex-prev") ){
+              //console.log('clicked on PromoCont');
+              return false;
+            }
+           //For descendants being clicked, remove this check if you do not want to put constraint on descendants.
+           else if($(evt.target).closest('#promoContent').length){
+            //console.log('clicked on Child/decendants of PromoCont');
+            evt.stopPropagation();
+            } else {
+                //Close Promo process (every element except with id sub-header-promo-slideshow
+                //console.log('clicked outside Promo - close Promo');
+                $.cookie('sub-header-promo', "true", { path : '/' });
+                // console.log('cookie re-set (promo wont open auto now');
+                $slider.removeClass('expanded');
+                $slider.attr('aria-expanded', 'false');
+                $slideContent.attr('aria-expanded', 'false');
+                $slideContent.attr('aria-hidden', 'true');
+                $sliderCont.removeClass('engaged');
+                $sliderCont.addClass('disengaged');
+                $sliderParent.removeClass('engaged');
+                $sliderParent.addClass('disengaged');
+
+                $slider.flexslider("play");
+            }
+        }
+    });
+
+    $expandBtn.click(function(e){
+        e.preventDefault();
+        if(!$slider.hasClass('expanded')) {
+            $viewDetails.removeClass('down-arrow').closest('.promo-content').find('.promo-details').hide(); 
+            $slider.flexslider("pause");
+            $slider.addClass('expanded');
+            $slider.attr('aria-expanded', 'true');
+            $slideContent.attr('aria-expanded', 'true');
+            $slideContent.attr('aria-hidden', 'false');
+            $sliderCont.removeClass('disengaged');
+            $sliderCont.addClass('engaged');
+            $sliderParent.removeClass('disengaged');
+            $sliderParent.addClass('engaged');
+        }
+    });
+        
+    $closeBtn.click(function(e){
+        e.preventDefault();
+        $slider.removeClass('expanded');
+        $slider.attr('aria-expanded', 'false');
+        $slideContent.attr('aria-expanded', 'false');
+        $slideContent.attr('aria-hidden', 'true');
+        $sliderCont.removeClass('engaged');
+        $sliderCont.addClass('disengaged');
+        $sliderParent.removeClass('engaged');
+        $sliderParent.addClass('disengaged');
+
+        $slider.flexslider("play");
+    });
+
+    // $viewDetails.click(function(e){
+    //     e.preventDefault();
+    //     var $this = $(this);
+    //     $this.closest('.promo-content').find('.promo-details').toggle();
+    //     $this.toggleClass('down-arrow');
+    // });
+    
+    $slider.flexslider({
+        start: function(slider){
+            if(slider.hasClass('expanded')){slider.pause();}//else{slider.pause();};
+        },
+        pauseOnAction : false,
+        slideshowSpeed : 5000,
+        keyboardNav : true,
+        prevText : "Previous Promotion",
+        nextText : "Next Promotion"
+    });
+
+    if($slider.hasClass('expanded')){
+        $sliderCont.removeClass('disengaged');
+        $sliderCont.addClass('engaged');
+        $sliderParent.removeClass('disengaged');
+        $sliderParent.addClass('engaged');
+    }
+
+    $('#sub-header-promo-slideshow .nextBtn').click(function(event){
+      event.preventDefault();
+      $($slider).flexslider("next") //Go to next slide
+    });
+    $('#sub-header-promo-slideshow .prevBtn').click(function(event){
+      event.preventDefault();
+      $($slider).flexslider("prev") //Go to previous slide
+    });
+
+    $('#sub-header-promo').addClass('win-loaded');
+
+    if (!$.cookie('sub-header-promo')) {
+        var urlPath = window.location.pathname;
+        if((urlPath.indexOf('Rewards-Activate') < 0) && (urlPath.indexOf('Account-Show') < 0) && (window.screen.availWidth > 767)){
+            $('#sub-header-promo-slideshow').addClass('expanded');
+        }
+    }
+
+    $("#sub-header #sub-header-promo a.close-promo").click(function(e) {
+        e.preventDefault();
+        if (!$.cookie('sub-header-promo')) {
+            $.cookie('sub-header-promo', "true", { path : '/' });
+        }
+    });
+
+});
+
+
+		$(document).on('ready', function () {
+			var $flexslider = $("#ig-flexslider-wrapper .flexslider");
+			var $mobileInsta = $("#mobileInsta");
+			var $homeContent = $(".home-content");
+			$mobileInsta.appendTo($homeContent);
+			
+			$flexslider.flexslider({
+				animation: "slide",
+			    slideshow: false,
+			    animationLoop: true,
+			    controlNav: false
+			});
+		});
+	
+
+	$(document).ready(function() {
+	    $("a#togglebanner").bind('click', function() {
+	        $("a#togglebanner").toggleClass("open");
+			$("#tablet-donation-details").slideToggle();
+		});
+		if($.cookie('donationAdded') !== 'y'){
+			var promoFooterDonation = $('#global-tablet-donation-banner');
+			if(promoFooterDonation.exists()){
+				promoFooterDonation.show();
+			}
+		}
+		$('a#togglebanner').click(function(e){
+			e.preventDefault();
+			app.Omniture.trackLinkEvents('event92', 'St. Jude Bottom Option');
+			// app.customModalDonation.show('donation-cart-modal-stjude-nov16', 400, 550);
+		});
+	});
+
+	$(document).on("click", ".buttnscontnr a, #pdp-desktop-donation-banner a", function(e){
+		e.preventDefault();
+		// Track donation amount
+		if (app.siteCatalystEnabled && s) {
+			var $this = $(this),
+			data_charity_name = $this.data("charity_name"),
+			data_donation_amount = $this.data("donation_amount"),
+			data_currency = $this.data("currency"),
+			s_products = ";"+data_charity_name+"-"+data_donation_amount+"-"+data_currency+";;;event27="+data_donation_amount+"|event28=1;";
+			s.products = s_products;
+			s.events = "scAdd";
+			s.tl();
+		}
+	});
+	
+	$(document).on("click", ".buttnscontnr a", function(e){
+		e.preventDefault();
+		var addToCartLink = $(this).attr('href');
+		var isCartPage = ((typeof app.page.ns !== "undefined") && (app.page.ns == "cart" || app.page.ns == "checkout" ));
+		if(isCartPage){
+			window.location.href = addToCartLink;
+		}else{
+			addToCartLink = app.util.appendParamToURL(addToCartLink ,'format','ajax');
+			$.ajax({
+				type     : "POST",
+				url      : addToCartLink,
+				dataType : "html",
+				timeout	 : 10000,
+				success  : function() {
+	                app.dialog.close();
+					app.headercart.update();
+					app.minicart.show();
+	                var pdpDonation =  $("#pdp-desktop-donation-banner");
+	                var headerDonation = $("#header-promo-donation-banner");
+	                var footerDonation = $("#global-tablet-donation-banner");
+		                            
+	                if(pdpDonation.exists()){
+		                pdpDonation.fadeOut(200);
+					}                            
+					if(headerDonation.exists()){
+						headerDonation.fadeOut(200);
+					}
+					if(footerDonation.exists()){
+						footerDonation.fadeOut(200);
+					}
+				}
+			
+			});
+		}
+	});
+
+
+$(document).ready(function(){
+ 
+ 	// No cookie, open the dialog, set Aria-hidden 'False' & toggle element class to 'opened-state'
+	if(!$.cookie('GDPRCookie')) {
+
+		setTimeout(function() {
+			$(".gdpr-notification").addClass("opened-gdpr");
+		}, 1000);
+
+		$(".gdpr-notification").attr('aria-hidden','false'); 
+	    $(".gdpr-notification").addClass("opened-gdpr");
+
+		$("a.close-gdpr-notice").click(function(e){
+		    e.preventDefault();
+		    $(".gdpr-notification").removeClass("opened-gdpr");
+		    $(".gdpr-notification").addClass("closed-gdpr");
+		    $(".gdpr-notification").attr('aria-hidden','true');
+		    $.cookie( 'GDPRCookie', '1', {path: '/', expires: 365 });
+		});
+	}
+
+	// has cookie, aria-hide dialog, set class to 'closed-state'
+	if($.cookie('GDPRCookie')) {
+	        $(".gdpr-notification").attr('aria-hidden','true'); 
+	        $(".gdpr-notification").addClass("closed-gdpr");
+	}
+});
+
+
+	  
+	
+
+	// pass pdict vars to javascript
+	var s_account = "rbaproduction";
+	var previousPageParameter = "";
+
+<!--
+
+		 	//decodes html encoded stringparts. (e.g. transforms &gt; to >) and returns the decoded string
+			function decodeHTML(encodedString){
+				var decodedString = "";
+				if (encodedString != null && encodedString != ""){
+					var div = document.createElement('div');
+					div.innerHTML = encodedString;
+					decodedString = div.firstChild.nodeValue;
+				}
+
+				return decodedString;
+			}
+
+			
+				var omnLocale = decodeHTML("");
+			
+				var omnVersion = decodeHTML("mobile");
+			
+				var omnCustomerStatus = decodeHTML("guest");
+			
+				var omnPageTitlePrefix = decodeHTML("brooks brothers| ");
+			
+				var omnCountry = decodeHTML("");
+			
+				var omnCustomerID = decodeHTML("unidentified");
+			
+
+			/*  We already have a nice jQuery plugin that handles cookies :(  */
+			/*  No need to reinvent the wheel                                 */
+			function setCookie(name, value, days) {
+				if (days) {
+					var date = new Date();
+					date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+					var expires = "; expires=" + date.toGMTString();
+				} else {
+					var expires = "";
+				}
+				document.cookie = name + "=" + "" + expires + "; path=/";
+				document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+			}
+
+			function readCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';');
+				for ( var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ')
+						c = c.substring(1, c.length);
+					if (c.indexOf(nameEQ) == 0)
+						return decodeURIComponent(c.substring(nameEQ.length, c.length));
+				}
+				return null;
+			}
+
+
+			function deleteCookie(name) {
+				var date = new Date();
+				date.setDate(date.getDate() - 1);
+				document.cookie = name + "=; expires=" + date.toGMTString() + "; path=/";
+			}
+
+			function reducePath(path, depth) {
+				var result = new Array();
+				var tmp = path.split(" > ");
+				var i = 0;
+				while (i < depth && i < tmp.length) {
+					result.push(tmp[i++]);
+				}
+				return result.join(" > ");
+			}
+			
+			/**
+			 * Returns the marketing channel is set. NULL otherwise.
+			 */
+			function getMarketingChannel(referrer) {
+				if(!referrer) {
+					return null;
+				}
+				
+				// Channel set, extract and return it.
+				referrer = referrer.toLowerCase();
+				if(referrer.indexOf("&cmp=") != -1) {
+					var result = referrer.substring(referrer.indexOf("&cmp=")+5, referrer.indexOf("&cmp=")+8);
+					return result;
+				}
+			}
+
+		    function getEvar16(assetID) {
+		    	
+		    	// Marketing Channel
+		    	var marketingChannel = getMarketingChannel(document.URL);
+		    	
+		    	if(typeof omnPageName === 'undefined')
+			    	var omnprevpgname = '';
+		    	else
+		    		var omnprevpgname = omnPageName;
+		    	
+		    	var omnSection = readCookie('omnSection');
+		    	if(	(document.referrer && !document.referrer.match(/^https?:\/\/([^\/]+\.)?brooksbrothers\.com(\/|$)/i) && marketingChannel) ||
+		    		(!document.referrer && marketingChannel) )
+		    	{
+		    		return marketingChannel;
+		    	}
+		    	
+		    		
+		    	// Deeplink
+	    	 	if (document.referrer === ""){
+			    	//if (omnprevpgname.toLowerCase().indexOf("product >") >= 0) {
+		    	 	//	return omnprevpgname;			    		
+			    	//} else {
+		    	 		return "deeplink";			    		
+			    	//}
+				}
+		    	
+		    	// Previous Page
+		    	if (previousPageParameter != "") {
+				    return previousPageParameter;
+			    }
+		    	
+		    	// Asset IDs
+		    	///////////////////////////////////////////////////////
+				if (assetID == "OMNITURE_HOMEPAGE") {
+					return "home";
+				}
+				if (assetID == "OMNITURE_CATEGORYLANDINGPAGE") {
+					return (typeof omnSection === 'undefined')? ""  : omnSection;
+				}
+				if (assetID == "OMNITURE_GRIDPAGE" || assetID == "OMNITURE_GRIDPAGE_REFINEMENTS") {
+					//var path = (typeof omnSection === 'undefined')? ""  : omnSection;
+					//return reducePath(path, 3);
+					return omnSection;
+				}
+				if (assetID == "OMNITURE_SEARCH_RESULTPAGE") {
+					return "search";
+				}
+				if (assetID == "OMNITURE_PAGE_QUICKVIEW" || assetID == "OMNITURE_PAGE_SHOPTHELOOKQUICKVIEW") {
+					return omnSection; 
+				}
+				if (assetID == "OMNITURE_PAGE_SHOPTHELOOK") {
+					return "other look";
+				}			
+				if (assetID == "OMNITURE_PAGE_PRODUCTDETAIL") {
+					return omnSection; 
+				}
+				if (assetID == "OMNITURE_GRIDPAGE_REMEMBERED") {
+					return "remembered items";
+				}
+			    if (assetID == "OMNITURE_CART_NOTEMPTY") {
+			    	if (omnprevpgname.toLowerCase().indexOf("product >") >= 0) {
+		    	 		return omnprevpgname;			    		
+			    	} else {
+				    	return "bag";
+			    	}
+				}
+			    if (assetID == "OMNITURE_MYACCOUNT_ORDERHISTORY") {
+					return "order history";
+				}
+			    if (assetID == "OMNITURE_MAGAZINE_VIEW") {
+					return "magazine";
+				}
+				if (assetID == "OMNITURE_ADD2CART_CART_EXIST" || assetID == "OMNITURE_ADD2CART_CART_NEW"){
+					return "recommended items";
+				}
+				
+		    	// Referrer different from BB
+	    	 	if (document.referrer && !document.referrer.match(/^https?:\/\/([^\/]+\.)?brooksbrothers\.com(\/|$)/i) ){
+			    	//if (omnprevpgname.toLowerCase().indexOf("product >") >= 0) {
+		    	 	//	return omnprevpgname;			    		
+			    	//} else {
+		    	 		return "deeplink";
+			    	//}
+				}				
+				
+		    	// No case found
+				return "";
+		    }
+
+		    function updateOmnPage(omnAssetID) {
+			    if (omnAssetID == "OMNITURE_PAGE_QUICKVIEW") {
+				    return; // don't update the cookie if we land on certain pages like modal dialogs, etc.
+			    }
+			    if (omnAssetID == "OMNITURE_PAGE_PRODUCTDETAIL") {
+				   return; // don't update the cookie if we land on product detail page
+			    }
+			    setCookie("omnPP", omnAssetID);
+		    }
+
+		    function updateOmnSection(value) {
+			    if (omnAssetID == "OMNITURE_GRIDPAGE" || omnAssetID == "OMNITURE_GRIDPAGE_REFINEMENTS") {
+			    	setCookie("omnSection", value);
+			    }
+		    }
+
+		    var omnAssetID  = "OMNITURE_HOMEPAGE";
+		    var omnSectionEntry  = (typeof omnPageName === 'undefined')? ""  : decodeHTML(omnPageName);
+			// read omnPP cookie and then update it.
+		    var previuosAssetID = readCookie("omnPP");
+		    updateOmnPage(omnAssetID);
+		    updateOmnSection(omnSectionEntry);
+
+
+		    var omnPreviousPage = decodeHTML(getEvar16(previuosAssetID));
+		    if(omnPreviousPage == "mini-bag"){
+		    	omnContentPosition = "mini-bag";
+		    }
+
+		    if (omnAssetID === "OMNITURE_PAGE_SHOPTHELOOK" || omnAssetID === "OMNITURE_PAGE_SHOPTHELOOKQUICKVIEW"){
+			    if (typeof(omnLookReplace) != 'undefined' && omnLookReplace && omnPreviousPage != null && omnPreviousPage.length > 0){
+					omnProducts = omnProducts.replace(/evar16=([^|]*)/g, "evar16="+omnPreviousPage);
+			    }
+			}
+
+			//remove old refine values for ajax requests
+		    if (omnAssetID === "OMNITURE_PAGE_QUICKVIEW" || omnAssetID === "OMNITURE_PAGE_SHOPTHELOOKQUICKVIEW" || omnAssetID === "OMNITURE_PAGE_ADDTOCART"){
+				if(s){
+					for(var prop in s.contextData){
+						if(prop.indexOf("ref") == 0 || (prop == "action" && (omnAssetID === "OMNITURE_PAGE_QUICKVIEW" || omnAssetID === "OMNITURE_PAGE_SHOPTHELOOKQUICKVIEW"))){
+							delete s.contextData[prop];
+						}
+					}
+				}
+			}			
+
+			function extendMyBuyLinks(){
+				jQuery("li.mbCitem .mbCimg a").attr("href", function(i, href) {
+	   				return app.util.appendParamToURL(href,'omnpp','recommended items');
+	   	   	   	});
+
+				//unbind waiting event handler from recommendations as it's work is done.
+				jQuery("li.mbCitem .mbCimg a").die("hover", extendMyBuyLinks);
+			}
+
+		    //will wait for the first time a customer hovers over a recommendation and execute extendMyBuyLinks
+	   	   	jQuery("li.mbCitem .mbCimg a").live("hover", extendMyBuyLinks);
+
+			// override page name. use the values stored in section cookie to avoid problems with breadcrumb
+			if (previuosAssetID == "OMNITURE_GRIDPAGE"
+					|| previuosAssetID == "OMNITURE_GRIDPAGE_REFINEMENTS") {
+			    if (omnAssetID == "OMNITURE_PAGE_PRODUCTDETAIL" && readCookie("omnSection")) {
+			    	omnPageName = decodeHTML("product > " + readCookie("omnSection") + " > full view");
+			    } else if (omnAssetID == "OMNITURE_PAGE_QUICKVIEW") {
+			    	omnPageName = decodeHTML("product > " + readCookie("omnSection") + " > quick view");
+			    }
+			}
+
+		    /*
+		    	console.info("omnPreviousPage: " + omnPreviousPage
+		    	    + "   prev asset/cookie: "+ previuosAssetID
+		    	    + "   current asset: " + omnAssetID
+		    	    + "   sectionCookie: " + readCookie("omnSection"));
+			//	*/   
+		//-->
+<!--
+s.channel = "home page"
+s.pageName = "home page"
+s.prop4 = "home page"
+//-->
+<!--
+s.eVar5 = omnCustomerStatus;
+s.eVar6 = omnVersion;
+s.prop8 = omnCustomerID;
+//-->
+<!--
+    
+  	//dw51cache cookie is being set in app.js
+    var dw51cache = readCookie('dw51cache');
+    s.eVar68 = (dw51cache === null) ? 'us' : dw51cache.split('|')[0].toLowerCase();
+
+	// Reset products for checkout > shipping in case we're coming from another checkout page
+	if(false || false) {
+		s.products = null;
+		s.events = null;
+	}
+	
+	// Remove refinement specific data if refinement is was forced (bug 1956, comment 19)
+	if( false || false ) {
+
+		if(s.pageName.indexOf('refined') != -1) {
+			s.pageName = s.pageName.substring(0, s.pageName.indexOf('refined')-3 );
+		}
+
+		delete s.contextData["action"];
+	}
+	
+	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	var s_code=s.t();if(s_code)document.write(s_code)//-->
+<!--
+    storeSREDID();
+    //-->
+
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','//connect.facebook.net/en_US/fbevents.js');
+ 
+        fbq('init', '498847800233341');
+ 	
+	fbq('track', 'PageView');
+
+	if(omnAssetID == "OMNITURE_CHECKOUT_ORDERCONFIRMATION"){
+		var fb_revenue = $('.price-value')[0].innerText;
+		fbq(["track", 'Purchase', {value: fb_revenue, currency: 'USD'}]);
+	}
+
+	fbq('track', 'ViewContent');
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+(function(app) {
+	app.isMobileUserAgent    = true;
+	app.zoomViewerEnabled    = true;
+	app.quickViewEnabled     = false;
+	app.rememberItemEnabled  = false;
+	app.constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE","PI_METHOD_GIFT_CERTIFICATE":"GIFT_CERTIFICATE","INSTANCE_TYPE":0,"QAS_ENABLED":true,"GIFT_SHIPPING_DEFAULT":"80","GIFT_SHIPPING_NEXTBD":"86","GIFT_SHIPPING_OVERSEAS_DEFAULT":"81","GIFT_SHIPPING_OVERSEAS_NEXTBD":"87","SHOW_ADDITIONAL_SHIPPING_INFO":false,"GC_NUMBER_REGEXP":"","GC_PIN_REGEXP":"","AMAZON_MERCHANT_ID":"A13GBIVO2FMSLL"};
+	app.resources = {"SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Couldn't Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Product(s)","SELECT_BONUS_PRODUCTS":"Select {0} Bonus Product(s)","SELECT_BONUS_PRODUCT":"Select","BONUS_PRODUCT_MAX":"The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","NEWSLETTER_EMAIL_INVALID":"Please enter a valid email address","NEWSLETTER_COUNTRY_INVALID":"Select a Country","PRODUCT_IMAGES":"Images","SHIPPING_NOTSHIPTOCOUNTRY":"This item is prohibited to ship to this country.","BILLING_ADDRESS_MISSING":"Please select or create a billing address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please Enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response, Parser error","NO_SALUTATION":"Select a Title","NO_ORGID":"Please enter Organization ID","NO_ORGPIN":"Please enter Organization PIN","NO_FIRSTNAME":"Please enter a First name","NO_LASTNAME":"Please enter a Last name","NO_PASSWORD":"Please enter a Password","NO_CONFIRMPASSWORD":"Please confirm your Password","NO_ADDRESS1":"Please enter an address","NO_CITY":"Please enter a City","NO_STATE":"Please enter a State","NO_COUNTRY":"Please select a Country","NO_ZIP":"Please enter your Zip Code","INVALID_POSTAL":"Please enter your Zip Code","NO_PHONE":"Please enter a Telephone Number","NO_EMAIL":"Please enter your Email Address","INVALID_PHONE":"Please specify a valid phone number.","INVALID_ZIP":"Not a valid Zip Code.","INVALID_ADDRESS":"Please enter a valid address name without umlauts and accents","INVALID_ADDRESSCHARS":"Your address may contain invalid characters","INVALID_CITYCHARS":"Your city may contain invalid characters","INVALID_CITY":"Please enter a valid city.","INVALID_CVV":"Kindly enter your CVV code.","INVALID_ORGID":"Invalid Organization ID","INVALID_ORGPIN":"Invalid Organization PIN","INVALID_FIRSTNAME":"Your First Name may contain invalid characters","INVALID_FULLNAME":"Your name may not contain special characters.","INVALID_LASTNAME":"Your Last Name may contain invalid characters","INVALID_USERNAME":"A valid user name is required.","INVALID_MEMBERSHIPNUMBER":"Please enter a valid membership number.","INVALID_CCDATE":"Please select a valid expiration date.","EXPIRED_CC":"Unfortunately this card is expired.","INVALID_PASSWORD":"Please enter a valid password.","INVALID_OTNUMBER":"Please enter a valid order number.","INVALID_OTPOSTAL":"Please enter a valid postal code.","NO_CVV":"Kindly enter your CVV code.","INVALID_OWNERNAME":"Please enter your name as it appears on the card","INVALID_CCNUMBER":"Please enter a valid card number","INVALID_CCTYPE":"Please select a card type","INVALID_CCMONTH":"Please select an expiration month","INVALID_CCYEAR":"Please select an expiration year","MISSING_CCEXPDATE":"Please enter an expiration date","INVALID_CCEXPDATE":"Please enter a valid expiration date","CVV_DEFAULT":"*","CVV_EXISTINGCC":"Please enter your CVV","CVV_PLACEHOLDER":"ex. 555 or 1234","INVALID_EMAIL":"Please enter a valid email address.","INVALIT_POSTAL":"Invalid Postal Code","EMAIL_NO_MATCH":"Does not match Email","PASSWORD_NO_MATCH":"Does not match Password","PASSWORD_NOT_PROVIDED":"Please enter your password to change the user name","PASSWORD_EMPTY":"Please enter your password","TERMS_NOT_AGREED":"You have to read and comply to The Terms & Privacy Notice","ORGNAME_ERROR":"Please enter an Organization Name","ORGID_ERROR":"Please enter an Organization ID","CISNAME_ERROR":"Please enter a name","CISTITLE_ERROR":"Please enter a title","CISSELECTTITLE_ERROR":"No Title","NOMESSAGE_ERROR":"Please enter a message","NOPINCODE_ERROR":"Please enter a pin code","NOMEMBERSHIPNR_ERROR":"Please enter your membership number","FRIENDSNAMEMISSING_ERROR":"Please enter your friend's name","FRIENDSEMAILMISSING_ERROR":"Please enter your friend's email","YOURNAMEMISSING_ERROR":"Please enter your name","YOUREMAILMISSING_ERROR":"Please enter your email","FULLNAME_ERROR":"Please enter your full name","REMOVE":"Remove Item","REMOVESHORT":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove Item","COMPARE_BUTTON_LABEL":"Compare Item(s)","COMPARE_CONFIRMATION":"This will remove the first product added to compare.  Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid Gift Certificate Code","GIFT_CERT_BALANCE":"billing.giftcertbalance","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of $5 and maximum of $5000","GIFT_CERT_MISSING":"Please enter a gift card number.","BILLING_GC_CANADA":"We apologize - we cannot accept Canadian Gift Cards at this moment due to the currency exchange.","BILLING_GC_MERCHANDISE_CANADA":"We apologize - we cannot accept Canadian Merchandise Credit at this moment due to the currency exchange.","COUPON_CODE_MISSING":"Please enter a promotional code or skip this step.","COUPON_CODE_ADD":"Enter Here","COOKIES_DISABLED":"Your browser currently is not set to accept Cookies. Please turn it on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","CHZN_SELECT_NO_RESULTS_TEXT":"No results matched","GRID_CHOOSE_FIT":"Choose a fit","GRID_CHOOSE_SIZE":"Choose a size","REMEMBERED_ITEMS_REMEMBER":"Remember this","REMEMBERED_ITEMS_REMEMBERED":"Remembered","REMEMBERED_ITEMS_MOBILE_HEADER1":"Your Item has been","REMEMBERED_ITEMS_MOBILE_HEADER2":"Remembered","BILLING_GC_MISSINGID":"Please enter your gift card number.","BILLING_GC_MISSINGPIN":"Please enter your gift card code.","BILLING_GC_MISSINGNUMBERANDPIN":"Please enter your gift card number.","BILLING_GC_INVALIDPIN":"Invalid gift card pin.","BILLING_GC_INVALID":"There is an issue with your card number.","BILLING_GC_ERROR":"Couldn't remove gift certificate.","BILLING_GC_BALANCE":"billing.giftcertbalance","ADDTHIS_PINIT":"Pin it on Pinterest","ADDTHIS_TWITTER":"Tweet this","ADDTHIS_SHARE_TWITTER":"Share to Twitter","ADDTHIS_FACEBOOK":"Facebook Like","ADDTHIS_GOOGLE":"Send to Google +","ADDTHIS_SENDTOFRIEND":"Send to a Friend","MINICARTMOBILE_YOURITEM":"Your item has been","MINICARTMOBILE_ADDEDTOCART":"Added to your bag","MINICARTMOBILE_CHECKOUT":"CheckOut","MINICARTMOBILE_CLOSE":"Continue Shopping","USER_CONFIRMATION_MSG":"User Confirmation","GLOBAL_STORENAME":"Brooks Brothers","IMAGE_BLACK_LAMB":{},"QAS_WAITING_TITLE1":"One Moment, Please","QAS_WAITING_TITLE2":"US","QAS_WAITING_TEXT":"Your address is being validated","INVALID_ADDRESSID":"Please enter a valid address name without umlauts and accents","QUICKVIEW_PRODUCTURL":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-MiniQuickView","CC_INFOTEXT_DEFAULT":"No spaces or dashes","CC_INFOTEXT_BBPLCC":"No spaces or dashes","INVALID_APT":"Please enter an apt, suite or unit number","INVALID_REGZIP":"As a Corporate Service Member, your ZIP is required<br>for identification.","NO_POBOX":"We regret that we cannot ship to a post office box.<br/>Please provide a street address.","HIDE_DEPARTMENTS":"Hide Departments","SHOW_DEPARTMENTS":"Show Departments","NONICKNAME":"Please enter a valid address name without umlauts and accents","MEMBER_DISCOUNT_TOOLTIP":"YOUR PRICE includes your 0% DISCOUNT<br>as a<br>Corporate Services Member","COUPON_REMOVING_MSG":"Removing coupon...","COUPON_VALIDATING_MSG":"Validating coupon...","TAX_INFO_TITLE":"Your Sales Tax","TAX_INFO_DESC":"We are currently experiencing an error calculating your sales tax. We will continue processing your order and calculate your then when we have corrected the issue.","CC_INFO_TITLE":"We Accept:","CC_CVVINFO_TITLE":"Where is the CVV:","EMAIL_TOOLTIP_HEADLINE":"Why my email?","EMAIL_TOOLTIP_MSG":"We require an email address to send you an order confirmation email, as well as other important notifications regarding your order.","PHONE_TOOLTIP_HEADLINE":"Why my phone number?","PHONE_TOOLTIP_MSG":"Your phone number will be used ONLY to contact you regarding this order.<br><br>Your number will remain private and will not be used for promotional purposes.","CIS_SHIP_TOOLTIP_MSG":"In order to best protect your corporate discount online, we restrict your shipping and billing address to match the address provided when enrolling in the program (or for a Corporate Membership card). To request a permanent address change, please contact Corporate Incentives Services at 866-515-4747. To ship your order to a different address, please contact Customer Service at 800-274-1815.","MULTIPLE_SHIPPING_HEADLINE":"Available Countries","MULTIPLE_SHIPPING_MSG":"<p>We ship to most countries and regions. Unfortunately we cannot ship to multiple addresses when your order destination includes:<br /><span class=\"note\">(in alphabetical order based by region)</span></p><ul><li>EUROPE: Austria, Belgium, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Luxembourg, Netherlands, Norway, Poland, Portugal, Romania, Russian Federation, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, United Kingdom</li><li>MIDDLE EAST: Bahrain, Egypt, Jordan, Kuwait, Qatar, Oman, Saudi Arabia, United Arab Emirates</li><li>LATIN AMERICA: Costa Rica, Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras Republic, Mexico, Nicaragua, Panama, Paraguay,Thailand</li><li>ASIA: India, Korea, The Republic of, Philippines, Thailand, Vietnam</li></ul><p>An option is to purchase and deliver separate orders to desired destinations.</p>","MULTIPLE_SHIPPING_MSG_NO_BREAK":"<p>We ship to most countries and regions. Unfortunately we cannot ship to multiple addresses when your order destination includes: <span class=\"note\">(in alphabetical order based by region)</span></p><ul><li>EUROPE: Austria, Belgium, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Luxembourg, Netherlands, Norway, Poland, Portugal, Romania, Russian Federation, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, United Kingdom</li><li>MIDDLE EAST: Bahrain, Egypt, Jordan, Kuwait, Qatar, Oman, Saudi Arabia, United Arab Emirates</li><li>LATIN AMERICA: Costa Rica, Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras Republic, Mexico, Nicaragua, Panama, Paraguay,Thailand</li><li>ASIA: India, Korea, The Republic of, Philippines, Thailand, Vietnam</li></ul><p>An option is to purchase and deliver separate orders to desired destinations.</p>","PP_INFO_TITLE":"USING PayPal&reg;","PP_INFO_TITLE_DESC":"Within BrooksBrothers.com, you can combine PayPal with Brooks Brothers Gift Cards.","IN_STOCK":"In stock","QTY_IN_STOCK":"{0} item(s) in stock and ready to ship now.","PREORDER":"Pre Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back Order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity or remove this item."};
+	app.urls = {"multishippingStart":"/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingMultiple-Start","appResources":"/on/demandware.store/Sites-brooksbrothers-Site/default/Resources-Load","homePageUrl":"https://www.brooksbrothers.com","pageInclude":"/on/demandware.store/Sites-brooksbrothers-Site/default/Page-Include","pageShow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Page-Show","continueUrl":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Default-Start/C2007804670","staticPath":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/v1555214731163/","fiftyOneCountryFlags21x14":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/v1555214731163/images/fiftyone/flags21x14/","fiftyOneCountryFlagsLrg":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/v1555214731163/images/fiftyone/flags-lrg/","staticBackToTopImg":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw7aa88541/images/backtotop.png","staticLibraryPath":"/on/demandware.static/-/Sites-brooksbrothers-Library/default/v1555214731163/","staticPathZoomCursorPng":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwe66f3f14/images/zoom-in.png","staticPathZoomCursorCur":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw6ff0b2fd/images/zoom-in.cur","staticPathSpacerGif":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwdee34bd8/images/spacer.gif","staticArrowDown":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw68207205/images/blue-arrow-down.png","staticArrowLeft":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwacba0a81/images/blue-arrow-left.png","staticArrowRight":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw8590e64b/images/blue-arrow-right.png","staticArrowLeftWhite":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwfdb69bcf/images/white-arrow-left.png","staticArrowRightWhite":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw52a6d2e0/images/white-arrow-right.png","addProduct":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-AddProduct","minicart":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-MiniAddProduct","minicartshow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-MiniCart","headercartshow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-HeaderCart","newsletter":"/on/demandware.store/Sites-brooksbrothers-Site/default/Newsletter-Subscribe","newsletterSubscribeDialog":"/on/demandware.store/Sites-brooksbrothers-Site/default/Newsletter-SubscribeDialog","lpsignup":"/on/demandware.store/Sites-brooksbrothers-Site/default/Newsletter-LPSubscribe","newsletterMobile":"/on/demandware.store/Sites-brooksbrothers-Site/default/Newsletter-SubscribeMobile","newsletterUpdateSubscriptions":"/on/demandware.store/Sites-brooksbrothers-Site/default/Newsletter-UpdateSubscriptions","BBCheckoutPromoModal":"/on/demandware.store/Sites-brooksbrothers-Site/default/SlotsInclude-BBCheckoutPromoModal","GCCheckBalance":"/on/demandware.store/Sites-brooksbrothers-Site/default/GiftCard-CheckBalance?format=ajax","fiftyOneContextChooser":"/on/demandware.store/Sites-brooksbrothers-Site/default/ContextChooser-Start","fiftyOneContextChooserSave":"/on/demandware.store/Sites-brooksbrothers-Site/default/51Localization-ContextChooserSave","fiftyOneWelcomeMat":"/on/demandware.store/Sites-brooksbrothers-Site/default/51Localization-WelcomeMat","fiftyOneCheckoutMat":"/on/demandware.store/Sites-brooksbrothers-Site/default/51Localization-CheckoutMat","homeUsLocale":"/on/demandware.store/Sites-brooksbrothers-Site/default/Home-Show","homeUkLocale":"/on/demandware.store/Sites-brooksbrothers-Site/en_GB/Home-Show","cartUsLocale":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-Show","cartUkLocale":"/on/demandware.store/Sites-brooksbrothers-Site/en_GB/Cart-Show","cartLocaleURL":"/on/demandware.store/Sites-brooksbrothers-Site/default/51Localization-LocaleSpecificURL","CisRenew":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-Renewal?format=ajax","CisRenewForgotEmail":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-ForgotEmail?format=ajax","CisTerms":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-Terms?format=ajax","CisEnroll":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-Enroll?format=ajax","CisInform":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-Inform?format=ajax","CisMembership":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cis-Membership?format=ajax","localStorageStart":"https://www.brooksbrothers.com/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwa82c8101/localstorage/start.html","localStorageRememberedItems":"/on/demandware.store/Sites-brooksbrothers-Site/default/LocalStorage-RememberedItems","rememberedItemsDialog":"/on/demandware.store/Sites-brooksbrothers-Site/default/LocalStorage-RememberedItemsDialog","localStorageSavedPreferences":"/on/demandware.store/Sites-brooksbrothers-Site/default/LocalStorage-SavedPreferences","savedPreferencesDialog":"/on/demandware.store/Sites-brooksbrothers-Site/default/LocalStorage-SavedPreferencesDialog","recentlyViewedProducts":"/on/demandware.store/Sites-brooksbrothers-Site/default/LocalStorage-RecentlyViewedProducts","myAccountRememberedItems":"/on/demandware.store/Sites-brooksbrothers-Site/default/Account-RememberedItems","myAccount":"/on/demandware.store/Sites-brooksbrothers-Site/default/Account-Show","cartShow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-Show","giftRegAdd":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Address-GetAddressDetails?addressID=","wishlistAddress":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-brooksbrothers-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-Show","getBonusProducts":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-GetAvailability?format=ajax","removeImg":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw5570fea5/images/interface/icon_remove.gif","searchTextSuggestions":"/on/demandware.store/Sites-brooksbrothers-Site/default/Search-GetSuggestions","searchsuggest":"/on/demandware.store/Sites-brooksbrothers-Site/default/Search-ProductSuggestions","productNav":"/on/demandware.store/Sites-brooksbrothers-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-brooksbrothers-Site/default/COSummary-Update","billingSelectCC":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-SelectCreditCard","updateGiftCardSection":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-UpdateGiftCardSection","updateAddressDetails":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-UpdateAddressDetails","shippingMethodsJSON":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-UpdateShippingMethodList","selectShippingMethodsList":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-SelectShippingMethod","qasSearchZipcode":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/QAS-SearchZip","qasSearchAddress":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/QAS-SearchAddress","continueCheckout":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-COStart","resetPaymentForms":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-ResetPaymentForms","compareShow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Compare-Show","compareAdd":"/on/demandware.store/Sites-brooksbrothers-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-brooksbrothers-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-GetGiftCertificateBalance","addCoupon":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-AddCoupon","addedCoupon":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-CouponAdded","removeCoupon":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-RemoveCoupon","powerReviewsFullJs":"/on/demandware.static/-/Sites-BrooksBrothers_Site_US/default/v1555214731163/pwr/engine/js/full.js","powerReviewsZip":"/on/demandware.static/-/Sites-BrooksBrothers_Site_US/default/v1555214731163","selectCreditCard":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-SelectCreditCard","giftCertRedeem":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-RedeemGiftCertificate","giftCertBalance":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-GetGiftCertificateBalance","serenadeGetOrderDetails":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/CustomerService-GetOrderDetailsHtml","giftCertRemove":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-RemoveGiftCertificate","giftCertRemoveAll":"/on/demandware.store/Sites-brooksbrothers-Site/default/COPaymentAndReview-RemoveAllGiftCerts","addThisTwitterIcon":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw3f2ec983/images/tweet-icon.png","addThisTwitterIconBF":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dwa1a98a55/images/tweet-icon-bf.png","addThisSendToFriendIcon":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw05ee0465/images/icon-email.png","addThisSendToFriendIconBF":"/on/demandware.static/Sites-brooksbrothers-Site/-/default/dw51ffd451/images/icon-email-bf.png","omnitureInclude":"/on/demandware.store/Sites-brooksbrothers-Site/default/Omniture-Include","checkoutCAProp65Warning":"/on/demandware.store/Sites-brooksbrothers-Site/default/COSummary-ShowCA65Warning","checkCartCount":"/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-GetBasketProductCount","resetShipments":"/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingMultiple-ResetShipments","allowResponsiveSwitch":"/on/demandware.store/Sites-brooksbrothers-Site/default/Page-ResponsiveSwitch","homePage":"/on/demandware.store/Sites-brooksbrothers-Site/default/Home-Show","shippingAndBilling":"/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-Start","updateTax":"/on/demandware.store/Sites-brooksbrothers-Site/default/CalculateTax-Update","updateGiftOptions":"/on/demandware.store/Sites-brooksbrothers-Site/default/COShippingAndBilling-UpdateGiftOptions","selectPayPalFunding":"/on/demandware.store/Sites-brooksbrothers-Site/default/Paypal-CC_MarkCheckout","paypalLoginStatus":"/on/demandware.store/Sites-brooksbrothers-Site/default/Paypal-LoginStatus","wishlistShow":"/on/demandware.store/Sites-brooksbrothers-Site/default/Wishlist-Show","sessionExpired":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Page-Include?cid=session-expired","shoprunnerAPI":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/ShopRunner-PayrunnerAPI","rewardsEnrollment":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Rewards-EnrollForm","rewardsActivateAjax":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Rewards-Activate?ajax=true","rewardsMessage":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Rewards-Message","geoCalloutPDPMessage":"https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/Product-GeoCalloutMessage"};
+	app.assets = {"gc_info_modal":"<div id=\"headerAddressArea\">\r\n<div class=\"lamb-img\"><img width=\"43\" height=\"41\" src=\"https://www.brooksbrothers.com/on/demandware.static/-/Sites-brooksbrothers-Library/default/dwbdf9972c/sheep-title.png\" alt=\"\" /></div>\r\n<p style=\"padding:10px;\">For security reasons we require a credit card to process your order with the gift card(s) provided. If you have any questions, please feel free to contact us at 800.274.1815.</p>\r\n<button style=\"margin:10px 0 0 0; float: none;\" class=\"button-large-brown\" onclick=\"javascript:jQuery('.gcInfoModal').remove()\">Close</button></div>","cc_info_hover":"<p><img width=\"209\" height=\"149\" src=\"https://www.brooksbrothers.com/on/demandware.static/-/Sites-brooksbrothers-Library/default/dwaa3c9905/icon_allcards.jpg\" alt=\"Supported credit cards\" /></p>","cc_info_cvv":"<img alt=\"For Discover, Mastercard and Visa, enter the last three digits on the signature strip.\" src=\"https://www.brooksbrothers.com/on/demandware.static/-/Sites-brooksbrothers-Library/default/dw52b7278a/images/Cart/cvv2.png\" /><img alt=\"For American Express, enter the four digits in small print on the front of the card.\" src=\"https://www.brooksbrothers.com/on/demandware.static/-/Sites-brooksbrothers-Library/default/dw2e15f4c3/images/Cart/cvv3.png\" />","gc_info_hover":"<p><img alt=\"On the back of your Gift Card, carefully scratch the textured coating to reveal your PIN number.\" src=\"https://www.brooksbrothers.com/on/demandware.static/-/Sites-brooksbrothers-Library/default/dw78bdc984/images/Cart/pin.png\" /></p>","pp_info_hover":""};
+	app.forms = {"singleshipping":{"shippingAddress":{"form":"#dwfrm_singleshipping_shippingAddress","save":"#dwfrm_singleshipping_shippingAddress_save","useAsBillingAddress":"#dwfrm_singleshipping_shippingAddress_useAsBillingAddress","addressFields":{"salutation":"#dwfrm_singleshipping_shippingAddress_addressFields_salutation","suffix":"#dwfrm_singleshipping_shippingAddress_addressFields_suffix","ID":"#dwfrm_singleshipping_shippingAddress_addressFields_ID","firstName":"#dwfrm_singleshipping_shippingAddress_addressFields_firstName","lastName":"#dwfrm_singleshipping_shippingAddress_addressFields_lastName","companyName":"#dwfrm_singleshipping_shippingAddress_addressFields_companyName","address1":"#dwfrm_singleshipping_shippingAddress_addressFields_address1","address2":"#dwfrm_singleshipping_shippingAddress_addressFields_address2","city":"#dwfrm_singleshipping_shippingAddress_addressFields_city","zip":"#dwfrm_singleshipping_shippingAddress_addressFields_zip","country":"#dwfrm_singleshipping_shippingAddress_addressFields_country","states":{"state":"#dwfrm_singleshipping_shippingAddress_addressFields_states_state"},"phone":"#dwfrm_singleshipping_shippingAddress_addressFields_phone"},"isGift":"#dwfrm_singleshipping_shippingAddress_isGift","giftMessageCheck":"#dwfrm_singleshipping_shippingAddress_giftMessageCheck","giftMessage":"#dwfrm_singleshipping_shippingAddress_giftMessage"}},"multishipping":{"shippingAddress":{"form":"#dwfrm_multishipping_shippingAddress","save":"#dwfrm_multishipping_shippingAddress_save","useAsBillingAddress":"#dwfrm_multishipping_shippingAddress_useAsBillingAddress","addressFields":{"salutation":"#dwfrm_multishipping_shippingAddress_addressFields_salutation","suffix":"#dwfrm_multishipping_shippingAddress_addressFields_suffix","ID":"#dwfrm_multishipping_shippingAddress_addressFields_ID","firstName":"#dwfrm_multishipping_shippingAddress_addressFields_firstName","lastName":"#dwfrm_multishipping_shippingAddress_addressFields_lastName","companyName":"#dwfrm_multishipping_shippingAddress_addressFields_companyName","address1":"#dwfrm_multishipping_shippingAddress_addressFields_address1","address2":"#dwfrm_multishipping_shippingAddress_addressFields_address2","city":"#dwfrm_multishipping_shippingAddress_addressFields_city","zip":"#dwfrm_multishipping_shippingAddress_addressFields_zip","country":"#dwfrm_multishipping_shippingAddress_addressFields_country","states":{"state":"#dwfrm_multishipping_shippingAddress_addressFields_states_state"},"phone":"#dwfrm_multishipping_shippingAddress_addressFields_phone"}}},"billing":{"save":"#dwfrm_billing_save","fulfilled":"#dwfrm_billing_fulfilled","billingAddress":{"addressFields":{"salutation":"#dwfrm_billing_billingAddress_addressFields_salutation","suffix":"#dwfrm_billing_billingAddress_addressFields_suffix","ID":"#dwfrm_billing_billingAddress_addressFields_ID","firstName":"#dwfrm_billing_billingAddress_addressFields_firstName","lastName":"#dwfrm_billing_billingAddress_addressFields_lastName","companyName":"#dwfrm_billing_billingAddress_addressFields_companyName","address1":"#dwfrm_billing_billingAddress_addressFields_address1","address2":"#dwfrm_billing_billingAddress_addressFields_address2","city":"#dwfrm_billing_billingAddress_addressFields_city","zip":"#dwfrm_billing_billingAddress_addressFields_zip","country":"#dwfrm_billing_billingAddress_addressFields_country","states":{"state":"#dwfrm_billing_billingAddress_addressFields_states_state"},"phone":"#dwfrm_billing_billingAddress_addressFields_phone"},"email":{"emailAddress":"#dwfrm_billing_billingAddress_email_emailAddress"}},"paymentMethods":{"selectedPaymentMethodID":"#dwfrm_billing_paymentMethods_selectedPaymentMethodID","creditCard":{"type":"#dwfrm_billing_paymentMethods_creditCard_type","number":"#dwfrm_billing_paymentMethods_creditCard_number","cvv":"#dwfrm_billing_paymentMethods_creditCard_cvv","month":"#dwfrm_billing_paymentMethods_creditCard_month","year":"#dwfrm_billing_paymentMethods_creditCard_year","owner":"#dwfrm_billing_paymentMethods_creditCard_owner","cvn":"#dwfrm_billing_paymentMethods_creditCard_cvn","isDefault":"#dwfrm_billing_paymentMethods_creditCard_isDefault"}}},"billinggiftcert":{"redeemGiftCert":"#dwfrm_billinggiftcert_redeemGiftCert","giftCertCode":"#dwfrm_billinggiftcert_giftCertCode","giftCertCodePin":"#dwfrm_billinggiftcert_giftCertCodePin"},"billingpaypal":{"usePayPal":"#dwfrm_billingpaypal_usePayPal"},"paymentinstruments":{"creditcards":{"addressList":"#dwfrm_paymentinstruments_creditcards_addressList","newbillingaddress":{"addressFields":{"firstName":"#dwfrm_paymentinstruments_creditcards_newbillingaddress_addressFields_firstName","lastName":"#dwfrm_paymentinstruments_creditcards_newbillingaddress_addressFields_lastName"}}}},"requestpassword":{"send":"#dwfrm_requestpassword_send","username":"#dwfrm_requestpassword_username"},"profile":{"customer":{"firstName":"#dwfrm_profile_customer_firstname","lastName":"#dwfrm_profile_customer_lastname"}}};
+
+	
+		
+
+	app.customerSettings = {"rememberedPreferences":null,"firstName":null,"isInDiscountGroup":false,"memberDiscount":null,"email":null,"isRegistered":false,"authenticated":false,"phone":null,"rewardsMember":false,"rewardsTier":"","accountType":"GST","customerID":"-1001","hasRewards":false,"rewardsStatus":"N","geoLocationCountry":"UA"};
+	app.canadianGCEnabled = false;
+	app.isUnbxdTrackingEnabled = true;
+	app.isUnbxdAutosuggestEnabled = false;
+	app.displayPDPGeoMsg = true;
+	
+	
+	
+	app.siteCatalystEnabled = true;
+	app.siteCatalystReportSuiteID = 'rbaproduction';
+	app.shopRunnerEnvironmentID ='2';
+	app.unbxdAutosuggestSrc = 'libraries.unbxdapi.com/prod-brooksbrothers-autosuggest.js';
+    app.cartLocaleURL='/on/demandware.store/Sites-brooksbrothers-Site/default/Cart-Show'
+    
+   	/**/
+	
+		
+	
+	app.customerState = null;
+}(window.app = window.app || {}));
+
+
+	    window.onAmazonLoginReady = function() {
+	      amazon.Login.setClientId("amzn1.application-oa2-client.475651831af042ff9dc7a86a160115da");
+	    };
+	
+ 
+ 
+
+
+app.util.setAkamaiCookie();
+
+
+
+(function(app) {
+try {
+app.TaskQueueManager.setTasks([]);
+}
+catch(e) { }
+}(window.app = window.app || {}));
+
+
+app.page.setContext({"title":"Storefront","type":"storefront","ns":"storefront"});
+
+
+var meta = "Brooks Brothers is the original authority on American style, offering stylish modern clothing and fresh takes on heritage designs for men, women, and kids.";
+var keywords = "SiteGenesis, Reference Application";
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.brooksbrothers.com/on/demandware.store/Sites-brooksbrothers-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/public/23f471bc32274542dc6ba0c27aa48']);

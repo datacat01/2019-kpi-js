@@ -1,0 +1,178 @@
+
+    if (typeof jQuery == 'undefined') {
+        document.write("<script type=\"text/javascript\" src=\"/assets/templates/common-html5/js/jquery.min.js?vcart=9.0.5\"></" + "script>");
+    }
+    
+
+                jQuery(document).ready(function($) {
+
+                    var mql = window.matchMedia('only screen and (max-width: 991px)'),
+                        handleMQL = function(mql) {
+                            if (mql.matches) {
+
+                                // mobile-navigation fixed
+                                var mobileNav = $('#mobile-navigation'),
+                                    mobileNavTopPosition = mobileNav.offset().top;
+
+                                mobileNav.toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                $('.header-bottom').toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+
+                                $(window).on('scroll', function() {
+                                    mobileNav.toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                    $('.header-bottom').toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                });
+
+                                $('.header-panel #searchBox').appendTo('#mobile-search');
+
+
+                            } else {
+                                $('body').removeClass('st-off-canvas');
+                                $('#st-container').removeClass('st-effect-1 st-menu-open');
+
+                                // main categories navigation fixed
+                                var mainNav = $('#top-categories-menu'),
+                                    mainNavTopPosition = mainNav.offset().top;
+
+                                $('.body').toggleClass('is-fixed', $(window).scrollTop() > mainNavTopPosition);
+
+                                $(window).on('scroll', function() {
+                                    $('.body').toggleClass('is-fixed', $(window).scrollTop() > mainNavTopPosition);
+                                });
+
+                                $('#mobile-search #searchBox').appendTo('.header-panel > .col-md-5');
+
+                            }
+                        };
+                    handleMQL(mql);
+                    mql.addListener(handleMQL);
+
+
+
+                });
+
+                $( window ).resize(function() {
+                    var mql = window.matchMedia('only screen and (max-width: 991px)'),
+                        handleMQL = function(mql) {
+                            if (mql.matches) {
+
+                                // mobile-navigation fixed
+                                var mobileNav = $('#mobile-navigation'),
+                                    mobileNavTopPosition = mobileNav.offset().top;
+
+                                mobileNav.toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                $('.header-bottom').toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+
+                                $(window).on('scroll', function() {
+                                    mobileNav.toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                    $('.header-bottom').toggleClass('is-fixed', $(window).scrollTop() > mobileNavTopPosition);
+                                });
+                            } else {
+
+
+                                // main categories navigation fixed
+                                var mainNav = $('#top-categories-menu'),
+                                    mainNavTopPosition = mainNav.offset().top;
+
+                                $('.body').toggleClass('is-fixed', $(window).scrollTop() > mainNavTopPosition);
+
+                                $(window).on('scroll', function() {
+                                    $('.body').toggleClass('is-fixed', $(window).scrollTop() > mainNavTopPosition);
+                                });
+
+                            }
+                        };
+                    handleMQL(mql);
+                    mql.addListener(handleMQL);
+                });
+                
+
+                                (function($) {
+                                    window.fnames = new Array();
+                                    window.ftypes = new Array();
+                                    fnames[0] = 'EMAIL';
+                                    ftypes[0] = 'email';
+                                    fnames[1] = 'FNAME';
+                                    ftypes[1] = 'text';
+                                    fnames[2] = 'LNAME';
+                                    ftypes[2] = 'text';
+                                    fnames[4] = 'MMERGE4';
+                                    ftypes[4] = 'text';
+                                    fnames[6] = 'MMERGE6';
+                                    ftypes[6] = 'text';
+                                    fnames[7] = 'MMERGE7';
+                                    ftypes[7] = 'text';
+                                    fnames[8] = 'MMERGE8';
+                                    ftypes[8] = 'text';
+                                    fnames[9] = 'MMERGE9';
+                                    ftypes[9] = 'text';
+                                    fnames[10] = 'MMERGE10';
+                                    ftypes[10] = 'text';
+                                    fnames[11] = 'MMERGE11';
+                                    ftypes[11] = 'text';
+                                    fnames[12] = 'MMERGE12';
+                                    ftypes[12] = 'text';
+                                    fnames[3] = 'MMERGE3';
+                                    ftypes[3] = 'text';
+                                    fnames[5] = 'MMERGE5';
+                                    ftypes[5] = 'text';
+                                    fnames[13] = 'MMERGE13';
+                                    ftypes[13] = 'text';
+                                    fnames[14] = 'ADDRESS';
+                                    ftypes[14] = 'address';
+                                    fnames[19] = 'MMERGE19';
+                                    ftypes[19] = 'address';
+                                    fnames[15] = 'ZIP';
+                                    ftypes[15] = 'zip';
+                                    fnames[16] = 'PHONE';
+                                    ftypes[16] = 'phone';
+                                    fnames[17] = 'AFF';
+                                    ftypes[17] = 'text';
+                                    fnames[18] = 'CUSTGROUP';
+                                    ftypes[18] = 'text';
+                                    fnames[20] = 'NOTB';
+                                    ftypes[20] = 'text';
+                                }(jQuery));
+                                var $mcj = jQuery.noConflict(true);
+                                
+var date = new Date(); document.write(date.getFullYear())
+
+        //<![CDATA[
+        var file = '/stats/count.asp';
+
+        var stats_d = new Date();
+        var stats_s = stats_d.getSeconds();
+        var stats_m = stats_d.getMinutes();
+        var stats_x = stats_s * stats_m;
+        var prdID = '[catalogid]';
+        var catID = '[catid]';
+
+        stats_f = '' + escape(document.referrer);
+        stats_f = stats_f.replace('_', '----');
+        if (navigator.appName == 'Netscape') {
+            stats_b = 'NS';
+        }
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            stats_b = 'MSIE';
+        }
+        if (navigator.appVersion.indexOf('MSIE 3') > 0) {
+            stats_b = 'MSIE';
+        }
+        stats_u = '' + escape(document.URL);
+        stats_u = stats_u.replace('_', '----');
+        stats_w = screen.width;
+        stats_h = screen.height;
+        stats_v = navigator.appName;
+        stats_fs = window.screen.fontSmoothingEnabled;
+        if (stats_v != 'Netscape') {
+            stats_c = screen.colorDepth;
+        } else {
+            stats_c = screen.pixelDepth;
+        }
+        stats_j = navigator.javaEnabled();
+        info = 'w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u=' + stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+        document.write('<img src="' + file + '?' + info + '" width="1" height="1" border="0" alt="stats" />');
+        //]]>
+        
+try{!function(){var n=function(){ga("send","event","Print Intent",document.location.pathname)};window.matchMedia&&window.matchMedia("print").addListener(function(t){t.matches||n()}),window.onafterprint=n}()}catch(n){}
+var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"7bedf9da15a3ef62f2f52f82776a5f716da40e2805f910ad333f55bd6ad859600be7a37cd0c8c84586b02cb29f9879ee", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");
+var _cart_secure_url = "https://www.jewelrysupply.com"

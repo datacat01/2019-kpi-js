@@ -1,0 +1,982 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+	MarketLive.Reporting.dlGlobal.storeName='';
+	MarketLive.Reporting.dlGlobal.distanceFromStore='';
+
+
+	MarketLive.Reporting.dlGlobal.storeName='';
+	MarketLive.Reporting.dlGlobal.distanceFromStore='';
+	var loadMyStore = "false";
+	
+		loadMyStore = "true";
+	
+
+ 	
+	var promoWmMessage = "";
+	var sourceCodeValid = false;
+	console.log("sourceCodeValid = "+sourceCodeValid+"....promoWmMessage = "+promoWmMessage);
+	if((sourceCodeValid == true) || (promoWmMessage != '' && promoWmMessage.length > 0)){
+		console.log("showPromoMessage = "+sessionStorage.getItem('showPromoMessage'));
+	var showPromoMessage = (sessionStorage.getItem('showPromoMessage')==null)?true:false;
+	console.log("showPromoMessage = "+showPromoMessage);
+		if(showPromoMessage) {
+			sessionStorage.setItem('showPromoMessage', false);
+		MarketLive.Nav.TopNav.openPromoMessage(promoWmMessage);
+	}
+	}
+	else{
+		sessionStorage.removeItem('showPromoMessage');
+	}
+
+
+	
+
+//    isHomepageforpromo = window.location.pathname == "/";
+//    cpwmNobar = isHomepageforpromo;
+
+
+    function isLogged() {
+        var loggedStatus = MarketLive.Reporting.dlGlobal.status;
+        if(loggedStatus == "registered") {
+            jQuery(".nonwme").hide();
+            jQuery(".wme").hide();
+            jQuery(".logged").show();
+        }
+    }
+    jQuery(document).ready(function() {
+        isLogged();
+    });
+
+
+	
+	MarketLive.Reporting.dlGlobal.pType="default";
+	
+		MarketLive.Reporting.dlGlobal.sourceIP='212.90.63.178';
+	<!-- WMKT-874 Main.jsp: ensRegChkVar   & PEUSERChk=-->
+		<!-- STEP 351 WMKT-977 / WMRT-1494 Main.jsp: ensDLRegType   -->
+		MarketLive.Reporting.dlGlobal.ensregSuccess='';
+		MarketLive.Reporting.dlGlobal.ensloginSuccess='false';
+		MarketLive.Reporting.dlGlobal.ensregType='';
+			<!-- STEP 351 WMRT-1494 Main.jsp: ends -->	
+<!-- WMRT_1578 - NEW BLOCK2 wmetruthmatrix - in Main.jsp:BEGIN Overriding new values:-->
+
+<!-- WMRT_1578 - NEW BLOCK2 wmetruthmatrix - in Main.jsp:END:-->
+
+
+console.log('**** DataLayer - Ensighten Reporting - Begin ****');
+
+var ensPEUserchk=MarketLive.Reporting.dlGlobal.ensPEUser;
+var tmpCurl="https://www.worldmarket.com";
+MarketLive.Reporting.dlGlobal.ensCanonicalTagURI=tmpCurl;
+var pcats=MarketLive.Reporting.dlGlobal.prodCats;
+var psubcats=MarketLive.Reporting.dlGlobal.prodSubCats;
+
+var serverDate = MarketLive.Reporting.dlGlobal.serverDate;
+var isProduction = MarketLive.Reporting.dlGlobal.isProduction;
+var siteName = MarketLive.Reporting.dlGlobal.siteName;
+var isMobile = MarketLive.Reporting.dlGlobal.isMobile;
+var type=MarketLive.Reporting.dlGlobal.pType;
+var basketArr=MarketLive.Reporting.dlGlobal.basketItemsArray;
+var prodDirList=MarketLive.Reporting.dlGlobal.dirItemsArray;
+var prodArrayHolder=prodDirList;
+var cartShipType=MarketLive.Reporting.dlGlobal.ensCartShipType;
+var cartShipArrayHolder=[];
+var pageOrderObj='';
+var tmpCurCatid='';
+
+
+
+var pgName='';
+var ensFormFieldErrArray=MarketLive.Reporting.dlGlobal.formFieldErrArray;
+
+var ensProdCnt=String(MarketLive.Reporting.dlGlobal.prodCount);
+var ensPageCnt=String(MarketLive.Reporting.dlGlobal.pageCount);
+
+
+var pageFacetsArr=MarketLive.Reporting.dlGlobal.facetsNameValueArray;
+//console.log('*****FINAL FACET VALUE array *****'+JSON.stringify(pageFacetsArr));
+
+
+if(type=='basket' || type=='checkout' || type=='order confirmation'){
+	
+		prodArrayHolder=basketArr; 
+		 
+		var tmpCartPromoCodesArr=MarketLive.Reporting.dlGlobal.cartPromoCodesArr;
+		var cartOrderObj= 
+		{
+			"checkoutType":cartShipType,
+			"promoCodes":tmpCartPromoCodesArr
+		}
+		if(tmpCartPromoCodesArr.length < 1) {
+			delete cartOrderObj['promoCodes'];
+		}
+		pageOrderObj=cartOrderObj;
+		//prodArrayHolder.push(tmpCartPromoCodesArr);
+		
+		if(type=='checkout' || type=='order confirmation'){
+			var ensordercode=MarketLive.Reporting.dlGlobal.ordercode;
+			if(typeof(ensordercode) !== 'undefined'){
+			var ensordertotal=MarketLive.Reporting.dlGlobal.ordertotal;
+			var ensorderproducts=MarketLive.Reporting.dlGlobal.orderproducts;
+			var ensorderpromocodes=MarketLive.Reporting.dlGlobal.orderpromocodes;
+			var ensorderItemSize=MarketLive.Reporting.dlGlobal.orderItemSize;
+			//new elements
+			var orderEnspaymentMethod=MarketLive.Reporting.dlGlobal.orderEnspaymentMethod;  
+			var orderEnscustomerState=MarketLive.Reporting.dlGlobal.orderEnscustomerState;  
+			var orderEnsdiscountAmount=MarketLive.Reporting.dlGlobal.orderEnsdiscountAmount;  
+			var orderEnsgiftCardAmount=MarketLive.Reporting.dlGlobal.orderEnsgiftCardAmount; 
+			var orderEnsgiftWrapAmount=MarketLive.Reporting.dlGlobal.orderEnsgiftWrapAmount; 
+			var orderEnsshipAmount=MarketLive.Reporting.dlGlobal.orderEnsshippingAmount; 
+			var orderEnsshipDiscAmnt=MarketLive.Reporting.dlGlobal.orderEnsshippingDiscountAmount; 
+			var orderEnsstoreName=MarketLive.Reporting.dlGlobal.orderEnsstoreName; 
+			var orderEnssubtotal=MarketLive.Reporting.dlGlobal.orderEnssubtotal; 
+			var orderEnstaxAmount=MarketLive.Reporting.dlGlobal.orderEnstaxAmount;
+			
+				var ml_orderArr = {
+					"checkoutType":cartShipType,
+					"id":ensordercode,
+					"subtotal":orderEnssubtotal, 
+					"taxAmount":orderEnstaxAmount,
+					"total":ensordertotal,
+					"promoCodes":ensorderpromocodes,
+					"orderItemSize":ensorderItemSize,
+					"paymentMethod":orderEnspaymentMethod, 
+					"customerState":orderEnscustomerState, 
+					"discountAmount":orderEnsdiscountAmount, 
+					"giftCardAmount":orderEnsgiftCardAmount, 
+					"giftWrapAmount":orderEnsgiftWrapAmount,
+					"shippingAmount":orderEnsshipAmount, 
+					"shippingDiscountAmount":orderEnsshipDiscAmnt,
+					"storeName":orderEnsstoreName 
+				}
+				 if(cartShipType =='Ship')
+					 delete ml_orderArr['storeName'];
+				 
+				//cartShipArrayHolder.push(ml_orderArr);
+				pageOrderObj=ml_orderArr;
+				prodArrayHolder=ensorderproducts;
+			}
+		}
+}	
+
+
+switch(type) {
+    case 'product':
+        type='pdp';
+        break;
+	case 'search':
+        type='search results';
+        break;	
+    case 'basket':
+       type='shopping cart';
+        break;
+	case 'account':
+       type='my account';
+        break;	
+    default:
+        break;
+}
+
+if(type=='pla'){
+	type='category';
+	subtype='pla';	 
+}
+if(type=='gateway' || type=='category' || type=='pdp'){
+	tmpCurCatid='worldmarket Categories';
+	if(tmpCurCatid.length > 0){
+		tmpCurCatid=String(tmpCurCatid);
+	}
+	if(type=='pdp' && tmpCurCatid.indexOf('worldmarket') !=-1){
+		tmpCurCatid=MarketLive.Reporting.dlGlobal.ensCatId;
+	}
+}
+
+
+var tmpCanUrl=MarketLive.Reporting.dlGlobal.ensCanonicalTagURI;
+
+if(type=='gateway' || type=='category'){
+	console.log('**** type ****'+type);
+	pcats=MarketLive.Reporting.dlGlobal.prodCats;
+	if( typeof(pcats) !== 'undefined'){
+		console.log('**** 1 pcats ****'+pcats.length);
+		if(pcats.length < 2){
+			type='gateway';
+			pcats=MarketLive.Reporting.dlGlobal.prodGwCats;	
+			console.log('**** 2 pcats ****'+pcats.length);
+			if(pcats.length < 2){
+				pcats=MarketLive.Reporting.dlGlobal.prodCats;
+				console.log('**** 3 pcats ****'+pcats.length);
+			}
+		}else{
+			pcats=MarketLive.Reporting.dlGlobal.prodCats;
+			console.log('**** 4 pcats ****'+pcats.length);
+		}
+		console.log('**** 5 pcats ****'+pcats.length);
+	} 
+	console.log('**** Final pcats ****'+JSON.stringify(pcats));
+		
+}
+
+
+var storeName = MarketLive.Reporting.dlGlobal.storeName;
+var associateId = MarketLive.Reporting.dlGlobal.associateStoreID;
+var acntMergeType=MarketLive.Reporting.dlGlobal.ensAccountMergeType;
+var distanceFromStore = MarketLive.Reporting.dlGlobal.distanceFromStore;
+	if(distanceFromStore > 0)
+		distanceFromStore=String(Math.round(distanceFromStore* 100) / 100);
+var status = MarketLive.Reporting.dlGlobal.status;
+var subtype=MarketLive.Reporting.dlGlobal.subtype;
+var customerCode = MarketLive.Reporting.dlGlobal.customercode;
+var bnExtUserId = MarketLive.Reporting.dlGlobal.customercode;
+var ensEmail = MarketLive.Reporting.dlGlobal.email;
+var jsessionid = MarketLive.Reporting.dlGlobal.JSESSIONID;
+var userfirstName = MarketLive.Reporting.dlGlobal.userFirstName;
+var userlastName = MarketLive.Reporting.dlGlobal.userLastName;
+var userlastVisit = String(MarketLive.Reporting.dlGlobal.userLastVisit);
+//set last visit to current date
+if(typeof(userlastVisit) !== 'undefined' && userlastVisit.length < 8)
+	userlastVisit=serverDate;
+
+
+var ensHistPurchases=MarketLive.Reporting.dlGlobal.historicalPurchases;
+var ensReferredFrom=MarketLive.Reporting.dlGlobal.referredFromArr;
+var ensCGActive=MarketLive.Reporting.dlGlobal.customerGroupActiveArr;
+var ensSourceCodes=MarketLive.Reporting.dlGlobal.sourceCodesArr;
+var ensSourceIPs=MarketLive.Reporting.dlGlobal.sourceIP;
+var enswmeid=MarketLive.Reporting.dlGlobal.enswmeid;
+var ensSearchRedirectTerm=MarketLive.Reporting.dlGlobal.ensSearchRedirectTerm;
+var ensMercTotal=MarketLive.Reporting.dlGlobal.merchTotal;
+var ensBasketValue=MarketLive.Reporting.dlGlobal.basketValue;
+var ensBasketCount=MarketLive.Reporting.dlGlobal.basketCount;
+
+		
+	if(type=='shopping cart' || type=='checkout' || type=='order confirmation'){
+		
+		var bt = ensBasketValue.indexOf("$");
+		var mt = ensMercTotal.indexOf("$");
+		if(bt >= 0){
+			ensBasketValue=ensBasketValue.substring(1);
+		}	
+	 
+		if(mt >= 0){
+			ensMercTotal=ensMercTotal.substring(1);
+		}
+		ensMercTotal=String(Math.round(ensMercTotal * 100) / 100);
+		ensBasketValue=String(Math.round(ensBasketValue * 100) / 100);
+		var extBasketArr ={
+			"merchTotal":ensMercTotal,
+			"basketValue":ensBasketValue,
+			"basketCount":ensBasketCount
+		}
+		//prodArrayHolder.push(extBasketArr);
+	}
+			if (typeof (enswmeid) !== 'undefined' && enswmeid.length > 0) {
+			}else{
+				
+			}
+var ml_userArr = {
+	"WME":enswmeid,
+	"email":ensEmail,
+	"customercode":customerCode,
+	"lastVisit":userlastVisit,
+	"merchTotal":ensMercTotal,
+	"basketValue":ensBasketValue,
+	"basketCount":ensBasketCount,
+	 "historicalPurchases":ensHistPurchases,
+	 "referredFrom":ensReferredFrom,
+	 "customergroupsactive":ensCGActive,
+	 "sourcecodes":ensSourceCodes,
+	 "sourceIP":ensSourceIPs, 
+	 "JSESSIONID":jsessionid,
+	 "userFirstName":userfirstName,
+	 "userLastName":userlastName
+ }
+
+//WME award related data
+var ensWmeRewardsVal=MarketLive.Reporting.dlGlobal.ensWmeRewards;
+var ensWmeNextRewardVal=MarketLive.Reporting.dlGlobal.ensWmeNextReward;
+var ensWmeStatusVal=MarketLive.Reporting.dlGlobal.ensWmeStatus;
+			
+			if (typeof (ensWmeStatusVal) !== 'undefined' && ensWmeStatusVal.length > 0) {
+			}else{
+				
+			}
+			if (typeof (ensWmeRewardsVal) !== 'undefined' && ensWmeRewardsVal.length > 0) {
+			}else{
+				
+			}
+			if (typeof (ensWmeNextRewardVal) !== 'undefined' && ensWmeNextRewardVal.length > 0) {
+			}else{
+				
+			}
+ //for content pages ,email signup
+tmpCurl=window.location.href;			
+var ensloginFailure=MarketLive.Reporting.dlGlobal.ensloginFailure;
+ if(status=='guest') {
+	MarketLive.Reporting.dlGlobal.ensloginSuccess='false';
+	MarketLive.Reporting.dlGlobal.ensregSuccess='false';
+	MarketLive.Reporting.dlGlobal.ensregType='';
+ }else if(status=='registered') {
+	 MarketLive.Reporting.dlGlobal.ensloginSuccess='true';
+	 //MarketLive.Reporting.dlGlobal.ensregType='existing';
+	 if (typeof (tmpCurl) !== 'undefined') {
+		if(tmpCurl.indexOf('/account/gateway') !=-1 || type=='checkout'){
+			//for account gateway do not override
+			if(MarketLive.Reporting.dlGlobal.ensregSuccess !== 'true'){
+				MarketLive.Reporting.dlGlobal.ensregSuccess='false';
+			}else if(MarketLive.Reporting.dlGlobal.ensregSuccess == 'true'){
+				MarketLive.Reporting.dlGlobal.ensregType='new';
+			}
+		}else{
+			MarketLive.Reporting.dlGlobal.ensregSuccess='false';
+		}
+	 }
+ }
+var ensRegnSucc=MarketLive.Reporting.dlGlobal.ensregSuccess;
+var ensRegnType=MarketLive.Reporting.dlGlobal.ensregType; 
+if(ensRegnType=='new') {
+	ensRegnSucc='true';
+}else{
+	ensRegnSucc='';
+}
+var ensloginSuccess=MarketLive.Reporting.dlGlobal.ensloginSuccess;	
+var chkoutEmailSignup=MarketLive.Reporting.dlGlobal.chkoutemailSignup;
+var emailSignup=MarketLive.Reporting.dlGlobal.emailSignup;
+if (typeof (chkoutEmailSignup) !== 'undefined' && chkoutEmailSignup.length > 0) {
+}else if (typeof (emailSignup) !== 'undefined' && emailSignup.length > 0) {
+	chkoutEmailSignup=emailSignup;
+}else{	
+	chkoutEmailSignup='true';
+} 
+
+if (typeof (MarketLive.Reporting.dlGlobal.wme_truth_loginSuccess) !== 'undefined' && MarketLive.Reporting.dlGlobal.wme_truth_loginSuccess.length > 0) {
+	//override wme truth matrix values
+	ensloginSuccess=MarketLive.Reporting.dlGlobal.wme_truth_loginSuccess;
+	ensRegnSucc=MarketLive.Reporting.dlGlobal.wme_truth_regSuccess;
+	ensRegnType=MarketLive.Reporting.dlGlobal.wme_truth_regType;
+	status=MarketLive.Reporting.dlGlobal.wme_truth_status;
+	acntMergeType=MarketLive.Reporting.dlGlobal.wme_truth_accntMergeType;
+}
+
+var customerArr ={
+		"accountMergeType":acntMergeType,
+		"associateStoreID":associateId,
+		"distanceFromStore":distanceFromStore,
+		"status":status,
+		"loginSuccess":ensloginSuccess,
+		"registrationSuccess":ensRegnSucc,
+		"registrationType":ensRegnType,
+		"storeName":storeName,
+		"wmeId":enswmeid,
+		"emailSignup":chkoutEmailSignup,
+		"wmeNextReward":ensWmeNextRewardVal,
+	    "wmeRewards":ensWmeRewardsVal,
+	    "wmeStatus":ensWmeStatusVal,
+		"ml_user":ml_userArr
+	}
+ 
+
+
+if(type == 'my account'){
+	var customerAcntArr ={
+		"accountMergeType":acntMergeType,
+		"associateStoreID":associateId,
+		"distanceFromStore":distanceFromStore,
+		"loginFailure":ensloginFailure,
+		"loginSuccess":ensloginSuccess,
+		"registrationSuccess":ensRegnSucc,
+		"registrationType":ensRegnType,
+		"status":status,
+		"storeName":storeName,
+		"wmeId":enswmeid,
+		"wmeNextReward":ensWmeNextRewardVal,
+	    "wmeRewards":ensWmeRewardsVal,
+	    "wmeStatus":ensWmeStatusVal,
+		"ml_user":ml_userArr
+	}
+	
+	customerArr=customerAcntArr;
+}
+ if(status=='guest') {
+	delete customerArr['registrationType'];
+ }
+if(ensWmeRewardsVal.length < 1) {
+	delete customerArr['wmeRewards'];
+}
+
+var disableDLTruthVars='false';
+if (typeof (MarketLive.Reporting.dlGlobal.wme_truth_loginSuccess) !== 'undefined' && MarketLive.Reporting.dlGlobal.wme_truth_loginSuccess.length ==4) {
+	//override wme truth matrix values
+	if(tmpCurl.indexOf('/account/gateway') !=-1){
+		disableDLTruthVars='false';
+		console.log('STEPTRUTH ACCNT: HERE IS ACCNT DASHBOARD SECTION - JUST LOGGED IN');
+		
+	}else if(tmpCurl.indexOf('/checkout/accordioncheckout') !=-1){
+		disableDLTruthVars='false';
+		console.log('STEPTRUTH ACCNT: HERE IS CHECKOUT LOGIN SECTION - JUST LOGGED IN');
+		
+	}else if(tmpCurl.indexOf('/basket') !=-1){
+		disableDLTruthVars='false';		
+		console.log('STEPTRUTH BASKET: HERE IS BASKET PAGE SECTION');
+		
+		
+	}else{
+		disableDLTruthVars='true';
+		//TBD other redirects
+		console.log('STEPTRUTH OTHERS: TBD');
+	}
+	 
+}else{
+	disableDLTruthVars='true';
+	console.log('STEPTRUTH USER NOT YET LOGGED IN:');
+}
+
+if(disableDLTruthVars=='true'){
+	delete customerArr['loginSuccess'];
+	delete customerArr['registrationSuccess'];
+	delete customerArr['registrationType'];
+	delete customerArr['accountMergeType'];
+	delete customerArr['emailSignup'];
+}else{
+	//will add this from controller.js
+	delete customerArr['emailSignup'];
+}
+ if(type=='category'){
+		
+ }
+
+var pageCouponArr=MarketLive.Reporting.dlGlobal.pageCouponArray;
+var couponCodePgArr ={
+	"couponCodes":pageCouponArr 
+}
+ 
+if(type == 'pdp' || type=='category'){
+			
+	if(subtype.length < 1){
+		subtype='single_sku';	
+	}	
+}
+ 
+if(type=='category' || type=='gateway'){
+		
+ 
+}
+
+if(type=='category' || type=='pdp'){
+			
+}
+
+
+
+
+if (typeof (tmpCurl) !== 'undefined') {
+			if(tmpCurl.indexOf('worldmarket.com') !=-1){
+				isProduction='true';
+			}
+			if( (tmpCurl.indexOf('/ancillary/emailsignup') !=-1) || (tmpCurl.indexOf('/category/email-signup') !=-1)){
+				type='email signup';
+				pgName='form';
+			}else if(tmpCurl.indexOf('/contactus/thankyou') !=-1){
+				type='customer service';
+				pgName='thank you';	
+			}else if(tmpCurl.indexOf('/emailSignup/thankyou') !=-1){
+				type='email signup';
+				pgName='thank you';
+			}else if( (tmpCurl.indexOf('/checkout/thankyou') !=-1) || (tmpCurl.indexOf('/checkout/accountsetup') !=-1)){
+				type='order confirmation';
+				pgName='thank you';
+			}else if(tmpCurl.indexOf('/category/coupons') !=-1){
+				type='coupons';
+			}else if( (tmpCurl.indexOf('/content/') !=-1) || (tmpCurl.indexOf('/inspirations/') !=-1)){
+				type='content '+MarketLive.Reporting.dlGlobal.ensContentType;
+				subtype='';
+			}else if(tmpCurl.indexOf('/gift-card-balance/') !=-1){
+				type='customer service';
+				pgName="gift card balance";
+				subtype='';	
+			}else if(tmpCurl.indexOf('/account/') !=-1){
+				pgName="Account Home";
+				if(tmpCurl.indexOf('/account/accountinfo') !=-1){
+					pgName="My Information";
+				}else if(tmpCurl.indexOf('/account/addressbook') !=-1){
+					pgName="Address Book";
+				}else if(tmpCurl.indexOf('/account/passwordrecoveryhint') !=-1){
+					pgName='Password recovery hint';
+					type="my account";
+				}else if(tmpCurl.indexOf('/account/passwordrecovery') !=-1){
+					pgName='Password recovery';
+					type="my account";	
+				}
+				
+				
+				
+			}else if(tmpCurl.indexOf('/accounts/wmeaccount') !=-1){
+					pgName="register";
+			}else if(tmpCanUrl.indexOf('/product/gift-card') !=-1){
+					 subtype='giftcard';
+			 
+ 			}	
+			//WMRT-1061	
+			if(tmpCurl.indexOf('/checkout/login') !=-1){
+				type='checkout login';
+			}	
+}
+var formErrObj='';
+if(typeof(ensFormFieldErrArray) !== 'undefined' && ensFormFieldErrArray.length > 0){
+	formErrObj=
+			 {
+			 "errorFields":ensFormFieldErrArray
+			 }
+}
+
+if(type=='home page' || type=='default'){
+	type='home_page';
+}
+ 
+var pageArr = {
+	"isProduction":isProduction,
+	"serverDate":serverDate,
+	"siteName":siteName,
+	"type":type,
+	"name":pgName,
+	"subtype":subtype,
+	"categoryId":tmpCurCatid,
+	"productCategories":pcats,
+	"searchRedirectTerm":ensSearchRedirectTerm,
+	"subCategories":psubcats,
+	"couponCodes":pageCouponArr
+}
+if(type=='checkout' || type=='order confirmation' || type=='content' || type=='customer service' || type=='email signup' ){
+	if(type=='content' && MarketLive.Reporting.dlGlobal.dirItemsArray.length > 1){
+	}else{
+		if(type.indexOf('shopping') !=-1){
+		}else{
+			delete pageArr['productCategories'];
+		}
+	}
+}
+
+if(type=='coupons' || type=='content' || tmpCurCatid.length < 1 || tmpCurl.indexOf('/emailSignup/thankyou') !=-1 || tmpCurCatid.indexOf('worldmarket') !=-1 || type=='customer service') {
+	if(type=='content' && MarketLive.Reporting.dlGlobal.dirItemsArray.length > 1){
+		prodArrayHolder=MarketLive.Reporting.dlGlobal.dirItemsArray;
+	}else{
+		if(type.indexOf('shopping') !=-1){
+		}else{
+			delete pageArr['categoryId'];
+		}
+	}
+}
+if(type=='shopping cart') {
+	delete pageArr['subtype'];
+}
+if(pgName.length < 1) 
+		delete pageArr['name'];
+	
+if(ensSearchRedirectTerm.length < 1) 
+		delete pageArr['searchRedirectTerm'];	
+	
+if(pageCouponArr.length < 1) 
+		delete pageArr['couponCodes'];
+//clean up as per new version doc	
+if(type=='home_page' || type=='gateway' || type=='search' || type=='search results'){
+	delete pageArr['searchRedirectTerm'];
+	if(type=='home_page' || type=='gateway'){
+		delete pageArr['subtype'];
+		if(type=='gateway'){
+			delete pageArr['subCategories'];
+		}
+	}
+}
+if(tmpCurl.indexOf('/content/') !=-1){
+	if(type.indexOf('shopping') !=-1){
+	}else{
+		delete pageArr['categoryId'];
+		delete pageArr['productCategories'];
+	}
+}
+if(tmpCurl.indexOf('/inspirations/') !=-1 || tmpCurl.indexOf('/email-signup') !=-1){
+	delete pageArr['categoryId'];
+}	
+
+if(type=='category'){
+	delete pageArr['subtype'];
+}
+if(pcats.length < 1 || type=='shopping cart' || type=='pdp' || type=='search' || type=='search results') {
+	if(subtype !=='pla')
+		delete pageArr['productCategories'];
+}
+if(psubcats.length < 1 || type=='shopping cart' || type=='pdp') {
+	delete pageArr['subCategories'];
+}
+
+if(type=='pdp') {
+	prodArrayHolder=MarketLive.Reporting.dlGlobal.ensPDPSkusArray;
+	if(subtype=='pla' && prodDirList.length > 1){
+		var placoncat=prodArrayHolder.concat(prodDirList);
+		prodArrayHolder=placoncat;
+	}
+
+}
+if(tmpCurl.indexOf('/search') !=-1){
+	
+}
+var ensItemCnt ={
+	"totalResults":ensProdCnt,
+	"facets":pageFacetsArr,
+	"currentPage":ensPageCnt
+}
+ if(pageFacetsArr.length < 1)
+ {
+	ensItemCnt =
+	{
+	"totalResults":ensProdCnt,
+	"currentPage":ensPageCnt
+	}
+} 
+ 
+var pageData =
+{
+	"customer":customerArr,
+	"form":formErrObj,
+	"order":pageOrderObj,
+    "page":pageArr,
+	"productList":ensItemCnt,
+	"products":prodArrayHolder
+}
+
+if(type=='coupons' || type=='error' || prodArrayHolder.length < 1) {
+	delete pageData['products'];
+}
+
+if(type !='shopping cart' && (type !='checkout' && type!='order confirmation')) {
+	delete pageData['order'];
+}
+ 
+if(ensProdCnt < 1) {
+	delete pageData['productList'];
+}
+if(formErrObj.length < 1) {
+	delete pageData['form'];
+}
+ 
+console.log(JSON.stringify(pageData));
+console.log('**** DataLayer - Ensighten Reporting - End ****');
+
+
+    window.MarketLive = window.MarketLive || {};
+    MarketLive.Reporting = MarketLive.Reporting || {};
+    MarketLive.Reporting.templateType = 'HOME_PAGE';
+
+
+    window.MarketLive = window.MarketLive || {};
+    MarketLive.Base = MarketLive.Base || {};
+    MarketLive.Base.section = 'DEFAULT';
+	MarketLive.Base.initTextVersion('rl02');
+	MarketLive.Base.initSourceCodes('');
+
+
+    jQuery(document).ready(function(){
+        var verificationRequired = "";
+        var fromPage = "LITEREGISTRATION";
+        if ((fromPage == 'LITEREGISTRATION' || fromPage == 'MOBILESAVEDCART') && verificationRequired == 'true') {
+            jQuery(".ml-lite-registration #guest").on("click", function() {
+                jQuery('#socialLoginVerificationMsgContainer').css("display", "none");
+            });
+            jQuery(".ml-lite-registration #login").on("click", function() {
+                jQuery('#socialLoginVerificationMsgContainer').css("display", "block");
+            });
+        }
+    });
+
+
+                window.MarketLive = window.MarketLive || {};
+                MarketLive.LiteRegistration = MarketLive.LiteRegistration || {};
+                MarketLive.LiteRegistration.originatingSrc = '';
+                placeHolderConfig = {autoInit:false};
+            
+
+    (function(){
+        
+        var invalidEmail ={required: 'Email is a required field.', email: 'Please enter a valid email address with \"@\" and \".\"'};
+		
+		
+        var invalidEmailAddress = 'Please enter a valid email address with \"@\" and \".\"';
+
+        
+        var invalidPassword ={required: 'Password is a required field.', minlength: 'Password cannot be less than 6 characters.'};
+
+        
+        var invalidUserNameAndPassword = 'Sorry, but the information entered does not match our records. Please try again.<br><br>';
+
+        
+        var invalidHingAnswer ='Please enter an answer to the hint question.';
+
+        
+        var invalidHintQuestion ='Hint Question is required.';
+
+        
+        var invalidEmailsMatch ='The emails you entered do not match. Please try again.';
+
+        
+        var invalidPasswordsMatch ='Password does not match. Please try again.';
+
+        
+        var invalidEmailExist ='OUR RECORDS SHOW YOU ALREADY HAVE AN ACCOUNT WITH US. <a href=\"javascript:MarketLive.Base.openSignInPopUp();\">PLEASE SIGN IN<\/a> OR CONTACT <a href=\"\/category\/customer-service\/contact-us.do\"> CUSTOMER SERVICE <\/a>.';
+
+        
+        var workingYourRequest ='<img src=\"\/images\/worldmarket\/en_us\/local\/localgraphics\/processingorder.gif\">';
+
+		
+        var workingYourRequest ='<img src=\"\/images\/worldmarket\/en_us\/local\/localgraphics\/processingorder.gif\">';
+
+		
+        var updateAccountInformation210 ='<span id=\"heading\">We\'ve updated your account for a better, more secure experience.<\/span><br\/><br\/> <span id=\"subheading\">Please enter a new password. Password must be at least 6 characters long.<\/span>';
+
+		
+        var updateAccountInformation211 ='We\'ve updated your account for a better, more secure experience.  <br \/><br \/>Please enter a new password. Password must be at least 6 characters long.';
+
+		
+        var noOnlineAccount ='Sorry, but the information entered does not match our records. Please try again.<br><br>';
+
+		
+        var emailDoesNotExist ='Sorry, but the information entered does not match our records. Please try again.';
+
+		
+        var invalidRewardEmailAddress = 'Please enter a valid email address with \"@\" and \".\"';
+
+		
+     
+		var invalidMemberId ={required: 'Please enter a valid 10-digit Member ID', minlength: 'Please enter a valid 10-digit Member ID', maxlength: 'Please enter a valid 10-digit Member ID', number: 'Please enter a valid 10-digit Member ID'};
+
+		
+        var invalidAccountPassword = 'Your password must be at least 6 characters long';
+
+		
+		var invalidAccountPasswordConfirm ={required: 'Please retype your new password here to confirm it', equal2: 'Password does not match. Please try again.'};
+
+		
+        var invalidFirstName ='First Name is required.';
+
+		
+        var invalidLastName ='Last Name is required.';
+
+		
+		var postalCode ={required: 'Please enter a 5-digit US zip code', minlength: 'Zip Code cannot be less than 5 characters.', number: 'Please enter a 5-digit US zip code'};
+
+		
+        var invalidCustomerName ='Please enter your name';		
+
+		
+        var invalidCustomerFirstName ='Please enter your first name';
+
+		
+        var invalidCustomerLastName ='Please enter your last name';
+
+		
+        var requiredTermsConditions ='Please read and accept terms and conditions.';
+
+		
+        var invalidBirthday ='Please select a valid Birthday Month and Date.';
+        
+		
+		var invalidNewPassword ={required: 'New password is required.', minlength: 'New password cannot be less than 6 characters.'};
+		
+		var invalidReTypeNewPassword ={required: 'Password Confirm is required.'};
+
+
+        var errMessages = {
+            "loginEmail":invalidRewardEmailAddress,
+            "loginPassword2":invalidPassword,
+            "newCustomerEmail":invalidEmail,
+			"memberId":invalidMemberId,
+			"firstName":invalidCustomerFirstName,
+			"lastName":invalidCustomerLastName,
+			"postalCode":postalCode,			
+			"rewardEmailAddress":invalidRewardEmailAddress,
+			"customerName":invalidCustomerName,
+            "customerEmailConfirm":invalidEmailsMatch,
+            "loginPassword":invalidAccountPassword,
+            "loginPasswordConfirm":invalidAccountPasswordConfirm,
+            "liteRegistrationHint":invalidHintQuestion,
+            "liteRegistrationAnswer":invalidHingAnswer,
+			"loginUpdateEmail":invalidEmail,
+            "loginUpdatePassword":invalidPassword,
+            "loginUpdatePasswordConfirm":invalidPasswordsMatch,
+			"loginCreateEmail":invalidEmail,
+            "loginCreatePassword":invalidAccountPassword,
+            "loginCreatePasswordConfirm":invalidPasswordsMatch,
+            "accountCreateHint":invalidHintQuestion,
+            "accountCreateAnswer":invalidHingAnswer,
+			"updateAccountInformation210":updateAccountInformation210,
+			"updateAccountInformation211":updateAccountInformation211,
+			"noOnlineAccount":noOnlineAccount,
+			"emailDoesNotExist":emailDoesNotExist,
+			"userName":invalidEmail,
+			"acceptCondition":requiredTermsConditions,
+			"birthdayMonth": invalidBirthday,
+			"birthdayDay": invalidBirthday,
+			"newPassword": invalidNewPassword,
+			"reTypeNewPassword": invalidReTypeNewPassword
+        }
+
+
+        var eleErrorMap = {
+            
+            'loginEmail|:|Please enter a valid email address with \"@\" and \".\"':'loginEmail',
+
+            
+            'newCustomerEmail|:|Please enter a valid email address with \"@\" and \".\"':'newCustomerEmail',
+
+            
+            'Password does not match. Please try again.':'loginPassword',
+
+            
+            'OUR RECORDS SHOW YOU ALREADY HAVE AN ACCOUNT WITH US. <a href=\"javascript:MarketLive.Base.openSignInPopUp();\">PLEASE SIGN IN<\/a> OR CONTACT <a href=\"\/category\/customer-service\/contact-us.do\"> CUSTOMER SERVICE <\/a>.':'newCustomerEmail'
+        };
+
+        var paramObj = {};
+        paramObj.errMessages = errMessages;
+        paramObj.workingYourRequest = workingYourRequest;
+        paramObj.eleErrorMap = eleErrorMap;
+        paramObj.invalidEmailAddress = invalidEmailAddress;
+		paramObj.invalidUserNameAndPassword = invalidUserNameAndPassword;
+        MarketLive.LiteRegistration.initialize(paramObj);
+    }());
+
+
+$(function () {
+  $(document).keyup(function (e) {
+ if(e.keyCode === 13 && e.target.id=='signInClose' )
+     $('#loginHere').modal('hide')
+  });
+});
+
+
+        MarketLive.Nav.AutoComplete.ready(3, 35);
+    
+
+			var clickOnSpokeArrowFlag = false;
+
+			$(document).ready(function () {
+				//Binding & Track menu click action events
+				 if (MarketLive.Events && MarketLive.Events.bindingMenuEvents) {
+					  MarketLive.Events.bindingMenuEvents();
+				 }
+
+				var menuSpoke = $('#navbar-ul-secondary a.ml-category-nav-name');
+				menuSpoke.on('click', function(event){
+					var x = event.pageX;
+					var $minC = $(event.target).outerWidth() + 10;
+					
+					if (x >= $minC){
+						clickOnSpokeArrowFlag=true;
+					}
+					else{
+						clickOnSpokeArrowFlag=false;
+					}
+				});
+
+				var $gvDlClass = jQuery('#navbar-ul-secondary.dl-menu');
+				$gvDlClass.children('li').find('ul').addClass('dl-submenu');
+
+				jQuery('#dl-menu').dlmenu({
+					animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
+				});
+			});
+		
+
+            jQuery(document).ready(function(){
+
+            var params = {
+            "currentCategoryCode" : "worldmarket Categories",
+            "productid" : ""
+            }
+
+            if (MarketLive.Recommendations.rti && MarketLive.Recommendations.rti.start) {
+
+            MarketLive.Recommendations.rti.start(params);
+            BaynoteAPI.init({'server': 'https://costplus-world.baynote.net/', 'customerId': 'costplus' , 'code': 'world'});
+            BaynoteAPI.executeAll();
+            }
+            });
+        
+
+    MarketLive.Nav.FooterNav.onFooterReady();
+    document.addEventListener("DOMContentLoaded", function(event){
+  		var locationHref = window.location.href;
+		var isLoggedInUser = 'false';
+		var forwardPage = '';
+		var isMergedUser = '';
+		var isKoiskMode = 'false';
+		var isAOSMode = 'false';
+		var wmeNumber = '';
+		
+		MarketLive.Base.initLoginStatus(isLoggedInUser, isMergedUser, isKoiskMode, isAOSMode, wmeNumber);
+
+		if(isLoggedInUser == 'false') {
+			if(locationHref.indexOf("pagetype=createaccount") != -1) {
+				MarketLive.Base.showCreateAccount(forwardPage);
+			}else if(locationHref.indexOf("pagetype=completeaccount") != -1 || locationHref.indexOf("signin=store") != -1) {
+				MarketLive.Base.showCompleteProfile(forwardPage);
+			}else if(locationHref.indexOf("pagetype=signin") != -1 || locationHref.indexOf("signin=on") != -1) {
+				MarketLive.Base.openSignInPopUp(forwardPage);
+			}else if(locationHref.indexOf("pagetype=accountsupport") != -1) {
+				MarketLive.Base.showCustomerSupport();
+				MarketLive.Reporting.dlGlobal.overlayFormOpen('account support');
+			} else if(locationHref.indexOf("pagetype=passwordreset") != -1) {
+				MarketLive.Base.showPasswordReset();
+				MarketLive.Reporting.dlGlobal.overlayFormOpen('password reset');
+			}			
+		} else {
+			if(locationHref.indexOf("pagetype=accountsupport") != -1) {
+				MarketLive.Base.showCustomerSupport();
+				MarketLive.Reporting.dlGlobal.overlayFormOpen('account support');
+			}
+			else if(locationHref.indexOf("pagetype=kiboonly") != -1) {
+				MarketLive.Base.showJoinNowModal(forwardPage);
+			}
+		}
+	});
+
+	 function invokePopup(url) {
+		$('#adsModalFrame').attr("src",url);
+	 }
+
+	
+	$('.infoIcon').click( function(event){
+		event.stopPropagation();
+		if($(this).find(".pop-over").eq(0).is(":visible")){
+			$(this).find(".pop-over").eq(0).hide();
+		} else {
+			$('.pop-over').hide();
+			$(this).find(".pop-over").eq(0).show();
+		}
+	});
+
+	$(document).click( function(){
+		$('.pop-over').hide();
+	});
+	
+	
+	$(window).load(function() {
+		MarketLive.Base.updateTopNavModals();
+	});
+	
+	if(loadMyStore != 'undefined' && loadMyStore=="true") {
+		$(window).load(function() {
+			MarketLive.MyStore.getMyStore('false');
+		});
+	}
+	MarketLive.Base.showThresholdMessages();
+
+
+	var currentCatCode = 'worldmarket Categories';	
+   	if(currentCatCode != undefined && currentCatCode != 'undefined'){
+   		// remove any active menu	
+   		jQuery('.ml-megamenu').find("li.ml-category-nav-item.active").removeClass("active");		
+   		var menuItem = 'li.ml-category-nav-item.ml-category-nav-id-' + currentCatCode;
+   		jQuery('.ml-megamenu').find(menuItem).addClass("active");
+   		jQuery('.ml-megamenu').find(menuItem).closest("li.ml-sibling-group-root" ).addClass("active");
+   	}
+
+window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"a6621ab2dd","agent":"","beacon":"bam.nr-data.net","applicationTime":95,"applicationID":"45912793","transactionName":"bwNUY0MAXkUHUkxYCVZJZUdDCF5RJV5WRRRXClpSQ054WQtUe14ITBRZW10EQhkOXlVU","queueTime":0}

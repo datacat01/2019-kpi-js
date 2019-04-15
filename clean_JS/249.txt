@@ -1,0 +1,90 @@
+
+window.criteo_q = window.criteo_q || [];
+var deviceType = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : /iPad/.test(navigator.userAgent) ? "t" : "d";
+window.criteo_q.push(
+{ event: "setAccount", account: 19481},
+{ event: "setSiteType", type: deviceType},
+{ event: "setHashedEmail", email: [""]},
+{ event: "viewHome"});
+
+
+        var google_tag_params = {
+        ecomm_prodid : '',
+        ecomm_pagetype : 'category',
+        ecomm_totalvalue : ''
+        };
+      
+
+    var ss_jQuery = jQuery.noConflict(true);
+  
+ 
+(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();
+
+   function saLoadScript(src) {
+    var js = window.document.createElement('script');
+    js.src = src;
+    js.type = 'text/javascript';
+    document.getElementsByTagName("head")[0].appendChild(js);
+   }
+   saLoadScript('//www.shopperapproved.com/widgets/group2.0/21959.js');
+  
+
+window.criteo_q = window.criteo_q || [];
+var deviceType = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : /iPad/.test(navigator.userAgent) ? "t" : "d";
+var viewList = new Array();
+ss_jQuery("input[class='viewlist']").each(function(i){
+if(i < 3){
+viewList[i] = ss_jQuery(this).val();
+}
+});
+
+window.criteo_q.push(
+{ event: "setAccount", account: 19481},
+{ event: "setSiteType", type: deviceType},
+{ event: "setHashedEmail", email: [""]},
+{ event: "viewList", item: [viewList[0], viewList[1], viewList[2]] });
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+var fourTellCookieContents = getCookie("fourtellemail");
+document.getElementById("data_4Tell").setAttribute("data-customer", fourTellCookieContents);
+
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', 'a8ab4636c5a9a0b661c43f970b573cb86cec5615a882a5fda052dc5277ff5127']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+/*window.__lc = window.__lc || {};
+window.__lc.license = 8753261;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();*/
+
+
+_4TellBoost={}; _4TellBoost.jq=jQuery.noConflict(true);
+
+
+    var _stk = "87bdb09ea6b2b6d0ee50318759b9ec17251dbc14";
+    (function(){
+        var a=document, b=a.createElement("script"); b.type="text/javascript";
+        b.async=!0; b.src=('https:'==document.location.protocol ? 'https://' :
+        'http://') + 'd31y97ze264gaa.cloudfront.net/assets/st/js/st.js';
+        a=a.getElementsByTagName("script")[0]; a.parentNode.insertBefore(b,a);
+    })();
+

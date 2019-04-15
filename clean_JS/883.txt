@@ -1,0 +1,420 @@
+
+		var addthis_config = {
+			"data_track_addressbar":false,
+			"ui_click":true
+		};
+		
+
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+		
+	
+		(function() {
+		  var gads = document.createElement("script");
+		  gads.async = true;
+		  gads.type = "text/javascript";
+		  var useSSL = "https:" == document.location.protocol;
+		  gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+		  var node =document.getElementsByTagName("script")[0];		  
+		  node.parentNode.insertBefore(gads, node);
+		})();
+	
+	
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['OutOfPage-ad'] =
+				googletag.defineOutOfPageSlot('/2438/360Janes_Mainhome', 'OutOfPage-ad')
+				.addService(googletag.pubads())
+				.setTargeting("REG", "NO");
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['leaderboard-ad'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [728,90], 'leaderboard-ad')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['site-sponsor-ad'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [300,90], 'site-sponsor-ad')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['side-content-ad-1'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [300,250], 'side-content-ad-1')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO").setTargeting("POS", "1") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['side-content-ad-2'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [300,250], 'side-content-ad-2')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO").setTargeting("POS", "2") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['side-content-ad-3'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [[300,100],[300,250]], 'side-content-ad-3')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO").setTargeting("POS", "3") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['side-content-ad-4'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [300,100], 'side-content-ad-4')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO").setTargeting("POS", "4") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['side-content-ad-5'] =
+					googletag.defineSlot('/2438/360Janes_Mainhome', [300,600], 'side-content-ad-5')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['featured-video-sponsor'] =
+					googletag.defineSlot('/2438/360Janes_Video', [110,40], 'featured-video-sponsor')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-1'] =
+					googletag.defineSlot('/2438/360Janes_Platforms', [110,40], 'section-sponsor-1')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-2'] =
+					googletag.defineSlot('/2438/360Janes_Weapons', [110,40], 'section-sponsor-2')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-3'] =
+					googletag.defineSlot('/2438/360Janes_C4ISR', [110,40], 'section-sponsor-3')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-4'] =
+					googletag.defineSlot('/2438/360Janes_CBRNE_EOD', [110,40], 'section-sponsor-4')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-5'] =
+					googletag.defineSlot('/2438/360Janes_JDW', [110,40], 'section-sponsor-5')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-6'] =
+					googletag.defineSlot('/2438/360Janes_IDR', [110,40], 'section-sponsor-6')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-7'] =
+					googletag.defineSlot('/2438/360Janes_JNI', [110,40], 'section-sponsor-7')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-8'] =
+					googletag.defineSlot('/2438/360Janes_Security/CountryRisk', [110,40], 'section-sponsor-8')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-9'] =
+					googletag.defineSlot('/2438/360Janes_Security/MilitaryCapabilities', [110,40], 'section-sponsor-9')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-10'] =
+					googletag.defineSlot('/2438/360Janes_Security/CBRNE_Assessment', [110,40], 'section-sponsor-10')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-11'] =
+					googletag.defineSlot('/2438/360Janes_Security/Terrorism_Insurgency', [110,40], 'section-sponsor-11')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-12'] =
+					googletag.defineSlot('/2438/360Janes_Security/JIR', [110,40], 'section-sponsor-12')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+				googletag.cmd.push(function() {
+				
+				googleAdSlotsByDiv['section-sponsor-13'] =
+					googletag.defineSlot('/2438/360Janes_Industry', [110,40], 'section-sponsor-13')
+					.addService(googletag.pubads())
+					.setTargeting("REG", "NO") 
+					;
+				
+				});
+			
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('OutOfPage-ad');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('leaderboard-ad');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('site-sponsor-ad');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('featured-video-sponsor');
+			});
+		
+
+		$(document).ready(function() {		
+			
+			var REGION_BOX_PADDING = 18;
+			var HEADLINE_MARGIN_BOTTOM = 10;
+			var NUM_HEADLINES = 3
+			
+			$("#region-list .region").each(function() {
+				
+				regionBoxHeight = $(this).find(".background").height();
+				contentHeight = $(this).find(".region-headlines").height();
+				emptySpace = regionBoxHeight - contentHeight;
+				
+				
+				newMarginBottom = parseInt((emptySpace / (NUM_HEADLINES - 1)) + HEADLINE_MARGIN_BOTTOM);
+				$(this).find("li").css("margin-bottom", newMarginBottom);
+			});
+		});
+	
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-1');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-2');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-3');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-4');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-5');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-6');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-7');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-8');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-9');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-10');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-11');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-12');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('section-sponsor-13');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('side-content-ad-1');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('side-content-ad-2');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('side-content-ad-3');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('side-content-ad-4');
+			});
+		
+
+			googletag.cmd.push(function() {
+				googletag.enableServices();
+				googletag.display('side-content-ad-5');
+			});
+		
+<!--
+			pageName="Section: Home"
+			server="V-VWC2PPTSWB03"
+			channel="janes360"
+			_satellite.pageBottom();
+		//-->

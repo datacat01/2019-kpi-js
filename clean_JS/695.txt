@@ -1,0 +1,546 @@
+
+//<![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9292269-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+//]]>
+
+
+//<![CDATA[
+Mage.Cookies.path = '/';
+Mage.Cookies.domain = '.arabinstruments.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+//<![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9292269-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+//]]>
+
+
+adroll_adv_id = "CDB54LM5LZB3PDQP7XASSR";
+adroll_pix_id = "IDXU2LLCYZG4FDP7RGA3IG";
+adroll_version = "2.0";
+(function(w,d,e,o,a){
+w.__adroll_loaded=true;
+w.adroll=w.adroll||[];
+w.adroll.f=['setProperties','identify','track'];
+var roundtripUrl="https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
+for(a=0;a<w.adroll.f.length;a++){
+w.adroll[w.adroll.f[a]]=w.adroll[w.adroll.f[a]]||(function(n){return function(){w.adroll.push([n,arguments])}})(w.adroll.f[a])};e=d.createElement('script');o=d.getElementsByTagName('script')[0];e.async=1;e.src=roundtripUrl;o.parentNode.insertBefore(e, o);})(window,document);
+console.log('Adroll setProperties: ', {"currency":"USD","language":"en_US"});
+adroll.setProperties({"currency":"USD","language":"en_US"});
+console.log('AdRoll track event: pageView');
+adroll.track('pageView');
+console.log('AdRoll track event: homeView');
+adroll.track('homeView');
+
+//<![CDATA[
+var Translator = new Translate({"Please enter a valid credit card number.":"1.Please enter a valid credit card number.","Credit card number does not match credit card type.":"1Credit card number does not match credit card type.","Card type does not match credit card number.":"1Card type does not match credit card number.","Incorrect credit card expiration date.":"1Incorrect credit card expiration date.","Please enter a valid credit card verification number.":"1Please enter a valid credit card verification number."});
+//]]>
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9292269-2']);
+_gaq.push(['_setDomainName', 'arabinstruments.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(){window.switchTo5x=false;var e=document.createElement("script");e.type="text/javascript";e.async=true;e.onload=function(){try{stLight.options({publisher: "270716ad-b5bc-43d8-b103-66a6f687bd90-a51c", doNotHash: false, doNotCopy: false, hashAddressBar: false});}catch(e){}};e.src=("https:" == document.location.protocol ? "https://ws" : "http://w") + ".sharethis.com/button/buttons.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(e, s);})();
+
+//<![CDATA[
+var dataForm = new VarienForm('login-form', true);
+//]]>
+
+
+//<![CDATA[
+var contactForm = new VarienForm('contactForm', true);
+//]]>
+
+
+//<![CDATA[
+var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+searchForm.initAutocomplete('https://www.arabinstruments.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+//]]>
+
+
+//<![CDATA[
+var CUSTOMMENU_POPUP_WIDTH = 0;
+var CUSTOMMENU_POPUP_TOP_OFFSET = 61;
+var CUSTOMMENU_POPUP_RIGHT_OFFSET_MIN = 0;
+//]]>
+
+
+jQuery(document).ready(function(){
+var menu81href = jQuery('.nav-container .menuwrap #custommenu #menu81.menu a.cat-Ney').attr("href");
+if(getMobileOperatingSystem() == "iOS")
+{
+jQuery('.nav-container .menuwrap #custommenu .menu').each(function(){
+jQuery(this).on('click touchend', function(e) {
+if(jQuery(this).next(".wp-custom-menu-popup").length){
+e.preventDefault();
+jQuery(this).toggleClass( "activee" );
+jQuery(this).next( ".wp-custom-menu-popup" ).toggleClass( "displaypop" );
+return false;
+}
+});
+});
+}else {
+if (jQuery(window).width() < 768) {
+jQuery('.nav-container .menuwrap #custommenu .menu').each(function(){
+jQuery(this).on('click', function(e) {
+if(jQuery(this).next(".wp-custom-menu-popup").length){
+e.preventDefault();
+jQuery(this).toggleClass( "activee" );
+jQuery(this).next( ".wp-custom-menu-popup" ).toggleClass( "displaypop" );
+return false;
+}
+});
+});
+}
+}
+});
+jQuery(window).resize(function() {
+if(getMobileOperatingSystem() == "iOS")
+{
+jQuery('.nav-container .menuwrap #custommenu .menu').each(function(){
+jQuery(this).on('click touchend', function(e) {
+if(jQuery(this).next(".wp-custom-menu-popup").length){
+e.preventDefault();
+jQuery(this).toggleClass( "activee" );
+jQuery(this).next( ".wp-custom-menu-popup" ).toggleClass( "displaypop" );
+return false;
+}
+});
+});
+}else {
+if (jQuery(window).width() < 768) {
+jQuery('.nav-container .menuwrap #custommenu .menu').each(function(){
+jQuery(this).on('click', function(e) {
+if(jQuery(this).next(".wp-custom-menu-popup").length){
+e.preventDefault();
+jQuery(this).toggleClass( "activee" );
+jQuery(this).next( ".wp-custom-menu-popup" ).toggleClass( "displaypop" );
+return false;
+}
+});
+});
+}
+}
+});
+function getMobileOperatingSystem() {
+var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+// Windows Phone must come first because its UA also contains "Android"
+if (/windows phone/i.test(userAgent)) {
+return "Windows Phone";
+}
+if (/android/i.test(userAgent)) {
+return "Android";
+}
+// iOS detection from: http://stackoverflow.com/a/9039885/177710
+if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+return "iOS";
+}
+return "unknown";
+}
+
+// <![CDATA[
+jQuery(window).load(function() {
+jQuery('.slider')._TMS({
+show:0,
+pauseOnHover:false,
+prevBu:'.prev',
+nextBu:'.next',
+playBu:'.play',
+duration:800,
+pagination:true,//'.pagination',true,'<ul></ul>'
+pagNums: false ,
+slideshow:7000,
+numStatus:false,
+easing:'easeOutQuad',
+preset:'simpleFade',
+banners:'fade',
+waitBannerAnimation:false
+});
+});
+// ]]>
+
+var $j = jQuery.noConflict();
+$j(document).ready(function(){
+$j(".cat-64").attr("href", "http://forum.arabinstruments.com").attr("target","_blank");
+$j(".cat-67").attr("href", "http://blog.arabinstruments.com/").attr("target","_blank");
+$j(".cat-70").attr("href", "http://blog.arabinstruments.com/").attr("target","_blank");
+$j(".cat-87").attr("href", "https://teespring.com/stores/arab-instruments").attr("target","_blank");
+$j(".cat-88").attr("href", "https://teespring.com/stores/arab-instruments").attr("target","_blank");
+$j(".cat-78").attr("href", "/index.php/galleryvideo/index?gallery=3");
+$j(".cat-94").attr("href", "/index.php/galleryvideo/index?gallery=3");
+$j(".cat-95").attr("href", "/index.php/galleryvideo/index?gallery=4");
+$j(".cat-96").attr("href", "/index.php/galleryvideo/index?gallery=8");
+$j(".cat-97").attr("href", "/index.php/galleryvideo/index?gallery=2");
+$j(".cat-98").attr("href", "/index.php/galleryvideo/index?gallery=5");
+$j(".cat-99").attr("href", "/index.php/galleryvideo/index?gallery=7");
+$j(".cat-101").attr("href", "/index.php/galleryvideo/index?gallery=9");
+$j(".cat-102").attr("href", "/index.php/galleryvideo/index?gallery=11");
+$j(".cat-103").attr("href", "/index.php/galleryvideo/index?gallery=10");
+$j(".cat-104").attr("href", "/index.php/galleryvideo/index?gallery=12");
+$j(".cat-106").attr("href", "/index.php/galleryvideo/index?gallery=13");
+$j(".cat-107").attr("href", "/index.php/galleryvideo/index?gallery=1");
+$j(".cat-109").attr("href", "/index.php/galleryvideo/index?gallery=14");
+$j(".cat-55").attr("href", "/index.php/galleryvideo/index?gallery=6");
+$j(".cat-59").attr("href", "/index.php/galleryvideo/index?gallery=5");
+$j(".cat-79").attr("href", "/index.php/galleryvideo/index?gallery=9");
+$j(".cat-110").attr("href", "/index.php/galleryvideo/index?gallery=6");
+$j("#menu89 .parentMenu .cat-Forum").attr("href", "http://forum.arabinstruments.com").attr("target","_blank");
+$j("#menu91 .parentMenu .cat-Blog").attr("href", "http://bit.ly/AI-blog").attr("target","_blank");
+});
+jQuery(document).ready(function() {jQuery('.jqTransformSelectOpen').click(function(event) {event.preventDefault();});});
+
+
+//<![CDATA[
+var mb_popup_style = jQuery('<style type="text/css">'+""+'</style>');
+jQuery('html > head').append(mb_popup_style);
+var mb_popup ='';
+var mb_popups = [];
+mb_popup.statsUrl = 'https://www.arabinstruments.com/popup/index/stats/';
+mb_popup.jsUrl = 'https://www.arabinstruments.com/skin/frontend/base/default/js/popup/';
+mb_popup.doGaTracking = 1;
+mb_popup.ajaxAsync = 1;
+mb_popup.serverTime = 1555233502;
+for (var key in mb_popups) {
+if (!mb_popups.hasOwnProperty(key)) continue
+mb_popup.showHandler(mb_popups[key]);
+mb_popups[key].dialogActive = false;
+if(mb_popups[key].makeStats!=false){
+mb_popup.showStatsGlobal = true;
+}
+}
+if(mb_popup.showStatsGlobal){
+mb_popup.onbeforeunloadHandler();
+}
+//]]>
+
+
+jQuery(document).ready(function(){
+jQuery('#banners')
+.cycle({fx:'scrollLeft',
+width:1024,
+height: 400,
+timeout: 800000 });
+});
+
+
+//<![CDATA[
+//var contactForm = new VarienForm('contactForm', true);
+//]]>
+
+
+var fnames = new Array();var ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='imageurl';fnames[5]='MMERGE5';ftypes[5]='imageurl';fnames[6]='MMERGE6';ftypes[6]='imageurl';fnames[8]='MMERGE8';ftypes[8]='imageurl';fnames[7]='MMERGE7';ftypes[7]='imageurl';
+try {
+var jqueryLoaded=jQuery;
+jqueryLoaded=true;
+} catch(err) {
+var jqueryLoaded=false;
+}
+var head= document.getElementsByTagName('head')[0];
+if (!jqueryLoaded) {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js';
+head.appendChild(script);
+if (script.readyState && script.onload!==null){
+script.onreadystatechange= function () {
+if (this.readyState == 'complete') mce_preload_check();
+}
+}
+}
+var err_style = '';
+try{
+err_style = mc_custom_error_style;
+} catch(e){
+err_style = '#mc_embed_signup input.mce_inline_error{border-color:#6B0505;} #mc_embed_signup div.mce_inline_error{margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff;}';
+}
+var head= document.getElementsByTagName('head')[0];
+var style= document.createElement('style');
+style.type= 'text/css';
+if (style.styleSheet) {
+style.styleSheet.cssText = err_style;
+} else {
+style.appendChild(document.createTextNode(err_style));
+}
+head.appendChild(style);
+setTimeout('mce_preload_check();', 250);
+var mce_preload_checks = 0;
+function mce_preload_check(){
+if (mce_preload_checks>40) return;
+mce_preload_checks++;
+try {
+var jqueryLoaded=jQuery;
+} catch(err) {
+setTimeout('mce_preload_check();', 250);
+return;
+}
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'https://downloads.mailchimp.com/js/jquery.form-n-validate.js';
+head.appendChild(script);
+try {
+var validatorLoaded=jQuery("#fake-form").validate({});
+} catch(err) {
+setTimeout('mce_preload_check();', 250);
+return;
+}
+mce_init_form();
+}
+function mce_init_form(){
+jQuery(document).ready( function($) {
+var options = { errorClass: 'mce_inline_error', errorElement: 'div', onkeyup: function(){}, onfocusout:function(){}, onblur:function(){} };
+var mce_validator = $("#mc-embedded-subscribe-form").validate(options);
+$("#mc-embedded-subscribe-form").unbind('submit');//remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
+options = { url: 'http://arabinstruments.us2.list-manage.com/subscribe/post-json?u=32d75e77ed5273a696b1cea6e&id=28211921d5&c=?', type: 'GET', dataType: 'json', contentType: "application/json; charset=utf-8",
+beforeSubmit: function(){
+$('mce_tmp_error_msg').remove();
+$('.datefield','#mc_embed_signup').each(
+function(){
+var txt = 'filled';
+var fields = new Array();
+var i = 0;
+$(':text', this).each(
+function(){
+fields[i] = this;
+i++;
+});
+$(':hidden', this).each(
+function(){
+var bday = false;
+if (fields.length == 2){
+bday = true;
+fields[2] = {'value':1970};//trick birthdays into having years
+}
+if ( fields[0].value=='MM' && fields[1].value=='DD' && (fields[2].value=='YYYY' || (bday && fields[2].value==1970) ) ){
+this.value = '';
+} else if ( fields[0].value=='' && fields[1].value=='' && (fields[2].value=='' || (bday && fields[2].value==1970) ) ){
+this.value = '';
+} else {
+if (/\[day\]/.test(fields[0].name)){
+this.value = fields[1].value+'/'+fields[0].value+'/'+fields[2].value;
+} else {
+this.value = fields[0].value+'/'+fields[1].value+'/'+fields[2].value;
+}
+}
+});
+});
+$('.phonefield-us','#mc_embed_signup').each(
+function(){
+var fields = new Array();
+var i = 0;
+$(':text', this).each(
+function(){
+fields[i] = this;
+i++;
+});
+$(':hidden', this).each(
+function(){
+if ( fields[0].value.length != 3 || fields[1].value.length!=3 || fields[2].value.length!=4 ){
+this.value = '';
+} else {
+this.value = 'filled';
+}
+});
+});
+return mce_validator.form();
+},
+success: mce_success_cb
+};
+$('mc-embedded-subscribe-form').ajaxForm(options);
+});
+}
+function mce_success_cb(resp){
+$('mce-success-response').hide();
+$('mce-error-response').hide();
+if (resp.result=="success"){
+$('mce-'+resp.result+'-response').show();
+$('mce-'+resp.result+'-response').html(resp.msg);
+$('mc-embedded-subscribe-form').each(function(){
+this.reset();
+});
+} else {
+var index = -1;
+var msg;
+try {
+var parts = resp.msg.split(' - ',2);
+if (parts[1]==undefined){
+msg = resp.msg;
+} else {
+i = parseInt(parts[0]);
+if (i.toString() == parts[0]){
+index = parts[0];
+msg = parts[1];
+} else {
+index = -1;
+msg = resp.msg;
+}
+}
+} catch(e){
+index = -1;
+msg = resp.msg;
+}
+try{
+if (index== -1){
+$('mce-'+resp.result+'-response').show();
+$('mce-'+resp.result+'-response').html(msg);
+} else {
+err_id = 'mce_tmp_error_msg';
+html = '<div id="'+err_id+'" style="'+err_style+'"> '+msg+'</div>';
+var input_id = '#mc_embed_signup';
+var f = $(input_id);
+if (ftypes[index]=='address'){
+input_id = '#mce-'+fnames[index]+'-addr1';
+f = $(input_id).parent().parent().get(0);
+} else if (ftypes[index]=='date'){
+input_id = '#mce-'+fnames[index]+'-month';
+f = $(input_id).parent().parent().get(0);
+} else {
+input_id = '#mce-'+fnames[index];
+f = $().parent(input_id).get(0);
+}
+if (f){
+$(f).append(html);
+$(input_id).focus();
+} else {
+$('mce-'+resp.result+'-response').show();
+$('mce-'+resp.result+'-response').html(msg);
+}
+}
+} catch(e){
+$('mce-'+resp.result+'-response').show();
+$('mce-'+resp.result+'-response').html(msg);
+}
+}
+}
+
+
+//<![CDATA[
+var contactForm = new VarienForm('contactFormright', true);
+//]]>
+
+
+function checkform(theform){
+var why = "";
+if(theform.txtInput1.value == ""){
+why += "- Security code should not be empty.\n";
+}
+if(theform.txtInput1.value != ""){
+if(ValidCaptcha(theform.txtInput1.value) == false){
+why += "- Security code did not match.\n";
+}
+}
+if(why != ""){
+alert(why);
+return false;
+}
+}
+// Validate the Entered input aganist the generated security code function
+function ValidCaptcha(){
+return true;
+}
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+return string;
+//return string.split(' ').join('');
+}
+
+
+//Generates the captcha function
+var a = Math.ceil(Math.random() * 9)+ '';
+var b = Math.ceil(Math.random() * 9)+ '';
+var c = Math.ceil(Math.random() * 9)+ '';
+var d = Math.ceil(Math.random() * 9)+ '';
+var e = Math.ceil(Math.random() * 9)+ '';
+var code = a + b + c + d + e;
+
+
+function checkform(theform){
+var why = "";
+if(theform.txtInput1.value == ""){
+why += "- Security code should not be empty.\n";
+}
+if(theform.txtInput1.value != ""){
+if(ValidCaptcha(theform.txtInput1.value) == false){
+why += "- Security code did not match.\n";
+}
+}
+if(why != ""){
+alert(why);
+return false;
+}
+}
+
+
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+jQuery( document ).ready(function() {
+if(jQuery('.youdsourceattr iframe.ivideo_1')){
+jQuery('.youdsourceattr iframe.ivideo_1').attr('src',jQuery('.youdsourceattr iframe.ivideo_1').attr('data-src'));
+}
+if(jQuery('.youdsourceattr iframe.ivideo_2')){
+jQuery('.youdsourceattr iframe.ivideo_2').attr('src',jQuery('.youdsourceattr iframe.ivideo_2').attr('data-src'));
+}
+if(jQuery('.youdsourceattr iframe.ivideo_3')){
+jQuery('.youdsourceattr iframe.ivideo_3').attr('src',jQuery('.youdsourceattr iframe.ivideo_3').attr('data-src'));
+}
+if(jQuery('.youdsourceattr iframe.ivideo_4')){
+jQuery('.youdsourceattr iframe.ivideo_4').attr('src',jQuery('.youdsourceattr iframe.ivideo_4').attr('data-src'));
+}
+if(jQuery('.youdsourceattr iframe.ivideo_5')){
+jQuery('.youdsourceattr iframe.ivideo_5').attr('src',jQuery('.youdsourceattr iframe.ivideo_5').attr('data-src'));
+}
+});
+
+
+var amlabel_selector = '.product-image';
+
+
+var xsearchObj = new Xsearch({
+url: 'https://www.arabinstruments.com/amxsearchfront/ajax/index/',
+minChars: '3',
+delay: 400,
+selector: '#search',
+popupWidth: '900'
+});
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1035675566;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '3d4d9241-0b88-4b01-a7f8-bb74cc9b223e', f: true }); done = true; } }; })();
+
+//<![CDATA[
+var contactForm = new VarienForm('contactFormright', true);
+//]]>
+

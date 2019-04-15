@@ -1,0 +1,45 @@
+
+        (function (d, id) {
+            var t, el = d.scripts[d.scripts.length - 1].previousElementSibling;
+            if (el) el.dataset.initTimestamp = (new Date()).getTime();
+            if (d.getElementById(id)) return;
+            t = d.createElement('script');
+            t.src = '//assetscdn.stackla.com/media/js/widget/fluid-embed.js';
+            t.id = id;
+            (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(t);
+        }(document, 'stackla-widget-js'));
+    
+
+        function OptanonWrapper() {
+            // UI Fixes to the banner
+        document.getElementById("optanon-popup-bg").style.display = 'none';
+        $(".optanon-alert-box-button-middle").remove();
+
+        $(".optanon-alert-box-bg").find("p").css({
+            "font-size": "10pt",
+            "font-Family": "Roboto, sans-serif",
+            "font-weight": "300"
+        });
+        $(".optanon-alert-box-bg").find("a").css({
+            "font-size": "10pt",
+            "font-Family": "Roboto, sans-serif",
+            "font-weight": "300",
+            "text-decoration": "underline",
+            "color": "#ffffff"
+        });
+        $(".optanon-alert-box-close").css({
+            "background": "url('/assets/Cds/img/icons/close.png')",
+            "background-repeat": "no-repeat"
+
+        });
+        $(".optanon-alert-box-wrapper").css("opacity", ".85");
+                
+        $(".optanon-alert-box-button-container").remove();        
+
+        // Put here any javascript that will be executed after the banner finish loading
+var bd = document.querySelector("body");
+var opt = document.querySelector(".optanon-alert-box-wrapper");
+bd.appendChild(opt);
+bd.appendChild(document.getElementById('optanon'));
+    }
+    

@@ -1,0 +1,8 @@
+
+	$(document).ready(function() {
+		$('#coin-slider').coinslider({width: 960, height:460, delay: 3500, opacity: 0.5, hoverPause: false, spw:1, sph:1});
+	});
+
+
+anylinkcssmenu.init("anchorclass")
+

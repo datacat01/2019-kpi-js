@@ -1,0 +1,46 @@
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */ 
+var BXP = {"resourceVersions":{"pieces":655,"papers":5422,"sizes":6051,"colors":324,"patterns":988,"motifs":1019,"monograms":177,"fonts":222,"printMethods":28,"shapes":24},"restNonce":false,"appBaseUrl":"\/wp-content\/plugins\/boxcar-rest\/js-dist\/","siteRoot":"","themeRoot":"\/wp-content\/themes\/bella-figura","imageRoot":"https:\/\/www.bellafigura.com\/files","isAdmin":false,"isEmployee":false,"isDealer":false,"currentAccountId":false,"debug":false,"jsVersion":101,"googleAPI":"AIzaSyDNN5zH10oOlTIJHXBrCdeDm48BFKA8oAs","galleryInfo":[{"term_id":182,"name":"Wedding Invitations","slug":"wedding-invitation-etiquette","term_group":0,"term_taxonomy_id":187,"taxonomy":"design_variation_galleries","description":"<div class=\"page\" title=\"Page 1\"><div class=\"section\"><div class=\"layoutArea\"><div class=\"column\"><p>With over 325 designs and counting, Bella Figura offers one of the largest collections of letterpress wedding invitations in the world. You\u2019ll find destination, vintage, modern, ultra modern, creative, sweet, traditional, and elegant designs \u2014 and with countless ways to customize, there\u2019s truly something for every occasion.<\/p><\/div><\/div><\/div><\/div>","parent":0,"count":533,"filter":"raw","term_order":"0"}],"isLoggedIn":false,"interimOrdering":true};
+ /* ]]> */ 
+
+
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/www.bellafigura.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var ajax_var = {"url":"https:\/\/www.bellafigura.com\/wp-admin\/admin-ajax.php","nonce":"56ee39fbc8"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/www.bellafigura.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_8a1743257a4084a9f0ad4bc1a5c0bb9a","fragment_name":"wc_fragments_8a1743257a4084a9f0ad4bc1a5c0bb9a"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var quformL10n = [];
+quformL10n = {"pluginUrl":"https:\/\/www.bellafigura.com\/wp-content\/plugins\/quform","ajaxUrl":"https:\/\/www.bellafigura.com\/wp-admin\/admin-ajax.php","ajaxError":"Ajax error","errorMessageTitle":"There was a problem","removeFile":"Remove","csrfToken":"ZH7pOuKoiqCb3n73hAHREj9KxsNt7b9v0ygabJoH","supportPageCaching":true};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var BooklyL10n = {"today":"Today","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"days":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"daysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"nextMonth":"Next month","prevMonth":"Previous month","show_more":"Show more"};
+/* ]]> */
+

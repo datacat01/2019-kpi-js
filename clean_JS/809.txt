@@ -1,0 +1,115 @@
+
+	var Config_VCompare_MaxProducts = '5';
+	var PageText_783 = "Compare";
+	var PageText_784 = "Change Selections";
+	var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+	var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+
+
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/ajaxcart.asp?cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+
+
+	var global_Config_EnableDisplayOptionProducts = 'True';
+	var global_Config_ForceSecureShoppingCartPage = false;
+	var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+	var Config_EnableSoftAddToCart = false;
+
+
+	var Config_Search_Auto_Complete = false;
+
+
+(function(a,e,c,f,g,h,b,d){var k={ak:"1072681247",cl:"RaF7CLryu3gQn6K__wM",autoreplace:"877-878-9349"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+
+var breadCrumb="||";
+
+  // $('#search').on('focus', function(){
+  //   $($('.col-xs-2.col-sm-6.col-md-4.col-md-pull-6')[0]).toggleClass('mobile_search_area');
+  //     console.log('test');
+  // })
+    // $('#search').on('click', function(){
+    //   $($('.col-xs-2.col-sm-6.col-md-4.col-md-pull-6')[0]).toggleClass('mobile_search_area');
+    //   console.log('test');
+    // })
+      // $('#search').on('focus', function(){
+      //   $($('.col-xs-2.col-sm-6.col-md-4.col-md-pull-6')[0]).toggleClass('mobile_search_area');
+      //     console.log('test');
+      // })
+      // $('#search').on('focusout', function(){
+      //   $($('.col-xs-2.col-sm-6.col-md-4.col-md-pull-6')[0]).toggleClass('mobile_search_area');
+      //     console.log('test');
+      // })
+
+
+    
+
+var breadCrumb="||";
+
+function mOvr1(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav nav_hover'; }
+function mOut1(src)
+{ if (src.className != 'nav nav_hover nav_selected') src.className = 'nav'; }
+function mClk1(src, popup) 
+{ if (!popup) {window.location=src.getElementsByTagName('A')[0].getAttribute('href');} else {window.open(src);} }
+
+
+if(window.location.pathname == '/')
+{
+var google_tag_params = {
+ecomm_pagetype: 'home'
+};
+}
+if(document.getElementsByClassName('results_per_page_select')[0] != undefined)
+{
+var google_tag_params = {
+ecomm_pagetype: 'category'
+};
+}
+
+if(document.getElementsByClassName('vCSS_input_addtocart')[0] != undefined)
+{
+var id = new Array();
+var price = new Array();
+id.push(document.getElementsByClassName('product_code')[0].innerHTML)
+price.push($('span[itemprop="price"]')[0].innerHTML.replace(",","").replace("$",""));
+
+var google_tag_params = {
+ecomm_prodid: id,
+ecomm_pagetype: 'product',
+ecomm_totalvalue: parseFloat(price)
+};
+}
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1072681247;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+function store_init(event){} AttachEvent(window, 'load', store_init);

@@ -1,0 +1,52 @@
+!function(n){n.fn.on||(n.fn.on=function(n,e,t,u){var i=this,g=arguments.length;return g>3?i.delegate(e,n,t,u):g>2?"string"==typeof e?i.delegate(e,n,t):i.bind(n,e,t):i.bind(n,e)},n.fn.off=function(n,e,t){var u=this,i=arguments.length;return"string"==typeof e?i>2?u.undelegate(e,n,t):i>1?u.undelegate(e,n):u.undelegate():i>1?(t=e,u.unbind(n,t)):i>0?u.unbind(n):u.unbind()})}(this.jQuery);
+
+  window.__lc = window.__lc || {};
+  window.__lc.license = 8800386;
+  (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+
+
+  (function() {
+    window.sib = { equeue: [], client_key: "dcaqznmd8yj320d6vcg13" };
+    /* OPTIONAL: email for identify request*/
+    // window.sib.email_id = 'example@domain.com';
+    window.sendinblue = {}; for (var j = ['track', 'identify', 'trackLink', 'page'], i = 0; i < j.length; i++) { (function(k) { window.sendinblue[k] = function() { var arg = Array.prototype.slice.call(arguments); (window.sib[k] || function() { var t = {}; t[k] = arg; window.sib.equeue.push(t);})(arg[0], arg[1], arg[2]);};})(j[i]);}var n = document.createElement("script"),i = document.getElementsByTagName("script")[0]; n.type = "text/javascript", n.id = "sendinblue-js", n.async = !0, n.src = "https://sibautomation.com/sa.js?key=" + window.sib.client_key, i.parentNode.insertBefore(n, i), window.sendinblue.page();
+  })();
+
+
+_linkedin_data_partner_id = "93940";
+
+
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+
+
+
+    $(document).ready(function () {
+        $("div.slideshow").after("<div style='clear: both;'></div>");
+        $('.Slider_2558').easySlider({ auto: true, continuous: true, vertical: false, numeric: true, responsive: true, arrowsandnumbers: false, themeLayoutControlID: 2558, slideWidth: '823', slideHeight: '475', speed: 1000, pause: 5000  });
+    });
+
+
+if(window.attachEvent) window.attachEvent('onload', SubMenuItemHoverFunction);
+var PageButtonTriggerFields={Buttons:[],addTrigger:function(e,t){var n=false;$.each(this.Buttons,function(){if(this.ButtonID==e){this.Fields.push(t);n=true;return}});if(n)return;var r={ButtonID:e,Fields:[t]};this.Buttons.push(r)}};$(function(){$.each(PageButtonTriggerFields.Buttons,function(){var e=this.ButtonID;$.each(this.Fields,function(){if(!$.fn.live){$.fn.live=$.fn.on}$("#"+this).live("keypress",function(t){if(t.which==13){t.preventDefault();$("#"+e).focus().click()}})})})})
+$(function() { $('input[type=submit].SearchBox1, input[type=image].SearchBox1').click(function(e) {  e.preventDefault();location.href ='/store/Search.aspx?SearchTerms=' + encodeURIComponent($('input[type=text].SearchBox1').val()); return false; }); }); $('input[type=text].SearchBox1').keydown(function(e) {
+   if (e.which == 13){
+       e.preventDefault();
+   $('input[type=submit].SearchBox1, input[type=image].SearchBox1').click();
+}
+});
+
+$(function() { $('input[type=submit].SearchBox2, input[type=image].SearchBox2').click(function(e) {  e.preventDefault();location.href ='/store/Search.aspx?SearchTerms=' + encodeURIComponent($('input[type=text].SearchBox2').val()); return false; }); }); $('input[type=text].SearchBox2').keydown(function(e) {
+   if (e.which == 13){
+       e.preventDefault();
+   $('input[type=submit].SearchBox2, input[type=image].SearchBox2').click();
+}
+});
+

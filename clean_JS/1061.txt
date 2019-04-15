@@ -1,0 +1,20 @@
+
+			window.isEditMode = false;
+		
+
+	dataLayer = [ {
+		"pageName" 		: "homepage",
+		"pageCategory"	: "homepage",
+		"platform" 		: "AEM",
+        "language"		: "en",
+        "country"		: "US",
+        "currency" 		: "USD",
+        "currencySymbol": "$"
+	} ];
+
+var monetateT = new Date().getTime();
+
+                if (typeof dataLayer == 'undefined')
+                    dataLayer = [];
+            
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/assets/130f0cde1504073ce0b520219fdf']);

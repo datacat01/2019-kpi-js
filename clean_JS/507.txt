@@ -1,0 +1,155 @@
+
+	function displayWindow(url, width, height) {
+	var Win = window.open(url,"displayWindow",'width=' + width + ',height=' + height + ',resizable=yes,scrollbars=yes,menubar=no,status=no' );
+	}
+	
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-504860-1']);
+  _gaq.push(['_setAllowHash', false]);
+  _gaq.push(['_setDomainName', 'giveashare.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+								<!--
+								var part1 = "svc";
+								var part2 = "giveashare.com?subject=Customer Service Request -";
+								var part3 = "email...";
+								document.write('<a href="mai' + 'lto:' + part1 + '@' + part2 + '">');
+								document.write(part3 + '</a>');
+								// -->
+								
+
+								<!--
+								var part1 = "svc";
+								var part2 = "giveashare.com?subject=Customer Service Request -";
+								var part3 = "email...";
+								document.write('<a href="mai' + 'lto:' + part1 + '@' + part2 + '">');
+								document.write(part3 + '</a>');
+								// -->
+								
+
+			var mydate=new Date()
+			var year=mydate.getYear()
+			if (year < 1000)
+			year+=1900
+			var day=mydate.getDay()
+			var month=mydate.getMonth()
+			var daym=mydate.getDate()
+			if (daym<10)
+			daym="0"+daym
+			var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+			var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+			//var xmas=
+			//document.write("<span class='redText center'><br>*** Today's "+montharray[month]+" "+daym+", "+year+"&nbsp;&nbsp;&nbsp;Only&nbsp;</span>")
+			//if (month==12)
+			//var wks=(25-daym)/7
+			//wks=Math.round(wks,0)
+		
+
+			//Set the two dates
+			today=new Date()
+			var christmas=new Date(today.getFullYear(), 11, 25) //Month is 0-11 in JavaScript
+			if (today.getMonth()==11 && today.getDate()>25) //if Christmas has passed already
+			christmas.setFullYear(christmas.getFullYear()+1) //calculate next year's Christmas
+			//Set 1 day in milliseconds
+			var one_day=1000*60*60*24
+
+			//Calculate difference btw the two dates, and convert to days
+			//document.write("<div class='alert alert-success text-center'><p>*** " + Math.round((  christmas.getTime()-today.getTime())/(one_day)) + " days left until Christmas.  <a href='christmas/christmas1.html'class='linkA'>.</a>***</p></div>")
+		
+
+
+var mydate=new Date()
+var year=mydate.getYear()
+if (year < 1000)
+year+=1900
+var day=mydate.getDay()
+var month=mydate.getMonth()
+var daym=mydate.getDate()
+if (daym<10)
+daym="0"+daym
+var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+//var xmas=
+//document.write("<b>"+montharray[month]+" "+daym+", "+year+"</b>&nbsp;&nbsp;")
+//if (month=12)
+//var wks=(25-daym)/7
+//wks=Math.round(wks,0)
+
+
+
+
+//Set the two dates
+today=new Date()
+var christmas=new Date(today.getFullYear(), 11, 25) //Month is 0-11 in JavaScript
+if (today.getMonth()==11 && today.getDate()>25) //if Christmas has passed already
+christmas.setFullYear(christmas.getFullYear()) //calculate next year's Christmas
+//Set 1 day in milliseconds
+var one_day=1000*60*60*24
+
+//Calculate difference btw the two dates, and convert to days
+//document.write("Just " + Math.round((christmas.getTime()-today.getTime())/(one_day)) + " days left!<br>Best Christmas option left:  Order Normal and print a <a href='//www.giveashare.com/giftnotes.shtml' target='_blank'>gift announcement</a>. Note: Due to the holidays, 2 Part Delivery orders will not ship until Tues 12/26.<a href='//www.giveashare.com/christmas/christmas5.html' target='_blank'>**More options & important info...</a><br><b>Our office will be closed Monday, Dec 25, for the holiday.</b></font><br>")
+
+//2018 progression
+//document.write("<font color='red'>-- " + Math.round((christmas.getTime()-today.getTime())/(one_day)) + " days left!  --</font><br>")
+//RR 11-9-2018 1:30pm
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>We highly recommend selecting 2 Part Delivery.<br> The 1st Part leaves our Arizona facility in 2 business days or less.  <a href='//www.giveashare.com/christmas/christmas2.html' target='_blank'>(more info...)</a></font><br>")
+//RR 11-25-2018 5:25pm
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Plenty of time for this smart gift.</br>Select 2 Part Delivery.<br> The 1st Part leaves our Arizona facility in 2 business days or less.  <a href='//www.giveashare.com/christmas/christmas2a.html' target='_blank'>(more info...)</a></font><br>")
+//RR 12-12-2018 1:30pm
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Plenty of time for this smart gift.</br>Select 2 Part Delivery:<br> 2 Part orders now thru 9am EDT Thurs 12/13 will ship Thurs (12/13) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas2b.html' target='_blank'>(more info...)</a></font><br>")
+//RR 12-13-2018 7:25am
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery:<br> 2 Part orders now thru 10am (EDT) Fri 12/14 will ship Fri (12/14) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas2b.html' target='_blank'>(more info...)</a></font><br>")
+//RR 12-14-2018 7:25am
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS 3 Day:<br>2 Part orders now thru Sunday night will ship Mon (12/17) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas2b.html' target='_blank'>(more info...)</a></font><br>")
+//RR 12-16-2018 8pm
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS 3 Day:<br>2 Part orders now thru 9:30am(EDT) Monday will ship Mon (12/17) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas2b.html' target='_blank'>(more info...)</a></font><br>")
+//RR 12-17-2018 7:45am
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS 3 Day:<br>2 Part orders now thru 10am(EDT) Tues. will ship Tues (12/18) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas4.html' target='_blank'>(more options & info...)</a></font><br>")
+//RR 12-18-2018 9:05am
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS 2nd Day Air:<br>2 Part orders now thru 10am(EDT) Weds will ship Weds (12/19) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas4.html' target='_blank'>(more options & info...)</a></font><br>")
+//RR 12-19-2018 8am & then 12/20 8am switched to 12noon eastern
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS 2nd Day Air:<br>2 Part orders thru 12 noon (Eastern) today will ship today (12/20) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas4.html' target='_blank'>(more options & info...)</a></font><br>")
+//RR 12-20-2018 10am then 10/21 at 8am
+//document.write("<font color='red'><u>Holiday Ordering Tips:</u></font><br>Still time for this smart gift.</br>Select 2 Part Delivery and UPS Next Day Air:<br>2 Part orders thru 11am (Eastern) Friday 12/21 will ship Fri (12/21) from our AZ office.  <a href='//www.giveashare.com/christmas/christmas4.html' target='_blank'>(more info & money saving options...)</a></font><br>")
+//RR 12-21-2018 9:38am
+//document.write("<font color='red'><u>Holiday Ordering:</u></font><br>Too late to ship in time but you can instantly print a custom <a href='https://www.giveashare.com/giftnotes.shtml'>Gift Announcement</a> or give them a <a href='https://www.giveashare.com/eshop/10expand.asp?productcode=gc-111'>Gift Certificate</a> and let them pick their own stock.  <a href='//www.giveashare.com/christmas/christmas5.html' target='_blank'>(more info...)</a></font><br><br>Office closed 12/24-25 - no shipments<br>")
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071889868;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "523139"]);
+  gts.push(["badge_position", "BOTTOM_LEFT"]);
+   gts.push(["locale", "en_US"]);
+  gts.push(["google_base_subaccount_id", "1595073"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+

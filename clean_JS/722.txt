@@ -1,0 +1,123 @@
+try{Typekit.load();}catch(e){}
+
+        'use strict';
+
+        var vars = {
+            site_url:'https://vegancuts.com/',
+            base_url:'https://vegancuts.com/'
+        };
+
+        var firefox = navigator.userAgent.match(/firefox/i);
+
+      $(document).ready(function(){
+
+
+          // equal heights on product li items
+          $.fn.equalHeights = function(minHeight, maxHeight) {
+              var tallest = (minHeight) ? minHeight : 0;
+              this.each(function() {
+                  if($(this).outerHeight() > tallest) {
+                      tallest = $(this).outerHeight();
+                  }
+
+              });
+
+              if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+              // Safety margin for Windows
+              tallest = tallest + 2;
+              return this.each(function() {
+                  $(this).height(tallest).css('overflow', 'auto');
+              });
+          }
+
+          // Firefox fix
+          if (firefox) {
+              $('.heightfix-ff').length && $('.heightfix-ff').equalHeights(false, false);
+          } else {
+              $('.heightfix').length && $('.heightfix').equalHeights(false, false);
+          }
+
+      });
+      $('.fancybox').fancybox();
+	
+
+    $(document).ready(function(){
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            if (firefox) {
+                $('.heightfix-ff').length && $('.heightfix-ff').removeAttr('style') && $('.heightfix-ff').equalHeights(false, false);
+            } else {
+                $('.heightfix').length && $('.heightfix').removeAttr('style')&& $('.heightfix').equalHeights(false, false);
+            }
+        });
+
+        $('.carousel').on('slid.bs.carousel', function (e) {
+            if (firefox) {
+                $('.heightfix-ff').length && $('.heightfix-ff').removeAttr('style') && $('.heightfix-ff').equalHeights(false, false);
+            } else {
+                $('.heightfix').length && $('.heightfix').removeAttr('style')&& $('.heightfix').equalHeights(false, false);
+            }
+        });
+
+        // Open a fine print popup on click on "terms"
+        $('.terms').click(function (e) {
+            $('#privacy-policy-link').remove();
+            $('#modalSignup').modal('show');
+        });
+    });
+
+
+  (function() {
+    window._pa = window._pa || {};
+        var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/530a0c592b3717ad1e00003f.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+
+
+    FB.init({appId: 410937178951133, status: true, cookie: true, oauth: true, xfbml: false});
+    $(document).ready(function () {
+
+        var $like_box = $(this).find('.fb-like-box');
+        if($like_box.length)
+        {
+            setTimeout(function(){
+                FB.XFBML.parse($like_box[0].parentNode);
+            }, 100)
+
+        }
+    })
+
+
+  addthis.layers({
+    'theme' : 'transparent',
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'vegancuts'},
+                    {'service': 'twitter', 'id': 'vegancuts'},
+                    {'service': 'youtube', 'id': 'vegancuts'},
+                    {'service': 'pinterest', 'id': 'vegancuts'},
+                    {'service': 'instagram', 'id': 'vegancuts'}
+                  ]
+            }
+            	,'share' : {
+              'position' : 'left',
+              'services' : 'facebook,twitter,pinterest_share,google_plusone_share,email,more'
+            }
+          });
+    
+
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0003/7522.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+
+
+window.__lc = window.__lc || {};
+window.__lc.license = 1435342;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+

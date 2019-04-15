@@ -1,0 +1,233 @@
+ 
+// Yin
+//<![CDATA[ 
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+
+
+	var global = {};
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.finestcubancigars.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/9GbkH4ahg6JSTFkcYXLCKhT7QLDUcLEbDaJpSx35/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+		(function() {
+		if (navigator.userAgent.match(/iPad/i) != null) {
+			var viewport = document.querySelector("meta[name=viewport]");
+			viewport.setAttribute('content', 'width=1024, user-scalable=no');
+		}
+	})();
+
+		Validation.addAllThese(
+		[
+			['validate-select', 'Please select an option.', function(v) {
+            return ((v != "none") && (v != null) && (v.length != 0));
+        }],
+			['required-entry', 'This is a required field.', function(v) {
+                return !Validation.get('IsEmpty').test(v);
+            }],
+			['validate-email', 'Please enter a valid email address. For example johndoe@domain.com.', function(v) {
+				return Validation.get('IsEmpty').test(v) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(v);
+			}],
+			['validate-password', 'Please enter 6 or more characters. Leading or trailing spaces will be ignored.', function(v) {
+                var pass=v.strip(); /*strip leading and trailing spaces*/
+                return !(pass.length>0 && pass.length < 6);
+            }],
+			['validate-cpassword', 'Please make sure your passwords match.', function(v) {
+                var conf = $('confirmation') ? $('confirmation') : $$('.validate-cpassword')[0];
+                var pass = false;
+                if ($('password')) {
+                    pass = $('password');
+                }
+                var passwordElements = $$('.validate-password');
+                for (var i = 0; i < passwordElements.size(); i++) {
+                    var passwordElement = passwordElements[i];
+                    if (passwordElement.up('form').id == conf.up('form').id) {
+                        pass = passwordElement;
+                    }
+                }
+                if ($$('.validate-admin-password').size()) {
+                    pass = $$('.validate-admin-password')[0];
+                }
+                return (pass.value == conf.value);
+            }],
+			['validate-cc-type', 'Credit card number does not match credit card type.', function(v, elm) {
+                // remove credit card number delimiters such as "-" and space
+                elm.value = removeDelimiters(elm.value);
+                v         = removeDelimiters(v);
+
+                var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_number')) + '_cc_type');
+                if (!ccTypeContainer) {
+                    return true;
+                }
+                var ccType = ccTypeContainer.value;
+
+                if (typeof Validation.creditCartTypes.get(ccType) == 'undefined') {
+                    return false;
+                }
+
+                // Other card type or switch or solo card
+                if (Validation.creditCartTypes.get(ccType)[0]==false) {
+                    return true;
+                }
+
+                // Matched credit card type
+                var ccMatchedType = '';
+
+                Validation.creditCartTypes.each(function (pair) {
+                    if (pair.value[0] && v.match(pair.value[0])) {
+                        ccMatchedType = pair.key;
+                        throw $break;
+                    }
+                });
+
+                if(ccMatchedType != ccType) {
+                    return false;
+                }
+
+                if (ccTypeContainer.hasClassName('validation-failed') && Validation.isOnChange) {
+                    Validation.validate(ccTypeContainer);
+                }
+
+                return true;
+            }]
+		]
+	);
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-29421848-1']);
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+				//<![CDATA[
+				var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+				jQuery('#header_search_bar_submit').click(function() {
+					//jQuery('#search_mini_form').submit();
+					jQuery(this).parent().parent().parent().submit();
+				});
+								//]]>
+			
+
+	(function() {
+		// TODO show the search bar if it has search history
+	})();
+
+
+	jQuery(document).ready(function() {
+		// css3pie for border radius support in IE
+		if (window.PIE) {
+			jQuery('#language_chooser').each(function() {
+				PIE.attach(this);
+			});
+		}
+	});
+
+
+		//<![CDATA[
+		var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+		//]]>
+	
+
+					var wsid='1011d3593018a90eca82e5a9439b582a';
+					var s = document.getElementById('mcertify');
+					var exScript = document.createElement('script');   
+					exScript.type = 'text/javascript';
+					exScript.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cert.verifystore.com/certs/js/xj_t.js';
+					exScript.onload = function(){
+						document.querySelector('.verifystore-logo-wrapper.mobile').insertBefore(document.querySelector('.verifystore-logo-wrapper.desktop a[rel="nofollow"]').cloneNode(true), document.getElementById('mcertify_mb'));
+					};
+					s.parentNode.insertBefore(exScript, s);  
+					
+
+						//<![CDATA[
+						try{window.CloudFlare||function(){var a=window.document,b=a.createElement("script"),a=a.getElementsByTagName("script")[0];window.CloudFlare=[];b.type="text/javascript";b.async=!0;b.src="//ajax.cloudflare.com/cdn-cgi/nexp/cloudflare.js";a.parentNode.insertBefore(b,a)}(),CloudFlare.push(function(a){a(["cloudflare/badge"])})}catch(e$$5){try{console.error("CloudFlare badge code could not be loaded. "+e$$5.message)}catch(e$$6){}};
+						//]]>
+						
+
+						;(function($){$('.comodo-logo-wrapper.desktop').children().clone().appendTo($('.comodo-logo-wrapper.mobile'));})(jQuery);
+					
+
+window.__wtw_lucky_site_id = 47196;
+
+	(function() {
+		var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+		wa.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://cdn') + '.luckyorange.com/w.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+	  })();
+	
+
+
+ 	var chatbot;
+
+ 	var message_config = {
+ 		api_url: "//chatbot.ysdhk.com/api/",
+ 		unique_token: "2019-04-12_10:01:02" + '_' + random_string(4) + '-' + random_string(4) + '-' +random_string(6),
+ 		user_ip_address: "2600:387:b:3::b7",
+ 		user_agent: navigator.userAgent,
+ 		company_name: 'fcc',
+ 		user_name: 'visitor',
+ 		action: '',
+
+ 	}
+
+	function random_string(num)
+	{
+	    var text = "";
+	    var possible = "abcdef1234567890";
+
+	    for( var i=0; i < num; i++ )
+	        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+	    return text;
+	}
+
+	(function($){
+
+		chatbot = new YSDChatbot(message_config);
+
+		// setTimeout(function(){
+		// 	$('.chatbot_container .welcome_message').fadeIn(400);
+		// }, 6000);
+
+		$(document).on('click', '.chatbot_container .welcome_message a', function(){
+			chatbot.config.chatbot_switcher.click();
+		});
+
+		$(document).on('click', '.chatbot_container .welcome_message .btn_close', function(){
+			$(this).parent().hide();
+		});
+
+	})(jQuery);
+
+
+ 
+window.$zopim||(function(d,s){ var z=$zopim=function(c){z._.push(c)},$=zs=d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set._.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8"); $.src="https://v2.Zopim.com/?2Pq9XQUbYZZNEAXUOzNH0URFJ7aD7BRW";zt=+new Date;$.type="text/javascript";e.parentNode.insertBefore($,e)}) (document,"script");
+
+if (typeof $zopim !== 'undefined') {}
+      

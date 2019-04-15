@@ -1,0 +1,78 @@
+
+    
+require([], function() {
+	var addthis_product='mag-sp-2.1.0';
+	addthis.layers({
+		'theme' : 'transparent'
+		,'share' : {
+			'position' : 'left',
+			'numPreferredServices' : 5
+		}
+		,'follow' : {
+			'services' : [
+			]
+		}
+	});
+})
+
+    require(['jquery', 'AmericanEagle_BannerSlider/js/slick'], function($){
+        $('.hero .responsive').slick({
+            dots: false,
+            infinite: true,
+            speed: 500,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            adaptiveHeight: true,
+            fade: true,
+            responsive: [{
+                breakpoint: 767,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                settings: {
+                    centerMode: false,
+                    variableWidth: false,
+                }
+            }]
+        });
+    });
+
+
+    (function (HawkSearch, undefined) {
+        HawkSearch.BaseUrl = 'https://www.armynavysales.com/hawkproxy';
+        HawkSearch.TrackingUrl = 'https://aesearch.americaneagle.com/sites/armynavysales';
+        if ('http:' == document.location.protocol) {
+            HawkSearch.BaseUrl = HawkSearch.BaseUrl.replace('https://', 'http://');
+            HawkSearch.TrackingUrl = HawkSearch.TrackingUrl.replace('https://', 'http://');
+        }
+        if ('https:' == document.location.protocol) {
+            HawkSearch.BaseUrl = HawkSearch.BaseUrl.replace('http://', 'https://');
+            HawkSearch.TrackingUrl = HawkSearch.TrackingUrl.replace('http://', 'https://');
+        }
+    }(window.HawkSearch = window.HawkSearch || {}));
+
+    HawkSearch.initAutoSuggest = function () {
+        HawkSearch.suggestInit('#search', {
+            lookupUrlPrefix: HawkSearch.TrackingUrl +
+            '/?fn=ajax&f=GetSuggestions',
+            hiddenDivName: '',
+            isAutoWidth: true
+        });
+    };
+
+    var config = {
+        paths: {
+            "hawksearch": "https://aesearch.americaneagle.com/sites/armynavysales/includes/hawksearch"
+        },
+        shim: {
+            "hawksearch": {
+                deps: ['jquery']
+            }
+        }
+    };
+    require.config(config);
+
+    require(['hawksearch'], function() {});
+

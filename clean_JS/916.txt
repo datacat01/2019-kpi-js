@@ -1,0 +1,23 @@
+
+            var ATRK_CLIENT_ID="3A24148B" ;
+            var ATRK_PROTOCOL=(("https:" == document.location.protocol) ? "https://" : "https://");
+            document.write(unescape("%3Cscript type='text/javascript' src='" + ATRK_PROTOCOL + "js.acq.io/ATRK_" + ATRK_CLIENT_ID + "_min.js' %3E%3C/script%3E" ));
+
+
+var google_replace_number="800-637-6050";
+(function(a,e,c,f,g,b,d){var h={ak:"1016498515",cl:"59laCImLy2YQ05La5AM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[f]||(a[f]=h.ak);b=e.createElement(g);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(g)[0];d.parentNode.insertBefore(b,d);a._googWcmGet=function(b,d,e){a[c](2,b,h,d,null,new Date,e)}})(window,document,"_googWcmImpl","_googWcmAk","script");
+
+
+!function(o,t){var e=window.bronto=function(){"string"==typeof arguments[0]&&e.q.push(arguments),e.go&&e.go()};e.q=e.q||[];var n=o.createElement(t),s=o.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s),n.async=!0,n.onload=e,n.src="https://snip.bronto.com/v2/sites/eyJ0eXBlIjoic2l0ZWhhc2giLCJpZCI6IjU2MTMxZDk1MjkyODQ0ZDRiZGZmYzcyMDc0MWI0ZDdhNGE1MTEzZDMyYzBmZmVjYWZlODI4N2FhY2VkNzkwMTQifQ==/assets/bundle.js"}(document,"script");
+
+
+window.criteo_q = window.criteo_q || [];
+var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+window.criteo_q.push(
+{ event: "setAccount", account: 51546 },
+{ event: "setHashedEmail", email: "" },
+{ event: "setSiteType", type: deviceType },
+{ event: "viewHome" }
+);
+
+var bizrate={small:"false"};

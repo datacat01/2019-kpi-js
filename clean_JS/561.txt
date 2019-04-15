@@ -1,0 +1,280 @@
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/58fdf72f64f23d19a89aeecc/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+
+//<![CDATA[
+        (function(){
+            // this happens before external dependencies (and dom ready) to reduce page flicker
+            var node, i;
+            for (i = window.document.childNodes.length; i--;) {
+                node = window.document.childNodes[i];
+                if (node.nodeName == 'HTML') {
+                    node.className += ' javascript';
+                }
+            }
+        })();
+    //]]>
+
+
+  // START STANDARD ANALYTICS CODE
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26948030-3']);
+  _gaq.push(['_setDomainName', 'privateislandparty.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  // END STANDARD ANALYTICS CODE
+  
+// START CUSTOM CODE
+function old2new() {
+    // define object that can route old methods to new methods
+    this._addTrans = addTrans;
+    this._addItem = addItem;
+    this._trackTrans = trackTrans;
+  }
+    
+  function addTrans(orderID,store,total,tax,shipping,city,state,country) {
+    // remap _addTrans
+    _gaq.push(['_setAccount', 'UA-26948030-3']);
+    _gaq.push(['_addTrans',
+        orderID,
+        store,
+        total,
+        tax,
+        shipping,
+        city,
+        state,
+        country
+    ]);
+  }
+    
+  function addItem(orderID,sku,product,variation,price,qty) {
+    // remap _addItem
+    _gaq.push(['_addItem',
+        orderID,
+        sku,
+        product,
+        variation,
+        price,
+        qty
+    ]);
+  }
+    
+  function trackTrans() {
+    _gaq.push(['_trackTrans']);
+  }
+  
+  // instantiate converter using name of old Google tracking object
+  // bigcommerce code will use this and be none the wiser
+  var pageTracker = new old2new();
+// END CUSTOM CODE
+
+
+
+  var _mfq = _mfq || [];
+  (function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.async = true;
+    mf.src = "//cdn.mouseflow.com/projects/273b9a92-13b8-4c37-a779-64a466d6a5af.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+  })();
+
+
+window.__lo_site_id = 89732;
+
+    (function() {
+        var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+        wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    
+
+    //<![CDATA[
+    config.ShopPath = 'http://privateislandparty.com';
+    config.AppPath = '';
+    config.FastCart = 1;
+    var ThumbImageWidth = 120;
+    var ThumbImageHeight = 120;
+    //]]>
+    
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".privateislandparty.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"b4e515c1d90063537a8ca2608ca9b8012908f122","type":"ANONYMOUS","visit_id":"0ee50cdc-0426-44e7-bdba-43529cf2eab4","visitor_id":"094055d8-41e5-439b-9c72-5a67aa860738"},"referer":{"url":""},"request":{"url":"http:\/\/privateislandparty.com\/"}}, '', 1363606, "other", {"customer":{"id":"anonymous"}}, '0ee50cdc-0426-44e7-bdba-43529cf2eab4', '094055d8-41e5-439b-9c72-5a67aa860738');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='http://cdn5.bigcommerce.com/r-376054bd9ff639a27ad96729a62475ee8460cc5f/javascript/jirafe/beacon_api_background.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+    
+    function loadQuickView() {
+        $(".QuickView").quickview({
+            buttonText: "Quick View",
+            buttonColor: "#f7f7f7",
+            gradientColor: "#dcdbdb",
+            textColor: "#000000"
+        });
+    }
+
+    $(document).on('SearchReload', function() {
+        loadQuickView();
+    });
+
+     loadQuickView();
+});
+
+
+var BCData = {};
+
+
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-14olAG0C6kA66"
+});
+
+
+$(document).ready(function(){
+        $("#featured ").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 6000, true);
+    });
+    
+
+    //<![CDATA[
+    
+    var GlobalFname="Guest";
+    
+    if (GlobalFname!="" && GlobalFname!="Guest")
+    {
+    //Customer is Logged On
+    document.writeln ('<a href="http://privateislandparty.com/login.php?action=logout">Sign out</a>');
+    } else {
+    //Customer is not Logged On
+    document.writeln ('<a href="http://www.privateislandparty.com/login.php" style="color:#fff;font-size: 0.85em; float: left; margin-top: 0px;">Sign in</a> <font style="color:#fff;font-size: 0.85em; float: left; margin:9px -5px 0;">or</font>');
+    document.writeln ('<a href="http://www.privateislandparty.com/login.php?action=create_account" style="color:#fff;font-size: 0.85em; float: left; margin-top: 0px;margin-right:12px;">Create an Account </a> <font style="color:#fff;font-size: 0.85em; float: left; margin:9px -5px 0;">or</font>');
+    };
+    //]]>
+    
+
+    var QuickSearchAlignment = 'left';
+    var QuickSearchWidth = '232px';
+    lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+    
+var ju_num="3FA8F8BB-E74C-483B-9089-6B38B9A178F6";var asset_host=(("https:"==document.location.protocol)?"https":"http")+'://d2j3qa5nc37287.cloudfront.net/';(function() {var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=asset_host+'coupon_code1.js';var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);})();
+
+// <!--
+    $('#subscribe_form').submit(function() {
+        if($('#nl_first_name').val() == '') {
+            alert('You forgot to type in your first name.');
+            $('#nl_first_name').focus();
+            return false;
+        }
+
+        if($('#nl_email').val() == '') {
+            alert('You forgot to type in your email address.');
+            $('#nl_email').focus();
+            return false;
+        }
+
+        if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+            alert('Please enter a valid email address, such as john@example.com.');
+            $('#nl_email').focus();
+            $('#nl_email').select();
+            return false;
+        }
+
+        // Set the action of the form to stop spammers
+        $('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+        return true;
+
+    });
+// -->
+
+
+    (function() {
+      var upfront = document.createElement('SCRIPT'); upfront.type = "text/javascript"; upfront.async = true;
+      upfront.src = document.location.protocol + "//upfront.thefind.com/scripts/main/utils-init-ajaxlib/upfront-badgeinit.js";
+      upfront.text = "thefind.upfront.init('tf_upfront_badge', '1967c3775d9357b922b62f261cae5508')";
+      document.getElementsByTagName('HEAD')[0].appendChild(upfront);
+    })();
+  
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+    // attach fast cart event to all 'add to cart' link
+    $(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+        fastCartAction($(this).attr('href'));
+        return false;
+    });
+});
+
+//<![CDATA[
+$(document).ready(function() {
+if($('.CartLink').text().search("item") < 0)
+{
+$('.CartLink').html('<a href="http://privateislandparty.com/cart.php">View Cart<span> (0 items)</span></a>');
+};
+});
+//]]>
+
+/* <![CDATA[ */
+var google_conversion_id = 985245558;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {}; 
+  _dcs.account = '1254694';
+  
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true; 
+    dc.src = '//tag.getdrip.com/1254694.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+
+
+    window._mfq = window._mfq || [];
+    (function() {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/a5ba97a5-c2fc-4891-963c-1e536eb30654.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+

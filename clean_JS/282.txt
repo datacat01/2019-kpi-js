@@ -1,0 +1,5 @@
+
+var lz_data = {overwrite:false,textlink:true};
+
+lz_code_id="caed4f748514a389e42739190ba3be1c";var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "https://www.angelsmeadow.co.uk/livesupport/server.php?rqst=track&output=jcrpt&nse="+Math.random();script.src=src;document.getElementById('lvztr_782').appendChild(script);
+function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'da,de,es,fi,fr,it,lt,lv,nl,no,pl,sv,uk', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, gaTrack: true, gaId: 'UA-4512988-5'}, 'google_translate_element'); } 

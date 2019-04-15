@@ -1,0 +1,125 @@
+
+        // THIS IS THE GLOBAL MOM OBJECT
+        // TODO: Load from Config.Instance.
+        var mom = mom || {};
+        mom.routes = {};
+        mom.routes.privateAPI = 'https://privateapi.internal.masterofmalt.com/';
+        mom.modules = {};
+        mom.singletons = {};
+        mom.globals = {};
+        mom.newCheckout = true;
+        mom.mabDimension = "new_checkout_7";
+
+        mom.browsers = {
+            currentBrowserIsIE7: false,
+            currentBrowserIsIE8: false,
+            currentBrowserIsIE9: false,
+            currentBrowserIsIE11: false,
+            currentBrowserIsSafari : false,
+            currentBrowserIsOnAndriod: false,
+            supports: {}
+        };
+        mom.browsers.supports.svg = true;
+        mom.config = {"AuctionRegistrationProductId":51001,"OnlyNLeftLabelThreshold":2,"LightningDealsEnabled":true,"LightningDealUpdateFrequencyInSeconds":10,"firebase":{"apiKey":"AIzaSyCg2DohElbgskcklaeCXU5d21wRBN9cpmQ","authDomain":"env-prod-4b98e.firebaseapp.com","databaseURL":"https://env-prod-4b98e.firebaseio.com","messagingSenderId":"1099017428670","projectId":"env-prod-4b98e","storageBucket":"env-prod-4b98e.appspot.com"}};
+
+        mom.hashmanifest = {
+            js: {
+                "byo.min.js": "byo-a3fc634afe.min.js"
+            }
+        };
+
+        window.mom.globals.menuScrollAppearEnabled = true;
+        window.mom.globals.ShowChristmasButtons = 'False';
+        window.mom.globals.ChristmasTime = false;
+        window.mom.globals.apiKey = "9DBED4A2-5179-4044-BACF-224671BD31F7";
+        window.mom.globals.basketID = "";
+        window.mom.globals.customerGUID = "";
+        window.mom.globals.facebookAppId = '1631245393768982';
+        window.mom.globals.loggedIn = false;
+        window.mom.globals.logDebug = false;
+        window.mom.globals.isTrade = false;
+
+        window.mom.globals.LazyLoading = {
+           elements_selector: ".lazy",
+           threshold: 20,
+           data_src: 'original'
+        };
+
+        // END GLOBAL MOM OBJECT
+
+        var showCurrencyPopup       = true,
+            countryCode             = "UA",
+            brandID                 = 1,
+            basketTotal             = 0,
+            isTablet                = false,
+            isRetina                = false,
+            UseCDN                  = true,
+            BYOLive                 = true,
+            ProductsInBasketJSArray = {},
+            javaCookie              = false,
+            deliveryEndDate         = -62135596800,
+            todaysUkOrderDeadline   = -62135596800,
+            currentTimeStamp        = 1555251556,
+            javaCookie              = false,
+            orderOffers             = [];
+
+        mom.globals.BYOTypes = [{"TypeID":1,"Name":"My Advent Calendar","FormattedName":"My<br />Advent Calendar","SentanceName":"advent calendar","Quantity":24,"ProductID":46092},{"TypeID":2,"Name":"My Tasting Set","FormattedName":"My<br />Tasting Set","SentanceName":"tasting set","Quantity":5,"ProductID":52524}];
+
+        mom.browsers.currentBrowserIsIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+        mom.browsers.currentBrowserIsSafari = navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf('Chrome') > -1) && !(navigator.userAgent.indexOf('Android') > -1);
+        mom.browsers.currentBrowserIsOnAndriod = navigator.userAgent.toLowerCase().indexOf('android') > -1;
+        mom.browsers.currentBrowserIsChrome = false;
+    
+
+        // google analytics
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-287678-1', 'masterofmalt.com');
+        ga('require', 'GTM-M5WSXTX');
+        ga('require', 'displayfeatures');
+        ga('set', 'dimension2', mom.mabDimension);
+        ga('send', 'pageview');
+    
+
+//<![CDATA[
+var theForm = document.forms['AspNetForm'];
+if (!theForm) {
+    theForm = document.AspNetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({ 'event': 'optimize.activate' });
+
+                if ((typeof ga != 'undefined')) {
+                    ga('send', 'event', 'International Popup Clicked', 'Show Popup', 1, { 'nonInteraction': 1 });
+                }
+            
+
+    var currencySymbol = "&#8372;";
+    var currencyCode = "UAH";
+    var exchangeRate = 35.08213;
+    var tradeGroupID = 0;
+    window.mom.globals.vatRatio = 1.2;
+
+
+    window.$zopim || (function (d, s) {
+        var z = $zopim = function (c) {z._.push(c)}, $ = z.s =d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+        z.set._.push(o)
+    }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute('charset', 'utf-8');
+        $.src = '//cdn.zopim.com/?kJO4BBKzd15D7P2L0danoTHTSY8sNO32'; z.t = +new Date; $.type = 'text/javascript'; e.parentNode.insertBefore($, e)
+    })(document, 'script');
+

@@ -1,0 +1,43 @@
+
+
+      function gtmAddToBasket(elem) {
+        var id = elem.data('skucode');
+        var name = elem.data('name');
+        var price = elem.data('price');
+        var category = elem.data('category');
+        var brand = elem.data('brand');
+        var quantity = elem.data('quantity');
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'eec.add',
+          ecommerce: {
+            add: {
+              actionField: {
+                list: 'Shopping cart'
+              },
+              products: [
+                {
+                  id: id,
+                  name: name,
+                  price: price,
+                  category: category,
+                  brand: brand,
+                  quantity: quantity
+                }
+              ]
+            }
+          }
+        });
+      }
+
+      $(function () {
+        $('.gtm-add-to-basket').on('click',
+          function (e) {
+
+            gtmAddToBasket($(this));
+
+          });
+      });
+
+    

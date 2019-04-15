@@ -1,0 +1,315 @@
+
+    
+
+    
+
+ mybuys.setPageType("HOME");
+ mybuys.addFilteringAttribute("Region","REGION_500");
+
+
+//<![CDATA[
+var theForm = document.forms['main'];
+if (!theForm) {
+    theForm = document.main;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function banner_track(el,id) {el.href = '/banners.aspx?BannerId=' + id;el.mousedown = '';return true;}//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxManager', 'main', ['tCT_Main_0$amc','CT_Main_0_amc'], [], [], 90, '');
+//]]>
+
+
+    var cartCounter = 0;
+    var emailCart = readCookie("EmailCart"); 
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(";");
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==" ") c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name,"");
+    }
+
+    function createCookie(name, value) {
+        document.cookie = name + "=" + value + "; domain=candywarehouse.com; path=/";
+    }
+
+    function showPopup() {
+        //console.log("cartCounter=" + cartCounter);
+        //console.log(readCookie("EmailCartReminder"));
+
+        if (cartCounter == 1 || emailCart == "Y") {
+            var msg = document.getElementById("CT_Header_0_ccStoreCartPopup_pMsg");
+            msg.innerText = "enter your email address and we'll send you your shopping cart:";
+            $("#popupOverlay").show();
+            var email = document.getElementById("CT_Header_0_ccStoreCartPopup_txtEmail");
+            email.focus();
+            email.select();
+            cartCounter++;
+            emailCart = "";
+        }
+        if (readCookie("EmailCartReminder") == "Y") {
+            var msg = document.getElementById("CT_Header_0_ccStoreCartPopup_pMsg");
+            msg.innerText = "Don't forget your candy! Enter your email below and we'll send your cart before your cookies expire (and your cart disappears):";
+            $("#popupOverlay").show();
+            var email = document.getElementById("CT_Header_0_ccStoreCartPopup_txtEmail");
+            email.focus();
+            email.select();
+            createCookie("EmailCartReminder","N");
+        }
+    }
+
+    function hidePopup() {
+        $("#popupOverlay").hide();
+    }
+
+    function validateEmail() {
+        var btn = document.getElementById("CT_Header_0_ccStoreCartPopup_btnEmail");
+        btn.value = "Please wait...";
+
+        var email = document.getElementById("CT_Header_0_ccStoreCartPopup_txtEmail");
+        if (email.value == "") {
+            alert("Please enter your email.");
+            btn.value = "Email Me My Shopping Cart";
+            email.focus();
+            return false;
+        }
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        if (!re.test(email.value)) {
+            alert("Invalid email address. Please try again.");
+            btn.value = "Email Me My Shopping Cart";
+            email.focus();
+            email.select();
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+        //console.log($().jquery);
+        //console.log("---------");
+        //console.log("cartCounter=" + cartCounter);
+
+        var timeout = null;
+
+        if (emailCart == "Y") {
+            eraseCookie("EmailCart")
+            showPopup();
+        } 
+
+        //$(document).bind("mousemove", function () {
+        //    if (timeout !== null) {
+        //        clearTimeout(timeout);
+        //    }
+
+        //    timeout = setTimeout(function () {
+        //        timeout = null;
+        //        showPopup();
+        //    }, 60000);
+        //});
+
+        $(document).mouseleave(function () {
+            //console.log("mouseout");
+            showPopup();
+        });
+
+        $(window).blur(function () {
+            //console.log("blur");
+            showPopup();
+        });
+    });
+
+
+    function showProcessingOverlay(doFade) {
+        $('#processingOverlay').show();
+
+        if (typeof doFade !== 'undefined' && doFade) {
+            setInterval(function () { $('.processingOverlay_contentItem').fadeIn(1000).fadeOut(1000); }, 0)
+        }
+    }
+
+    function hideProcessingOverlay() {
+        $('#processingOverlay').hide();
+    }
+
+
+    var counter = 1;
+    var waitTime = 13000;
+
+    function showPopupEmail() {
+        if (counter == 1) {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.text = 'require(["mojo/signup-forms/Loader"], function (L) { L.start({ "baseUrl": "mc.us10.list-manage.com", "uuid": "7e5d6dd32ef429ba3434c7a6b", "lid": "2f3c877fc5" }) });';
+            document.getElementsByTagName('head')[0].appendChild(script);
+
+            counter++;
+        }
+    }
+
+    $(document).ready(function () {
+        var timeout = null;
+
+        if (timeout !== null) {
+            clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function () {
+            timeout = null;
+            showPopupEmail();
+        }, waitTime);
+    });
+
+
+        var SliSearchUrl = 'candy.candywarehouse.com/search';
+        function SliSearchById(id) {
+            SliSearch(id);
+            return false;
+        }
+        function SliSearch(caller) {
+            var lsQueryString;
+            var s = document.getElementById(caller);
+            if (s.value == '') {
+                alert("Please enter a keyword and try again.");
+            }
+            else {
+                lsQueryString = "w=" + encodeURIComponent(s.value);
+                var username = "";
+                var password = "";
+                
+                if(username != '' && password != ''){
+                    window.location = "https://" + username + ":" + password + "@" + SliSearchUrl + "?" + lsQueryString;
+                }else{
+                    window.location = "https://" + SliSearchUrl + "?" + lsQueryString;
+
+                }
+            }
+        }
+    
+
+    $(function () {
+        var p = getQueryVariable("print");
+        var paypal = getQueryVariable("paypal");
+        var isPrint = (p && p.toLowerCase() == "y");
+        var isPaypal = (paypal && paypal.toLowerCase() == "y");
+        if (isPrint) { $("#HeaderMain").hide(); $("#HeaderPrint").show(); } else { $("#HeaderMain").show(); $("#HeaderPrint").hide(); }
+        //if (!isPrint && !isPaypal) $.getJSON("/storeajax.aspx?F=GetSummary&SiteId=1", function(o) { if (!o.Success) return; if (o.Member) { $(".AnonymousView").hide(); $(".MemberView").show(); } else { $(".MemberView").hide(); $(".AnonymousView").show(); } var i = o.Items; $("#spanCartTotal").html(i + ' Item' + (i == 1 ? '' : 's') + (i > 0 ? ' - $' + o.Total.toFixed(2) : '')); if (o.ecoMsg) { $("#eco").show().html(o.ecoMsg); } if (o.TotalHtml) { $("#divAllItemAdded").html(o.TotalHtml); } });
+        if (!isPrint && !isPaypal) $.getJSON("/storeajax.aspx?F=GetSummary&SiteId=1", function (o) {
+            if (!o.Success) return;
+            if (o.Member || o.loggedIn) {
+                $(".AnonymousView").hide();
+                $(".MemberView").show();
+            } else {
+                $(".MemberView").hide();
+                $(".AnonymousView").show();
+            }
+            var i = o.Items;
+            $(".spanCartTotal").each(function () { $(this).html(i + ' Item' + (i == 1 ? '' : 's') + (i > 0 ? ' - $' + o.Total.toFixed(2) : '')); });
+            if (o.ecoMsg) {
+                $("#eco").show().html(o.ecoMsg);
+            }
+            if (o.TotalHtml) {
+                $("#divAllItemAdded").html(o.TotalHtml);
+            }
+        });
+    });
+
+
+    /* <![CDATA[ */
+
+    //Callback parameter will be used to redirect after ga send is successful
+    function trackHeroClick(image, callback) {
+        var send;
+        
+        send = "send";
+        
+        if (typeof callback === "function") {
+            ga(send, 'event', 'Homepage Hero Image', 'click', image, { 'nonInteraction': 1, 'hitCallback': createFunctionWithTimeout(callback) });
+        } else {
+            ga(send, 'event', 'Homepage Hero Image', 'click', image, { 'nonInteraction': 1 });
+        }
+    }
+
+    //Ensure ga hitCallback is run in case of timeout
+    function createFunctionWithTimeout(callback, opt_timeout) {
+        var called = false;
+        function fn() {
+            if (!called) {
+                called = true;
+                callback();
+            }
+        }
+        setTimeout(fn, opt_timeout || 1000);
+        return fn;
+    }
+
+    /* ]]> */
+
+
+        _litm['litm_'] = {"id":null,"name":"Foiled Gourmet Chocolate Easter Eggs: 5LB Bag","list":"Favorites","brand":"Madelaine Chocolate Company","category":"Easter Candy","variant":"","position":0,"price":0.00}
+    
+
+        _litm['litm_'] = {"id":null,"name":"Gummy Butterflies Candy: 5LB Bag","list":"Favorites","brand":"Albanese Confectionery","category":"Assorted","variant":"","position":1,"price":19.50}
+    
+
+        _litm['litm_127053'] = {"id":"127053","name":"Mini Butterfly Sweet Tarts Candy: 5LB Bag","list":"Favorites","brand":"YumJunkie Candy","category":"Sale","variant":"","position":2,"price":24.50}
+    
+
+        _litm['litm_125289'] = {"id":"125289","name":"Brach's Wrapped Marshmallow Easter Eggs: 30-Piece Bag","list":"Favorites","brand":"Brach's Candy","category":"Easter Candy","variant":"","position":3,"price":9.00}
+    
+
+        _litm['litm_125289'] = {"id":"125289","name":"Brach's Wrapped Marshmallow Easter Eggs: 30-Piece Bag","list":"BestSellers","brand":"Brach's Candy","category":"Easter Candy","variant":"","position":0,"price":9.00}
+    
+
+        _litm['litm_126887'] = {"id":"126887","name":"Jolly Rancher Hard Candy Assortment: 5LB Bag","list":"BestSellers","brand":"Jolly Rancher Candy","category":"Assorted","variant":"","position":1,"price":19.50}
+    
+
+        _litm['litm_127415'] = {"id":"127415","name":"Starburst Fruit Chews Candy: 3LB Bag","list":"BestSellers","brand":"Starburst Candy","category":"Assorted","variant":"","position":2,"price":12.95}
+    
+
+        _litm['litm_129616'] = {"id":"129616","name":"Tootsie Fruit Rolls 8-Flavors Mega Mix: 275-Piece Bag","list":"BestSellers","brand":"Tootsie Roll Industries","category":"Assorted","variant":"","position":3,"price":13.75}
+    
+
+        _litm['litm_134435'] = {"id":"134435","name":"Foiled Milk Chocolate 3/4-Ounce Fancy Easter Bunnies: 24-Piece Display","list":"NewItems","brand":"Madelaine Chocolate Company","category":"Easter Candy","variant":"","position":0,"price":60.00}
+    
+
+        _litm['litm_134460'] = {"id":"134460","name":"Sour Pina Colada Gummy Bears Candy: 3KG Bag","list":"NewItems","brand":"Gourmet International","category":"Liquor Candy","variant":"","position":1,"price":45.00}
+    
+
+        _litm['litm_134461'] = {"id":"134461","name":"Sour Mojito Gummy Bears Candy: 3KG Bag","list":"NewItems","brand":"Gourmet International","category":"Liquor Candy","variant":"","position":2,"price":45.00}
+    
+
+        _litm['litm_134363'] = {"id":"134363","name":"Hershey Kisses 1.45-Ounce Springtime Extra Large Milk Chocolate Candy Packs: 12-Piece Box","list":"NewItems","brand":"Hershey Kisses","category":"Easter Candy","variant":"","position":3,"price":30.00}
+    
+
+    var $mcGoal = { 'settings': { 'uuid': '7e5d6dd32ef429ba3434c7a6b', 'dc': 'us10' } };
+    (function () {
+        var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+        sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+    })();
+
+
+        StartCountDown("04/21/2019 12:00 AM", "%%D%% Days %%H%% Hours <br/> %%M%% Minutes %%S%% Seconds", true, '', -1, true, '8', 'Easter', '', '/assets/1/12/CountdownClockDimensionMain/easter-clock2.JPG');
+    
+
+        mybuys.initPage();
+    

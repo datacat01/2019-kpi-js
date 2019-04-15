@@ -1,0 +1,249 @@
+var jslang='EN';
+(function() {var po = document.createElement('script'); po.type = 'text/javascript';po.async = true; po.src = '//apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();
+
+						window.__lo_site_id = 17571;
+
+						(function() {
+							var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+							wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+						})();
+					
+
+						
+						window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'91390200'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.5.1',_tagCount:1,protocol:location.protocol,events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;}
+					
+
+				$(document).foundation();
+
+				$(document).ready(function()
+				{
+					var screenSize = 'large';
+					if (matchMedia(Foundation.media_queries.large).matches)
+					{
+						screenSize = 'large';
+					}
+					else
+					{
+						if (matchMedia(Foundation.media_queries.medium).matches)
+						{
+							screenSize = 'medium';
+						}
+						else
+						{
+							screenSize = 'small';
+						}
+					}
+					
+					createCookie("screenSize", screenSize, 30)
+
+					$(window).bind('scroll', function()
+					{
+						if($(this).find('#desktop .row').is(':visible'))
+						{
+							var navHeight = $('#desktop .row').height();
+							if ($(window).scrollTop() > navHeight)
+							{
+								$('header .mainmenu').addClass('fixed');
+								$('#cartItemsDIVID').show();
+							}
+							else
+							{
+								$('header .mainmenu').removeClass('fixed');
+								$('#cartItemsDIVID').css('display','none');
+								$('#cartItemsDIVID').hide();
+							}
+						}
+						else
+						{
+							var navHeight = $('#mobileview').height();
+							var callsectionHeight = $('.callsection').height();
+							var totalHeight = navHeight+callsectionHeight;
+
+							
+								
+							
+							if ($(window).scrollTop() > totalHeight)
+							
+							
+							{
+								
+								
+								$('header .mainmenu').addClass('fixed');
+								$('#cartItemsDIVID').show();
+								$('body .myAccountBox').css('position' , 'fixed');
+								$('body .myAccountBox').css('top' , '67px');
+							}
+							else
+							{
+								
+								
+								$('header .mainmenu').removeClass('fixed');
+								$('#cartItemsDIVID').css('display','none');
+								$('#cartItemsDIVID').hide();
+								$('body .myAccountBox').css('position' , 'absolute');
+								$('body .myAccountBox').css('top' , '168px');
+							}
+						}
+					});
+
+
+					$('#simple-menu').click(function (event)
+					{
+						if($('.mainmenu').css("left") == '260px')
+						{
+							$('.mainmenu').css('left','0px');
+						}
+						else
+						{
+							$('.mainmenu').css('left','260px');
+						}
+					});
+
+					$('#closeSidr').click(function (event)
+					{
+						$('.mainmenu').css('left','0px');
+					});
+
+					$('#simple-menu').sidr();
+
+					
+						jQuery('.bxslider').show().bxSlider({
+							auto: true,
+							autoControls: true,
+							preloadImages: 'all'
+						});
+					
+					
+						count=0;
+						$('.products ul li:visible').each(function(i, e)
+						{
+							count=count+1;
+							if (count==3)
+							{
+								$(e).addClass('third');
+								count=0;
+							}
+						});
+
+						$('#navigation ul li:last').addClass('last');
+						$('footer #navigation ul li:last').addClass('last');
+						$('.leftnavigation ul li:last').addClass('last');
+					
+
+					
+						$('.top-bar-section ul li').click(function (event)
+						{
+							$('.top-bar-section ul li').each(function(i)
+							{
+								$(this).removeClass('active');
+							});
+							$(this).addClass('active');
+
+							$('.top-bar-section ul li').each(function(i)
+							{
+								if(!$(this).hasClass('active'))
+								{
+									$(this).children('.dropdown01').hide();
+								}
+							});
+
+							if($(this).children('.dropdown01').is(':visible'))
+							{
+								$(this).children('.dropdown01').hide();
+							}
+							else
+							{
+								$(this).children('.dropdown01').show()
+							}
+							return false;
+						});
+
+						$(document).click(function(e)
+						{
+							if ($(e.target).closest('.top-bar-section').length === 0 )
+							{
+								$('.top-bar-section ul li').each(function(i)
+								{
+									$(this).removeClass('active');
+								});
+
+								$(this).find('.top-bar-section .dropdown01').hide();
+							}
+
+							if ($(e.target).closest('.leftside').length === 0 )
+							{
+								$('div.linkside ul li').each(function(i)
+								{
+									$(this).removeClass('active');
+								});
+
+								$(this).find('.leftnavigation').hide();
+							}
+							else
+							{
+								event.stopPropagation();
+							}
+						});
+
+						$('.dropdown01').click(function(event)
+						{
+							event.stopPropagation();
+						});
+
+
+						$('div.linkside ul li').click(function (event)
+						{
+							$('div.linkside ul li').each(function(i)
+							{
+								$(this).removeClass('active');
+							});
+
+							$(this).addClass('active');
+							$('div.linkside ul li').each(function(i)
+							{
+								if(!$(this).hasClass('active'))
+								{
+									$(this).children('.leftnavigation').hide();
+								}
+							});
+
+							if($(this).children('.leftnavigation').is(':visible'))
+							{
+								$(this).children('.leftnavigation').hide();
+							}
+							else
+							{
+								$(this).children('.leftnavigation').show();
+							}
+							return false;
+						});
+					
+
+
+
+					if ($(window).width() < 767)
+					{
+						$('#search').focus(function()
+						{
+							/*to make this flexible, I'm storing the current width in an attribut*/
+							//$(this).attr('data-default', $(this).width());
+							$('.searchblock .row .small-2').hide('slow');
+							//$('.search').css('width','100%');
+							$('.search').animate({ width: '100%' }, 'fast');
+							$(this).animate({ width: '100%' }, 'fast');
+						}).blur(function()
+							{
+								$('.search').animate({ width: '100%' }, 'fast');
+								$(this).animate({ width: '80%' }, 'fast');
+								/* lookup the original width*/
+								//var w = $(this).attr('data-default');
+								$('.searchblock .row .small-2').show('slow');
+								//$('.search').css('width','100%');
+							});
+					}
+
+					
+					
+				});
+			

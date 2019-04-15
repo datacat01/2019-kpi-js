@@ -1,0 +1,317 @@
+
+	var $pc = jQuery.noConflict();
+	var $ = $pc;
+
+
+		$pc(window).load(function() {
+			var sliderEvent = false;
+
+			$pc('#slider').nivoSlider({
+				effect: 'fade',
+animSpeed: 1500,
+pauseTime: 10000,
+
+				directionNav: true,
+				randomStart: false,
+				afterChange: function() {
+					// Reset slide effect
+					$pc('#slider img').removeAttr("data-transition", "");
+					sliderEvent = false;
+				}
+			});
+
+			$pc("#slider").on("click", ".nivo-imageLink", function(event) {
+				if (sliderEvent) {
+					sliderEvent = false;
+					event.preventDefault();
+				}
+			});
+
+			$pc("#slider").on("touchend", ".nivo-prevNav", function(event) {
+				sliderEvent = true;
+				$(this).trigger('click');
+			});
+
+			$pc("#slider").on("touchend", ".nivo-nextNav", function(event) {
+				sliderEvent = true;
+				$(this).trigger('click');
+			});
+
+			$pc("#slider").swipe({
+				excludedElements: "button, input, select, textarea, .nivo-prevNav, .nivo-nextNav",
+				threshold: 10,
+				triggerOnTouchEnd: true,
+				swipeLeft: function(event, distance, duration, fingerCount) {
+					$pc('#slider img').attr("data-transition","slideInLeft");
+					$pc('a.nivo-nextNav').trigger('click');
+					sliderEvent = true;
+				},
+				swipeRight: function(event, distance, duration, fingerCount) {
+					$pc('#slider img').attr("data-transition","slideInRight")
+					$pc('a.nivo-prevNav').trigger('click');
+					sliderEvent = true;
+				},
+				tap: function(event, target) {
+					if ($pc(target).hasClass("nivo-imageLink")) {
+						var link = $pc(target).attr('href');
+						var linkTarget = $pc(target).attr('target');
+
+						if (!linkTarget || linkTarget.length < 1) {
+							linkTarget = "_self";
+						}
+
+						sliderEvent = true;
+
+						window.open(link, linkTarget);
+					}
+				}
+			}); 
+		});
+	
+
+/* Validate quantity field for product display option "m" */
+	function isDigit(s)
+	{
+	var test=""+s;
+	if(test=="0"||test=="1"||test=="2"||test=="3"||test=="4"||test=="5"||test=="6"||test=="7"||test=="8"||test=="9")
+	{
+	return(true) ;
+	}
+	return(false);
+	}
+	
+	function allDigit(s)
+	{
+	var test=""+s ;
+	for (var k=0; k <test.length; k++)
+	{
+		var c=test.substring(k,k+1);
+		if (isDigit(c)==false)
+	{
+	return (false);
+	}
+	}
+	return (true);
+	}
+	
+	function checkproqty(fname,qty,type,MultiQty)
+	{
+	if (fname.value == "")
+	{
+		alert("Please enter a value in this field.");
+		setTimeout(function() {fname.focus();}, 0);
+		return (false);
+	}
+	if (allDigit(fname.value) == false)
+	{
+		alert("Please enter a positive integer in this field.");
+		setTimeout(function() {fname.focus();}, 0);
+		return (false);
+	}
+	if ((MultiQty > 0) && (eval(fname.value) != 0) && (type==1))
+	{
+	TempValue=eval(fname.value);
+	TempV1=(TempValue/MultiQty);
+	TempV1a=TempValue*TempV1;
+	TempV2=Math.round(TempValue/MultiQty);
+	TempV2a=TempValue*TempV2;
+		if ((TempV1a != TempV2a) || (TempV1<1))
+		{
+				alert("This product can only be ordered in multiples of " + MultiQty);
+				setTimeout(function() {fname.focus();}, 0);
+				return (false);
+		}
+	}
+	if ((qty > 0) && (eval(fname.value) != 0))
+	{
+		TempValue=eval(fname.value);
+		if (TempValue < qty)
+		{
+			alert("This product requires a minimum purchase of " + " " + qty + " " + " units.");
+			setTimeout(function() {fname.focus();}, 0);
+			return (false);
+		}
+	}
+	return (true);
+	}
+	
+	/*
+	Clear default form value script- By Ada Shimar (ada@chalktv.com)
+	Featured on JavaScript Kit (http://javascriptkit.com)
+	Visit javascriptkit.com for 400+ free scripts!
+	*/
+	
+	function clearText(thefield){
+	if (thefield.defaultValue==thefield.value)
+	thefield.value = ""
+	} 
+
+
+
+				
+		
+		function cdDynamic() 
+		{
+		
+			
+				if (rtype==0)
+				{
+					document.additem.action="";
+					document.additem.method="POST";
+					document.additem.submit();
+				}
+				else
+				{
+					return(true);
+				}
+		
+		
+			if (rtype==1)
+			{
+				return(false);
+			}
+		}				
+
+
+        function CheckRequiredCS(reqstr)
+        {
+            if (reqstr.length>0)
+            {
+                var objArray = reqstr.split(",");
+                var i = 0;
+                while (i < objArray.length)
+                {
+                    var obj = eval(objArray[i]);
+			        if (obj.checked==0) 
+			        {
+				        alert("The product cannot be added to the shopping cart.\n"+ obj.value + " is a required option.\n");
+				        return false;
+			        }     
+			        i+=1;       
+			    }
+			}
+			return true;
+        }
+		
+
+
+        $pc(document).ready(function()
+        {
+			function TurnOnUpdateDiv() {  
+				var obj = document.getElementById("overlay");  
+				if(getURLParam("atc") == 1) {                  
+                    openDialog('<a href="viewcart.asp?cs=1" role="button" class="btn btn-default">View Cart</a><a role="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</a>', '<div id="OverlayMsgDialog" title="Item(s) added to the cart" style="display:; text-align: left;"><div class="ui-main"><div style="margin: 5px 0 5px 0;">Your item(s) were added</div>Cart contains 0 Item(s) | Subtotal: $0.00</div></div>', 'Item(s) added to the cart', false);
+				}  
+			}		
+			function addOnLoadEvent(func)
+			{
+				var oldonload = window.onload ;
+				if (typeof window.onload  != 'function') {
+				    window.onload  = func;
+				}
+				else
+				{
+					window.onload  = function() {
+						oldonload();
+						func();
+					}
+				}
+			}
+			addOnLoadEvent(TurnOnUpdateDiv);			
+		});
+	
+
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(100738154);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+
+var seE0Ok=document.createElement("script");seE0Ok.type="text/javascript";var seE0Oks=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1i2gyvjybj5o31aa7wvtztcjl2/safe-standard.js?ps_h=E0Ok&ps_t="+new Date().getTime()+"\u0026P="+top.document.title;setTimeout("seE0Ok.src=seE0Oks;document.getElementById('sdE0Ok').appendChild(seE0Ok)",1)
+
+    var opc_js_1 = 'Credit Card numbers can only contain digits and spaces';
+    var opc_js_2 = 'Please enter your e-mail address';
+    var opc_js_3 = 'Please enter a valid e-mail address. E.g.: yourname@domain.com';
+    var opc_js_4 = 'Please enter your password';
+    var opc_js_5a = '<strong>This e-mail address already exists in our WatchBuys client database</strong>.<br><br> Please either enter a different e-mail address, or go back a screen and checkout using your existing e-mail address and password.<br><br>If you need assistance, please call (888) 333-4895.'; 
+    var opc_js_8 = 'Please enter your first name';
+    var opc_js_9 = 'Please enter last name';
+    var opc_js_10 = 'Please enter your address';
+    var opc_js_11 = 'Please enter your city';
+    var opc_js_12 = 'Please select your country';
+    var opc_js_13 = 'Please enter your ZIP/Postal code';
+    var opc_js_15 = 'Please select your state';
+    var opc_js_16 = 'Please enter a valid phone number';
+    var opc_js_22 = ' Updating your billing address - please wait ';
+    var opc_js_25 = 'Please enter the recipient\'s first name';
+    var opc_js_26 = 'Please enter the recipient\'s last name';
+    var opc_js_27 = 'Please enter the recipient\'s address';
+    var opc_js_28 = 'Please enter the recipient\'s city';
+    var opc_js_29 = 'Please select the recipient\'s country';
+    var opc_js_30 = 'Please enter the Zip/Postal code (US/CA)';
+    var opc_js_32 = 'Please select the recipient\'s state';
+    var opc_js_35 = 'Please select a valid delivery date';
+    var opc_js_36 = 'Please select a valid delivery time';
+    var opc_js_38 = 'Add new shipping address';
+    var opc_js_42 = ' Your order was updated successfully. Please press Continue.';
+    var opc_js_43 = 'Please select a payment method';
+    var opc_js_44 = 'Please enter your credit card number';
+    var opc_js_45 = 'The credit card number must contain at least 16 digits';
+    var opc_js_46 = 'Your credit card is not valid';
+    var opc_js_47 = 'Please enter your password again to confirm';
+    var opc_js_48 = 'Your passwords do not match'; 
+    var opc_js_51 = ' You already have an account with WatchBuys.  Please contact us at (888) 333-4895 for login assistance.';  
+    var opc_js_53 = ' We were unable to update your order. Please try again.';
+    var opc_js_54 = ' Loading shipping options - please wait ';
+    var opc_js_63 = 'Please enter your state/province';
+    var opc_js_64 = 'Please enter recipient\'s state/province';
+    var opc_js_65 = 'View Cart';
+    var opc_js_66 = 'Try Again';
+    var opc_js_74 = 'You must enter a valid zip or postal code';
+    var opc_js_79 = 'Please wait while we reload your order details';
+    var opc_js_81 = 'Saving Order - Please wait';    
+    var Custmoda_27 = 'You must enter a valid VAT ID';
+    var Custmoda_25 = 'You must enter a valid Social Security Number';
+    var login_5 = 'You must review and agree to the WatchBuys Terms & Conditions before placing an order.';
+    var opc_ship_4 = ' Your shipping selection was updated successfully';    
+    var opc_16 = 'Zip/Postal Code:';
+    var opc_16a = 'Postal Code:';
+    var opc_20 = 'Use my billing address';
+    var opc_21 = 'Registrant\'s preferred location';  
+    var opc_51a = 'OK';      
+    var opc_57 = 'There was an error saving your information. Please check the form for errors and try again. If the problem persists, please contact us so we can save your order and look into the problem.';
+    var QV_2 = 'Loading';
+    var ShowSearch_2 = '';
+    var ShowSearch_3 = 'Your watch search will return ';
+    var ShowSearch_4 = ' results(s).';
+    var button_clear = 'Clear Cart';
+    var button_view = 'View Cart';
+    var button_close = 'Continue Shopping';
+    var message_restore = '<div class="pcSuccessMessage">' + "For your convenience, we've loaded back into the shopping cart items that you had added during your last visit to WatchBuys." + '</div>';
+    var title_restore = 'Customer Service Message';
+    var title_askPassword = 'Register Customer Account';
+    var message_askPassword = 'Create a password to use with WatchBuys.<br><br><b>This password must begin with a letter, must contain at least one upper case and one lower case letter, must contain at least one number and must contain at least one special character (such as !@#$%&)</b>.';
+    var title_validation = 'Attention Valued Customer';
+    var button_closeHTML = '<a role="button" class="btn btn-default" data-dismiss="modal">' + 'Continue Shopping' + '</a>';
+    var button_askPasswordHTML = '<a role="button" class="btn btn-default" data-dismiss="modal" onClick="JavaScript:noPass();">' + ' You already have an account with WatchBuys.  Please contact us at (888) 333-4895 for login assistance.' + '</a>' + '<a role="button" class="btn btn-default" data-dismiss="modal" onClick="JavaScript:addPass();">' + 'OK' + '</a>';
+    var scDateFrmt = "MM/DD/YY"; 
+       
+    var pcRootUrl = 'https://www.watchbuys.com/store';
+        
+        var validateGuestInfo = true;    
+    
+        var scDispDiscCart="0";
+    
+
+
+    // $pc("#prdtabs").tabCollapse('show');
+
+ 
+
+    var facebookActive = false;
+
+

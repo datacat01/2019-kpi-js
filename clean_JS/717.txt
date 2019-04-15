@@ -1,0 +1,198 @@
+
+    var base_url = 'https://www.createmytattoo.com/';
+    var js_current_url='https://www.createmytattoo.com/';
+    var background_delay = 0;
+   
+
+
+
+jQuery(document).ready(function($){
+	
+
+		
+	<!---new cdoe starts-->
+	
+		
+	
+	$(".delete_cart_item").click(function() {
+		
+	
+		
+		var delete_id=$(this).attr("rel");
+		//alert(delete_id);
+		
+		
+		  $.post('https://www.createmytattoo.com/tattoo-designs/index.php?route=common/cart/cart_delete',{mrkt_tattoo_id:delete_id},function(data)
+				          {	
+						  
+					//alert(data);						  
+				             var id=0;
+						 	  $.post('https://www.createmytattoo.com/tattoo-designs/index.php?route=product/category/user_cart_total',{id:id},function(data)
+				                  {	
+						
+						            count = data;
+									//alert(count);
+                                    $("#cart-total").html(count+ '&nbsp;item(s)');
+
+									//$('#cart').load('index.php?route=common/cart/display');
+									$('#cart').load('https://www.createmytattoo.com/tattoo-designs/index.php?route=common/cart/display');
+									
+									
+									
+									
+                                
+						         }); 
+								
+                         						
+								 
+							
+		 }); 
+		
+		
+		
+	 });
+	 
+	
+
+	
+	<!---new cdoe ends-->
+	
+	
+
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+
+$('.searchButton').click(function() {
+	
+	
+	
+	var key1=$('.BasicSearchInputBox1').val();
+	var key=$('.BasicSearchInputBox').val();
+	if(key!='')
+	{
+    location.href = 'https://directory.createmytattoo.com/'+key;
+    return false;
+	}
+	else if(key1!='')
+	{
+	location.href = 'https://directory.createmytattoo.com/'+key1;
+    return false;	
+		
+	}
+	
+	else
+	{
+		 
+		 location.href ='https://directory.createmytattoo.com/' ;
+         return false;
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+});
+  
+     $('.startacontest_action').click(function() {
+      $('#creation_a_form').submit();
+    });	
+	
+	
+	
+    
+$('#startacontest_action1').click(function()
+      {
+       $('#creation_a_form').submit();
+      });
+
+$('#startacontest_action2').click(function()
+      {
+	
+       $('#creation_a_form').submit();
+      });
+$('#startacontest_action3').click(function()
+      {
+	
+       $('#creation_a_form').submit();
+      });
+$('#startacontest_action4').click(function()
+      {
+	
+       $('#creation_a_form').submit();
+      });
+$('#startacontest_action5').click(function()
+      {
+	
+       $('#creation_a_form').submit();
+      });
+	  $('#startacontest_action7').click(function()
+      {
+	
+       $('#creation_a_form').submit();
+      });
+
+});
+
+jQuery(function($){
+    // this will get the full URL at the address bar
+    var url = window.location.href; 
+    // passes on every "a" tag 
+    $("ul.navbar-nav a").each(function() {
+            // checks if its the same on the address bar
+	
+        if(url == (this.href)) { 
+            $(this).closest("li").addClass("active");
+        }
+    });
+});
+
+
+
+function testing(elm)
+{
+ 
+ window.location=elm;
+}
+
+
+
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/59496c8550fd5105d0c81f96/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7724754-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+

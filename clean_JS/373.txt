@@ -1,0 +1,250 @@
+
+    
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        
+
+            var pageTracker = _gat._getTracker("UA-3785851-1");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+        
+
+            var dropdownlist = '#ddlInterest';
+            jQuery(document).ready(function () {
+                setareyou();
+                jQuery(dropdownlist).change(function () {
+                    setareyou();
+                });
+            });
+
+            function setareyou() {
+                if (jQuery(dropdownlist).val() == 'ContactUs_Interest_Licensee') {
+                    jQuery("#areyou").show();
+                }
+                else {
+                    jQuery("#areyou").hide();
+                }
+            }
+
+            ///Other Textbox Code
+            ///For Validation
+            $(document).ready(function () {
+                if ($("#ddlHowDidYouHearAboutUs").val() == "Other") {
+                    if ($("#cusOther").prop("display") != null) {
+                        $("#other").show();
+                    } else {
+                        $("#other").hide();
+                    }
+                }
+                else {
+                    $("#other").hide();
+                }
+            });
+
+            $("#ddlHowDidYouHearAboutUs").change(function () {
+                if ($(this).val() == "Other") {
+                    $("#other").show();
+                } else {
+                    $("#other").hide();
+                }
+            });
+        
+
+            $(document).ready(function () {
+                if ($("#ddlCountry").val() == "United States") {
+                    $("#ddlState").prop('disabled', false);
+                    $("#ddlState option:selected").removeAttr("selected");
+                    $('#ddlState option[value="Alabama"]').attr('selected', true);
+
+                    $("#hdnState").val($('#ddlState').val())
+                }
+                else {
+                    $("#ddlState").prop('disabled', true);
+                    $("#ddlState option:selected").removeAttr("selected");
+                    $('#ddlState option[value="Non-US"]').attr('selected', true);
+
+                    $("#hdnState").val($('#ddlState').val())
+                }
+
+                if (CheckEuropeanUnionCountry($("#ddlCountry").val())) {
+                    $("#dvAgree").show();
+                }
+                else {
+                    $("#dvAgree").hide();
+                }
+
+                $("#ddlCountry").change(function () {
+                    if ($(this).val() != "United States") {
+                        $("#ddlState").prop('disabled', true);
+                        $("#ddlState option:selected").removeAttr("selected");
+                        $('#ddlState option[value="Non-US"]').attr('selected', true);
+                    }
+                    else {
+                        $("#ddlState").prop('disabled', false);
+                        $("#ddlState option:selected").removeAttr("selected");
+                        $('#ddlState option[value="Alabama"]').attr('selected', true);
+                    }
+
+                    $("#hdnState").val($('#ddlState').val())
+
+                    if (CheckEuropeanUnionCountry($(this).val())) {
+                        $("#dvAgree").show();
+                    }
+                    else {
+                        $("#dvAgree").hide();
+                    }
+                });
+
+                $("#ddlState").change(function () {
+                    $("#hdnState").val($(this).val())
+                });
+
+                $("#form1").submit(function (event) {
+                    console.log($("#chkAgree").is(':checked'));
+                    if ($("#chkAgree").is(':checked') && CheckEuropeanUnionCountry($("#ddlCountry").val())) {
+                        return true;
+                    }
+                    else if (!$("#chkAgree").is(':checked') && CheckEuropeanUnionCountry($("#ddlCountry").val())) {
+                        alert("You must agree to the terms and conditions");
+                        event.preventDefault();
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                });
+            });
+
+            function CheckEuropeanUnionCountry(selectedCountry) {
+                var euList = new Array("Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", "United Kingdom");
+
+                if (jQuery.inArray(selectedCountry, euList) != '-1') {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        
+
+        
+
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("valContact"));
+var Page_Validators =  new Array(document.getElementById("reqFullName"), document.getElementById("reqEmail"), document.getElementById("expEmail"), document.getElementById("reqState"), document.getElementById("reqCity"), document.getElementById("reqDayPhone"), document.getElementById("reqInterest"), document.getElementById("reqPreferredLang"), document.getElementById("reqAreYou"), document.getElementById("reqCapital"), document.getElementById("cusOther"));
+//]]>
+
+
+//<![CDATA[
+var reqFullName = document.all ? document.all["reqFullName"] : document.getElementById("reqFullName");
+reqFullName.controltovalidate = "txtFullName";
+reqFullName.errormessage = "Please supply your full name";
+reqFullName.display = "Dynamic";
+reqFullName.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqFullName.initialvalue = "";
+var reqEmail = document.all ? document.all["reqEmail"] : document.getElementById("reqEmail");
+reqEmail.controltovalidate = "txtEmail";
+reqEmail.errormessage = "You must enter your email address";
+reqEmail.display = "Dynamic";
+reqEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqEmail.initialvalue = "";
+var expEmail = document.all ? document.all["expEmail"] : document.getElementById("expEmail");
+expEmail.controltovalidate = "txtEmail";
+expEmail.errormessage = "Please enter a valid email address";
+expEmail.display = "Dynamic";
+expEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+expEmail.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var reqState = document.all ? document.all["reqState"] : document.getElementById("reqState");
+reqState.controltovalidate = "ddlState";
+reqState.errormessage = "Please supply a state";
+reqState.display = "Dynamic";
+reqState.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqState.initialvalue = "";
+var reqCity = document.all ? document.all["reqCity"] : document.getElementById("reqCity");
+reqCity.controltovalidate = "txtCity";
+reqCity.errormessage = "Please supply a city";
+reqCity.display = "Dynamic";
+reqCity.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqCity.initialvalue = "";
+var reqDayPhone = document.all ? document.all["reqDayPhone"] : document.getElementById("reqDayPhone");
+reqDayPhone.controltovalidate = "txtDayPhone";
+reqDayPhone.errormessage = "Please supply a phone number";
+reqDayPhone.display = "Dynamic";
+reqDayPhone.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqDayPhone.initialvalue = "";
+var reqInterest = document.all ? document.all["reqInterest"] : document.getElementById("reqInterest");
+reqInterest.controltovalidate = "ddlInterest";
+reqInterest.errormessage = "Please select your main interest";
+reqInterest.display = "Dynamic";
+reqInterest.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqInterest.initialvalue = "";
+var reqPreferredLang = document.all ? document.all["reqPreferredLang"] : document.getElementById("reqPreferredLang");
+reqPreferredLang.controltovalidate = "ddlPreferredLang";
+reqPreferredLang.errormessage = "Please select your preferred language";
+reqPreferredLang.display = "Dynamic";
+reqPreferredLang.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqPreferredLang.initialvalue = "";
+var reqAreYou = document.all ? document.all["reqAreYou"] : document.getElementById("reqAreYou");
+reqAreYou.controltovalidate = "ddlAreYou";
+reqAreYou.errormessage = "Please tell us about you";
+reqAreYou.display = "Dynamic";
+reqAreYou.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqAreYou.initialvalue = "";
+var reqCapital = document.all ? document.all["reqCapital"] : document.getElementById("reqCapital");
+reqCapital.controltovalidate = "ddlCapital";
+reqCapital.errormessage = "Please select your capital to invest";
+reqCapital.display = "Dynamic";
+reqCapital.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+reqCapital.initialvalue = "";
+var cusOther = document.all ? document.all["cusOther"] : document.getElementById("cusOther");
+cusOther.controltovalidate = "txtOther";
+cusOther.errormessage = "Please enter other in text";
+cusOther.display = "Dynamic";
+cusOther.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var valContact = document.all ? document.all["valContact"] : document.getElementById("valContact");
+valContact.showmessagebox = "True";
+valContact.showsummary = "False";
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+

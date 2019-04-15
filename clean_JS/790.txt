@@ -1,0 +1,265 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.bigalspets.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+
+        //<![CDATA[
+            var _gaq = _gaq || [];
+            
+_gaq.push(['_setAccount', 'UA-24440785-1']);
+_gaq.push (['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+            
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        //]]>
+        
+
+
+    (function (a, c, b, e) {
+    a[b] = a[b] || {}; a[b].initial = { accountCode: "BIGAL11116", host: "BIGAL11116.addressy.com" };
+    a[b].on = a[b].on || function () { (a[b].onq = a[b].onq || []).push(arguments) }; var d = c.createElement("script");
+    d.async = !0; d.src = e; c = c.getElementsByTagName("script")[0]; c.parentNode.insertBefore(d, c)
+    })(window, document, "pca", "//BIGAL11116.addressy.com/js/sensor.js");
+
+    pca.on('ready', function () {
+	    pca.sourceString = 'AddressyMagento1Extension-v2.0.0.0';
+    });
+        
+    
+
+
+
+    function nxtAddLoadListener(fn) {
+//mozilla and friends
+        if (typeof window.addEventListener != 'undefined') {
+            window.addEventListener('load', fn, false);
+        }
+//opera
+        else if (typeof document.addEventListener != 'undefined') {
+            document.addEventListener('load', fn, false);
+        }
+//innernetz exploder
+        else if (typeof window.attachEvent != 'undefined') {
+            window.attachEvent('onload', fn);
+        }
+//the rest is pretty much for browsers that I doubt your
+//CSS or anything else still supports like IE/Mac
+        else {
+            var oldfn = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = fn;
+            }
+            else {
+                window.onload = function() {
+                    oldfn();
+                    fn();
+                };
+            }
+        }
+    }
+    nxtAddLoadListener(function(){
+        document.getElementById("search_mini_form").action = "https://www.bigalspets.com/nsearch/";
+    });
+
+    //Nextopia initialization
+    if (typeof nxtOptions !== 'object') {
+        var nxtOptions = {};
+    }
+    if (!nxtOptions.customOptions) {
+        nxtOptions.customOptions = {};
+    }
+    nxtOptions.customOptions.formKey = 'ParNBYFr4y88MrRS';
+    nxtOptions.customOptions.groupId = '';
+
+
+
+    (function(){var name="nostojs";window[name]=window[name]||function(cb){(window[name].q=window[name].q||[]).push(cb);};})();
+
+
+    if (typeof Nosto === "undefined") {
+        var Nosto = {};
+    }
+    Nosto.addProductToCart = function (productId, element) {
+        Nosto.trackAddToCartClick(productId, element);
+        var fields = {
+            "product": productId,
+            "form_key": "uQjQl6EtCxcBUVce"
+        };
+        Nosto.postAddToCartForm(fields, "https://www.bigalspets.com/checkout/cart/add/?___store=bapetsusen");
+    };
+    // Product object must have fields productId and skuId {productId: 123, skuId: 321}
+    Nosto.addSkuToCart = function (product, element) {
+        Nosto.trackAddToCartClick(product.productId, element);
+        var fields = {
+            "product": product.productId,
+            "sku": product.skuId,
+            "form_key": "uQjQl6EtCxcBUVce"
+        };
+        Nosto.postAddToCartForm(fields, "https://www.bigalspets.com/nosto/addToCart/add/?___store=bapetsusen");
+    };
+    Nosto.resolveContextSlotId = function (element) {
+        var m = 20;
+        var n = 0;
+        var e = element;
+        while (typeof e.parentElement !== "undefined" && e.parentElement) {
+            ++n;
+            e = e.parentElement;
+            if (e.getAttribute('class') === 'nosto_element' && e.getAttribute('id')) {
+                return e.getAttribute('id');
+            }
+            if (n >= m) {
+                return false;
+            }
+        }
+        return false;
+    };
+    Nosto.trackAddToCartClick = function (productId, element) {
+        if (typeof nostojs !== 'undefined' && typeof element === 'object') {
+            var slotId = Nosto.resolveContextSlotId(element);
+            if (slotId) {
+                nostojs(function (api) {
+                    api.recommendedProductAddedToCart(productId, slotId);
+                });
+            }
+        }
+    };
+    Nosto.postAddToCartForm = function (data, url) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", url);
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", data[key]);
+                form.appendChild(hiddenField);
+            }
+        }
+        document.body.appendChild(form);
+        form.submit();
+    };
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/vUpkmlk7IAmFlqX5NjoYKGmD1a68sA0nkeAtfgr8/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+function websiteChange(){
+   
+   days=3;
+   myDate = new Date();
+   myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+   document.cookie = 'websiteChangeBanner=Accepted; expires=' + myDate.toGMTString();
+ 
+}
+
+function CheckCookies(){   
+    if ($.cookie("websiteChangeBanner") === "Accepted")
+    {
+        $("#country-bar").hide();
+    } 
+}
+
+
+            //<![CDATA[
+                var searchForm = new Varien.searchForm('search_nav_form', 'search2', '');
+                searchForm.initAutocomplete('https://www.bigalspets.com/catalogsearch/ajax/suggest/', 'search_autocomplete2');
+            //]]>
+            
+
+    window._mfq = window._mfq || [];
+    (function() {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/1f66bbf5-138e-40c6-9792-f1aaf7800381.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+
+
+  window._mfq = window._mfq || [];
+  (function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.async = true;
+    mf.src = "//cdn.mouseflow.com/projects/1f66bbf5-138e-40c6-9792-f1aaf7800381.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+  })();
+
+
+(function(d,s,i,r) {
+if (d.getElementById(i)){return;}
+var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2565974.js';
+e.parentNode.insertBefore(n, e);
+})(document,"script","hs-analytics",300000);
+
+ 
+
+	(function (url) {
+		/*Tracking Bootstrap Set Up DataLayer objects/properties here*/
+		if(!window.DataLayer){
+			window.DataLayer = {};
+		}
+		if(!DataLayer.events){
+			DataLayer.events = {};
+		}
+		DataLayer.events.SiteSection = "1";
+		var loc, ct = document.createElement("script"); 
+		ct.type = "text/javascript"; 
+		ct.async = true;
+		ct.src = url;
+		loc = document.getElementsByTagName('script')[0];
+		loc.parentNode.insertBefore(ct, loc);
+	}(document.location.protocol + "//intljs.rmtag.com/115199.ct.js"));
+
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '130109950675958');
+fbq('track', 'PageView');
+
+
+    (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+      n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2565974.js';
+      e.parentNode.insertBefore(n, e);
+    })(document,"script","hs-analytics",300000);
+  
+
+  var _bsw = _bsw || [];
+  _bsw.push(['_bswId', '4bbe03d71a08cdfc0c7ccdecf2fc9af239a2b9dc2f70a7437ac4498999e639dd']);
+  (function() {
+    var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+    bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/7r3ekxn7g1a19vcoxfgbc8n46xky6u4vndvvltfzbalyz01lc7/4bbe03d71a08cdfc0c7ccdecf2fc9af239a2b9dc2f70a7437ac4498999e639dd/s/b.min.js';
+    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+  })();
+
+
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('https://www.bigalspets.com/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+

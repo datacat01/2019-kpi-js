@@ -1,0 +1,185 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".bangalla.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"d614007d612822bad18f4d6200af11c2474ef6a0","type":"ANONYMOUS","visit_id":"6b3aaa60-d16a-4b5f-8bbd-2bc46ca32309","visitor_id":"aa8e6c63-c340-4c38-954d-aaaf456382e5"},"referer":{"url":""},"request":{"url":"https:\/\/www.bangalla.com\/"}}, '', 2175461, "other", {"customer":{"id":"anonymous"}}, '6b3aaa60-d16a-4b5f-8bbd-2bc46ca32309', 'aa8e6c63-c340-4c38-954d-aaaf456382e5');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	$(".QuickView").quickview({
+		buttonText: "Quick View",
+		buttonColor: "#f7f7f7",
+		gradientColor: "#dcdbdb",
+		textColor: "#000000"
+	});
+});
+
+
+var BCData = {"csrf_token":"61c53e0c4f26cc28ec5be9bc4857a04135626bc945cdf28fad59e4ff97e1de24"};
+
+
+    $(document).ready(function(){        
+    $('.btn').mouseover(function() {
+    $(this).parents(".ProductList li").css('border-color', '#5bac03');
+    });
+    $('.btn').mouseout(function() {
+    $(this).parents(".ProductList li").css('border-color', '#dedede');
+    });
+
+    });
+    
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+	// uniform() is deprecated in Blueprint theme; remove binding below when removing uniform
+	$(document).ajaxComplete(function() {
+		$('input[type=checkbox], select').not('.UniApplied').uniform();
+	});
+
+
+    $(window).load(function() {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "slide",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: true
+        });
+    });
+
+
+    $(document).ready(function(){
+    $('.wishlist').click(function(){
+    $('#SideProductAddToWishList').show();
+    });
+    });
+
+
+    $(document).ready(function(){
+    $('.wishlist').click(function(){
+    $('#SideProductAddToWishList').show();
+    });
+    });
+
+
+    $(document).ready(function(){
+    $('.wishlist').click(function(){
+    $('#SideProductAddToWishList').show();
+    });
+    });
+
+
+    $(document).ready(function(){
+    $('.wishlist').click(function(){
+    $('#SideProductAddToWishList').show();
+    });
+    });
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+
+
+    function _showFastCart(modalOptions) {
+
+    modalOptions = $.extend({
+    width: 820,
+    closeTxt: true,
+    onShow: function() {
+    
+    $("#fastCartSuggestive a[href*='wishlist.php?action=add']").unbind('click');
+    
+    var itemTxt = $('#fastCartNumItemsTxt').html().replace('items', '');
+    var itemTotal = $('.fastCartSummaryBox .ProductPrice').html();
+    
+    if (itemTxt) {
+    // update the view cart item count on top menu
+      $('.CartLink span').html(itemTxt);
+    }
+    
+    setProductListHeights(null, '.fastCartContent');
+    $('.fastCartContent .ProductList:not(.List) li').width(ThumbImageWidth);
+    $('body').addClass('customfastCart');
+    },
+    onClose: function() {
+    $('body').removeClass('customfastCart');   
+    if (window.location.href.match(config.ShopPath + '/cart.php')) {
+    // reload if we are on the cart page
+    $('#ModalContainer').remove();
+    window.location = window.location.href
+    } else {
+    $('#ModalContainer').remove();
+    }
+    }
+    }, modalOptions);
+    
+    $.iModal.close();
+    $.iModal(modalOptions);
+    }
+        
+    jQuery(".backtotop").click(function () {
+    jQuery("html, body").animate({scrollTop: 0}, 1000);
+    });
+
+
+
+$("#back-top").hide();    
+    
+$(function(){
+
+$(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('#back-top').fadeIn();
+        } else {
+            $('#back-top').fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $('#back-top a').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+
+
+});
+
+

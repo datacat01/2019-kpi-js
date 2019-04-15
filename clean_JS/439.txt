@@ -1,0 +1,25 @@
+
+(function(w,d,s,sr,c)
+{w[sr]=w[sr]||[]; var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src= d.location.protocol+'//d1n00d49gkbray.cloudfront.net/js/'+c+'.js';f.parentNode.insertBefore(j,f); 
+})
+(window,document,'script','_smtr','republicoftea'); 
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-8ZPS");
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init", "1628127324114312");fbq("track", "PageView");
+if(typeof r3_common == 'function') {var R3_COMMON = new r3_common();R3_COMMON.setBaseUrl('https://recs.richrelevance.com/rrserver/');R3_COMMON.setApiKey('dmi_rtea');// R3_COMMON.forceListenMode();// set forced treatment?R3_COMMON.addPlacementType('search_page.find_recs');}
+
+function displayProductBasedOnRRRecs() {            displayRichRecsForHome('home_page_hero','default');displayRichRecsForHome('home_page_sub_hero_1','default');displayRichRecsForHome('home_page_sub_hero_2','default');displayRichRecsForHome('home_page_sub_hero_3','default');displayRichRecs('home_page_test','default');lunaMetricsConversionRecs(0);}
+
+var $buoop = {required: {c: 30,f: 27, //Firefoxs: 7, //Safario: 17, //Operae: 12, //Edgeios: 5, //iOS Safarisamsung: 4},reminder: 0, //in hours, if NOT explicitly dimissedreminderClosed: 168, //in hours, if explicitly dimissedtext: 'Your browser ({brow_name}) is out of date. Update your browser for a faster and more secure experience. <a class="btn btn-primary" {up_but}>Learn More</a> <a class="btn btn-primary"{ignore_but}>Ignore</a>',test: false,api: 2019.02,url: "https://www.republicoftea.com/upgrade-browser/a/upgrade_browser/",newwindow: false,noclose: false};function $buo_f() {var e = document.createElement("script");e.src = "//browser-update.org/update.min.js";document.body.appendChild(e);};try {document.addEventListener("DOMContentLoaded", $buo_f,false)}catch(e){window.attachEvent("onload", $buo_f)}
+
+function GetBaseUrl() {var baseUrl = "https://www.republicoftea.com/";return baseUrl;}function getAjaxPage() {var ajaxPage = (location.protocol === 'https:') ? 'dmiajaxsecure.aspx' : 'dmiajax.aspx';return ajaxPage;}
+
+window.__lc = window.__lc || {};window.__lc.license = 9485500;function initLiveChat() {var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;lc.src = 'https://cdn.livechatinc.com/tracking.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);}
+
+initLiveChat();
+
+var _qevents = _qevents || [];(function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);})();_qevents.push({qacct: "p-1wG03gCuv9hXJ"});
+var _smtr = _smtr || window._smtr || [];_smtr.push(["pageView", { "pageType": "other"}]);
+function hiconversion_body_run(arg) {var then = new Date();var diff = then - arg.ran;if (diff < arg.wait) {if (typeof hiconversion_body_update == "function") {hiconversion_body_update({async: true, pass: arg.pass, ran: arg.ran, then: then });} else {arg.pass = arg.pass + 1;setTimeout(function() { hiconversion_body_run(arg); }, 100);}}}hiconversion_body_run({ async: true, pass: 0, ran: new Date(), wait: 30000 });
+
+(function () {if (typeof(___zen)==="undefined") {setTimeout(arguments.callee, 50);return;}___zen.tags('/',["ZT_HeaderCart","ZT_HeaderCart","ZT_HeaderSignIn","ZT_FooterOrderStatus","ZT_RichRelevance"])})()

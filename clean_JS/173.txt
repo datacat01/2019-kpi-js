@@ -1,0 +1,50 @@
+
+var personalizationGreeting = (function () {
+function returnUserCookie(userCookie) {
+if (userCookie && userCookie.split('|').length > 1) {
+userCookie = userCookie.split('|')[1];
+return validateUserCookie(userCookie)
+} else {
+return false;
+}
+}
+function validateUserCookie(userCookie) {
+if (userCookie !== 'null') {
+return userCookie
+} else {
+return false;
+}
+}
+function returnTimeofDay() {
+var today = new Date()
+var curHr = today.getHours()
+var greeting;
+if (curHr < 12) {
+greeting = 'Good Morning!';
+} else if (curHr < 18) {
+greeting = 'Good Afternoon!';
+} else {
+greeting = 'Good Evening!';
+}
+return greeting;
+}
+return {
+appendUserGreeting: function (targetElement) {
+var userName = returnUserCookie(dojo.cookie('TMWUSERINFO'));
+var personalizedMessage;
+if (userName) {
+//Apply personalized greeting
+personalizedMessage = 'Hi <span id="greeting-name">' + userName + '</span>!';
+} else {
+//Apply generic greeting
+personalizedMessage = returnTimeofDay();
+}
+var $html = jQuery('<h2 id="user-greeting" class="show-for-small-only" style="padding-top: .5rem;"><b>' + personalizedMessage + '</b><br/>What are you shopping for today?</h2>');
+jQuery(targetElement).prepend($html)
+}
+};
+})();
+jQuery(document).ready(function () {
+personalizationGreeting.appendUserGreeting('#PERSONALIZED')
+})
+

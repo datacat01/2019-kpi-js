@@ -1,0 +1,61 @@
+
+	var cookies = document.cookie;
+	var start = cookies.indexOf("ss_reg_0001450063=");
+	var signed_in = -1;
+
+	if (start != -1) {
+		start = cookies.indexOf("=", start) + 1;
+		var end = cookies.indexOf("|", start);
+		if (end == -1) {
+			signed_in = cookies.indexOf("|yes", start);
+		}
+	}
+	if (signed_in == -1) {
+		document.write('<a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=3&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">My Account</a>');
+		document.write(' <cite>/</cite> <a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=2&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">Login</a>');
+	}else{
+		document.write('<a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=3&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">My Account</a>');
+		document.write(' <cite>/</cite> <a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=4&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">Logout</a>');
+	}
+
+
+	var cartvalues = null;
+	var start = cookies.indexOf("ss_cart_0001450063=");
+	if( start != -1 ){
+		start = cookies.indexOf("=", start) + 1;
+		var end = cookies.indexOf(";", start);
+		if (end == -1) {
+			cartvalues = unescape( cookies.substring(start) );
+		}else{
+			cartvalues = unescape( cookies.substring(start, end) );
+		}
+	}
+	
+	var count = 0;
+
+	if ( cartvalues){
+		var values = cartvalues.split("|");
+		count = values[2].substring(values[2].indexOf(":") + 1)		
+	}
+  
+	if(count == 1){
+		document.write("1 item")
+	}else{
+		document.write("<span>" + count + "<span> items</span></span>")
+	} 			
+
+
+  if (signed_in == -1) {
+	document.write('<a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=3&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">My Account</a>');
+    document.write(' <cite>|</cite> <a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=2&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">Login</a>');
+  }else{
+  	document.write('<a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=3&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">My Account</a>');
+  	document.write(' <cite>|</cite> <a href="https://www.theforeverrose.com/cgi-theforeverrose/sb/order.cgi?func=4&storeid=*20bfa4584c0a875760e60f3f7dab9828a1c8&html_reg=html" rel="nofollow">Logout</a>');
+  }
+
+document.write( (new Date()).getFullYear() )
+
+(function(d, src, c) { var t=d.scripts[d.scripts.length - 1],s=d.createElement('script');s.id='la_x2s6df8d';s.async=true;s.src=src;s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};t.parentElement.insertBefore(s,t.nextSibling);})(document,
+'https://foreverrose.ladesk.com/scripts/track.js',
+function(e){ LiveAgent.createButton('f31c79a2', e); });
+

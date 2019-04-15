@@ -1,0 +1,91 @@
+
+  $.namespace('ABTL.pageState');ABTL.pageState.isLoggedIn = false;
+
+
+  window.___gcfg = { lang: 'en' };
+  (function () {
+    var po = document.createElement("script");
+    po.type = "text/javascript";
+    po.async = true;
+    po.src = "https://apis.google.com/js/plusone.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(po, s);
+  })();
+
+
+$(function () {
+$('.view-switcher a').on('click', function (e) {e.preventDefault();var mobi = $.cookies.get('m_detect');mobi.usingMobileView = true;$.cookies.set('m_detect', unescape(JSON.stringify(mobi)));window.location.reload(true);});
+ABTL.home.index.init();
+ABTL.usedcars.usedcarcarousel.init({ vehiclesToShow: 4});
+ABTL.cartvcarousel.init({ numVideosToShow: '4'});
+
+});
+
+
+<!-- 
+var _comscore = _comscore || [];
+_comscore.push({ c1: "2", c2: "11112730", c3: "", c4: "home" });
+(function () {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0];
+    s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+})(); 
+ //-->
+
+
+<!--
+	try {
+		$.each({"pageName":"home","channel":"Home","hier1":"home","server":"CWEB403","prop1":"ABTL-DTS","prop2":"ABTL-DTS 4","prop12":"variant:A","prop13":"DTS","prop15":"Home","prop17":"Homepage","prop21":"Autobytel","prop32":"3","prop51":"Full|generic web browser::","campaign":"DTS"}, function(p,v) { s[p] = v; });
+		var adSrcData = $('.ad-wrap').data('ad-src-tmpl');
+		if(adSrcData) {
+			var adSrcParts = adSrcData.split('adj/')[1].split(';');
+			s.prop52 = adSrcParts[0] + ';' + adSrcParts[1];
+		 }
+		if(s.prop1 && !s.eVar1) s.eVar1 = s.prop1;
+		if(s.prop2 && !s.eVar2) s.eVar2 = s.prop2;
+		if(s.prop3 && !s.eVar3) s.eVar3 = s.prop3;
+		if(s.prop4 && !s.eVar4) s.eVar4 = s.prop4;
+		if(s.prop5 && !s.eVar5) s.eVar5 = s.prop5;
+		if(s.prop6 && !s.eVar6) s.eVar6 = s.prop6;
+		if(s.prop7 && !s.eVar7) s.eVar7 = s.prop7;
+		if(s.prop8 && !s.eVar8) s.eVar8 = s.prop8;
+		if(s.prop9 && !s.eVar9) s.eVar9 = s.prop9;
+		if(s.prop12 && !s.eVar22) s.eVar22 = s.prop12;
+		if(s.prop13 && !s.eVar13) s.eVar13 = s.prop13;
+		if(s.prop14 && !s.eVar14) s.eVar14 = s.prop14;
+		if(s.prop15 && !s.eVar15) s.eVar15 = s.prop15;
+		if(s.prop16 && !s.eVar16) s.eVar16 = s.prop16;
+		if(s.prop17 && !s.eVar17) s.eVar17 = s.prop17;
+		if(s.prop21 && !s.eVar21) s.eVar21 = s.prop21;
+		if(s.prop25 && !s.eVar25) s.eVar25 = s.prop25;
+		if(s.prop26 && !s.eVar26) s.eVar26 = s.prop26;
+		if(s.prop32 && !s.eVar32) s.eVar32 = s.prop32;
+		if(s.prop33 && !s.eVar33) s.eVar33 = s.prop33;
+		if(s.prop34 && !s.eVar34) s.eVar34 = s.prop34;
+		if(s.prop36 && !s.eVar36) s.eVar36 = s.prop36;
+		if(s.prop39 && !s.eVar39) s.eVar39 = s.prop39;
+		if(s.prop42 && !s.eVar42) s.eVar42 = s.prop42;
+		if(s.prop43 && !s.eVar43) s.eVar43 = s.prop43;
+		s.trackExternalLinks=true;
+		s.linkInternalFilters="javascript:,autobytel.com";
+		s.linkExternalFilters="";
+		s.linkLeaveQueryString=false;
+		s.t();
+	} catch (err) { }
+//-->
+
+
+			ABTL.ads.target = '';
+			ABTL.ads.keywords = '';
+			ABTL.ads.category = '';
+			ABTL.ads.tile = '0';
+			ABTL.tracker.defaults = {"pageName":"home","make":"","makeModel":"","makeModelSeries":"","vehicleCategory":"","modelYear":""};
+		
+
+    /* <![CDATA[ */
+    var google_conversion_id = 1035188973;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+  

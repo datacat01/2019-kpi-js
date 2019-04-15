@@ -1,0 +1,24 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.33";
+var json_url = "https:\/\/www.mycubanstore.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.mycubanstore.com\/mm5\/json.mvc\u003F";
+var Store_Code = "mycubanstore";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.mycubanstore.com\/search.html\u003FSearch=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','//connect.facebook.net/en_US/fbevents.js');fbq('init', '1480516852278271');fbq('track', "PageView");
+setTimeout(function(){var a=document.createElement("script");var b=document.getElementsByTagName("script")[0];a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0057/5690.js?"+Math.floor(new Date().getTime()/3600000);a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+(function(p,u,s,h){p._pcq=p._pcq||[];p._pcq.push(['_currentTime',Date.now()]);s=u.createElement('script');s.type='text/javascript';s.async=true;s.src='https://cdn.pushcrew.com/js/0d75c930c2cdbaf6194e06c1db981ada.js';h=u.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document);
+_linkedin_partner_id = "859810";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+(function(){var s = document.getElementsByTagName("script")[0];var b = document.createElement("script");b.type = "text/javascript";b.async = true;b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";s.parentNode.insertBefore(b, s);})();
+var ANS_customer_id="abf91927-c292-4103-9f59-0df855125391";
+var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/') + 'widget_async.js#56957126a387647edd8ed517';document.getElementsByTagName("head")[0].appendChild(js);

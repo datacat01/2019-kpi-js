@@ -1,0 +1,502 @@
+
+var msets=false;msetm=true;mindex=0;thispage=0;thisparent=0;popm=false;popa=false;
+var irootsite="https://i.b5z.net/i/u/539829//i";var siteurl="/";var ilazy=false;
+
+
+  function bsSearchSubmit(e)
+  {
+     var bs=document.getElementById(e)
+     if(bs!=null && bs.value=="")
+        bs.focus()
+     else
+        {
+        var s=bs.value
+        location.href=siteurl+"inc/searchResults?s="+s
+        }
+  return true
+  }
+
+
+dimg=document.images;
+smlayout='h';
+var di=document.images;
+var bd='https://i.b5z.net/i/u/539829/i/menu/';
+var pani='0';
+var pom=false;
+thispage=14;
+thispagepar=1;
+
+
+var $=$;
+if($==null)
+   $=j$;
+
+
+
+function mediastatus(a){}
+var mediaFileArr5=new Array();
+var mediaFileArr5S=new Array();
+var mediaFileArr5T=new Array();
+var mediaFileArr5D=new Array();
+var mediaFileArr5P=new Array();
+
+
+function lplaygor5(res){
+if(res.responseText.indexOf("play.url:")==0){
+ var purl=res.responseText;
+ var rspit=purl.split(";");
+ purl=rspit[0].substring(9);
+ var pidx=rspit[1].substring(9)*1;
+
+
+
+
+ setsrc5(pidx,purl);
+}
+}
+
+var ppl=null;
+function setsrc5(id,purl)
+{
+
+         var thumb=mediaFileArr5[id];
+
+        if(thumb!=null && thumb.length>0 && thumb.indexOf("/")<0)
+           {
+           var i=thumb.indexOf(".");
+           if(i>0)
+              {
+              //thumb="https://media.b5z.net/i/u/539829/m/"+thumb.substring(0,i)+".jpg";
+              thumb=gname5(id,thumb.substring(0,i)+".jpg");
+              }
+           }
+        if(mediaFileArr5T[id]!="video")
+           thumb="";
+        else
+            {
+   document.getElementById("player"+id).setAttribute('poster',thumb);
+
+        }
+
+   document.getElementById("player"+id).src=purl;
+   document.getElementById("player"+id).setAttribute('src',purl);
+
+   if(mediaFileArr5P[id]=="play")
+      {
+      document.getElementById("player"+id).play();
+      }
+}
+
+
+function gname5(cix,apth)
+{
+   var fn=mediaFileArr5S[cix];
+   fn=fn.toLowerCase();
+   var p=fn.lastIndexOf("/");
+   if(p>0)
+      return "//media.b5z.net"+fn.substring(0,p+1)+apth;
+   else
+      return "";
+}
+
+function lplayinit5(id,go)
+{
+   var cid=id;
+   var pth=mediaFileArr5[""+id];
+
+   if(go==true)
+      mediaFileArr5P[id]="play";
+   //alert(pth);
+
+   if(pth.indexOf("/")==0)
+      setsrc5(cid,"http://pi.b5z.net"+pth);
+   else
+      {
+      var fpth=gname5(cid,pth);
+      var sendu="/inc/xmlxfer?rtype=lib.media&cid="+cid+"&mid="+cid+"&cmd=geturl&path="+fpth+"&idx="+cid
+      ajaxSend(sendu,{"onComplete":lplaygor5});
+      }
+
+   //setsrc5(id,mediaFileArr5S[id]);
+   /*
+   document.getElementById("player28702").src='https://i.b5z.net'+mediaFileArrS[id];
+   var playf=new MediaElementPlayer('#player'+id);
+
+   document.getElementById("player28702").setAttribute('src','https://i.b5z.net'+mediaFileArrS[id]);
+
+   var play=new MediaElement('player'+id, {
+    enablePluginDebug: true,
+    plugins: ['flash','silverlight'],
+    type: '',
+    pluginPath: '/i/t/w/lib/mediaelementjs/',
+    flashName: 'flashmediaelement.swf',
+    silverlightName: 'silverlightmediaelement.xap',
+    defaultVideoWidth: 280,
+    });
+
+   mediaFileArrP[id]=play;
+   if(go)
+      lplay5(id);
+      */
+}
+
+function lplay5(id){
+   mediaFileArr5P[id].play();
+   //pl.play();
+   }
+
+
+
+
+mediaFileArr5["28702"]='at_the_shore.mp3';
+mediaFileArr5S["28702"]='/i/u/539829/m/At_The_Shore.mp3';
+mediaFileArr5T["28702"]='audio';
+mediaFileArr5D["28702"]='37871';
+
+
+
+
+j$(document).ready(function(){
+lplayinit5(28702,true);
+   })
+
+
+
+
+
+
+
+var phmroot="https://i.b5z.net";
+var phiroot="https://i.b5z.net/zirw/4/i/u/539829/i";;
+var phiroots='https://pg.b5z.net/get/ib5z/';
+var phistyles="";
+function phistyle(s){
+if(phistyle.indexOf(s+";")<0)
+   document.write('<link rel="stylesheet" type="text/css" href="http://r.b5z.net/i/u/10148995/i/menu/cssi/'+s+'.css">');
+else
+   phistyle=phistyle+";";}
+
+var phtcid="29060";
+
+
+var th29060=new rotatorhelperobj("th29060",29060,[{"p":"ds1650fca1e3ae4224baaa4b86fa3dff06d1.jpg","pd":"","pl":"href=\"http://african-weddings.com/ribbon_color_selections\""},{"p":"ds10379713edd0d86b1fd0eaae59662aac18.jpg","pd":"","pl":"href=\"http://african-weddings.com/ribbon_color_selections\""},{"p":"ds2b9ef9e571396765c05199e99affd3854.jpg","pd":"","pl":"href=\"http://african-weddings.com/ribbon_color_selections\""}],{"i":"250x250","ilink":"2","css":"photoRot-def","fit":"f","speed":"3","ct":false,"nextprev":"0","desc":false},1);
+th29060.dorotate=true;
+th=th29060;
+th.phbid="3";
+
+th.maxwidth=-1;
+
+
+
+var pset={"i":"250x250","ilink":"2","css":"photoRot-def","fit":"f","speed":"3","ct":false,"nextprev":"0","desc":false};
+document.write('<link rel="stylesheet" type="text/css" href="https://i.b5z.net/i/u/539829/i/menu/cssi/'+pset.css+'.css">');
+document.write('<div id="photodetail29060" class="'+pset.css+'">');
+
+
+if(th.images.length>0)
+{
+var bina=getphpath(th,th.images[0].p)+"?bbww"
+var hddd="";
+if(th.maxwidth<0)
+   hddd=' style="display:none"'
+document.write('<img src="'+bina+'" id="img-29060-r"'+hddd+'>');
+}
+
+
+if(th29060.cfg.desc && th29060.cfg.desc==true) {
+   var dc="";
+   if(th.images.length>0)
+      {
+      var im=th.images[0];
+      if(im!=null && im.pd && im.pd!=null && im.pd.length>0)
+         dc=im.pd;
+      }
+   document.write('<div id="descr-29060" class="phdesc">'+dc+'</div>');
+   }
+
+
+th.curidx=0;
+function rinit29060()
+{
+    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+      {
+      document.getElementById("pd129060").style.width="100%";
+      document.getElementById("pd129060").style.height="100%";
+      }
+
+   th29060.start(true);
+   if(th29060.cfg.nextprev!="0")
+      window.setTimeout("th29060.alignnextprev();",25);
+   else
+      th29060.alignnextprev();
+   
+}
+
+j$(document).ready(function(){rinit29060();});
+
+
+
+
+
+
+var phtcid="29060";
+
+
+
+
+var phtcid="30455";
+
+
+var th30455=new rotatorhelperobj("th30455",30455,[{"p":"sweating_for_wedding.jpg","pd":"","pl":"href=\".\" onclick=\"ezgu('bling_t_shirts','_self','');return false;\""},{"p":"bridal_robes.jpg","pd":"","pl":"href=\".\" onclick=\"ezgu('bling_t_shirts','_self','');return false;\""},{"p":"i_woke_up_like_this.jpg","pd":"","pl":"href=\".\" onclick=\"ezgu('bling_t_shirts','_self','');return false;\""}],{"i":"250x250","ilink":"2","css":"photoRot-def","fit":"c","speed":"3","ct":false,"nextprev":"0","desc":false},1);
+th30455.dorotate=true;
+th=th30455;
+th.phbid="8";
+
+th.maxwidth=-1;
+
+
+
+var pset={"i":"250x250","ilink":"2","css":"photoRot-def","fit":"c","speed":"3","ct":false,"nextprev":"0","desc":false};
+document.write('<link rel="stylesheet" type="text/css" href="https://i.b5z.net/i/u/539829/i/menu/cssi/'+pset.css+'.css">');
+document.write('<div id="photodetail30455" class="'+pset.css+'">');
+
+
+if(th.images.length>0)
+{
+var bina=getphpath(th,th.images[0].p)+"?bbww"
+var hddd="";
+if(th.maxwidth<0)
+   hddd=' style="display:none"'
+document.write('<img src="'+bina+'" id="img-30455-r"'+hddd+'>');
+}
+
+
+if(th30455.cfg.desc && th30455.cfg.desc==true) {
+   var dc="";
+   if(th.images.length>0)
+      {
+      var im=th.images[0];
+      if(im!=null && im.pd && im.pd!=null && im.pd.length>0)
+         dc=im.pd;
+      }
+   document.write('<div id="descr-30455" class="phdesc">'+dc+'</div>');
+   }
+
+
+th.curidx=0;
+function rinit30455()
+{
+    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+      {
+      document.getElementById("pd130455").style.width="100%";
+      document.getElementById("pd130455").style.height="100%";
+      }
+
+   th30455.start(true);
+   if(th30455.cfg.nextprev!="0")
+      window.setTimeout("th30455.alignnextprev();",25);
+   else
+      th30455.alignnextprev();
+   
+}
+
+j$(document).ready(function(){rinit30455();});
+
+
+
+
+
+
+var phtcid="30455";
+
+
+function addfav(url,desc){
+if (window.sidebar)
+ alert("To bookmark this page, hit CTRL + D");
+else if(document.all)
+ window.external.AddFavorite(url,desc);
+}
+
+
+var sdocs=document.getElementById("esbSocialIconsDiv32029");
+var slink=sdocs.innerHTML;
+
+
+slink=slink.replace(/%link%/g,"%dm%/home/");
+slink=slink.replace(/%dm%/g,"http://www.african-weddings.com");
+
+
+
+var sitet='http://african-weddings.com/_marketplace';
+if(sitet==null || sitet.length==0)
+   sitet="www.african-weddings.com/home/";
+slink=slink.replace(/%title%/g,sitet);
+
+
+var psdocs=document.getElementById("esbSocialPint32029");
+var pim="";
+
+if(pim==null || pim.length<=0)
+  pim="https://i.b5z.net/i/u/539829/i/menu/title.jpg";
+
+if(pim!=null && pim.length>0)
+   {
+   if(slink!=null)
+     slink=slink.replace(/%media%/g,pim);
+
+   if(psdocs!=null)
+      {
+      psdocs.style.display="block";
+      var sslink=psdocs.innerHTML;
+      sslink=sslink.replace(/%link%/g,"http://www.african-weddings.com/home/");
+      sslink=sslink.replace(/%media%/g,pim);
+      psdocs.innerHTML=sslink;
+      }
+   }
+
+
+sdocs.innerHTML=slink;
+function initsjs(){
+var jsfiles="//platform.twitter.com/widgets.js,tw,//platform.linkedin.com/in.js,ln,";
+var jss=jsfiles.split(",");
+for(var x=0;x<jss.length;x=x+2)
+   loadjs(jss[x],"ssjss"+jss[x+1]);
+}
+onWinLoad(initsjs);
+
+
+
+
+var phtcid="29065";
+
+
+var th29065=new rotatorhelperobj("th29065",29065,[{"pd":"","p":"african_dancer.jpg","pl":"href=\"http://african-weddings.com/inc/sdetail/2931/11583\""},{"pd":"","p":"original_calla_lily.jpg","pl":"href=\"http://african-weddings.com/inc/sdetail/2931/11583\""},{"p":"capture.jpg"}],{"i":"250x250","ilink":"2","css":"photoRot-s1","fit":"f","speed":"3","ct":false,"nextprev":"0","desc":false},1);
+th29065.dorotate=true;
+th=th29065;
+th.phbid="3";
+
+th.maxwidth=-1;
+
+
+
+var pset={"i":"250x250","ilink":"2","css":"photoRot-s1","fit":"f","speed":"3","ct":false,"nextprev":"0","desc":false};
+document.write('<link rel="stylesheet" type="text/css" href="https://i.b5z.net/i/u/539829/i/menu/cssi/'+pset.css+'.css">');
+document.write('<div id="photodetail29065" class="'+pset.css+'">');
+
+
+if(th.images.length>0)
+{
+var bina=getphpath(th,th.images[0].p)+"?bbww"
+var hddd="";
+if(th.maxwidth<0)
+   hddd=' style="display:none"'
+document.write('<img src="'+bina+'" id="img-29065-r"'+hddd+'>');
+}
+
+
+if(th29065.cfg.desc && th29065.cfg.desc==true) {
+   var dc="";
+   if(th.images.length>0)
+      {
+      var im=th.images[0];
+      if(im!=null && im.pd && im.pd!=null && im.pd.length>0)
+         dc=im.pd;
+      }
+   document.write('<div id="descr-29065" class="phdesc">'+dc+'</div>');
+   }
+
+
+th.curidx=0;
+function rinit29065()
+{
+    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+      {
+      document.getElementById("pd129065").style.width="100%";
+      document.getElementById("pd129065").style.height="100%";
+      }
+
+   th29065.start(true);
+   if(th29065.cfg.nextprev!="0")
+      window.setTimeout("th29065.alignnextprev();",25);
+   else
+      th29065.alignnextprev();
+   
+}
+
+j$(document).ready(function(){rinit29065();});
+
+
+
+
+
+
+var phtcid="29065";
+
+
+
+
+var phtcid="31986";
+
+
+var th31986=new rotatorhelperobj("th31986",31986,[{"pd":"<p class=\"fpg\"><a href=\"home_furnishings\" onclick=\"ezgu('home_furnishings','_self');return false;\">H</a>ome Furnishings&nbsp;</p>\n","p":"/i/07-mab5.jpg","pl":"href=\"http://\""},{"pd":"<p class=\"fpg\"><a href=\"_marketplace\" onclick=\"ezgu('_marketplace','_self');return false;\">Accent Pieces</a></p>\n","p":"/i/masked_wooden_table.jpg","pl":"href=\"http://\""},{"p":"primal_band_ad.png","pd":"<p class=\"fpg\"><a href=\"_marketplace\" onclick=\"ezgu('_marketplace','_self');return false;\">Custom Jewelry&nbsp;</a></p>\n","pl":"href=\"http://\""},{"pd":"<p class=\"fpg\"><a href=\"_marketplace\" onclick=\"ezgu('_marketplace','_self');return false;\">Cultured T&#39;s</a></p>\n","p":"/i/3_ladies_precious.jpg","pl":"href=\"http://\""}],{"i":"150x150","ilink":"0","speed":"4","pause":true,"rows":"1","cols":"500","css":"photoSlide-def","fit":"f","desc":true,"nextprev":"0","ct":false},1);
+th31986.dorotate=true;
+th=th31986;
+th.phbid="6";
+
+th.maxwidth=-1;
+
+
+
+var pset={"i":"150x150","ilink":"0","speed":"4","pause":true,"rows":"1","cols":"500","css":"photoSlide-def","fit":"f","desc":true,"nextprev":"0","ct":false};
+document.write('<link rel="stylesheet" type="text/css" href="https://i.b5z.net/i/u/539829/i/menu/cssi/'+pset.css+'.css">');
+document.write('<div id="photodetail31986" class="'+pset.css+'">');
+
+
+if(th.images.length>0)
+{
+var bina=getphpath(th,th.images[0].p)+"?bbww"
+var hddd="";
+if(th.maxwidth<0)
+   hddd=' style="display:none"'
+document.write('<img src="'+bina+'" id="img-31986-r"'+hddd+'>');
+}
+
+
+if(th31986.cfg.desc && th31986.cfg.desc==true) {
+   var dc="";
+   if(th.images.length>0)
+      {
+      var im=th.images[0];
+      if(im!=null && im.pd && im.pd!=null && im.pd.length>0)
+         dc=im.pd;
+      }
+   document.write('<div id="descr-31986" class="phdesc">'+dc+'</div>');
+   }
+
+
+th.curidx=0;
+function rinit31986()
+{
+    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+      {
+      document.getElementById("pd131986").style.width="100%";
+      document.getElementById("pd131986").style.height="100%";
+      }
+
+   th31986.start(true);
+   if(th31986.cfg.nextprev!="0")
+      window.setTimeout("th31986.alignnextprev();",25);
+   else
+      th31986.alignnextprev();
+   
+}
+
+j$(document).ready(function(){rinit31986();});
+
+
+
+
+
+
+var phtcid="31986";
+

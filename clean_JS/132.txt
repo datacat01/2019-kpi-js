@@ -1,0 +1,33 @@
+
+if (top.frames.length) top.location.replace(self.location.href);
+function jqDefer(method) {
+	if (window.jQuery)
+		method();
+	else
+		setTimeout(function() { jqDefer(method) }, 150);
+}
+var _gaq = [['_setAccount', 'UA-306204-1'], ['_setDomainName', '.sell.com']];
+
+
+jqDefer(function() {
+	$.get("/ix/cartcount.x", {t:'1555250111'}, function(data) {
+		data = $.trim(data);
+		if ("0" == data) { data = ""; }
+		else {
+			if ("1" == data) { data = data + " item"; }
+			else { data = data + " items"; }
+		}
+		$("#cart-count").html(data);
+	});
+});
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_trackPageview']);
+(function(d) {
+var ga = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+s.parentNode.insertBefore(ga, s);
+})(document);
+

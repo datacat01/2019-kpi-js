@@ -1,0 +1,90 @@
+
+<!--//--><![CDATA[//><!--
+var addthis_config = {"data_track_addressbar":true};
+//--><!]]>
+
+
+<!--//--><![CDATA[//><!--
+
+dataLayer = [{
+'ecomm_prodid':'',
+'ecomm_pagetype':'home',
+'ecomm_totalvalue':''
+}];
+
+
+
+
+//--><!]]>
+
+
+<!--//--><![CDATA[//><!--
+
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NCRF');
+
+
+//--><!]]>
+
+
+<!--//--><![CDATA[//><!--
+
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000000",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#ff6000",
+      "text": "#ffffff"
+    }
+  },
+  "theme": "classic",
+  "content": {
+    "message": "This website uses cookies to ensure you get the best experience on our website.",
+    "dismiss": "Got it!",
+    "link": "more info",
+    "href": "https://www.cmsnl.com/help/faq/9_disclaimergeneral-terms-and-conditions/#f76"
+  }
+})});
+
+//--><!]]>
+
+
+
+USPFreeShip.load();
+
+	$("#path").css('diplay', 'none');
+
+    <!--
+    
+	// prop need to phase this out.
+	
+	$( document ).ready(function() {
+	    if ( $.cookie("visitorcountryname")  &&  $.cookie("visitorcountryname") != null &&  $.cookie("visitorcountryname")  != "" )
+	    {
+	        $.get( "https://www.cmsnl.com/ajx_srv.php",  { 'action': 'landing_country_welcome' } , function( data ) {
+	            if ( data.status == 'OK' )
+	            {
+	                // set the text and country flag
+	
+	                $("#landingCountryWelcome").css( "background-image", "url('https://www.cmsnl.com/img/misc/flags/" + $.cookie("visitorcountryname").toLowerCase() + ".gif') ");
+
+	                $("#landingCountryWelcome").html ( data.html );
+
+	                // display the box with animation
+	                $("#landingCountryWelcome").delay(500).slideDown('slow');
+	            }
+	        });
+	    }
+	});
+	-->
+
+
+

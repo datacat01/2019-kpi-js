@@ -1,0 +1,81 @@
+window.initSliderEnableURLhash = false;
+var BackgroundSliderSpec = {
+    "container": "body",
+    "images": [
+        "/images/src/Background%20Graphics/giraffes.jpg"
+    ],
+    "delay": 7000,
+    "url": false
+};
+
+	var tabbedContentPluginSettings = {
+		useImplicitLiWidth : true,
+		useNumericTabNames : false,
+		showNextPreviousButtons : true,
+		autoPlay : true,
+		autoPlayDelay : 10000,
+		homepageBackgroundIntegration : false	}
+
+init_IconSlideshow();
+
+		// Set the open search slider width
+		var openWidth = 200;
+	
+document.getElementById('searchbox').defaultValue = 'Search'; document.getElementById('searchbox').value = 'Search';
+
+		if(document.getElement('div#nav > ul')) {
+			document.getElement('div#nav > ul').addEvent('mouseenter', function (e) {
+				if(!document.body.hasClass('menu-focus')) {
+					document.body.addClass('menu-focus');
+				}
+			});
+			document.getElement('div#nav > ul').addEvent('mouseleave', function (e) {
+				if(document.body.hasClass('menu-focus')) {
+					document.body.removeClass('menu-focus');
+				}
+			});
+		}
+	
+
+		if(typeof bindEvent != 'function') var bindEvent = function(elem, evt, cb) {
+			if ( elem.addEventListener ) {
+				elem.addEventListener(evt, cb, false);
+			} else if ( elem.attachEvent ) {
+				elem.attachEvent('on' + evt, function(){
+					 cb.call(event.srcElement, event);
+				});
+			}
+		};
+		bindEvent(window, 'load', function (ev) {
+			setTimeout(function () {
+				
+				document.getElementById('socialmedia_homepage_sidebar_instance_0').innerHTML = unescape('%09%3Cdiv%20class%3D%22socialmedia%20facebook_like%20facebook_like%3Abutton_count%22%3E%09%3Cdiv%20class%3D%22fb-like%22%20data-layout%3D%22button_count%22%20data-share%3D%22false%22%20data-action%3D%22like%22%20data-show-faces%3D%22false%22%20data-href%3D%22%22%3E%3C%2Fdiv%3E%09%3C%2Fdiv%3E%09%3Cdiv%20class%3D%22socialmedia%20twitter_share%20twitter_share%3Ahorizontal%22%3E%09%3Ca%20href%3D%22https%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22horizontal%22%20data-via%3D%22%22%20data-url%3D%22%22%3E%3C%2Fa%3E%09%3C%2Fdiv%3E%09%3Cdiv%20class%3D%22socialmedia%20google_plusone%20google_plusone%3Amedium%22%3E%09%3Cscript%20type%3D%22text%2Fjavascript%22%3Ewindow.___gcfg%20%3D%20%7Blang%3A%27en-GB%27%7D%3C%2Fscript%3E%0A%09%3Cdiv%20class%3D%22g-plusone%22%20data-size%3D%22medium%22%20data-href%3D%22%22%3E%3C%2Fdiv%3E%09%3C%2Fdiv%3E');
+				var scripts = document.getElementById('socialmedia_homepage_sidebar_instance_0').getElementsByTagName('SCRIPT');
+				for(var i=0; i<scripts.length; i++) {
+					eval(scripts[i].text);
+				}
+				(function(d, s, id) {
+					if (d.getElementById(id)) return;
+					var js, t = d.getElementsByTagName('TITLE')[0];
+					js = d.createElement(s); js.id = id; js.async = true;
+					js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+					t.parentNode.insertBefore(js, t);
+				}(document, 'script', 'sdk-js-xfbml-1-version-v2-0'));
+				(function(d, s, id) {
+					if (d.getElementById(id)) return;
+					var js, t = d.getElementsByTagName('TITLE')[0];
+					js = d.createElement(s); js.id = id; js.async = true;
+					js.src = "//platform.twitter.com/widgets.js";
+					t.parentNode.insertBefore(js, t);
+				}(document, 'script', 'widgets-js'));
+				(function(d, s, id) {
+					if (d.getElementById(id)) return;
+					var js, t = d.getElementsByTagName('TITLE')[0];
+					js = d.createElement(s); js.id = id; js.async = true;
+					js.src = "https://apis.google.com/js/plusone.js";
+					t.parentNode.insertBefore(js, t);
+				}(document, 'script', 'plusone-js'));
+
+			}, 500);
+		});
+	

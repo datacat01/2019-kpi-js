@@ -1,0 +1,2 @@
+var selkSw = document.createElement("script"); selkSw.type = "text/javascript"; var selkSws = (location.protocol.indexOf("https") == 0 ? "https" : "http") + "://image.providesupport.com/js/11qftwak9cwfo1689l4tditwnu/safe-textlink.js?ps_h=lkSw&ps_t=" + new Date().getTime() + "&online-link-html=Live%20Help&offline-link-html=Live%20Help"; setTimeout("selkSw.src=selkSws;document.getElementById('sdlkSw').appendChild(selkSw)", 1)
+var ANS_customer_id="68e07d1e-eef4-40a0-b0d3-56888983f1ba";

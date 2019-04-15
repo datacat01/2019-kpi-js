@@ -1,0 +1,118 @@
+
+
+/***********************************************
+* Dolphin Tabs Menu- by JavaScript Kit (www.javascriptkit.com)
+* Menu interface by: http://www.13styles.com/css-menus/dolphin/
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+
+
+   // white balloon with default configuration
+   // (see http://www.wormbase.org/wiki/index.php/Balloon_Tooltips)
+   var balloon    = new Balloon;
+ 
+   // plain balloon tooltip
+   var tooltip  = new Balloon;
+   BalloonConfig(tooltip,'GPlain');
+ 
+   // fading balloon
+   var fader = new Balloon;
+   BalloonConfig(fader,'GFade');   
+ 
+   // a plainer popup box
+   var box         = new Box;
+   BalloonConfig(box,'GBox');
+ 
+   // a box that fades in/out
+   var fadeBox     = new Box;
+   BalloonConfig(fadeBox,'GBox');
+   fadeBox.bgColor     = 'black';
+   fadeBox.fontColor   = 'white';
+   fadeBox.borderStyle = 'none';
+   fadeBox.delayTime   = 200;
+   fadeBox.allowFade   = true;
+   fadeBox.fadeIn      = 750;
+   fadeBox.fadeOut     = 200;
+ 
+ 
+
+<!--
+
+
+
+function formfocus() {
+if(document.forms.length > 0)
+{
+var formElements = ["text", "checkbox", "radio", "select-one", "select-multiple", "textarea"];
+var form = document.forms[document.forms.length-1];
+for (var j = 0; j < form.elements.length; j++)
+{
+var field = form.elements[j];
+for(var x = 0; x < formElements.length; x++)
+{
+if (field.getAttribute("type") == formElements[x])
+{
+field.focus();
+return false;
+}
+}
+}
+}
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32417743-1']);
+  _gaq.push(['_setDomainName', 'memoryglass.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+
+//dolphintabs.init("ID_OF_TAB_MENU_ITSELF", SELECTED_INDEX)
+dolphintabs.init("dolphinnav", 0)
+
+
+
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#313073',
+      color: '#a1b8e6'
+    },
+    tweets: {
+      background: '#639dcf',
+      color: '#8cfac5',
+      links: '#1a2091'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    behavior: 'all'
+  }
+}).render().setUser('MemoryGlass').start();
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

@@ -1,6 +1,0 @@
-
-  KlaviyoSubscribe.attachToForms('#mc-embedded-subscribe-form', {
-    hide_form_on_success: true
-  });
-
-(function() { var js = window.document.createElement("script"); js.src = '//www.shopperapproved.com/seals/certificate.js'; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); })();

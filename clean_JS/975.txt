@@ -1,0 +1,145 @@
+
+var CaptchaCallback = function(){
+	jQuery('.g-recaptcha').each(function(){
+	     if(jQuery(this).attr('id') === 'careers-captcha'){
+		var widgetId = grecaptcha.render(this, {'callback' : 'careersCaptchaCallback', 'sitekey' : '6LcW0Q4TAAAAAL8N9lQOqw381nQ7sCfbyf1RUSwN'});
+	    } else {
+		var widgetId = grecaptcha.render(this, {'sitekey' : '6LcW0Q4TAAAAAL8N9lQOqw381nQ7sCfbyf1RUSwN'});
+	    }
+	    jQuery(this).attr('data-widget-id', widgetId);
+	});
+};
+
+
+
+var active = "1";
+if(active=='1')
+{
+	window.__insp = window.__insp || [];
+	__insp.push(['identify', "Guest visitor"]);
+	__insp.push(['wid', "100229117"]);
+	(function() {
+	function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+	setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+	})();
+}
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.holts.com';
+//]]>
+
+
+	try { Typekit.load({ async: false });}catch(e){}
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search Our Inventory');
+ //       searchForm.initAutocomplete('https://www.holts.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+	var publicApiUrl = "https://d2ghv.api.searchify.com";
+	var indexName = "category_index_prod"
+    //]]>
+	jQuery(document).ready(function(){
+      if(typeof(jQuery("#search_mini_form").indextank_Ize) === 'function'){
+        // let the form be 'indextank-aware'
+        jQuery("#search_mini_form").indextank_Ize(publicApiUrl, indexName);
+        // let the query box have autocomplete
+        jQuery("#search").indextank_Autocomplete();
+      }
+	});
+    
+
+		Enterprise.TopCart.initialize('topCartContent');
+    var src = jQuery('.message-box-free').find('img').remove();
+    // Below can be used to show minicart after item added
+    //Enterprise.TopCart.showCart(7);
+
+
+    var click_url = 'https://www.holts.com/bannerslider/index/click/';
+    var slides_1 = [{"click_url":"https:\/\/www.holts.com\/cigars\/all-cigar-brands\/la-aroma-de-cuba-mi-amor.html","target":"_parent","banner_id":"1","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/l\/a\/ladcmiamor-6hp_2.jpg"},{"click_url":"https:\/\/www.holts.com\/samplers\/build-your-own-cigar-sampler.html","target":"_parent","banner_id":"56","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/b\/u\/build-a-sampler_hpslider_1.jpg"},{"click_url":"https:\/\/www.holts.com\/samplers\/monster-cigar-deals\/nub-stub-club-monster-deal.html","target":"_parent","banner_id":"57","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/n\/u\/nub_stub_club_md_4.jpg"},{"click_url":"http:\/\/www.holts.com\/cigarmugs","target":"_parent","banner_id":"58","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/c\/i\/cigar-mugs-3_4.jpg"},{"click_url":"https:\/\/www.holts.com\/specials\/freebie-deals.html","target":"_parent","banner_id":"59","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/f\/r\/freebiedeals10-hp_4.jpg"},{"click_url":"https:\/\/www.holts.com\/clubhouse\/","target":"_parent","banner_id":"71","bannerslider_id":"1","image_alt":"","src":"https:\/\/www.holts.com\/media\/bannerslider\/b\/l\/blog-hp-slider-3_10.jpg"}];
+    jQuery(function($) {
+        var $slider = $('.flexslider-7-1');
+        
+        /* Manually start slider due to it aborting if no slides are present. */
+        new $.flexslider($slider[0], {
+            animation: "fade",
+            slideshowSpeed: 5000,
+            pauseOnAction: false,
+            pausePlay: true,
+            //minItems: 2,
+            //maxItems: 4            
+        });
+        
+        var slider = $slider.data('flexslider');
+        
+        function loadSlide(idx){
+            if(idx < slides_1.length){
+                slider.addSlide((function(s){
+                    return $('<li>').append(
+                        $('<a>', {
+                            href: s.click_url,
+                            target: s.target,
+                            style: "display:block"
+                        }).click(function(){
+                            new Ajax.Request(click_url,{
+                                method: 'post',
+                                parameters:{id_banner: s.banner_id, slider_id: s.bannerslider_id},
+                                onFailure: '',
+                                onSuccess: ''
+                            });
+                        }).append(
+                            $('<img>', {alt: s.image_alt}).load(
+                                function(evt){
+                                    if(idx === 0){
+                                        $slider.find('.flex-active-slide').animate({opacity: 1});
+                                    }
+                                    
+                                    loadSlide(idx + 1);
+                                }
+                            ).attr("src", s.src)
+                        )
+                    );
+                })(slides_1[idx]));
+            }
+        }
+        
+        loadSlide(0);
+    });
+
+
+            Event.observe(window, 'load', function() {
+                banner_ids = '1,56,57,58,59,71';
+                slider_id = '1';
+                imp_url = '/bannerslider/index/impress';
+                new Ajax.Request(imp_url, {
+                    method: 'post',
+                    parameters:{banner_ids: banner_ids, slider_id:slider_id},
+                    onFailure: '',
+                    onSuccess: ''
+
+                });
+            });
+        
+// <![CDATA[
+window.__lc = window.__lc || {};
+window.__lc.license = 8808371;
+jQuery(window).load(function() {
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+});
+jQuery(document).ready(function() {
+if (jQuery(".toolbar-bottom").length > 1 ) { jQuery(".toolbar-bottom").get(1).hide(); }
+});
+// ]]>

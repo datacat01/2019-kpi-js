@@ -1,0 +1,32 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.priorservice.com/&h=www.priorservice.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+ 
+		Quotes = new Array(); 
+		var quote=new Array();
+		// DO NOT EDIT ABOVE HERE
+
+		Quotes[0]="Thanks for offering really tough to find patches. It means a lot to us.";
+
+		Quotes[1]="I feel so proud when I am wearing the sweatshirt we bought from you. It is beefy, warm and comfortable.";
+
+		Quotes[2]="You have done a great job of collecting and offering things that I was unable to locate anywhere else.";
+
+		// DO NOT EDIT BELOW HERE
+		var speed=5000; /*this is the time in milliseconds adjust to suit*/ 
+		var q=0; 
+		function showQuote() { 
+		  document.getElementById("quotes").innerHTML=Quotes[q]; 
+		  q = (q+1) % Quotes.length; 
+		//  q++;  if(q==Quotes.length) { q=0; }  // old method 
+		} 
+		setInterval("showQuote()",speed); 
+	
+var prodId='index'; var prodImg=''; var prodName=''; 
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/f41b9456175a363bc8939d761917a700?id=098c785c6ee1'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

@@ -1,0 +1,100 @@
+
+jQuery(document).ready(function($){
+	// Call Banner
+	$('.flexslider').responsiveSlides('.slide', {
+		sizes : [
+			{name:'small',  width:480},
+			{name:'medium', width:500},
+			{name:'large',  width:736}
+		]
+	});
+});
+
+$(window).load(function(){
+	$('.flexslider').flexslider({
+		animation: 'slide',
+		directionNav: false,
+		useCSS:false
+	});
+});
+
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  
+                  //]]>
+                  
+
+                  //<![CDATA[
+                  SiteSeal("https://seal.networksolutions.com/images/basicrecgreen.gif", "NETSP", "none");
+                  //]]>
+                  
+
+    var pageTracker = _gat._getTracker("UA-604529-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+

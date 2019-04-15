@@ -1,0 +1,23 @@
+
+        dataLayer.push({
+            'event': 'HomePage'
+        });
+    
+
+        (function () {
+            function async_load() {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = 'true';
+                s.src = '/bundles/js?v=Iz2E8wc_TwSqowj_2hTQa_htLuOs7jHvJoWU1c8IKR01';
+                s.id = 'Asyncjsbundle';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            }
+            if (window.attachEvent)
+                window.attachEvent('onload', async_load);
+            else
+                window.addEventListener('load', async_load, false);
+        })();
+    
+var bizrate = { small: "true" };

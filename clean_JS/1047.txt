@@ -1,0 +1,112 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.tools-plus.com/&h=www.tools-plus.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+var switchTo5x=true;
+stLight.options({publisher: "104d66a1-1446-4247-a38c-6130c9197ed4", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+ var _d_site = _d_site || '85D0E61783BEBA6C806D114F'; 
+
+var monitus=monitus||{};
+monitus.id=852;
+monitus.ga_mode=1;
+TP.JS.async_load("https://c3319586.ssl.cf0.rackcdn.com/js/monitus.js");
+
+
+var prClientDomain = "http://myaccount.tools-plus.com/";
+var prClientName = "tools-plus";
+var prClientSkin = "tools-plus";
+var prDebug = false;		
+function pdOpenProductReviewsTab() {
+	//**********************************************
+	//*** INCLUDE OPEN TAB JS HERE - IF REQUIRED ***
+	//**********************************************
+	TP.Tabs.set_active("Reviews",1);
+}
+
+
+ $("a#fp-lucy-link").click(function () {
+     $("div#fp-lucy-img").show("slow");
+   });
+
+
+var mcEcomStore = "toolsplus";
+
+var google_tag_params = {ecomm_prodid: 'index', ecomm_pagetype: 'home'};
+
+/* <![CDATA[ */
+var google_conversion_id = 952517370;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1064822770;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "22797"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_US"]);
+  gts.push(["google_base_offer_id", ""]);
+  gts.push(["google_base_subaccount_id", "1151165"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+function pdInit() {
+
+    //***** REVIEWS IMPLEMENTATION ***********
+	var elements = document.getElementsByClassName("pdRatingStars");
+    var productIdList = new Array();
+    for(var i=0;i<elements.length;i++) {
+        productIdList[i] = elements[i].getAttribute("productId");
+    }
+    var productIdListCsv = productIdList.join(",");
+	
+	//***** REWARDS IMPLEMENTATION ******
+	var productIdListRewardsElements = document.getElementsByClassName("pdRewardsPromoMessage");
+    var productIdListRewards = new Array();
+    for(var i=0;i<productIdListRewardsElements.length;i++) {
+        productIdListRewards[i] = productIdListRewardsElements[i].getAttribute("productId");
+    }
+    var productIdListRewardsCsv = productIdListRewards.join(",");
+	
+	//****** CONSTRUCT SCRIPT URL WITH CACHE BUSTING ********************
+	var cb = (new Date()).getTime();
+    var scriptUrl = "https://tools-plus.practicaldatacore.com//mod_yahooMerchantSolutions/services/pageScript.php";
+    scriptUrl += "?cb=" + cb;
+    scriptUrl += "&productId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productId"));
+    scriptUrl += "&productCode=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("productCode"));
+    scriptUrl += "&categoryId=" + encodeURIComponent(document.getElementById("pdPageTag").getAttribute("categoryId"));
+    scriptUrl += "&productIdListRewardsCsv=" + encodeURIComponent(productIdListRewardsCsv);
+    scriptUrl += "&productIdListCsv=" + encodeURIComponent(productIdListCsv);
+
+    var scriptElement=document.createElement('script');
+    scriptElement.setAttribute("type","text/javascript");
+    scriptElement.setAttribute("async","async");
+    scriptElement.setAttribute("src", scriptUrl);
+    document.body.appendChild(scriptElement);
+
+}
+pdInit();
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/07598c8f46f4cb4c222772533d38e664?id=2fd5bb08a4c2'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

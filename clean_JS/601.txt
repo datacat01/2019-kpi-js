@@ -1,0 +1,407 @@
+
+var _vwo_code=(function(){
+var account_id=5343,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1774153-2', 'auto');
+
+   ga('require', 'GATE', {url: 'https://cdn.roirevolution.com/configurations/d922a67897127d05a975.json'});
+
+  ga('require', 'COGS');
+
+
+
+
+  (function checker() {
+
+    var ga = window[window['GoogleAnalyticsObject'] || 'ga'];
+
+    if (ga && !ga.q) {
+
+      setTimeout(function () {
+
+        ga('provide', 'GATE', function () { })
+
+      }, 7500);
+
+    } else {
+
+      setTimeout(checker, 200);
+
+    }
+
+  })();
+
+
+
+    jQuery(function($) {
+      if($('.mobile-slider').length >= 1){
+        $('.mobile-slider').slick({
+          mobileFirst: true,
+          slide: ".product_item",
+          adaptiveHeight: true,
+          slidesToShow: 3,
+          infinite: true,
+          swipe: true,
+          prevArrow: '<div class="slick-prev"><i class="fal fa-angle-left"></i></div>',
+          nextArrow: '<div class="slick-next"><i class="fal fa-angle-right"></i></div>',
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: "unslick"
+            }
+          ]    
+        });
+      }
+    });
+  
+
+  
+
+  
+  localStorage.removeItem('nursery_geo_zone');
+  
+
+  
+  localStorage.removeItem('nursery_geo_zip');
+  
+
+  
+  localStorage.removeItem('nursery_geo_chill_hours');
+  
+
+  
+  localStorage.removeItem('nursery_geo_state');
+  
+
+  
+  localStorage.removeItem('nursery_geo_abbr_state');
+  
+
+  function getLocalStorage(storeage_var){
+    return localStorage.getItem(storeage_var);
+  }
+
+  function getZipCode(){
+    return getLocalStorage('nursery_geo_zip');
+  }
+
+  function getGrowingZone(){
+    return getLocalStorage('nursery_geo_zone');
+  }
+
+  function getChillHours(){
+    return getLocalStorage('nursery_geo_chill_hours');
+  }
+
+  function getState(){
+    return getLocalStorage('nursery_geo_state');
+  }
+
+  function getAbbrState(){
+    return getLocalStorage('nursery_geo_abbr_state');
+  }
+
+  function setShopByState(state){
+    state = state.replace(/\s/g, '');
+    if($('.trees-by-state-link').length <=0 ){
+      $('.nav-bar a[href$="pages/trees-for-your-state"], .site-footer a[href$="pages/trees-for-your-state"]').addClass('trees-by-state-link');      
+    }
+    $('.trees-by-state-link').attr('href', '/collections/'+state);
+  }
+
+  function unsetShopByState(state){
+    $('.trees-by-state-link').attr('href', '/pages/trees-for-your-state');
+  }
+
+  function setGeoValues(zip, zone, hours, state, abbr_state){
+    zip = zip || false;
+    zone = zone || false;
+    hours = hours || false;
+
+		localStorage.setItem('nursery_geo_zip',zip);
+    localStorage.setItem('nursery_geo_zone',zone);
+    localStorage.setItem('nursery_geo_chill_hours',hours);
+    localStorage.setItem('nursery_geo_state',state);
+    localStorage.setItem('nursery_geo_abbr_state',abbr_state);
+
+    $.ajax({
+      type: "POST",
+      url: '/cart/update.js',
+      data: {"attributes[nursery_geo_zip]": zip, "attributes[nursery_geo_zone]": zone, "attributes[nursery_geo_chill_hours]": hours, "attributes[nursery_geo_state]": state, "attributes[nursery_geo_abbr_state]": abbr_state},
+      dataType: 'json',
+      success: function(response){
+        $('.nursery-growing-zone-num').html(zone);
+        $('#setGrowingZone').removeClass('zone-loading');
+
+        if(state){
+          setShopByState(state);
+        }
+        else {
+          unsetShopByState();
+        }
+
+        
+      },
+      error: function(response){
+        unsetGeoValues();
+      }
+    });                              
+                          
+    return zip;
+  }
+  
+  function unsetGeoValues(){
+		localStorage.removeItem('nursery_geo_zip');
+    localStorage.removeItem('nursery_geo_zone');
+    localStorage.removeItem('nursery_geo_chill_hours');
+    localStorage.removeItem('nursery_geo_state');
+    localStorage.removeItem('nursery_geo_abbr_state');
+                              
+    $('.nursery-growing-zone-num').html('');
+    $('#setGrowingZone').removeClass('zone-loading');    
+
+    unsetShopByState();
+
+    $.ajax({
+      type: "POST",
+      url: '/cart/update.js',
+      data: {"attributes[nursery_geo_zone]": '', "attributes[nursery_geo_zone]": '', "attributes[nursery_geo_chill_hours]": '', "attributes[nursery_geo_state]": '', "attributes[nursery_geo_abbr_state]": ''},
+      dataType: 'json'		
+    });                              
+  }
+
+  function getGeoValues(zip, state, abbr_state){
+    zip = zip || false;
+    state = state || false;
+
+    
+
+/* FOR TESTING 
+    if(isNaN(zip)){
+      unsetGeoValues();
+    }
+    else if(zip && zip.indexOf(9) >= 1){
+      setGeoValues(zip,10,200);
+    }
+    else {
+      setGeoValues(zip,4,300);
+    }
+    
+    return zip; */
+
+    $.ajax({
+      type: "GET",
+      url: 'https://api.fast-growing-trees.com/api/v1/growingzone?zip='+zip,
+      dataType: 'json',
+      success: function(response){
+
+        var data = response.data;
+        if(response.status == 'success' && data.zip && data.zone && data.chill_hours) {
+          setGeoValues(data.zip, data.zone, data.chill_hours, state, abbr_state);
+        }
+        else {
+
+          unsetGeoValues();         
+        }
+      },
+      error: function(response){
+
+        unsetGeoValues();         
+      }
+    });                              
+                          
+    return zip;
+  }
+
+  function getShipDates(skus, zip){
+    $.ajax({
+      type: "GET",
+      url: 'https://api.fast-growing-trees.com/api/v1/shipdate?'+skus+'&zip='+zip,
+      dataType: 'json',
+      success: function(response){
+
+        if(response.status == 'success' && response.data) {
+          
+        }
+        else {
+          
+        }
+      },
+      error: function(response){
+        
+      }
+    });
+  }
+
+  function setProductShipDates(response){
+    unsetProductShipDates();
+
+    for (r in response){
+      let sku = r;
+
+      if(response[r]['deliverydate'] != null){
+        let formatted_date = response[r]['formatted_shipdate'];
+        let shipping_language = response[r]['ships_language'];
+
+				if (shipping_language.includes('week')){
+        	variant_details[sku]['delivery-notice'] = "<text style='background-color:#FCFA0A'>" + shipping_language + " : <strong>"+formatted_date+"</strong></text>";
+				} else {
+        	variant_details[sku]['delivery-notice'] = "<text style='color:#693'>" + shipping_language + " : <strong>"+formatted_date+"</strong></text>";
+				}
+      }
+    }
+    var product = null;
+    var value = $('#productSelect').val();
+    var variant = nursery.getVariantById(product, value);
+    nursery.productPageVariant({
+      details: variant_details,
+      variant: variant
+    });
+  }
+
+  function setCartShipDates(response){
+    unsetCartShipDates()
+
+    for (r in response){
+      var sku = r;
+      let formatted_date = response[r]['formatted_shipdate'];
+      let shipping_language = response[r]['ships_language'];
+      $('[data-delivery-date-sku="'+sku+'"]').html(shipping_language + " <strong>"+formatted_date+"</strong>");
+    }
+  }
+
+  function setCheckoutShipDates(response){
+
+    for (r in response){
+      var variant_id = sku_map[r];
+      let formatted_date = response[r]['formatted_shipdate'];
+      let shipping_language = response[r]['ships_language'];
+
+      //This works, but there is a bug in the code where this appears then disappears
+      $('tr.product[data-variant-id="'+variant_id+'"] .product__description').append('<p class="product__description__delivery_date order-summary__small-text">' + shipping_language + ' <strong>'+formatted_date+'</strong></p>');      
+    }
+  }
+
+  function unsetProductShipDates(){
+    for (v in variant_details){
+      variant_details[v]['delivery-notice'] = "";
+    }
+  }
+
+  function unsetCartShipDates(){
+    $('[data-delivery-date-sku]').html("");
+  }
+
+  function unsetCheckoutShipDates(){
+
+    $('.product__description__delivery_date').remove();
+  }
+
+  function format_date(date_to_format){
+    var date_locales = {
+        en: {
+          month_names: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          day_names: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+        }
+    };
+
+    var weekday, month, day;
+
+    var dateTime = new Date(date_to_format);
+
+    weekday = date_locales['en']['day_names'][dateTime.getDay()];
+    month = date_locales['en']['month_names'][dateTime.getMonth()];
+    day = dateTime.getDate();
+
+    return weekday + ", " + month + " " + day;
+  }  
+
+  
+  jQuery(function($) {
+    var zip = getZipCode();
+    if(zip == null){
+      
+      $.ajax({
+        url: "https://api.ipstack.com/check?access_key=fa500eeec2287e15c538070b182b4e96&fields=zip,region_name,region_code",
+        success: function( response ) {
+          if(response.zip && response.zip !== null ){
+            getGeoValues(response.zip, response.region_name, response.region_code);
+          }
+          else{
+
+            unsetGeoValues();         
+          }
+        },
+        error: function( response ){
+
+          unsetGeoValues();         
+        }
+      });
+      
+    }
+
+    var state = getState();
+    if(state){
+      setShopByState(state);
+    }
+
+    $('#setGrowingZone').on('submit', function(e){
+      e.preventDefault();
+      var form = $(this),
+          zip = $(form).find('[name="nursery_growing_zip"]').val();
+
+          $(form).addClass('zone-loading');
+
+
+
+          getGeoValues(zip, false);
+    });
+  });
+  
+
+
+	var dataLayer = window.dataLayer || [];
+
+
+		dataLayer.push({
+			'google_tag_params': {
+				'ecomm_pagetype': 'home'
+			}
+		});
+	
+
+if (window._GUARANTEE && _GUARANTEE.Loaded) {
+  _GUARANTEE.Hash = "4YHhB2TQs%2FnzvtGBgzowHV4NyByCuRgSh%2FQ65lbMzkGWCAFzWF6nQvkgbdzfFzBs%2F4dFqZwjsHdV4Xl85hyD4g%3D%3D";
+  _GUARANTEE.WriteSeal();
+}
+
+
+		function getCJsCookie(name) {
+			name = name.replace(/[\]]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+			var results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		
+		var cjeventid = getCJsCookie('cjevent');
+
+		if(cjeventid != ''){
+			Cookies.remove('cjevent');
+			Cookies.set('cjevent', cjeventid, { expires: 30, path: '' });
+		}
+	

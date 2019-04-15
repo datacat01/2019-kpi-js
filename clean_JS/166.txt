@@ -1,0 +1,288 @@
+
+    jQuery.browser = {};
+    (function () {
+        jQuery.browser.msie = false;
+        jQuery.browser.version = 0;
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+            jQuery.browser.msie = true;
+            jQuery.browser.version = RegExp.$1;
+        }
+    })();
+
+
+// ForeSee Production Embed Script v2.00
+// DO NOT MODIFY BELOW THIS LINE *****************************************
+;(function (g) {
+var d = document, am = d.createElement('script'), h = d.head || d.getElementsByTagName("head")[0], fsr = 'fsReady',
+aex = {
+  "src": "//gateway.foresee.com/sites/torrid-new/production/gateway.min.js",
+  "type": "text/javascript",
+  "async": "true",
+  "data-vendor": "fs",
+  "data-role": "gateway"
+};
+for (var attr in aex){am.setAttribute(attr, aex[attr]);}h.appendChild(am);g[fsr] = function () {var aT = '__' + fsr + '_stk__';g[aT] = g[aT] || [];g[aT].push(arguments);};
+})(window);
+// DO NOT MODIFY ABOVE THIS LINE *****************************************
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbkz-torrid';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if(resx===undefined) {
+var resx = new Object();
+}
+
+resx.pageid="res19041407139298168541536";
+
+
+resx.trackingid="754557653215973";
+
+$(document).ready(function(){
+$(".certona-slider").each(function(){
+var getSliderLen = $("li",this).length;
+var sliderID = $(this).attr("id");
+//console.log(sliderID + " has a list of " + getSliderLen + " Products")
+if(getSliderLen < 1) {
+$("#slick-prev").css("display","none !important");
+$("#slick-next").css("display","none !important");
+}
+});
+});
+
+
+    Curalate.FanReels.Carousel.init({ code: "torridinsider" });
+
+
+if(resx===undefined) {
+var resx = new Object();
+}
+resx.appid = 'torrid01';
+resx.top1 = 100000;
+resx.top2 = 100000;
+
+
+
+
+if(resx===undefined) {
+var resx = new Object();
+}
+resx.links = jQuery('.certona_product_ids').text().substring(1);
+
+
+$('#close').on('click',function (e){
+var resetURL = "https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Page-SetSiteMarginCSEnabled";
+$.ajax({url: resetURL});
+});
+
+
+$(document).ready(function(){
+//hide the sticky notification whne reacching bottom
+$(this).on('scroll', function() {
+if (window.innerHeight + window.scrollY >= document.body.clientHeight && $("#site-margin-cs").length > 0) {
+document.getElementById('site-margin-cs').style.display='none';
+}else{
+$('#site-margin-cs').fadeIn();
+}
+});
+//show close button when hover only
+$(".site-margin-cs").on('hover', function(){
+$(".dialogclosebutton").toggle();
+});
+//open dialog onClick
+$('#fixedNotification').click(function () {
+$('#fixedNotificationContent').dialog({
+modal:true,
+open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#fixedNotificationContent").dialog('close'); }); },
+});
+return false;
+});
+});
+
+
+var utag_data = {
+  "page_name": "homepage",
+  "page_id": "homepage",
+  "page_category": "homepage",
+  "page_context_title": "homepage",
+  "page_country_code": "UA",
+  "page_type": "homepage",
+  "page_context_type": "homepage",
+  "device_type": "desktop",
+  "user_anonymous": "true",
+  "user_authenticated": "false",
+  "user_registered": "false",
+  "customer_id": "abJ0706Z7mdwxLiPaZKJvF3Bqd",
+  "referral_source": "",
+  "referral_channel": "",
+  "is_directload": "true",
+  "customer_group": [
+    "DesktopCustomers",
+    "Everyone",
+    "Everyone Excluding Mobile",
+    "Everyone_Excluding_xStore",
+    "International (Non-Domestic)",
+    "Non-Employees excluding SCode",
+    "Unregistered"
+  ]
+};
+
+
+(function(a,b,c,d){
+a='//tags.tiqcdn.com/utag/hott/dwtorrid/prod/utag.js';
+b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=1;
+a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+})();
+
+
+/* Defer load the below CSS Files (Google page speed recomendation) */
+var jquicss = document.createElement('link');
+jquicss.rel = 'stylesheet';
+jquicss.href = "https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/v1555225222487/lib/jquery/ui/jquery-ui.min.css";
+jquicss.type = 'text/css';
+var godefer = document.getElementsByTagName('link')[0];
+godefer.parentNode.insertBefore(jquicss, godefer);
+var mediaelementcss = document.createElement('link');
+mediaelementcss.rel = 'stylesheet';
+mediaelementcss.href = "https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/v1555225222487/lib/jquery/mediaelement/mediaelementplayer.css";
+mediaelementcss.type = 'text/css';
+var godefer2 = document.getElementsByTagName('link')[0];
+godefer2.parentNode.insertBefore(mediaelementcss, godefer2);
+var certonacss = document.createElement('link');
+certonacss.rel = 'stylesheet';
+certonacss.href = "https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/v1555225222487/certona/css/resonance.css";
+certonacss.type = 'text/css';
+var godefer3 = document.getElementsByTagName('link')[0];
+godefer3.parentNode.insertBefore(certonacss, godefer);
+
+
+$(function (){
+$('input[type="email"]').mailtip();
+});
+
+
+
+
+
+
+
+
+window.SlotRespondData = {"loadDynamicContentSlotURL":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Responsive-LoadDynamicContentSlot","assignCustomerGroupURL":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Responsive-AssignMobileCustomerGroup","isMobileCustomerGroupURL":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Responsive-IsMobileCustomerGroup","isMobileCustomerGroup":false};
+(function(app){
+window.isSPCEnabled = false;
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Couldn't Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Product(s)","SELECT_BONUS_PRODUCTS":"Select {0} Bonus Product(s)","SELECT_BONUS_PRODUCT":"Select","BONUS_PRODUCT_MAX":"The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Enter Keyword or Item #","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please Enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response, Parser error","INVALID_PHONE":"Please provide a valid Phone Number.","INVALID_EMAIL":"Please provide a valid Email.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added to compare.  Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart ","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"We are sorry, but the gift card number you have entered is invalid. Please check the number and try again.","GIFT_CERT_BALANCE":"Your current gift certificate balance is ","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_CODE_MISSING":"Please enter your 16 digit gift card number.","GIFT_CERT_MISSING":"Please enter your 16 digit gift card number.","GIFT_CERT_PIN_MISSING":"Please enter the PIN on the gift certificate.","INVALID_OWNER":"This appears to be a credit card number.  Please enter the name of the credit card owner.","INVALID_CARD_OWNER":"Please provide a valid Name on Card","INVALID_CARD_NUMBER":"Please provide a valid Card Number","INVALID_CVN_NUMBER":"Please provide a valid CVV","INVALID_CHARACTERS":"These special characters are not allowed (!#$%^&*()_+).","INVALID_CHARACTERS_OR_NUMBERS":"Numbers and these special characters are not allowed (!#$%^&*()_+).","COUPON_CODE_MISSING":"Please Enter a Promo Code","COOKIES_DISABLED":"Your browser currently is not set to accept Cookies. Please turn it on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"EXPECTED TO SHIP BY {0}","ITEM_STATUS_NOTAVAILABLE":"Out of stock","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter Zip Code","INVALID_ZIP":"Please enter a valid Zip Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Less Stores","SIGNUP_PLACEHOLDER":"Enter Your Email","SIGNUP_INVALID_ADDRESS":"Please enter a valid email address.","US_INVALID_ZIPCODE":"Zip code must be in 99999 or 99999-9999 format.","CA_INVALID_ZIPCODE":"Postal code must be in A9A 9A9 format.","INT_INVALID_ZIPCODE":"Zip code must contain only alphanumeric symbols and be 3-10 chars long. ","STORELOCATOR_MILES":"away","PLEACE_CHOOSE_STORE":"Please Choose a Store","INVALID_BIRTH_DATE":"Birth date is incorrect","INVALID_FIRSTNAME_VALUE":"Please provide a valid First Name","INVALID_LASTNAME_VALUE":"Please provide a valid Last Name","INVALID_COUNTRY_VALUE":"Please select a valid Country","INVALID_ADDRESS_VALUE":"Please provide a valid Street Address","INVALID_CITY_VALUE":"Please provide a valid City","INVALID_STATE_VALUE":"Please select a valid State","INVALID_ZIP_VALUE":"Please provide a valid Zip Code","INVALID_PHONENUMBER_VALUE":"forms.address.phonenumber.invalid","INVALID_FIELD_VALUE":"Please enter a valid value","SELECT_DETAILS_ADD_CART":"Select Details & Add to Cart","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) In Stock","PREORDER":"PRESALE","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"{0} item(s) will be coming soon and ready to ship. The remaining items are currently not available. Please adjust the quantity before checkout.","BACKORDER":"Back Order","QTY_BACKORDER":"Back Order {0} item(s)","REMAIN_BACKORDER":"{0} item(s) will be coming soon and ready to ship. The remaining items are currently not available. Please adjust the quantity before checkout.","NOT_AVAILABLE":"Out of stock","REMAIN_NOT_AVAILABLE":"{0} items are in stock and ready to ship. The remaining items are currently not available. Please adjust the quantity before checkout."};
+window.Urls = {"appResources":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Resources-Load","pageInclude":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Page-Include","continueUrl":"https://www.torrid.com/hpredirect?dwcont=C409465500","staticPath":"https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/v1555225222487/","addGiftCert":"https://www.torrid.com/giftcertpurchase","minicartGC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/GiftCert-ShowMiniCart","addProduct":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-AddProduct","minicart":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-MiniAddProduct","cartShow":"https://www.torrid.com/cart","giftRegAdd":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.torrid.com/wallet","addressesList":"https://www.torrid.com/addressbook","wishlistAddress":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Wishlist-SetShippingAddress","deleteAddress":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Address-Delete","getProductUrl":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-Show","getBonusProducts":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-GetBonusProducts","addBonusProduct":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-AddBonusProduct","getSetItem":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-GetSetItem","productDetail":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-Detail","getAvailability":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-GetAvailability","getVariationsUrl":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-Variation","removeImg":"https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/dwc8e53f09/images/interface/icon_remove.gif","searchsuggest":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Search-GetSuggestions","productNav":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-Productnav","summaryRefreshURL":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-UpdateSummary","summaryRefreshURLSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SPCCOBilling-UpdateSummary","billingSelectCC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-SelectCreditCard","accountSelectCC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/PaymentInstruments-GetCardDetails","updateAddressDetails":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsJSONSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SPCCOShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShipping-UpdateShippingMethodList","shippingMethodsListSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SPCCOShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShipping-SelectShippingMethod","selectShippingMethodsListSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SPCCOShipping-SelectShippingMethod","resetPaymentForms":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-ResetPaymentForms","compareShow":"https://www.torrid.com/compare","compareAdd":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Compare-AddProduct","compareRemove":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Compare-RemoveProduct","compareEmptyImage":"https://www.torrid.com/on/demandware.static/Sites-torrid-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/FirstData-RedeemGiftCertificate","removeGiftCert":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-RemoveGiftCertificate","updateGiftCertApplied":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-UpdateGiftCertificatesApplied","addCoupon":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-AddCouponJson","removeCoupon":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-RemoveCouponJson","updatePromosApplied":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-UpdatePromosApplied","powerReviewsFullJs":"https://www.torrid.com/on/demandware.static/-/Sites-torrid_storefront_en/default/v1555225222487/pwr/engine/js/full.js","powerReviewsZip":"https://www.torrid.com/on/demandware.static/-/Sites-torrid_storefront_en/default/v1555225222487","storeLocatorPage":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-Find","storesInventory":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-Inventory","storesLookup":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-Lookup","setPreferredStore":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-SetPreferredStore","getPreferredStore":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-GetPreferredStore","setZipCode":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-SetZipCode","getZipCode":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/StoreInventory-GetZipCode","billing":"https://www.torrid.com/billing","currencyConverter":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Currency-SetSessionCurrency","addEditAddress":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Page-Include?cid=cookie_hint","categoryUrl":"https://www.torrid.com/search","eDialogRegister":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Home-RegisterEmail","isAccountExists":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SmartButton-CheckAccount","isOnlineAccountExists":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SmartButton-CheckOnlineAccount","checkPhoneNumber":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SmartButton-CheckPhoneNumber","updateAddressOptions":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COShipping-UpdateAddressOptions","updateAddressOptionsSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SPCCOShipping-UpdateAddressOptions","updatePaymentMethodSection":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/COBilling-UpdatePaymentMethodSection","updateAddressList":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Address-UpdateAddressList","addLoyaltyReward":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-AddRewardJson","removeLoyaltyReward":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-RemoveRewardJson","wishlistPublicPrivate":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Wishlist-Refresh","wishlist":"https://www.torrid.com/wishlist","updateShippingType":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-UpdateShippingType","roundUpTotal":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Donation-RoundUpTotal","cancelRoundUp":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Donation-CancelRoundUp","giftCardCheckBalanceTwo":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/FirstData-CheckBalance","writePayeezyLog":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/FirstData-WriteLog","clpAdd2Cart":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-CLPAdd2Cart","getQASInlineTypedownsUrl":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/InlineTypeDown-GetCityState","getQASAutoCompleteUrl":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/InlineTypeDown-GetAddressline1","getGuestRegistrationUrl":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Account-GuestAccount?guest=true","custServiceEmailSignup":"https://www.torrid.com/emailsignup","resendMobileOptIn":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/SFMobileSubscription-ResendOptIn","getNosearch":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Search-NoSearchSuggest","returnToPos":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Cart-ReturnToPOS","productAvailablity":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Product-ProductAvailability","shippingValidateSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/VerifyAddress-ShippingAddressSPC","refineAddressSPC":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/VerifyAddress-RefineSPC","accountShow":"https://www.torrid.com/account","getSilhouetteTree":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Silhouette-SilhouetteTree","getSilhouetteDetail":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Silhouette-Detail","getSilhouetteInventory":"https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/Silhouette-Inventory"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"EFFICIENT_SCROLL":false,"LISTING_REFINE_SORT":true,"LISTING_SEARCHSUGGEST_LEGACY":false,"EMAIL_SIGNUP_TOGGLE":false,"EMAIL_SIGNUP_TOGGLE_XSTORE":false,"COOKIE_EMAIL_SIGNUP":45,"PAGE_SIZE":60,"EMAIL_SIGNUP_TIMEOUT":30000,"EMAIL_SIGNUP_SUCCESS_TIMOUT":20000,"STORE_PICKUP":false,"COOKIE_HINT":false,"FOOTER_EMAIL_SIGNUP_CAPTCHA":false,"QAS_AUTOCOMPLETE_ENABLED":true,"CAPTCHA_SITE_KEY":"6LdasBsTAAAAAJ2ZY_Z60WzgpRRgZVKXnqoad77Y","CAPTCHA_GC_REDEEM_ENABLED":true,"CAPTCHA_GC_REDEEM_ATTEMPTS":1,"MOBILE_CONNECT_ENABLED":false,"MOBILE_CONNECT_TRANS_OPTIN_ENABLED":false,"BR_SAYT_ENDPOINT":"https://suggest.dxpapi.com/api/v1/suggest/?account_id=6137&auth_key=rvdtznmz4nsa2xmj&domain_key=torrid&request_type=suggest","BR_ENABLED":true,"BR_SUGGESTIONCOUNT":"10,5","addToBagFromBrowseEnabled":false,"BRMinimumKey":"2"};
+window.User = {"zip":null,"storeId":null,"gcRedeemAttempts":null,"sourceCodeID":null};
+}(window.app = window.app || {}));
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.torrid.com/on/demandware.store/Sites-torrid-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

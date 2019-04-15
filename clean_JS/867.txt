@@ -1,0 +1,44 @@
+
+    $(document).ready(function () {
+		var referrer = '';
+		if(!referrer){
+			referrer =  document.referrer; 
+		}        
+		if(referrer.indexOf("garlandscience.com") > -1) {
+			$('#garlandRedirectMessagePopup').modal('show');
+		}
+    });   
+    
+
+		window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+		  "palette": {
+		    "popup": {
+		      "background": "#525a5c",
+		      "text": "#ffffff"
+		    },
+		    "button": {
+		      "background": "transparent",
+		      "text": "#ffffff",
+		      "border": "#ffffff"
+		    }
+		  },
+		  "content": {
+		    "message": 'We use cookies to improve your website experience.  To learn about our use of cookies and how you can manage your cookie settings, please see our <a style="color:#ADD8E6; text-decoration:underline" href=/contactus/cookies>Cookie Policy</a>.  By continuing to use the website, you consent to our use of cookies.',
+		    "link": " "
+		  }
+		})});
+	
+_satellite.pageBottom();
+
+_linkedin_partner_id = "612554";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+
+
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+

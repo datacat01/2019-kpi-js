@@ -1,0 +1,126 @@
+
+        var gts = gts || [];
+
+        gts.push(["id", "486034"]);
+        gts.push(["badge_position", "BOTTOM_LEFT"]);
+        gts.push(["locale", "en_GB"]);
+        gts.push(["google_base_offer_id", "100751933"]);
+        gts.push(["google_base_subaccount_id", "100862699"]);
+
+        (function () {
+            var gts = document.createElement("script");
+            gts.type = "text/javascript";
+            gts.async = true;
+            gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(gts, s);
+        })();
+    
+
+        var g_clientIp = "212.90.63.178";
+        var enableNewsletterPopup = false;
+        var langCode = 'en'; //variable used in the zopim init script
+        var languageCountryCulture = 'en_GB';
+        var localServerDiff = new Date("2019/04/14 15:27:53").getTime() - new Date().getTime();
+        var phoneNumber = "+44 203 540 1477";
+
+        
+       
+        
+    
+
+        _77LiveChatLangCode = "en";
+        //_77LiveChatChatshopScript = "/scripts/chatshopplugins?v=hHAfTR_2sXidOBeClBm5Sy6dRl88FN3uGemGcvCVpWE1";
+        _77LiveChatActive = "chatshop";
+        _77LiveChatChatshopScript = "https://www.77diamonds.com/Scripts/chatshop-helper.js?v=1293daff-9f8c-4b78-ade1-74aa879f865b";
+
+    
+
+
+
+        _77T.init(_77Translation);
+        var gglTrack = GoogleTracking;
+        gglTrack.init("Ukraine", "USD", "English", "Home");
+
+        
+        ometria.init("homepage", null);
+        
+
+        InitUserPreferences("{\"CurrencyId\":3,\"CountryId\":804,\"CurrencySymbol\":\"$\",\"LanguageId\":1,\"CollectionPlaceId\":1}");
+        getClientId();
+        initialiseGlobal();
+        initialiseEngagement();
+        initialiseRings();
+        initialisePayments();
+        initialiseBespoke();
+        initialiseForms();
+        initialiseAbout();
+        initializeShowroom();
+        initializeMobileCartFinanceBox();
+		ThumbsAccordian();
+
+		footerCookieNotice.init(); 
+
+        // a quick hack for demo purposes...
+        $('input#immediate, input#specific').click(function (e) {
+
+            if ($('input#immediate').is(':checked')) {
+                $('#datetime').hide();
+            } else {
+                $('#datetime').show();
+            };
+
+        });
+
+    
+
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'}); 
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; 
+            j.async = true; 
+            j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-P86RX2');
+    
+
+        /* <![CDATA[ */
+        var google_conversion_id = 966887959;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    
+ 
+        //<![CDATA[ 
+        var scRec=document.createElement('SCRIPT'); 
+        scRec.type='text/javascript'; 
+        scRec.src="//d2oh4tlt9mrke9.cloudfront.net/Record/js/sessioncam.recorder.js" 
+        document.getElementsByTagName('head')[0].appendChild(scRec); 
+        //]]>
+    
+
+        window.currentDevice = 'desktop'; // Hard code current device so the script doesn't crash
+
+        
+        gglTrack.PageView();
+        
+
+        
+
+    
+
+
+         
+				SpringFlashSale2019.Countdown();
+		
+            
+
+        frankfurtShowroomTopbar.init();
+
+        
+
+
+
+    
+    
+
+        homepage.init();
+    

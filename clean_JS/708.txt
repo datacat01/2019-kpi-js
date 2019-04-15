@@ -1,0 +1,111 @@
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
+
+
+try {
+var pageTracker = _gat._getTracker("UA-34170571-1");
+pageTracker._trackPageview();
+} catch(err) {}
+
+//<![CDATA[
+var theForm = document.forms['Form'];
+if (!theForm) {
+    theForm = document.Form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var cyranePortalID=0;
+var cyranePortalHTTPAlias='www.vegetarian-shoes.co.uk';
+var cyraneCulture='en-US';
+//]]>
+
+
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [], 90, '');
+//]]>
+
+
+$(document).ready(function() {
+
+
+
+	if (window.innerWidth < 800) {
+		$('.tab-content .active').removeClass('active');
+
+	}
+
+});
+
+
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("dnn_siteFooter_newsletter_vldReqFromEmail"), document.getElementById("dnn_siteFooter_newsletter_vldRegFromEmail"));
+//]]>
+
+
+//<![CDATA[
+var dnn_siteFooter_newsletter_vldReqFromEmail = document.all ? document.all["dnn_siteFooter_newsletter_vldReqFromEmail"] : document.getElementById("dnn_siteFooter_newsletter_vldReqFromEmail");
+dnn_siteFooter_newsletter_vldReqFromEmail.controltovalidate = "dnn_siteFooter_newsletter_txtEmail";
+dnn_siteFooter_newsletter_vldReqFromEmail.errormessage = "You must enter an email address.";
+dnn_siteFooter_newsletter_vldReqFromEmail.display = "Dynamic";
+dnn_siteFooter_newsletter_vldReqFromEmail.validationGroup = "Newsletter";
+dnn_siteFooter_newsletter_vldReqFromEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+dnn_siteFooter_newsletter_vldReqFromEmail.initialvalue = "";
+var dnn_siteFooter_newsletter_vldRegFromEmail = document.all ? document.all["dnn_siteFooter_newsletter_vldRegFromEmail"] : document.getElementById("dnn_siteFooter_newsletter_vldRegFromEmail");
+dnn_siteFooter_newsletter_vldRegFromEmail.controltovalidate = "dnn_siteFooter_newsletter_txtEmail";
+dnn_siteFooter_newsletter_vldRegFromEmail.errormessage = "You must enter a properly formatted email address.";
+dnn_siteFooter_newsletter_vldRegFromEmail.display = "Dynamic";
+dnn_siteFooter_newsletter_vldRegFromEmail.validationGroup = "Newsletter";
+dnn_siteFooter_newsletter_vldRegFromEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+dnn_siteFooter_newsletter_vldRegFromEmail.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+//]]>
+
+
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('dnn_siteFooter_newsletter_vldReqFromEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('dnn_siteFooter_newsletter_vldReqFromEmail'));
+}
+
+document.getElementById('dnn_siteFooter_newsletter_vldRegFromEmail').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('dnn_siteFooter_newsletter_vldRegFromEmail'));
+}
+//]]>
+

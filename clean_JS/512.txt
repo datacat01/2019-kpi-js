@@ -1,0 +1,31 @@
+
+   jQuery(function() {
+       CartJS.init({"token":"b6f75267e895faafcde85917ea069886","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]});
+   });
+
+
+  window.__insp = window.__insp || [];
+  __insp.push(['wid', 206643536]);
+  (function() {
+  function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+  setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+  })();
+  
+
+   !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+   pintrk('load','2618813601608');
+   pintrk('page');
+
+
+
+
+if(typeof Shopify === 'undefined') {
+    Shopify = {};
+}
+
+if (!Shopify.shop) {
+  Shopify.shop = 'groomsdaygifts.myshopify.com';
+}
+var bkRawUrl = function(){return window.location.href}();
+  
+

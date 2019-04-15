@@ -1,0 +1,111 @@
+
+		var typeAheadWhen    = '4';
+        var typeAheadDelay   = '250';
+        var typeAheadResults = '10';
+	
+	
+
+var $j = jQuery.noConflict();
+
+$j(document).ready(function () {
+	if ($j('ul.drawers').length > 0) {
+        $j('ul.drawers').accordion({
+            header: 'div.drawer-handle',
+            selectedClass: 'open',
+            event: 'mouseover'
+        });
+	}
+});
+
+function openBAMMPage(sUrl) {
+	if (sUrl!='') {
+		window.location.href = sUrl;
+	}
+}
+
+
+	function addCss(fileName) {
+		var link = '<link rel="stylesheet" type="text/css" href="' + fileName + '">';
+		$j_1_11('head').append(link);
+	}
+	
+	$j_1_11(function() {
+		if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1){
+			addCss('https://images.booksamillion.com/stylesheets/base_chrome_20170517.css');
+		} else if (navigator.userAgent.toLowerCase().indexOf('safari') > -1){
+			addCss('https://images.booksamillion.com/stylesheets/base_chrome_20170517.css');
+		} else {
+			addCss('https://images.booksamillion.com/stylesheets/base_IE_20170517.css');
+		}
+	});
+
+<!--//<![CDATA[
+var m3_u = (location.protocol=='https:'?'https://a1.booksamillion.com/content/delivery/ajs.php':'http://a1.booksamillion.com/content/delivery/ajs.php');var m3_r = Math.floor(Math.random()*99999999999);if (!document.MAX_used) document.MAX_used = ',';document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);document.write ("?zoneid=983&bam_id=7552526097100");document.write ('&amp;cb=' + m3_r);if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);document.write ("&amp;loc=" + escape(window.location));if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));if (document.context) document.write ("&context=" + escape(document.context));if (document.mmm_fo) document.write ("&amp;mmm_fo=1");document.write ("'></scr"+"ipt>");
+//]]>-->
+
+	var $jfirstvisit = jQuery.noConflict();
+	var firstvisit = 1;
+	if (firstvisit) {
+	 $jfirstvisit(document).ready(function($){
+       $jfirstvisit( "#pic:hidden:first" ).fadeIn( 2000, function() {
+      // Animation complete
+      });
+    });
+
+     $jfirstvisit(document).ready(function(){
+       $jfirstvisit("#offer").click(function(){
+        $jfirstvisit(this).hide( 1000 );
+       });
+      });
+	}
+
+	
+
+					//Validate email before sending to LISTRAK
+						$j_1_11(document).ready(function() {
+							$j_1_11('#newsletter-footer-form').submit(function(e) {
+								var sEmail = $j_1_11('#footerEmail').val();
+								// Checking Empty Fields First
+								if ($j_1_11.trim(sEmail).length == 0) {
+									e.preventDefault();
+									$j_1_11('.emailError').html("Email field can not be blank!");
+									return false;
+								} else if (!validateEmail(sEmail)) {
+									e.preventDefault();
+									$j_1_11('.emailError').html("Invalid email address!");
+									return false;
+								} else {
+									return true;
+								}
+							});
+						});
+						
+						function validateEmail(sEmail) {
+							var filter = /^[a-z0-9_\-.\+]+\@[a-z0-9.-]+\.[a-z0-9]{2,4}$/i;
+							if (filter.test(sEmail)) {
+								return true;
+							} else {
+								return false;
+							}
+						}
+					
+<!--//<![CDATA[
+var m3_u = (location.protocol=='https:'?'https://a1.booksamillion.com/content/delivery/ajs.php':'http://a1.booksamillion.com/content/delivery/ajs.php');var m3_r = Math.floor(Math.random()*99999999999);if (!document.MAX_used) document.MAX_used = ',';document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);document.write ("?zoneid=999&bam_id=7552526097100");document.write ('&amp;cb=' + m3_r);if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);document.write ("&amp;loc=" + escape(window.location));if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));if (document.context) document.write ("&context=" + escape(document.context));if (document.mmm_fo) document.write ("&amp;mmm_fo=1");document.write ("'></scr"+"ipt>");
+//]]>-->
+
+		/* Execute the Google Analytics calls */
+		track_google_universal_analytics(); 
+	
+
+/*DO NOT ALTER *** Booksamillion.com*/(function(e){var t="1004",n=document,r,i,s={http:"http://cdn.mplxtms.com/s/MasterTMS.min.js",https:"https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"},o=s[/\w+/.exec(window.location.protocol)[0]];i=n.createElement("script"),i.type="text/javascript",i.async=!0,i.src=o+"#"+t,r=n.getElementsByTagName("script")[0],r.parentNode.insertBefore(i,r),i.readyState?i.onreadystatechange=function(){if(i.readyState==="loaded"||i.readyState==="complete")i.onreadystatechange=null}:i.onload=function(){try{e()}catch(t){}}})(function(){});
+
+ 
+window._oiqq = window._oiqq || []; 
+_oiqq.push(['oiq_doTag']); 
+
+(function() { 
+var oiq = document.createElement('script'); oiq.type = 'text/javascript'; oiq.async = true; 
+oiq.src = document.location.protocol + '//px.owneriq.net/stas/s/ag3rxq.js'; 
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oiq, s); 
+})(); 
+

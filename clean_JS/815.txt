@@ -1,0 +1,196 @@
+
+  WebFontConfig = {
+    google: { families: [ 
+      
+          'Montserrat:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+      	
+      		,
+      	      
+        'Roboto:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+      	
+      		,
+      	      
+        'Roboto Condensed:100,200,300,400,500,600,700,800,900'
+	  
+      
+      
+    ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/yMEJIhhpauECeZIwlBsMSSufHSJMtxpoHDjWa9N9/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+  
+  Shopify.doNotTriggerClickOnThumb = false; 
+                                       
+  var selectCallbackQuickview = function(variant, selector) {
+      var productItem = jQuery('.quick-view .product-item');
+          addToCart = productItem.find('.add-to-cart-btn'),
+          productPrice = productItem.find('.price'),
+          comparePrice = productItem.find('.compare-price'),
+          totalPrice = productItem.find('.total-price span');           
+      
+      if (variant) {
+        if (variant.available) {
+          // We have a valid product variant, so enable the submit button
+          addToCart.removeClass('disabled').removeAttr('disabled').text(window.inventory_text.add_to_cart);
+    
+        } else {
+          // Variant is sold out, disable the submit button
+          addToCart.val(window.inventory_text.sold_out).addClass('disabled').attr('disabled', 'disabled');
+        }
+    
+        // Regardless of stock, update the product price
+        productPrice.html(Shopify.formatMoney(variant.price, "<span class=money>${{amount}}</span>"));
+    
+        // Also update and show the product's compare price if necessary
+        if ( variant.compare_at_price > variant.price ) {
+          comparePrice
+            .html(Shopify.formatMoney(variant.compare_at_price, "<span class=money>${{amount}}</span>"))
+            .show();
+          productPrice.addClass('on-sale');
+        } else {
+          comparePrice.hide();
+          productPrice.removeClass('on-sale');
+        }
+                            
+        
+         
+      //update variant inventory
+        
+    
+      /*recaculate total price*/
+        //try pattern one before pattern 2
+        var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+        var unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);
+
+        if (!unitPriceTextMatch) {
+          regex = /([0-9]+[.|,][0-9]+)/g;
+          unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);     
+        }
+
+        if (unitPriceTextMatch) {
+          var unitPriceText = unitPriceTextMatch[0];     
+          var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+          var quantity = parseInt(jQuery('.quick-view input[name=quantity]').val());
+          var totalPrice = unitPrice * quantity;
+
+          var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+          regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;     
+          if (!totalPriceText.match(regex)) {
+            regex = /([0-9]+[.|,][0-9]+)/g;
+          } 
+          totalPriceText = totalPriceText.match(regex)[0];
+
+          var regInput = new RegExp(unitPriceText, "g"); 
+          var totalPriceHtml = jQuery('.quick-view .price').html().replace(regInput ,totalPriceText);
+          jQuery('.quick-view .total-price span').html(totalPriceHtml);     
+        }
+    /*end of price calculation*/
+
+    
+        
+        
+        /*begin variant image*/
+        if (variant && variant.featured_image) {
+            var newImage = Shopify.resizeImage(variant.featured_image.src, 'small');
+            newImage = newImage.replace(/https?:/,'');
+            jQuery('.quick-view .quickview-more-views img').each(function() {
+              var grandSize = jQuery(this).attr('src');
+              if (grandSize == newImage) {
+                jQuery(this).parent().trigger('click');              
+                return false;
+              }
+            });
+        }
+        /*end of variant image*/  
+    
+      } else {
+        // The variant doesn't exist. Just a safegaurd for errors, but disable the submit button anyway
+        addToCart.text(window.inventory_text.unavailable).addClass('disabled').attr('disabled', 'disabled');
+      }
+  };
+
+// <![CDATA[
+jQuery(document).ready(function() {    //
+    var $modalParent        = jQuery('div.newsletterwrapper'),
+        modalWindow         = jQuery('#email-modal'),
+        emailModal          = jQuery('#email-modal'),
+        modalPageURL        = window.location.pathname; 
+          
+    modalWindow = modalWindow.html();
+    modalWindow = '<div id="email-modal">' + modalWindow + '</div>';
+    $modalParent.css({'position':'relative'});
+    jQuery('.wrapper #email-modal').remove();
+    $modalParent.append(modalWindow);
+  
+    if (jQuery.cookie('emailSubcribeModal') != 'closed') {
+        openEmailModalWindow();
+    };
+      
+    jQuery('#email-modal .btn.close').click(function(e) {
+        e.preventDefault();
+        closeEmailModalWindow();
+    });
+    jQuery('body').keydown(function(e) {
+        if( e.which == 27) {
+            closeEmailModalWindow();
+            jQuery('body').unbind('keydown');
+        }
+    });
+    jQuery('#mc_embed_signup form').submit(function() {
+        if (jQuery('#mc_embed_signup .email').val() != '') {
+            closeEmailModalWindow();
+        }
+    });
+      
+    function closeEmailModalWindow () {
+        jQuery('#email-modal .modal-window').fadeOut(600, function() {
+            jQuery('#email-modal .modal-overlay').fadeOut(600, function() {
+                jQuery('#email-modal').hide();
+                jQuery.cookie('emailSubcribeModal', 'closed', {expires:1, path:'/'});
+            });
+        })
+    }
+    function openEmailModalWindow () {
+        jQuery('#email-modal').fadeIn(600, function() {
+           jQuery('#email-modal .modal-window').fadeIn(600);
+        });
+    }
+      
+});
+// ]]
+// ]]>
+/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('2141-590-10-6077');/*]]>*/

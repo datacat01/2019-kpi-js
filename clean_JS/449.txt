@@ -1,0 +1,71 @@
+
+        window.__INITIAL_STATE__ = {"properties":{"ASSET_HOST":"//assets.macysassets.com","dynamicSlideshowZones":[],"loyaltyZones":[]}};
+    
+
+    var utag_data = utag_data || {};
+        utag_data[ 'page_type' ] = 'home page';
+            utag_data[ 'experimentation_ids' ] = ["379-11"];
+            utag_data[ 'event_name' ] = 'experiment';
+
+
+  var utag_data = utag_data || {};
+  (function () {
+      var a;
+
+          a = '//tags.tiqcdn.com/utag/macys/main/prod/utag.js';
+
+      var c = 'script',
+          d = document.createElement(c);
+      d.src = a;
+      d.type = 'text/java' + c;
+      d.async = true;
+      a = document.getElementsByTagName(c)[0];
+      a.parentNode.insertBefore(d, a);
+  })();
+
+
+    (function( window ) {
+       if ( typeof window.MACYS === 'undefined' ) {
+            window.MACYS = {};
+        }
+        if ( ! window.MACYS.brightTag ) {
+            window.MACYS.brightTag = {};
+        }
+        function getPageIndex() {
+            var pageIndex = "1";
+            try {
+                pageIndex = document.getElementsByClassName("paginationNumbers")[0].getElementsByClassName("currentPage")[0].textContent;
+            } catch(e){}
+
+            return pageIndex;
+        }
+        // FIXME page and features need to set this
+        window.MACYS.brightTag.navigation = {
+            "pageName" : "Macy*s(xx-xx-xx-xx.index)",
+            "pageID" : "",
+            "pageIndex" : getPageIndex(),
+            "registryMode" : ("SITE" === "WEDDING_REGISTRY")?"YES":"NO"
+        };
+
+        require.config({
+            paths: {
+                commonUtil: '/js/min/common/util',
+                cookie: '/js/min/common/util/Cookie',
+                logger: '/js/min/common/util/Logger',
+                globals: '/js/min/common/util/Globals'
+            }
+        })
+
+
+    })( window );
+
+
+      (function( window ) {
+        if ( ! window.MACYS.IntlShipping ) {
+            window.MACYS.IntlShipping = {};
+        }
+        window.MACYS.IntlShipping.fiftyOneWelcomeMatUrl = "embassy.fiftyone.com";
+        window.MACYS.IntlShipping.fiftyOneBtpMerchantId = "2181";
+    })( window );
+
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/public/f7faea58d159243dc074b074928f3']);

@@ -1,0 +1,49 @@
+
+var dataLayer = [{
+ cartid: "20190414102758511015"
+ ,source: "STRWEB15"
+ ,pagename: "/index.asp" 
+ ,memberflag: "N" 
+ ,loggedin: "N"
+ ,server_id: "www.stauer.com"
+ ,email: ""
+ ,emailSHA256: ""
+	,utm_source: ""
+	,utm_medium: ""
+	,utm_term: ""
+	,utm_content: ""
+	,utm_campaign: ""
+	,RMID: ""
+	,RRID: ""
+
+}];
+
+
+
+
+
+					function val_search(){
+						if(document.searchform.p_keyword.value.length > 0 && document.searchform.p_keyword.value != "search by item # or keyword"){
+							return true;
+						}else{
+							return false;
+						}
+					}
+					
+
+	
+
+		  $(document).ready(function(){
+		    $('#banner-slide').slick({
+		      arrows: true,
+		      autoplay: true,
+		      autoplaySpeed: 5000,
+		    });
+		  });
+		
+
+if(window._GUARANTEE && _GUARANTEE.Loaded) {
+   _GUARANTEE.Hash = 'T88F%2FQZmMHRd8uj7uRdMllMkVkB0H30Dfb6MTaE6mUZGG7eTkAgGJjE3yhQf55W9uwxYcMXDG2LyP93QSU11vg%3D%3D';
+   _GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+}
+

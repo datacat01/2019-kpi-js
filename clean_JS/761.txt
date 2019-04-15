@@ -1,0 +1,2040 @@
+(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1339728-1f0b-4f20-94b0-78a88e5e93411.js','script','ire',document,window);
+ire('identify', {customerId:'', customerEmail:''});
+
+var url = window.location.href;
+if (url.includes("search")) {
+function getSearchParams(k){
+var p={};
+location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+return k?p[k]:p;
+}
+var searchvalue = getSearchParams("q")
+if(searchvalue != "")
+{
+document.title = "Search Results for " + searchvalue;
+}
+}
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-295611-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'bbsj-bizchair';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/on/demandware.store/Sites-bizchair-Site/default/Home-Showredesign" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-bizchair-Site/default/Home-FullSiteRedesign')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-bizchair-Site/default/Home-FullSiteRedesign',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+$(window).on('load', function(){
+if($(".product-info:contains('Kids Furniture')").length)
+{
+  	$("#btnImageOnly").hide();
+        $("#btnTextImage").hide();
+  }
+
+
+$("#signUpPrompt").hide();
+
+$('.bizcontainer a').on( "click", function() {
+  _ltk.Modal.load('Modal Acquisition');
+});
+
+});
+
+
+(function($){
+    function equalizeHeights(selector) {
+        var heights = new Array();
+
+        // Loop to get all element heights
+        $(selector).each(function() {
+
+            // Need to let sizes be whatever they want so no overflow on resize
+            $(this).css('min-height', '0');
+            $(this).css('max-height', 'none');
+            $(this).css('height', 'auto');
+
+            // Then add size (no units) to array
+            heights.push($(this).height());
+        });
+
+        // Find max height of all elements
+        var max = Math.max.apply( Math, heights );
+
+        // Set all heights to max height
+        $(selector).each(function() {
+            $(this).css('height', max + 'px');
+        }); 
+    }
+
+/* Do Not Remove */
+function showHours(){}
+function hideHours(){}
+
+$(window).on('load', function(){
+
+/* Placement fix in template */
+/*
+if( $("#horizontal-filters-box").length > 0  ){
+if( $(".breadcrumb-refinements").length > 0  ){
+ $(".breadcrumb-refinements").prependTo( $("#horizontal-filters") )
+}
+var refLen = $(".refinement").length;
+for(r = 0; r < refLen; r++ ){
+if( $(".refinement:eq(" + r + ")").html().indexOf("<") < 0){
+$("#horizontal-filters-box").attr("class","showFilters"); 
+}
+}
+}
+*/
+
+// Fix heights on page load
+equalizeHeights($("#category-tiles-section .refinement-link span"));
+        
+        
+function ommitLabel(){
+var labLen = $("#category-tiles-section .refinement-link").length;
+
+for(sl = 0; sl < labLen; sl++ ){
+    var labWor = [];
+    labWor = $("#category-tiles-section .refinement-link:eq(" + sl + ") span").text().toString().split(" ");
+    var txtLen = $("#category-tiles-section .refinement-link:eq(" + sl + ") span").text().length;
+    var worLen = labWor.length;
+    
+    if(txtLen > 30){
+    var maxWor  = 2;
+    } 
+    if(txtLen < 15){
+    var maxWor  = 4;
+    } else {
+    var maxWor  = 3;
+    }   
+    
+
+    
+    
+    // for over the limit
+    if(worLen > 4 || worLen > maxWor){
+var visWor = labWor.slice(0,maxWor);    
+var hidWor = labWor.slice(maxWor,100);
+var visWorStr = visWor.join(" ");       
+var hidWorStr = hidWor.join(" ");
+    $("#category-tiles-section .refinement-link:eq(" + sl + ") span").attr("class","containsOmmit");
+    $("#category-tiles-section .refinement-link:eq(" + sl + ") span").html(visWorStr + " <ins>" + hidWorStr + "</ins>");
+    }
+}   
+}           
+        
+function resetLabel(){
+$(".refinement-link").removeClass("ommited");   
+}   
+        
+// LABEL SPANS      
+function getWidth(){
+    var winWidth = $( window ).width();
+    return winWidth;
+}   
+ommitLabel();   
+        // Fix heights on window resize
+        var iv = null;
+        $(window).resize(function() {
+            if(iv !== null) {
+                window.clearTimeout(iv);
+            }
+            // Needs to be a timeout function so it doesn't fire every ms of resize
+            iv = setTimeout(function() {
+        equalizeHeights($("#category-tiles-section .refinement-link span"));
+            }, 120);
+        });
+    });
+})(jQuery);
+    var em = "";
+    var zp = "";
+    $(".orderStatusForm").submit(function(){
+    var dataString = 'zip='+ zp +'&email='+em; 
+    if (em == "" || zp == ""){
+        alert("Please enter both your e-mail address and ZIP code."); 
+        return false; 
+    } else { 
+        $(".orderStatusForm").hide(); 
+        window.open("https://bizchair.secure.force.com/Public/OrderTracking?" + dataString  , "myNewWin" , "scrollbars=1,resizable=1,width=1100,height=1100,left=0, top=0");
+    }   
+    }); 
+    
+
+    
+    function modClose(boxId,linkId){
+        $("#" + boxId).slideToggle( "fast", function() {
+//  $(".learn-more").show();    
+$("#" + linkId).attr("class","learn-more unfold");
+//  Animation complete.
+});     
+}   
+    
+jQuery(document).ready(function() {
+    
+$(".package-heading a").hover(function() {
+$(".package-icon").addClass("hover");
+}, function() {
+$(".package-icon").removeClass("hover");
+}
+);  
+    
+$(".expert-heading a").hover(function() {
+$(".headphones-icon").addClass("hover");
+}, function() {
+$(".headphones-icon").removeClass("hover");
+}
+);  
+    
+$(".sixty-heading a").hover(function() {
+$(".shield-icon").addClass("hover");
+}, function() {
+$(".shield-icon").removeClass("hover");
+}
+);      
+
+$(".po-heading a").hover(function() {
+$(".dollar-symbol-icon").addClass("hover");
+}, function() {
+$(".dollar-symbol-icon").removeClass("hover");
+}
+);
+/* Sprites hover */
+$(".package-icon").hover(function() {
+$(".package-heading").addClass("hover");
+}, function() {
+$(".package-heading").removeClass("hover");
+}
+);  
+
+$(".headphones-icon").hover(function() {
+$(".expert-heading").addClass("hover");
+}, function() {
+$(".expert-heading").removeClass("hover");
+}
+);  
+    
+$(".shield-icon").hover(function() {
+$(".sixty-heading").addClass("hover");
+}, function() {
+$(".sixty-heading").removeClass("hover");
+}
+);  
+    
+$(".dollar-symbol-icon").hover(function() {
+$(".po-heading").addClass("hover");
+}, function() {
+$(".po-heading").removeClass("hover");
+}
+);      
+    
+    
+    
+$(".guide-link").hover(function() {
+$(".fa-guide").addClass("guide-link-focus");
+}, function() {
+$(".fa-guide").removeClass("guide-link-focus");
+}
+);  
+    
+$(".learn-more.unfold").click(function() {
+
+parId = $(this).attr("id");
+    
+$(this).addClass("background-color");   
+    thisDiv = $(this).next("div");  
+$(thisDiv).slideToggle( "fast", function() {
+//      Animation complete.
+});
+});
+    
+// Add class to main menu panels
+if($(".menu-category.level-1").length > 0){
+    var panelLen = $(".level-2.column-1").length;
+    for(panelPos = 0; panelPos < panelLen; panelPos++ ){
+    $(".level-2.column-1:eq(" + panelPos + ")").addClass("panel" + panelPos );
+    }
+}   
+
+// Home Page New Arrivals Panel MOBILE
+if($("#bannerNewArrivalsMobile").length > 0){
+
+//  if($(".user-info").length > 0){  var userName = ($(".user-info span:eq(1)").text()).split(" ")[0]; if(userName.indexOf("Log") == -1 ){  $(".banPanMobileLeft h3").text("Hi " + userName + ","); } } 
+var itemsMobArr = [];
+var itemsAllMobileLen = 3;
+var imagesMobLen = 10;
+var imPanDivClass = "imPan";
+var bkNum = 1 + Math.floor(Math.random() * 3);  
+
+for(iz = 0; iz < itemsAllMobileLen; iz++) {
+var imMobPosition = 1 + Math.floor(Math.random() * imagesMobLen);
+    if(itemsMobArr.indexOf(imMobPosition) > -1){
+var imMobPosition = 1 + Math.floor(Math.random() * imagesMobLen);
+    } else {
+//  $(".imPan:eq(2)" ).text("zzz"); 
+    }
+itemsMobArr.push(imMobPosition);
+    
+};  
+// place images
+for(arrP = 0; arrP < itemsMobArr.length ; arrP++){
+    $(".imPanMobile:eq(" + arrP + ")").addClass("imageBoxMobile" + itemsMobArr[arrP]);
+}           
+    }
+// Home Page New Arrivals Panel MOBILE End  
+    
+// Home Page New Arrivals Panel 
+if($("#bannerNewArrivals").length > 0){
+
+    if($(".user-info").length > 0){ 
+var userName = ($(".user-info span:eq(1)").text()).split(" ")[0];
+//  alert(userName);    
+if(userName.indexOf("Log") == -1 ){ 
+$(".banPan h3").text("Hi " + userName + ",");
+}
+}   
+var itemsArr = [];
+var itemsAllLen = 5;
+var imagesLen = 10;
+var imPanDivClass = "imPan";
+var bkNum = 1 + Math.floor(Math.random() * 5);  
+    $("#bannerNewArrivals").addClass("background" + bkNum);
+
+for(iz = 0; iz < itemsAllLen; iz++) {
+var imPosition = 1 + Math.floor(Math.random() * imagesLen);
+    if(itemsArr.indexOf(imPosition) > -1){
+var imPosition = 1 + Math.floor(Math.random() * imagesLen);
+    } else {
+//  $(".imPan:eq(2)" ).text("zzz"); 
+    }
+itemsArr.push(imPosition);
+    
+};  
+// place images
+for(arrP = 0; arrP < itemsArr.length ; arrP++){
+    $(".imPan:eq(" + arrP + ")").addClass("imageBox" + itemsArr[arrP]);
+}       
+
+var randDia =Math.random();
+if(randDia < 0.33){
+$("#bannerNewArrivals").addClass("diagonal1");  
+} else {
+if(randDia < 0.66){
+$("#bannerNewArrivals").addClass("diagonal2");  
+} else { 
+$("#bannerNewArrivals").addClass("diagonal3");  
+}
+    
+}       
+    }
+// Home Page New Arrivals Panel End
+    
+            var defaultText = "Search...";
+            var searchBox = $('.header-search form[name="simpleSearch"] input[type="text"]');
+            //set default text on load
+            searchBox.val(defaultText);
+            searchBox.addClass("italicText");
+            //on focus behaviour
+            searchBox.focus(function(){
+                if ($(this).val() == defaultText) {//clear text field
+                    $(this).val('');
+                    searchBox.removeClass("italicText");
+                }
+            });
+ 
+            //on blur behaviour
+            searchBox.blur(function(){
+                if ($(this).val() == "") {//restore default text
+                    $(this).val(defaultText);
+                    searchBox.addClass("italicText");
+                }
+            });     
+    
+    
+    
+if($("#category-tiles").length > 0){
+    $("#category-tiles").remove();
+    $(".search-result-content").after($("#sectionCopy"));
+    $("#sectionCopy").attr("style","display:block;");
+    $("#primary").prepend($("#category-tiles"));
+	$("#horizontal-filters .refinement.category-refinement").show();
+}   
+
+    
+    
+function closeFinancePopUp(){
+    $("#financePopUpBack, #financepageAsset").hide();
+}   
+function showFinancePopUp(){
+    $("#financePopUpBack, #financepageAsset").show();
+}
+
+    
+$("#financePopUpBack, #closeFinancePopup, #financepageAsset a").click(function() {
+$("#financePopUpBack, #financepageAsset").hide();
+}); 
+$("#finance-options").click(function() {
+$("#financePopUpBack, #financepageAsset").show();
+}); 
+    
+
+$("#financepageAsset #directcapital a").click(function() {
+$("#financePopUpBack, #financepageAsset").show();
+}); 
+
+    
+/* Redesign */
+    
+if($("#menuBack").length == 0){
+    $("#main").prepend("<div id ='menuBack' style='display: none; position: fixed; z-index: 100; left: 0px; top:0px;  width: 100vw; height: 100%; margin: 0px; padding: 0px; background: rgba(125, 125, 125, 0.25);'></div>")
+}   
+$('.level-2').hover(
+    function () { 
+    $("#menuBack").fadeIn("fast");
+    },
+    function () { 
+    $("#menuBack").fadeOut("fast");
+    }
+);      
+
+$("#hours-over").mouseover(function() {
+        $("#hours-display").show();
+    }); 
+$("#hours-over").mouseout(function() {
+        $("#hours-display").hide();
+    });     
+    
+
+$('#hours-over').on('click', function () {
+if(  $('#hours-display').attr("style").indexOf("none") > -1 ){
+    document.getElementById('hours-display').style.display = 'block';
+} else {
+    document.getElementById('hours-display').style.display = 'none';
+}
+});
+
+    
+$('.menu-toggle').on('click', function () {
+if(  $('#wrapper').attr("class").indexOf("menu-active") > -1 ){
+ $('#wrapper').removeClass('menu-active');
+$('.navigation-bar').attr("class","navigation-bar dark w-nav");
+} else {
+ $('#wrapper').addClass('menu-active');
+$('.navigation-bar').addClass('positionRelative');
+}
+$('#wrapper').toggleClass('menu-active');   
+}); 
+
+    
+/* Redesign End */
+    
+    $("span.text-span a").attr("title","Call Us Toll-Free");
+
+
+
+
+/* Horizontal Filters */
+    $( ".close-all-filters-button, #all-filters-back, #all-filters-close-x" ).click(function() {
+    $( "#all-filters-back" ).fadeOut(200);
+    $( "#all-filters" ).fadeOut(500);       
+    });     
+    $(".refinement.refinement-all h3").click(function() {
+
+        $( "#all-filters-back" ).fadeIn(200);
+        $( "#all-filters" ).fadeIn(500);    
+
+        }); 
+    $(".topRefinements, .refinement-all").click(function() {
+    var topRul = $(".topRefinements h3").length + 1;
+        for(tr = 0; tr < topRul; tr++){
+            $(".topRefinements:eq(" + tr + ") ul").attr("data-tr",tr);
+            if( $(".topRefinements:eq(" + tr + ") ul").attr("style") == "display: block;" ){
+                $(".topRefinements:eq(" + tr + ") p").hide();
+                $(".topRefinements:eq(" + tr + ") ul").slideUp("fast");
+                $(".topRefinements:eq(" + tr + ") ul").attr("class","");
+            }
+        }
+    });
+    
+    /* TOGGLE */
+    $( "#horizontal-filters .toggleFilter" ).click(function() {
+    //  $( "#horizontal-filters .toggle ul" ).hide();
+    //  $("refinement-all").attr("style","z-index: 1;");
+    if( $(this).next().attr("class").indexOf("expanded") < 0 ){
+        $(this).next().slideDown("500").attr("style","");
+    } else {
+        $(this + " p").hide();
+        $(this).next().slideUp("300").attr("style","");
+    }
+    });
+/* Horizontal Filters end */
+
+
+}); // end on load
+
+
+
+
+    
+    
+    $(".tbEmail").keyup(function(){em = $(this).val();});
+    $(".tbEmail").blur(function(){em = $(this).val();});
+    $(".tbPostalCode").keyup(function(){zp = $(this).val();});
+    $(".tbPostalCode").blur(function(){zp = $(this).val();});
+    
+var thisFormId = "";
+    
+$(".fotOrdLink").click(function() {
+thisFormId = $(this).next("form").attr("id");   
+$(this).next("form").slideToggle( "fast", function() {
+//      Animation complete.
+});
+});
+$(".modalClose").click(function() {
+$(this).parents("form").slideToggle( "fast", function() {
+//      Animation complete.
+});
+});
+
+if($(".breadcrumb").length > 0 && $("#product-content").length ==1){
+var breadHtmlLen = $(".breadcrumb").html().length;
+    if(breadHtmlLen < 10){
+        var wholeUrl = window.location.toString(); 
+        var miniUrl = wholeUrl.split('?')[0];
+        
+
+$( ".breadcrumb" ).load( miniUrl + " .breadcrumb" );    
+        
+        
+$.get( miniUrl, function( data ) {
+ // $( ".result" ).html( data );
+ //  alert( "Load was performed." );
+
+if( $(".pdp-guide-container").length == 0){
+getGuide();     
+}   
+            
+});
+    
+    }
+    
+function getGuide(){    
+if($('.breadcrumb-element').length > 0){
+    var posIn = 0;
+    var buyersGuideId = "";
+    var buyersguideUrl = "";
+    var beLen = $('.breadcrumb-element').length;
+    for(tp = 0; tp < beLen; tp++){
+        
+        
+        if($(".breadcrumb-element:eq(" + tp + ")").text() == "Recliners"){
+        buyersGuideId = "Recliners";
+        buyersguideUrl = "recliner-buyer-guide";    
+        }else{
+        
+                if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Kids") ){
+                buyersGuideId = "Kids Furniture";
+                buyersguideUrl = "kids-furniture-buyers-guide"; 
+                }else{
+                
+                
+                            if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Barstool") ){
+                            buyersGuideId = "Barstools";
+                            buyersguideUrl = "barstool-buyers-guide";   
+                            }else{
+                                
+                                
+                                
+                                        if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Office Chairs") ){
+                                        buyersGuideId = "Office Chairs";
+                                        buyersguideUrl = "office-chairs-buyers-guide";  
+                                        }else{
+                                                            
+                                            if($(".breadcrumb-element:eq(" + tp + ")").text() == "Shop"){
+                                            posIn = tp + 1; 
+                                            }
+                                            if($(".breadcrumb-element:eq(" + posIn + ")").text() == "School"){
+                                                    buyersGuideId = "School Furniture";
+                                                    buyersguideUrl = "school-furniture-buyers-guide";   
+                                            }
+                                            if($(".breadcrumb-element:eq(" + posIn + ")").text() == "Restaurant"){
+                                                    buyersGuideId = "Restaurant Furniture";
+                                                    buyersguideUrl = "restaurant-furniture-buyers-guide";   
+                                            }
+                                            if($(".breadcrumb-element:eq(" + posIn + ")").text() == "Church"){
+                                                    buyersGuideId = "Church Chairs";
+                                                    buyersguideUrl = "church-chair-buyer-guide";
+                                            }                                                               
+                                    }
+                        }
+                }
+        }
+    }
+    
+if(buyersguideUrl.length > 0){
+$(".pdp-social-container").after( "<div class = 'pdp-guide-container'><ul><li class='pdp-guide'><span class='fa fa-guide fa-guide-" + buyersguideUrl + "'  style=' '></span><a class='guide-link' href='" + buyersguideUrl + ".html'>" + buyersGuideId + " Buyers Guide</a></span></li></ul></div>" );  
+}   
+
+}
+}
+
+getGuide();
+    
+}
+    
+    
+    
+$(function(){
+
+    $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: true,               
+        directionNav: true,           
+        prevText: "Previous",         
+        nextText: "Next",
+        slideshowSpeed: 6000,
+        //  slideshowSpeed: 6000,
+        slideshow: false
+  });   
+    
+    
+$('.panel11').remove();     
+    
+    
+function initializeNavLinks() {
+var maxLi = 2;  
+    if( $('.nav-column').length > 0 ){
+        
+        var navColLen = $('.nav-column').length;
+        
+        for(nc = 0; nc < navColLen; nc++ ){
+            
+        if ($('.nav-column:eq(' + nc + ') li').length > 0 && $('.nav-column:eq(' + nc + ')').attr('class').indexOf('brands') == -1) { 
+        var navParLen = $('.nav-column:eq(' + nc + ') li').length; 
+        
+        if (navParLen > 1) { 
+            for (var pp = 0; pp < navParLen; pp++) { 
+                if (pp > maxLi) { 
+                    $('.nav-column:eq(' + nc + ') li:eq(' + pp + ')').addClass("showHideLink");
+                } 
+            }
+            if ($('.nav-column:eq(' + nc + ') li').length  > ( maxLi + 1) ) { 
+                    $('.nav-column:eq(' + nc + ')').append("<li class='moreLessLinks'><a href='javascript:void(0)' class = 'lesslink'>Show more...</a></li>"); 
+                }           
+        
+        }
+    }           
+            
+        }
+       }
+        
+}   
+    
+    
+
+    
+var navSwitch = true; 
+    if(navSwitch == true){
+initializeNavLinks();
+    }
+
+$(".moreLessLinks").on('click', function(){
+    var thisTxt = $(this).text();
+    if( thisTxt == "Show more..." ){
+    $(this).html("<a href='javascript:void(0)' class = 'lesslink'>Show less...</a>");   
+    }  else {
+    $(this).html("<a href='javascript:void(0)' class = 'lesslink'>Show more...</a>");   
+    }   
+    $(this).parent("ul").find("li.showHideLink").toggle();
+    
+});     
+
+/* Flexslider add */
+
+    //  price-standard  -   list price
+    //  price-sales     -   sale price
+    //  product-badges  -   badges  
+    if( $(".slider-flat").length > 0){
+    var prodList= "";
+    var prodLen = $(".slider-flat .product-image").length;
+    for(pl = 0; pl < prodLen; pl++){
+        var hrefCode = $(".slider-flat .product-image:eq(" + pl + ") a:eq(0)").attr("href");
+        prodList += hrefCode;
+        prodList += ", ";
+        $(".slider-flat .product-image:eq(" + pl + ")").prepend("<div class = 'addon adn-" + pl + "'></div>");
+        $( "div.adn-" + pl).load( "hrefCode #target" );
+        }
+        
+        $("#featured-items-desktop-flexslider").before("<div style ='clear:both;'>" + prodList + "</div>");
+      $(".product-image a").hover(function(){
+      });       
+    }
+/* Flexslider add end */    
+    
+    
+    
+function swatchResize(){
+if( $(".product-variations ul li.attribute div.value").length > 0){
+
+    
+var swLen = $(".product-variations ul li div ul li .swatchanchor img").length;
+if(swLen < 14){
+var largerImage = "sw=50&sh=50&sm=fit"; 
+for(isi = 0; isi < swLen; isi++){
+var imSrc = $(".product-variations ul li div ul li .swatchanchor img:eq(" + isi + ")").attr("src"); 
+var imSrcArr = [];
+if(imSrc.indexOf("?") > -1){
+    imSrcArr =  imSrc.split("?");
+    imSrcRoot = imSrcArr[0];
+    imSrcApp =  imSrcArr[1];
+} else {
+imSrcArr = [];
+imSrcRoot = ""; 
+imSrcApp =  "";
+}
+
+$(".product-variations ul li div ul li .swatchanchor:eq(" + isi + ")").attr("style", "margin: 0 .3rem .3rem 0;");   
+$(".product-variations ul li div ul li .swatchanchor:eq(" + isi + ") img").attr("src",imSrcRoot + "?" + largerImage);   
+}   
+}   
+}   
+}   
+
+if( $("#pdpMain").length > 0 ){
+    
+swatchResize(); 
+    
+}   
+/* Brands pages */
+function alphabeticalLinks(){
+    var alphabet =[];
+    var al = 0;
+    alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
+    var alpLen = alphabet.length;
+    for(al = 0; al < alpLen; al++){
+        if(al < (alpLen - 1) ) { 
+            var sepClass= ' alpSep'; 
+        } else {
+            var sepClass= ''; 
+        }
+        if(alphabet[al] =="#"){
+            $("#links-letters li").append("<a href='javascript:void(0);' class='single-letter-link link-num " + sepClass + "'>" + alphabet[al].toUpperCase() + "</a>"); 
+        } else {
+            $("#links-letters li").append("<a href='javascript:void(0);' class='single-letter-link link-" + alphabet[al] + sepClass + "'>" + alphabet[al].toUpperCase() + "</a>");  
+        }
+
+    }
+}
+
+function brandsLinks(){
+    var allLinksLen = $(".brand-link").length;
+    var alphabetDiv =[];
+    var ald = 0;
+    alphabetDiv = 'abcdefghijklmnopqrstuvwxyz#'.split('');
+    var alpLen = alphabetDiv.length;
+    for(ald = 0; ald < alpLen; ald++){
+        if(alphabetDiv[ald] == "#"){
+            $("#links-letters").append("<ul class='box-num'></ul>");    
+        } else {
+            $("#links-letters").append("<ul class='box-" + alphabetDiv[ald] + "'></ul>");   
+        }
+    }
+    if($('#alphabetical').width() > 480){
+        $("#alphabetical").show();
+    }
+
+/* Old logic tied to All brands based on links on the page */
+/* New logic looks at 'all-brands' category for all brands in store */  
+/*  
+    var alLi = 0;
+    for(alLi = 0; alLi < allLinksLen; alLi++ ){
+    var txtEl = $(".brand-link:eq(" + alLi + ")").text().replace(/^\s+|\s+$/g, '');
+    var urlEl = $(".brand-link:eq(" + alLi + ")").attr("href"); 
+    var addLi = "<li><a href='" + urlEl + "'>" + txtEl + "</a></li>";
+    $("#all-links-holder").append(addLi);       
+    }
+
+      $("#all-links-holder").find('li').sort(function(a, b) {
+        var upA = $(a).text().toUpperCase();
+        var upB = $(b).text().toUpperCase();
+        if(upA != upB)
+            return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
+      }).appendTo($("#sorted-links-holder"));   
+*/  
+//      var ul = $("#sorted-links-holder");
+        var ul = $("#all-brands");
+       
+        $('li', ul).each(function() {
+            if($('li:contains("' + $(this).text() + '")', ul).length > 1){
+                $(this).remove();
+            } else {
+                var firstLetterTxt =  $(this).text().replace(/^\s+|\s+$/g, '').charAt(0).toLowerCase();
+                if(firstLetterTxt == "1" || firstLetterTxt == "2" || firstLetterTxt == "3" || firstLetterTxt == "4" || firstLetterTxt == "5" || firstLetterTxt == "6" || firstLetterTxt == "7" || firstLetterTxt == "8" || firstLetterTxt == "9" || firstLetterTxt == "0"){
+                     $(".box-num").append($(this)); 
+                } else {
+                     $(".box-" + firstLetterTxt).append($(this));
+                }
+
+            }
+        });
+      
+      
+} 
+
+if($("#alphabetical").length > 0){
+        alphabeticalLinks();
+        brandsLinks();       
+        $(".single-letter-link").mouseover(function(){
+            var byLetter = $(this).attr("class").replace("link-","box-").replace("single-letter-link ","").replace(" alpSep","").replace(" selected-letter","").replace(" unselected-letter","");
+            $(".single-letter-link").removeClass("selected-letter");
+            $(".single-letter-link").addClass("unselected-letter");
+            $(this).removeClass("unselected-letter");
+            $(this).addClass("selected-letter");
+            $("ul.hovered").removeClass("hovered");   
+            $("#links-letters ul." + byLetter).addClass("hovered"); 
+            $("ul.hovered").mouseleave(function(){
+             if($("ul.hovered").is( ":focus" ) || $("ul.hovered li").is( ":focus" ) ){} else {
+                $("ul.hovered").removeClass("hovered");
+                $(".single-letter-link").removeClass("selected-letter").removeClass("unseleted-letter");
+                    }
+              });               
+            }); 
+        }   
+/* Brands pages end */
+    
+    
+});     
+    
+    
+
+var $pdpMain = $('#pdpMain');   
+// CUSHIONS SCRIPTS
+    // product radio options    
+    $pdpMain.on('change', '.product-options input[type="radio"]', function () {
+        var salesPrice = $pdpMain.find('.product-price .price-sales');
+        var thisVal = $(this).attr("data-combined");
+        var selectedItem = $(this);
+        salesPrice.text(thisVal);
+        /* verifyOptions(); */  
+        $(".cushRow").removeClass("selected-cushion");
+        $(this).closest("div.cushRow").addClass("selected-cushion");
+    });
+    //  radio options containers
+   /*
+    $('.free-cushion').change(function(event){
+        $(".cushRow").removeClass("selected-cushion");
+        $(this).closest("div.cushRow").addClass("selected-cushion");
+    });
+    */
+    $pdpMain.on('click', '.swatchanchor', function () {
+    }); 
+
+
+    $pdpMain.on('click', '.cushRow', function () {
+        var $thisDiv = $(this);
+        var salesPrice = $pdpMain.find('.product-price .price-sales');      
+        $(".cushRow").removeClass("selected-cushion");
+        $(this).closest("div.cushRow").addClass("selected-cushion");
+        $thisDiv.find('.free-cushion').prop("checked",true);
+        var priceUpd = $thisDiv.find('.free-cushion').attr("data-combined");
+        //  alert(priceUpd);
+        salesPrice.text(priceUpd);
+    }); 
+
+    // Show/hide for Samples    
+$pdpMain.on("click", ".cushion-link-image img", function() {
+    var parClassNoneInd = $(this).parent("span").attr("class").indexOf(" none ");
+
+if(parClassNoneInd === -1){
+    var imgDisp = $(this).attr("data");
+    $(".large-samples img").removeClass("visibleImage");
+    $(".large-samples").removeClass("hidden-samples");
+    $("." + imgDisp).addClass("visibleImage");
+    $(".large-samples").prependTo("#product-content");
+    $(".large-samples img").hide();
+    $(".click-to-close, .click-to-close-x, .click-to-close-x img").removeAttr("style");
+    $(".click-to-close img").removeAttr("style");
+    $(".large-samples .click-to-close, .large-samples .click-to-close img, .click-to-close-x",this).show();
+    $(".click-to-close").html( $(this).closest("span").next("span").html() );   
+}   
+    }); 
+    // Show/hide for Samples    
+    $pdpMain.on("click", ".large-samples, .large-samples img", function() {
+$(".large-samples img").removeClass("visibleImage");
+$(".large-samples").addClass("hidden-samples");
+$(".click-to-close-x").attr("style","display:none;");
+$(".large-samples").appendTo("#cushionsBox");
+$(".large-samples .click-to-close,.large-samples .click-to-close img, .click-to-close-x").hide();
+    });     
+    
+
+/*
+function setCookie(name, value, days){
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000)); 
+    var expires = "; expires=" + date.toGMTString();
+    document.cookie = name + "=" + value + expires;
+}
+function getParam(p){
+    var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+var gclid = getParam('gclid');
+if(gclid){
+    var gclsrc = getParam('gclsrc');
+    if(!gclsrc || gclsrc.indexOf('aw') !== -1){
+        setCookie('gclid', gclid, 90);
+    }
+}
+*/
+    
+    
+/* Redesign */
+
+    
+var currentContext = null;
+var isShowing = false;
+var closeCheck = null;
+function showMenu(context) {
+    hideMenus();
+    jQuery(context).find(".level-2").addClass("visible");
+}
+function hideMenus() {
+jQuery(".level-2").removeClass("visible");
+}
+function determine(context) {
+    if(context == currentContext && jQuery(context).is(':hover')) {
+        showMenu(context);
+    }
+}
+function closeMenu() {
+    if(isShowing) {
+        setTimeout(closeMenu, 500);
+    } else {
+        hideMenus();
+    }
+
+}
+jQuery(document).on('mouseover', '.level-1-li', function() {
+    var t = this;
+    currentContext = t;
+    isShowing = true;
+    setTimeout(function(){ determine(t); }, 200);
+});
+jQuery(document).on('mouseover', '.w-nav-link', function() {
+    var t = this;
+    currentContext = t;
+    isShowing = true;
+    setTimeout(function(){ determine(t); }, 200);
+});
+jQuery(document).on('mouseout','#navigation-two',function(evt) {
+    isShowing = false;
+    setTimeout(closeMenu, 500);
+});
+/*  
+jQuery(document).on('click','.hamburger-button',function(evt) {
+});
+*/  
+    
+    
+$('.menu-category li a').on('click', function (e) {
+    if ($(e.target).hasClass("has-sub-menu") && $('#wrapper').width() < 768) {    
+        e.preventDefault();
+        var $parentLi = $(this).closest('li');
+        var $toggle = $(this).find('.menu-item-toggle');
+        $parentLi.siblings('li').removeClass('active').find('.menu-item-toggle').removeClass('fa-chevron-up active').addClass('fa-chevron-down');
+        $parentLi.toggleClass('active');
+        $toggle.toggleClass('fa-chevron-down fa-chevron-up');
+    }
+});
+    
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 20) {
+        $(".navigation-bar").addClass("dropShadow");
+    } else {
+        $(".navigation-bar").removeClass("dropShadow");
+    }
+});
+
+    
+    
+/* Redesign end */  
+    
+
+
+
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('5730g000000Gn6r', document.getElementById('liveagent_button_online_5730g000000Gn6r'));
+liveagent.showWhenOffline('5730g000000Gn6r', document.getElementById('liveagent_button_offline_5730g000000Gn6r'));
+});
+
+liveagent.init('https://d.la4-c2-dfw.salesforceliveagent.com/chat', '5720g0000004Cap', '00D70000000KCcm');
+
+
+WebFontConfig = {
+google: { families: [ 'Montserrat:400,500,600,700', 'Open+Sans:400,600', 'Lato:100,300,700,100italic,300italic:latin', 'Crete+Round:400,400italic:latin' ] }
+};
+(function() {
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE"};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","SEARCH":"Search","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","COULD_NOT_SAVE_ADDRESS":"Could not save address. Please check your entries and try again.","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","INVALID_POSTAL":"Please enter a valid postal code.","INVALID_SHIPPING_ADDRESS":"We are unable to ship to PO Boxes, APO's or FPO's.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","FILE_TOO_BIG":"File size cannot exceed 10Mb.  Please resize your image and try again.","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of 5 and maximum of 5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a coupon code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"Please enter a valid email address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","AMAZON_LOGIN_ERROR":"Please log in with your current account    ","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-bizchair-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-bizchair-Site/default/Page-Include","continueUrl":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/Home-Show","staticPath":"/on/demandware.static/Sites-bizchair-Site/-/default/v1555079455970/","footerEmailSignUp":"/email-signup","addGiftCert":"/on/demandware.store/Sites-bizchair-Site/default/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-bizchair-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-bizchair-Site/default/Cart-AddProduct","cartShow":"/cart","giftRegAdd":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.bizchair.com/payment-instruments","addressesList":"https://www.bizchair.com/saved-addresses","wishlistAddress":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-bizchair-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-bizchair-Site/default/Product-Show","getBonusProducts":"/on/demandware.store/Sites-bizchair-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-bizchair-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-bizchair-Site/default/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-bizchair-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-bizchair-Site/default/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-bizchair-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-bizchair-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-bizchair-Site/default/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-bizchair-Site/default/COBilling-UpdateSummary","billingSelectCC":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COShipping-SelectShippingMethod","selectLtlDeliveryOption":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/Cart-SelectLtlDeliveryOption","resetPaymentForms":"/on/demandware.store/Sites-bizchair-Site/default/COBilling-ResetPaymentForms","compareShow":"/on/demandware.store/Sites-bizchair-Site/default/Compare-Show","compareAdd":"/on/demandware.store/Sites-bizchair-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-bizchair-Site/default/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-bizchair-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-bizchair-Site/default/StoreInventory-GetZipCode","billing":"/on/demandware.store/Sites-bizchair-Site/default/COBilling-Start","setSessionCurrency":"/on/demandware.store/Sites-bizchair-Site/default/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-bizchair-Site/default/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-bizchair-Site/default/Page-Show?cid=cookie_hint","rateLimiterReset":"/on/demandware.store/Sites-bizchair-Site/default/RateLimiter-HideCaptcha","csrffailed":"/on/demandware.store/Sites-bizchair-Site/default/CSRF-Failed","churchImagesJS":"/on/demandware.static/Sites-bizchair-Site/-/default/v1555079455970/js/embroidery/church-images.js","defaultImagesJS":"/on/demandware.static/Sites-bizchair-Site/-/default/v1555079455970/js/embroidery/default-images.js","sendToFriend":"/on/demandware.store/Sites-bizchair-Site/default/SendToFriend-Start","sendToFriendSubmit":"/on/demandware.store/Sites-bizchair-Site/default/SendToFriend-SubmitForm","sendToFriendSend":"/on/demandware.store/Sites-bizchair-Site/default/SendToFriend-Send","embroideryImageURL":"http://cdn.bizchair.com/emb-images/main%20images/","embroideryThumbnailURL":"http://cdn.bizchair.com/emb-images/thumbnails/","getOrderReferenceDetails":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-GetOrderReferenceDetails","getBillingAgreementDetails":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-GetBillingAgreementDetails","getOrderReferenceBillingDetails":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-GetOrderReferenceBillingDetails","getBillingAgreementBillingDetails":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-GetBillingAgreementBillingDetails","setOrderReferenceID":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-SetOrderReferenceID","setConsentStatus":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-SetConsentStatus","editButtonRedirect":"/on/demandware.store/Sites-bizchair-Site/default/AmazonPaymentsController-EditButtonRedirect"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":false,"LISTING_REFINE_SORT":true,"STORE_PICKUP":true,"COOKIE_HINT":false,"CHECK_TLS":false,"TOKENIZATION_ENABLED":true,"IS_MICROSITE":false,"AMAZON_MERCHANT_ID":"A2TISBDIX1VNVO","AMAZON_LOGIN_BUTTON_TYPE":"LwA","AMAZON_LOGIN_BUTTON_COLOR":"Gold","AMAZON_LOGIN_BUTTON_SIZE":"medium","AMAZON_LOGIN_REDIRECT_URL":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/en_US/AmazonPaymentsController-LoginButtonRedirect","AMAZON_PAY_REDIRECT_URL":"https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/en_US/AmazonPaymentsController-PayButtonRedirect","AMAZON_SCOPE":"profile postal_code payments:widget payments:shipping_address payments:billing_address","AMAZON_PAY_BUTTON_TYPE":"PwA","AMAZON_PAY_BUTTON_COLOR":"LightGray","AMAZON_PAY_BUTTON_SIZE":"large"};
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null,"SHIPPING_LOCATION_TYPE":null};
+window.User = {"zip":null,"storeId":null};
+window.AmazonOrder = {"orderReferenceID":null};
+}());
+
+
+    window.onAmazonLoginReady = function() {
+      amazon.Login.setClientId("amzn1.application-oa2-client.67f6c30240094ce0beb4acb538ac436b");
+    };
+
+
+    
+
+(function($){
+	function equalizeHeights(selector) {
+		var heights = new Array();
+
+		// Loop to get all element heights
+		$(selector).each(function() {
+
+			// Need to let sizes be whatever they want so no overflow on resize
+			$(this).css('min-height', '0');
+			$(this).css('max-height', 'none');
+			$(this).css('height', 'auto');
+
+			// Then add size (no units) to array
+	 		heights.push($(this).height());
+		});
+
+		// Find max height of all elements
+		var max = Math.max.apply( Math, heights );
+
+		// Set all heights to max height
+		$(selector).each(function() {
+			$(this).css('height', max + 'px');
+		});	
+	}
+
+
+/* Do Not Remove */
+function showHours(){}
+function hideHours(){}
+
+$(window).load(function() {
+
+// Fix heights on page load
+equalizeHeights($("#category-tiles-section .refinement-link span"));
+		
+		
+function ommitLabel(){
+var labLen = $("#category-tiles-section .refinement-link").length;
+
+for(sl = 0; sl < labLen; sl++ ){
+	var labWor = [];
+	labWor = $("#category-tiles-section .refinement-link:eq(" + sl + ") span").text().toString().split(" ");
+	var txtLen = $("#category-tiles-section .refinement-link:eq(" + sl + ") span").text().length;
+	var worLen = labWor.length;
+	
+	if(txtLen > 30){
+	var maxWor	= 2;
+	} 
+	if(txtLen < 15){
+	var maxWor	= 4;
+	} else {
+	var maxWor	= 3;
+	}	
+	
+
+	
+	
+	// for over the limit
+	if(worLen > 4 || worLen > maxWor){
+var visWor = labWor.slice(0,maxWor);	
+var hidWor = labWor.slice(maxWor,100);
+var visWorStr = visWor.join(" ");		
+var hidWorStr = hidWor.join(" ");
+	$("#category-tiles-section .refinement-link:eq(" + sl + ") span").attr("class","containsOmmit");
+	$("#category-tiles-section .refinement-link:eq(" + sl + ") span").html(visWorStr + " <ins>" + hidWorStr + "</ins>");
+	}
+}	
+}			
+		
+function resetLabel(){
+$(".refinement-link").removeClass("ommited");	
+}	
+		
+// LABEL SPANS		
+function getWidth(){
+    var winWidth = $( window ).width();
+    return winWidth;
+}	
+ommitLabel();	
+		// Fix heights on window resize
+		var iv = null;
+		$(window).resize(function() {
+			if(iv !== null) {
+				window.clearTimeout(iv);
+			}
+			// Needs to be a timeout function so it doesn't fire every ms of resize
+			iv = setTimeout(function() {
+		equalizeHeights($("#category-tiles-section .refinement-link span"));
+			}, 120);
+		});
+	});
+})(jQuery);
+	var em = "";
+	var zp = "";
+	$(".orderStatusForm").submit(function(){
+	var dataString = 'zip='+ zp +'&email='+em; 
+	if (em == "" || zp == ""){
+		alert("Please enter both your e-mail address and ZIP code."); 
+		return false; 
+	} else { 
+		$(".orderStatusForm").hide(); 
+		window.open("https://bizchair.secure.force.com/Public/OrderTracking?" + dataString  , "myNewWin" , "scrollbars=1,resizable=1,width=1100,height=1100,left=0, top=0");
+	}	
+	});	
+	
+
+	
+	function modClose(boxId,linkId){
+		$("#" + boxId).slideToggle( "fast", function() {
+//	$(".learn-more").show();	
+$("#" + linkId).attr("class","learn-more unfold");
+//	Animation complete.
+});		
+}	
+	
+jQuery(document).ready(function() {
+
+$(".package-heading a").hover(function() {
+$(".package-icon").addClass("hover");
+}, function() {
+$(".package-icon").removeClass("hover");
+}
+);	
+	
+$(".expert-heading a").hover(function() {
+$(".headphones-icon").addClass("hover");
+}, function() {
+$(".headphones-icon").removeClass("hover");
+}
+);	
+	
+$(".sixty-heading a").hover(function() {
+$(".shield-icon").addClass("hover");
+}, function() {
+$(".shield-icon").removeClass("hover");
+}
+);		
+
+$(".po-heading a").hover(function() {
+$(".dollar-symbol-icon").addClass("hover");
+}, function() {
+$(".dollar-symbol-icon").removeClass("hover");
+}
+);
+/* Sprites hover */
+$(".package-icon").hover(function() {
+$(".package-heading").addClass("hover");
+}, function() {
+$(".package-heading").removeClass("hover");
+}
+);	
+
+$(".headphones-icon").hover(function() {
+$(".expert-heading").addClass("hover");
+}, function() {
+$(".expert-heading").removeClass("hover");
+}
+);	
+	
+$(".shield-icon").hover(function() {
+$(".sixty-heading").addClass("hover");
+}, function() {
+$(".sixty-heading").removeClass("hover");
+}
+);	
+	
+$(".dollar-symbol-icon").hover(function() {
+$(".po-heading").addClass("hover");
+}, function() {
+$(".po-heading").removeClass("hover");
+}
+);		
+	
+	
+	
+$(".guide-link").hover(function() {
+$(".fa-guide").addClass("guide-link-focus");
+}, function() {
+$(".fa-guide").removeClass("guide-link-focus");
+}
+);	
+	
+$(".learn-more.unfold").click(function() {
+
+parId = $(this).attr("id");
+	
+$(this).addClass("background-color");	
+	thisDiv = $(this).next("div");	
+$(thisDiv).slideToggle( "fast", function() {
+//		Animation complete.
+});
+});
+	
+// Add class to main menu panels
+if($(".menu-category.level-1").length > 0){
+	var panelLen = $(".level-2.column-1").length;
+	for(panelPos = 0; panelPos < panelLen; panelPos++ ){
+	$(".level-2.column-1:eq(" + panelPos + ")").addClass("panel" + panelPos );
+	}
+}	
+
+// Home Page New Arrivals Panel	MOBILE
+if($("#bannerNewArrivalsMobile").length > 0){
+
+//	if($(".user-info").length > 0){	 var userName = ($(".user-info span:eq(1)").text()).split(" ")[0]; if(userName.indexOf("Log") == -1 ){  $(".banPanMobileLeft h3").text("Hi " + userName + ","); } }	
+var itemsMobArr = [];
+var itemsAllMobileLen = 3;
+var imagesMobLen = 10;
+var imPanDivClass = "imPan";
+var bkNum = 1 + Math.floor(Math.random() * 3);	
+
+for(iz = 0; iz < itemsAllMobileLen; iz++) {
+var imMobPosition = 1 + Math.floor(Math.random() * imagesMobLen);
+	if(itemsMobArr.indexOf(imMobPosition) > -1){
+var imMobPosition = 1 + Math.floor(Math.random() * imagesMobLen);
+	} else {
+//	$(".imPan:eq(2)" ).text("zzz");	
+	}
+itemsMobArr.push(imMobPosition);
+	
+};	
+// place images
+for(arrP = 0; arrP < itemsMobArr.length ; arrP++){
+	$(".imPanMobile:eq(" + arrP + ")").addClass("imageBoxMobile" + itemsMobArr[arrP]);
+}			
+	}
+// Home Page New Arrivals Panel	MOBILE End	
+	
+// Home Page New Arrivals Panel	
+if($("#bannerNewArrivals").length > 0){
+
+	if($(".user-info").length > 0){	
+var userName = ($(".user-info span:eq(1)").text()).split(" ")[0];
+//	alert(userName);	
+if(userName.indexOf("Log") == -1 ){ 
+$(".banPan h3").text("Hi " + userName + ",");
+}
+}	
+var itemsArr = [];
+var itemsAllLen = 5;
+var imagesLen = 10;
+var imPanDivClass = "imPan";
+var bkNum = 1 + Math.floor(Math.random() * 5);	
+	$("#bannerNewArrivals").addClass("background" + bkNum);
+
+for(iz = 0; iz < itemsAllLen; iz++) {
+var imPosition = 1 + Math.floor(Math.random() * imagesLen);
+	if(itemsArr.indexOf(imPosition) > -1){
+var imPosition = 1 + Math.floor(Math.random() * imagesLen);
+	} else {
+//	$(".imPan:eq(2)" ).text("zzz");	
+	}
+itemsArr.push(imPosition);
+	
+};	
+// place images
+for(arrP = 0; arrP < itemsArr.length ; arrP++){
+	$(".imPan:eq(" + arrP + ")").addClass("imageBox" + itemsArr[arrP]);
+}		
+
+var randDia =Math.random();
+if(randDia < 0.33){
+$("#bannerNewArrivals").addClass("diagonal1");	
+} else {
+if(randDia < 0.66){
+$("#bannerNewArrivals").addClass("diagonal2");	
+} else { 
+$("#bannerNewArrivals").addClass("diagonal3");	
+}
+	
+}		
+	}
+// Home Page New Arrivals Panel	End
+	
+			var defaultText = "Search...";
+			var searchBox = $('.header-search form[name="simpleSearch"] input[type="text"]');
+			//set default text on load
+			searchBox.val(defaultText);
+ 			searchBox.addClass("italicText");
+			//on focus behaviour
+			searchBox.focus(function(){
+				if ($(this).val() == defaultText) {//clear text field
+					$(this).val('');
+ 					searchBox.removeClass("italicText");
+				}
+			});
+ 
+			//on blur behaviour
+			searchBox.blur(function(){
+				if ($(this).val() == "") {//restore default text
+					$(this).val(defaultText);
+ 					searchBox.addClass("italicText");
+				}
+			});		
+	
+	
+	
+if($("#category-tiles").length > 0){
+	$("#category-tiles").remove();
+	$(".search-result-content").after($("#sectionCopy"));
+	$("#sectionCopy").attr("style","display:block;");
+	$("#primary").prepend($("#category-tiles"));
+}	
+
+
+	
+	
+function closeFinancePopUp(){
+	$("#financePopUpBack, #financepageAsset").hide();
+}	
+function showFinancePopUp(){
+	$("#financePopUpBack, #financepageAsset").show();
+}
+
+	
+$("#financePopUpBack, #closeFinancePopup, #financepageAsset a").click(function() {
+$("#financePopUpBack, #financepageAsset").hide();
+});	
+$("#finance-options").click(function() {
+$("#financePopUpBack, #financepageAsset").show();
+});	
+	
+
+$("#financepageAsset #directcapital a").click(function() {
+$("#financePopUpBack, #financepageAsset").show();
+});	
+
+	
+/* Redesign */
+	
+if($("#menuBack").length == 0){
+	$("#main").prepend("<div id ='menuBack' style='display: none; position: fixed; z-index: 100; left: 0px; top:0px;  width: 100vw; height: 100%; margin: 0px; padding: 0px; background: rgba(125, 125, 125, 0.25);'></div>")
+}	
+$('.level-2').hover(
+	function () { 
+	$("#menuBack").fadeIn("fast");
+	},
+	function () { 
+	$("#menuBack").fadeOut("fast");
+	}
+);		
+
+
+$("#hours-over").mouseover(function() {
+        $("#hours-display").show();
+    });	
+$("#hours-over").mouseout(function() {
+        $("#hours-display").hide();
+    });		
+	
+
+$('#hours-over').on('click', function () {
+if(  $('#hours-display').attr("style").indexOf("none") > -1 ){
+	document.getElementById('hours-display').style.display = 'block';
+} else {
+	document.getElementById('hours-display').style.display = 'none';
+}
+});
+
+	
+$('.menu-toggle').on('click', function () {
+if(  $('#wrapper').attr("class").indexOf("menu-active") > -1 ){
+ $('#wrapper').removeClass('menu-active');
+$('.navigation-bar').attr("class","navigation-bar dark w-nav");
+} else {
+ $('#wrapper').addClass('menu-active');
+$('.navigation-bar').addClass('positionRelative');
+}
+$('#wrapper').toggleClass('menu-active');	
+});	
+
+	
+/* Redesign End */
+	
+	$("span.text-span a").attr("title","Call Us Toll-Free");
+
+});	// end on load
+	
+	
+	$(".tbEmail").keyup(function(){em = $(this).val();});
+	$(".tbEmail").blur(function(){em = $(this).val();});
+	$(".tbPostalCode").keyup(function(){zp = $(this).val();});
+	$(".tbPostalCode").blur(function(){zp = $(this).val();});
+	
+var thisFormId = "";
+	
+$(".fotOrdLink").click(function() {
+thisFormId = $(this).next("form").attr("id");	
+$(this).next("form").slideToggle( "fast", function() {
+//		Animation complete.
+});
+});
+$(".modalClose").click(function() {
+$(this).parents("form").slideToggle( "fast", function() {
+//		Animation complete.
+});
+});
+
+
+if($(".breadcrumb").length > 0 && $("#product-content").length ==1){
+var breadHtmlLen = $(".breadcrumb").html().length;
+	if(breadHtmlLen < 10){
+		var wholeUrl = window.location.toString(); 
+		var miniUrl = wholeUrl.split('?')[0];
+		
+
+$( ".breadcrumb" ).load( miniUrl + " .breadcrumb" );	
+		
+		
+$.get( miniUrl, function( data ) {
+ // $( ".result" ).html( data );
+ //	 alert( "Load was performed." );
+
+if( $(".pdp-guide-container").length == 0){
+getGuide();		
+}	
+			
+});
+	
+	}
+	
+function getGuide(){	
+if($('.breadcrumb-element').length > 0){
+	var posIn = 0;
+	var buyersGuideId = "";
+	var buyersguideUrl = "";
+	var beLen = $('.breadcrumb-element').length;
+	for(tp = 0; tp < beLen; tp++){
+		
+		
+		if($(".breadcrumb-element:eq(" + tp + ")").text() == "Recliners"){
+		buyersGuideId = "Recliners";
+		buyersguideUrl = "recliner-buyer-guide";	
+		}else{
+		
+				if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Kids") ){
+				buyersGuideId = "Kids Furniture";
+				buyersguideUrl = "kids-furniture-buyers-guide";	
+				}else{
+				
+				
+							if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Barstool") ){
+							buyersGuideId = "Barstools";
+							buyersguideUrl = "barstool-buyers-guide";	
+							}else{
+								
+								
+								
+										if( ~$(".breadcrumb-element:eq(" + tp + ")").text().indexOf("Office Chairs") ){
+										buyersGuideId = "Office Chairs";
+										buyersguideUrl = "office-chairs-buyers-guide";	
+										}else{
+															
+											if($(".breadcrumb-element:eq(" + tp + ")").text() == "Shop"){
+											posIn = tp + 1;	
+											}
+											if($(".breadcrumb-element:eq(" + posIn + ")").text() == "School"){
+													buyersGuideId = "School Furniture";
+													buyersguideUrl = "school-furniture-buyers-guide";	
+											}
+											if($(".breadcrumb-element:eq(" + posIn + ")").text() == "Restaurant"){
+													buyersGuideId = "Restaurant Furniture";
+													buyersguideUrl = "restaurant-furniture-buyers-guide";	
+											}
+											if($(".breadcrumb-element:eq(" + posIn + ")").text() == "Church"){
+													buyersGuideId = "Church Chairs";
+													buyersguideUrl = "church-chair-buyer-guide";
+											}																
+									}
+						}
+				}
+		}
+	}
+	
+	
+
+}
+}
+
+getGuide();
+	
+}
+	
+	
+	
+$(function(){
+
+
+    $('.flexslider').flexslider({
+	    animation: "slide",
+	    controlNav: true,               
+	    directionNav: true,           
+	    prevText: "Previous",         
+	    nextText: "Next",
+	    slideshowSpeed: 6000,
+	    //	slideshowSpeed: 6000,
+	  	slideshow: false
+  });	
+	
+	
+$('.panel11').remove();		
+	
+	
+function initializeNavLinks() {
+var maxLi = 2;	
+	if( $('.nav-column').length > 0 ){
+		
+		var navColLen = $('.nav-column').length;
+		
+		for(nc = 0; nc < navColLen; nc++ ){
+			
+	   	if ($('.nav-column:eq(' + nc + ') li').length > 0 && $('.nav-column:eq(' + nc + ')').attr('class').indexOf('brands') == -1) { 
+		var navParLen = $('.nav-column:eq(' + nc + ') li').length; 
+		
+		if (navParLen > 1) { 
+			for (var pp = 0; pp < navParLen; pp++) { 
+				if (pp > maxLi) { 
+					$('.nav-column:eq(' + nc + ') li:eq(' + pp + ')').addClass("showHideLink");
+				} 
+			}
+			if ($('.nav-column:eq(' + nc + ') li').length  > ( maxLi + 1) ) { 
+					$('.nav-column:eq(' + nc + ')').append("<li class='moreLessLinks'><a href='javascript:void(0)' class = 'lesslink'>Show more...</a></li>"); 
+				} 			
+		
+		}
+	}			
+			
+		}
+	   }
+		
+}	
+	
+	
+
+	
+var navSwitch = true; 
+	if(navSwitch == true){
+initializeNavLinks();
+	}
+
+$(".moreLessLinks").on('click', function(){
+	var thisTxt = $(this).text();
+	if( thisTxt == "Show more..." ){
+	$(this).html("<a href='javascript:void(0)' class = 'lesslink'>Show less...</a>");	
+	}  else {
+	$(this).html("<a href='javascript:void(0)' class = 'lesslink'>Show more...</a>");	
+	}  	
+	$(this).parent("ul").find("li.showHideLink").toggle();
+	
+});		
+
+
+/* Flexslider add */
+
+	//	price-standard 	- 	list price
+	//	price-sales 	- 	sale price
+	//	product-badges	- 	badges	
+	if( $(".slider-flat").length > 0){
+	var prodList= "";
+	var prodLen = $(".slider-flat .product-image").length;
+	for(pl = 0; pl < prodLen; pl++){
+		var hrefCode = $(".slider-flat .product-image:eq(" + pl + ") a:eq(0)").attr("href");
+		prodList += hrefCode;
+		prodList += ", ";
+		$(".slider-flat .product-image:eq(" + pl + ")").prepend("<div class = 'addon adn-" + pl + "'></div>");
+		$( "div.adn-" + pl).load( "hrefCode #target" );
+		}
+		
+		$("#featured-items-desktop-flexslider").before("<div style ='clear:both;'>" + prodList + "</div>");
+	  $(".product-image a").hover(function(){
+	  });		
+	}
+/* Flexslider add end */	
+	
+	
+	
+function swatchResize(){
+if( $(".product-variations ul li.attribute div.value").length > 0){
+
+	
+var swLen = $(".product-variations ul li div ul li .swatchanchor img").length;
+if(swLen < 14){
+var largerImage = "sw=50&sh=50&sm=fit";	
+for(isi = 0; isi < swLen; isi++){
+var imSrc = $(".product-variations ul li div ul li .swatchanchor img:eq(" + isi + ")").attr("src");	
+var imSrcArr = [];
+if(imSrc.indexOf("?") > -1){
+	imSrcArr = 	imSrc.split("?");
+	imSrcRoot = imSrcArr[0];
+	imSrcApp = 	imSrcArr[1];
+} else {
+imSrcArr = [];
+imSrcRoot = "";	
+imSrcApp = 	"";
+}
+
+
+$(".product-variations ul li div ul li .swatchanchor:eq(" + isi + ")").attr("style", "margin: 0 .3rem .3rem 0;");	
+$(".product-variations ul li div ul li .swatchanchor:eq(" + isi + ") img").attr("src",imSrcRoot + "?" + largerImage);	
+}	
+}	
+} 	
+}	
+
+
+if( $("#pdpMain").length > 0 ){
+	
+swatchResize();	
+	
+}	
+/* Brands pages */
+
+
+
+
+/* Brands pages end */
+	
+	
+});		
+	
+	
+
+var $pdpMain = $('#pdpMain');	
+// CUSHIONS SCRIPTS
+    // product radio options    
+    $pdpMain.on('change', '.product-options input[type="radio"]', function () {
+		var salesPrice = $pdpMain.find('.product-price .price-sales');
+		var thisVal = $(this).attr("data-combined");
+		var selectedItem = $(this);
+    	salesPrice.text(thisVal);
+    	/* verifyOptions(); */	
+		$(".cushRow").removeClass("selected-cushion");
+		$(this).closest("div.cushRow").addClass("selected-cushion");
+    });
+    //	radio options containers
+   /*
+	$('.free-cushion').change(function(event){
+		$(".cushRow").removeClass("selected-cushion");
+		$(this).closest("div.cushRow").addClass("selected-cushion");
+    });
+	*/
+   
+
+
+    $pdpMain.on('click', '.cushRow', function () {
+    	var $thisDiv = $(this);
+		var salesPrice = $pdpMain.find('.product-price .price-sales');    	
+		$(".cushRow").removeClass("selected-cushion");
+		$(this).closest("div.cushRow").addClass("selected-cushion");
+		$thisDiv.find('.free-cushion').prop("checked",true);
+		var priceUpd = $thisDiv.find('.free-cushion').attr("data-combined");
+		//	alert(priceUpd);
+    	salesPrice.text(priceUpd);
+    });	
+
+	// Show/hide for Samples	
+$pdpMain.on("click", ".cushion-link-image img", function() {
+	var parClassNoneInd = $(this).parent("span").attr("class").indexOf(" none ");
+
+if(parClassNoneInd === -1){
+	var imgDisp = $(this).attr("data");
+	$(".large-samples img").removeClass("visibleImage");
+	$(".large-samples").removeClass("hidden-samples");
+	$("." + imgDisp).addClass("visibleImage");
+	$(".large-samples").prependTo("#product-content");
+	$(".large-samples img").hide();
+	$(".click-to-close, .click-to-close-x, .click-to-close-x img").removeAttr("style");
+	$(".click-to-close img").removeAttr("style");
+	$(".large-samples .click-to-close, .large-samples .click-to-close img, .click-to-close-x",this).show();
+	$(".click-to-close").html( $(this).closest("span").next("span").html() );	
+}	
+	}); 
+	// Show/hide for Samples	
+	$pdpMain.on("click", ".large-samples, .large-samples img", function() {
+$(".large-samples img").removeClass("visibleImage");
+$(".large-samples").addClass("hidden-samples");
+$(".click-to-close-x").attr("style","display:none;");
+$(".large-samples").appendTo("#cushionsBox");
+$(".large-samples .click-to-close,.large-samples .click-to-close img, .click-to-close-x").hide();
+	}); 	
+	
+
+
+/*
+function setCookie(name, value, days){
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000)); 
+    var expires = "; expires=" + date.toGMTString();
+    document.cookie = name + "=" + value + expires;
+}
+function getParam(p){
+    var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+var gclid = getParam('gclid');
+if(gclid){
+    var gclsrc = getParam('gclsrc');
+    if(!gclsrc || gclsrc.indexOf('aw') !== -1){
+        setCookie('gclid', gclid, 90);
+    }
+}
+*/
+	
+	
+/* Redesign */
+
+	
+var currentContext = null;
+var isShowing = false;
+var closeCheck = null;
+function showMenu(context) {
+	hideMenus();
+	jQuery(context).find(".level-2").addClass("visible");
+}
+function hideMenus() {
+	jQuery(".level-2").removeClass("visible");
+}
+function determine(context) {
+	if(context == currentContext && jQuery(context).is(':hover')) {
+		showMenu(context);
+	}
+}
+function closeMenu() {
+	if(isShowing) {
+		setTimeout(closeMenu, 500);
+	} else {
+		hideMenus();
+	}
+
+}
+
+
+
+jQuery(document).on('mouseover', '.level-1-li', function() {
+	var t = this;
+	currentContext = t;
+	isShowing = true;
+	setTimeout(function(){ determine(t); }, 200);
+});
+jQuery(document).on('mouseover', '.w-nav-link', function() {
+	var t = this;
+	currentContext = t;
+	isShowing = true;
+	setTimeout(function(){ determine(t); }, 200);
+});
+jQuery(document).on('mouseout','#navigation-two',function(evt) {
+	isShowing = false;
+	setTimeout(closeMenu, 500);
+});
+/*	
+jQuery(document).on('click','.hamburger-button',function(evt) {
+});
+*/	
+	
+	
+$('.menu-category li a').on('click', function (e) {
+	if ($(e.target).hasClass("has-sub-menu") && $('#wrapper').width() < 768) {    
+		e.preventDefault();
+		var $parentLi = $(this).closest('li');
+		var $toggle = $(this).find('.menu-item-toggle');
+		$parentLi.siblings('li').removeClass('active').find('.menu-item-toggle').removeClass('fa-chevron-up active').addClass('fa-chevron-down');
+		$parentLi.toggleClass('active');
+		$toggle.toggleClass('fa-chevron-down fa-chevron-up');
+	}
+});
+	
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 20) {
+        $(".navigation-bar").addClass("dropShadow");
+    } else {
+        $(".navigation-bar").removeClass("dropShadow");
+    }
+});
+
+
+	
+	
+/* Redesign end */	
+	
+
+
+
+
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('5730g000000Gn6r', document.getElementById('liveagent_button_online_5730g000000Gn6r'));
+liveagent.showWhenOffline('5730g000000Gn6r', document.getElementById('liveagent_button_offline_5730g000000Gn6r'));
+});
+
+liveagent.init('https://d.la4-c2-dfw.salesforceliveagent.com/chat', '5720g0000004Cap', '00D70000000KCcm');
+
+
+function showHours(){}
+function hideHours(){}
+$( document ).ready(function() {
+$("#hours-over").mouseover(function() {
+$("#hours-display").show();
+});
+$("#hours-over").mouseout(function() {
+$("#hours-display").hide();
+});
+});
+
+
+	
+	try {
+		
+		/* Capture the click from a message. */
+		_ltk.Click.Submit();
+	}
+	catch (er)
+	{
+		/* An error has occurred, yet to determine if we want to do anything here. */
+	}
+
+
+	
+	var _ltkwmt = '';
+	
+		_ltkwmt = '';
+	
+		
+	
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_profile_customer_email");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_login_username");
+		
+			  _ltk.SCA.CaptureEmail("dwfrm_billing_billingAddress_email_emailAddress");
+		
+			  _ltk.SCA.CaptureEmail("email");
+		
+			  _ltk.SCA.CaptureEmail("email-sign-up");
+		
+	
+			
+	
+
+
+	/* Used to reset the activity tracker parameters in the pdict upon successful send up to Listrak endpoint. */
+	function resetProductActivityParams()
+	{
+		var path = '/on/demandware.store/Sites-bizchair-Site/default/ltkActivityTracking-ClearTracker';
+		jQuery.ajax({
+			  url: path,
+			  context: document,
+			  success: function(){ }
+		});
+	}	
+	
+	try {
+		/* Perform activity/page/product browse logging. */
+		var sessionSku = 'null';
+		var sessionCategory = 'null';
+		var sessionQuickViewSkus = 'null';		
+		
+		/* Iterate through any quickviews and add them as product browses. */
+		if (sessionQuickViewSkus != null && sessionQuickViewSkus != "null" && sessionQuickViewSkus.length > 0)
+		{
+			var quickViews = sessionQuickViewSkus.split(',');
+			
+			for (var i = 0; i < quickViews.length; i++)
+			{
+				_ltk.Activity.AddProductBrowse(quickViews[i]);			
+			}
+		}
+		
+		/* Add the product browse if we have it. */
+		if (sessionSku != null && sessionSku != "null" && sessionSku.length > 0)
+		{
+			_ltk.Activity.AddProductBrowse(sessionSku);
+		}			
+		
+		/* Add the page browse. We should ALWAYS have if this JS fires. */
+		var currentPage = window.location.href;
+		_ltk.Activity.AddPageBrowse(currentPage);
+		
+		/* Submit the activity through client side JS to the endpoint. */
+		_ltk.Activity.Submit();
+		
+		/* Do a post to reset the browse/quickview/page parameters if there are products in them. */
+		resetProductActivityParams();
+	}
+	catch (er)
+	{
+		/* An error has occurred, yet to determine if we want to do anything here. */
+	}
+
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.bizchair.com/on/demandware.store/Sites-bizchair-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

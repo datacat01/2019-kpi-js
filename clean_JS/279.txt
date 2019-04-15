@@ -1,0 +1,107 @@
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/TRbrOddYwt1HtHFzk3SQG1ruHnfFfFoSqgDJ8uA1/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+function beacon_deferred(beacon_api) { beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"8591eee3bcb8f31de6c46d3c4d43028fc3420641","type":"ANONYMOUS","visit_id":"964de9bb-3988-4d3d-baf6-741da59a07d8","visitor_id":"efc5e8f2-ea6f-4c78-ab64-2c2f35476b08"},"referer":{"url":""},"request":{"url":"https:\/\/www.urnsnw.com\/"}}, []);}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/shared/js/beacon_api-d53f0a39a11dacaa85063ca4f4aba159a609185d.js';s.parentNode.insertBefore(g,s);})();
+
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.54b4e2cf25b24aa8b2a39bb3bc729dc7');
+    };
+
+
+
+var BCData = {"csrf_token":"2720fdc3497c216197aafefa294d95bd4251cf27de03f0b85c2d561e37660cf0"};
+
+
+var ua = navigator.userAgent.toLowerCase(),
+platform = navigator.platform.toLowerCase();
+platformName = ua.match(/ip(?:ad|od|hone)/) ? 'ios' : (ua.match(/(?:webos|android)/) || platform.match(/mac|win|linux/) || ['other'])[0],
+isMobile = /ios|android|webos/.test(platformName);
+
+if (!isMobile) {
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?GORGOAIwl09WsTBPpFPiOARLxnpimX0B';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+}
+
+
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+    $(document).ajaxComplete(function() {
+        $('input[type=checkbox], select').not('.UniApplied').uniform();
+    });
+
+
+	var QuickSearchAlignment = 'right';
+	var QuickSearchWidth = '390px';
+	lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+    $(document).ajaxComplete(function() {
+        $('input[type=checkbox], select').not('.UniApplied').uniform();
+    });
+
+
+    $(window).load(function() {
+        $('.slide-show').flexslider({
+            slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+            animation: "slide",
+            pauseOnHover: true,
+            controlNav: true,
+            directionNav: true
+        });
+    });
+
+
+// <!--
+	$('#subscribe_form').submit(function() {
+		if($('#nl_first_name').val() == '') {
+			alert('You forgot to type in your first name.');
+			$('#nl_first_name').focus();
+			return false;
+		}
+
+		if($('#nl_email').val() == '') {
+			alert('You forgot to type in your email address.');
+			$('#nl_email').focus();
+			return false;
+		}
+
+		if($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+			alert('Please enter a valid email address, such as john@example.com.');
+			$('#nl_email').focus();
+			$('#nl_email').select();
+			return false;
+		}
+
+		// Set the action of the form to stop spammers
+		$('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+		return true;
+
+	});
+// -->
+
+
+TrustLogo("https://cdn1.bigcommerce.com/server5600/40f15/product_images/uploaded_images/comodo-secure-seal-100x85-transp.png", "CL1", "none");
+
+var ju_num="7EDA1616-59DC-4E1C-B2BB-6FE3F200244C";var asset_host=(("https:"==document.location.protocol)?"https":"http")+'://d2j3qa5nc37287.cloudfront.net/';(function() {var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=asset_host+'coupon_code1.js';var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);})();
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+

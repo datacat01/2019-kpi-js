@@ -1,0 +1,414 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.cheaphumidors.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-336499-1', 'cheaphumidors.com');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+
+var swiftscriptelemrijggx9vuf=document.createElement("script");swiftscriptelemrijggx9vuf.type="text/javascript";var swiftrandom = Math.floor(Math.random()*1001); var swiftuniqueid = "rijggx9vuf"; var swifttagurlrijggx9vuf="https://www.cheaphumidors.com/support/visitor/index.php?/Default/LiveChat/HTML/HTMLButton/cHJvbXB0dHlwZT1jaGF0JnVuaXF1ZWlkPXJpamdneDl2dWYmdmVyc2lvbj00LjY1LjAuNTQ2MSZwcm9kdWN0PUZ1c2lvbiZmaWx0ZXJkZXBhcnRtZW50aWQ9Miw0JmN1c3RvbW9ubGluZT0mY3VzdG9tb2ZmbGluZT0mY3VzdG9tYXdheT0mY3VzdG9tYmFja3Nob3J0bHk9CmFiN2NlMmVjNjU0OTIzYmRhNjg3NWFlZDkyM2NjNjRiNjI5NTlmYTc=";setTimeout("swiftscriptelemrijggx9vuf.src=swifttagurlrijggx9vuf;document.getElementById('swifttagcontainerrijggx9vuf').appendChild(swiftscriptelemrijggx9vuf);",1);
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('https://www.cheaphumidors.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+		jQuery(function($) {
+			$("#nav > li").hover(function() {
+				$(this).find(".level0-wrapper").stop(true, true).delay(150).fadeIn(300, "easeOutCubic");
+			}, function() {
+				$(this).find(".level0-wrapper").stop(true, true).delay(150).fadeOut(300, "easeInCubic");
+			});
+		});
+	
+
+    //<![CDATA[
+		
+		//jQuery(function($) {
+		jQuery(window).load(function(){
+			jQuery('.the-slideshow').flexslider({
+				namespace:			"",
+				animation:			'fade',
+				
+							easing:				'easeInOutBounce',
+				useCSS:				false,
+							
+				animationLoop:		1,
+				smoothHeight: true,
+				
+							slideshowSpeed:		10000,
+						
+							animationSpeed:		600,
+							
+				pauseOnHover:		1			});
+		});
+    //]]>
+    
+
+//<![CDATA[
+	jQuery(function($) {
+		$('.new-itemslider-wrapper .itemslider').flexslider({
+			namespace: "",
+			animation: "slide",
+			easing: "easeInQuart",
+			
+							slideshowSpeed: 3000,
+				animationLoop: true,
+						
+							animationSpeed: 400,
+						
+			pauseOnHover: true,
+			controlNav: false,
+			
+			controlsContainer: ".new-itemslider-wrapper .nav-wrapper",
+			
+			itemWidth: 188,
+			move: 1		});
+	});
+//]]>
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1071730064;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+	var trackcmp_email = '';
+	var trackcmp = document.createElement("script");
+	trackcmp.async = true;
+	trackcmp.type = 'text/javascript';
+	trackcmp.src = '//trackcmp.net/visit?actid=475350497&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href);
+	var trackcmp_s = document.getElementsByTagName("script");
+	if (trackcmp_s.length) {
+		trackcmp_s[0].parentNode.appendChild(trackcmp);
+	} else {
+		var trackcmp_h = document.getElementsByTagName("head");
+		trackcmp_h.length && trackcmp_h[0].appendChild(trackcmp);
+	}
+
+
+
+			function setGridItemsEqualHeight($)
+	{
+		var SPACING = 20;
+		if ($(window).width() >= 480)
+		{
+			$('.category-products-grid').removeClass("auto-height");
+			
+			var gridItemMaxHeight = 0;
+			$('.category-products-grid > .item').each(function() {
+				$(this).css("height", "auto");
+				
+				////////////////////////////////////////////////////////////////
+									var actionsHeight = $(this).find('.actions').height();
+					$(this).css("padding-bottom", (actionsHeight + SPACING) + "px"); //Set new padding
+								////////////////////////////////////////////////////////////////
+				
+				gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
+			});
+			
+			//Apply max height
+			$('.category-products-grid > .item').css("height", gridItemMaxHeight + "px");
+		}
+		else
+		{
+			$('.category-products-grid').addClass("auto-height");
+			$('.category-products-grid > .item').css("height", "auto");
+			$('.category-products-grid > .item').css("padding-bottom", "20px");
+		}
+	}
+		
+		function activateMobileMenu($)
+	{
+		if ($(window).width() < 1024)
+		{
+			$('#mobnav').show();
+			$('.vertnav-top').addClass('mobile');
+			$('#nav').addClass('mobile');
+		}
+		else
+		{
+			$('#nav').removeClass('mobile');
+			$('.vertnav-top').removeClass('mobile');
+			$('#mobnav').hide();
+		}
+	}
+	
+	
+
+	jQuery(function($) {
+
+				activateMobileMenu(jQuery);
+		
+		
+				$('.collapsible').each(function(index){
+			$(this).prepend('<span class="opener">&nbsp;</span>');
+			if ($(this).hasClass('active'))
+			{
+				$(this).children('.block-content').css('display', 'block');
+			}
+			else
+			{
+				$(this).children('.block-content').css('display', 'none');
+			}			
+		});
+				$('.collapsible .opener').click(function() {
+			
+			var parent = $(this).parent();
+			if (parent.hasClass('active'))
+			{
+				$(this).siblings('.block-content').stop(true).slideUp(300, "easeOutCubic");
+				parent.removeClass('active');
+			}
+			else
+			{
+				$(this).siblings('.block-content').stop(true).slideDown(300, "easeOutCubic");
+				parent.addClass('active');
+			}
+			
+		});
+		
+		
+				var ddOpenTimeout;
+		var dMenuPosTimeout;
+		$(".clickable-dropdown > .dropdown-toggle").click(function() {
+			$(this).parent().addClass('open');
+			$(this).parent().trigger('mouseenter');
+		});
+		$(".dropdown").hover(function() {
+			
+			var DELAY = 300;
+			var ddToggle = $(this).children('.dropdown-toggle');
+			var ddMenu = $(this).children('.dropdown-menu');
+			var ddWrapper = ddMenu.parent(); 			
+						ddMenu.css("left", "");
+			ddMenu.css("right", "");
+			
+						if ($(this).hasClass('clickable-dropdown'))
+			{
+								if ($(this).hasClass('open'))
+				{
+					$(this).children('.dropdown-menu').stop(true, true).delay(DELAY).fadeIn(300, "easeOutCubic");
+				}
+			}
+			else
+			{
+								clearTimeout(ddOpenTimeout);
+				ddOpenTimeout = setTimeout(function() {
+					
+					ddWrapper.addClass('open');
+					
+				}, DELAY);
+				
+				//$(this).addClass('open');
+				$(this).children('.dropdown-menu').stop(true, true).delay(DELAY).fadeIn(300, "easeOutCubic");
+			}
+			
+						clearTimeout(dMenuPosTimeout);
+			dMenuPosTimeout = setTimeout(function() {
+
+				if (ddMenu.offset().left < 0)
+				{
+					var space = ddWrapper.offset().left; 					ddMenu.css("left", (-1)*space);
+					ddMenu.css("right", "auto");
+				}
+			
+			}, DELAY);
+			
+		}, function() {
+			var ddMenu = $(this).children('.dropdown-menu');
+			clearTimeout(ddOpenTimeout); 			ddMenu.stop(true, true).delay(150).fadeOut(300, "easeInCubic");
+			if (ddMenu.is(":hidden"))
+			{
+				ddMenu.hide();
+			}
+			$(this).removeClass('open');
+		});
+
+
+				$('#mobnav-trigger').toggle(function() {
+			$(this).addClass('active');
+			$('.vertnav-top').addClass('show');
+		}, function() {
+			$(this).removeClass('active');
+			$('.vertnav-top').removeClass('show');
+		});
+		
+		
+							$(".main").addClass("show-bg");
+				
+		
+				$(window).scroll(function(){
+			if ($(this).scrollTop() > 100)
+			{
+				$('#scroll-to-top').fadeIn();
+			}
+			else
+			{
+				$('#scroll-to-top').fadeOut();
+			}
+		});
+		$('#scroll-to-top').click(function(){
+			$("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+			return false;
+		});
+		
+		 //MANAdev: begin
+    var hoverHandler, unhoverHandler;
+    jQuery(document).bind('m-ajax-after', function (e, selectors, url, action) {
+      if (hoverHandler) {
+        $('.category-products-grid > .item').hover(hoverHandler, unhoverHandler);
+      }
+    });
+		 //MANAdev: end
+
+						
+			var startHeight;
+			var bpad;
+			$('.category-products-grid > .item').hover(hoverHandler = function() {
+
+				startHeight = $(this).height();
+				$(this).css("height", "auto"); //Release height
+				$(this).find(".display-onhover").fadeIn(400, "easeInCubic"); //Show elements visible on hover
+				var h2 = $(this).height();
+				
+								////////////////////////////////////////////////////////////////
+				var addtocartHeight = 0;
+				var addtolinksHeight = 0;
+				
+								
+									var addtolinksEl = $(this).find('.add-to-links');
+					if (addtolinksEl.hasClass("addto-onimage") == false)
+						addtolinksHeight = addtolinksEl.height();
+								
+									var h3 = h2 + addtocartHeight + addtolinksHeight;
+					var diff = 0;
+					if (h3 < startHeight)
+					{
+						$(this).height(startHeight);
+					}
+					else
+					{
+						$(this).height(h3); 						diff = h3 - startHeight;
+					}
+								////////////////////////////////////////////////////////////////
+
+				$(this).css("margin-bottom", "-" + diff + "px"); 				
+			}, unhoverHandler = function() {
+				
+				//Clean up
+				$(this).find(".display-onhover").hide();
+				$(this).css("margin-bottom", "");
+
+													$(this).height(startHeight);
+								
+			});
+		
+				
+		
+		
+				//Window size variables
+		var winWidth = $(window).width();
+		var winHeight = $(window).height();
+		var t;
+		$(window).resize(function() {
+
+						var winNewWidth = $(window).width();
+			var winNewHeight = $(window).height();
+			if (winWidth != winNewWidth || winHeight != winNewHeight)
+			{
+
+				clearTimeout(t);
+				t = setTimeout(function() {
+
+																setGridItemsEqualHeight($);
+									
+										$('.itemslider').each(function(index){
+						var s = $(this).data('flexslider');
+						if (s != null) s.flexAnimate(0);
+					});
+				
+										activateMobileMenu($);
+				
+				}, 100);
+
+			} //end: if
+			//Update window size variables
+			winWidth = winNewWidth;
+			winHeight = winNewHeight;
+
+		}); //end: on resize
+		
+		
+
+	}); /* end: jQuery(){...} */
+	
+	
+	
+	jQuery(window).load(function(){
+		
+							setGridItemsEqualHeight(jQuery);
+		//	jQuery(".omega h6").html('Latest Blog Posts');
+		
+	}); /* end: jQuery(window).load(){...} */
+
+ //MANAdev: begin
+  jQuery(document).bind('m-ajax-after', function (e, selectors, url, action) {
+          setGridItemsEqualHeight(jQuery);
+      var timer = setInterval(function() {
+        setGridItemsEqualHeight(jQuery);
+        clearInterval(timer);
+      }, 100);
+      });
+ //MANAdev: end
+
+
+
+    (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+    else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+    if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+        _ltk.Click.Submit();
+_ltk.SCA.CaptureEmail('newsletter');
+_ltk.SCA.CaptureEmail('ltkmodal-email');
+_ltk.SCA.CaptureEmail('email');
+_ltk.Activity.AddPageBrowse('https://www.cheaphumidors.com/');
+_ltk.Activity.Submit();
+    });
+
+
+    (function (d, s, id, url) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src = url;
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'https://cdn.listrakbi.com/scripts/script.js?m=sRP2KTWo49p7&v=1');
+
+
+    Listrak_Remarketing = new function() {
+        this.updateCart = function() {
+                            new Ajax.Request('https://www.cheaphumidors.com/remarketing/ajax/cart/');
+                    };
+    };
+

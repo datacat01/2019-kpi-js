@@ -1,0 +1,21 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.nywatchstore.com/&h=www.nywatchstore.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+
+	$(document).ready(function() {
+		$('#slider').nivoSlider();
+		$(".slick-slider").slick({arrows:true, autoplay:false, dots:false, slidesToShow:4, slidesToScroll:4, responsive:[{breakpoint:767,settings:{slidesToShow:3,slidesToScroll:3}},{breakpoint:450,settings:{slidesToShow:2,slidesToScroll:2}}]});
+	});
+
+stLight.options({publisher: "ur-5294d1ec-9cd2-75f5-ba6d-141f1384faf5"});
+$(document).ready(function() {$('.jqzoom').jqzoom();});
+var switchTo5x=true;
+stLight.options({publisher: "1a17eba9-c55a-4b99-b158-b69bfa21b36f", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+ function dc_ld() { var dc_dlay = document.createElement("script"); dc_dlay.setAttribute('type', 'text/javascript'); dc_dlay.setAttribute('language', 'javascript'); dc_dlay.setAttribute('id', 'dcdlay'); dc_dlay.setAttribute("src", "http"+(window.location.protocol.indexOf("https:")==0?"s://converter":"://converter2")+".dynamicconverter.com/accounts/5/5645"+"."+"js"); document.getElementsByTagName("head")[0].appendChild(dc_dlay); } setTimeout('dc_ld()',10); 
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/0d104430ca3f19bd5078685b708335d8?id=0a28ea89cdeb'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

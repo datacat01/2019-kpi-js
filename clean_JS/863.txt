@@ -1,0 +1,113 @@
+
+<!--
+    function toggle_search(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'table-row')
+          e.style.display = 'none';
+       else
+          e.style.display = 'table-row';
+    }
+//-->
+
+
+   $(document).ready(function() {
+      $("#mobile_menu").mmenu({
+         // Options
+      });
+      var API = $("#mobile_menu").data( "mmenu" );
+
+      $("#mmclose").click(function() {
+         API.close();
+      });
+   });
+
+
+$(document).ready(function() {
+  var url = $(location).attr('href');
+
+  $("#autocomplete").hide();
+  $("#autocomplete_mob").hide();
+  $("#instantsearch").show();
+  $("#instantsearch_mob").show();
+  $("#AlgSearch").hide();
+  $("#facets").hide();
+
+  if (url.match(/search\.mpl/))
+  {
+    $("#AlgSearch").show();
+    $("#facets").show();
+  }
+
+  $("#search-input").keyup(function() {
+    var sv = $("#search-input").val();
+    if (sv) {
+      $("#AlgSearch").show();
+      $("#facets").show();
+      $("#desktop_menu_primary").hide();
+      $("#desktop_menu").hide();
+      $("#desktop_menu_bottom").hide();
+      $("#PageContent").hide();
+    } else {
+      $("#AlgSearch").hide();
+      $("#facets").hide();
+      $("#desktop_menu_primary").show();
+      $("#desktop_menu").show();
+      $("#desktop_menu_bottom").show();
+      $("#PageContent").show();
+    }
+  });
+
+  $("#search-input4").keyup(function() {
+    var sv4 = $("#search-input4").val();
+    if (sv4) {
+      $("#AlgSearch").show();
+      $("#facets").show();
+      $("#desktop_menu_primary").hide();
+      $("#desktop_menu").hide();
+      $("#desktop_menu_bottom").hide();
+      $("#PageContent").hide();
+    } else {
+      $("#AlgSearch").hide();
+      $("#facets").hide();
+      $("#desktop_menu_primary").show();
+      $("#desktop_menu").show();
+      $("#desktop_menu_bottom").show();
+      $("#PageContent").show();
+    }
+  });
+
+});
+
+
+var google_tag_params = {
+dynx_itemid: "",
+dynx_pagetype: "searchresults"
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070741777;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+var google_tag_params = {
+dynx_itemid: "",
+dynx_pagetype: "home"
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070741777;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+if (typeof GSFN !== "undefined") { GSFN.loadWidget(6022,{"containerId":"getsat-widget-6022"}); }
+

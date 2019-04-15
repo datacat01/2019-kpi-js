@@ -1,0 +1,222 @@
+
+ //<![CDATA[
+ (function (HawkSearch, undefined) {
+HawkSearch.BaseUrl = 'http://rangerjoes.com/HawkSearch/HawkSearchProxy.aspx';
+ HawkSearch.TrackingUrl =
+'http://api.hawksearch.info/sites/rangerjoes';
+ if ("https:" == document.location.protocol) {
+ HawkSearch.BaseUrl = HawkSearch.BaseUrl.replace("http://",
+"https://");
+ HawkSearch.TrackingUrl =
+HawkSearch.TrackingUrl.replace("http://", "https://");
+ }
+ }(window.HawkSearch = window.HawkSearch || {}));
+var hawkJSScriptDoc = document.createElement("script");
+hawkJSScriptDoc.async = true;
+hawkJSScriptDoc.src = HawkSearch.TrackingUrl +
+'/includes/hawksearch.min.js?v1.0';
+var hawkJSTag = document.getElementsByTagName('script')[0];
+hawkJSTag.parentNode.insertBefore(hawkJSScriptDoc, hawkJSTag);
+var hawkCSSScriptDoc = document.createElement("link");
+hawkCSSScriptDoc.setAttribute("rel", "stylesheet");
+hawkCSSScriptDoc.setAttribute("type", "text/css");
+hawkCSSScriptDoc.setAttribute("href", HawkSearch.TrackingUrl +
+'/includes/hawksearch.css');
+document.head.appendChild(hawkCSSScriptDoc);
+ //]]>
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-68077813-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+})();
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ScriptManager1', 'aspnetForm', ['tctl00$ctl00$NestedMaster$PageHeader$StoreHeader_H$TopHeaderLinksAjax',''], [], [], 90, 'ctl00$ctl00');
+//]]>
+
+
+    $(function () {
+        $('#ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhrase').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "Search.aspx/Suggest",
+                    data: "{ 'term': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+                        response($.map(data.d, function (item) {
+                            return {
+                                value: item
+                            }
+                        }))
+                    }
+                });
+            },
+            minLength: 2
+        });
+    });
+
+
+    
+
+
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation"), document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation"));
+var Page_Validators =  new Array(document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator"), document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator"));
+//]]>
+
+
+//<![CDATA[
+var ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation = document.all ? document.all["ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation"] : document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation");
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation.showmessagebox = "True";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation.validationGroup = "Search";
+var ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator = document.all ? document.all["ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator"] : document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator");
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.controltovalidate = "ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhrase";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.errormessage = "Search keyword must be at least 1 characters in length excluding spaces and wildcards.";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.display = "None";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.validationGroup = "Search";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.evaluationfunction = "SearchKeywordEvaluateIsValidRequired";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.minimumLength = "1";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator.allowWildCardsInStart = "False";
+var ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation = document.all ? document.all["ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation"] : document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation");
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation.showmessagebox = "True";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation.validationGroup = "Search2";
+var ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator = document.all ? document.all["ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator"] : document.getElementById("ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator");
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.controltovalidate = "ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhrase";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.errormessage = "Search keyword must be at least 1 characters in length excluding spaces and wildcards.";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.display = "None";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.validationGroup = "Search2";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.evaluationfunction = "SearchKeywordEvaluateIsValidRequired";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.minimumLength = "1";
+ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator.allowWildCardsInStart = "False";
+//]]>
+
+
+//<![CDATA[
+jQuery(function () {jQuery('.bxslider').bxSlider({mode:'fade',
+wrapperClass:'homepage bx-wrapper',speed:4000,
+infiniteLoop:true,
+hideControl:false,
+captions:false,
+responsive:true,
+touchEnabled:true,
+pager:false,
+controls:false,
+autoControls:false,
+autoControlsCombine:false,
+auto:true,
+pause:4000,autoStart:true,
+video:true});});var _lastWin;
+function initPricePopup(divid)
+{
+    _lastWin = divid;
+    reposPricePopup();
+    window.onscroll = reposPricePopup;
+}
+function reposPricePopup()
+{
+    var div = document.getElementById(_lastWin);
+    var st = document.body.scrollTop;
+    if (st == 0) {
+        if (window.pageYOffset) st = window.pageYOffset;
+        else st = (document.body.parentElement) ? document.body.parentElement.scrollTop : 0;
+    }
+    div.style.top = 150 + st + "px";
+}
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchValidation');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchValidation');
+ $(window).bind('load', function () {  $('#ctl00_ctl00_NestedMaster_PageContent_ctl01_ProductList .itemContainer').equalHeights(); }); $(window).bind('load', function () {  $('#ctl00_ctl00_NestedMaster_PageContent_ctl02_ProductList .itemContainer').equalHeights(); });Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":null,"displayAfter":3000,"dynamicLayout":true}, null, null, $get("ctl00_ctl00_UpdateProgress1"));
+});
+
+document.getElementById('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch1_SearchPhraseValidator'));
+}
+
+document.getElementById('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhraseValidator'));
+}
+//]]>
+
+
+//<![CDATA[
+HawkSearch.initAutoSuggest = function () {
+HawkSearch.suggestInit('#ctl00_ctl00_NestedMaster_PageHeader_StoreHeader_H_SimpleSearch2_SearchPhrase', {
+lookupUrlPrefix: HawkSearch.TrackingUrl +'/?fn=ajax&f=GetSuggestions',
+hiddenDivName: '',
+isAutoWidth: true
+});
+};
+//]]>
+
+
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=114731331';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+

@@ -1,0 +1,5 @@
+
+		$('.notification-centre-header').click(function(){
+			$(this).parent().toggleClass('show-notifications');
+		});
+	

@@ -1,0 +1,569 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+var Anthem_FormID = "aspnetForm";
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+
+
+
+		var timeoutId;
+		var ht;
+
+		jQuery(document).ready(function (){
+
+			jQuery(".search-input").keyup(function (e){
+				if (jQuery(this).val().length != 0){
+					jQuery(".search-reset").show();
+				} else{
+					jQuery(".search-reset").hide();
+				}
+			});
+
+			jQuery('.search-input').keydown(function (e){
+				if (e.keyCode == 27){
+					jQuery(this).val("");
+					jQuery(".search-reset").hide();
+				}
+			});
+
+			jQuery(".search-reset").click(function (event){
+				jQuery(".search-reset").hide();
+				jQuery('.search-results').hide();
+				jQuery(".search-input").val('');
+			});
+
+
+			jQuery(document).mouseup(function (e){
+				var container = jQuery('#ctl00_Header1_ctl00_pnlSearch');
+				if (!container.is(e.target) // if the target of the click isn't the container...
+                    && container.has(e.target).length === 0) // ... nor a descendant of the container
+				{
+					$('#ctl00_Header1_ctl00_pnlResults').hide();
+            	}
+			});
+
+			jQuery('#ctl00_Header1_ctl00_KeywordField').focus(function (){
+				if (jQuery(this).val().length > 1){
+					$('#ctl00_Header1_ctl00_pnlResults').show();
+        			jQuery('#ctl00_Header1_ctl00_KeywordField').keyup();
+        		}
+        	});
+
+			jQuery('#ctl00_Header1_ctl00_KeywordField').keyup(function (){
+				loadSearch(jQuery('#ctl00_Header1_ctl00_KeywordField').val());
+        	});
+
+			function loadSearch(keyword, holdPhrases){
+				if (keyword.length > 1){
+					jQuery('#ctl00_Header1_ctl00_pnlResults .title').html('<h4>Top Results for "' + keyword + '"</h4>');
+        			jQuery('#ctl00_Header1_ctl00_pnlResults').show();
+        			jQuery.ajax({
+        				type:"POST",
+        				url:"/BVAdmin/Search/SearchService.asmx/SearchPhrases",
+        				data:"{Keyword:'" + keyword + "'}",
+        				contentType:"application/json;charset=utf-8",
+        				success:function (data){
+        					renderResults(data.d, holdPhrases);
+        				}
+        			});
+        		}
+        		else{
+        			jQuery('#ctl00_Header1_ctl00_pnlResults .title').html('');
+        			jQuery('#ctl00_Header1_ctl00_pnlResults').hide();
+        		}
+			}
+
+			function renderResults(d, holdPhrases){
+				jQuery('#ctl00_Header1_ctl00_pnlResults .results.phrases').html('');
+        		jQuery('#ctl00_Header1_ctl00_pnlResults .results.list').html('<ul></ul>');
+        		jQuery.each(d, function (){
+        			var item = jQuery(this)[0];
+        			switch (item.Type){
+        				case 0://phrase
+        					var $a = jQuery('<a onclick="setPhrase(this);">' + item.Name + '</a>');
+        					jQuery('#ctl00_Header1_ctl00_pnlResults .results.phrases').append($a);
+            				break;
+					}
+            	});
+			}
+
+		});
+
+		function setPhrase(e){
+			var keyword = jQuery(e).html().replace(/<b>/g, '').replace(/<\/b>/g, '');
+			window.location.href = '/search.aspx?keyword=' + keyword;
+		}
+
+		if (jQuery('body').width() <= 420){
+			jQuery('#ctl00_Header1_ctl00_KeywordField').attr('placeholder', 'ENTER KEYWORD OR PART #');
+			//jQuery('#ctl00_Header1_ctl00_btnSearch').text('SEARCH');
+		}
+
+	
+
+
+
+        var timeoutId;
+        var ht;
+
+        jQuery(document).ready(function () {
+
+            jQuery(document).mouseup(function (e) {
+                var container = jQuery('#ctl00_Header1_ctl01_pnlSearch');
+                if (!container.is(e.target) // if the target of the click isn't the container...
+                    && container.has(e.target).length === 0) // ... nor a descendant of the container
+                {
+                    $('#ctl00_Header1_ctl01_pnlResults').hide();
+                }
+            });
+
+            jQuery('#ctl00_Header1_ctl01_KeywordField').focus(function () {
+                if (jQuery(this).val().length > 1) {
+                    $('#ctl00_Header1_ctl01_pnlResults').show();
+                    jQuery('#ctl00_Header1_ctl01_KeywordField').keyup();
+                }
+            });
+
+            jQuery('#ctl00_Header1_ctl01_KeywordField').keyup(function () {
+                loadSearch(jQuery('#ctl00_Header1_ctl01_KeywordField').val());
+            });
+
+            function loadSearch(keyword, holdPhrases) {
+                if (keyword.length > 1) {
+                    jQuery('#ctl00_Header1_ctl01_pnlResults .title').html('<h4>Top Results for "' + keyword + '"</h4>');
+                    jQuery('#ctl00_Header1_ctl01_pnlResults').show();
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "/BVAdmin/Search/SearchService.asmx/SearchAll",
+                        data: "{Keyword:'" + keyword + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            renderResults(data.d, holdPhrases);
+                        }
+                    });
+                }
+                else {
+                    jQuery('#ctl00_Header1_ctl01_pnlResults .title').html('');
+                    jQuery('#ctl00_Header1_ctl01_pnlResults').hide();
+                }
+            }
+
+            function renderResults(d, holdPhrases) {
+                jQuery('#ctl00_Header1_ctl01_pnlResults .results.products').html('');
+                jQuery('#ctl00_Header1_ctl01_pnlResults .results.categories').html('');
+                jQuery('#ctl00_Header1_ctl01_pnlResults .results.brands').html('');
+                if (typeof (holdPhrases) == 'undefined' || holdPhrases == false)
+                    jQuery('#ctl00_Header1_ctl01_pnlResults .results.phrases').html('&nbsp;');
+                jQuery('#ctl00_Header1_ctl01_pnlResults .results.list').html('<ul></ul>');
+                var cats = 0;
+                var brands = 0;
+                jQuery.each(d, function () {
+                    var item = jQuery(this)[0];
+                    switch (item.Type) {
+                        case 0: //phrase
+                            if (typeof (holdPhrases) == 'undefined' || holdPhrases == false) {
+                                var $a = jQuery('<a onclick="setPhrase(this);">' + item.Name + '</a>')
+                                .hover(function () {
+                                    if (timeoutId) {
+                                        window.clearTimeout(timeoutId);
+                                        timeoutId = null;
+                                    }
+                                    //if (!timeoutId) {
+                                    timeoutId = window.setTimeout(function () {
+                                        timeoutId = null;
+                                        var keyword = $a.html().replace(/<b>/g, '').replace(/<\/b>/g, '');
+                                        jQuery('#ctl00_Header1_ctl01_KeywordField').val(keyword);
+                                        loadSearch(jQuery('#ctl00_Header1_ctl01_KeywordField').val(), true);
+                                    }, 300);
+                                    //}
+                                },
+                                function () {
+                                    if (timeoutId) {
+                                        window.clearTimeout(timeoutId);
+                                        timeoutId = null;
+                                    }
+                                });
+                                jQuery('#ctl00_Header1_ctl01_pnlResults .results.phrases').append($a);
+                            }
+                            break;
+                        case 1: //product
+                        	var s = '<div class="columns large-4 small-6 record"><div><div class="recordimage">';
+                        	if (item.SalePrice < item.SitePrice) {
+                        		s += '<span class="sale-badge"><span>Sale</span></span>';
+                        	}
+                        	s += '<a href="' + item.URL + '"><img src="' + item.ImageURL + '" alt="' + item.Name + '" /></a></div><div class="recordsku"><a href="' + item.URL + '">' + item.Sku + '</a></div><div class="recordname"><a href="' + item.URL + '">' + item.Name + '</a></div>';
+                        	if (item.SalePrice < item.SitePrice)
+                        		s += '<div class="recordprice"><a class="saleprice" href="' + item.URL + '">$' + item.SalePrice.toFixed(2) + '</a><a class="oldprice" href="' + item.URL + '">$' + item.SitePrice.toFixed(2) + '</a></div></div></div>';
+                        	else
+                        		s += '<div class="recordprice"><a href="' + item.URL + '">$' + item.SitePrice.toFixed(2) + '</a></div></div></div>';
+                        		jQuery('#ctl00_Header1_ctl01_pnlResults .results.products').append(s);
+                        	break;
+                        case 2: //category
+                            cats++;
+                            jQuery('#ctl00_Header1_ctl01_pnlResults .results.categories > ul').append('<li><a href="' + item.URL + '">' + item.Name + '</a></li>');
+                            break;
+                        case 3: //brand
+                            brands++;
+                            jQuery('#ctl00_Header1_ctl01_pnlResults .results.brands > ul').append('<li><a href="' + item.URL + '">' + item.Name + '</a></li>');
+                            break;
+                    }
+                });
+                if (cats > 0) {
+                    jQuery('#ctl00_Header1_ctl01_pnlResults .results.categories').prepend('<h4>Category</h4>')
+                }
+                if (brands > 0) {
+                    jQuery('#ctl00_Header1_ctl01_pnlResults .results.brands').prepend('<h4>Brand</h4>')
+                }
+            }
+
+        });
+
+        function setPhrase(e) {
+            var keyword = jQuery(e).html().replace(/<b>/g, '').replace(/<\/b>/g, '');
+            //jQuery('#ctl00_Header1_ctl01_KeywordField').val(keyword);
+            //jQuery('#ctl00_Header1_ctl01_KeywordField').keyup();
+            window.location.href = '/search.aspx?keyword=' + keyword;
+        }
+
+        if (jQuery('body').width() <= 420) {
+            jQuery('#ctl00_Header1_ctl01_KeywordField').attr('placeholder', 'ENTER KEYWORD OR PART #');
+            //jQuery('#ctl00_Header1_ctl01_btnSearch').text('SEARCH');
+        }
+
+    
+
+
+    jQuery(document).ready(function () {
+
+        $('#floatcart #cartanchor').mouseover(function () {
+            if ($('#ctl00_Header1_FloatCart1_cartcontent .cartItem').length > 0) {
+                $('#ctl00_Header1_FloatCart1_cartcontent').show();
+                $(this).addClass('hover');
+            }
+        }).mouseout(function () {
+            $('#ctl00_Header1_FloatCart1_cartcontent').hide();
+            $(this).removeClass('hover');
+        });
+
+        $('#ctl00_Header1_FloatCart1_cartcontent').mouseover(function () {
+            if ($('#ctl00_Header1_FloatCart1_cartcontent .cartItem').length > 0) {
+                $(this).show();
+                $('#floatcart #cartanchor').addClass('hover');
+            }
+        }).mouseout(function () {
+            $(this).hide();
+            $('#floatcart #cartanchor').removeClass('hover');
+        });
+
+    });
+
+
+
+
+    var zClient;
+
+    function checkKey(e) {
+        e = e || window.event;
+        if (e.keyCode == 13) {
+            $('#signupform #b-subscribe').click();
+            return false;
+        }
+        return true;
+    }
+
+    $(document).ready(function () {
+
+        zClient = new ZeroClipboard($("#b-copy"), {
+            moviePath: "/BVModules/ContentBlocks/Email Signup Popup/ZeroClipBoard/ZeroClipboard.swf",
+            debug: false
+        });
+ 
+        $(window).resize(function () {
+            updateFormPosition($('#signupform'));
+            updateFormPosition($('#signupthankyou'));
+            updateFormPosition($('#signupterms'));
+            updateFormPosition($('#signupcopy'));
+        });
+
+        $('#signupform #b-subscribe').click(function () {
+            //if (Page_ClientValidate('gSignupForm')) {
+            $('#ctl00_Header1_ContentColumnControl2_ctl00_txtEmail').removeClass('val-error');
+            var email = $('#ctl00_Header1_ContentColumnControl2_ctl00_txtEmail').val();
+            var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+            if (email != '' && pattern.test(email)) {
+                var callback = $.ajax({
+                    type: 'POST',
+                    url: '/pageservice.asmx/ApplyMailingListSignUpForm',
+                    data: '{"ControlId": "af5af994-b9f1-40f7-8211-df17764ee18e", ' +
+                    '"Email": "' + $('#ctl00_Header1_ContentColumnControl2_ctl00_txtEmail').val() + '"}',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: false
+                });
+                if (callback.status == 200) {
+                    var data = jQuery.parseJSON(callback.responseText);
+                    if (data.d) data = data.d;
+                    if (data.indexOf('Error') == -1) {
+                        $('#signupoverlay').show();
+                        createCookie('SkipSignupForm', '1', 1000);
+                        $.ajax({
+                            type: 'POST',
+                            url: '/pageservice.asmx/SuspendSignUpForm',
+                            data: '{}',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            async: true
+                        });
+                        $('#signupform').fadeOut("slow", function () {
+                            updateFormPosition($('#signupthankyou'));
+                            $('#newcode').html(data.split('|')[0]);
+                            $('#terms').html('Use this coupon at checkout. This offer is valid until ' + data.split('|')[1] + '.');
+                            $('#signupthankyou').fadeIn('slow');
+                        });
+                    }
+                    else
+                        alert(data);
+                }
+            }
+            else {
+                $('#ctl00_Header1_ContentColumnControl2_ctl00_txtEmail').addClass('val-error');
+            }
+            //}
+        });
+
+        $('#signupform .bclose').click(function () {
+        	disableSignUpForm();
+            $('#signupform').fadeOut("slow", function () { $('#signupoverlay').hide(); });
+        });
+
+        $('#signupthankyou .bclose').click(function () {
+            $('#signupthankyou').fadeOut("slow", function () { $('#signupoverlay').hide(); });
+        });
+
+    });
+
+	function disableSignUpForm() {
+		createCookie('SkipSignupForm', '1', 1000);
+		$.ajax({
+			type: 'POST',
+			url: '/pageservice.asmx/SuspendSignUpForm',
+			data: '{}',
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			async: true
+		});
+	};
+
+	function updateFormPosition($e) {
+        $e.css('left', ($(window).width() - $e.width()) / 2 + 'px');
+        var top = ($(window).height() - $e.height()) / 2;
+        if (top < 0) top = 0;
+        $e.css('top', top + 'px');
+    };
+
+    function createCookie(name, value, days) {
+        var expires;
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = '';
+        }
+        document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = escape(name) + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return unescape(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+
+
+						function checkGoogleReviews() {
+							if ($('div#___ratingbadge_0').length > 0) {
+								window.setTimeout(function () { $('div#___ratingbadge_0').appendTo('.footer .badges div.google-reviews'); }, 500);
+							}
+							else
+								window.setTimeout(checkGoogleReviews, 500);
+						}
+						$(document).ready(function () {
+							checkGoogleReviews();
+						})
+					
+
+var google_tag_params = {
+ecomm_prodid:  '',
+ecomm_pagetype:  'home',
+ecomm_totalvalue:  0
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 982604393;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator"), document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator"));
+//]]>
+
+
+//<![CDATA[
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl01_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl02_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl03_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl04_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl05_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl06_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl07_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator.errormessage = "Quantity is required";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRequiredFieldValidator.initialvalue = "";
+var ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator = document.all ? document.all["ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator"] : document.getElementById("ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator");
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator.controltovalidate = "ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityTextBox";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator.errormessage = "Quantity must be a number.";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator.display = "Dynamic";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_MainContentHolder_ContentColumnControl2_ctl01_ProductGridDisplay1_rpProductGrid_ctl08_SingleProductDisplay_QuantityRegularExpressionValidator.validationexpression = "\\d*";
+//]]>
+
+
+//<![CDATA[
+window.setTimeout(function() { updateFormPosition($('#signupform')); $('#signupform').fadeIn('slow', function() { $('#signupoverlay').show(); }); }, 10000);
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+
+<!--
+    vs_account_id = "Ch4NmVmu0Q1tAQDI";
+		////-->
+
+    

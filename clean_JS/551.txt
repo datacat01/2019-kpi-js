@@ -1,0 +1,72 @@
+
+//<![CDATA[
+optionalZipCountries = ["AF","AL","AO","AI","AG","AW","BS","BH","BB","BZ","BJ","BM","BT","BO","BW","VG","BF","BI","KH","CM","CV","KY","CF","TD","CL","CO","KM","CG","CD","CK","CR","CI","DJ","DM","DO","GM","GH","GI","HK","IQ","IE","KE","KW","LA","LY","MT","MU","MD","MS","AN","NG","OM","QA","SA","SC","SR","UG","AE","VN"];
+//]]>
+
+
+            try {
+                window.digitalData = window.digitalData || {};
+                window.digitalData.version = "1.0";
+                window.digitalData.page = {"pageInfo":{"pageName":"Cheap Contact Lenses UK  | Vision Direct UK","destinationURL":"https:\/\/www.visiondirect.co.uk\/","referringURL":"https:\/\/www.visiondirect.co.uk","language":"en_GB"},"category":{"pageType":"home"}};
+                window.digitalData.user = {"profile":[{"profileInfo":{"language":"en_GB","returningStatus":"false"}}]};
+		                                                                                                                window.digitalData.pluginVersion = "0.5.5";
+                                                window.digitalData.generatedDate = 1555218048000;
+                            } catch (e) {
+            }
+        
+//<![CDATA[
+        var Translator = new Translate({"You need to select the lens specification in full":"Please enter all your prescription details","zopim.livechat.window.title":"Customer support","zopim.livechat.bubble.title":"Questions?","zopim.livechat.bubble.text":"Chat with us 24\/7","zopim.livechat.concierge.name":"Live Support","zopim.livechat.concierge.title":"Ask us anything","zopim.livechat.greeting.online":"Chat 24\/7","zopim.livechat.greeting.offline":"Leave us a message"});
+        //]]>
+
+        window.dataLayer = window.dataLayer || [];
+
+                    dataLayer.push({"ga_account":"UA-200287-1","page_name":"\/virtual\/homepage"});
+        
+        // Additional data for frontend GTM event pushes
+            
+
+
+    VD.namespace('VD.purecloud.config', {"orgId":"8852","orgName":"visiondirect","webchatAppUrl":"https:\/\/apps.mypurecloud.ie\/webchat","webchatServiceUrl":"https:\/\/realtime.mypurecloud.ie:443","queueName":"Netherlands","skills":["CHA - Chat"],"language":"Dutch - Written","active":null,"welcomeMessage":"Welcome to Vision Direct chat"} );
+
+
+
+VD.namespace('VD.page');
+
+VD.page.loadCMSBlockURL    = 'https://www.visiondirect.co.uk/madecache/esi/loadcmsblock/';
+VD.page.loadVoucherCodeURL = 'httpss://www.visiondirect.co.uk/misc1/voucher/loadVoucherCode/';
+
+
+
+    
+    var clear_styling_interval,
+        flagLoader = false;
+
+    var showWaitingOverlay = function() {
+        if( $('gl3-waiting-overlay') !== undefined || $('gl3-waiting-overlay') !== null ) {
+
+            if (!flagLoader){
+                var loader = $$('#gl3-waiting-overlay img')[0];
+                loader.src = loader.getAttribute("data-src");
+                flagLoader = true;
+            }
+
+            $('gl3-waiting-overlay').style.display = 'block';
+
+            clear_styling_interval = setTimeout(function(){ hideWaitingOverlay(); },20000);
+        }
+    };
+
+    var hideWaitingOverlay = function() {
+        if( $('gl3-waiting-overlay') !== undefined && $('gl3-waiting-overlay') !== null ) {
+            $('gl3-waiting-overlay').style.display = '';
+        }
+
+        if( clear_styling_interval !== undefined && clear_styling_interval !== null ) {
+            clearTimeout(clear_styling_interval);
+        }
+    }
+
+
+
+    VD.namespace('VD.purecloud.config', {"orgId":"8852","orgName":"visiondirect","webchatAppUrl":"https:\/\/apps.mypurecloud.ie\/webchat","webchatServiceUrl":"https:\/\/realtime.mypurecloud.ie:443","queueName":"Netherlands","skills":["CHA - Chat"],"language":"Dutch - Written","active":null,"welcomeMessage":"Welcome to Vision Direct chat"} );
+

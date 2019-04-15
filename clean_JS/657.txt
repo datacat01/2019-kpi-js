@@ -1,0 +1,91 @@
+
+$(function(){
+var titles = $$('.sf-menu > li > a > span');
+titles.each(function(n){ 
+	var line = n.innerHTML.split(' ');
+	line[0] = '<span>' + line[0] + '</span>'; 
+	var result_string = '';
+	line.each(function(m){
+		result_string += m + ' ';
+	}) 
+	n.innerHTML = unescape(result_string); 
+})
+
+}); 
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/reviews';
+Mage.Cookies.domain   = '.www.skywatches.com.sg';
+//]]>
+
+
+        //<![CDATA[
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            
+ga('create', 'UA-15375960-1', 'auto');
+ga('set', 'anonymizeIp', true);
+ga('send', 'pageview');
+            
+        //]]>
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search');
+            //searchForm.initAutocomplete('https://www.skywatches.com.sg/reviews/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '631169343676915', // App ID
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+        });
+    };
+
+    // Load the SDK Asynchronously
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    function greet(id){
+        FB.api('/me', function(response) {
+            var src = 'https://graph.facebook.com/'+id+'/picture';
+            $$('.welcome-msg')[0].insert('<img height="20" src="'+src+'"/>');
+        });
+    }
+
+    function fblogin(){
+        try {
+            FB.login(function(response) {
+                if (response.status == 'connected') {
+                    var url = 'https://www.skywatches.com.sg/reviews/facebookfree/customer/login/referer/aHR0cHM6Ly93d3cuc2t5d2F0Y2hlcy5jb20uc2cvcmV2aWV3cy8,/';
+                    setLocation(url);
+                } else if (response.status === 'not_authorized') {
+                    alert('Please, approve our application');
+                } else {
+                    // user is not logged in
+                    window.location.reload();
+                }
+            }, {scope:'email'});
+        } catch (err) {
+            fblogin();
+        }
+        return false;
+    }
+

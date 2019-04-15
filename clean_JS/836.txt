@@ -1,0 +1,40 @@
+
+			jQuery(document).ready(function(){
+
+				jQuery("#pdm-header .search-form input[type=submit]").click(function(){
+					jQuery(this).blur(); 
+					var value = jQuery("#pdm-header .search-form input[type=text]").val();
+					if (jQuery.trim(value)=="" || jQuery.trim(value)=="Search by keyword or item number") {
+						alert('Please enter keywords to search for'); 
+						jQuery("#pdm-header .search-form input[type=text]").val("")
+						jQuery("#pdm-header .search-form input[type=text]").focus(); 
+						return false;
+					} 
+					else {
+						var newOrUsed='NewUsed';  
+						/* ga('send','event','Search','click','newOrUsed'); */ 
+					}
+				});
+				
+			});
+			
+
+	var gts = gts || [];
+	gts.push(["id", "27356"]);  
+	
+	gts.push(["google_base_subaccount_id", "5200551"]);  
+	gts.push(["google_base_country", "US"]);  
+	gts.push(["google_base_language", "EN"]);  
+	(function() {    
+		var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");    
+		var gts = document.createElement("script");    
+		gts.type = "text/javascript";    
+		gts.async = true;    
+		gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";    
+		var s = document.getElementsByTagName("script")[0];    
+		s.parentNode.insertBefore(gts, s);  
+	})();
+
+
+document.cookie = "test="+escape("{ts '2019-04-14 10:34:06'}");
+

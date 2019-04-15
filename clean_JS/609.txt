@@ -1,0 +1,54 @@
+
+        var appInsights=window.appInsights||function(config)
+        {
+            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
+            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
+        }({
+            instrumentationKey:'2388b4de-0fb1-49ca-ac01-24f7a9df9a1e'
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    
+
+                $(document).ready(function () {
+                    $("#quickemail").click(function (e) {
+                        if ($("#quickemailform")[0].checkValidity()) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: "/NewsletterSignup",
+                                data: $("#quickemailform").serialize(),
+                                complete: function (data) {
+                                    if (data.responseText.length > 0) {
+                                        //failed
+                                    } else {
+                                        $("#quickemailthanks").show();
+                                    }
+                                }
+                            });
+                        }
+                });
+            });
+                        
+
+        window.paypalCheckoutButtons ? window.paypalCheckoutButtons.push('paypalExpressButton') : window.paypalCheckoutButtons = ['paypalExpressButton'];
+        if (false) {
+            window.paypalCheckoutButtons = window.paypalCheckoutButtons.concat('null'.replace(/\s/g, '').split(','));
+        }
+        window.paypalCheckoutReady = function () {
+            paypal.checkout.setup('null', {
+                button: window.paypalCheckoutButtons,
+                environment: 'production'
+            });
+        }
+    
+
+        var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+        (function (d, s, id, tid, vid) {
+            var js, ljs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+            js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+            ljs.parentNode.insertBefore(js, ljs);
+        })(document, 'script', 'ltkSDK', 'UFOIQT3BGmk7', '1');
+    

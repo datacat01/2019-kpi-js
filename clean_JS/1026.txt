@@ -1,0 +1,151 @@
+
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/lagunatools.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+try{jQuery.noConflict();}catch(e){};
+
+/* <![CDATA[ */
+var wcps_ajax = {"wcps_ajaxurl":"https:\/\/lagunatools.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/lagunatools.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"https:\/\/lagunatools.com\/wp-admin\/admin-ajax.php","security":"684bc015b4","gallery_scrolloffset":"20","eppathtoscripts":"https:\/\/lagunatools.com\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","eppath":"https:\/\/lagunatools.com\/wp-content\/plugins\/youtube-embed-plus\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"13.1","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","ytapi_load":"light","stopMobileBuffer":"1","vi_active":"","vi_js_posttypes":[]};
+/* ]]> */
+
+
+_atrk_opts = { atrk_acct:"igg5n1aMp410em", domain:"lagunatools.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+
+   ;if(typeof ROIStorage === 'undefined') {     (function(d,b,c,f){d[b]={};d[b].windowName=d.name;d[b].GoogleAnalyticsObject=c;d[b].q=[];d[c]=function(){d[b].q.push(arguments)};d[c].q=d[c].q||[];d[b].roiq=[];d[b].analyticsJsNotLoaded=true;d[c].q.push([function(){d[b].realGa=d[c];d[b].analyticsJsNotLoaded=false;d[c]=function(){if(typeof arguments[0]==="function"){d[b].realGa(arguments)}else{d[b].q.push(arguments)}};d[b].roiq.push=function(){d[b].realGa.apply(d,arguments)};for(f=0;f<d[b].roiq.length;f+=1){d[b].realGa.call(d,d[b].roiq[f])}}])})(window,"ROIStorage","ga");ROIStorage.gaq=ROIStorage.gaq||[];window._gaq={push:function(){var a;for(a=0;a<arguments.length;a++){ROIStorage.gaq.push(arguments[a])}}};var _gaq=window._gaq;ROIStorage.gaq=ROIStorage.gaq||[];window._gat={trackingObjects:{},_createTracker:function(a,b){return new _gat.Tracker(a,b)},_getTracker:function(a){return _gat._createTracker(a)},_getTrackerByName:function(a){var a=a||"";if(_gat.trackingObjects.hasOwnProperty(a)){return _gat.trackingObjects[a]}return _gat._createTracker("UA-XXXXX-X",a)},_anonymizeIp:function(){ROIStorage.gaq.push("_gat._anonymizeIp")},_forceSSL:function(){ROIStorage.gaq.push("_gat._forceSSL")},_getPlugin:function(){ROIStorage.gaq.push("_gat._getPlugin")},Tracker:function(a,g){var c,h,e=["_addDevId","_addEventListener","_addIgnoredOrganic","_addIgnoredRef","_addItem","_addOrganic","_addTrans","_clearIgnoredOrganic","_clearIgnoredRef","_clearOrganic","_clearTrans","_clearXKey","_clearXValue","_cookiePathCopy","_createEventTracker","_createXObj","_deleteCustomVar","_get","_getAccount","_getClientInfo","_getDetectFlash","_getDetectTitle","_getLocalGifPath","_getName","_getPlugin","_getServiceMode","_getVersion","_getVisitorCustomVar","_getXKey","_getXValue","_initData","_linkByPost","_removeEventListener","_sendXEvent","_set","_setAccount","_setAllowAnchor","_setAllowHash","_setAllowLinker","_setAutoTrackOutbound","_setCampCIdKey","_setCampContentKey","_setCampIdKey","_setCampMediumKey","_setCampNOKey","_setCampNameKey","_setCampSourceKey","_setCampTermKey","_setCampaignCookieTimeout","_setCampaignTrack","_setClientInfo","_setCookiePath","_setCookiePersistence","_setCookieTimeout","_setCustomVar","_setDetectFlash","_setDetectTitle","_setDomainName","_setHrefExamineLimit","_setLocalGifPath","_setLocalRemoteServerMode","_setLocalServerMode","_setMaxCustomVariables","_setNamespace","_setPageGroup","_setReferrerOverride","_setRemoteServerMode","_setSampleRate","_setSessionCookieTimeout","_setSessionTimeout","_setSiteSpeedSampleRate","_setTrackOutboundSubdomains","_setTrans","_setTransactionDelim","_setVar","_setVisitorCookieTimeout","_setXKey","_setXValue","_trackEvent","_trackPageLoadTime","_trackPageview","_trackSocial","_trackTiming","_trackTrans","_visitCode"];var b=g||"";var f=a||"UA-XXXXX-X";function d(i){return function(){if(b){i=b+"."+i}var j=Array.prototype.slice.call(arguments,0);j.unshift(i);ROIStorage.gaq.push(j)}}for(c=0;c<e.length;c++){h=e[c];this[h]=d(h)}this["_getLinkerUrl"]=function(i){return i};this["_link"]=function(i){ROIStorage.gaq.push(function(){location.href=i})};_gat.trackingObjects[b]=this}};var _gat=window._gat;     (function () {         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;         ga.src = ('https:' == document.location.protocol ? 'https://fc134191caaa7eea34ef-624b851dc0cda36267c9d3f3225d5584.ssl.cf2.rackcdn.com/gate.js' : 'http://eeb9112d24ca181ec141-624b851dc0cda36267c9d3f3225d5584.r80.cf2.rackcdn.com/gate.js');         var s = document.getElementsByTagName('script')[0];         s.parentNode.insertBefore(ga, s);     })();   } 
+           !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");            pintrk('load','2617156340244');           pintrk('page');           
+
+        var ajaxurl = 'https://lagunatools.com/wp-admin/admin-ajax.php';
+      
+
+                        hbspt.cta.load(5403187, 'd5e0ddce-b910-4a50-a778-056ab5a3f023', {});
+                    
+
+                        hbspt.cta.load(5403187, '9abe2a99-11e2-4fdf-9baf-8513e07693b7', {});
+                    
+!function(e){var c=document.createElement("script");c.src=e,document.body.appendChild(c)}("https://lagunatools.com?cf_action=brb_embed&brb_collection_id=46094&brb_callback=brb_"+(new Date).getTime());
+ var wto = wto || []; wto.push(['setWTID', 'lagunatools']); wto.push(['webTraxs']); (function() { var wt = document.createElement('script'); wt.src = document.location.protocol + '//www.webtraxs.com/wt.php'; wt.type = 'text/javascript'; wt.async = true; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wt, s); })();  
+piAId = '31162';piCId = '2048';(function() {	function async_load(){		var s = document.createElement('script'); s.type = 'text/javascript';		s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';		var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);	}	if(window.attachEvent) { window.attachEvent('onload', async_load); }	else { window.addEventListener('load', async_load, false); }})();
+    adroll_adv_id = "DOCTIZA27BDGDN56ADCLC5";    adroll_pix_id = "TLQV6IG5ABGBVLEPETRRS3";    /* OPTIONAL: provide email to improve user identification */    /* adroll_email = "username@example.com"; */    (function () {        var _onload = function(){            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}            var scr = document.createElement("script");            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");            scr.setAttribute('async', 'true');            scr.type = "text/javascript";            scr.src = host + "/j/roundtrip.js";            ((document.getElementsByTagName('head') || [null])[0] ||                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);        };        if (window.addEventListener) {window.addEventListener('load', _onload, false);}        else {window.attachEvent('onload', _onload)}    }());
+    var CQK="6396BD0C" ;    var CQP=(("https:" == document.location.protocol) ? "https://" : "http://") ;    document.write(unescape("%3Cscript language="JavaScript1.1" type="text/javascript" src=""+CQP+"js.clickequations.net/CLEQ_"+CQK+".js" %3E%3C/script%3E" ));
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */
+var mPS2id_params = {"instances":{"mPS2id_instance_0":{"selector":"a[rel='m_PageScroll2id']","autoSelectorMenuLinks":"true","scrollSpeed":1000,"autoScrollSpeed":"true","scrollEasing":"easeInOutQuint","scrollingEasing":"easeOutQuint","pageEndSmoothScroll":"true","stopScrollOnUserAction":"false","autoCorrectScroll":"false","layout":"vertical","offset":"100","highlightSelector":"","clickedClass":"mPS2id-clicked","targetClass":"mPS2id-target","highlightClass":"mPS2id-highlight","forceSingleHighlight":"false","keepHighlightUntilNext":"false","highlightByNextTarget":"false","appendHash":"false","scrollToHash":"true","scrollToHashForAll":"true","scrollToHashDelay":0,"scrollToHashUseElementData":"true","scrollToHashRemoveUrlHash":"false","disablePluginBelow":0,"adminDisplayWidgetsId":"true","adminTinyMCEbuttons":"true","unbindUnrelatedClickEvents":"false","normalizeAnchorPointTargets":"false"}},"total_instances":"1","shortcode_class":"_ps2id"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_3615ad5232606681105a336405b14643","fragment_name":"wc_fragments_3615ad5232606681105a336405b14643"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"home","leadinPluginVersion":"7.2.2"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination."};
+/* ]]> */
+
+
+var ajaxurl = "https://lagunatools.com/wp-admin/admin-ajax.php";
+
+
+jQuery(document).on('click', '.mini_cart_item .remove', function(e){
+							var product_id = jQuery(this).data("product_id");
+							var item_li = jQuery(this).closest('li');
+							var a_href = jQuery(this).attr('href');
+							jQuery.ajax({
+								type: 'POST',
+								dataType: 'json',
+								url: ajaxurl,
+								data: 'action=hermes_product_remove&' + (a_href.split('?')[1] || ''), 
+								success: function(data){
+									if(typeof(data) != 'object'){
+										alert('Could not remove cart item.');
+										return;
+									}
+									jQuery('.topcart .cart-toggler .qty').html(data.qty);
+									jQuery('.topcart .cart-toggler .subtotal').html(data.subtotal);
+									jQuery('.topcart_content').css('height', 'auto');
+									if(data.qtycount > 0){
+										jQuery('.topcart_content .total .amount').html(data.subtotal);
+									}else{
+										jQuery('.topcart_content .cart_list').html('<li class="empty">No products in the cart.</li>');
+										jQuery('.topcart_content .total').remove();
+										jQuery('.topcart_content .buttons').remove();
+									}
+									item_li.remove();
+								}
+							});
+							e.preventDefault();
+							return false;
+						});
+
+			jQuery(document).ready(function($){
+				$(window).scroll(function() {
+					var start = $(".header-container > .top-bar").outerHeight() + 10;
+					
+					if ($(this).scrollTop() > start){  
+						$(".header-container > .header").addClass("sticky");
+					}
+					else{
+						$(".header-container > .header").removeClass("sticky");
+					}
+				});
+			});
+
+
+/* <![CDATA[ */
+var tve_dash_front = {"ajaxurl":"https:\/\/lagunatools.com\/wp-admin\/admin-ajax.php","force_ajax_send":"1","is_crawler":""};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var megamenu = {"timeout":"300","interval":"100"};
+/* ]]> */
+
+
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.5.13","urls":{"assets":"https:\/\/lagunatools.com\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_enable_lightbox_in_editor":"yes"}},"post":{"id":41255,"title":"Laguna Tools Home","excerpt":""}};
+
+
+jQuery(function($) { 
+
+					$( '.add_to_cart_button:not(.product_type_variable, .product_type_grouped)' ).click( function() {
+						ga( 'ec:addProduct', {'id': ($(this).data('product_sku')) ? ($(this).data('product_sku')) : ('#' + $(this).data('product_id')),'quantity': $(this).data('quantity')} );
+						ga( 'ec:setAction', 'add' );
+						ga( 'send', 'event', 'UX', 'click', 'add to cart' );
+					});
+				
+ });
+

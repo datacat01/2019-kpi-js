@@ -1,0 +1,150 @@
+
+//<![CDATA[
+var theForm = document.forms['form'];
+if (!theForm) {
+    theForm = document.form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+	//<![CDATA[
+
+function PM_Postback(param) { if (window.top.HideScreenLockWarningAndSync) { window.top.HideScreenLockWarningAndSync(1080); } if(window.CMSContentManager) { CMSContentManager.allowSubmit = true; }; __doPostBack('m$am',param); }
+function PM_Callback(param, callback, ctx) { if (window.top.HideScreenLockWarningAndSync) { window.top.HideScreenLockWarningAndSync(1080); }if (window.CMSContentManager) { CMSContentManager.storeContentChangedStatus(); };WebForm_DoCallback('m$am',param,callback,ctx,null,true); }
+//]]>
+
+
+	//<![CDATA[
+
+var CMS = CMS || {};
+CMS.Application = {
+  "language": "en",
+  "imagesUrl": "/CMSPages/GetResource.ashx?image=%5bImages.zip%5d%2f",
+  "isDebuggingEnabled": true,
+  "applicationUrl": "/",
+  "isDialog": false,
+  "isRTL": "false"
+};
+
+//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+null;
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('manScript', 'form', ['tctxM',''], [], [], 90, '');
+//]]>
+
+
+	//<![CDATA[
+WebServiceCall('/cmsapi/webanalytics', 'LogHit', '{"NodeAliasPath":"/Home","DocumentCultureCode":"en-US","UrlReferrer":""}')
+//]]>
+
+
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=beToSAE3vdsL1QUQUxjWda5xzFPedMan1FXlHTkMcIQIAxLYvnXGL3urgBgYPMvs9YmrB18xAcu-1SeMCYyObA2&t=636849058732503127';
+WebForm_InitCallback();//]]>
+
+
+	//<![CDATA[
+jQuery(document).ready(function(){
+
+loadElements();
+
+if(location.pathname != "/")
+{
+  //only add active class once off of the home page - for some reason it adds all active classes
+  jQuery('nav .firstLevel a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+}
+  
+//handle the mobile menu opening and closing and also the double click action for the top level
+//first click opens up the secondary nav
+//second click goes to the actual page
+jQuery('.firstLevel a').click(function(){
+    var subMenuStyle = jQuery(this).parent().find(".sub-menu");
+
+    if(subMenuStyle.length == 0)
+    {
+       //no submenu, so allow click
+       return true;
+    } 
+
+    //set other submenus to have the plus icon
+    loadElements();
+
+    if(subMenuStyle.css("display") == "none")
+    {
+        var replaceString = jQuery(this).html().replace('fa fa-plus', 'fa fa-minus');
+        jQuery(this).html(replaceString);
+        jQuery(".sub-menu").slideUp();
+        jQuery(this).parent().children("ul").toggle();
+        return false;
+    }
+    else if(subMenuStyle.css("display") == "block")
+    {
+        //alert('should be changing to plus sign now');
+        var replaceString = jQuery(this).html().replace('fa fa-minus', 'fa fa-plus');
+        jQuery(this).html(replaceString);
+        return true;
+    }
+    else
+    {
+        return true;
+    }
+});
+});
+
+//loads elements for the first time and reloads when other item is clicked.
+function loadElements(){
+jQuery('.firstLevel a').each(function(){
+   var subMenuStyle = jQuery(this).parent().find(".sub-menu");
+   if(subMenuStyle.length == 0)
+   {
+     //remove the items with no children
+      var replaceString = jQuery(this).html().replace('fa fa-plus', '');
+      jQuery(this).html(replaceString);
+   } 
+   else{
+      var replaceString = jQuery(this).html().replace('fa fa-minus', 'fa fa-plus');
+      jQuery(this).html(replaceString);
+   }
+});
+}
+//]]>
+
+
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TextBoxWatermarkBehavior, {"ClientStateFieldID":"p_lt_ctl02_SmartSearchBox_txtWord_exWatermark_ClientState","id":"p_lt_ctl02_SmartSearchBox_txtWord_exWatermark","watermarkText":"Enter Subject, Title, Author, Keyword"}, null, null, $get("p_lt_ctl02_SmartSearchBox_txtWord"));
+});
+//]]>
+
+ 
+      //<![CDATA[
+      if (window.WebForm_InitCallback) { 
+        __theFormPostData = '';
+        __theFormPostCollection = new Array();
+        window.WebForm_InitCallback(); 
+      }
+      //]]>
+    

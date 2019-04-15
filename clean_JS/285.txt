@@ -1,0 +1,130 @@
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.funeralpamphlets.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+(function (w, d, u) {
+    if(w.njQuery === u){
+        w.bindNextendQ = [];
+    
+        function pushToReady(x) {
+            w.bindNextendQ.push([alias.handler,"ready", x]);
+        }
+        
+        function pushToLoad(x) {
+            w.bindNextendQ.push([alias.handler,"load", x]);
+        }
+
+        var alias = {
+            handler: w,
+            ready: pushToReady,
+            load: pushToLoad
+        }
+
+        w.njQuery = function (handler) {
+            alias.handler = handler;
+            return alias;
+        }
+    }
+})(window, document);
+              
+
+    window['nextend-smart-slider-4-onresize'] = [];
+
+
+    njQuery(document).ready(function () {
+        njQuery('#nextend-smart-slider-4').smartslider({"translate3d":1,"playfirstlayer":0,"mainafterout":1,"inaftermain":1,"fadeonscroll":0,"autoplay":1,"autoplayConfig":{"duration":8000,"counter":0,"autoplayToSlide":0,"stopautoplay":{"click":1,"mouseenter":1,"slideplaying":1},"resumeautoplay":{"mouseleave":0,"slideplayed":1,"slidechanged":0}},"responsive":{"downscale":1,"upscale":0,"maxwidth":3000,"basedon":"combined","screenwidth":{"tablet":1024,"phone":640},"ratios":[1,1,0.6999999999999999555910790149937383830547332763671875,0.5]},"controls":{"scroll":0,"touch":"0","keyboard":0},"blockrightclick":0,"lazyload":0,"lazyloadneighbor":0,"randomize":0,"type":"ssSimpleSlider","animation":["horizontal"],"animationSettings":{"duration":1500,"delay":0,"easing":"easeInOutQuint","parallax":1},"flux":[0,["bars"]],"touchanimation":"0"});
+    });
+
+
+
+    jQuery(document).ready(function($){
+        $('.second-section ul.products').bxSlider({
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+            minSlides: 1,
+            maxSlides: 4,
+            useCSS:false,
+            slideWidth: 280,
+            slideMargin: 10,
+            nextText: '<i class="fa fa-angle-right"></i>',
+            prevText: '<i class="fa fa-angle-left"></i>',
+            mode: 'horizontal',
+            pager: false,
+            controls: true
+        });
+    });
+
+      jQuery(document).ready(function ($) {
+        var html = '<div class="overlay">' +
+                    '<a class="expand"><i class="fa fa-list-ul"></i>View Details  </a>' +
+                    '<a class="close-overlay hidden">x</a>' +
+                    '</div>';
+                    $("ul.products li a img").wrap("<div class='img'></div>");
+               $("ul.products li").find('a img').after(html);
+
+
+            if (Modernizr.touch) {
+                // show the close overlay button
+                $(".close-overlay").removeClass("hidden");
+                // handle the adding of hover class when clicked
+                $("ul.products li .img").click(function (e) {
+                    if (!$(this).hasClass("hover")) {
+                        $(this).addClass("hover");
+                    }
+                });
+                // handle the closing of the overlay
+                $(".close-overlay").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if ($(this).closest("ul.products li .img").hasClass("hover")) {
+                        $(this).closest("ul.products li .img").removeClass("hover");
+                    }
+                });
+            } else {
+               // handle the mouseenter functionality
+                $("ul.products li .img").mouseenter(function () {
+                    $(this).addClass("hover");
+                })
+                    // handle the mouseleave functionality
+                    .mouseleave(function () {
+                        $(this).removeClass("hover");
+                    });
+           }
+        });
+
+
+    
+
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 200) {
+                        $('#menuHeaderBar').addClass("navbar-fixed-top");
+                    } else {
+                        $('#menuHeaderBar').removeClass("navbar-fixed-top");
+                    }
+                });
+            });
+        
+
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+  d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+  _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+  $.src='//v2.zopim.com/?1Mwc7DEoNY4ocidiuhPxSynpimHBvCHI';z.t=+new Date;$.
+  type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+  
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View Cart","cart_url":"https:\/\/www.funeralpamphlets.com\/cart\/","is_cart":"","cart_redirect_after_add":"yes"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments"};
+/* ]]> */
+

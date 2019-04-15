@@ -1,0 +1,143 @@
+
+jQuery(window).on('load',  function() {
+				new JCaption('img.caption');
+			});jQuery(function($){ initTooltips(); $("body").on("subform-row-add", initTooltips); function initTooltips (event, container) { container = container || document;$(container).find(".hasTooltip").tooltip({"html": true,"container": "body"});} });
+//<![CDATA[
+jQuery(document).ready(function() {
+		jQuery('#VMmenu66_91591 li.VmClose ul').hide();
+		jQuery('#VMmenu66_91591 li .VmArrowdown').click(
+		function() {
+
+			if (jQuery(this).parent().next('ul').is(':hidden')) {
+				jQuery('#VMmenu66_91591 ul:visible').delay(500).slideUp(500,'linear').parents('li').addClass('VmClose').removeClass('VmOpen');
+				jQuery(this).parent().next('ul').slideDown(500,'linear');
+				jQuery(this).parents('li').addClass('VmOpen').removeClass('VmClose');
+			}
+		});
+	});
+//]]>
+//<![CDATA[ 
+if (typeof Virtuemart === "undefined"){
+	var Virtuemart = {};}
+var vmSiteurl = 'https://www.urnworld.com.au/' ;
+Virtuemart.vmSiteurl = vmSiteurl;
+var vmLang = '&lang=en';
+Virtuemart.vmLang = vmLang; 
+var vmLangTag = 'en';
+Virtuemart.vmLangTag = vmLangTag;
+var Itemid = '&Itemid=101';
+Virtuemart.addtocart_popup = "0" ; 
+var usefancy = true; //]]>
+
+	
+
+	jQuery(document).ready(function() {
+	  var owl = jQuery("#owl-id-testimonial");
+	  owl.owlCarousel({
+		pagination: true,
+		items: 1,
+		itemsDesktop : [1600, 1],
+		itemsDesktopSmall : [1260, 1],
+		itemsTablet : [1000, 1],
+		itemsTabletSmall : [768, 1],
+		itemsMobile : [480, 1],
+		
+		slideSpeed: 200,
+		paginationSpeed: 800,
+		rewindSpeed: 1000,
+		
+		autoPlay: 8000,
+		stopOnHover: true,
+		navigation: true,
+		scrollPerPage: false,
+		paginationNumbers: false,
+		responsive: true,
+		responsiveRefreshRate: 150,
+		dragBeforeAnimFinish: true,
+		mouseDrag: true,
+		touchDrag: true
+		
+	  });
+	});
+	
+
+  WebFontConfig = {
+    google: { families: [ 'Open+Sans:600italic,300italic,400italic,700italic,300,600,700,400:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+  
+(function(){
+  var d = document, e = d.documentElement, s = d.createElement('style');
+//  if (e.style.MozTransform === ''){ // gecko 1.9.1 inference
+    s.textContent = 'body{visibility:hidden} .site-loading{visibility:visible !important;}';
+    var r = document.getElementsByTagName('script')[0];
+    r.parentNode.insertBefore(s, r);
+    function f(){ s.parentNode && s.parentNode.removeChild(s); }
+    addEventListener('load',f,false);
+    setTimeout(f,3000);
+//  }
+})();
+ 
+
+	jQuery(document).ready(function() {
+		jQuery("#searchOpenButton" ).click(function() {
+		  jQuery( "#searchpanel" ).toggle( "slow" );
+		});
+	});
+	
+
+		function toggle_visibility(id) {
+		var e = document.getElementById(id);
+		if(e.style.display == 'block')
+		e.style.display = 'none';
+		else
+		e.style.display = 'block';
+		}
+	
+	
+	jQuery(window).on("scroll touchmove", function () {
+		jQuery('#cl-handler').toggleClass('tiny', jQuery(document).scrollTop() > 250 );
+	});
+	
+
+	jQuery(document).ready(function() {
+		jQuery('#cartpanel').on('click', function() {
+			jQuery('div.panel2').animate({
+
+				'opacity': 'show'
+			}, 300, function() {
+				jQuery('div.cartpanel').fadeIn(200);
+			});
+			
+			jQuery('#cartpanel .popover').addClass( "hiddenCloud" );
+			
+		});
+		jQuery('span.closecart').on('click', function() {
+			jQuery('div.cartpanel').fadeOut(200, function() {
+				jQuery('div.panel2').animate({
+
+					'opacity': 'hide'
+				}, 300);
+			});
+			jQuery('#cartpanel .popover').removeClass( "hiddenCloud" );
+		});
+	});
+	
+//<![CDATA[ 
+jQuery(document).ready( function($) {
+			$("#virtuemart_country_id_field").vm2front("list",{dest : "#virtuemart_state_id_field",ids : "",prefiks : ""});
+		}); //]]>
+
+//<![CDATA[ 
+jQuery(document).ready( function($) {
+			$("#shipto_virtuemart_country_id_field").vm2front("list",{dest : "#shipto_virtuemart_state_id_field",ids : "",prefiks : "shipto_"});
+		}); //]]>
+

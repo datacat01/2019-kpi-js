@@ -1,0 +1,1195 @@
+
+		 (function(){
+			if (location.protocol !== "https:") {
+				location.protocol = "https:";
+			}
+		})();
+		
+
+			 (function(h,o,t,j,a,r){
+			 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			 h._hjSettings={hjid:52261,hjsv:5};
+			 a=o.getElementsByTagName('head')[0];
+			 r=o.createElement('script');r.async=1;
+			 r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			 a.appendChild(r);
+			 })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+		
+
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', '_gaq');
+
+            //<![CDATA[
+        window["IsUAEnabled"] = "Yes";
+        window["GaData"] = {};
+ 
+            _gaq('create', 'UA-4194995-1', 'weathertech.com');
+			_gaq('require', 'ec');
+			 
+            _gaq('set', 'dimension3', '07');  
+
+			// Optimizely Universal Analytics Integration 
+			window.optimizely = window.optimizely || [];
+			window.optimizely.push("activateUniversalAnalytics");			
+		
+            _gaq('require', 'displayfeatures');
+            _gaq('send', 'pageview');
+            //]]>
+    
+
+//<![CDATA[
+var theForm = document.forms['main'];
+if (!theForm) {
+    theForm = document.main;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+function banner_track(el,id) {el.href = '/banners.aspx?BannerId=' + id;el.mousedown = '';return true;}//]]>
+
+
+//<![CDATA[
+function WebForm_OnSubmit() {
+if(document.getElementById('CT_Banner1_0_fck_ccEditor')!=null && FCKeditorAPI.GetInstance('CT_Banner1_0_fck_ccEditor'))  FCKeditorAPI.GetInstance('CT_Banner1_0_fck_ccEditor').UpdateLinkedField();
+return true;
+}
+//]]>
+
+
+//<![CDATA[
+//]]>
+
+
+    var siteSubDirectory;
+    if ($('#hdnSubDirectory'))
+        siteSubDirectory = $('#hdnSubDirectory').val();
+    else
+        siteSubDirectory = '';
+		
+	var enableSaveVehicle = 1;
+
+    var ConsolidateAjax = true;
+
+    jQuery(function($) {
+        $(window).trigger('resize');
+
+        //slideout
+        $(".slideLinkWrpr li").click(function() {
+            var aLink = $(this).find("a");
+            var slideVal = $(aLink).data("slidelink");
+
+            if (slideVal) {
+                var url = $(aLink).attr("href");
+                var container = ".grid_9.push_3";
+
+                var resultDiv = $("div").find("[data-slidetarget='" + slideVal + "']");
+                if ($(resultDiv).length > 0) {
+                    $(resultDiv).find(".slideBody").load(url + ' ' + container, function() {
+                        $(this).addClass('loaded');
+
+                        if ($(window).width() <= 767 && $(resultDiv).html().indexOf("advList") > 0) {
+                            showDealerExternalPopup();
+                        }
+                    });
+                }
+            }
+        });
+
+        $("#CT_Header_0_drpResponsiveMake").bind("change", null, changeMake);
+        $("#CT_Header_0_drpResponsiveYear").bind("change", null, changeYear);
+
+        $("#CT_Header_0_drpResponsiveModel").bind("change", null, function(o) {
+            if ($(this).val() == "") {
+                if ($("#CT_Header_0_drpResponsiveModel").prop) {
+                    $("#viewProductsBtn").prop('disabled', 'disabled');
+                }
+                $("#viewProductsBtn").parents('.optionContainer').addClass('disabled');
+                $("#CT_Header_0_drpResponsiveModel").parent().find('.small').html('Select');
+                $("#CT_Header_0_drpResponsiveModel").parent().find('.large').text('Model');
+                return;
+            }
+
+            var url = '' + $(this).val().split("|")[1];
+            $("#viewProductsBtn").attr("href", url);
+            $("#viewProductsBtn").removeProp("disabled");
+            var myAccountUrl = '/my-account/';
+
+            var pauseRedirect = parseInt(getCookie("pauseRedirect"));
+            if (!($.isNumeric(pauseRedirect)) || pauseRedirect === 0) {
+                //re-direct
+                var currentUrl = window.location.href;
+                if (!(currentUrl.indexOf(myAccountUrl) !== -1)) {
+                    if (enableSaveVehicle) {
+                    SaveVehicle(url);
+                }
+                    else {
+                        window.location = url;
+                    }
+                }
+            }
+        });
+
+        function changeMake(callback) {
+            if ($(this).val() == "") {
+                $("#CT_Header_0_drpResponsiveMake").parent().find('.small').html('Select');
+                $("#CT_Header_0_drpResponsiveMake").parent().find('.large').text('Make');
+
+                $("#CT_Header_0_drpResponsiveYear").parents('.optionContainer').addClass('disabled');
+            } else {
+                $("#CT_Header_0_drpResponsiveYear").parents('.optionContainer').removeClass('disabled');
+            }
+            $("#CT_Header_0_drpResponsiveYear").html('<option value="">Select Year</option>');
+            $("#CT_Header_0_drpResponsiveModel").html('<option value="">Select Model</option>');
+            $("#CT_Header_0_drpResponsiveYear").parent().find('.small').html('Select');
+            $("#CT_Header_0_drpResponsiveYear").parent().find('.large').text('Year');
+            $("#CT_Header_0_drpResponsiveModel").parent().find('.small').html('Select');
+            $("#CT_Header_0_drpResponsiveModel").parent().find('.large').text('Model');
+
+            $("#CT_Header_0_drpResponsiveModel").parents('.optionContainer').addClass('disabled');
+
+            if ($("#viewProductsBtn").prop) {
+                $("#viewProductsBtn").prop('disabled', 'disabled');
+            }
+            $("#viewProductsBtn").parents('.optionContainer').addClass('disabled');
+
+            populateDropDown("CT_Header_0_drpResponsiveYear", "Select Year", "F=GetYears&MakeId=" + $("#CT_Header_0_drpResponsiveMake").val(), callback);
+            if ($(callback.target).hasClass('drpResponsiveMake') && $('.drpResponsiveMakeDD').length > 0) yearDD();
+        }
+
+        function changeYear(callback) {
+            if ($(this).val() == "") {
+                $("#CT_Header_0_drpResponsiveYear").parent().find('.small').html('Select');
+                $("#CT_Header_0_drpResponsiveYear").parent().find('.large').text('Year');
+                if ($("#CT_Header_0_drpResponsiveModel").prop) {
+                    $("#CT_Header_0_drpResponsiveModel").prop('disabled', 'disabled');
+                    $("#viewProductsBtn").prop('disabled', 'disabled');
+                }
+                $("#viewProductsBtn").parents('.optionContainer').addClass('disabled');
+                $("#CT_Header_0_drpResponsiveModel").parents('.optionContainer').addClass('disabled');
+            } else {
+                $("#CT_Header_0_drpResponsiveModel").removeProp('disabled');
+                $("#CT_Header_0_drpResponsiveModel").parents('.optionContainer').removeClass('disabled');
+            }
+
+            $("#CT_Header_0_drpResponsiveModel").parent().find('.small').html('Select');
+            $("#CT_Header_0_drpResponsiveModel").parent().find('.large').text('Model');
+
+
+            populateDropDown("CT_Header_0_drpResponsiveModel", "Select Model", "F=GetVehicles&MakeId=" + $("#CT_Header_0_drpResponsiveMake").val() + "&Year=" + $("#CT_Header_0_drpResponsiveYear").val(), callback);
+            if ($(callback.target).hasClass('drpResponsiveYear') && $('.drpResponsiveMakeDD').length > 0) modelDD();
+        }
+
+        $("#viewProductsBtn").live("click", function(e) {
+            e.preventDefault();
+
+                var url = $(this).attr('href');
+				var myAccountUrl = '/my-account/';
+                if (!(url.indexOf(myAccountUrl) !== -1)) {
+                    if (enableSaveVehicle) {
+                        SaveVehicle(url);
+                    }
+                    else {
+                        window.location = url;
+                    }
+                }
+
+            return false;
+        });
+    });
+
+    function getQueryStrings() {
+        var vars = [],
+            param;
+        var params = window.location.href.toLowerCase().slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < params.length; i++) {
+            param = params[i].split('=');
+            vars.push(param[0]);
+            vars[param[0]] = param[1];
+        }
+        return vars;
+    }
+
+    var prevWinWidth = 0;
+    $(window).resize(function() {
+        if (window.innerWidth > 940 && $('.drpResponsiveMakeDD').length < 1) {
+            makeDD();
+            if ($('.drpResponsiveYear option').length > 1) {
+                yearDD();
+            };
+            if ($('.drpResponsiveModel option').length > 1) {
+                modelDD();
+            };
+        } else if (window.innerWidth < 940) {
+            removeDD();
+        }
+    });
+
+    //NEW MYM - full feature
+    jQuery(function($) {
+        $("#CT_Header_0_drpMake").bind("change", null, changeLeftMake);
+        $("#CT_Header_0_drpYear").bind("change", null, changeLeftYear);
+
+        $("#CT_Header_0_drpModel").bind("change", null, function(o) {
+            if ($(this).val() == "") {
+                if ($("#CT_Header_0_drpModel").prop) {
+                    $("#lnkGo").prop('disabled', 'disabled');
+                }
+                $("#lnkGo").parents('.shopForVehicleHome_buttons').addClass('disabled');
+                return;
+            }
+            var url = siteSubDirectory + $(this).val().split("|")[1];
+            $("#lnkGo").attr("href", url);
+            $("#lnkGo").removeProp("disabled");
+            $("#lnkGo").trigger("click");
+        });
+
+        $("#lnkGo").on("click", function(e) {
+            e.preventDefault();
+
+                var url = $("#lnkGo").attr('href');
+                if (enableSaveVehicle) {
+                    SaveVehicle_v2(url);
+                }
+                else {  //modified feature
+                    window.location = url;
+                }
+
+            return false;
+        });
+
+
+
+        function changeLeftMake(callback) {
+            if ($(this).val() == "") {
+                $("#CT_Header_0_drpMake").find('option:eq(0)').html('Select Make');
+                $('.shopForVehicleHome_year').addClass('disabled');
+            } else {
+                $('.shopForVehicleHome_year').removeClass('disabled');
+            }
+            $("#CT_Header_0_drpYear").html('<option value="">Select Year</option>');
+            $("#CT_Header_0_drpModel").html('<option value="">Select Model</option>');
+            $('.shopForVehicleHome_model').addClass('disabled');
+
+            if ($("#lnkGo").prop) {
+                $("#lnkGo").prop('disabled', 'disabled');
+            }
+            $("#lnkGo").parents('.shopForVehicleHome_buttons').addClass('disabled');
+
+            populateDropDown("CT_Header_0_drpYear", "Select Year", "F=GetYears&MakeId=" + $("#CT_Header_0_drpMake").val(), callback);
+            yearDD();
+        }
+
+        function changeLeftYear(callback) {
+            if ($(this).val() == "") {
+                $("#lnkGo").parents('.shopForVehicleHome_buttons').addClass('disabled');
+                $('.shopForVehicleHome_model').addClass('disabled');
+            } else {
+                $("#CT_Header_0_drpModel").removeProp('disabled');
+                $('.shopForVehicleHome_model').removeClass('disabled');
+            }
+
+            populateDropDown("CT_Header_0_drpModel", "Select Model", "F=GetVehicles&MakeId=" + $("#CT_Header_0_drpMake").val() + "&Year=" + $("#CT_Header_0_drpYear").val(), callback);
+            modelDD();
+        }
+    });
+
+    function makeDD() {
+        var yLength = $('.siteHeader .drpResponsiveMakeDD').length;
+        if (yLength > 0) {
+            $('.siteHeader .drpResponsiveMakeDD').remove();
+            $('.siteHeader .drpResponsiveMakeDD').parent().off('click');
+            $('.siteHeader .drpResponsiveMakeDD span').off('click');
+        }
+
+        var ddHTML = '';
+        ddHTML += '<div class="drpResponsiveMakeDD hidden">';
+        $('.siteHeader .drpResponsiveMake option').each(function() {
+            ddHTML += '<span data-o="' + $(this).index() + '">' + $(this).text() + '</span>';
+        });
+        ddHTML += '</div>';
+
+        $('.siteHeader .drpResponsiveMake').parent().after(ddHTML);
+
+        $('.drpResponsiveMake').parent().on('click', function() {
+            $('.drpResponsiveMakeDD').toggleClass('hidden');
+            $('.drpResponsiveYearDD').addClass('hidden');
+            $('.drpResponsiveModelDD').addClass('hidden');
+        });
+
+        $('.drpResponsiveMakeDD span').on('click', function() {
+            $('.drpResponsiveMake>option:eq(' + $(this).attr('data-o') + ')').prop('selected', true);
+            $('.drpResponsiveMakeDD').toggleClass('hidden');
+            $('.drpResponsiveYearDD').addClass('hidden');
+            $('.drpResponsiveModelDD').addClass('hidden');
+            $("#CT_Header_0_drpResponsiveMake").trigger("change");
+
+            $('.drpResponsiveModelDD').remove();
+            $('.drpResponsiveModel').parent().off('click');
+            $('.drpResponsiveModelDD span').off('click');
+        });
+    }
+
+    function yearDD() {
+        var yLength = $('.siteHeader .drpResponsiveYearDD').length;
+        if (yLength > 0) {
+            $('.siteHeader .drpResponsiveYearDD').remove();
+            $('.siteHeader .drpResponsiveYear').parent().off('click');
+            $('.siteHeader .drpResponsiveYearDD span').off('click');
+        }
+
+        var ddHTML = '';
+        var ddCount = 0;
+        ddHTML += '<div class="drpResponsiveYearDD hidden">';
+        $('.siteHeader .drpResponsiveYear option').each(function() {
+            ddHTML += '<span data-o="' + $(this).index() + '">' + $(this).text() + '</span>';
+            ddCount++;
+        });
+        ddHTML += '</div>';
+
+        $('.siteHeader .drpResponsiveYear').parent().after(ddHTML);
+
+        if (ddCount <= 36) {
+            $('.drpResponsiveYearDD').css({
+                'width': (130 * Math.ceil(ddCount / 10))
+            });
+            $('.drpResponsiveYearDD').parent().addClass('smallDrop');
+            $('.drpResponsiveYearDD').parent().removeClass('largeDrop');
+
+        } else {
+            if (ddCount > 90) {
+                $('.drpResponsiveYearDD').css({
+                    'min-height': '300px',
+                    'max-height': '300px'
+                });
+            }
+            $('.drpResponsiveYearDD').parent().removeClass('smallDrop');
+            $('.drpResponsiveYearDD').parent().addClass('largeDrop');
+        }
+
+        $('.drpResponsiveYear').parent().on('click', function() {
+            $('.drpResponsiveYearDD').toggleClass('hidden');
+            $('.drpResponsiveMakeDD').addClass('hidden');
+            $('.drpResponsiveModelDD').addClass('hidden');
+        });
+
+        $('.drpResponsiveYearDD span').on('click', function() {
+            $('.drpResponsiveYear>option:eq(' + $(this).attr('data-o') + ')').prop('selected', true);
+            $('.drpResponsiveYearDD').toggleClass('hidden');
+            $('.drpResponsiveMakeDD').addClass('hidden');
+            $('.drpResponsiveModelDD').addClass('hidden');
+            $("#CT_Header_0_drpResponsiveYear").trigger("change");
+        });
+    }
+
+    function modelDD() {
+        var yLength = $('.siteHeader .drpResponsiveModelDD').length;
+        if (yLength > 0) {
+            $('.siteHeader .drpResponsiveModelDD').remove();
+            $('.siteHeader .drpResponsiveModel').parent().off('click');
+            $('.siteHeader .drpResponsiveModelDD span').off('click');
+        }
+        var ddHTML = '';
+        var ddCount = 0;
+        var ddMaxWidth = 0;
+        ddHTML += '<div class="drpResponsiveModelDD hidden">';
+        $('.siteHeader .drpResponsiveModel option').each(function() {
+            ddHTML += '<span data-o="' + $(this).index() + '">' + $(this).text() + '</span>';
+            var itemWidth = Math.ceil(getTextWidth($(this).text(), "15px 'Open Sans'")) + 62;
+            if (itemWidth > ddMaxWidth) {
+                ddMaxWidth = itemWidth;
+            }
+            ddCount++;
+        });
+        ddHTML += '</div>';
+
+        if (ddMaxWidth < 189) {
+            ddMaxWidth = 189;
+        }
+
+        $('.siteHeader .drpResponsiveModel').parent().after(ddHTML);
+        if (ddCount < 10) {
+            $('.drpResponsiveModelDD').css({
+                'width': (ddMaxWidth * 1)
+            });
+            $('.drpResponsiveModelDD').parent().addClass('smallDrop');
+        } else if (ddCount >= 10) {
+            $('.drpResponsiveModelDD').css({
+                'width': (ddMaxWidth * Math.ceil(ddCount / 10))
+            });
+            $('.drpResponsiveModelDD').parent().addClass('smallDrop');
+        } else {
+            $('.drpResponsiveModelDD').parent().removeClass('smallDrop');
+        }
+
+        $('.drpResponsiveModel').parent().on('click', function() {
+            $('.drpResponsiveModelDD').toggleClass('hidden');
+            $('.drpResponsiveMakeDD').addClass('hidden');
+            $('.drpResponsiveYearDD').addClass('hidden');
+        });
+
+        $('.drpResponsiveModelDD span').on('click', function() {
+            $('.drpResponsiveModel>option:eq(' + $(this).attr('data-o') + ')').prop('selected', true);
+            $('.drpResponsiveModelDD').toggleClass('hidden');
+            $('.drpResponsiveMakeDD').addClass('hidden');
+            $('.drpResponsiveYearDD').addClass('hidden');
+            $("#CT_Header_0_drpResponsiveModel").trigger("change");
+        });
+    }
+
+    function removeDD() {
+        $('.drpResponsiveMakeDD').remove();
+        $('.drpResponsiveMake').parent().off('click');
+        $('.drpResponsiveMakeDD span').off('click');
+        $('.drpResponsiveYearDD').remove();
+        $('.drpResponsiveYear').parent().off('click');
+        $('.drpResponsiveYearDD span').off('click');
+        $('.drpResponsiveModelDD').remove();
+        $('.drpResponsiveModel').parent().off('click');
+        $('.drpResponsiveModelDD span').off('click');
+    }
+
+    function getTextWidth(text, font) {
+        var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+        var context = canvas.getContext("2d");
+        context.font = font;
+        var metrics = context.measureText(text);
+        return metrics.width;
+    }
+
+    // from 'Shop For Your Vehicle'
+    function SaveVehicle(url) {
+        var container = $('#addVehicle');
+        var yearContainer = container.find('.vehiclePickerRow .selectContainer')[1];
+        var modelContainer = container.find('.vehiclePickerRow .selectContainer')[2];
+
+        var selectedYear = $(yearContainer).find(":selected");
+        var selectedModel = $(modelContainer).find(":selected");
+        if (selectedYear.length == 0 || selectedModel.length == 0) return;
+
+        var year = (selectedYear !== undefined) ? selectedYear.val() : '0';
+        var model = (selectedModel !== undefined) ? selectedModel.val().split("|")[0] : '0';
+
+        $.getJSON(siteSubDirectory + "/storeajax.aspx?F=SaveVehicle&VehicleId=" + model + "&Year=" + year, function(o) {
+            if (!o.Success) return;
+            window.location = url;
+        });
+    }
+
+    // 'Go' on homepage MYM.
+    function SaveVehicle_v2(url) {
+        var selectedYear = $("#CT_Header_0_drpYear");
+        var selectedModel = $("#CT_Header_0_drpModel")
+        if (selectedYear.length == 0 || selectedModel.length == 0) return;
+
+        var year = (selectedYear !== undefined) ? selectedYear.val() : '0';
+        var model = (selectedModel !== undefined) ? selectedModel.val().split("|")[0] : '0';
+
+        if (model) {
+            $.getJSON(siteSubDirectory + "/storeajax.aspx?F=SaveVehicle&VehicleId=" + model + "&Year=" + year, function(o) {
+                if (!o.Success) return;
+                window.location = url;
+            });
+        }
+    }
+
+    jQuery(function($) {
+        var banners = [];
+
+        $.each($('[data-ajax="banner"]'), function (n, o) {
+            if (banners.indexOf($(o).data("bannername")) == -1) {
+                banners.push($(o).data("bannername"));
+            }
+        });
+
+        if (banners && banners.length > 0) {
+            if (ConsolidateAjax ) {
+                return false;
+            }
+
+            $.ajax({
+                url: siteSubDirectory + '/storeajax.aspx?f=NextBanner&b=' + banners,
+                success: function (o) {
+                    if (!o.Success) {return false;}
+                    var banrObj = JSON.parse(o);
+                    if(!isEmpty(banrObj)) {
+                        for(var i = 0; i < banrObj.Banners.length; i++) {
+                            var bnr = banrObj.Banners[i];
+                        $('[data-bannername="'  +  bnr.BannerGroup +'"]').html(bnr.Markup);
+                        resetimpressiontrack();
+                    }
+                    }
+                }, type: 'POST'
+            });
+        }
+    });
+
+            		
+
+        var globalSiteSubDirectory = '';
+        var globalCountryCode = '';
+        var globalIsResponsive = false;
+        var globalAjaxTimeOut = 5000;
+
+        jQuery(function ($) {
+            globalSiteSubDirectory = getGlobalSiteSubDirectory();
+            globalCountryCode = getGlobalCountryCode();
+            globalIsResponsive = 'True' === getGlobalIsResponsive();
+            getGlobalAjaxTimeOut();  
+        });
+
+        function getGlobalSiteSubDirectory() {
+            if ($('#hdnSubDirectory'))
+                return $('#hdnSubDirectory').val();
+            else
+                return '';
+        }
+
+        function getGlobalCountryCode() {
+            if ($('#hdnCountryCode'))
+                return $('#hdnCountryCode').val();
+            else
+                return '';
+        }
+
+        function getGlobalIsResponsive() {
+            if ($('#hdnIsResponsive'))
+                return $('#hdnIsResponsive').val();
+            else
+                return false;
+        }
+
+        function getGlobalAjaxTimeOut() {
+            if ($('#hdnIsTestMode'))
+                globalAjaxTimeOut = 15000;
+        }
+
+        function getBannerData(){
+            var bannerdataobjArray = new Array();
+            $.each($('[data-ajax="banner"]'), function (n, o) {          
+                b = $(o);
+                if (b.data("bannername")) {
+                    if (b.data("bannername") != '') {
+                        bannerdataobjArray.push(b.data("bannername"));
+                    }
+                }
+            });
+            var bannerdataobj = "";
+            if (bannerdataobjArray[0] != null) {
+                bannerdataobj = bannerdataobjArray.join();        
+            }   
+            return bannerdataobj;
+        }
+
+        function callconsolidatedAjax() {
+            var requests = [{ "F": "InitializeDynamicContent", "pagetype": "NPP", "handler": "myInitializeDynamicContent", "data": { "BaseUrl":"/","Year":"","VehicleId":"","ChangeAnswers":"False","ItemGroupId":"","ChoiceIds":"" } },
+            { "F": "NextBanner", "pagetype": "NPP", "handler": "myNextBanner", "data": { "b":  getBannerData() } }
+            ];
+
+            $.ajax({
+                "type": "POST",
+                "url": globalSiteSubDirectory + "/storeajax.aspx?thani=" + generateConsolidateUUID(),
+                "data": JSON.stringify(requests),
+                "dataType": "json",
+                "timeout": globalAjaxTimeOut,
+                "success": function (o) {
+                    handleAjaxResponse(o);
+                },
+                "error": function (jqXHR, strErrorType, ex) {
+                }
+            });
+        }
+
+		var ConsolidateAjax = true;
+        $(document).ready(function () {
+		if (ConsolidateAjax ) {		
+            callconsolidatedAjax();
+			}
+        });
+
+        function handleAjaxResponse(o) {
+            for(var responseItem in o.responses)
+            {        
+                var handler = o.responses[responseItem].handler;           
+                if (handler === "myInitializeDynamicContent") {
+                    myInitializeDynamicContent(o.responses[responseItem].Data)
+                } if (handler === "myNextBanner") {
+                    myNextBanner(o.responses[responseItem].Data)
+                } 
+            }
+        }
+
+        function myInitializeDynamicContent(o) {
+            if (!o.Success) return;
+
+            if (o.EnableSaveVehicle) {
+                enableSaveVehicle = 1;
+            }
+            else {
+                enableSaveVehicle = 0;
+            }
+
+            if (o.RedirectUrl && o.RedirectUrl !== '') window.location = o.RedirectUrl;
+            if (o.Make !== '' && o.Model !== '' && o.Year > 0) {
+                if (!$('#pVehicleDtl').is(':visible') && !$('.itemDesc').is(':visible')) $('#pVehicleDtl').show().html('<div class="rowLabel">Vehicle: </div><div class="selectedOptions"><span class="optionType">' + o.Make + ' ' + o.Year + ' ' + o.Model + '</span></div>');
+                $('#relatedVehicle').html(o.Make + ' ' + o.Year + ' ' + o.Model);
+                $('.relatedVehicleName').html(o.Make + ' ' + o.Year + ' ' + o.Model);
+            }
+            if (o.VehicleOptionsVisible) {
+                $('#divVehicleOptions').find('span').html(o.VehicleOptionsTitle + ': ');
+                $('#divVehicleOptions').find('ul').html(o.VehicleOptions);
+            }
+            if (o.ContinueShoppingLink) {
+                $('.continueShopping').show().find('a').attr('href', o.ContinueShoppingLink);
+            }
+			
+			if (o.PriceRange)
+                $(".itemPriceRange").html(o.PriceRange);
+
+            if(o.GenericPriceRange)
+                $('.pickerPrice').html(o.GenericPriceRange);
+			
+			var discountGroupId = getCookie("DiscountGroup" + '1');
+            if (discountGroupId) {
+                sessionStorage.removeItem("ShowNSPUserMessage");
+            }
+			
+            if (o.MakeId > 0) {
+
+                if($(".shopForVehicleHome_make select").length > 0) {
+                    $(".shopForVehicleHome_make select").find('option[value="' + o.MakeId + '"]').prop('selected', true);
+                    $(".shopForVehicleHome_make").removeClass('disabled');
+                }
+
+                //prepopulate make
+                if ($(".drpResponsiveMakeDD").length > 0) {
+                    $(".drpResponsiveMakeDD").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveMakeDD").parent().find('.large').text(o.Make);
+                }
+                $(".siteHeader .drpResponsiveMake").val(o.MakeId);
+                $(".siteHeader .drpResponsiveMake").trigger('change');
+
+
+                if ($(".drpResponsiveLeftMake").length > 0) {
+                    $(".drpResponsiveLeftMake").val(o.MakeId);
+                    $(".drpResponsiveLeftMake").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveLeftMake").parent().find('.large').text(o.Make);
+                    $(".drpResponsiveLeftMake").parents('.optionContainer').removeClass('disabled')
+                }
+            } else {
+                   
+                if($(".shopForVehicleHome_make select").length > 0) {
+                    $(".shopForVehicleHome_make select").find('option:eq(0)').html('Select Make');
+                    $(".shopForVehicleHome_make").removeClass('disabled');
+                    $(".shopForVehicleHome_year").addClass('disabled');
+                }
+                
+                $(".drpResponsiveMake").parent().find('.small').html('select');
+                $(".drpResponsiveMake").parent().find('.large').text('Make');
+                if ($(".drpResponsiveLeftMake").length > 0) {
+                    $(".drpResponsiveLeftMake").parent().find('.small').html('select');
+                    $(".drpResponsiveLeftMake").parent().find('.large').text('Make');
+                    $(".drpResponsiveLeftMake").parents('.optionContainer').removeClass('disabled')
+                    $(".drpResponsiveLeftVehicleYear").parents('.optionContainer').addClass('disabled')
+                }
+            }
+            var html = '';
+            for (var i = 0; i < o.Years.length; i++) {
+                var selected = '';
+                if (o.Years[i].Text == o.Year) selected = 'selected="selected"'
+                html += '<option value="' + o.Years[i].Value + '"' + selected + '>' + o.Years[i].Text + '</option>';
+            }
+            if (o.Year > 0) {
+
+                if($(".shopForVehicleHome_year select").length > 0) {
+                    $(".shopForVehicleHome_year select").html(html).val(o.Year);
+                    $(".shopForVehicleHome_year").removeClass('disabled');
+                }
+
+                //prepopulate year
+                if ($(".drpResponsiveYearDD").length > 0) {
+                    $(".drpResponsiveYearDD").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveYearDD").parent().find('.large').text(o.Year);
+                }
+                $(".siteHeader .drpResponsiveYear").val(o.Year);
+                $(".siteHeader .drpResponsiveYear").trigger('change');
+
+                if ($(".drpResponsiveLeftVehicleYear").length > 0) {
+                    $(".drpResponsiveLeftVehicleYear").html(html).val(o.Year);
+                    $(".drpResponsiveLeftVehicleYear").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveLeftVehicleYear").parent().find('.large').text(o.Year);
+                    $(".drpResponsiveLeftVehicleYear").parents('.optionContainer').removeClass('disabled')
+                }
+            } else {
+                if($(".shopForVehicleHome_year select").length > 0) {
+                    $(".shopForVehicleHome_year select").find('option:eq(0)').html('Select Year');
+                }
+
+                $(".drpResponsiveYear").parent().find('.small').html('select');
+                $(".drpResponsiveYear").parent().find('.large').text('Year');
+                if ($(".drpResponsiveLeftVehicleYear").length > 0) {
+                    $(".drpResponsiveLeftVehicleYear").parent().find('.small').html('select');
+                    $(".drpResponsiveLeftVehicleYear").parent().find('.large').text('Year');
+                }
+            }
+            html = '';
+            for (var i = 0; i < o.Vehicles.length; i++) {
+                html += '<option value="' + o.Vehicles[i].Value + '">' + o.Vehicles[i].Text + '</option>';
+            }
+            if (o.Vehicle !== "") {
+
+                var lUrl = o.Vehicle.split("|")[1]; if (lUrl.slice(-1) == '/') { lUrl = lUrl.slice(0, -1); }
+
+                $('.navVehicle').find('.num').html("\u2713").show();
+
+                if($(".shopForVehicleHome_model select").length > 0) {
+                    $(".shopForVehicleHome_model select").html(html).val(o.Vehicle);
+                    $(".shopForVehicleHome_model").removeClass('disabled');
+
+                    $("#lnkGo").attr("href", (siteSubDirectory ? siteSubDirectory : '') + lUrl + "");
+                    $("#lnkGo").removeProp("disabled");
+                    $("#lnkGo").parents('.shopForVehicleHome_buttons').removeClass('disabled')
+                }
+
+                //prepopulate model
+                if ($(".drpResponsiveModelDD").length > 0) {
+                    $(".drpResponsiveModelDD").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveModelDD").parent().find('.large').text(o.Model);
+                }
+                $(".siteHeader .drpResponsiveModel").val(o.Vehicle);  //don't need it but doesn't hurt.
+                $(".siteHeader .drpResponsiveModel").parent().find('.small').html('&nbsp;');
+                $(".siteHeader .drpResponsiveModel").parent().find(".optionSelector").addClass('itemSel');
+                $(".siteHeader .drpResponsiveModel").parent().find('.small').hide();
+
+                var optionText = o.Model;
+                var charCount = optionText.length;
+                if (optionText[0] != '-' && charCount > 8) {
+                    $(".siteHeader .drpResponsiveModel").parents('.optionContainer').addClass('optionSize1');
+                }
+                if (optionText[0] != '-' && charCount >= 12) {
+                    $(".siteHeader .drpResponsiveModel").parents('.optionContainer').addClass('optionSize2');
+                }
+                if (optionText[0] != '-' && charCount >= 12 && charCount <= 17) {
+                    $(".siteHeader .drpResponsiveModel").parents('.optionContainer').addClass('optionSize3');
+                }
+				
+                $(".siteHeader .drpResponsiveModel").parent().find('.large').text(o.Model);
+
+                // enable 'View Products' button and set URL.
+                var url = siteSubDirectory + o.Vehicle.split("|")[1];
+                $("#viewProductsBtn").attr("href", url);
+                $("#viewProductsBtn").removeProp("disabled");
+                $("#viewProductsBtn").parents('.optionContainer').removeClass('disabled');
+                     
+                if ($(".drpResponsiveLeftModel").length > 0) {
+                    $(".drpResponsiveLeftModel").html(html).val(o.Vehicle);
+                    $(".drpResponsiveLeftModel").parent().find('.small').html('&nbsp;');
+                    $(".drpResponsiveLeftModel").parent().find('.large').text(o.Model);
+                    $(".drpResponsiveLeftModel").parents('.optionContainer').removeClass('disabled')
+                   
+                    $("#viewProductsLeftBtn").attr("href", (siteSubDirectory ? siteSubDirectory : '') + lUrl + "");
+                    $("#viewProductsLeftBtn").removeProp("disabled");
+                    $("#viewProductsLeftBtn").parents('.optionContainer').removeClass('disabled')
+                }
+            } else {
+                if($(".shopForVehicleHome_model select").length > 0) {
+                    $(".shopForVehicleHome_model select").find('option:eq(0)').html('Select Model');
+                }
+
+                $(".drpResponsiveModel").parent().find('.small').html('select');
+                $(".drpResponsiveModel").parent().find('.large').text('Model');
+                if ($(".drpResponsiveLeftModel").length > 0) {
+                    $(".drpResponsiveLeftModel").parent().find('.small').html('select');
+                    $(".drpResponsiveLeftModel").parent().find('.large').text('Model');
+                }
+            }
+
+            var ca = false;
+			if (ca){
+				for (var i = 0; i < o.Groups.length; i++) {
+					var g = o.Groups[i];
+					var div = $("#divItemGroup_" + g.ItemGroupId);
+					div.parent().removeClass("trigger-overlay");
+					div.parent().find("a.itemLink").attr("href", g.Url).attr("onclick", "return true;");
+					div.find(".itemTitle").after(g.Text).find("a").attr("href", g.Url).attr("onclick", "return true;");
+				}
+			}
+
+			var isHomePage = "Yes";
+			if (isHomePage === "Yes"){
+				if (o.Items && o.Items > 0) {
+					$("#ulHeader").children("li:last").removeClass("last");
+					$("#ulHeader").append('<li class="last"><a class="mainLink" href="/shopping-cart/">Cart</a></li>');
+
+					$(".headerNav li").each(function () {
+						var menu = $(this).find(".drop-menu").hide().css({ 'left': 'auto', 'right': '-100px' }).bgIframe();
+						var link = $(this).find(".mainLink");
+
+						$(this).parent().find("li:eq(0), li:eq(1)").find(".drop-menu").css({ 'left': '-100px', 'right': 'auto' })
+						$(this).hoverIntent({
+							over: function () {
+								link.css({ 'position': 'relative', 'z-index': '10', 'background-position': '0 50%', 'border-color': '#474747' });
+								menu.slideDown('fast');
+							},
+							out: function () {
+								menu.slideUp('fast', function () {
+									link.css({ 'position': 'static', 'background-position': '0 100px', 'border-color': 'transparent' });
+								});
+							}
+						});
+					});
+				}
+
+        if (o.EnableOptimizely === true && o.OptimizelyShoppingHistoryCookie === "1") {
+            $(".homeBannerGridContainer").after(
+                "<div class='shopping-history'>" +
+                "<div class='history-tile history-tile-1'>" +
+                "<h2>Shopping History</h2>" +
+                "</div>"
+            );
+        
+            if (o.FirstSection === true) {
+                $(".history-tile-1").after("<div class='history-tile history-tile-2'></div>");
+
+                $(".history-tile-2").html(
+                    "<div class='history-img'>" +
+                    "<a href='" + o.CustomUrl1 + "'><img src='" + o.FirstImagePath + "' alt=''></a>" +
+                    "</div>" +
+                    "<div class='history-info'>" +
+                    "<p class='history-status'>Viewed</p>" +
+                    "<a href='" + o.CustomUrl1 + "' style='color:black'><h3>" + o.FirstTitle + "</h3></a>" +
+                    "<div class='history-shop'>" +
+                    "<a href='" + o.CustomUrl1 + "' class='history-btn btn'>Shop Now</a>" +
+                    "<p class='history-price'>" + o.Price1 + "</p>" +
+                    "</div>" +
+                    "</div>"
+                );
+            }
+
+            if (o.SecondSection === true) {
+                $(".history-tile-2").after("<div class='history-tile history-tile-3'></div>");
+
+                $(".history-tile-3").html(
+                    "<div class='history-img'>" +
+                    "<a href='" + o.CustomUrl2 + "'><img src='" + o.SecondImagePath + "' alt=''></a>" +
+                    "</div>" +
+                    "<div class='history-info'>" +
+                    "<p class='history-status'>Viewed</p>" +
+                    "<a href='" + o.CustomUrl2 + "' style='color:black'><h3>" + o.SecondTitle + "</h3></a>" +
+                    "<div class='history-shop'>" +
+                    "<a href='" + o.CustomUrl2 + "' class='history-btn btn'>Shop Now</a>" +
+                    "<p class='history-price'>" + o.Price2 + "</p>" +
+                    "</div>" +
+                    "</div>"
+                );
+            }
+
+            if (o.ThirdSection === true) {
+                $(".history-tile-3").after("<div class='history-tile history-tile-4'></div>");
+
+                $(".history-tile-4").html(
+                    "<div class='history-img'>" +
+                    "<a href='" + o.CustomUrl3 + "'><img src='" + o.ThirdImagePath + "' alt=''></a>" +
+                    "</div>" +
+                    "<div class='history-info'>" +
+                    "<p class='history-status'>Viewed</p>" +
+                    "<a href='" + o.CustomUrl3 + "' style='color:black'><h3>" + o.ThirdTitle + "</h3></a>" +
+                    "<div class='history-shop'>" +
+                    "<a href='" + o.CustomUrl3 + "' class='history-btn btn'>Shop Now</a>" +
+                    "<p class='history-price'>" + o.Price3 + "</p>" +
+                    "</div>" +
+                    "</div>"
+                );
+            }
+
+            if (o.FirstSection !== true || o.SecondSection !== true || o.ThirdSection !== true) {
+                $(".shopping-history").append(
+                    "<div class='history-tile history-tile-noitem'>" +
+                    "<p class='history-noitem-text'>There are no more items in your shopping history.</p>" +
+                    "<a href='/products/' class='history-continue-shopping'>Continue Shopping</a>" +
+                    "</div>"
+                );
+            }
+
+            $(".shopping-history").after("</div>");
+        }
+			}
+
+			if (o.Items && o.Items > 0) {
+				$("#spanItemsInCart").html(o.Items);
+				$(".siteCart").show();
+				$('.navItemCart').find('.num').html(o.Items).show();
+			}
+			else {
+				$('.navItemCart').find('.num').hide();
+			}
+
+			if (o.AllProductsLink) {
+				$("#allprodlink").attr("href", o.AllProductsLink).click(function () {
+					window.location = o.AllProductsLink;
+				});
+			}
+
+			if(o.showMVPVideo)
+				$("#mvpVideo").attr("style","display:block;")
+			else  {
+				$(".sdvp").parent().closest('div').attr("style","top:-25px; position:relative;");
+				$(".storeBanner").attr("style","padding:0 20px 0px 20px;");
+			}
+
+			if (!o.Name || o.Name === "") return;
+			$("#divLogin").hide();
+			$("#divMember").show();
+			$("#liAnonymous").hide();
+			$("#liMember").show();
+			$("#spanName").html(o.Name);
+			$(".viewanon").hide();
+			$(".viewmem").show();
+}
+
+    
+		function myNextBanner(o) {
+			if (!o.Success) return;
+			for(var index in o.BannerData){
+				var bannerjsonData = o.BannerData[index];        
+				var bannerDiv = $('[data-bannername="' + bannerjsonData.BannerName + '"]');
+				bannerDiv.html(bannerjsonData.Markup);
+
+				if (bannerDiv.hasClass("bannerFooterGroup")) {
+					$('.bannerFooterGroup').slick({
+						dots: false,
+						infinite: true,
+						speed: 300,
+						slidesToShow: 4,
+						slidesToScroll: 1,
+						responsive: [
+						  {
+							  breakpoint: 1024,
+							  settings: {
+								  slidesToShow: 3,
+								  slidesToScroll: 1,
+							  }
+						  },
+						  {
+							  breakpoint: 864,
+							  settings: {
+								  slidesToShow: 2,
+								  slidesToScroll: 2
+							  }
+						  },
+						  {
+							  breakpoint: 672,
+							  settings: {
+								  slidesToShow: 1,
+								  slidesToScroll: 1
+							  }
+						  }      ]
+					});
+				}
+				resetimpressiontrack();
+			}      
+		}
+
+		function generateConsolidateUUID() {
+			var d = new Date().getTime();
+			var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+				var r = (d + Math.random() * 16) % 16 | 0;
+				d = Math.floor(d / 16);
+				return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+			});
+			return uuid;
+		};
+
+    
+
+		function isEmpty(obj) {
+			for(var key in obj) {
+				if(obj.hasOwnProperty(key))
+					return false;
+			}
+			return true;
+		}
+	
+
+    var counter = 1;
+    var fromId = '';
+
+    jQuery(document).ready(function() {
+        var safeList = new Array('','assets.weathertech.com','blog.weathertech.com','calwingparts.com','facebook.com','fedex.com','goo.gl','google.com','autokinder.com.ve','auto-proz.com','carsonnet.vn','llarasa.com','primeauto.ua','primeauto.ua','shop.edelwaxstube.de','tienda.foro4x4.com','toyota-tavanbogd.mn','weathertech-japan.com','weathertech-sydney.com.au','weathertech-ukraine.com.ua','aimg.com.ar','americanvehicleparts.co.uk','astauto.com.au','auteo.de','auto.com.ua','autoaccesorii.ro','autoaccessoricapogrosso.it','autocromo.com','autodeco.it','autofashionguy.com','autolineshop.it','automotionusa.com','auto-sitzbezuege.com','autoszonyeg.info','autotecnicapunzi.it','avex4x4.com','bianchiricambi.com','bigcountry.com.mx','birlasshop.com','bulder.cl','busaccautoricambi.it','calwing.com','calwingparts.com','carmarket.kz','carplustt.com','casapellas.com','convertino.biz','costautilaje.ro','coverking.com','dacsrl.net','distribucionescantelar.com','erbilvard.se','excelautomotriz.com','fenrich.de','floorliner.co.il','fratellisalti.it','generalcarsandparts.nl','gyscubiertas.com.py','hartintl.com','iac-int.com','kremer.it','kremer-box.de','mecauto.com.py','motorserv.co.za','multiserviciosdakar.com','neumannoffroad.com','pika.de','propartes.com','properformance.com.pa','properformance.com.ve','protemax.com.pe','protemax.ec','rapido-ab.com','realauto25.com','revspeed.ee','ritacco-automotive.eu','speedup.it','staparts.co.nz','suncontrol.com.ar','superracks.cl','tarotomotiv.com.tr','topdiski.lv','toyota.com.gt','toyotajamaica.com','trc-tuning.com','tuning-s-line.com','unsaccodiricambi.com','varamilano.it','vidaxl.com','vidaxl.com','weathertech.ca','weathertech.com.ve','wtshop.co.kr','bach.ok-carservice.de','es-la.facebook.com','facebook.com','kc-motors.fr','altaroda.pt','autoaccessoriaprile.it','autotecnicapunzi.it','bahwanmotors.com','bb-automobiltechnik.de','blindadosaquilino.com','bodyline.com.au','eurocarparts.com','gytisautek.no','lumenia.com.ec','maluch.at','marzina.de','masterax.com','max-dywanik.pl','rnrautogear.com','zona4x4.com','instagram.com','macneil-ip.com','maps.google.com','petcomfort.ca','petcomfort.com','pinterest.com','plus.google.com','sema.org','techfloor.ca','techfloor.com','twitter.com','w3.org','w3.org','w3.org','weathertech.ca','weathertech.com','weathertech.mx','weathertechblog.com','weathertechdealer.ca','weathertechdealer.com','weathertecheurope.com','weathertechracing.com','weathertechwholesale.com','youtube.com','youtube-nocookie.com');
+        $("a").each(function() {
+            var $a = jQuery(this);
+            var href = this.href;
+
+            // strip the host name down, removing subdomains or www
+            var host = window.location.host.replace(/^(([^\/]+?\.)*)([^\.]{4,})((\.[a-z]{1,4})*)$/, '$3$4');
+            var domain = this.hostname.split(".");
+            var domainname ='';
+			
+            for (var d = 0; d < domain.length; d++) {
+
+                if (domain[d] != 'www') {
+                    domainname += domain[d];
+
+                    if (d != domain.length - 1) {
+                        domainname += '.';
+                    }
+                }
+            }
+         
+            var bLegal = 0;
+            if ($a.hasClass('popLegal')) {
+                bLegal = 1;
+            }
+
+            if (this.href != null && ((typeof safeList !== 'undefined' && jQuery.inArray(domainname, safeList) < 0) || bLegal == 1) && !$a.is(".exempt")) {
+                var isPetComfort = href.indexOf("petcomfort.com") >= 0;
+                if ((this.href.match(/^http/)) && ((!this.href.match(host)) || bLegal == 1) && (!this.href.match(/^javascript/))) {
+                    $a.addClass('thickbox').addClass('external');
+                    var _href = $a.attr("href");
+					$a.attr('href', _href + '#TB_inline?height=300&width=480&inlineId=tb_external&linkId=' + counter);
+                    //$a.attr('onclick', 'javascript: pageTracker._trackPageview("/outgoing/' + ReplaceURLPrefixes(href) + '")');
+                    $a.attr('id', 'tb_external' + counter);
+                    tb_init('a.thickbox');
+                    counter = counter + 1;
+
+                    // on click, add external link code to the thickbox
+                    $a.click(function() {
+
+
+                        var popText = '';
+						popText = "<p>You are now leaving <strong>WeatherTech.com</strong> and will be directed to the ADP careers page to view current job postings.</p>  ";
+						$(".popupCont").html(popText);
+                        if ($a.hasClass('popLegal') || isPetComfort) {
+                            popText = isPetComfort ? '<p>You are now leaving <strong>%%site%%</strong> and will be redirected to <strong>PetComfort.com</strong> to shop for the PetComfort Feeding System.</p>' : 'You are now leaving <strong>%%site%%</strong> and will be directed to the Trademark Policies page on the <strong>WeatherTech U.S.</strong> website';
+                            popText = popText.replace("%%site%%", 'https://www.weathertech.com/');
+                            $(".popupCont").html(popText);
+                        }
+                        else {
+
+                            
+                           
+                        }
+
+                    jQuery('#tb_external_thelink')
+                   .before('<p id="tb_external_thelink"><a href="' + href + '" id="tb_thelink">' + href + '</a></p>')
+                   .remove();                        
+                        var btnOK = document.getElementById('btnOK');
+                        btnOK.onclick = function (ev) {
+                            if (this.target == "_blank") {
+                                location.href = href;
+                            }
+                            else {
+                                if (href != null && href.indexOf("/service/trademarks") >= 0) {
+                                    href = 'https://www.weathertech.com/service/trademarks/';
+                                }
+                                open(href);
+                                location.reload();
+                            };
+							
+						};
+                    });
+                }
+            }
+        });
+    });
+
+
+    
+    function ReplaceURLPrefixes(string)  {
+	    var text = string.toLowerCase();
+        text = text.replace('http://','');
+        text = text.replace('https://','');
+        text = text.replace('www.','');
+	    return text;
+    }
+
+
+    $(function () {
+        $(".redirLegal").click(function () {
+            $(this).attr("href", 'https://www.weathertech.com/service/trademarks/');
+        });
+
+        var refURLValue = '';
+        if (refURLValue !== '') {
+            refURLValue = "?refs=" + refURLValue;
+        }
+        $('body').append('<div id="dealerExternal" role="dialog"><div id="dealerExternalInner">You are being redirected to WeatherTechWholesale.com to find an authorized dealer in your region.<br /> <br /> <a href="' + $('.advList a[href*="weathertechwholesale"]').attr('href') + refURLValue + '" class="btn">Continue</a><span class="btn">Go Back</span></div></div>');
+
+        $('#dealerExternal span').on('click', function (e) {
+            $('#dealerExternal').hide();
+        });
+
+        //signup
+        var signupText= 'Enter your email address';
+        $("#CT_Footer_0_txtSignUp").attr("placeholder", signupText);
+        
+        $("#CT_Footer_0_aSignup").live('click', function () {
+            var valid = validateEmail();
+            if (valid) {
+                sessionStorage.setItem("SubscribersEmail", $("#CT_Footer_0_txtSignUp").val());
+                window.location = 'https://www.weathertech.com' + "/subscribe/";
+            }
+        });
+
+        $("#CT_Footer_0_txtSignUp").keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == 13) {
+                var valid = validateEmail();
+                if (valid) {
+                    event.preventDefault();
+                    sessionStorage.setItem("SubscribersEmail", $("#CT_Footer_0_txtSignUp").val());
+                    window.location = 'https://www.weathertech.com' + "/subscribe/";
+                }
+                else {
+                    return false;
+                }
+            }
+        });
+
+        function validateEmail() {
+            var pattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+            if (!pattern.test($("#CT_Footer_0_txtSignUp").val())) {
+                alert('Please enter a valid email address');
+                return false;
+            } else {
+                return true;
+            }
+        }
+    });
+
+
+//<![CDATA[
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+style:  'currency',
+currency:  'USD',
+minimumFractionDigits: 2
+})
+//]]>
+
+
+var google_tag_params_Home_Track = {
+ecomm_prodid:   '', 
+ecomm_pagetype:  'home',
+ecomm_totalvalue:  ''
+};
+
+
+// <![CDATA[ 
+var google_conversion_id = 1072546169;
+var google_custom_params = window.google_tag_params_Home_Track;
+var google_remarketing_only = true;
+// ]]> 
+
+
+

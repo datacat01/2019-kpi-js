@@ -1,0 +1,91 @@
+ (function(a,e,c,f,g,h,b,d){var k={ak:"1071754179",cl:"-XJgCPm8-3MQw9eG_wM",autoreplace:"800.242.6224"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script"); 
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.naagtag.com';
+//]]>
+
+
+        //<![CDATA[
+            var _gaq = _gaq || [];
+            
+_gaq.push(['_setAccount', 'UA-9591380-1']);
+
+_gaq.push(['_trackPageview']);
+            
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        //]]>
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search');
+            searchForm.initAutocomplete('https://www.naagtag.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+	var $ds = jQuery.noConflict();
+	$ds(function(){
+		$ds('#camera_wrap_1').camera({
+			thumbnails: true,
+			fx: 'simpleFade',			
+			time: 7000,
+			transPeriod: 2000,
+			loader: 'pie',
+			navigation: 1,
+						opacityOnGrid: true,
+			pauseOnClick: false,
+			//playPause: 1,			
+			pagination: true,
+			autoAdvance: true,
+			loaderColor: '#DBD5D0',
+			loaderBgColor: '#000000',
+			loaderOpacity: 0.8		});			
+	});
+
+
+                            //<![CDATA[
+                            var dataForm = new VarienForm('login-form', true);
+                            //]]>
+                        
+
+        //<![CDATA[
+           jQuery(window).load(function(){
+                jQuery().youamaAjaxLogin({
+                    redirection : '0',
+                    profileUrl : 'https://www.naagtag.com/customer/account/',
+                    autoShowUp : 'no',
+                    controllerUrl : 'https://www.naagtag.com/ajaxlogin/ajax/index/'
+                });
+            });
+        //]]>
+    
+
+  //<![CDATA[
+      var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+  //]]>
+  
+
+    var hps = hps || {};
+    hps.paypal = hps.paypal || {};
+    hps.paypal.incontext = {"env":"production","bmlUrl":"https:\/\/www.naagtag.com\/securesubmit\/paypal\/incontextCredit\/button\/1\/","stdUrl":"https:\/\/www.naagtag.com\/securesubmit\/paypal\/incontext\/button\/1\/"}
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2916758-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+

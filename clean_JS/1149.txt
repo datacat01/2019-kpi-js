@@ -1,0 +1,95 @@
+
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.kustomkoozies.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.4"}};
+!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+
+
+/* <![CDATA[ */
+var SGPBParams = {"ajaxUrl":"https:\/\/www.kustomkoozies.com\/wp-admin\/admin-ajax.php","ajaxNonce":"cb6f38efc2"};
+/* ]]> */
+
+
+SG_POPUPS_QUEUE = [];
+SG_POPUP_DATA = [];
+SG_APP_POPUP_URL = 'https://www.kustomkoozies.com/wp-content/plugins/popup-builder';
+SG_POPUP_VERSION='2.673_1;';
+function sgAddEvent(element, eventName, fn) {
+if (element.addEventListener)
+element.addEventListener(eventName, fn, false);
+else if (element.attachEvent)
+element.attachEvent('on' + eventName, fn);
+}
+
+SG_POPUP_DATA[7] ={"id":"7","title":"Updated Home Page","type":"html","effect":"sgpb-wobble","0":"width","1":"800px","height":"480px","delay":0,"duration":1,"2":"initialWidth","3":"300","initialHeight":"100","width":"800px","buttonDelayValue":0,"escKey":"on","isActiveStatus":"on","scrolling":"on","disable-page-scrolling":"on","scaling":"","reposition":"on","overlayClose":"on","reopenAfterSubmission":"","contentClick":"","content-click-behavior":"close","click-redirect-to-url":"","redirect-to-new-tab":"","opacity":"0.8","popup-background-opacity":"1","sgOverlayColor":"","sg-content-background-color":"","popupFixed":"","fixedPostion":"","popup-dimension-mode":"customMode","popup-responsive-dimension-measure":"auto","maxWidth":"","maxHeight":"","initialWidth":"300","closeButton":"on","theme":"colorbox2.css","sgTheme3BorderColor":"","sgTheme3BorderRadius":"0","onScrolling":"","inActivityStatus":"","inactivity-timout":"0","beforeScrolingPrsent":0,"forMobile":"","openMobile":"","repeatPopup":"on","popup-appear-number-limit":"1","save-cookie-page-level":"","autoClosePopup":"","countryStatus":"","showAllPages":"all","allPagesStatus":"","allPostsStatus":"","allCustomPostsStatus":"","allSelectedPages":"","showAllPosts":"all","showAllCustomPosts":"all","allSelectedPosts":"","allSelectedCustomPosts":"","posts-all-categories":"","all-custom-posts":"","sg-user-status":"","loggedin-user":"true","popup-timer-status":"","popup-schedule-status":"","popup-start-timer":"Nov 19 18 14:24","popup-finish-timer":"","schedule-start-weeks":"","schedule-start-time":"14:24","schedule-end-time":"","allowCountries":"","countryName":"","countryIso":"","disablePopup":"","disablePopupOverlay":"","popupClosingTimer":"","yesButtonLabel":"","noButtonLabel":"","restrictionUrl":"","yesButtonBackgroundColor":"","noButtonBackgroundColor":"","yesButtonTextColor":"","noButtonTextColor":"","yesButtonRadius":0,"noButtonRadius":0,"sgRestrictionExpirationTime":0,"restrictionCookeSavingLevel":"","pushToBottom":"","onceExpiresTime":"4","sgOverlayCustomClasss":"sg-popup-overlay","sgContentCustomClasss":"sg-popup-content","popup-z-index":"9999","popup-content-padding":"0","theme-close-text":"Close","socialButtons":"{\u0022sgTwitterStatus\u0022:\u0022\u0022,\u0022sgFbStatus\u0022:\u0022\u0022,\u0022sgEmailStatus\u0022:\u0022\u0022,\u0022sgLinkedinStatus\u0022:\u0022\u0022,\u0022sgGoogleStatus\u0022:\u0022\u0022,\u0022sgPinterestStatus\u0022:\u0022\u0022,\u0022pushToBottom\u0022:\u0022\u0022}","socialOptions":"{\u0022sgSocialTheme\u0022:\u0022\u0022,\u0022sgSocialButtonsSize\u0022:\u0022\u0022,\u0022sgSocialLabel\u0022:\u0022\u0022,\u0022sgSocialShareCount\u0022:\u0022\u0022,\u0022sgRoundButton\u0022:\u0022\u0022,\u0022fbShareLabel\u0022:\u0022\u0022,\u0022lindkinLabel\u0022:\u0022\u0022,\u0022sgShareUrl\u0022:null,\u0022shareUrlType\u0022:\u0022\u0022,\u0022googLelabel\u0022:\u0022\u0022,\u0022twitterLabel\u0022:\u0022\u0022,\u0022pinterestLabel\u0022:\u0022\u0022,\u0022sgMailSubject\u0022:\u0022\u0022,\u0022sgMailLable\u0022:\u0022\u0022}","countdownOptions":"{\u0022pushToBottom\u0022:\u0022\u0022,\u0022countdownNumbersBgColor\u0022:\u0022\u0022,\u0022countdownNumbersTextColor\u0022:\u0022\u0022,\u0022sg-due-date\u0022:\u0022\u0022,\u0022countdown-position\u0022:\u0022\u0022,\u0022counts-language\u0022:\u0022\u0022,\u0022sg-time-zone\u0022:\u0022\u0022,\u0022sg-countdown-type\u0022:\u0022\u0022,\u0022countdown-autoclose\u0022:\u0022\u0022}","exitIntentOptions":"{\u0022exit-intent-type\u0022:\u0022\u0022,\u0022exit-intent-expire-time\u0022:\u0022\u0022,\u0022exit-intent-alert\u0022:\u0022\u0022}","videoOptions":"{\u0022video-autoplay\u0022:\u0022\u0022}","fblikeOptions":"{\u0022fblike-like-url\u0022:null,\u0022fblike-layout\u0022:\u0022\u0022,\u0022fblike-dont-show-share-button\u0022:\u0022\u0022,\u0022fblike-close-popup-after-like\u0022:\u0022\u0022}","repetitivePopup":"","repetitivePopupPeriod":"60","randomPopup":"","popupOpenSound":"","popupOpenSoundFile":"https:\/\/www.kustomkoozies.com\/wp-content\/plugins\/popup-builder\/files\/lib\/popupOpenSound.wav","popupContentBgImage":"","popupContentBgImageUrl":"","popupContentBackgroundSize":"cover","popupContentBackgroundRepeat":"no-repeat","html":"\u003Cp style=\u0022text-align: center;\u0022\u003E\u003Ca href=\u0022https:\/\/www.kustomkoozies.com\/pick-your-design\/\u0022\u003E\u003Cimg class=\u0022alignnone wp-image-7611 size-full\u0022 src=\u0022https:\/\/www.kustomkoozies.com\/wp-content\/uploads\/2019\/01\/Pop-up-gimp-800.jpg\u0022 alt=\u0022\u0022 width=\u0022800\u0022 height=\u0022376\u0022\u003E\u003C\/a\u003E\u003Cspan style=\u0022color: #ffffff;\u0022\u003EGreat Wedding Koozies designs. Wholesale pricing. Use discount code FREESHIP for free shipping\u003C\/span\u003E\u003C\/p\u003E","customEvent":"0"};
+
+var ajaxurl = 'https://www.kustomkoozies.com/wp-admin/admin-ajax.php';
+
+
+var dynamik_sf_enabled = true;
+var dynamik_reveal_sub_pages = true;
+var media_query_mobile_width = 479;
+
+SG_POPUP_DATA[7] ={"id":"7","title":"Updated Home Page","type":"html","effect":"sgpb-wobble","0":"width","1":"800px","height":"480px","delay":0,"duration":1,"2":"initialWidth","3":"300","initialHeight":"100","width":"800px","buttonDelayValue":0,"escKey":"on","isActiveStatus":"on","scrolling":"on","disable-page-scrolling":"on","scaling":"","reposition":"on","overlayClose":"on","reopenAfterSubmission":"","contentClick":"","content-click-behavior":"close","click-redirect-to-url":"","redirect-to-new-tab":"","opacity":"0.8","popup-background-opacity":"1","sgOverlayColor":"","sg-content-background-color":"","popupFixed":"","fixedPostion":"","popup-dimension-mode":"customMode","popup-responsive-dimension-measure":"auto","maxWidth":"","maxHeight":"","initialWidth":"300","closeButton":"on","theme":"colorbox2.css","sgTheme3BorderColor":"","sgTheme3BorderRadius":"0","onScrolling":"","inActivityStatus":"","inactivity-timout":"0","beforeScrolingPrsent":0,"forMobile":"","openMobile":"","repeatPopup":"on","popup-appear-number-limit":"1","save-cookie-page-level":"","autoClosePopup":"","countryStatus":"","showAllPages":"all","allPagesStatus":"","allPostsStatus":"","allCustomPostsStatus":"","allSelectedPages":"","showAllPosts":"all","showAllCustomPosts":"all","allSelectedPosts":"","allSelectedCustomPosts":"","posts-all-categories":"","all-custom-posts":"","sg-user-status":"","loggedin-user":"true","popup-timer-status":"","popup-schedule-status":"","popup-start-timer":"Nov 19 18 14:24","popup-finish-timer":"","schedule-start-weeks":"","schedule-start-time":"14:24","schedule-end-time":"","allowCountries":"","countryName":"","countryIso":"","disablePopup":"","disablePopupOverlay":"","popupClosingTimer":"","yesButtonLabel":"","noButtonLabel":"","restrictionUrl":"","yesButtonBackgroundColor":"","noButtonBackgroundColor":"","yesButtonTextColor":"","noButtonTextColor":"","yesButtonRadius":0,"noButtonRadius":0,"sgRestrictionExpirationTime":0,"restrictionCookeSavingLevel":"","pushToBottom":"","onceExpiresTime":"4","sgOverlayCustomClasss":"sg-popup-overlay","sgContentCustomClasss":"sg-popup-content","popup-z-index":"9999","popup-content-padding":"0","theme-close-text":"Close","socialButtons":"{\u0022sgTwitterStatus\u0022:\u0022\u0022,\u0022sgFbStatus\u0022:\u0022\u0022,\u0022sgEmailStatus\u0022:\u0022\u0022,\u0022sgLinkedinStatus\u0022:\u0022\u0022,\u0022sgGoogleStatus\u0022:\u0022\u0022,\u0022sgPinterestStatus\u0022:\u0022\u0022,\u0022pushToBottom\u0022:\u0022\u0022}","socialOptions":"{\u0022sgSocialTheme\u0022:\u0022\u0022,\u0022sgSocialButtonsSize\u0022:\u0022\u0022,\u0022sgSocialLabel\u0022:\u0022\u0022,\u0022sgSocialShareCount\u0022:\u0022\u0022,\u0022sgRoundButton\u0022:\u0022\u0022,\u0022fbShareLabel\u0022:\u0022\u0022,\u0022lindkinLabel\u0022:\u0022\u0022,\u0022sgShareUrl\u0022:null,\u0022shareUrlType\u0022:\u0022\u0022,\u0022googLelabel\u0022:\u0022\u0022,\u0022twitterLabel\u0022:\u0022\u0022,\u0022pinterestLabel\u0022:\u0022\u0022,\u0022sgMailSubject\u0022:\u0022\u0022,\u0022sgMailLable\u0022:\u0022\u0022}","countdownOptions":"{\u0022pushToBottom\u0022:\u0022\u0022,\u0022countdownNumbersBgColor\u0022:\u0022\u0022,\u0022countdownNumbersTextColor\u0022:\u0022\u0022,\u0022sg-due-date\u0022:\u0022\u0022,\u0022countdown-position\u0022:\u0022\u0022,\u0022counts-language\u0022:\u0022\u0022,\u0022sg-time-zone\u0022:\u0022\u0022,\u0022sg-countdown-type\u0022:\u0022\u0022,\u0022countdown-autoclose\u0022:\u0022\u0022}","exitIntentOptions":"{\u0022exit-intent-type\u0022:\u0022\u0022,\u0022exit-intent-expire-time\u0022:\u0022\u0022,\u0022exit-intent-alert\u0022:\u0022\u0022}","videoOptions":"{\u0022video-autoplay\u0022:\u0022\u0022}","fblikeOptions":"{\u0022fblike-like-url\u0022:null,\u0022fblike-layout\u0022:\u0022\u0022,\u0022fblike-dont-show-share-button\u0022:\u0022\u0022,\u0022fblike-close-popup-after-like\u0022:\u0022\u0022}","repetitivePopup":"","repetitivePopupPeriod":"60","randomPopup":"","popupOpenSound":"","popupOpenSoundFile":"https:\/\/www.kustomkoozies.com\/wp-content\/plugins\/popup-builder\/files\/lib\/popupOpenSound.wav","popupContentBgImage":"","popupContentBgImageUrl":"","popupContentBackgroundSize":"cover","popupContentBackgroundRepeat":"no-repeat","html":"\u003Cp style=\u0022text-align: center;\u0022\u003E\u003Ca href=\u0022https:\/\/www.kustomkoozies.com\/pick-your-design\/\u0022\u003E\u003Cimg class=\u0022alignnone wp-image-7611 size-full\u0022 src=\u0022https:\/\/www.kustomkoozies.com\/wp-content\/uploads\/2019\/01\/Pop-up-gimp-800.jpg\u0022 alt=\u0022\u0022 width=\u0022800\u0022 height=\u0022376\u0022\u003E\u003C\/a\u003E\u003Cspan style=\u0022color: #ffffff;\u0022\u003EGreat Wedding Koozies designs. Wholesale pricing. Use discount code FREESHIP for free shipping\u003C\/span\u003E\u003C\/p\u003E","customEvent":"0"};
+
+var metaslider_7094 = function($) {$('#metaslider_7094').addClass('flexslider');
+$('#metaslider_7094').flexslider({ 
+slideshowSpeed:3000,
+animation:"fade",
+controlNav:false,
+directionNav:true,
+pauseOnHover:true,
+direction:"horizontal",
+reverse:false,
+animationSpeed:600,
+prevText:"Previous",
+nextText:"Next",
+fadeFirstSlide:true,
+slideshow:true
+});
+$(document).trigger('metaslider/initialized', '#metaslider_7094');
+};
+var timer_metaslider_7094 = function() {
+var slider = !window.jQuery ? window.setTimeout(timer_metaslider_7094, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_7094, 1) : metaslider_7094(window.jQuery);
+};
+timer_metaslider_7094();
+
+
+var _bcvma = _bcvma || [];
+_bcvma.push(["setAccountID", "6094686792217565371"]);
+_bcvma.push(["setParameter", "InvitationDefID", "3370237155409444595"]);
+_bcvma.push(["pageViewed"]);
+(function(){
+var vms = document.createElement("script"); vms.type = "text/javascript"; vms.async = true;
+vms.src = ('https:'==document.location.protocol?'https://':'http://') + "vmss.boldchat.com/aid/6094686792217565371/bc.vms4/vms.js";
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vms, s);
+})();
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+__gaTracker('create', 'UA-1957100-1', 'auto');
+__gaTracker('set', 'forceSSL', true);
+__gaTracker('set', 'anonymizeIp', true);
+__gaTracker('require', 'displayfeatures');
+__gaTracker('require', 'linkid', 'linkid.js');
+__gaTracker('send','pageview');
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1037761938;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+/* Create a configuration object */
+var ss360Config = {
+/* Your site id */
+siteId: 'www.kustomkoozies.com',
+/* A CSS selector that points to your search box */
+searchBox: {selector: '#searchBox, form[name="quick_find_header"] input[name="keyword"]'}
+};
+

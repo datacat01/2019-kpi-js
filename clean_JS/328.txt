@@ -1,0 +1,354 @@
+
+
+    var objappVersion = navigator.appVersion;
+    var objAgent = navigator.userAgent;
+    var objbrowserName = navigator.appName;
+    var objfullVersion = '' + parseFloat(navigator.appVersion);
+    var objBrMajorVersion = parseInt(navigator.appVersion, 10);
+    var objOffsetName, objOffsetVersion, ix;
+
+    var iOS = !!objAgent.match(/iPad/i) || !!objAgent.match(/iPhone/i);
+
+    // In Chrome 
+    if ((objOffsetVersion = objAgent.indexOf("Chrome")) != -1)
+    {
+        objbrowserName = "Chrome";
+        objfullVersion = objAgent.substring(objOffsetVersion + 7);
+    }
+    // In Microsoft internet explorer 
+    else if ((objOffsetVersion = objAgent.indexOf("MSIE")) != -1)
+    {
+        objbrowserName = "Microsoft Internet Explorer";
+        objfullVersion = objAgent.substring(objOffsetVersion + 5);
+    }
+    // In Firefox 
+    else if ((objOffsetVersion = objAgent.indexOf("Firefox")) != -1)
+    {
+        objbrowserName = "Firefox";
+    }
+    // In Safari 
+    else if ((objOffsetVersion = objAgent.indexOf("Safari")) != -1)
+    {
+        objbrowserName = "Safari";
+        objfullVersion = objAgent.substring(objOffsetVersion + 7);
+        if ((objOffsetVersion = objAgent.indexOf("Version")) != -1) objfullVersion = objAgent.substring(objOffsetVersion + 8);
+    }
+    // For other browser "name/version" is at the end of userAgent 
+    else if ((objOffsetName = objAgent.lastIndexOf(' ') + 1) < (objOffsetVersion = objAgent.lastIndexOf('/')))
+    {
+        objbrowserName = objAgent.substring(objOffsetName, objOffsetVersion);
+        objfullVersion = objAgent.substring(objOffsetVersion + 1);
+        if (objbrowserName.toLowerCase() == objbrowserName.toUpperCase())
+        {
+            objbrowserName = navigator.appName;
+        }
+    }
+    // trimming the fullVersion string at semicolon/space if present 
+    if ((ix = objfullVersion.indexOf(";")) != -1) objfullVersion = objfullVersion.substring(0, ix);
+    if ((ix = objfullVersion.indexOf(" ")) != -1) objfullVersion = objfullVersion.substring(0, ix);
+
+    objBrMajorVersion = parseInt('' + objfullVersion, 10);
+    if (isNaN(objBrMajorVersion))
+    {
+        objfullVersion = '' + parseFloat(navigator.appVersion);
+        objBrMajorVersion = parseInt(navigator.appVersion, 10);
+    }
+
+    var bShowWarning = false;
+
+    switch (objbrowserName)
+    {
+        case "Chrome":
+            if (objBrMajorVersion < 22) bShowWarning = true;
+            break;
+
+        case "Safari":
+            if (objBrMajorVersion < 7) bShowWarning = true;
+            break;
+
+        case "Internet Explorer":
+            if (objBrMajorVersion < 8) bShowWarning = true;
+            break;
+
+        case "Firefox":
+            if (objBrMajorVersion < 23) bShowWarning = true;
+            break;
+    }
+
+    //if (bShowWarning)
+    //{
+    //document.write('<div align="center" class="msgBox msgBox-alert" style="padding:5px;border:1px solid #b40001;text-align:center;margin-bottom:5px;"><em><span class="redSubHeader"><b>Important:</b> You are using an outdated browser and due to new required <a href="https://blog.pcisecuritystandards.org/are-you-ready-for-30-june-2018-sayin-goodbye-to-ssl-early-tls" target="_blank" style="font-size:11pt;">security standards</a>,<br />you will not be able to purchase online after June 30th.<br /><a href="https://www.whatismybrowser.com/guides/how-to-update-your-browser/auto" target="_blank" style="font-size:11pt;">Click here</a> for a guide to updating your browser.<br />Please call (800) 854-1001 for questions or to order with one of our friendly pilot advisors.</span></em></div>');
+    //}
+
+    //document.write('' + 'Browser name = ' + objbrowserName + '<br>' + 'Full version = ' + objfullVersion + '<br>' + 'Major version = ' + objBrMajorVersion + '<br>' + 'navigator.appName = ' + navigator.appName + '<br>' + 'navigator.userAgent = ' + navigator.userAgent + '<br>')
+
+
+
+        $(document).ready(function () {
+            $.fn.ceebox.videos.base.param.allowScriptAccess = "sameDomain" //added to kill the permissions problem
+            $(".ceebox").ceebox({ videoWidth: 575, videoRatio: 1.33 });  //for lightbox video
+            $('a.media').media({    //for embedded video http://malsup.com/jquery/media/
+                //width:      300,
+                //height:     300,
+                autoplay: true,
+                expressInstaller: true
+            });
+            if ($('.stripeTable').length) { stripeTables(); }
+            if ($('#leftnav').length) {
+                $('#leftrailblock > :last-child').after($('#leftnav'));
+                $("#leftnav").accordion({ autoHeight: false });
+                if ($('#leftnav-ad-top').length) {
+                    $('#leftnav').before($('#leftnav-ad-top'));
+                }
+                if ($('#leftnav-ad-bottom').length) {
+                    $('#leftnav').after($('#leftnav-ad-bottom'));
+                }
+            }
+            //Account popup
+            var clearli2;
+            $(".myCartText").hover(function () {
+                clearTimeout(clearli2);
+                $("ul#nav li").removeClass('current');
+                $("[class*='accountLink']").addClass('current');
+                //alert("this=" + $(this).attr("class"));
+            }, function () {
+                var getthis = $("[class*='accountLink']");
+                //alert("this=" + $(this).attr("class"));
+                clearli2 = setTimeout(function () {
+                    $(getthis).removeClass('current');
+                }, 100);
+            });
+
+
+
+
+
+            //Embed video
+            $('a.ksPopVideo').popupVideo();
+        });
+    
+
+
+    function checkSearch() {
+
+        var txtField = document.getElementById("SKW");
+
+        if (txtField != null) {
+            var val = txtField.value;
+
+            if (val == "Enter keyword or item #") {
+                txtField.value = "";
+            }
+        }
+
+        return false;
+    }
+
+    function doSearch() {
+
+        var txtField = document.getElementById("SKW");
+        //alert("txtField=" + txtField);
+        if (txtField != null) {
+            var val = txtField.value;
+            //var url = "/searchresults.asp?SKW=" + val + "&STARTPAGE=0001&PAGLEN=6";
+            var url = "/CustomSearch.asp?q=" + val;
+            //alert("url=" + url)
+            window.location = url;
+        }
+        return false;
+    }
+
+    function checkForReturn(event) {
+
+        event = event || window.event;
+
+        var keycode = event.keyCode;
+
+        if (keycode == 13) {
+
+            doSearch();
+        }
+    }
+
+
+    var addthis_config = { ui_header_color: "#ffffff", ui_header_background: "#fe6d4c", ui_cobrand: "King Schools", "data_track_clickback": true }
+/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('5933-603-10-5388');/*]]>*/
+
+    _atrk_opts = { atrk_acct: "JUq+g1awA4002z", domain: "kingschools.com", dynamic: true };
+    (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
+
+
+/*<![CDATA[*/
+$(document).ready(function() {
+
+    // Start main banner load
+    var hpbanners = [
+	{
+		'img': '/otherImages/home-page/main-banner/home_page_banner_companion-app.jpg',
+		'link' : '/companion/'
+	},
+    {
+		'img': '/otherImages/home-page/main-banner/home_page_banner_css.jpg',
+		'link' : '/about/customer-service/'
+	},
+    {
+		'img': '/otherImages/home-page/main-banner/home_page_banner_non-towered.jpg',
+		'link' : '/non-tower-comm/'
+	},
+    {
+		'img': '/otherImages/home-page/main-banner/banner-FIRC.jpg',
+		'link' : '/courses/flight-instructor/refresher-course.asp'
+	},
+    {
+		'img': '/otherImages/home-page/main-banner/banner-courses-on-ipad-anim.gif',
+		'link' : '/mobile/'
+	},
+	{
+		'img': '/otherImages/home-page/main-banner/banner-garmin-courses.jpg',
+		'link' : '/search/garmin/Become-430-530-or-G1000-WAAS-Proficient!'
+	}
+    ];
+    
+    // add remaining slided to banner slideshow
+    /*var $ss = $('#home-banner'); 
+    for (var i = 2; i <= hpbanners.length+1; i++) 
+        $ss.append('<a href="' + hpbanners[i-2].link + '"><img src="' + hpbanners[i-2].img + '" width="780" height="140" /></a>'); 
+     // start the slideshow 
+	    $ss.after('<div id="bannernav">').cycle({
+		fx: 'fade',
+		speed: 1000,
+		timeout: 8000,
+		pager:  '#bannernav',
+		pause: 2,
+		//before: function() { if (window.console) console.log(this.src); }
+	});
+		
+	//$('#home-banner').cycle('pause');
+	
+	// End main banner load
+	
+	// Start Redbird banner load
+	var redbirdbanners = [
+	{
+		'img': '/otherImages/home-page/redbird-banner/FMX-simulator.jpg',
+		'link' : '/flight-simulators/'
+	},
+	{
+		'img': '/otherImages/home-page/redbird-banner/LD-simulator.jpg',
+		'link' : '/flight-simulators/'
+	},
+	{
+		'img': '/otherImages/home-page/redbird-banner/xwind-simulator.jpg',
+		'link' : '/flight-simulators/'
+	},
+	{
+		'img': '/otherImages/home-page/redbird-banner/SD-simulator.jpg',
+		'link' : '/flight-simulators/'
+	}
+    ];
+
+    // add remaining slided to banner slideshow
+    var $ss1 = $('#redbirdpics'); 
+    for (var i = 2; i <= redbirdbanners.length+1; i++) 
+        $ss1.append('<a href="' + redbirdbanners[i-2].link + '"><img src="' + redbirdbanners[i-2].img + '" width="285" height="90" /></a>'); 
+     // start the slideshow 
+	    $ss1.cycle({
+		fx: 'scrollLeft',
+		speed: 300,
+		timeout: 5000,
+		pause: 1
+	});
+
+    $('#rb-content').load('/popupInfo/redbird-products.asp');   //load slideout content
+    $("div#rb-show_button").click(function(){
+		$("div#rb-panel").animate({
+			width: "475px"
+		},"fast")
+		.animate({
+			height: "465px"
+		}, "fast");
+		$("div.rb-button").toggle();
+		$("div#rb-panel").toggleClass('rb-panel-bdr-on',true);
+   });	
+   $("div#rb-hide_button").click(function(){
+		$("div#rb-panel").animate({
+			height: "90px"
+		}, "fast")
+		.animate({
+			width: "0px"
+		}, "fast",function(){
+			$("div#rb-panel").toggleClass('rb-panel-bdr-on',false);
+		});
+		$("div.rb-button").toggle();
+   });
+    //**End Redbird banner**
+    */
+});
+/*]]>*/
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-142017-1']);
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1070897827;
+var google_conversion_label = "QXXBCMO49gMQo7XS_gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+    var gts = gts || [];
+
+    gts.push(["id", "518835"]);
+    gts.push(["badge_position", "BOTTOM_LEFT"]);
+    gts.push(["locale", "EN"]);
+
+    if ('' != '')
+    {
+        gts.push(["google_base_offer_id", ""]);
+    }
+
+    gts.push(["google_base_subaccount_id", "7571589"]);
+    gts.push(["google_base_country", "US"]);
+    gts.push(["google_base_language", "EN"]);
+
+    (function () {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+

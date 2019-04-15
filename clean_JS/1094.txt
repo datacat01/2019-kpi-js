@@ -1,0 +1,50 @@
+ 
+var cmPageID = '';
+if(typeof udo != 'undefined')
+{
+if(location.search != null && location.search != '')
+{
+udo.query_parameter = location.search;
+}
+if(window.location.pathname.search("OrderItemDisplay") > 0 )
+{
+if(typeof udo != 'undefined')
+{
+udo.enh_checkout_step = '1';
+udo.enh_action = 'checkout';
+udo.enh_checkout_option = 'Shop Cart';
+}
+} else if (window.location.pathname.search("OrderReview") > 0 || window.location.pathname.search("OrderDisplay") > 0 || window.location.pathname.search("PaypalOrderReview") > 0)
+{
+if(typeof udo != 'undefined')
+{
+udo.enh_checkout_step = '2';
+udo.enh_action = 'checkout';
+udo.enh_checkout_option = 'Order Review';
+}
+} 
+var dp = udo;
+}
+(function(a, b, c, d) { 
+a = '//tags.tiqcdn.com/utag/advanceautoparts/mainresponsive/' + (location.hostname.search(/^shop\.advanceautoparts\.com$|^m\.advanceautoparts\.com$|^www\.advanceautoparts\.com$|^www\.accessaap\.com$/) > -1 ? 'prod' : 'qa') + '/utag.js'; 
+b = document; 
+c = 'script'; 
+d = b.createElement(c); 
+d.src = a; 
+d.type = 'text/java' + c; 
+d.async = true; 
+a = b.getElementsByTagName(c)[0]; 
+a.parentNode.insertBefore(d, a); 
+})();
+var udoPageLoad = jQuery.extend({},{"dom_event":"load"} , udo);
+$(window).on('load', function () {
+utag.view(udoPageLoad);
+});
+
+
+(function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+extole.createZone({
+name: "sitewide_sliver_footer",
+element_id: "extole-zone-sitewide_sliver_footer",
+});
+

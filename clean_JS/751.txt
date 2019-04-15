@@ -1,0 +1,241 @@
+
+        (function(a,b,c,d,e,f,g){
+            e['ire_o']=c;
+            e[c]= e[c]||function(){
+                (e[c].a=e[c].a||[]).push(arguments)
+            };
+            f=d.createElement(b);
+            g=d.getElementsByTagName(b)[0];
+            f.async=1;
+            f.src=a;
+            g.parentNode.insertBefore(f,g);
+        })('//d.impactradius-event.com/A281224-5517-45aa-977a-7d31b18ce71e1.js','script','ire',document,window);
+    
+
+require(["Sailthru"], function (Sailthru) {
+    var client_id = '95b98ba1461838cc95cec8c86a00354e';
+    Sailthru.init({ customerId: client_id});
+});
+
+
+	window.criteo_q = window.criteo_q || [];
+	window.criteo_q.push(
+		{ event: "setAccount", account: 22268},
+		{ event: "setSiteType", type: (/iPad/.test(navigator.userAgent) ? "t" : (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile/.test(navigator.userAgent) ? "m" : "d"))},
+		{"event":"viewHome"}
+	);
+
+
+    require.config({
+        paths: {
+            'artifi': '//designer.artifi.net/SCRIPT/sasIntegration/ArtifiIntegration.js?'
+        },
+        shim: {
+            'artifi': {
+                exports: 'Artifi'
+            }
+        }
+    });
+
+
+    require(['certona-device-type'], function(deviceType) {
+        window.certona = {
+            "pagetype": "HOME",
+            "devicetype": deviceType
+        };
+    });
+
+
+    require([
+        'jquery',
+        'slick',
+        'domReady!'
+    ], function ($) {
+                var hasPromotionBanner = function () {
+            return $('.promo-item .promo-block div').html().length > 0;
+        };
+
+        var nextPromotionItem = function () {
+            var nextPromoItem;
+            if (hasPromotionBanner()) {
+                nextPromoItem = $('.promo-item:not(.promo-active, #global-banner-1)').first();
+            } else {
+                nextPromoItem = $('.promo-item:not(.promo-active, #dynamic-promotion-banner)').first();
+            }
+
+            $('.promo-item.promo-active').removeClass('promo-active');
+            nextPromoItem.addClass('promo-active');
+        }
+
+        var promotionTimer = setInterval(nextPromotionItem, 3000);
+
+        $('.promotion-items').hover(
+            function () {
+                clearInterval(promotionTimer);
+            }, function () {
+                clearInterval(promotionTimer);
+                promotionTimer = setInterval(nextPromotionItem, 3000);
+            }
+        );
+            });
+
+
+require(["jquery"], function (jQuery) {
+    require(["jquery/ui"], function () {
+        require(["https://currentc-ac.celebros.com/AutoComplete/Scripts/CelebrosAutoCompleteV3e.js"], function() {
+            CelebrosAutoCompleteV3(
+                "CurrentC",
+                "search",
+                onSelect,
+                "currentc-ac.celebros.com",
+                "currentc-ac.celebros.com",
+                {
+                    acShowType: "regular",
+                    btnSearch: "search_button",
+                    maxControl: "server"                    
+                }
+            );
+        });
+    });
+});
+function onSelect(aParameter) {
+    if ((aParameter["SelectedURL"] != "") && (aParameter["IsAutoComplete"])) {
+        var sCmp = (aParameter["SelectedURL"].indexOf("?") == -1) ? "?" : "&";
+        window.location = aParameter["SelectedURL"] + sCmp + "cmp=cel" + "&trigger=ac";
+    } else { 
+        var targetLocation = "https://www.currentcatalog.com/catalogsearch/result/?q=" + encodeURIComponent(aParameter["SelectedQuery"]);
+        if (aParameter["IsAutoComplete"].toString().toLowerCase() == "true") targetLocation += "&Trigger=ac";
+        window.location = targetLocation;
+    }
+};
+
+
+    require(['jquery'], function ($) {
+        var windowDirectives = 'toolbar=no,location=no,directories=no,menubar=no,status=no,scrollbars=no,resizable=yes,replace=no,height=620,width=500';
+        $('.open-live-chat').on('click', function () {
+            window.open($(this).attr('href'), $(this).attr('data-caption'),windowDirectives);
+            this.focus();
+            this.opener = window;
+            return false;
+        });
+    });
+
+
+    window.initCertonaContainers = function () {
+        require([
+            'jquery',
+            'slick'
+        ], function ($) {
+            $(".certona-Container").not('.slick-initialized').slick({
+                lazyLoad: 'ondemand',
+                infinite: true,
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 426,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }
+                ]
+            });
+
+            $('.product-item.slick-slide').each(function () {
+                if ($(this).attr('aria-describedby') != undefined) {
+                    var describe = $(this).find('.product-item-name').find('.product-item-link');
+                    if (describe) {
+                        describe.attr('id', $(this).attr('aria-describedby'));
+                    }
+                }
+            });
+        });
+    };
+
+
+    require([
+        'VladimirPopov_WebForms/js/form',
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function (VarienForm,jQuery) {
+        // page-cache.js compatibility fix
+        if($('webform_lWj2Up_iframe')) $('webform_lWj2Up_iframe').prop = function(el){};
+
+        var webform_lWj2Up = new VarienForm('webform_lWj2Up', 0);
+        $('webform_lWj2Up_submit_button').observe('click', function () {
+            var form = webform_lWj2Up;
+            if (form.validator && form.validator.validate()) {
+                form.submit();
+                                this.disable();
+                $('webform_lWj2Up_sending_data').show();
+                            }
+        });
+
+                var iframe = $('webform_lWj2Up_iframe');
+        iframe.observe('load', function () {
+            var doc = this.contentDocument ? this.contentDocument : this.contentWindow.document;
+            var json = {success: false};
+            if (doc.body.getElementsByTagName('pre')[0].innerHTML.unfilterJSON())
+                json = doc.body.getElementsByTagName('pre')[0].innerHTML.evalJSON();
+            else return;
+            if (json.success > 0) {
+                if (json.script) {
+                    eval(json.script);
+                    return;
+                }
+                if (json.redirect_url) {
+                    $('webform_lWj2Up_progress_text').update('Redirecting');
+                    window.location = json.redirect_url;
+                    return;
+                }
+                var successText = json.success_text.unescapeHTML();
+                                $('webform_lWj2Up_modal').update(successText);
+                $('webform_lWj2Up_sending_data').hide();
+                $('webform_lWj2Up_submit_button').enable();
+                $('webform_lWj2Up').reset();
+                jQuery('#webform_lWj2Up_modal').modal({title:'Success!'}).modal('openModal');
+                                            } else {
+                if ($('webform_lWj2Up_sending_data'))
+                    $('webform_lWj2Up_sending_data').hide();
+                if ($('webform_lWj2Up_submit_button'))
+                    $('webform_lWj2Up_submit_button').enable();
+                if (json.errors && typeof(json.errors) == "string") {
+                    $('webform_lWj2Up_modal').update(json.errors.unescapeHTML());
+                } else {
+                    $('webform_lWj2Up_modal').update('Unknown error(s) occured');
+                }
+                jQuery('#webform_lWj2Up_modal').modal({title:'Error'}).modal('openModal');
+
+                if (json.script) {
+                    eval(json.script);
+                }
+            }
+        });
+            });
+
+
+    var logicRules_lWj2Up = [];
+    var targets_lWj2Up = [];
+    var fieldMap_lWj2Up = {"fieldset_0":["20","24","21","22","23"]};
+        // execute form logic
+    require(['VladimirPopov_WebForms/js/logic'], function (JSWebFormsLogic) {
+        JSWebFormsLogic(targets_lWj2Up, logicRules_lWj2Up, fieldMap_lWj2Up, 'lWj2Up');
+    });
+
+
+        ire('identify', {
+    "customerId": "",
+    "customerEmail": ""
+});
+    
+
+    usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_installed = 1; var USI_headID = document.getElementsByTagName("head")[0]; var USI_installID = document.createElement('script'); USI_installID.type = 'text/javascript'; USI_installID.src = '//www.upsellit.com/active/currentcatalog.jsp'; USI_headID.appendChild(USI_installID); } }; if (typeof(document.readyState) != "undefined" && document.readyState === "complete") { USI_installCode(); } else if (window.addEventListener){ window.addEventListener('load', USI_installCode, true); } else if (window.attachEvent) { window.attachEvent('onload', USI_installCode); } else { USI_installCode(); } setTimeout("USI_installCode()", 10000);
+    

@@ -1,0 +1,425 @@
+
+WebFontConfig = {
+google: { families: [ 'Lato:100,300,700,100italic,300italic:latin', 'Crete+Round:400,400italic:latin' ] }
+};
+(function() {
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+
+
+		var powerreview = function(element){
+			var prDiv = document.getElementById(element),
+				pwr;
+				
+			if (prDiv){
+				pwr = {
+						write : function(content){
+							var prDiv = document.getElementById(element);
+							prDiv.innerHTML =  prDiv.innerHTML + content;
+						}
+				};
+			} else {
+				pwr = null;
+			}
+						
+			return pwr;
+		}
+			
+		var pr_site_id = "1";
+		
+			var pr_locale = "en_US"; 
+		
+		
+			var pr_zip_location = "/on/demandware.static/-/Sites-leatherman-usa/en_US/v1555003679189";
+		
+		var pr_style_sheet = "/on/demandware.static/Sites-Leatherman-USA-Site/-/en_US/v1555003679189/css/pr_override.css";
+	
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aamv-Leatherman-USA';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+ 
+
+var LTGSFMCPIData = {"trackPageView":{}};
+var dataLayer = dataLayer || [];
+
+
+		var yotpoAppKey = 'pw4JyzHWJ6CCBs1meQzYJUcSEcugCh8KrQvo6bGA';
+		var yotpoStaticContentURL = "https://staticw2.yotpo.com/";
+		var yotpoURL = yotpoStaticContentURL + yotpoAppKey + "/widget.js";
+		(function e() {
+			var e = document.createElement("script");
+					e.type = "text/javascript",
+					e.async = true,
+					e.src = yotpoURL;
+			var t = document.getElementsByTagName("script")[0];
+			t.parentNode.insertBefore(e, t)
+		})();
+	
+
+if (window.jQuery) {
+jQuery(document).ready(function(){
+if(screen.width < 768){
+jQuery('#footer').append('<a href="/home" class="full-site-link">View Full Site</a>');
+jQuery('.full-site-link')
+.attr('href', '/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Home-FullSite')
+.click(function(e) {
+e.preventDefault();
+jQuery.ajax({
+url: '/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Home-FullSite',
+success: function(){
+window.location.reload();
+}
+});
+}
+);
+}
+});
+}
+
+
+    $(document).ready(function () {
+        if (LTGIsEEA) {
+            $('.non-eea').css('display', 'none');
+        }
+        else {
+            $('.non-eea').css('display', 'block');
+        }
+    });
+
+
+        var count = 0;
+        $(document).ready(checkChat);
+        function checkChat() {
+            var iframe = $('#livechat-compact-view');
+            if (iframe.length > 0 && $('.icon-agentonline', iframe.contents()).length > 0) {
+                $('#chat').show();
+            }
+            else {
+                if (count < 10) {
+                    setTimeout(checkChat, 500);
+                }
+            }
+        }
+    
+
+LTGSFMCPIData.pageType = 'HomePage';
+
+
+$(document).ready(function() {
+if(!LTGIsEEA) { $("#eeaHideMyAccountFooter").css('display', 'inline'); }
+});
+
+
+    $(document).ready(function () {
+        if (LTGIsEEA) {
+            $('.non-eea').css('display', 'none');
+        }
+        else {
+            $('.non-eea').css('display', 'block');
+        }
+    });
+
+
+    $(document).ready(function () {
+        if (LTGIsEEA) {
+            $('.non-eea').css('display', 'none');
+        }
+        else {
+            $('.non-eea').css('display', 'block');
+        }
+    });
+
+
+
+(function(){
+window.Constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE","VIEWPORT_XS":480,"VIEWPORT_SM":768,"VIEWPORT_MD":1024,"VIEWPORT_MAX":1800};
+window.Resources = {"I_AGREE":"I Agree","CLOSE":"Close","NO_THANKS":"No, thanks","OK":"OK","ARE_YOU_HUMAN":"Are you a Human Being?","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Could Not Load Address","BONUS_PRODUCT":"Bonus Product","BONUS_PRODUCTS":"Bonus Products","SELECT_BONUS_PRODUCTS":"Select Bonus Products","SELECT_BONUS_PRODUCT":"product.selectbonusproduct","BONUS_PRODUCT_MAX":"The maximum number of bonus products has been selected. Please remove one in order to add additional bonus products.","BONUS_PRODUCT_TOOMANY":"You have selected too many bonus products. Please change the quantity.","SIMPLE_SEARCH":"Enter product name or keyword","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response - parser error!","INVALID_PHONE":"Please specify a valid phone number.","REMOVE":"Remove","QTY":"Qty","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added for comparison. Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","GIFT_CERT_INVALID":"Invalid gift certificate code.","GIFT_CERT_BALANCE":"Your current gift certificate balance is","GIFT_CERT_AMOUNT_INVALID":"E-gift cards can only be purchased in amounts between $25-$5,000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","EVOUCHER_MISSING":"Please enter an e-voucher code.","EVOUCHER_BALANCE":"Your current e-voucher balance is","EVOUCHER_INVALID":"Invalid e-voucher code.","INVALID_OWNER":"This appears to be a credit card number. Please enter the name of the card holder.","COUPON_CODE_MISSING":"Please enter a promo code.","COOKIES_DISABLED":"Your browser is currently not set to accept cookies. Please turn this functionality on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected in-stock date is {0}.","ITEM_STATUS_NOTAVAILABLE":"This item is currently not available.","INIFINITESCROLL":"Show All","STORE_NEAR_YOU":"What's available at a store near you","SELECT_STORE":"Select Store","SELECTED_STORE":"Selected Store","PREFERRED_STORE":"Preferred Store","SET_PREFERRED_STORE":"Set Preferred Store","ENTER_ZIP":"Enter ZIP Code","INVALID_ZIP":"Please enter a valid ZIP Code","SEARCH":"Search","CHANGE_LOCATION":"Change Location","CONTINUE_WITH_STORE":"Continue with preferred store","CONTINUE":"Continue","SEE_MORE":"See More Stores","SEE_LESS":"See Fewer Stores","QUICK_VIEW":"Quick View","QUICK_VIEW_POPUP":"Product Quick View","TLS_WARNING":"We value your security!<br/>We detected that you are using an outdated browser.<br/>Update you browser to continue a secure shopping experience.","WISHLIST_ADD":"Add to Favorites","WISHLIST_REMOVE":"Remove from Favorites","WISHLIST_REMOVED_MSG":"Item Removed from Favorites","VALIDATE_REQUIRED":"This field is required.","VALIDATE_REMOTE":"Please fix this field.","VALIDATE_EMAIL":"You must provide a valid email address.","VALIDATE_URL":"Please enter a valid URL.","VALIDATE_DATE":"Please enter a valid date.","VALIDATE_DATEISO":"Please enter a valid date ( ISO ).","VALIDATE_NUMBER":"Please enter a valid number.","VALIDATE_DIGITS":"Please enter only digits.","VALIDATE_CREDITCARD":"Please enter a valid credit card number.","VALIDATE_EQUALTO":"Please enter the same value again.","VALIDATE_MAXLENGTH":"Please enter no more than {0} characters.","VALIDATE_MINLENGTH":"Please enter at least {0} characters.","VALIDATE_PWLENGTH":"Password must be at least 8 characters.","VALIDATE_RANGELENGTH":"Please enter a value between {0} and {1} characters long.","VALIDATE_RANGE":"Please enter a value between {0} and {1}.","VALIDATE_MAX":"Please enter a value less than or equal to {0}.","VALIDATE_MIN":"Please enter a value greater than or equal to {0}.","REGEX_EMAIL":"^[\\w.%+-]+@[\\w.-]+\\.[\\w]{2,6}$","PREV_TALE":"Previous Tool Tale","NEXT_TALE":"Next Tool Tale","PREV_TALE_MOBILE":"Prev.","NEXT_TALE_MOBILE":"Next","IS_EEA":false,"CYBERSOURCE_ENDPOINT":"Production","ADDED_TO_CART":"account.orderdetails.itemadded","ORDER_ADDED_TO_CART":"account.orderdetails.orderadded","IN_STOCK":"In Stock","QTY_IN_STOCK":"{0} Item(s) in Stock","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","NOT_AVAILABLE":"This item is currently not available.","REMAIN_NOT_AVAILABLE":"The remaining items are currently not available. Please adjust the quantity."};
+window.Urls = {"appResources":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Resources-Load","pageInclude":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Page-Include","pageIncludeAjax":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Page-IncludeAjax","pageIncludeJson":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Page-IncludeJson","continueUrl":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Default-Start","staticPath":"/on/demandware.static/Sites-Leatherman-USA-Site/-/en_US/v1555003679189/","addGiftCert":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Cart-AddProduct","minicart":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Cart-MiniAddProduct","cartShow":"/cart","giftRegAdd":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Address-GetAddressDetails?addressID=","paymentsList":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/PaymentInstruments-List","addressesList":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Address-List","wishlistAddress":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Wishlist-SetShippingAddress","wishlistAdd":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Wishlist-Add","wishlistUpdate":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Wishlist-ReplaceProductListItem","wishlistRemove":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Wishlist-RemoveItem","deleteAddress":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Address-Delete","getProductUrl":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-Show","getBonusProducts":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-GetSetItem","productDetail":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-Detail","getAvailability":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-GetAvailability","removeImg":"/on/demandware.static/Sites-Leatherman-USA-Site/-/default/dwc8e53f09/images/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Product-Productnav","summaryRefreshURL":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-UpdateSummary","billingSelectCC":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-SelectCreditCard","updateAddressDetails":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-ResetPaymentForms","compareShow":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Compare-Show","compareAdd":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Compare-RemoveProduct","compareEmptyImage":"/on/demandware.static/Sites-Leatherman-USA-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-GetGiftCertificateBalance","redeemGiftCert":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-RedeemGiftCertificateJson","addCoupon":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Cart-AddCouponJson","storesInventory":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-Inventory","setPreferredStore":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-SetPreferredStore","getPreferredStore":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-GetPreferredStore","setStorePickup":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-SetStore","setZipCode":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-SetZipCode","getZipCode":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/StoreInventory-GetZipCode","billing":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COBilling-Start","setSessionCurrency":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Currency-SetSessionCurrency","addEditAddress":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COShippingMultiple-AddEditAddressJSON","cookieHint":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Page-IncludeAjax?cid=cookie_hint","rateLimiterReset":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/RateLimiter-HideCaptcha","miniCartModal":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/Cart-MiniCartModal","pdtJson":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/PDT-Json","pdtGetProducts":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/PDT-GetProducts","pdtImagePath":"/on/demandware.static/Sites-Leatherman-USA-Site/-/en_US/v1555003679189/images/pdt/","emailOptIn":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/MarketingCloud-OptIn","paypalinitsession":"/on/demandware.store/Sites-Leatherman-USA-Site/en_US/CYBPaypal-InitiatePaypalExpress","paypalcallback":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/CYBPaypal-SessionCallback","billingagreement":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/CYBPaypal-BillingAgreement","orderreview":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/COSummary-Start","setShipDate":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/B2BUser-SetShipDate","setShipAddress":"https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/B2BUser-SetShipAddress","freeLandingMobileWebm":"/on/demandware.static/-/Library-Sites-leatherman-shared2017/default/dw59e76fcd/freelanding/videos/free_feature_seq1_mobile.webm","freeLandingDesktopWebm":"/on/demandware.static/-/Library-Sites-leatherman-shared2017/default/dw9d7c358d/freelanding/videos/free_feature_seq1_desktop.webm"};
+window.SitePreferences = {"LISTING_INFINITE_SCROLL":true,"LISTING_REFINE_SORT":true,"STORE_PICKUP":false,"COOKIE_HINT":false,"CHECK_TLS":false,"TOKENIZATION_ENABLED":true,"ISPAYPALENABLED":true};
+}());
+
+
+
+(function(){
+window.SessionAttributes = {"SHOW_CAPTCHA":null};
+window.User = {"zip":null,"storeId":null};
+}());
+
+var LTGIsEEA = false;
+
+	function CriteoDataCalls(){
+		var prod = true;
+		var log = !prod && window.console;
+		var payLoad = {};
+				
+		if(log){
+			console.log("Initializing Criteo Remarketing Data Call");			
+		}
+		
+		if(LTGSFMCPIData.userKey != null){
+			if(log){
+				console.log("CriteoDataCalls.dataLayer: email="+LTGSFMCPIData.userKey);			
+			}	
+			payLoad.email = LTGSFMCPIData.userKey.toLowerCase();
+									
+		}
+		else{
+			payLoad.email = '';
+		}
+		
+		if(LTGSFMCPIData.pageType != null){
+			var pageType = LTGSFMCPIData.pageType;
+			if(LTGSFMCPIData.pageType==='Category' || LTGSFMCPIData.pageType==='SearchResults'){
+				pageType='ListingPage'				
+			}
+			if(log){
+				console.log("CriteoDataCalls.dataLayer: pageType="+pageType);			
+			}	
+			payLoad.PageType = pageType;
+			if('displayedVariants' in LTGSFMCPIData){
+				payLoad.ProductIDList = LTGSFMCPIData.displayedVariants;
+				if(log){
+					console.log("CriteoDataCalls.dataLayer: products displayed= "+LTGSFMCPIData.displayedVariants.join(','));			
+				}	
+			}
+		}
+		if('trackPageView' in LTGSFMCPIData && 'item' in LTGSFMCPIData.trackPageView){
+			payLoad.PageType = 'ProductPage';
+			payLoad.ProductID = LTGSFMCPIData.trackPageView.item;
+			if(log){
+				console.log("CriteoDataCalls.dataLayer: ProductPage = "+payLoad.ProductID);			
+			}
+		}
+		
+		if('trackCart' in LTGSFMCPIData && LTGSFMCPIData.trackCart.length>0){
+			payLoad.PageType = 'BasketPage';
+			payLoad.ProductBasketProducts = criteoProductList(LTGSFMCPIData.trackCart);
+			if(log){
+				console.log("CriteoDataCalls.dataLayer: BasketPage = "+LTGSFMCPIData.trackCart.length + ' in cart');			
+			}
+		}
+		
+		if('trackConversion' in LTGSFMCPIData){
+			payLoad.PageType = 'TransactionPage';
+			payLoad.TransactionID = LTGSFMCPIData.trackConversion[1].order_number;
+			payLoad.ProductTransactionProducts = criteoProductList(LTGSFMCPIData.trackConversion[1].cart);
+			if(log){
+				console.log("CriteoDataCalls.dataLayer: TransactionPage = "+payLoad.ProductTransactionProducts.length + ' in cart');			
+			}
+		}
+		
+		dataLayer.push(payLoad);
+	}
+	
+	function criteoProductList(products){
+		var productList = [];
+		for(var i = 0; i<products.length;i++){
+			var product = {};
+			product.id = products[i].item;
+			product.price = products[i].price;
+			product.quantity = products[i].quantity;
+			productList.push(product);
+		}		
+		return productList;
+	}
+	
+	CriteoDataCalls();
+
+
+	function LTGProcessSFMCPIDataCalls(){
+		var prod = true;
+		var log = !prod && window.console;
+		if(log){
+			console.log("Initializing SFMC PI Data Call");			
+		}
+		etmcPush(["setOrgId","7279667"]);
+		if(log){
+			console.log("setOrgId: "+"7279667");			
+		}
+		if(LTGSFMCPIData.userKey != null){
+			if(log){
+				console.log("setUserInfo: email="+LTGSFMCPIData.userKey);			
+			}	
+			LTGSFMCPIData.setUserserInfo = {
+					"email":LTGSFMCPIData.userKey,
+					"details": { 
+						"WebBrand":"Leatherman",
+						"WebLanguage":"en",
+						"WebCountry": "US"
+					}	
+			}
+			etmcPush(["setUserInfo",LTGSFMCPIData.setUserserInfo]);			
+		}
+		
+		if(LTGSFMCPIData.trackCart!=null){
+			if(LTGSFMCPIData.trackCart.length>0){
+				etmcPush(["trackCart",{"cart":LTGSFMCPIData.trackCart}]);
+				if(log){
+					console.log("trackCart");			
+				}
+			}
+			else{
+				if(log){
+					console.log("trackCart: clear_cart");			
+				}
+				etmcPush(["trackCart",{"clear_cart":true}]);						
+			}
+		}
+		
+		if(LTGSFMCPIData.trackConversion!=null){
+			etmcPush(LTGSFMCPIData.trackConversion);
+			if(log){
+				console.log("trackConversion");			
+			}
+		}		
+		
+		if(log){
+			var ldetail = '';
+			if('item' in LTGSFMCPIData.trackPageView){
+				ldetail +=' PID: '+LTGSFMCPIData.trackPageView.item;
+				if('itemViewSrc' in LTGSFMCPIData.trackPageView){
+					ldetail +=' src: '+LTGSFMCPIData.trackPageView.itemViewSrc;				
+				}
+				
+			}
+			console.log("trackPageView: "+Object.keys(LTGSFMCPIData.trackPageView)+' '+ldetail);			
+		}
+		if('itemViewSrc' in LTGSFMCPIData.trackPageView){
+			delete 	LTGSFMCPIData.trackPageView['itemViewSrc'];
+		}
+		etmcPush(["trackPageView",LTGSFMCPIData.trackPageView]);
+	}
+	
+	function etmcPush(obj){
+		if(typeof _etmc === 'object'){
+			//console.log('pushing');
+			_etmc.push(obj);
+		}
+	}	
+	LTGProcessSFMCPIDataCalls();
+
+
+var __lc = {};
+__lc.license = 6562941;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.leatherman.com/on/demandware.store/Sites-Leatherman-USA-Site/en_US/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

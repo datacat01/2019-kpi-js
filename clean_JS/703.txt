@@ -1,0 +1,45 @@
+
+    require(['jquery', 'awPopupManager'], function(){
+        ajaxPrepareContentUrl = 'https://colemans.com/popup/ajax/prepareContent/';
+        ajaxAddCookieUrl = 'https://colemans.com/popup/ajax/addCookie/';
+
+        jQuery.awPopupManager.ajaxAddCookieUrl = ajaxAddCookieUrl;
+
+        jQuery.ajax({
+            url: ajaxAddCookieUrl,
+            type: "POST",
+            dataType: 'json',
+            context: this,
+            data: {
+                isAjax: 'true',
+                form_key: "RcoXwcPIY60JokcG",
+                cookie_type: 'aw_popup_viewed_page',
+                current_url: 'https://colemans.com/cms/index/index/?SID=h43j43r2b8qrm5o3uh2op1j2s0'
+            },
+            complete: function(response) {
+                jQuery.ajax({
+                    url: ajaxPrepareContentUrl,
+                    type: "POST",
+                    dataType: 'json',
+                    context: this,
+                    data: {
+                        isAjax: 'true',
+                        form_key: "RcoXwcPIY60JokcG",
+                        name_in_layout:  'popup_home_page',
+                        product_id: '',
+                        preview: '0',
+                        popup_info: ''
+                    },
+                    complete: function(response) {
+                        try {
+                            eval("var json = " + response.responseText + " || {}");
+                        } catch (e) {
+                            return;
+                        }
+                        jQuery.awPopupManager.initObserversForPopup(json.popups);
+                    }
+                });
+            }
+        });
+    });
+

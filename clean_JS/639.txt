@@ -1,0 +1,203 @@
+
+var google_tag_params = {
+ecomm_pagetype: 'home',
+};
+
+
+/* <![CDATA[ */
+var google_conversion_id = 1059520908;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+var google_conversion_format = 3;
+/* ]]> */
+
+
+
+
+!function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+
+pintrk('load','2618297970945');
+pintrk('page', {
+page_name: '',
+page_category: 'MainPage'
+});
+
+
+  window.DY = window.DY || {};
+  DY.recommendationContext = {
+    type: 'HOMEPAGE'
+  };   
+
+
+  (function(win, doc, sdk_url){
+  if(win.snaptr) return;
+  var tr=win.snaptr=function(){
+  tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
+};
+  tr.queue = [];
+  var s='script';
+  var new_script_section=doc.createElement(s);
+  new_script_section.async=!0;
+  new_script_section.src=sdk_url;
+  var insert_pos=doc.getElementsByTagName(s)[0];
+  insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+})(window, document, 'https://sc-static.net/scevent.min.js'); 
+
+ snaptr('init', '06facd9f-5923-4cb3-83c4-e8f78fcc626d', {
+            'user_email': ''
+        });
+snaptr('track', 'PAGE_VIEW');
+
+
+ 
+window.criteo_q = window.criteo_q || []; 
+window.criteo_q.push( 
+{ event: "setAccount",  account: 5183 },  
+{ event: "setSiteType",  type: "d"},  
+{ event: "viewHome"} ); 
+
+
+  window._tfa = window._tfa || [];
+  window._tfa.push({notify: 'event', name: 'page_view'});
+  !function (t, f, a, x) {
+         if (!document.getElementById(x)) {
+            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+         }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/unip/1055121/tfa.js',
+  'tb_tfa_script');
+
+
+if (typeof jQuery == 'undefined')
+{
+  document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+
+
+  !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+  (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+  f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+  h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+  e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+
+
+	//local storage DT
+	var href = document.location.href;
+	if (href.indexOf('&ai=') > 0){
+		window.sessionStorage.setItem('is_ai', true);
+	}
+
+	if(window.sessionStorage.getItem('is_ai') != null){
+		var css = '.MainTopBanner { display: none; }',
+		head = document.head || document.getElementsByTagName('head')[0],
+		style = document.createElement('style');
+		style.type = 'text/css';
+		style.appendChild(document.createTextNode(css));
+		head.appendChild(style);	
+	}
+
+
+
+
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+                if (typeof jQuery == 'undefined') {
+                    document.write(unescape("%3Cscript src='Scripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+                }
+            
+
+    
+      $(".cm-subscribe-wrap").append('<div class="cm-subscribe-inner"> <form method="post" id="cmFooterForm"> <p class="cm-hide"> <div class="cm-title"> SIGN UP FOR SPECIAL OFFERS </div><input id="fieldntrir" name="bron-traffic-sources-foo" type="hidden" value="10"/> </p><div class="name-email-wrap"> <input class="cm-name" id="fieldName" placeholder="First Name" name="bron-name-foo" type="text"/> <input class="cm-email" id="fieldEmail" placeholder="Email" name="bron-email-foo" type="text" pattern="[A-za-z0-9._%+-]+@[A-za-z0-9.-]+\.[A-za-z]{2,4}$"/> </div><div class="gender-wrap"> <input class="cm-gender" type="radio" name="bron-gender-foo" checked="checked" value="Female"> <span class="cm-gender-cnt">Female</span> <input class="cm-gender" type="radio" name="bron-gender-foo" value="Male"> <span class="cm-gender-cnt">Male</span> <a class="cm-submit">submit</a> </div><div class="bronto-msg-success"> <div class="cmFooterForm-success"> <div class="cmFooterForm-close"> x </div>Thanks for signing up! Check your inbox for your first surprise </div></div><div class="bronto-msg-fail"> <div class="cmFooterForm-err"> <div class="cmFooterForm-close"> x </div>Please try to register again later. </div></div></form></div>');
+          if ( $.hasOwnProperty('validator') ) { $( "#cmFooterForm" ).validate(); }
+    
+    
+    
+    
+/*Update internal tmp contact*/
+$(function () {
+$("#fieldEmail").change(function () {
+    $.ajax({
+        type: "POST",
+        url: "api/Contact",
+        data: JSON.stringify({ Email: $("input[name=bron-email-foo]").val() }),
+        contentType: "application/json; charset=utf-8"
+    });
+});
+});
+/*End of Update internal tmp contact*/
+var bron_cnt = 0;
+    $(function() {
+      $(".cm-submit").click(function(e) {
+    
+        if( ($(".cm-name").val() == "") || ($(".cm-email").val() == "") )
+        {
+            return false;
+        }
+    
+        else {
+    
+          bron_cnt++;
+          var _bronTS = $('input[name="bron-traffic-sources-foo"]').val();
+          var _bronName = $('input[name="bron-name-foo"]').val();
+          var _bronEmail = $('input[name="bron-email-foo"]').val();
+          var _bronGender = $('input[name="bron-gender-foo"]:checked').val();
+      //    var _bronGender = $( "#fieldhhbht option:selected" ).text();
+    
+          try {
+            if (bron_cnt <= 2 ) {
+              
+        
+    $(".bron_responsess").append($('<img src="https://app.bronto.com/public/?q=direct_add&fn=Public_DirectAddForm&id=blbyoxjinwiklhenzywbuqkbbseabmi&email=' + _bronEmail + '&field1=firstname,set,' + _bronName + '&field2=gender,set,' + _bronGender + '&field3=traffic_source,set,' + _bronTS + '&list1=0bbe03ec00000000000000000000000e7833&createCookie=1" width="0" height="0" border="0" alt="" />'));
+              $(".bronto-msg-success").fadeIn();
+            }
+            else {
+              $(".cm-submit").css({"background-color": "#CCC", "cursor": "default"});
+              $('.cm-submit').attr('disabled','disabled');
+            }
+    
+          } catch (err) {
+            $(".bronto-msg-fail").fadeIn();
+          }
+        }
+      });
+    
+      $(".cmFooterForm-close").click(function() {
+        $(".bronto-msg-success").hide();
+        $(".cmFooterForm-err").hide();
+      });
+    });
+    
+    
+
+  rg4js('apiKey', '/xBJRfmeBdApNR9Jc3PQUQ==');
+  rg4js('enableCrashReporting', true);
+  rg4js('enablePulse', true);
+
+
+  var google_tag_params = {
+    pagetype: 'MainPage',acode: '',rcust: '0'}
+      ;
+
+
+  /* <![CDATA[ */var google_conversion_id = 1059520908;
+  var google_conversion_label = "AFjpCOzt9wMQjIOc-QM";
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+
+
+

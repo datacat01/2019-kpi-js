@@ -1,0 +1,45 @@
+/*<![CDATA[*/(function(e,f){function h(a){if(a.mode){var b=g("mobify-mode");b&&a[b]||(b=a.mode(c.ua));return a[b]}return a}function m(){function a(a){e.addEventListener(a,function(){c[a]=+new Date},!1)}e.addEventListener&&(a("DOMContentLoaded"),a("load"))}function n(){var a=new Date;a.setTime(a.getTime()+3E5);f.cookie="mobify-path=; expires="+a.toGMTString()+"; path=/";e.location.reload()}function p(){k({src:"https://preview.mobify.com/v7/"})}function g(a){if(a=f.cookie.match(RegExp("(^|; )"+a+"((=([^;]*))|(; |$))")))return a[4]||""}function l(a){f.write('<plaintext style="display:none">');setTimeout(function(){d.capturing=!0;a()},0)}function k(a,b){var e=f.getElementsByTagName("script")[0],c=f.createElement("script"),d;for(d in a)c[d]=a[d];b&&c.setAttribute("class",b);e.parentNode.insertBefore(c,e)}var d=e.Mobify={},c=d.Tag={};d.points=[+new Date];d.tagVersion=[7,0];c.ua=e.navigator.userAgent;c.getOptions=h;c.init=function(a){c.options=a;if(""!==g("mobify-path"))if(m(),a.skipPreview||"true"!=g("mobify-path")&&!/mobify-path=true/.test(e.location.hash)){var b=h(a);if(b){var d=function(){b.post&&b.post()};a=function(){b.pre&&b.pre();k({id:"mobify-js",src:b.url,onerror:n,onload:d},"mobify")};!1===b.capture?a():l(a)}}else l(p)}})(window,document);(function(){var e="//cdn.mobify.com/sites/whsmith-smartphone/production/adaptive.min.js";var t="//cdn.mobify.com/sites/whsmith-tablet/production/adaptive.min.js";Mobify.Tag.init({mode:function(e){if(/ipad|android(?!.*mobile)(?!.*firefox)/i.test(e)){return"tablet"}else if(/^((?!windows\sphone).)*(ip(hone|od)|android.*(mobile)(?!.*firefox))/i.test(e)){return"smartphone"}return"desktop"},smartphone:{url:e},tablet:{url:t},desktop:{capture:false,url:"//a.mobify.com/whsmith-smartphone/a.js"}})})();/*]]>*/
+
+    (function() {
+        var dvt = document.createElement('script'); dvt.type = 'text/javascript'; dvt.async = true;
+        dvt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'd760.devatics.com/observer.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dvt, s);
+    })();
+ 
+	function ajaxsearchsubmit(form){
+		var input = $('#search').find('#keywords');
+		if (input.val() === input.data('initial-value') || (input.val().length === 0)) {
+			input.focus();
+			event.preventDefault();
+		} else {
+			var search = encodeURIComponent(form.w.value); 
+			var cat = encodeURIComponent(form.af.value); 
+			document.activeElement.blur(); 
+			window.location="https://www.whsmith.co.uk/search/go"+search+"&af="+cat; 
+			return false; 
+		}
+	} 
+
+
+	var dataLayer = dataLayer || [];
+
+
+//<![CDATA[
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+
+var newIFrame=document.createElement('iframe');
+newIFrame.src='//2414348.fls.doubleclick.net/activityi;src=2414348;type=mains351;cat=homep702;ord=1;num=' + a + '?';
+newIFrame.width="1";
+newIFrame.frameborder="0";
+newIFrame.height="1";
+var scriptNode=document.getElementById('DoubleClickFloodlightTag578768');
+scriptNode.parentNode.insertBefore(newIFrame,scriptNode);
+//]]>
+
+ 
+var selectedCat = ""; 
+function updateCat(data) { 
+selectedCat = data;
+} 
+

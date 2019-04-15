@@ -1,0 +1,96 @@
+
+
+
+
+
+	
+
+//<![CDATA[
+
+	$(document).ready(function() {
+
+	//Default Action
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+	$("ul.tabs li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+	});
+
+	});
+	//]]>
+	
+
+    if(!window.slider) var slider={};slider.data=[{"id":"slide-img-1","client":"nature beauty","desc":"nature beauty photography"},{"id":"slide-img-2","client":"nature beauty","desc":"nature beauty photography"},{"id":"slide-img-3","client":"nature beauty","desc":"nature beauty photography"},{"id":"slide-img-4","client":"nature beauty","desc":"nature beauty photography"}];
+   
+
+
+      
+var mylist = $('#homepageList ul');
+      var listitems = mylist.children('#homepageList ul li').get();
+    listitems.sort(function(a,b) {
+           var compA = $(a).find('a').text().toUpperCase();
+        var compB = $(b).find('a').text().toUpperCase();
+        return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+    });
+    $.each(listitems, function(idx, itm) { mylist.append(itm); });
+
+
+var listItemsPerList = 11;
+     var listItems = $("#homepageList ul > li").length;
+
+     for (var i = 0; i < Math.round(listItems / listItemsPerList); i++) {
+         var startingItem = i * listItemsPerList;
+         var endingItem = (i + 1) * listItemsPerList;
+         if (endingItem > listItems) { endingItem = listItems };
+         $("#homepageList ul > li").slice(startingItem, endingItem).wrapAll("<ul id='splitListItem'></ul>");
+     }
+
+
+
+
+
+        //<![CDATA[
+            var shared_object = SHARETHIS.addEntry({
+                title: document.title,
+                url: document.location.href
+        });
+            
+            shared_object.attachButton(document.getElementById("ck_sharethis"));
+            shared_object.attachChicklet("email", document.getElementById("ck_email"));
+            shared_object.attachChicklet("facebook", document.getElementById("ck_facebook"));
+            shared_object.attachChicklet("twitter", document.getElementById("ck_twitter"));
+                            //]]>
+            
+
+            document.write(unescape('%3Cscript language="JavaScript" type="text/javascript" src="https://vms.boldchat.com/aid/7101005431599480133/bc.vms2/vms.js"%3E%3C/script%3E'));
+            
+
+            try {
+              var pageViewer = _bcvm.getPageViewer("7101005431599480133");
+              pageViewer.setParameter("WebsiteDefID", "953170404476972539");
+              pageViewer.setParameter("ChatWindowDefID", "235660548790401629");
+              pageViewer.setParameter("ChatWidth", "630");
+              pageViewer.setParameter("ChatHeight", "480");
+              pageViewer.setParameter("InvitationDefID", "2559584466066650605");
+              pageViewer.setParameter("WindowScheme", "https");
+              pageViewer.pageViewed();
+            } catch(error) {}
+            
+ var cbarProtocol = (("https:" == document.location.protocol) ? "https://" : "https://");document.write(unescape("%3Cscript src='" + cbarProtocol + "s3.amazonaws.com/cdn.barilliance.com/wttool.com/cbar.js.php'  type='text/javascript'%3E%3C/script%3E"));
+            
+
+
+
+//<![CDATA[
+
+sli_load(); 
+//]]>
+

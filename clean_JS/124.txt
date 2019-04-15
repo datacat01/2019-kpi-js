@@ -1,0 +1,35 @@
+
+	//<![CDATA[
+	//initialize things for the page
+	//once DOM is done loading, init the things that work fine when DOM is done
+	jQuery(document).ready(function () {
+		
+		gjUtil.ready();
+	});
+	
+	//Wait for entire page to be done for this stuff to load
+	jQuery(window).load(gjUtil.load);
+	
+	//Load the 'old' prototype-based stuff
+	Event.observe(window, 'load', geoUtil.init);
+	
+	//]]>
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6778491-1']);
+  _gaq.push(['_setDomainName', 'global-free-classified-ads.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+window.google_analytics_uacct = "UA-6778491-1";
+
+
+  google_analytics_domain_name = "global-free-classified-ads.com";
+

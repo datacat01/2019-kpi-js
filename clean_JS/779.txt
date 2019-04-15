@@ -1,0 +1,299 @@
+
+	(function (url) {
+			/*Tracking Bootstrap
+			Set Up DataLayer objects/properties here*/
+			if(!window.DataLayer){
+				window.DataLayer = {};
+			}
+			if(!DataLayer.events){
+				DataLayer.events = {};
+			}
+			DataLayer.events.SiteSection = "1";
+      var loc, ct = document.createElement("script"); 
+      ct.type = "text/javascript"; 
+      ct.async = true;
+      ct.src = url;
+      loc = document.getElementsByTagName('script')[0];
+      loc.parentNode.insertBefore(ct, loc);
+	}(document.location.protocol + "//intljs.rmtag.com/115195.ct.js"));
+
+
+	if(window.screen.width < 768)
+	{
+		document.write('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui" />');
+	}
+	else
+	{
+		document.write("<meta name='viewport' content='width=1024' />");
+	}
+
+
+			  $(document).ready(function(){
+			    if(bannerlink.isMobile()){
+			      new SmartBanner({
+			          daysHidden: 15,   // days to hide banner after close button is clicked (defaults to 15)
+			          daysReminder:90, // days to hide banner after "VIEW" button is clicked (defaults to 90)
+			          appStoreLanguage: '', // language code for the App Store (defaults to user's browser language)
+			          title: '1-800-PetMeds',
+			          author: "America's Largest Pet Pharmacy",
+			          button:"View App" ,
+			          store: {
+			              ios: 'On App Store',
+			              android: 'In Google Play'
+			              ,windows: 'In Windows store'
+			          },
+			          price: {
+			              ios: 'FREE',
+			              android: 'FREE'
+			              ,windows: 'FREE'
+			          }
+			           //, theme: 'android' // put platform type ('ios', 'android', etc.) here to force single theme on all device
+			          // , icon: '' // full path to icon image if not using website icon image
+			        //, force: 'android' // Uncomment for platform emulation
+			      });
+			    }
+			    
+			    if($("a.smartbanner-button")){
+			          //append it to .nanobar-simple
+			    	  $('.smartbanner').appendTo('.nanobar-simple');
+			    	   var returnURL = window.location.href;
+			    	   if(window.location.search){
+			    		   returnURL = returnURL + "&CID=1&applink=true"
+			    		}else{
+			    			returnURL = returnURL + "?CID=1&applink=true"
+			    		}
+					   $("a.smartbanner-button").attr('href','/openAndroidApp.jsp?returnURL='+ returnURL );
+				}
+			    
+			   });
+			  
+		    
+
+function yo_loader(url){ 
+ 
+ try{(new Image()).src = url;}catch(e){ } 
+ }
+
+
+yo_loader("https://www.1800petmeds.com/yo-app-sequencer.png?v=DxqMBoSdk4ZKW3MamgeWl5YH2W8OrKIiyANv7Hv3IT7kUVh88BQaxiDAZG-bf18IVCEGjGtQapD349ePJjOotio7qhe7gCgH90DL-pyWXX4=,rmGWD-RBwqEZfdttQBJjxqiVefebzm_tBVDjWSZIYabQXNbSuQSIlJny9w5C32tlLvPS-Atk3407R0r0NVROXgGwYepylmKaOJWz24tgSB3PZru4vgf0EQbhqwZEZ7PfrahsR_chXkAKgji-ofXijoYs5d2RrAo5A9-i916zajhTcu1nyrOcG7XGBB-K8-AC,eSW-qPwUnMxZed_MArbhKwGwYepylmKaOJWz24tgSB1yA_zseQH0PJOUg7x9yRg1,s5sYAMWz2A4wKOBCI2fiyKYIHTcs0BZ6CgKP6rUm40dXgnuN3cewn19IOQrea6jq,M4u3gsrq2KjoThbDD07ayKFCu_VDA3dK7RhuQqYM_XCKK7Tn9uxN9zhM9cuqS2cYsMQCnPY0-5Eap3DaiJAVeiTILVfQyB6liWD_MyTYBBUCM7nsaPdIwk-Yh4ytbAQiIgDhZDGTCgvh2M-LMFLsXla6jNxU9pD7a5cfygHGt-c=&t=SH74RmsZX7AMBQ88WjVaPg==&s=118d87372b57648b4eb83c49ae592876");
+
+
+
+        $(document).ready(function() {
+        $("#button_right").fancybox({
+				'titlePosition'		: 'inside',
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+        'padding' : '0',
+	      'margin' : '0'
+		});
+      });
+
+
+function feedback_validation()
+{
+  var capresp =  grecaptcha.getResponse();
+  if(capresp == '') {
+    alert('Please Click I\'m not a Robot Box');
+    return false;
+  }
+	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	var email = document.getElementById('feedback_email').value ;
+	if(!re.test(email)) {
+		alert('Email is not valid: '+email) ;
+		return false ;
+	}
+	if(document.getElementById('feedback_comment').value == '') {
+		alert('Please write some comment') ;
+		return false ;
+	}
+        url = "/includes/feedback-post.jsp";
+        var posting = $.post( url,
+          {
+            feedback_name: $('#feedback_name').val(),
+            feedback_phone: $('#feedback_phone').val(),
+            feedback_email: $('#feedback_email').val(),
+            feedback_userid: $('#feedback_userid').val(),
+            feedback_page: $('#feedback_page').val(),
+            feedback_ipaddress: $('#feedback_ipaddress').val(),
+            transient_user: $('#transient_user').val(),
+            feedback_agent: $('#feedback_agent').val(),
+            feedback_comment: $('#feedback_comment').val(),
+            recaptcha_response_field: capresp
+          });
+	posting.done(function( data ) {
+	  $( "#feedback_name" ).val('');
+	  $( "#feedback_phone" ).val('');
+	  $( "#feedback_email" ).val('');
+    $( "#feedback_ipaddress" ).val('');
+	  $( "#feedback_userid" ).val('');
+	  $( "#feedback_page" ).val('');
+	  $( "#transient_user" ).val('');
+	  $( "#feedback_agent" ).val('');
+	  $( "#feedback_comment" ).val('');
+    $( "#recaptcha_response_field" ).val('');
+	  $.fancybox.close();
+	  $('#button_right').hide();
+	});
+}
+function feedback_validation_new()
+{
+	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	var email = document.getElementById('feedback_email').value ;
+	if(!re.test(email)) {
+		alert('Email is not valid: '+email) ;
+		return false ;
+	}
+	if(document.getElementById('feedback_comment').value == '') {
+		alert('Please write some comment') ;
+		return false ;
+	}
+        url = "/includes/feedback-post.jsp";
+        var posting = $.post( url,
+          {
+            feedback_name: $('#feedback_name').val(),
+            feedback_phone: $('#feedback_phone').val(),
+            feedback_email: $('#feedback_email').val(),
+            feedback_userid: $('#feedback_userid').val(),
+            feedback_page: $('#feedback_page').val(),
+            feedback_ipaddress: $('#feedback_ipaddress').val(),
+            transient_user: $('#transient_user').val(),
+            feedback_agent: $('#feedback_agent').val(),
+            feedback_comment: $('#feedback_comment').val()
+          });
+	posting.done(function( data ) {
+	  $( "#feedback_name" ).val('');
+	  $( "#feedback_phone" ).val('');
+	  $( "#feedback_email" ).val('');
+    $( "#feedback_ipaddress" ).val('');
+	  $( "#feedback_userid" ).val('');
+	  $( "#feedback_page" ).val('');
+	  $( "#transient_user" ).val('');
+	  $( "#feedback_agent" ).val('');
+	  $( "#feedback_comment" ).val('');
+	  $.fancybox.close();
+	  $('#button_right').hide();
+	});
+}
+
+
+	var axel = Math.random() + "";
+	var a = axel * 10000000000000;
+	var trackingIframes = trackingIframes || [];
+	trackingIframes.push(['https://4381721.fls.doubleclick.net/activityi;src=4381721;type=Gener0;cat=PetMe00;u4=;u5=;u10=;u11=;u12=NEW;ord=' + a + '?', 'doubleClickLanding']);
+  document.write('<iframe src="https://4381721.fls.doubleclick.net/activityi;src=4381721;type=Gener0;cat=PetMe0;u4=;u5=;u10=;u11=;u12=NEW;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" title="" style="display:none"></iframe>');
+
+
+	var google_tag_params = {
+		ecomm_prodid: '',
+		ecomm_pagetype: 'home',
+		ecomm_totalvalue: ''
+	};
+
+
+	/* <![CDATA[ */
+	var google_conversion_id = 1069277114;
+	var google_conversion_label = "--KXCNK_-AUQur_v_QM";
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+
+
+function hidebar() {
+	document.getElementById("feedback-bar").style.visibility="hidden";
+	document.cookie = "feedbackbar=hide";
+}
+
+
+
+	function setCookie(cname,cvalue)	{
+		var d = new Date();
+		d.setTime(d.getTime()+(7*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+  		var c = $.trim(ca[i]);
+  		if (c.indexOf(name)==0) return c.substring(name.length,(c.length));
+		}
+		return "";
+	}
+
+
+	var viewcart = $("#view-cart");
+	var viewcartp = viewcart.position();
+  function setCookie(cname,cvalue)	{
+		var d = new Date();
+		d.setTime(d.getTime()+(7*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+  		var c = $.trim(ca[i]);
+  		if (c.indexOf(name)==0) return c.substring(name.length,(c.length));
+		}
+		return "";
+	}
+	$('.container').mouseleave(function(e) {
+    if(e.offsetY < 0) {
+      $(".abandon-cart-popup-overlay").load( "/view_cart.jsp", function( response, status, xhr ) {
+        if ( status == "error" ) {
+        } else {
+          var cookie = getCookie("abtest");
+          var showcart = getCookie("showcart");
+          response = response.trim();
+          if(response != undefined && response != null && cookie != null && cookie != undefined && cookie=="Yes" && window.location.pathname!="/checkout.jsp") {
+            if(showcart!="yes") {
+              $('.abandon-cart-popup-overlay').fadeIn(300).show();
+              $("html,body").animate({scrollTop:0},"fast");
+                document.cookie = "showcart=yes;"
+            }
+          }
+        }
+      });
+    }
+	});
+	$('.abandon-cart-popup-overlay').click(function() {
+		closeOverlay();	
+	});
+  function closeOverlay() {
+    $('.abandon-cart-popup-overlay').fadeOut(300);
+    $('.abandon-cart-popup-overlay').innerHTML = "";
+  }
+
+ try{ merklesearch.sendAdSid("petmeds"); } catch(e) {} 
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37875464-1']);
+    _gaq.push(['_setCustomVar', 2, 'yottaa', (window.Yo ? Yo.rum.get().optState : 'yo-not-present'), 3]);
+		
+		_gaq.push(['_trackPageview']);
+		
+		var trackingScripts = trackingScripts || [];
+		trackingScripts.push([('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js', 'gaScript']);
+		/* campaign: - */
+	
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-37875464-1']);
+			_gaq.push(['_setCustomVar',1,'Customer Type','NEW',2]);
+		
+
+
+
+			PetMeds.Home.Init();
+			$(document).ready(function(){
+				$(".slides").slick({
+					arrows: false,
+					dots: true,
+					autoplay: true,
+					adaptiveHeight:true
+				});
+			});
+		

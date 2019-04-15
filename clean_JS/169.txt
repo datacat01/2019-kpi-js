@@ -1,0 +1,48 @@
+
+<!--
+	req_348_1555251014=new Image();
+req_348_1555251014.src='/__ssobj/ard.png?6679752242486230737_1-348-'+(15742*98796+4382)+'&n=1';
+//-->
+<!-- // -->
+
+/*<![CDATA[*/(function(e,f){function h(a){if(a.mode){var b=g("mobify-mode");b&&a[b]||(b=a.mode(c.ua));return a[b]}return a}function m(){function a(a){e.addEventListener(a,function(){c[a]=+new Date},!1)}e.addEventListener&&(a("DOMContentLoaded"),a("load"))}function n(){var a=new Date;a.setTime(a.getTime()+3E5);f.cookie="mobify-path=; expires="+a.toGMTString()+"; path=/";e.location.reload()}function p(){k({src:"https://preview.mobify.com/v7/"})}function g(a){if(a=f.cookie.match(RegExp("(^|; )"+a+"((=([^;]*))|(; |$))")))return a[4]||""}function l(a){f.write('<plaintext style="display:none">');setTimeout(function(){d.capturing=!0;a()},0)}function k(a,b){var e=f.getElementsByTagName("script")[0],c=f.createElement("script"),d;for(d in a)c[d]=a[d];b&&c.setAttribute("class",b);e.parentNode.insertBefore(c,e)}var d=e.Mobify={},c=d.Tag={};d.points=[+new Date];d.tagVersion=[7,0];c.ua=e.navigator.userAgent;c.getOptions=h;c.init=function(a){c.options=a;if(""!==g("mobify-path"))if(m(),a.skipPreview||"true"!=g("mobify-path")&&!/mobify-path=true/.test(e.location.hash)){var b=h(a);if(b){var d=function(){b.post&&b.post()};a=function(){b.pre&&b.pre();k({id:"mobify-js",src:b.url,onerror:n,onload:d},"mobify")};!1===b.capture?a():l(a)}}else l(p)}})(window,document);(function(){var e="//cdn.mobify.com/sites/eddiebauer-mobile/eddie-bauer-production/adaptive.min.js";var t="//cdn.mobify.com/sites/eddiebauer-tablet/eddie-bauer-production/adaptive.min.js";Mobify.Tag.init({mode:function(e){if(/ipad|android(?!.*mobile)(?!.*firefox)/i.test(e)){return"tablet"}else if(/^((?!windows\sphone).)*(ip(hone|od)|android.*(mobile)(?!.*firefox))/i.test(e)){return"smartphone"}return"desktop"},smartphone:{url:e},tablet:{url:t},desktop:{capture:false,url:"//a.mobify.com/eddiebauer-mobile/a.js"}})})();/*]]>*/
+
+
+if(false){
+var snapDefaultConfig = {
+accountId: "5034",
+authKey: "7n0es2mr3scz6ptx",
+domainKey: "eddiebauer_com",
+request_type: "suggest",
+enableSnapSearch: false,
+minAutoSuggestInputLength: "3",
+delay: 250,
+autoSuggestServiceUrl: "http://brm-suggest-0.brsrvr.com/api/v1/suggest/",
+containerClass: "dimSearchSuggestContainer"
+};
+}
+else{
+var	searchSuggestObject = {
+minAutoSuggestInputLength:"3",
+autoSuggestServiceUrl:"/autosuggestjson.jsp",
+collection:"/content/Shared/Auto-Suggest Panels",
+searchUrl:"",
+containerClass:"dimSearchSuggestContainer",
+defaultImage:""
+};
+}
+
+
+fbPageOptions = {
+graphicsPath:"/static/js/jquery/graphics/"
+};
+
+
+$(document).ready(function() {
+//alert("document is ready");
+EBGLOBAL.sessionTimeout.durationInMinutes = 30;
+EBGLOBAL.sessionTimeout.durationInMilliSeconds = EBGLOBAL.sessionTimeout.durationInMinutes * 60000;
+EBGLOBAL.sessionTimeout.pages = "/checkout/bag.jsp,/checkout/login.jsp,/checkout/combinedAddress.jsp,/checkout/delivery.jsp,/checkout/payment.jsp,/checkout/review.jsp,/checkout/visa-review.jsp";
+EBGLOBAL.sessionTimeout.resetTimeout();
+});
+

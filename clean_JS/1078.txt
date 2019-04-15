@@ -1,0 +1,60 @@
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?4L5EwLbUeah6TcPCACEs8IKny5lMtYYx";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+window["mgctlbx$Pltm"] = "Magento 2";
+
+	var mgtOptions = {
+		'captionSource':'title',
+		'expandEffect':'expand',
+		'expandSpeed':350,
+		'expandImageSize':'fit-screen',
+		'expandTrigger':'click',
+		'expandAlign':'screen',
+		'expandEasing':'ease-in-out',
+		'gallerySpeed':250,
+		'selectorTrigger':'click',
+		'selectorEffect':'switch',
+		'captionPosition':'bottom',
+		'keyboard':true,
+		'cssClass':'',
+		'rightClick':true,
+		'lazyLoad':false,
+		'autostart':true,
+		'buttons':'auto',
+		'textBtnClose':'Close',
+		'textBtnNext':'Next',
+		'textBtnPrev':'Previous',
+		'hint':'once',
+		'textClickHint':'Click to expand',
+		'textHoverHint':'Hover to expand'
+	}
+
+
+	var mgtMobileOptions = {
+		'slideMobileEffect':'rotate',
+		'textClickHint':'Tap to expand'
+	}
+
+window["mgctlbx$Pltm"] = "Magento 2";
+
+	MagicScrollOptions = {
+		'width':'auto',
+		'height':'auto',
+		'orientation':'horizontal',
+		'mode':'scroll',
+		'items':'3',
+		'speed':600,
+		'autoplay':0,
+		'loop':'infinite',
+		'step':'auto',
+		'arrows':'inside',
+		'pagination':false,
+		'easing':'cubic-bezier(.8, 0, .5, 1)',
+		'scrollOnWheel':'auto',
+		'lazy-load':false
+	}
+

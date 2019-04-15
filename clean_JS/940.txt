@@ -1,0 +1,230 @@
+
+        //<![CDATA[
+        $(document).ready(function () {
+            var currentURL = window.location.href.toString();
+            var rollbarSettings = $('meta[name=rollbar-settings]');
+            var accessToken = rollbarSettings.data("access");
+            var environment = rollbarSettings.data("environment");
+            var rollbarHost = rollbarSettings.data("host");
+            var scrubParams = rollbarSettings.data("scrubParams");
+            var baseUrl = rollbarSettings.data("baseUrl");
+
+            bindRollbarLogging(currentURL, accessToken, environment, rollbarHost, scrubParams, baseUrl);
+            // ReSharper disable once UnusedLocals
+            var filterManager = new FilterManager('').bind();
+            // ReSharper disable once UnusedLocals
+            var siteUtilities = new SiteUtilities().bind();
+            blankTarget();
+            popupLink();
+            
+            setTimeout(function () { AccountUserControl('/home/accountcontrol') }, 0);
+            
+        });
+
+        function LogOff() {
+            var url = '/logout' +
+                '?returnURL=' +
+                encodeURIComponent(window.location.pathname) +
+                encodeURIComponent(window.location.search);
+            window.location = url;
+        }
+
+        function LogOn() {
+            var url = '/login' +
+                '?returnURL=' +
+                encodeURIComponent(window.location.pathname) +
+                encodeURIComponent(window.location.search);
+            window.location = url;
+        }
+        //fix for safari loading from cache
+        $(window).bind("pageshow", function (event) {
+            if (event.originalEvent.persisted) {
+                window.location.reload();
+            }
+        });
+        //]]>
+    
+digitalData = { page: { pageInfo: { pageID: document.title, onsiteSearchTerm: '', onsiteSearchResults: '' }, category: { primaryCategory: '' }, attributes: { exploreAttributes: '335a4839-2dd9-4dae-aa48-6fbc507d3234', extraFields: '' } }, pageInstanceID: 'StandardPages' };
+
+    function ToggleAccountMenu() {
+        if ($("#account-menu").hasClass("menu-open")) {
+            $("#account-menu").removeClass("menu-open");
+        }
+        else {
+            $("#account-menu").addClass("menu-open");
+        }
+    };
+
+    function ShowAccountMenu() {
+        $("#account-menu").addClass("menu-open");
+    }
+
+    function HideAccountMenu() {
+        $("#account-menu").removeClass("menu-open");
+    }
+
+
+    //<![CDATA[
+    $(function () {
+        $('#global-usp').cycle().click(function () {
+            $('#global-usp-drop-down').toggle();
+        });
+    });
+    //]]>
+
+
+    $(document).ready(function () {
+        var enterTimer;
+        var exitTimer;
+
+        $(".store-tab").hover(
+            function () {
+                clearInterval(exitTimer);
+                enterTimer = setInterval(function () { $('#department-layer').show(); }, 250);
+            },
+            function () {
+                clearInterval(enterTimer);
+                exitTimer = setInterval(function () { $('#department-layer').hide(); }, 250);
+            }
+        );
+
+        $('#department-layer').hover(
+                function () {
+                    clearInterval(exitTimer);
+                    $('#department-layer').show();
+                },
+                function () {
+                    exitTimer = setInterval(function () { $('#department-layer').hide(); }, 250);
+                }
+            );
+    });
+
+
+         $(document).ready(function () {
+             $('#header-mm-input').click(function (evt) {
+                 evt.stopPropagation();
+                 evt.preventDefault();
+                 ProfileVehicles('/profile/vehicles', 'header', '/login');
+                 RecentVehicles('/recentvehicles', 'header');
+                 $(this).unbind(evt);
+             });
+         });
+    
+
+         $(document).ready(function () {
+             $('#header-me-input').click(function (evt) {
+                 evt.stopPropagation();
+                 evt.preventDefault();
+                 RecentEngines('/recentengines', 'header');
+                 $(this).unbind(evt);
+             });
+         });
+    
+
+            //<![CDATA[
+            function loadSocialMedia() {
+                try {
+                    var mouse_is_inside;
+                    $('.home-social-media')
+                        .animate({
+                            
+                            },
+                            10,
+                            'linear',
+                            function() {
+                                $(this).css('background', 'none');
+                            });
+
+                    $('.home-facebook')
+                        .animate({
+                            
+                            },
+                            10,
+                            'linear',
+                            function() {
+                                $(this)
+                                    .html('<iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FSummitRacingEquipment&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>');
+                            });
+
+                    $('.home-twitter')
+                        .animate({
+                            
+                            },
+                            10,
+                            'linear',
+                            function() {
+                                $(this)
+                                    .html('<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/follow_button.html#_=1323442382378&amp;_version=2&amp;enableNewSizing=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=SummitRacing&amp;show_count=false&amp;show_screen_name=false&amp;size=m" class="twitter-follow-button" style="height: 20px; width: 80px; " title="Twitter Follow Button"></iframe>');
+                            });
+
+                } catch (err) {
+
+                }
+            }
+                
+                $(document).one('touchmove mousemove', function () {
+                    setTimeout(loadSocialMedia, 100);
+                });
+                
+        
+
+    //<![CDATA[
+        function submitHeaderSearch() {
+            var encodedKeyword = encodeURIComponent($('#header-keyword').val());
+            var Nvalues = '';
+
+            if (encodedKeyword.length > 1) {
+                if ($('#header-searchinresults').is(':checked')) {
+                    
+                        var action = 'https://www.summitracing.com/search' + ((Nvalues == '' || Nvalues == null) ? '?' : ('?N=' + encodeURIComponent(Nvalues) + '&')) + 'keyword=' + encodedKeyword;
+                        AppendQuerystringToLocation('/appendsearchitemstourl', action, false);
+                    
+                } else {
+                    
+                    if ((!window.navURL) || ($('#header-keyword').val() != window.originalKeyword)) {
+                        var action = 'https://www.summitracing.com/search?keyword=' + encodedKeyword;
+                        AppendQuerystringToLocation('/appendsearchitemstourl', action, true);
+                    }
+                    else {
+                        window.location.href = window.navURL;
+                        return false;
+                    }
+                }
+            }
+        }
+
+        //Sets the cursor to the search box and selects the text if there is any.
+        var navURL;
+        var originalKeyword;
+        $(document).ready(function () {
+            $('#header-mm-input').floatingLayer(10, 10);
+            $('#header-me-input').floatingLayer(10, 10);
+
+            navigationSetup('/search/endecamakes', '/search/endecamodels', '/search/endecasizes', '/search/endecafamilies', 'header', '/appendsearchitemstourl');
+
+            
+            if ($("#header-searchinresults,#footer-searchinresults").length){
+                $('#header-searchinresults,#footer-searchinresults').change(TypeAhead).trigger('change');
+            } else {
+                TypeAhead();
+            }            
+
+        }); 
+
+
+    //]]>
+    
+ $(document).ready(function() { if(typeof cmSetClientID==='function'){cmSetClientID('51970000|SRE', true, 'data.coremetrics.com', 'summitracing.com');cmSetupOther({'cm_TrackImpressions':''});} });
+
+    var _bsw = _bsw || [];
+    _bsw.push(['_bswId', '5fa593e0b193b904b113c60efcab8f73792ccbe60a91fcbb456e62e92a62f8ff']);
+    (function () {
+        var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+        try {
+            bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/s/b.min.js';
+            var t = document.getElementsByTagName('script')[0];
+            t.parentNode.insertBefore(bsw, t);
+        } catch (err) {
+        }
+    })();
+

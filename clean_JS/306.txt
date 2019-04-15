@@ -1,0 +1,121 @@
+
+                var static_server_base_uri = 'https://wwwcdn.juno.co.uk/12040403';
+                var product_images_server = 'https://imagescdn.juno.co.uk';
+                var url_secure = 'https://www.juno.co.uk';
+                var domain = 'juno.co.uk';
+                //document.domain = domain;
+                window.name = 'JunoMain';
+                var imgpath = '';
+                var language = 'en';
+                var use_miniplayer = 1;
+                var mp3_url = "https://www.juno.co.uk/MP3/";
+                var use_ultraplayer = false;
+                var ua_page = 'homepage_new';
+                var chat_app = 'olark';
+                var loginSoftCookie = 'li_soft';
+                var loginStrictCookie = 'li_strict';
+                var isJunoHome = true;
+                var junoTranslation = {
+                    common: {
+                        all: 'All'
+                    }
+                };
+            
+var script = document.createElement('script');script.async = true; script.type = 'text/javascript';var target = 'https://www.clickcease.com/monitor/stat.js';script.src = target;var elem = document.head;elem.appendChild(script);
+
+        $(document).ready(function() {
+            junoHeader.initialiseTouchHover();
+
+            $('.ht-cart .ht-btn').on('mouseenter touchstart', function() {
+                junoHeader.updateQuickCart();
+            });
+
+            $('.ht-wishlist .ht-btn').on('mouseenter touchstart', function() {
+                junoHeader.updateQuickWishlist();
+            });
+        });
+
+        $(window).load(function() {
+            if($('.ht-dd.cart').css("visibility") == "visible") {
+                junoHeader.updateQuickCart();
+            }
+            if($('.ht-dd.wishlist').css("visibility") == "visible") {
+                junoHeader.updateQuickWishlist();
+            }
+            junoHeader.initialiseQuickCartCount();
+
+            $('.ht-currency .dropdown-item, .ht-currency-mobile .dropdown-item').on('click', function() {
+                JUNO_API.Currency.set($(this).text());
+			});
+            
+            $('svg.flag').hover(function(event) {
+                event.stopPropagation();
+            });
+        });
+    
+$(document).ready(function() {$('#top-carousel').junoWidget({itemsPerPage: 1,preloadNextPageImages: true,showPagination: false,slideInterval: 5000,totalPages: 6});});
+$(window).load(function() {$('#widget-new-release-3-1').junoWidget({itemsPerPage: 5,preloadNextPageImages: false,showPagination: false,slideInterval: 4000,slideMode: 'item',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-7-1').junoWidget({itemsPerPage: 5,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 20});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-1').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-2').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-3').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-4').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-5').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-8-6').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-dj-charts-9-1').junoWidget({itemsPerPage: 6,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 12});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-1').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-2').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-3').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-4').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-5').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(window).load(function() {$('#widget-bestsellers-genre-10-6').junoWidget({itemsPerPage: 3,preloadNextPageImages: true,showPagination: false,slideMode: 'page',totalPages: 15});});
+$(document).ready(function() {if (typeof hj !== 'undefined') hj('trigger', 'homepage_new');$('img.lazy').lazyload( { threshold: 400, failure_limit: 30, skip_invisible: true, vertical_only: true } );});
+
+        $(document).ready(function() {
+            $('body').on('click', '.dialog-close', function() {
+                close_dialog();
+            });
+
+            $('.login-soft').each(function() {
+                $(this).click(function() {
+                    return check_login(this, 'soft', true);
+                });
+            });
+            $('.login-strict').each(function() {
+                $(this).click(function() {
+                    return check_login(this, 'strict', true);
+                });
+            });
+
+            if ($.cookie('dialog_action') != undefined) $.removeCookie('dialog_action', { path: '/', domain: domain } );
+            
+            $('.productimage img').lazyload( { placeholder : "data:image/gif;base64,R0lGODlhAQABAIAAANvf7wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" } );
+            
+            if ($('#sale_img').length) show_next_banner();
+
+                            initialiseSvgSprite();
+                junoNav.initialise();
+                    });
+    
+
+    (function(d,t) {
+        var script = d.createElement(t); script.id= 'pap_x2s6df8d'; script.async = true;
+        script.src = 'https://affiliate.juno.co.uk/scripts/trackjs.js';
+        script.onload = script.onreadystatechange = function() {
+            var rs = this.readyState; if (rs && (rs != 'complete') && (rs != 'loaded')) return;
+            try {PostAffTracker.disableTrackingMethod('F');PostAffTracker.track(); } catch (e) {}
+        
+                
+        }
+        var placeholder = document.getElementById('papPlaceholder');
+        placeholder.parentNode.insertBefore(script, placeholder);
+        placeholder.parentNode.removeChild(placeholder);
+    })(document, 'script');
+
+
+        $(window).load(function() {
+            JunoChatOlark.prototype = new JunoChat();
+            window.junoChat = new JunoChatOlark();
+                                    junoChat.init();
+        });
+    

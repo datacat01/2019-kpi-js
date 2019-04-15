@@ -1,0 +1,6 @@
+
+	if (window._GUARANTEE && _GUARANTEE.Loaded) {
+		_GUARANTEE.Hash = "nkAbNTkIl9kqMhIdtgRUHVK%2FR%2FRRzYMwVT4%2BfKmbzwr1RWwpkiiwq9jFFYvRe3940kg0FaYlhjQtn173GDumyQ%3D%3D";
+		_GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+	}
+

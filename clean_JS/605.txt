@@ -1,0 +1,229 @@
+
+	window.deferredJQueryFunctions = [];
+
+
+		  !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+		  (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+		  f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+		  h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+		  e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+	
+		  
+
+	 	var segment_id = "";
+            if (localStorage.getItem('kxkeurig_segs') !== null) {
+                segment_id = localStorage.getItem('kxkeurig_segs');
+            }
+            segment_id=segment_id.split(',');
+            var arrTealiumSegmentId = segment_id;
+
+	    <!-- Perfect Cup Result Page Product Bundle Declaration -->
+		var arrTealiumPerfectProductIsBundle = "".split(',');
+		var arrTealiumProductBeverageType = "".split(',');
+		var arrTealiumCartBeverageType = "".split(',');
+		<!-- Product Location on CLP Declaration -->
+		var arrTealiumProductLocationCLP = "".split(',');
+		var arrTealiumProductLocation = "".split(',');
+		var arrTealiumProductName = "".split(',');
+		var arrtealiumProductCategory = "".split(',');
+		var arrTealiumProductCategoryID = "".split(',');
+		var arrTealiumProductBrand = "".split(',');
+		var arrTealiumProductBase = "".split(',');
+		var arrTealiumProductInventory = "".split(','); 
+		var arrTealiumProductDisplayPrice = "".split(','); 
+		var arrTealiumProductBrewerColor = "".split(',');
+		var arrTealiumProductBrewerType = "".split(',');
+		var arrTealiumProductBlend = "".split(',');
+		var arrTealiumProductPodType = "".split(',');
+		var arrTealiumProductBoxCount = "".split(',');
+		var arrTealiumProductCaffeine = "".split(',');
+		var arrTealiumProductRoast = "".split(',');
+		var arrTealiumProductFlavor = "".split(',');
+		var arrTealiumProductVariety = "".split(',');
+		
+		var arrTealiumProductIsBundle = "".split(',');
+		var arrTealiumProductIsCVPBundle = "".split(',');
+		var arrTealiumProductPreOrder = "".split(',');
+		var arrTealiumProductBundleYes = "".split(',');
+		var arrTealiumProductBundleNo = "".split(',');
+		<!-- Product SKU value on Perfect Cup Result Page -->
+		var arrTealiumProductSku = "".split(',');
+		
+		var arrTealiumProductIsCoffee = "".split(',');
+		var arrTealiumProductIsFlavored = "".split(',');
+		var arrTealiumProductIsFairTrade = "".split(',');
+		var arrTealiumProductIsEnergy = "".split(',');
+		var arrTealiumProductIsExtraBold = "".split(',');
+		var arrTealiumProductIsFruitBrew = "".split(',');
+		var arrTealiumProductIsOrganic = "".split(',');
+		var arrTealiumProductIsRainforestCertified = "".split(',');
+		var arrTealiumProductIsSeasonal = "".split(',');
+		var arrTealiumProductIsSpecialty = "".split(',');
+		var arrTealiumProductIsTea = "".split(',');
+		var arrTealiumProductRelationship = "".split(',');
+		<!-- Product type for Beverage CLp Page -->
+		var arrTealiumClpBeverageProductType = "".split(',');
+		<!-- Is Coffee for Beverage CLP Page -->
+		var arrTealiumClpIsCoffee = "".split(',');
+		<!-- Is Flavored for Beverage CLP Page -->
+		var arrTealiumClpIsFlavored = "".split(',');
+		<!-- Is Fair Trade for Beverage CLP Page -->
+		var arrTealiumClpIsFairTrade = "".split(',');
+		<!-- Is Energy for Beverage CLP Page -->
+		var arrTealiumClpIsEnergy = "".split(',');
+		<!-- Is Extra Bold for Beverage CLP Page -->
+		var arrTealiumClpIsExtraBold = "".split(',');
+		<!-- Is Fruit Brew for Beverage CLP Page -->
+		var arrTealiumClpIsFruitBrew = "".split(',');
+		<!--Is Organic for Beverage CLP Page -->
+		var arrTealiumClpIsOrganic = "".split(',');
+		<!-- Is Rainforest Certified for Beverage CLP Page -->
+		var arrTealiumClpIsRainforestCertified = "".split(',');
+		<!-- Is Seasonal for Beverage CLP Page -->
+		var arrTealiumClpIsSeasonal = "".split(',');
+		<!-- Is Specialty for Beverage CLP Page -->
+		var arrTealiumClpIsSpecialty = "".split(',');
+		<!-- Is Tea for Beverage CLP Page -->
+		var arrTealiumClpIsTea = "".split(',');
+		<!-- Is Bundle for Beverage CLP Page -->
+		var arrTealiumClpIsBundle = "".split(',');
+		<!-- Feature Blend for Beverage CLP Page -->
+		var arrTealiumClpFeatureBlend = "".split(',');
+		<!-- Feature Package Type for Beverage CLP Page -->
+		var arrTealiumClpFeaturePackageType = "".split(',');
+		<!-- Feature Caffeination for Beverage CLP Page -->
+		var arrTealiumClpFeatureCaffeination = "".split(',');
+		<!-- Feature Roast Type for Beverage CLP Page -->
+		var arrTealiumClpFeatureRoastType = "".split(',');
+		<!-- FeatureFlavor for Beverage CLP Page -->
+		var arrTealiumClpFeatureFlavor = "".split(',');
+		<!-- Feature Varieties for Beverage CLP Page -->
+		var arrTealiumClpFeatureVarieties = "".split(',');
+		<!-- SKU & Name for CLP Page -->
+		var arrTealiumClpProductSku = "".split(',');
+		var arrTealiumClpProductName = "".split(',');
+		var tealiumPageName = "HOMEPAGE";
+		var tealiumPageId = "HOMEPAGE";
+		
+		arrTealiumProductName = Keurig.tealiumUtagAnalytics.utagRemoveSpecialCharacterArray(arrTealiumProductName);
+		arrtealiumProductCategory = Keurig.tealiumUtagAnalytics.utagRemoveSpecialCharacterArray(arrtealiumProductCategory);
+		arrTealiumProductBrand = Keurig.tealiumUtagAnalytics.utagRemoveSpecialCharacterArray(arrTealiumProductBrand);
+		tealiumPageName = Keurig.tealiumUtagAnalytics.utagRemoveSpecialCharacter(tealiumPageName);
+		tealiumPageId = Keurig.tealiumUtagAnalytics.utagRemoveSpecialCharacter(tealiumPageId);
+		
+		
+				var utag_data = {
+						
+					
+					"referral_url" : "",
+					"destination_url" : "https://www.keurig.com/  ",
+					"page_type": "HOME",
+					
+					"login_status" : "not logged in",
+					"page_name": ''+ tealiumPageName +'',
+					"page_id":		''+ tealiumPageId +'',
+					"page_category_id": "HOME",
+					"segment_id" : arrTealiumSegmentId
+				};
+			
+
+	/*(function(a,b,c,d){
+		   a='//tags.tiqcdn.com/utag/gmcr/keurighybris/prod/utag.js';
+		   b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+		   a=b.getElementsByTagName(c)[0];
+		   a.parentNode.insertBefore(d,a);
+		   })();*/
+
+
+	var tealiumCurPageType = "HOME",
+		tealiumCurPageName = ''+ tealiumPageName +'',
+		tealiumCurPageCategoryId = "HOME",
+		tealiumCurPageId = ''+ tealiumPageId +'';
+
+		if(tealiumCurPageType ==='product' && window.innerWidth < 768){
+			tealiumCurPageCategoryId = tealiumCurPageCategoryId + "_M";
+		}
+
+
+	var autocompleteUrl = "/search/autocomplete/SearchBox";
+
+
+		/*<![CDATA[*/
+		
+		var ACC = { config: {} }, isZeroCartOrder, javascriptEnabled;
+			var atcFlag = false || false;
+			ACC.config.contextPath = "";
+			ACC.config.commonResourcePath = "/_ui/desktop/common";
+			ACC.config.themeResourcePath = "/_ui/desktop/theme-keurig";
+			ACC.config.siteResourcePath = "/_ui/desktop/site-usb2c";
+			ACC.config.language = "en";
+			ACC.config.rootPath = "/_ui/desktop";
+			ACC.config.CSRFToken = "14303fc5-778a-4fab-b18a-e016c06d3a9f";
+			ACC.pwdStrengthVeryWeak = 'Very weak';
+			ACC.pwdStrengthWeak = 'Weak';
+			ACC.pwdStrengthMedium = 'Medium';
+			ACC.pwdStrengthStrong = 'Strong';
+			ACC.pwdStrengthVeryStrong = 'Very strong';
+			ACC.pwdStrengthUnsafePwd = 'password.strength.unsafepwd';
+			ACC.pwdStrengthTooShortPwd = 'Too short';
+			ACC.pwdStrengthMinCharText = 'Minimum length is 7 characters';
+			ACC.accessibilityLoading = 'Loading... Please wait...';
+			ACC.accessibilityStoresLoaded = 'Stores loaded';
+			ACC.config.encodedContextPath = "";
+			ACC.config.isLoggedIn = "false";
+			ACC.config.snackBarTimeout = "5000";
+			ACC.config.heroBannerTimeLag = "7500";
+            ACC.config.experianValidateTimeout = "5000";
+
+			
+			isZeroCartOrder = false;
+			javascriptEnabled= 'true';
+			ACC.config.productCarousel = {};
+			ACC.config.productCarousel.showReview = "true";
+			ACC.config.productCarousel.rrVendor = "bazaarvoice";
+			ACC.config.productCarousel.hideComparisonCategoryForCDP="true" 
+			ACC.config.productCarousel.showRatingForCDP="true"			
+			ACC.config.productCarousel.messages = {};
+			ACC.config.productCarousel.messages.cardsDetails = "Details";
+			ACC.config.productCarousel.messages.comingSoon = "Coming Soon!";
+			ACC.config.productCarousel.messages.outOfStock = "OUT OF STOCK";
+			ACC.config.productCarousel.messages.learn = "LEARN MORE";
+			ACC.config.productCarousel.messages.addToCart = "ADD TO CART";
+			ACC.config.productCarousel.messages.moredetails = "CLICK FOR MORE DETAILS";
+			ACC.config.productCarousel.totalSlides = "12";
+			ACC.config.productCarousel.slideToShow = "4";
+			ACC.config.bundlePDPCarousel = {};
+			ACC.config.bundlePDPCarousel.slidesToShow = "4";
+			ACC.config.bundlePDPCarousel.slidesToScroll = "4";
+			ACC.config.notification = {};
+			ACC.config.notification.messages = {preferred:{},normal : {}};
+			ACC.config.notification.messages.preferred.expireTommorrow = "Your preferred credit card ending in {0} is going to expire tomorrow.";
+			ACC.config.notification.messages.preferred.expireToday = "Your preferred credit card ending in {0} is going to expire today.";
+			ACC.config.notification.messages.preferred.expired = "Your preferred credit card ending in {0} is already expired.";
+			ACC.config.notification.messages.preferred.expireSomeDays = "Your preferred credit card ending in {0} is going to expire in {1} days.";
+			ACC.config.notification.messages.normal.abouToExpire = "One or more credit cards has expired.";			
+			ACC.config.notification.messages.normal.expireTommorrow= "Your credit card ending in {0} is going to expire tomorrow.";
+			ACC.config.notification.messages.normal.expireToday = "Your credit card ending in {0} is going to expire today.";
+			ACC.config.notification.messages.normal.expired = "Your credit card ending in {0} is already expired.";
+			ACC.config.notification.messages.normal.expireSomeDays = "Your credit card ending in {0} is going to expire in {1} days.";			
+			ACC.config.notification.messages.preferred.abouToExpire = "One or more credit cards has expired.";
+			analyticsCurrentSessionId = "180d6d1e-11ac-48d9-8a68-69c8c55820e6";
+			ACC.config.addToCartModal = {toggle : atcFlag};
+			productNameCharacterLimit= "25";
+			brandNameCharacterLimit= "17";
+			ACC.config.pdp = {
+					variantUrlSeparator: ""
+					};
+		/*]]>*/
+	
+     
+
+		  rg4js('apiKey', "sxARZoFaYQ27EV0P046ijQ==");
+		  rg4js('options', {
+			  // Add some or all of the options below
+			  ignore3rdPartyErrors: false
+			});
+		  rg4js('enableCrashReporting', true);
+		  rg4js('enablePulse', true);
+		
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/static/9df994f86ec1450033d1dccde95981d']);

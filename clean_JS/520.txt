@@ -1,0 +1,49 @@
+ 
+ <!-- 
+ (new Image).src="https://store.yahoo.net/cgi-bin/refsd?e=http://www.invitationbox.com/&h=www.invitationbox.com&v=1.0&dr=" + escape(document.referrer); 
+ --> 
+ 
+var monitus=monitus||{};
+monitus.callback = function(trigger) {
+switch(trigger) {
+case "tracker_before_tracking":
+ga('require', 'displayfeatures');
+break;
+}
+};
+
+monitus.callback = function(trigger) {
+switch(trigger) {
+case "tracker_before_tracking":
+ga('require', 'displayfeatures');
+break;
+}
+};
+monitus.id=1731;monitus.ga_mode=2;
+
+/* <![CDATA[ */
+var google_conversion_id = 1071671285;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "666666";
+var google_conversion_label = "xB-UCIGW2QEQ9c-B_wM";
+var google_conversion_value = 0;
+/* ]]> */
+
+
+
+var google_tag_params = {ecomm_prodid: 'index', ecomm_pagetype: 'home' }; fbq('track', 'ViewContent', {content_type: 'product',content_ids: ['index'], currency: 'USD'});
+
+/* <![CDATA[ */
+var google_conversion_id = 1071671285;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+csell_env = 'bf1';
+ var storeCheckoutDomain = 'order.store.yahoo.net';
+
+(function (d, w) { var f = function () { var x = d.getElementsByTagName('SCRIPT')[0]; var s = d.createElement('SCRIPT'); var p = {}; if(window.csell_page_data) { p = csell_page_data; }; s.type = 'text/javascript'; s.async = true; var url = '//np.lexity.com/embed/YA/377832383079faa5c53a877a4c49af84?id=22e182f83431'; if('si' in p) { url = url + '&ysid=' + p['si']; }; if('bt' in p) { url = url + '&bt=' + p['bt'] + '-view'; }; if('ii' in p) { url = url + '&ii=' + p['ii']; }; if('io' in p) { url = url + '&io=' + p['io']; }; s.src = url; x.parentNode.insertBefore(s, x); }; w.attachEvent ? w.attachEvent('onload',f) : w.addEventListener('load',f,false); }(document, window)); 

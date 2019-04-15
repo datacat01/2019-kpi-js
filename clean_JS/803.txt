@@ -1,0 +1,159 @@
+console.log('PixelYourSite PRO version 7.1.1');
+
+var ajaxurl = ajaxurl || 'https://www.handicappedpets.com/wp-admin/admin-ajax.php';
+
+
+/* <![CDATA[ */
+var angelleye_in_content_param = {"environment":"production","locale":"en_US","start_flow":"https:\/\/www.handicappedpets.com\/cart\/?startcheckout=true","show_modal":"1","update_shipping_costs_nonce":"e6b79f8158","ajaxurl":"\/?wc-ajax=wc_angelleye_ppec_update_shipping_costs","generate_cart_nonce":"242a7e70ac","add_to_cart_ajaxurl":"\/?wc-ajax=angelleye_ajax_generate_cart","is_product":"no","is_cart":"no","is_checkout":"no","cart_button_possition":"bottom","is_display_on_checkout":"yes","button_size":"responsive","button_color":"blue","button_shape":"rect","button_label":"checkout","button_tagline":"false","button_layout":"horizontal","button_fundingicons":"false","cancel_page":"https:\/\/www.handicappedpets.com\/checkout\/","is_paypal_credit_enable":"yes","allowed_funding_methods":"[\"credit\",\"card\",\"elv\",\"venmo\"]","disallowed_funding_methods":"[\"visa\",\"mastercard\",\"amex\",\"discover\",\"maestro\",\"jcb\"]","enable_google_analytics_click":"no","set_express_checkout":"https:\/\/www.handicappedpets.com\/?wc-api=WC_Gateway_PayPal_Express_AngellEYE&pp_action=set_express_checkout","zcommit":"false"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var pysOptions = {"staticEvents":{"facebook":{"PageView":[{"params":[],"delay":0,"ids":[]}],"GeneralEvent":[{"params":{"post_type":"page","post_id":"64","content_name":"Walkin' Pets by Handicappedpets.com"},"delay":0,"ids":[]}]}},"dynamicEventsParams":[],"dynamicEventsTriggers":[],"facebook":{"pixelIds":["800019323536819"],"advancedMatching":[],"removeMetadata":false,"contentParams":{"post_type":"page","post_id":64,"content_name":"Walkin' Pets by Handicappedpets.com"},"clickEventEnabled":true,"watchVideoEnabled":true,"adSenseEventEnabled":true,"commentEventEnabled":true,"formEventEnabled":true,"downloadEnabled":true,"wooVariableAsSimple":true},"debug":"","siteUrl":"https:\/\/www.handicappedpets.com","ajaxUrl":"https:\/\/www.handicappedpets.com\/wp-admin\/admin-ajax.php","commonEventParams":{"domain":"www.handicappedpets.com","user_roles":"guest","plugin":"PixelYourSite"},"clickEventEnabled":"1","adSenseEventEnabled":"1","watchVideoEnabled":"1","commentEventEnabled":"1","formEventEnabled":"1","downloadEventEnabled":"1","downloadExtensions":["","doc","exe","js","pdf","ppt","tgz","zip","xls"],"trackUTMs":"1","trackTrafficSource":"1","gdpr":{"ajax_enabled":false,"all_disabled_by_api":false,"facebook_disabled_by_api":false,"analytics_disabled_by_api":false,"google_ads_disabled_by_api":false,"pinterest_disabled_by_api":false,"facebook_prior_consent_enabled":true,"analytics_prior_consent_enabled":true,"google_ads_prior_consent_enabled":true,"pinterest_prior_consent_enabled":true,"cookiebot_integration_enabled":false,"cookiebot_facebook_consent_category":"marketing","cookiebot_analytics_consent_category":"statistics","cookiebot_google_ads_consent_category":"marketing","cookiebot_pinterest_consent_category":"marketing","ginger_integration_enabled":false,"cookie_notice_integration_enabled":false,"cookie_law_info_integration_enabled":false},"woo":{"enabled":true,"addToCartOnButtonEnabled":true,"addToCartOnButtonValueEnabled":true,"addToCartOnButtonValueOption":"price","singleProductId":null,"removeFromCartEnabled":true,"affiliateEnabled":false,"payPalEnabled":false,"removeFromCartSelector":"form.woocommerce-cart-form .remove","affiliateEventName":"custom","paypalEventName":"custom"},"edd":{"enabled":false,"addToCartOnButtonEnabled":true,"addToCartOnButtonValueEnabled":false,"addToCartOnButtonValueOption":"price","removeFromCartEnabled":true}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wcap_mailchimp_setting = {"wcap_popup_setting":"off"};
+/* ]]> */
+
+
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//www.handicappedpets.com/?wordfence_lh=1&hid=5A4952F3B5FF0D584CC35CCDA09B91A7');
+
+
+var _vwo_code=(function(){
+var account_id=401713,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+function closeAd()
+  {
+    jQuery('#adbanner').slideUp('slow');
+    jQuery('#adbannersmall').show();
+  }
+  function openAd()
+  {
+    jQuery('#adbannersmall').hide();
+    jQuery('#adbanner').slideDown('slow');
+  }
+
+  jQuery(document).ready(function() {
+
+    jQuery("#adbanner").slideDown('slow', function(){
+        setTimeout("closeAd()", 7000);
+    });
+  });
+window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '4e8d693e-194a-4757-a6ba-43da5e501a79', f: true }); done = true; } }; })();
+
+if (window._GUARANTEE && _GUARANTEE.Loaded) {
+  _GUARANTEE.Hash = "ShiyU6TRibHKNyisoqW%2Bugh%2B%2B%2F%2BmA3FovblYXknY3GsTrjNrNM6ZBxSweV5Yw8qr68GMgdDyVMLX9Vr0m7%2B8kQ%3D%3D";
+  _GUARANTEE.WriteSeal();
+}
+
+
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.handicappedpets.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/www.handicappedpets.com\/cart\/","is_cart":"","cart_redirect_after_add":"yes"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments_d3187e146cb1dfb37d63c4f479dd30c3"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var ajaxScripts = {"security":"1129d87dbd","url":"https:\/\/www.handicappedpets.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var ubermenu_data = {"remove_conflicts":"on","reposition_on_load":"off","intent_delay":"300","intent_interval":"100","intent_threshold":"7","scrollto_offset":"50","scrollto_duration":"1000","responsive_breakpoint":"959","accessible":"on","retractor_display_strategy":"responsive","touch_off_close":"on","submenu_indicator_close_mobile":"on","collapse_after_scroll":"on","v":"3.5","configurations":["main"],"ajax_url":"https:\/\/www.handicappedpets.com\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/www.handicappedpets.com\/wp-content\/plugins\/ubermenu\/","disable_mobile":"off","prefix_boost":"","aria_role_navigation":"off","aria_expanded":"off","aria_hidden":"off","aria_controls":"","aria_responsive_toggle":"off","icon_tag":"i","theme_locations":{"main-menu":"Main Menu","secondary-menu":"Secondary Menu","mobile-menu":"Mobile Menu"}};
+/* ]]> */
+
+
+jQuery(function($) { 
+
+ga( 'send', 'pageview' );
+
+ga( 'send', {"hitType":"event","eventCategory":"Homepage","eventAction":"viewed homepage","eventLabel":null,"eventValue":null,"nonInteraction":true} );
+
+ });
+
+
+( function( grecaptcha, sitekey ) {
+
+	var wpcf7recaptcha = {
+		execute: function() {
+			grecaptcha.execute(
+				sitekey,
+				{ action: 'homepage' }
+			).then( function( token ) {
+				var forms = document.getElementsByTagName( 'form' );
+
+				for ( var i = 0; i < forms.length; i++ ) {
+					var fields = forms[ i ].getElementsByTagName( 'input' );
+
+					for ( var j = 0; j < fields.length; j++ ) {
+						var field = fields[ j ];
+
+						if ( 'g-recaptcha-response' === field.getAttribute( 'name' ) ) {
+							field.setAttribute( 'value', token );
+							break;
+						}
+					}
+				}
+			} );
+		}
+	};
+
+	grecaptcha.ready( wpcf7recaptcha.execute );
+
+	document.addEventListener( 'wpcf7submit', wpcf7recaptcha.execute, false );
+
+} )( grecaptcha, '6Ld1IoMUAAAAAESkt7qUyUAXvWAJ8i0xh6T892w2' );
+

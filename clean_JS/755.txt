@@ -1,0 +1,306 @@
+
+jQuery.ajaxPrefilter( function( s ) {
+	if ( s.crossDomain ) {
+		s.contents.script = false;
+	}
+} );
+
+
+    $(document).ready(function() {
+        $("#slider").easySlider({
+            auto: false,
+            continuous: false
+        });
+    });	
+	
+
+    $(document).ready(function() {
+        $('#slider1').bxSlider();
+    });
+
+
+    $(document).ready(function() {
+        $('#slider2').bxSlider();
+    });
+
+
+    $(document).ready(function() {
+        $('#slider3').bxSlider();
+    });
+
+ 
+SLI = window.SLI || {}; 
+SLI.searchSubmit = function(event, caller) { 
+    event.preventDefault ? event.preventDefault() : event.returnValue = false; 
+    var keyword = ''; 
+    if (caller.nodeName.match(/form/i)) { 
+        keyword = caller.w.value; 
+    } else { 
+        return false; 
+    } 
+    keyword = keyword.replace(/^\s+|\s+$/g, ''); 
+    if (keyword == '') { 
+        return false; 
+    } 
+    keyword = encodeURIComponent(keyword); 
+    window.location = window.location.protocol + "//envelopes.jampaper.com/search?w=" + keyword; 
+    return false; 
+}; 
+
+
+    var gSiteURL = "https://www.jampaper.com/";
+    function openURL(purl) {
+        parent.location = purl;
+    }
+
+
+     var backColor = '#D83435';
+     var borderColor = '#ffffff';
+     var borderSize = '1';
+     var itemHeight = 26; /*to inc the height of the links*/
+     var xOverlap = 0;
+     var yOverlap = 0;
+     var siteUrl = "https://www.jampaper.com/";
+     var securesiteUrl = "https://www.jampaper.com/";
+     var width = 237;
+     var vertical_height = 0;		
+
+
+    function isvaildEmail(aStr) {
+        var reEmail = /^[0-9a-zA-Z_\.-]+\@[0-9a-zA-Z_\.-]+\.[0-9a-zA-Z_\.-]+$/;
+        if (!reEmail.test(aStr)) {
+            return false;
+        }
+        return true;
+    }
+
+    function checksub() {
+        //theFrm = document.subscribemail;
+
+        if (document.subscribemail.txtsubscribe.value == '') {
+            alert("Please enter Email Address.");
+            document.subscribemail.txtsubscribe.focus();
+            return false;
+        }
+
+        if (isvaildEmail(trim(document.subscribemail.txtsubscribe.value)) == false) {
+            alert('Please enter a valid Email Address.');
+            document.subscribemail.txtsubscribe.focus();
+
+            return false;
+        }
+
+    }
+    
+
+    function checksearchform() {
+        if (trim(document.getElementById('txtsearch').value) == '') {
+            alert("Please enter some text to search.");
+            document.getElementById('txtsearch').focus();
+            return false;
+        }
+        location.href = 'http://www.jampaper.com/searchtype/' + escape(document.getElementById('searchtype').value) + '/search/' + escape(document.getElementById('txtsearch').value);
+        return false;
+    }
+
+
+    if (typeof ROITracker === "undefined") { window.ROIStorage = {}; ROIStorage.q = []; window.ga = function() { ROIStorage.q.push(arguments) }; window.ga.q = window.ga.q || []; ROIStorage.roiq = []; ROIStorage.analyticsJsNotLoaded = true; window.ga.q.push([function() { var a; ROIStorage.realGa = window.ga; ROIStorage.analyticsJsNotLoaded = false; window.ga = function() { if (typeof arguments[0] === "function") { ROIStorage.realGa(arguments) } else { ROIStorage.q.push(arguments) } }; ROIStorage.roiq.push = function() { ROIStorage.realGa.apply(window, arguments) }; for (a = 0; a < ROIStorage.roiq.length; a += 1) { ROIStorage.realGa.call(window, ROIStorage.roiq[a]) } } ]) } ROIStorage.gaq = ROIStorage.gaq || []; var _gaq = { push: function() { var a; for (a = 0; a < arguments.length; a++) { ROIStorage.gaq.push(arguments[a]) } } }; var _gat = { trackingObjects: {}, _createTracker: function(a, b) { return new _gat.Tracker(a, b) }, _getTracker: function(a) { return _gat._createTracker(a) }, _getTrackerByName: function(a) { var a = a || ""; if (_gat.trackingObjects.hasOwnProperty(a)) { return _gat.trackingObjects[a] } return _gat._createTracker("UA-XXXXX-X", a) }, _anonymizeIp: function() { ROIStorage.gaq.push("_gat._anonymizeIp") }, _forceSSL: function() { ROIStorage.gaq.push("_gat._forceSSL") }, _getPlugin: function() { ROIStorage.gaq.push("_gat._getPlugin") }, Tracker: function(a, g) { var c, h, e = ["_addDevId", "_addEventListener", "_addIgnoredOrganic", "_addIgnoredRef", "_addItem", "_addOrganic", "_addTrans", "_clearIgnoredOrganic", "_clearIgnoredRef", "_clearOrganic", "_clearTrans", "_clearXKey", "_clearXValue", "_cookiePathCopy", "_createEventTracker", "_createXObj", "_deleteCustomVar", "_get", "_getAccount", "_getClientInfo", "_getDetectFlash", "_getDetectTitle", "_getLinkerUrl", "_getLocalGifPath", "_getName", "_getPlugin", "_getServiceMode", "_getVersion", "_getVisitorCustomVar", "_getXKey", "_getXValue", "_initData", "_link", "_linkByPost", "_removeEventListener", "_sendXEvent", "_set", "_setAccount", "_setAllowAnchor", "_setAllowHash", "_setAllowLinker", "_setAutoTrackOutbound", "_setCampCIdKey", "_setCampContentKey", "_setCampIdKey", "_setCampMediumKey", "_setCampNOKey", "_setCampNameKey", "_setCampSourceKey", "_setCampTermKey", "_setCampaignCookieTimeout", "_setCampaignTrack", "_setClientInfo", "_setCookiePath", "_setCookiePersistence", "_setCookieTimeout", "_setCustomVar", "_setDetectFlash", "_setDetectTitle", "_setDomainName", "_setHrefExamineLimit", "_setLocalGifPath", "_setLocalRemoteServerMode", "_setLocalServerMode", "_setMaxCustomVariables", "_setNamespace", "_setPageGroup", "_setReferrerOverride", "_setRemoteServerMode", "_setSampleRate", "_setSessionCookieTimeout", "_setSessionTimeout", "_setSiteSpeedSampleRate", "_setTrackOutboundSubdomains", "_setTrans", "_setTransactionDelim", "_setVar", "_setVisitorCookieTimeout", "_setXKey", "_setXValue", "_trackEvent", "_trackPageLoadTime", "_trackPageview", "_trackSocial", "_trackTiming", "_trackTrans", "_visitCode"]; var b = g || ""; var f = a || "UA-XXXXX-X"; for (c = 0; c < e.length; c++) { h = e[c]; this[h] = d(h) } function d(i) { return function() { if (b) { i = b + "." + i } var j = Array.prototype.slice.call(arguments, 0); j.unshift(i); ROIStorage.gaq.push(j) } } _gat.trackingObjects[b] = this } }; var _gaq = window._gaq;
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://1b0e7ce40ebef19219fc-fbb8b6ef8aaf2f7d2f840c84e9f7affb.ssl.cf2.rackcdn.com/gate.js' : 'http://7f6548008cac90283ec1-fbb8b6ef8aaf2f7d2f840c84e9f7affb.r35.cf2.rackcdn.com/gate.js');
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+
+
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-2199927-1']);
+       _gaq.push(['_trackPageview']);
+
+       (function() {
+           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+       var _ga = _ga || {};
+       _ga.getSocialActionTrackers_ = function(
+    network, socialAction, opt_target, opt_pagePath) {
+           return function() {
+               var trackers = _gat._getTrackers();
+               for (var i = 0, tracker; tracker = trackers[i]; i++) {
+                   tracker._trackSocial(network, socialAction, opt_target, opt_pagePath);
+               }
+           };
+       };
+       _ga.trackFacebook = function(opt_pagePath) {
+           try {
+               if (FB && FB.Event && FB.Event.subscribe) {
+                   FB.Event.subscribe('edge.create', function(opt_target) {
+                       _gaq.push(_ga.getSocialActionTrackers_('facebook', 'like',
+            opt_target, opt_pagePath));
+                   });
+                   FB.Event.subscribe('edge.remove', function(opt_target) {
+                       _gaq.push(_ga.getSocialActionTrackers_('facebook', 'unlike',
+            opt_target, opt_pagePath));
+                   });
+                   FB.Event.subscribe('message.send', function(opt_target) {
+                       _gaq.push(_ga.getSocialActionTrackers_('facebook', 'send',
+            opt_target, opt_pagePath));
+                   });
+               }
+           } catch (e) { }
+       };
+       _ga.trackTwitterHandler_ = function(intent_event, opt_pagePath) {
+           var opt_target; //Default value is undefined
+           if (intent_event && intent_event.type == 'tweet' ||
+          intent_event.type == 'click') {
+               if (intent_event.target.nodeName == 'IFRAME') {
+                   opt_target = _ga.extractParamFromUri_(intent_event.target.src, 'url');
+               }
+               var socialAction = intent_event.type + ((intent_event.type == 'click') ?
+        '-' + intent_event.region : ''); //append the type of click to action
+               _gaq.push(_ga.getSocialActionTrackers_('twitter', socialAction, opt_target,
+        opt_pagePath));
+           }
+       };
+       _ga.trackTwitter = function(opt_pagePath) {
+           intent_handler = function(intent_event) {
+               _ga.trackTwitterHandler_(intent_event, opt_pagePath);
+           };
+
+           //bind twitter Click and Tweet events to Twitter tracking handler
+           twttr.events.bind('click', intent_handler);
+           twttr.events.bind('tweet', intent_handler);
+       };
+
+
+       _ga.extractParamFromUri_ = function(uri, paramName) {
+           if (!uri) {
+               return;
+           }
+           var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+           var params = regex.exec(uri);
+           if (params != null) {
+               return unescape(params[1]);
+           }
+           return;
+       };
+
+
+
+       function waitPreloadPage() { //DOM
+           if (document.getElementById) {
+               if (document.getElementById('prepage')) {
+                   document.getElementById('prepage').style.visibility = 'hidden';
+               }
+           } else {
+               if (document.layers) { //NS4
+                   document.prepage.visibility = 'hidden';
+               }
+               else { //IE4
+                   document.all.prepage.style.visibility = 'hidden';
+               }
+           }
+       }
+       // End -->
+
+
+    document.write(unescape("%3Cscript src='"
++ ((document.location.protocol == "https:") ? "https:" : "http:")
++ "//p.bm23.com/bta.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+	    var bta = new __bta('btqoczwwyswqmnpybosikcxmwgobbia');
+	     bta.setHost("app.bronto.com");
+	    //bta.setHost("email.jampaper.com");
+	
+
+            $(document).ready(function() {
+
+                //if(0 > 0 ){
+                //$('div[name=cart_bg]').mouseover(function () {
+
+                $("#macc").mouseover(function() {
+                    var msides = $("#vsid").val();
+                    //alert(msides);
+                    if (msides > 0) {
+                        //alert("kkks");
+
+                        //$("#MiniCart").load('../ecom/copydata.asp').show();
+                        //             
+                        $("#MiniCart").show();
+                    }
+
+                });
+
+
+                //                     $("#macc").mouseout(function () {
+                $('div[name=cart_bg]').mouseout(function() {
+                    //                        //alert("test");
+                    $("#MiniCart").hide();
+                    //                        
+                });
+                //return false; 
+                //}
+
+            })
+          
+
+                $(document).ready(function() {
+
+                    //if(0 > 0 ){
+                    //$('div[name=cart_bg]').mouseover(function () {
+
+                $("#cart-display").mouseover(function() {
+                        var msides = $("#vsid").val();
+                        //alert(msides);
+                        if (msides > 0) {
+                            //alert("kkks");
+
+                            //$("#MiniCart").load('../ecom/copydata.asp').show();
+                            //             
+                            $("#MiniCart").show();
+                        }
+
+                    });
+
+
+                    //                     $("#macc").mouseout(function () {
+                    $('div[name=cart_bg]').mouseout(function() {
+                        //                        //alert("test");
+                        $("#MiniCart").hide();
+                        //                        
+                    });
+                    //return false; 
+                    //}
+
+                })
+              
+
+    var google_tag_params = {
+    ecomm_prodid: '',
+        ecomm_pagetype: 'home',
+        ecomm_totalvalue: ''
+            };
+
+
+
+    /* <![CDATA[ */
+
+    var google_conversion_id = 1071733916;
+
+    var google_custom_params = window.google_tag_params;
+
+    var google_remarketing_only = true;
+
+    /* ]]> */
+
+
+
+
+
+
+    window.criteo_q = window.criteo_q || [];
+    var deviceType = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(navigator.userAgent) ? "m" : "d"; window.criteo_q.push({ event: "setAccount", account: 18506 }, { event: "setSiteType", type: deviceType }, { event: "setEmail", email: [""] }, { event: "viewHome" }); 
+

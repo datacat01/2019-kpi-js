@@ -1,0 +1,3 @@
+var siteRoot = 'https://laserinkjetlabels.com/'; var fontFile = "Roboto2";
+var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-atlanta.bbb.org' + unescape('%2Flogo%2Flaserinkjetlabelscom-27660824.js') + "' type='text/javascript'%3E%3C/script%3E"));
+document.body.onload = initialize('');

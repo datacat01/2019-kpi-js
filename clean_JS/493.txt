@@ -1,0 +1,98 @@
+
+//version 1.9.3
+(function(global){
+  global.tabarnapp_cm = {};
+  global.tabarnapp_cm.cart = {"token":"0323fbd9a10c2230d8d73a3ea4432fe4","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[]};
+  global.tabarnapp_cm.customer = {};
+  
+})(window);
+
+
+  !(function(_window, _document) {
+    var OB_ADV_ID = "0019ea8e1ad379687d87db93ee471fd519";
+    if (_window.obApi) {
+      var toArray = function(object) {
+        return Object.prototype.toString.call(object) === "[object Array]"
+        ? object
+        : [object];
+      };
+      _window.obApi.marketerId = toArray(_window.obApi.marketerId).concat(
+        toArray(OB_ADV_ID)
+      );
+      return;
+    }
+    var api = (_window.obApi = function() {
+      api.dispatch
+      ? api.dispatch.apply(api, arguments)
+      : api.queue.push(arguments);
+    });
+    api.version = "1.1";
+    api.loaded = true;
+    api.marketerId = OB_ADV_ID;
+    api.queue = [];
+    var tag = _document.createElement("script");
+    tag.async = true;
+    tag.src = "//amplify.outbrain.com/cp/obtp.js";
+    tag.type = "text/javascript";
+    var script = _document.getElementsByTagName("script")[0];
+    script.parentNode.insertBefore(tag, script);
+  })(window, document);
+  obApi("track", "PAGE_VIEW");
+
+
+    $("input[name='customer[email]']").on('blur', function(e) {
+        e.preventDefault();
+        var email = $(this).val();
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://manage.kmail-lists.com/subscriptions/external/subscribe",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+            },
+            "data": {
+                "g": "J3j8gp",
+                "$fields": "$source",
+                "email": email,
+                "$source": "Shopify form"
+            }
+        };
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+
+
+    adroll_adv_id = "LIQ75GRVI5HMRN3XLLOSO7";
+    adroll_pix_id = "DVTMLRHLFFFIVMV4ZSV4CN";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+
+
+var __klKey = __klKey || 'JjQEXq';
+(function() {
+var s = document.createElement('script');
+s.type = 'text/javascript';
+s.async = true;
+s.src = '//static.klaviyo.com/forms/js/client.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+

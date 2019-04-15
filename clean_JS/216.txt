@@ -1,0 +1,70 @@
+
+define('listrak_utils', ['jquery'], function(jQuery) {
+    'use strict';
+    var utils = { requesting: false };
+    var makeRequest = function(url) {
+                    utils.requesting = true;
+            jQuery.ajax(url).always(function() { utils.requesting = false; });
+                };
+    utils.track = function() { makeRequest('//incipio.com/remarketing/cart/track/'); };
+    utils.order = function() { makeRequest('//incipio.com/remarketing/order/track/'); };
+    return utils;
+});
+
+
+		require(['jquery','uiRegistry','owlCarousel'], function($, registry){
+
+			$(document).ready(function(){
+
+				$('.banner-section').owlCarousel({
+					autoplay:true,
+					autoplayTimeout:6000,
+				    loop:true,
+				    margin:0,
+				    nav:true,
+				    navText:['<span class="fa fa-chevron-left"></span>','<span class="fa fa-chevron-right"></span>'],
+				    dots:false,
+					items:1,
+					mouseDrag:false,
+				});
+
+			});
+			
+		});
+	
+
+(function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+    else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+    if (e.propertyName == 'ltkAsyncProperty' && typeof _ltk !== 'undefined'){d();}});}})
+    (function() { require(['listrak_utils'], function(utils) { if (typeof window.XMLHttpRequest !== 'undefined') {
+    var ajaxOpen = window.XMLHttpRequest.prototype.open;
+    window.XMLHttpRequest.prototype.open = function() {
+        ajaxOpen.apply(this, arguments);
+        if(arguments.length >= 2 && arguments[1].indexOf("//" + location.hostname) == arguments[1].indexOf("//")) {
+            if (!utils.requesting && typeof this.addEventListener === 'function') {
+                this.setRequestHeader("Listrak-Listening", "1");
+                this.addEventListener("load", function(e) {
+                    if (!utils.requesting
+                        && typeof e.currentTarget !== 'undefined') {
+                        if (e.currentTarget.getResponseHeader('Listrak-Change-Flag') !== null)
+                            utils.track();
+                        if (e.currentTarget.getResponseHeader('Listrak-InstantPurchase-Flag') !== null)
+                            utils.order();
+                    }
+                });
+            }
+        }
+    };
+}
+_ltk.Activity.AddPageBrowse(location.href); _ltk.Activity.Submit(); _ltk.SCA.CaptureEmail('newsletter', true); _ltk.SCA.CaptureEmail('email', true); _ltk.SCA.CaptureEmail('customer-email', true); _ltk.SCA.CaptureEmail('email_address', true); _ltk.SCA.CaptureEmail('login-email', true); _ltk.SCA.CaptureEmail('billing:email', true); utils.track(); }); });
+
+
+require(['jquery'], function(jQuery) {
+    (function (d, s, id, url) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', '//cdn.listrakbi.com/scripts/script.js?m=KG65uiuohKPW&v=1');
+});
+

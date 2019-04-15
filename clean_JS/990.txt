@@ -1,0 +1,16 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".cupojoes.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"6531b396a5b4dc9452602b24e1930874f2347dc3","type":"ANONYMOUS","visit_id":"fb152e8d-81f6-47b2-bac9-a9a17e3a26a5","visitor_id":"a6058241-3dc4-448e-8640-ee46e1b1caea"},"referer":{"url":""},"request":{"url":"https:\/\/www.cupojoes.com\/"}}, '', 1916119, "other", {"customer":{"id":"anonymous"}}, 'fb152e8d-81f6-47b2-bac9-a9a17e3a26a5', 'a6058241-3dc4-448e-8640-ee46e1b1caea');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"88e77a7552802c6d39b36954a4d93f71e15aeda7494083200536db033f6ddf30"};
+
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'https://www.cupojoes.com';
+window.sloyalty.key = 'dddf675a-3de2-47ad-93cd-5673568b6b25';
+window.sloyalty.customer_id = '';
+window.sloyalty.customer_email = '';
+

@@ -1,0 +1,15 @@
+var qodeLike = {"ajaxurl":"https:\/\/www.flightschedulepro.com\/wp-admin\/admin-ajax.php"};
+jQuery(function() {
+                                                
+                        jQuery(".tooltips img").closest(".tooltips").css("display", "inline-block");
+                    
+                        new jQuery.Zebra_Tooltips(jQuery('.tooltips').not('.custom_m_bubble'), {
+                            'background_color':     '#e7f2fd',
+                            'color':				'#6c6c6c',
+                            'max_width':  250,
+                            'opacity':    1, 
+                            'position':    'right'
+                        });
+                        
+                                            
+                    });

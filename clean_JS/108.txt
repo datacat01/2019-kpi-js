@@ -1,0 +1,25 @@
+
+    new WOW().init();
+  
+
+  if($(window).width() > 500){
+    // Fancybox Join our mailing list popup
+    $(document).ready(function(){
+
+      
+      var check_cookie = $.cookie('mailing_list_delay_popup');
+      if(check_cookie == null){
+        $.cookie('mailing_list_delay_popup', 'expires_seven_days', { expires: 7 });
+        
+        //fire your fancybox here
+        setTimeout(function(){
+          $.fancybox({
+            href: "#subscribe_popup"
+          });
+        }, 5000);
+        
+      }
+      
+    }); 
+  };
+

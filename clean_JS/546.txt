@@ -1,0 +1,165 @@
+if (window.location.protocol === 'http:') {window.location = window.location.href.replace('http:', 'https:')}
+
+        <!--
+          window.name="ivdmain";
+        -->
+    
+
+        var _vwo_code=(function(){
+        var account_id=321469,
+        settings_tolerance=2000,
+        library_tolerance=2500,
+        use_existing_jquery=false,
+        /* DO NOT EDIT BELOW THIS LINE */
+        f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+        
+
+        (function() {
+        window.__insp = window.__insp || [];
+        __insp.push(['wid', 446183283]);
+        var ldinsp = function(){ if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=446183283&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+        setTimeout(ldinsp, 0);
+        })();
+        
+var WRInitTime=(new Date()).getTime();
+var WRInitTime=(new Date()).getTime();
+
+                        $(document).ready(function(){
+                            var divs = $("#testimonials .inner .homereview").get().sort(function(){
+                                return Math.round(Math.random())-0.5; //random so we get the right +/- combo
+                            }).slice(0,3)
+                            $(divs).prependTo(divs[0].parentNode).show();                   
+                        });
+                    
+
+        (function(t,e,a,l,i,u,m){
+            if(t.utag)return;e=t.utag={};e.e=[];
+            e.view=function(a,b,c){e.e.push({a:a,b:b,c:c,d:"view"})};
+            e.link=function(a,b,c){e.e.push({a:a,b:b,c:c,d:"link"})};
+            e.track=function(a){e.e.push({a:a.data,b:(a.cfg?a.cfg.cb:null),c:(a.cfg?a.cfg.uids:undefined),d:a.event})};
+        }(window));
+        
+
+              
+    var strTrackTealium_ServiceCode = "";
+    
+    function serviceCodeInformation() {   
+        // Grabs all the cookies set and splits them into an array, searches for the pricing strategy cookie and returns just the value
+        var strTrackTealium_CookieName = "PSDisplayed"
+        var strTrackTealium_PSQueryString = ""
+        var arrTrackTealium_ServiceCode = "";
+        
+        var arrTrackTealium_Cookies = document.cookie.split(';');
+        for(var i = 0; i < arrTrackTealium_Cookies.length; i++) {
+            var strCookie = arrTrackTealium_Cookies[i];
+            while (strCookie.charAt(0) == ' ') {
+                strCookie = strCookie.substring(1, strCookie.length);
+            }
+            if (strCookie.indexOf(strTrackTealium_CookieName) == 0) {
+                arrTrackTealium_ServiceCode = strCookie.substring(strTrackTealium_CookieName.length + 1, strCookie.length);
+                arrTrackTealium_ServiceCode = arrTrackTealium_ServiceCode.replace("%2C", ",");
+            }
+        }
+        //The cookie isn't always set by the time this code runs so we had to do a check to see if the value was added to cookie otherwise add it to our variable
+        if (arrTrackTealium_ServiceCode.indexOf(strTrackTealium_PSQueryString.toUpperCase()) == -1) {
+            arrTrackTealium_ServiceCode = arrTrackTealium_ServiceCode + "," + strTrackTealium_PSQueryString.toUpperCase();
+        } 
+        
+        //Split the array variable to actually be an array and then build the service code string
+        arrTrackTealium_ServiceCode = arrTrackTealium_ServiceCode.split(",");
+        
+        for(var i = 0; i < arrTrackTealium_ServiceCode.length; i++) {
+            if (strTrackTealium_ServiceCode == "") {
+                strTrackTealium_ServiceCode = '"' + arrTrackTealium_ServiceCode[i] + '"';
+            }
+            else {
+                strTrackTealium_ServiceCode += ", " + '"' + arrTrackTealium_ServiceCode[i] + '"';
+            }
+        }
+        
+    }
+    
+    function lfTrackTealium_CreateProductSkuProductId(ProductSku, ProductId){
+
+        var arrProductSku   = ProductSku.split(",");
+        var arrProductId    = ProductId.split(",");
+        var productSku_productId = ""; 
+       
+        for(var i = 0; i < arrProductSku.length; i++){  
+            productSku_productId += '"' + arrProductSku[i].replace(/"/g,"").trim() + "-" + arrProductId[i].replace(/"/g,"").trim() + '"'; 
+            
+            if(i !== arrProductSku.length - 1){
+               productSku_productId += ", " ;
+            }     
+        }
+        return productSku_productId;
+    }
+    
+            serviceCodeInformation();
+        
+    var utag_data = {
+		"locale"	: "en_us",
+        "cart_total_items"          : "0",
+        "country_code"              : "Not logged in",
+        "customer_city"             : "Not logged in",
+        "customer_country"          : "Not logged in",
+        "customer_email"            : "Not logged in",
+        "customer_first_name"       : "Not logged in",
+        "customer_last_name"        : "Not logged in",
+        "customer_postal_code"      : "Not logged in",
+        "customer_state"            : "Not logged in",
+        "page_name"                 : "Home",
+        "page_type"                 : "homepage",
+        "service_code"              : [strTrackTealium_ServiceCode],
+        "shopper_id"                : "Not logged in",
+        "shopper_referral_source"   : "None",
+        "shopper_x_order_count"     : "0x",
+        "site_section"              : "Home"
+    };
+
+        
+
+        //Tealium Tag
+        (function(a,b,c,d){
+            a='//tags.tiqcdn.com/utag/lens/lens-desktop/prod/utag.js';
+            b=document;c='script';d=b.createElement(c);d.src=a;
+            d.type='text/java'+c;d.async=true;
+            a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);  
+        })();
+        
+
+        function lfTrackTealium_CallEventOnload() {
+             
+        }
+        
+        lfTrackTealium_CallEventOnload();
+        
+        (function(w){
+        if(typeof w.utag !== 'undefined' && typeof w.utag.e === 'object'){
+            w.utag_events = w.utag.e;
+            delete w.utag;
+        }
+        }(window))
+        
+        deferUntil('window.utag', false, function() {
+            (function(w){
+                if((typeof w.utag_events === 'object' && w.utag_events.length > 0)){
+                    while(w.utag_events.length){
+                    d=w.utag_events.shift();
+                    (function(d){
+                        setTimeout(function(){
+                            utag.track({
+                                event: d.d,
+                                data: d.a,
+                                cfg: {
+                                    cb: d.b,
+                                    uids: d.c
+                                }
+                            });
+                        }, 150);
+                    })(d);
+                    }
+                }
+            }(window))
+        }, "object");  
+        

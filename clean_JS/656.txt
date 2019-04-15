@@ -1,0 +1,136 @@
+
+                          function googleTranslateElementInit() {
+                              new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,ca,es,de,ar,bn,fr,nl,pt-BR,ms,bg,zh-CN,tr,cs,da,et,fi,el,hu,is,hi,id,iw,it,ja,ko,lv,lt,mt,no,tl,pl,pt-PT,ro,sk,sl,sv,th,vi,ur', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                          }
+                      
+
+$(document).ready(function () {
+  if($('.cart-count').text() == 0){$('.cart-count').css('display','none');}else{$('.cart-count').css('display','block');}
+});
+
+
+        (function($) {
+            $(function() {
+                $("#scroller").simplyScroll({ orientation: 'vertical', customClass: 'vert' });
+            });
+        })(jQuery);
+    
+
+       
+        $("#gotopromotions").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#promotions").offset().top
+            }, 2000);
+            return false;
+        });    
+        
+    
+
+        
+        
+
+    $(document).ready(function ($) {
+
+        $("#owl-slider").owlCarousel({
+            navigation: true,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true,
+            autoPlay: true,
+            transitionStyle: 'fadeUp',
+            navigationText: ["<span class=\"glyphicon glyphicon-chevron-left\"></span>", "<span class=\"glyphicon glyphicon-chevron-right\"></span>"]
+
+        });
+    })
+
+
+              
+    function changeLanuage(language) {
+        $.ajax({
+            url: "/Home/Language?LCID=" + language,
+            success: function (result) {
+                //window.location.reload();
+            }
+        });
+    }
+
+    $("#ddlCurrency").change(function () {
+        var id = $(this).val();
+        var urlLink = "/Home/Currency/" + id;
+        $.ajax({
+            url: urlLink,
+            success: function (result) {
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                window.location.reload();
+            }
+        });
+    });
+
+    function Test(result) {
+
+    }
+    $(document).ready(function () {
+        $.ajax({
+            url: "/ShopCart/ShopCartItemCount",
+            success: function (result) {
+                setTimeout(function () {
+                    $(".CartItemCount").each(function () {
+                        $(this).html(result);
+                    });
+                }, 1000);
+            }
+        });
+
+
+    
+
+    });
+    $(function() {
+
+       $('#BottomPromoSlider').carouFredSel({
+            responsive: false,
+            auto: true,
+            width: '100%',
+            prev: '#foo2_prev',
+            next: '#foo2_next',
+            pagination: "#pager2",
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            }
+       });
+
+       $('#BottomPromoSlider2').carouFredSel({
+           responsive: false,
+           auto: true,
+           width: '100%',
+           prev: '#foo3_prev',
+           next: '#foo3_next',
+           pagination: "#pager3",
+           scroll: {
+               items: 1,
+               pauseOnHover: true
+           }
+       });
+
+    });
+
+
+
+    _atrk_opts = { atrk_acct: "zihFl1agWBr1WR", domain: "superjeweler.com", dynamic: true };
+
+    (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
+
+
+
+    //$(window).on('load', function () {
+    //    var secOnSite = Math.floor((new Date() - visitor.session.sessionStart) / 1000);
+        
+    //    if (visitor.session.visitCount == 1 && secOnSite < 10) {
+    //        $('#amazon-prime-modal').show();
+    //        $('#amazon-prime-modal').modal('show');
+    //    }
+    //});
+

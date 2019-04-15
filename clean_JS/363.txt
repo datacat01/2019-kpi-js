@@ -1,0 +1,261 @@
+
+	var ThemeOptions = {
+		box_wide: 0,
+		rtl_layout: 0,
+		sticky_header: 0		
+	}; 
+	
+
+    (function (url) {
+        /*Tracking Bootstrap
+         Set Up DataLayer objects/properties here*/
+        if(!window.DataLayer){
+            window.DataLayer = {};
+        }
+        if(!DataLayer.events){
+            DataLayer.events = {};
+        }
+
+        DataLayer.events.SPIVersion = DataLayer.events.SPIVersion || "3.2";
+
+        DataLayer.events.SiteSection = "1";
+
+        var loc, ct = document.createElement("script");
+        ct.type = "text/javascript";
+        ct.async = true;
+        ct.src = url;
+        loc = document.getElementsByTagName("script")[0];
+        loc.parentNode.insertBefore(ct, loc);
+    }(document.location.protocol + "//intljs.rmtag.com/117452.ct.js"));
+    /*Do Not Edit Beneath This Line*/
+    function getRMParameterByName(ranParam) {
+        ranParam = ranParam.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+        var regex = new RegExp("[\?&]" + ranParam + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function formatDate(ranDate) {
+        var dd = ranDate.getDate()
+        if (dd < 10) { dd = "0" + dd; } else { dd = dd.toString(); }
+        var mm = ranDate.getMonth() + 1
+        if (mm < 10) { mm = "0" + mm; } else { mm = mm.toString(); }
+        var yyyy = ranDate.getFullYear()
+        if (yyyy < 10) { yyyy = "0" + yyyy; } else { yyyy = yyyy.toString(); }
+        var hr = ranDate.getHours()
+        if (hr < 10) { hr = "0" + hr; } else { hr = hr.toString(); }
+        var mn = ranDate.getMinutes()
+        if (mn < 10) { mn = "0" + mn; } else { mn = mn.toString(); }
+        return yyyy + mm + dd + "_" + hr + mn;
+    }
+
+    var __createRMCookie = function(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/; domain=madeinwashington.com";
+    }
+
+    var ranMID = getRMParameterByName("ranMID");
+    var ranSiteID = getRMParameterByName("ranSiteID");
+
+    if (ranMID != "") {
+        __createRMCookie("ranMID", ranMID, 30);
+    }
+
+    if (ranSiteID != "") {
+        __createRMCookie("ranSiteID", ranSiteID, 30);
+        var ranLandDateTime = formatDate(new Date());
+        __createRMCookie("ranLandDateTime", ranLandDateTime, 30);
+    }
+
+
+        (function(){
+            var connector = document.createElement('script');
+            connector.type = 'text/javascript';
+            connector.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 't.trackedlink.net/_dmpt.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(connector, s);
+        })();
+    
+
+window.__insp = window.__insp || [];
+__insp.push(['wid', 710777241]);
+(function() {
+function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+})();
+
+
+	require(['jquery'], function ($) {
+		$('#authorization-trigger').click(function(){
+			$('.cdz-login-form-dropdown').toggleClass('opened');
+			$('body').toggleClass('open-modal');
+			if($('.cdz-login-form-dropdown').hasClass('opened')){
+				$("#email").focus();
+			}
+		});
+		$(document).click(function(event) {
+			if (!$(event.target).closest(".cdz-login-form-dropdown").length && $(event.target).attr('id') != 'authorization-trigger') {
+				$("body").find(".cdz-login-form-dropdown").removeClass("opened");
+			}
+		});
+	});
+
+
+    require(['Magento_Checkout/js/minicart'], function(){}); 
+
+
+require(['jquery'],function($){      
+      var logoSrc = "https://www.madeinwashington.com/static/frontend/GoSolid/miw_core/en_US/images/logo.svg";
+      var imageType = logoSrc.substr(-4);
+	var imageName = logoSrc.substr(0, logoSrc.length - 4);
+	imageName += "-small" + imageType;
+	$('.small-logo').attr('src',imageName);
+});
+
+
+    (function() {
+        require(['jquery', 'Magestore_Bannerslider/js/jquery/slider/jquery-slides-min'], function($) {
+            
+            var slider = $('#magestore-bannerslider-flex-slider-61555251430 .swiper-wrapper');
+            var first = slider.children().first();
+            var count = slider.children().length;
+            var paging = count > 1 ? true : false;
+            var swiper = new Swiper('.swiper-magestore-bannerslider-flex-slider-61555251430', {
+                pagination: '.swiper-pagination-magestore-bannerslider-flex-slider-61555251430',
+                paginationClickable: true,
+                autoplay: (paging == true ? 4500 : null),
+                loop:true
+            });
+        });
+    })();
+
+
+        require([
+            'jquery'
+        ], function ($) {
+
+            //form submit method override
+            $('#newsletter-form').on('submit', function(e){
+                if($('#newsletter-form').validation('isValid')==true){
+                    $.ajax({
+                        url: '/miw/Newsletter/Newsletter',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { form_key:$('input[name="form_key"]').val(), email:$('#newsletter_email').val() },
+                        cache: false,
+                        showLoader: true,
+                        success:function(data, status) {
+                            if(data){
+                                if(data.length > 0){
+                                    if(data[0] == "success"){
+                                        $('.newsletter-container form').hide();
+                                        $('.newsletter-container .success').show();
+                                        return;
+                                    }
+                                }
+                            }
+                            $('#newsletter_email').after('<div for="newsletter_email" generated="true" class="mage-error" id="newsletter_email-error" style="display: block;">An error occurred while validating your email. Try a different email address.</div>')
+                        }
+                    });
+                }
+                e.preventDefault;
+                return false;
+            });
+        });
+    
+
+        require(['jquery'], function ($) {
+            var recaptcha = [],
+                formsToProtect = 'form[action*="customer/account/createpost"],form[action*="customer/account/loginPost"],form[action*="newsletter/subscriber/new"],form[action*="review/product/post"],form[action*="contact/index/post"],#login-form-mini';
+
+            window.formToProtectOnPage = [];
+            $.each($(formsToProtect), function (index, formToProtect) {
+                window.formToProtectOnPage.push(formToProtect);
+            });
+
+            if (window.formToProtectOnPage.length) {
+                var recaptchaScript = document.createElement('script');
+                recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?onload=amInvisibleCaptchaOnloadCallback&render=explicit';
+                recaptchaScript.attributes = 'async defer';
+                document.body.appendChild(recaptchaScript);
+            }
+
+            window.amInvisibleCaptchaOnloadCallback = function () {
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var tokenInput = document.createElement('input');
+                    tokenInput.type = 'hidden';
+                    tokenInput.name = 'amasty_invisible_token';
+                    window.formToProtectOnPage[i].appendChild(tokenInput);
+                }
+
+                var id = "";
+                if (id) {
+                    var additionalForm = document.getElementById(id).form;
+                    if (additionalForm) {
+                        window.formToProtectOnPage.push(additionalForm);
+                    }
+                }
+
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var form = window.formToProtectOnPage[i];
+                    if (form.tagName.toLowerCase() != 'form') {
+                        continue;
+                    }
+
+                    id = form.querySelector("[type='submit']");
+                    if (null == id) {
+                        console.log(
+                            'Amsty Google Invisible reCaptcha: can not protect form with id = '
+                            + form.id
+                            + ', please remove appropriate URL and Selector in the configuration of the extension.'
+                        );
+                        continue;
+                    }
+
+                    (function(form, id) {
+                        recaptcha[i] = grecaptcha.render(id, {
+                            'theme': 'light',
+                            'badge': 'bottomright',
+                            'sitekey': '6LcpimoUAAAAAB685-eLLpsLIUxdzfoSqiU3eS8N',
+                            'callback': function(token) {
+                                if ($(form).valid()) {
+                                    form.querySelector("[name='amasty_invisible_token']").setAttribute('value', token);
+                                    $(form).submit();
+                                }
+                                for (var j = 0; j < recaptcha.length; j++) {
+                                    grecaptcha.reset(recaptcha[j]);
+                                }
+                            }
+                        });
+                    })(form, id);
+                }
+            };
+        });
+    
+
+        require(['jquery','domReady!'],function($){
+            $('input[name=email]').each(function (index, element) {
+                // Observe onblur event on element
+                $(element).on('blur', function() {
+                    var email = $(element).val();
+                    if(email && validateEmail(email)){
+                        $.post("https://www.madeinwashington.com/connector/ajax/emailcapture/", {email: email});
+                    }
+                });
+            });
+        });
+        function validateEmail(sEmail) {
+            var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (filter.test(sEmail))
+                return true;
+            else
+                return false;
+        }
+    

@@ -1,0 +1,8 @@
+
+    window.region = { commerceEnabled: !!0, id: 226, defaultLanguageHostname: '', location: { lat: 49.0000, lng: 32.0000 } };
+    window.countryName = 'Ukraine';
+    window.countryCode = 'ua';
+    window.apiBaseUrl = 'https://www.polkaudio.com:4568/api';
+    window.brand = 'polk';
+    window.siteUrl = 'https://www.polkaudio.com/';
+  

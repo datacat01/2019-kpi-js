@@ -1,0 +1,42 @@
+
+    pixlee_analytics = new Pixlee_Analytics("XVwFtqOQ2DhI3bzEQLON");
+  
+
+  /* <![CDATA[ */
+  var google_conversion_id = 988201520;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+
+
+    // var klevu_current_version = '2.1.33';
+    var klevu_current_version = '1.2.17',
+        klevu_fluid = '.klevu-fluid',
+        headerDropDownMenu = '.headerDropDownMenu'
+
+    $('.headerSearch .headerSearch--input').on('focus', function() {
+        $(klevu_fluid).addClass('js-focus')  
+        
+        if ($('body').hasClass('js-header-stuck')) {
+          $(headerDropDownMenu).css('display', 'block')
+        }
+
+    }).blur(function () {
+        $(klevu_fluid).removeClass('js-focus') 
+        
+        if ($('body').hasClass('js-header-stuck')) {
+          $(headerDropDownMenu).css('display', '')
+        }
+    });
+
+    var klevu_cms_module_enabled=false,
+        klevu_cmsSearchEnabled = false,
+        klevu_current_version = '20.0.1';
+    var klevu_storeLandingPageUrl = '/en/s';
+    var klevu_apiKey = window.WATG.klevuApiKeys['USD'] ,
+      searchTextBoxName = 'q',
+      klevu_lang = 'en',
+      klevu_result_top_margin = '',
+      klevu_result_left_margin = '';
+    (function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; ws.charset="UTF-8"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+

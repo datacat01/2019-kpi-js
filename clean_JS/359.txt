@@ -1,0 +1,75 @@
+
+        function resizeIframe(obj) {
+            var height = obj.contentWindow.document.body.scrollHeight;
+            obj.style.height = (height === 0 ? '100%' : height + 'px');
+            if (height === 0) {
+                obj.style.minHeight = '500px';
+            }
+        }
+    
+
+//<![CDATA[
+var theForm = document.forms['frmMain'];
+if (!theForm) {
+    theForm = document.frmMain;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$scrManager', 'frmMain', ['tctl00$UC_MiniBasket$updPnlCustomText','UC_MiniBasket_updPnlCustomText','tctl00$UC_MiniBasket$updPnlMainBasket','UC_MiniBasket_updPnlMainBasket','tctl00$UC_MiniBasket$updPnlMiniBasket','UC_MiniBasket_updPnlMiniBasket','tctl00$UC_MiniBasket$popMessage2$updPopup','UC_MiniBasket_popMessage2_updPopup','tctl00$UC_MiniBasket$updPnlAddToBasket','UC_MiniBasket_updPnlAddToBasket','tctl00$cntMain$UC_PopUpConfirmMail$updPopup','cntMain_UC_PopUpConfirmMail_updPopup','tctl00$cntMain$UC_FeaturedProducts$updMain','cntMain_UC_FeaturedProducts_updMain','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl00$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_0_UC_ImageView_0_updPopup_0','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl02$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_1_UC_ImageView_1_updPopup_1','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl04$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_2_UC_ImageView_2_updPopup_2','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl06$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_3_UC_ImageView_3_updPopup_3','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl08$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_4_UC_ImageView_4_updPopup_4','tctl00$cntMain$UC_FeaturedProducts$rptShortened$ctl10$UC_ProductShortened$UC_ImageView$updPopup','cntMain_UC_FeaturedProducts_rptShortened_UC_ProductShortened_5_UC_ImageView_5_updPopup_5'], ['ctl00$scrManager','scrManager'], [], 90, 'ctl00');
+//]]>
+
+
+//<![CDATA[
+Sys.Application.setServerId("scrManager", "ctl00$scrManager");
+Sys.Application._enableHistoryInScriptManager();
+//]]>
+
+
+                //<![CDATA[
+                function ShowAddToBasketPopup(strDelayValue) {
+                    if (isNaN(strDelayValue)) {
+                        //test//
+                    }
+                    else {
+                        $find('UC_MiniBasket_popAddToBasket').show();
+                        setTimeout("HideAddToBasketPopup()", strDelayValue);
+                    }
+                }
+
+                function HideAddToBasketPopup() {
+                    $find('UC_MiniBasket_popAddToBasket').hide();
+                }
+
+                function ShowCustomizePopup() {
+                    $find('UC_MiniBasket_popCustomText').show();
+                }
+                //]]>
+            
+
+//<![CDATA[
+(function() {var fn = function() {$get("scrManager_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"popup_background","CancelControlID":"UC_MiniBasket_lnkClose","OkControlID":"UC_MiniBasket_lnkClose","PopupControlID":"UC_MiniBasket_pnlCustomText","dynamicServicePath":"/default.aspx","id":"UC_MiniBasket_popCustomText"}, null, null, $get("UC_MiniBasket_lnkClose"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"popup_background","CancelControlID":"UC_MiniBasket_popMessage2_btnExtenderCancel","OkControlID":"UC_MiniBasket_popMessage2_btnExtenderOk","PopupControlID":"UC_MiniBasket_popMessage2_pnlMessage","dynamicServicePath":"/default.aspx","id":"UC_MiniBasket_popMessage2_popMessage"}, null, null, $get("UC_MiniBasket_popMessage2_lnkBtn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.UI._Timer, {"enabled":false,"interval":60000,"uniqueID":"ctl00$UC_MiniBasket$tmrAddToBasket"}, null, null, $get("UC_MiniBasket_tmrAddToBasket"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"popup_background","CancelControlID":"UC_MiniBasket_btnCancel","OkControlID":"UC_MiniBasket_btnDummy","PopupControlID":"UC_MiniBasket_pnlAddToBasket","dynamicServicePath":"/default.aspx","id":"UC_MiniBasket_popAddToBasket"}, null, null, $get("UC_MiniBasket_btnDummy"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"popup_background","CancelControlID":"cntMain_UC_PopUpConfirmMail_btnExtenderCancel","OkControlID":"cntMain_UC_PopUpConfirmMail_btnExtenderOk","PopupControlID":"cntMain_UC_PopUpConfirmMail_pnlMessage","dynamicServicePath":"/default.aspx","id":"cntMain_UC_PopUpConfirmMail_popMessage"}, null, null, $get("cntMain_UC_PopUpConfirmMail_lnkBtn"));
+});
+//]]>
+

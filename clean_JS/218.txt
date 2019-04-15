@@ -1,0 +1,353 @@
+
+		window.addEventListener('load', function() {
+			function bindEmailSignupUtagLinks() {
+				var customerEmail = $('input#footer-email-address').val();
+				utag.link({
+					customer_email: customerEmail,
+					ecommerce_action: "signUp",
+					event_name: "email_signup",
+					link_action: "email_signup",
+					link_category: "footer",
+					link_name: "Submit",
+					user_anonymous: "true",
+					user_authenticated: "false",
+					user_registered: "false"
+				});
+			}
+			$('.footer-email-cta button').on('click', bindEmailSignupUtagLinks);
+		});
+	
+
+		window.addEventListener('load', function() {
+			$(document.body).on('click', '.couponRedeem', function(e) {
+				var ID = $(this).data('code');
+				var description = $(this).data('description');
+				var position = $(this).data('position');
+				utag.link({
+						"event_name" : "promo_click",
+						"link_action" : "redeem_coupon",
+						"link_category" : "footer",
+						"promotion_creative" : [description],
+						"promotion_id" : [ID],
+						"promotion_name" : [description],
+						"promotion_position" : [position],
+						"ecommerce_action" : "detail",
+						"link_name" : "Coupon",
+						"user_anonymous"  : "true",
+						"user_authenticated"  : "false",
+						"user_registered"  : "false"
+					});
+				});
+			});
+	
+
+	window.addEventListener('load', function() {
+		$(document.body).on('click', '.tealium-product' , function(){
+			utag.link({
+				"event_name"  : "link_click",
+				"link_action"  : "link_click",
+				"link_category"  : "footer",
+				"link_name"  : "Submit",
+				"user_anonymous"  : "true",
+				"user_authenticated"  : "false",
+				"user_registered"  : "false"
+			});
+		});
+	});
+
+//<!--
+/* <![CDATA[ (head-active_data.js) */
+var dw = (window.dw || {});
+dw.ac = {
+    _analytics: null,
+    _events: [],
+    _category: "",
+    _capture: function(configs) {
+        if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+        }
+        dw.ac._events.push(configs);
+    },
+	capture: function() { 
+		dw.ac._capture(arguments);
+		// send to CQ as well:
+		if (window.CQuotient) {
+			window.CQuotient.trackEventsFromAC(arguments);
+		}
+	},
+    EV_PRD_SEARCHHIT: "searchhit",
+    EV_PRD_DETAIL: "detail",
+    EV_PRD_RECOMMENDATION: "recommendation",
+    EV_PRD_SETPRODUCT: "setproduct",
+    applyContext: function(context) {
+        if (typeof context === "object" && context.hasOwnProperty("category")) {
+        	dw.ac._category = context.category;
+        }
+    },
+    setDWAnalytics: function(analytics) {
+        dw.ac._analytics = analytics;
+    }
+};
+/* ]]> */
+// -->
+
+//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aamm-JoAnn';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	  var c = ca[i];
+	  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	  if (c.indexOf('cqcid=') == 0) {
+		  CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+	  } else if (c.indexOf('cquid=') == 0) {
+		  CQuotient.cquid=c.substring('cquid='.length,c.length);
+		  break;
+	  }
+	}
+}
+CQuotient.getCQCookieId = function () {
+	if(window.CQuotient.cqcid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+	if(window.CQuotient.cquid == '')
+		window.CQuotient.initFromCookies();
+	return window.CQuotient.cquid;
+};
+CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+try {
+	if (Object.prototype.toString.call(events) === "[object Array]") {
+		events.forEach(_trackASingleCQEvent);
+	} else {
+		CQuotient._trackASingleCQEvent(events);
+	}
+} catch(err) {}
+};
+CQuotient._trackASingleCQEvent = function ( /* Object */ event) {
+	if (event && event.id) {
+		if (event.type === dw.ac.EV_PRD_DETAIL) {
+			CQuotient.trackViewProduct( {id:'', alt_id: event.id, type: 'raw_sku'} );
+		} // not handling the other dw.ac.* events currently
+	}
+};
+CQuotient.trackViewProduct = function(/* Object */ productData){
+	var cq_params = {};
+	cq_params.cookieId = CQuotient.getCQCookieId();
+	cq_params.userId = CQuotient.getCQUserId();
+	cq_params.product = productData;
+	if(CQuotient.sendActivity) {
+		CQuotient.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
+	} else {
+		CQuotient.activities.push({activityType: 'viewProduct', parameters: cq_params});
+	}
+};
+/* ]]> */
+// -->
+
+
+			if (window.jQuery) {
+				jQuery(document).ready(function(){
+					if(screen.width < 768){
+						jQuery('#footer').append('<a href="/on/demandware.store/Sites-JoAnn-Site/default/Home-Show" class="full-site-link">View Full Site</a>');
+						jQuery('.full-site-link')
+							.attr('href', '/on/demandware.store/Sites-JoAnn-Site/default/Home-FullSite')
+							.click(function(e) {
+								e.preventDefault();
+								jQuery.ajax({
+									url: '/on/demandware.store/Sites-JoAnn-Site/default/Home-FullSite',
+									success: function(){
+										window.location.reload();
+									}
+								});
+							}
+						);
+					}
+				});
+			}
+		
+
+	window.addEventListener('load', function() {
+		$(document.body).on('click', '.tealium-product' , function(){
+			utag.link({
+				"event_name"  : "link_click",
+				"link_action"  : "link_click",
+				"link_category"  : "footer",
+				"link_name"  : "Submit",
+				"user_anonymous"  : "true",
+				"user_authenticated"  : "false",
+				"user_registered"  : "false"
+			});
+		});
+	});
+
+ 
+
+
+// IMPORTANT: window.__gigyaConf property must be defined BEFORE gigya.js is included
+window.__gigyaConf = {
+
+  enableSSOToken: true,
+  
+  // Get full list of customLang keys with:
+  // console.log(gigya.i18n['gigya.services.accounts.plugins.screenSet.js']['en']);
+  
+  customLang: {
+    password_does_not_meet_complexity_requirements: 'Password does not meet minimum requirements'
+  },
+  onAfterScreenLoad: function(eventObj) {$('.gigya-screen-dialog-close').find('img').attr('src', 'https://www.joann.com/on/demandware.static/Sites-JoAnn-Site/-/default/v1555238522070/../images/interface/icon-ui-close.png');},
+  
+   onError: function(eventObj) {
+ 	if(eventObj.errorCode == '403047'){
+		//we dont' want to acknowledge an email is not in our system.  Just proceed as if it worked
+		 gigya.accounts.showScreenSet({startScreen:'gigya-change-password-fail', screenSet:'Joann-RegistrationLogin', containerID:'login-container'});
+	}
+  },
+ 
+  // Validate each screen.
+  validation: {
+    // formData contains all information user has entered
+    // eventType is either "change" or "submit"
+    // callback is optional, you can use it for asynchronous validation or just use return
+
+    'gigya-register-screen': function(formData, eventType, callback) {
+      var errors = {};
+      
+      if(formData['email'].length > 75) {
+        errors['email'] = 'Email cannot exceed 75 characters';
+      }
+      
+      if(formData['profile.firstName'].length > 25) {
+        errors['profile.firstName'] = 'First Name cannot exceed 25 characters';
+      }
+      
+      if(formData['profile.lastName'].length > 25) {
+        errors['profile.lastName'] = 'Last Name cannot exceed 25 characters';
+      }
+      
+       // validate mobile number
+       if(formData['data.smsMobile'].length > 0) {
+       		var stripped = formData['data.smsMobile'].replace(/[\(\)\.\-\ ]/g, '');  
+ 			var regex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+
+			if ((stripped.length > 11) || (stripped.length < 10)) {
+		        errors['data.smsMobile'] = 'Mobile number is not a valid length';	 
+		    }else if(!formData['data.smsMobile'].match(regex)){
+		        errors['data.smsMobile'] = 'Mobile number contains illegal characters';
+		    }else{
+		    	formData['data.smsMobile'] = stripped;
+		    }
+      }
+      
+
+      // You can return errors OR use callback for validation via AJAX.
+      return errors;
+    },
+    
+   	 'gigya-update-profile-screen' : function(formData, eventType, callback) {
+      var errors = {};
+      
+      if(formData['profile.email'].length > 75) {
+        errors['profile.email'] = 'Email cannot exceed 75 characters';
+      }
+      
+      if(formData['profile.firstName'].length > 25) {
+        errors['profile.firstName'] = 'First Name cannot exceed 25 characters';
+      }
+      
+      if(formData['profile.lastName'].length > 25) {
+        errors['profile.lastName'] = 'Last Name cannot exceed 25 characters';
+      }
+      
+      return errors;
+    }
+	
+	 
+
+  }
+};
+
+
+{
+	lang:'en'
+	,connectWithoutLoginBehavior:'loginExistingUser'
+	,shortURLs:'never'
+}
+
+
+
+
+var utag_data = {
+  "page_name": "Homepage",
+  "page_type": "home",
+  "page_context_type": "home",
+  "page_context_title": "storefront",
+  "cart_total_value": "0",
+  "cart_total_items": "0",
+  "cart_product_sku": [
+    ""
+  ],
+  "cart_product_quantity": [
+    ""
+  ],
+  "cart_product_price": [
+    ""
+  ],
+  "cart_product_id": [
+    ""
+  ],
+  "cart_master_product_id": [
+    ""
+  ],
+  "cart_product_delivery_method": [
+    ""
+  ],
+  "site_section": "storefront",
+  "user_anonymous": "true",
+  "user_authenticated": "false",
+  "user_registered": "false",
+  "customer_id": "null",
+  "promotion_id": [
+    null
+  ],
+  "promotion_name": [
+    null
+  ],
+  "promotion_position": [
+    null
+  ],
+  "promotion_creative": [
+    ""
+  ]
+};
+
+
+    (function(a,b,c,d){
+    a='//tags.tiqcdn.com/utag/joann/main/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=1;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+
+//<!--
+/* <![CDATA[ */
+function trackPage() {
+    try{
+        var trackingUrl = "https://www.joann.com/on/demandware.store/Sites-JoAnn-Site/default/__Analytics-Start";
+        var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+        if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+        } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+        }
+    }catch(err) {};
+}
+/* ]]> */
+// -->
+

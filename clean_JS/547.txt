@@ -1,0 +1,139 @@
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-841988-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+
+
+(function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+            /********** Begin Custom Code **********/
+    _ltk.Click.Submit();
+/********** End Custom Code **********/
+        });
+
+
+(function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+            /********** Begin Custom Code **********/
+_ltk.SCA.CaptureEmail('SIEMAL');
+_ltk.SCA.Submit();
+/********** End Custom Code **********/
+        });
+
+
+  /* * * CONFIGURATION * * */
+  var UnbxdSiteName = "galls-com835311501498786"; //staging
+  var UnbxdApiKey = "763bd90c13d72feb482c730d4ff7ddae";
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var ubx = document.createElement('script'); ubx.type = 'text/javascript'; ubx.async = true;
+  ubx.src = '//static1.galls.com/js/unbxdAnalytics.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ubx);
+  })();
+
+
+            (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+            else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+            if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+                /********** Begin Custom Code **********/
+                _ltk.Recommender.AddField("Brand");
+                _ltk.Recommender.AddField("Price");
+                _ltk.Recommender.AddField("SalePrice");
+                _ltk.Recommender.AddField("StarRating");
+                _ltk.Recommender.AddField("RatingCount");
+_ltk.Recommender.AddField("MasterSku");
+_ltk.Recommender.Render(function () {
+$(".recommended-products__carousel").slick({
+	centerMode:true,
+	arrows:!1,
+	dots:!0,
+	mobileFirst:!0,
+	responsive:[
+		{
+			breakpoint:991,
+			settings:{
+				slidesToShow:4,
+				slidesToScroll: 4,
+				centerMode: false,
+			}
+		},
+		{
+			breakpoint:767,
+			settings:{
+				slidesToShow:2,
+				slidesToScroll: 2
+			}
+		}
+	]
+});
+   
+    jQuery(this).show();       
+});
+                _ltk.Recommender.Render();
+                /********** End Custom Code **********/
+            });
+          
+
+            var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+            (function (d, s, id, tid, vid) {
+                var js, ljs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+                js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+                ljs.parentNode.insertBefore(js, ljs);
+            })(document, 'script', 'ltkSDK', 'kTEMamOgfF4p', '1');
+          
+
+            var imageRoot ="//www.galls.com/";
+          
+
+  var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+  (function (d, s, id, tid, vid) {
+      var js, ljs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+      js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+      ljs.parentNode.insertBefore(js, ljs);
+  })(document, 'script', 'ltkSDK', 'kTEMamOgfF4p', '1');
+
+
+var popupPatronChat = function() {
+  var url = 'https://home-c7.incontact.com/inContact/ChatClient/ChatClient.aspx?poc=a8611c87-f3f7-4f72-9ed9-8f4b51365c8c&bu=4596587&P6=www.galls.com%2F';
+  window.open(url, 'icPatronChatWin', 'location=no,height=630,menubar=no,status-no,width=500', true);
+};
+
+
+function init() {
+if (arguments.callee.done) return;
+arguments.callee.done = true;
+//
+};
+
+function cleanup() {
+if (arguments.callee.done) return;
+arguments.callee.done = true;
+};
+
+userDFMT="*USA    ";userNFMT=".       ";//
+//window.onload   = init;
+//window.onunload = cleanup;
+
+
+
+//variables for all pages
+var resx = new Object();
+resx.appid="GALLS01";
+resx.top1=100000;
+resx.top2=100000;
+
+
+resx.lkmatch =/style%3d\w+/i;
+
+resx.customerid="";
+

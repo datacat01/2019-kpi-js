@@ -1,0 +1,15 @@
+var dataLayer=dataLayer||[];dataLayer.push({'currencyCode':'GBP'});dataLayer.push({'customerId':''});dataLayer.push({'customerTitle':''});dataLayer.push({'customerFirstName':''});dataLayer.push({'customerLastName':''});dataLayer.push({'customerEmail':''});dataLayer.push({'customerDateRegistered':''});dataLayer.push({'customerPoints':''});dataLayer.push({'customerPointsNextLevel':''});dataLayer.push({'basketCount':0});dataLayer.push({'basketProducts':[]});dataLayer.push({'basketTotal':0});
+(function(window){var v={};v.setting={};v.module_setting={};v.module_setting.product_options_module={};v.module_setting.attribute_colour_swatches={};v.setting.product_price_breaks_based_on_parent='true';v.setting.shop_price_inc_vat='true';v.setting.site_domain='www.graff-city.com';v.module_setting.product_options_module.hide_single_options='false';v.module_setting.attribute_colour_swatches.hide_swatch_when_no_product_image='false';window.vsvar=function(k){k=k||'';var s=k.split('.'),r=false,c=v;for(var i in s){if(typeof s[i]=='function'){continue;}
+if(s.hasOwnProperty(i)&&typeof c[s[i]]!=='undefined'){r=c=c[s[i]];}else{r=false;}}
+return r;};})(window);
+if(typeof(ga)==='undefined'){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');}
+ga('create','UA-24608194-1','auto');ga('send','pageview');
+$(document).ready(function(){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','//connect.facebook.net/en_US/fbevents.js');fbq('init','1560984060805944');fbq('track','PageView');});
+
+  vs.js("https://cdn.salesfire.co.uk/code/0eaa7474-3dcf-4565-b060-1fb76a10af0b.js", null, 6);  window.sfDataLayer = window.sfDataLayer || [];
+  window.sfDataLayer.push({"ecommerce":{}});
+
+if(window._GUARANTEE&&_GUARANTEE.Loaded){_GUARANTEE.Hash="omaKQXL35DNDXOloIUrnHLinhh0I0I5m25INqOvLmN5JUFS0OXpwHECLWbFUM72M5ZwddrBG6X8D1nB%2BBaOn%2Bg%3D%3D";_GUARANTEE.WriteSeal("_GUARANTEE_SealSpan","GuaranteedSeal");}
+var google_tag_params={ecomm_prodid:'',ecomm_pagetype:'home'};var dataLayer=dataLayer||[];dataLayer.push({'event':'remarketingTriggered','google_tag_params':window.google_tag_params});
+var google_conversion_id=1042976731;var google_custom_params=window.google_tag_params;var google_remarketing_only=true;
+vs.q(function(){if(window.navigator.userAgent.indexOf("Edge")>-1){$('.product img[srcset]').each(function(){$(this).attr('src',$(this).attr('src')+'?'+Math.random());});}});

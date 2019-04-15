@@ -1,0 +1,646 @@
+window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);
+
+        //Nxt version : 2.4.2
+        //Unfortunate our 1.5.1 js depends on this method, due to it's global nature, it cannot be inside require.
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        //Nextopia initialization before code load.  This has to be global due to the nature of our code.
+        if (typeof nxtOptions !== 'object') {
+            var nxtOptions = {};
+        }
+        if (!nxtOptions.customOptions) {
+            nxtOptions.customOptions = {};
+        }
+
+        nxtOptions.customOptions.formKey = 'cytZcEibxwCyZS2O';
+        //following is group code, not id, this is to maintain previous name for backwards compatibility.
+        nxtOptions.customOptions.groupId = 'NOT LOGGED IN';
+
+                    
+        require.config({
+            paths: {
+                nextopiaSearch: "https://cdn.nextopia.net/nxt-app/557e43351960d018ffb5c82615e26931"
+            }
+        });
+        require(['jquery', 'nextopiaSearch'], function (jqnxt) {
+            jqnxt("#search_mini_form").prop("action", "https://www.larsonjewelers.com/nsearch/");
+            //Type custom code here
+            var target = jqNxt(".column.main")[0];
+            var config = {
+                attributes: true,
+                childList: true,
+                characterData: true
+            };
+            
+                        
+            try {
+                // Create an observer instance
+                var observer = new MutationObserver(function (mutations) {
+                    require(["jquery", "catalogAddToCart", "nextopiaSearch",
+                        "accordion", "collapsible", "Magento_Ui/js/modal/confirm", 
+                        "Magento_Ui/js/modal/modal", "Magento_Ui/js/modal/alert",
+                        "Magento_Ui/js/modal/prompt"], function (jqnxt) {
+                        jqnxt('[data-role="tocart-form"]').catalogAddToCart();
+                        jqnxt('[name="form_key"]').val(getCookie('form_key'));
+
+                        if (nxtOptions.mageOptions !== undefined) {
+                            var mageOptions = nxtOptions.mageOptions;
+
+                            for (var i = 0; i < mageOptions.length; i++) {
+                                // Example : jqnxt('#selectorId').accordion({ "openedState": "active","collapsible": true, active": false, "multipleCollapsible": false} );
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "ACCORDION") {
+                                    jqnxt(mageOptions[i]["selector"]).accordion(mageOptions[i]["params"]);
+                                }
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "ALERT") {
+                                    jqnxt(mageOptions[i]["selector"]).alert(mageOptions[i]["params"]);
+                                }
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "COLLAPSIBLE") {
+                                    jqnxt(mageOptions[i]["selector"]).collapsible(mageOptions[i]["params"]);
+                                }
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "CONFIRM") {
+                                    jqnxt(mageOptions[i]["selector"]).confirm(mageOptions[i]["params"]);
+                                }
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "MODAL") {
+                                    jqnxt(mageOptions[i]["selector"]).modal(mageOptions[i]["params"]);
+                                }
+                                if (mageOptions[i]["type"] !== undefined & mageOptions[i]["type"] === "PROMPT") {
+                                    jqnxt(mageOptions[i]["selector"]).prompt(mageOptions[i]["params"]);
+                                }
+                            }
+                        }
+                    });
+                });
+
+                target && observer.observe(target, config);
+            } catch (e) {
+            }
+        });
+    
+
+function remove_header_top() {
+	var expires = '',
+    date = new Date();
+    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+    expires = '; expires=' + date.toGMTString();
+    
+    document.cookie = 'header_top'+'='+'remove'+expires+'; path=/';
+	jQuery("#header_top_animate").hide();
+	jQuery("body").addClass('bluebar-hide');
+	jQuery("body").removeClass('bluebar-show');
+}
+
+require([
+		'jquery', 
+		'jquery/ui'
+	], function($) {
+	jQuery(document).ready(function () {
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.match(/header_top=remove/gi);
+		if(ca == 'header_top=remove') {
+			jQuery("#header_top_animate").hide();
+			jQuery("body").addClass('bluebar-hide');
+			jQuery("body").removeClass('bluebar-show');
+		} else {
+			jQuery("body").removeClass('bluebar-hide');
+			jQuery("body").addClass('bluebar-show');
+			jQuery("#header_top_animate").show();
+		}
+	})
+});
+
+require([
+		'jquery', 
+		'jquery/ui',
+		'slick'
+	], function($) {
+	jQuery(document).ready(function () {
+		jQuery('.single-item').slick({
+			dots: false,
+			infinite: true,
+			arrows: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 3000,
+		});
+	});
+});
+
+require([
+		'jquery', 
+		'jquery/ui',
+		'slick'
+	], function($) {
+	jQuery(document).ready(function () {
+		jQuery('.single-item').show();
+	});
+});
+
+require([
+		'jquery', 
+		'jquery/ui',
+		'slick'
+	], function($) {
+		jQuery(document).ready(function () {
+			jQuery('.slider-best-seller').slick({
+			  centerMode: true,
+			  centerPadding: '0px',
+			  slidesToShow: 5,
+			  arrows: true,
+			  responsive: [
+				{
+				  breakpoint: 768,
+				  settings: {
+					arrows: true,
+					centerMode: true,
+					centerPadding: '40px',
+					slidesToShow: 3
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					arrows: true,
+					centerMode: true,
+					centerPadding: '40px',
+					slidesToShow: 1
+				  }
+				}
+			  ]
+			});
+		});
+});
+
+
+function menu(id) {
+	jQuery('.'+id).toggleClass("open"); 
+}
+
+
+	
+require([ 'jquery', 'jquery/ui'], function($){
+
+	jQuery('.searchIcon').on( "click", ".searchIcon", function() {
+		jQuery('#search_mini_form').submit();
+	});
+
+});
+
+
+function hide_guide() {
+	jQuery("#hide_guide").hide();
+	jQuery("#guide_down_icon").show();
+	jQuery("#guide_up_icon").hide();
+}
+
+function show_guide() {
+	jQuery("#hide_guide").show();
+	jQuery("#guide_down_icon").hide();
+	jQuery("#guide_up_icon").show();
+}
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/8HrKPs7j1tXwBgdI4KhnYPSi2iviyMenuZaZhz14/widget.js ";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+
+        require(['jquery'], function ($) {
+            $('#social-login-authentication').removeClass('mp-12').addClass('mp-7');
+        });
+    
+
+function show_pass() {
+	if(jQuery("#pass").prop('type') == 'password') {
+		jQuery("#pass").attr("type","text");
+		jQuery("#show_text").html('Hide');
+	} else {
+		jQuery("#pass").attr("type","password");
+		jQuery("#show_text").html('Show');
+	}
+}
+
+function show_pass_create() {
+	if(jQuery("#password").prop('type') == 'password') {
+		jQuery("#password").attr("type","text");
+		jQuery("#show_text_create").html('Hide');
+	} else {
+		jQuery("#password").attr("type","password");
+		jQuery("#show_text_create").html('Show');
+	}
+}
+
+function validate_signup() {
+	var first_name = jQuery("#first_name").val();
+	var last_name = jQuery("#last_name").val();
+	var email = jQuery("#email_address").val();
+	var pass = jQuery("#password").val();
+	var email_exist = jQuery("#email-error-exist").css('display');
+	var password_correct = jQuery("#password-error-correct").css('display');
+	var counter = 0;
+	
+	if(first_name == '') {
+		jQuery("#firstname-error").css('display', 'block'); 
+		counter++;
+	} else {
+		jQuery("#firstname-error").css('display', 'none'); 
+	}
+	
+	if(last_name == '') {
+		jQuery("#lastname-error").css('display', 'block'); 
+		counter++;
+	} else {
+		jQuery("#lastname-error").css('display', 'none'); 
+	}
+	
+	if(email == '') {
+		jQuery("#email-error").css('display', 'block'); 
+		counter++;
+	} else {
+		jQuery("#email-error").css('display', 'none'); 
+	}
+	
+	if(pass == '') {
+		jQuery("#password-error").css('display', 'block'); 
+		counter++;
+	} else {
+		jQuery("#password-error").css('display', 'none'); 
+	}
+	
+	if(email_exist == 'block') {
+		counter++;
+	}
+	
+	if(password_correct == 'block') {
+		counter++;
+	}
+	
+	if(counter == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function check_email(value) {
+	jQuery.ajax({
+		url: 'https://www.larsonjewelers.com/'+'engrave.php',
+		type: 'GET',
+		data: 'email='+value,
+		success: function(data) {
+			if(data == '') {
+				jQuery("#email-error-exist").css('display', 'none');
+			} else {
+				jQuery("#email-error-exist").css('display', 'block');
+			}
+		}
+	});
+}
+
+function check_pass(value) {
+	var counter = 0;
+	var msg = '';
+	
+	if (value.length < 6) {
+	  msg = "Your password needs a minimum of six characters";
+	  counter++;
+	} else if (value.search(/[a-z]/) < 0) {
+	  msg = "Your password must contain a lower case letter";
+	  counter++;
+	} else if(value.search(/[A-Z]/) < 0) {
+	  msg = "Your password must contain an uppser case letter";
+	  counter++;
+	} else  if (value.search(/[0-9]/) < 0) {
+	  msg = "Your password must contain a digit";
+	  counter++;
+	}
+	
+	if(counter == 0) {
+		jQuery("#password-error-correct").css('display', 'none');
+	} else {
+		jQuery("#password-error-correct").css('display', 'block');
+		jQuery("#password-error-correct").html(msg);
+	}
+}
+
+function check_login() {
+	var formData = new FormData();
+	formData.append('username', jQuery('#login-form input[id="email"]').val());
+	formData.append('password', jQuery('#login-form input[id="pass"]').val());
+	jQuery.ajax({
+		url: 'https://www.larsonjewelers.com/contact/customer/login',
+		data: formData,
+		processData: false,
+		contentType: false,
+		showLoader: true,
+		type: 'POST',
+		dataType: 'json',
+		success: function (response) {
+			if(response.message == 'login') {
+				jQuery(location).attr('href', 'https://www.larsonjewelers.com/customer/account')
+			} else {
+				jQuery("#login_error").css('display', 'block');
+				jQuery("#login_error").html(response.message);
+				return false;
+			}
+		}
+	});
+	return false;
+}
+
+
+function open_popup() 
+{
+	jQuery("#logineModal").css("display", "block");
+	jQuery(".modalOverlay").css("display", "block");
+	jQuery(".mobile-navigation").removeClass("in");
+	jQuery("body").addClass("modal-open");	
+}
+
+function close_popup() 
+{
+	jQuery("#logineModal").css("display", "none");
+	jQuery(".modalOverlay").css("display", "none");
+	jQuery("body").removeClass("modal-open overflowhidden");
+	jQuery(".nav-grid").removeClass("active");
+}
+
+
+var ves_pagebuilder_enabled = true;
+
+//Ajax generate widget function
+function ajaxGenerateWidget(widget, widgetJson) {
+    var widget_shortcode = typeof(widgetJson.widget)!="undefined"?widgetJson.widget:'';
+    var widget_key = typeof(widgetJson.wkey)!="undefined"?widgetJson.wkey:'';
+
+    if(widget_shortcode) {
+        
+        jQuery.ajax({
+            url: "https://www.larsonjewelers.com/vespagebuilder/ajax/widget",
+            method: "POST",
+            cache: true,
+            dataType: 'json',
+            data: {wkey: widget_key, shortcode: widget_shortcode},
+            beforeSend: function(){
+                jQuery(widget).html('<div class="ajax-loading-img">&nbsp;</div>');
+            },
+            success: function(dataResponse){
+                jQuery(widget).hide().html(dataResponse.html).fadeIn();
+            }
+        });
+    }
+}
+
+function initSwiperCarousel(options, Swiper) {
+    var autoplay_mode = false;
+    var autoplayDisableOnInteraction = true;
+
+    if(options.autoplay) {
+        autoplay_mode = options.interval;
+        autoplayDisableOnInteraction = false;
+    }
+    console.log(options.scrollbar);
+    if(options.scrollbar){
+        options.scrollbarHide = false;
+    }
+    var swiper = new Swiper(options.class_filter, {
+                            pagination: options.pagination,
+                            navigation: options.navigation,
+                            scrollbar: options.scrollbar,
+                            centeredSlides: true,
+                            autoplay: autoplay_mode, //delay between transitions (in ms). If this parameter is not specified, auto play will be disabled
+                            autoplayDisableOnInteraction: autoplayDisableOnInteraction,
+                            speed: options.speed, //Duration of transition between slides (in ms)
+                            slidesPerView: options.slide_by, //Number of slides per view (slides visible at the same time on slider's container).
+                            slidesPerColumn: options.slide_in_col, //Number of slides per column, for multirow layout. Default: 1
+                            slidesPerColumnFill: options.slide_col_fill, //Could be 'column' or 'row'. Defines how slides should fill rows, by column or by row
+                            slidesPerGroup: options.slide_group, //Set numbers of slides to define and enable group sliding. Useful to use with slidesPerView > 1 . Default: 1
+                            mousewheel: options.mousewheel, //Set to true to enable navigation through slides using mouse wheel
+                            spaceBetween: options.space, //Distance between slides in px.
+                            freeMode: options.freemode, //If true then slides will not have fixed positions
+                            direction: options.direction, //Could be 'horizontal' or 'vertical' (for vertical slider).
+                            paginationClickable: true,
+                            loop: options.loop,
+                            effect: options.effect //"slide", "fade", "cube" or "coverflow"
+                        });
+    return swiper;
+}
+require(['jquery'],function($){
+            $(document).ready(function(){
+               /* Offcanvas Sidebars */
+                if( $(".offcanvas-widget-siderbars").length > 0 ) {
+                    require([
+                        'jquery',
+                        'Ves_BaseWidget/js/jquery/accordion'
+                        ],function($){
+                            /** 
+                            * 
+                            * Update collapse icon
+                            */
+                           if($(".widget-enable-collapse").length > 0) {
+                                $( ".widget-enable-collapse" ).each( function(){
+                                    var parent_element = $(this).parent();
+                                    $(this).on("hide.bs.collapse", function(){
+                                        $(parent_element).find(".opener").html('<i class="fa fa-angle-down"></i>');
+                                      });
+                                    $(this).on("show.bs.collapse", function(){
+                                        $(parent_element).find(".opener").html('<i class="fa fa-angle-up"></i>');
+                                    });
+                                })
+                            }
+                        })
+                }
+                                    require([
+                            'jquery',
+                            'Ves_BaseWidget/js/animate/animate.min'
+                            ],function($){
+                                var browser = {
+                                    isIe: function () {
+                                        return navigator.appVersion.indexOf("MSIE") != -1;
+                                    },
+                                    navigator: navigator.appVersion,
+                                    getVersion: function() {
+                                        var version = 999; // we assume a sane browser
+                                        if (navigator.appVersion.indexOf("MSIE") != -1)
+                                            // bah, IE again, lets downgrade version number
+                                            version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+                                        return version;
+                                    }
+                                };
+                                if (typeof(WOW) != "undefined" && ( (browser.isIe() && browser.getVersion() > 9) || !browser.isIe() ) ) {
+                                    wow = new WOW(
+                                      {
+                                        boxClass:     'ves-animate',      // default
+                                        animateClass: 'animated', // default
+                                        offset:       0,          // default
+                                        mobile:       true,       // default
+                                        live:         true        // default
+                                      }
+                                    )
+                                    wow.init();
+                                }
+                                // Synchronise WoW
+
+                        })
+                
+                                    if($(".ves-parallax").length > 0) {
+                        require([
+                                'jquery',
+                                'Ves_BaseWidget/js/jquery/jquery.parallax-1.1.3'
+                                ],function($){
+                                    /** 
+                                     * 
+                                     * Automatic apply Parallax
+                                     */
+                                    if(typeof($.fn.parallax) != "undefined") {
+                                        $(".ves-parallax").css("background-attachment", "fixed");
+                                        $(".ves-parallax").each( function () {
+                                            var percent = $(this).data("parallax-percent");
+                                            percent = (percent!='')?percent:'50%';
+                                            var scroll = $(this).data("parallax-scroll");
+                                            scroll = (scroll!='' && scroll!='0')?scroll:'0.4';
+                                            $(this).parallax(percent, scroll);  
+                                        })
+                                    }
+                            })
+                    }
+                
+                                    /** 
+                     * 
+                     * Automatic apply colorbox popup
+                     */
+                    if($(".colorbox-play").length > 0) {
+                                                require([
+                                'jquery'
+                                                                ,"Ves_All/lib/colorbox/jquery.colorbox.min"
+                                                                ],function($){
+                                   /** 
+                                     * 
+                                     * Automatic apply colorbox popup
+                                 */
+                                    $(".colorbox-play").each( function(){
+                                        var element_id = $(this).attr("id");
+                                        var popup_width = $(this).data('width');
+                                        var popup_height = $(this).data('height');
+                                        var popup_opacity = $(this).data('opacity');
+
+                                        if(popup_width == "" || typeof(popup_width) == "undefined" ) {
+                                            popup_width = false;
+                                        }
+                                        if(popup_height == "" || typeof(popup_height) == "undefined" ) {
+                                            popup_height = false;
+                                        }
+
+                                        if(popup_opacity == "" || typeof(popup_opacity) == "undefined" ) {
+                                            popup_opacity = 0.5;
+                                        }
+
+                                        if(popup_width && popup_height) {
+                                            $(this).colorbox({
+                                                width: "'"+popup_width+"'", 
+                                                height: "'"+popup_height+"'",
+                                                overlayClose: true,
+                                                opacity: popup_opacity,
+                                                rel: false
+                                            });
+                                        } else if(popup_width && !popup_height) {
+                                            $(this).colorbox({
+                                                width: "'"+popup_width+"'", 
+                                                overlayClose: true,
+                                                opacity: popup_opacity,
+                                                rel: false
+                                            });
+                                        } else if(popup_width && !popup_height) {
+                                            $(this).colorbox({
+                                                height: "'"+popup_height+"'",
+                                                overlayClose: true,
+                                                opacity: popup_opacity,
+                                                rel: false
+                                            });
+                                        } else {
+                                            $(this).colorbox({
+                                                overlayClose: true,
+                                                opacity: popup_opacity,
+                                                rel: false
+                                            });
+                                        }
+                                    });
+                            })
+                                            }    
+                
+                                    /** 
+                     * 
+                     * Automatic apply fancybox popup
+                     */
+                    if($(".fancybox-play").length > 0) {
+                        require([
+                                'jquery'
+                                                                ,"Ves_All/lib/fancybox/jquery.fancybox.pack"
+                                                                                                ,"Ves_All/lib/fancybox/jquery.mousewheel-3.0.6.pack"
+                                                                ],function($){
+                                
+                                    $(".fancybox-play").each( function(){
+                                        var element_id = $(this).attr("id");
+                                        var popup_width = $(this).data('width');
+                                        var popup_height = $(this).data('height');
+                                        var popup_opacity = $(this).data('opacity');
+
+                                        if(popup_width == "" || typeof(popup_width) == "undefined" ) {
+                                            popup_width = false;
+                                        }
+                                        if(popup_height == "" || typeof(popup_height) == "undefined" ) {
+                                            popup_height = false;
+                                        }
+
+                                        if(popup_opacity == "" || typeof(popup_opacity) == "undefined" ) {
+                                            popup_opacity = 0.5;
+                                        }
+
+                                        if(popup_width && popup_height) {
+                                            $(this).fancybox({
+                                                width: "'"+popup_width+"'", 
+                                                height: "'"+popup_height+"'",
+                                                opacity: popup_opacity,
+                                                openEffect  : 'none',
+                                                closeEffect : 'none'
+                                            });
+                                        } else if(popup_width && !popup_height) {
+                                            $(this).fancybox({
+                                                width: "'"+popup_width+"'", 
+                                                opacity: popup_opacity,
+                                                openEffect  : 'none',
+                                                closeEffect : 'none'
+                                            });
+                                        } else if(popup_width && !popup_height) {
+                                            $(this).fancybox({
+                                                height: "'"+popup_height+"'",
+                                                opacity: popup_opacity,
+                                                openEffect  : 'none',
+                                                closeEffect : 'none'
+                                            });
+                                        } else {
+                                            $(this).fancybox({
+                                                opacity: popup_opacity,
+                                                openEffect  : 'none',
+                                                closeEffect : 'none'
+                                            });
+                                        }
+                                    });
+                        });
+                    }
+                                        
+                        })
+});
+
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5d1ff3e93c","applicationID":"153280291","transactionName":"YABUMhMAWhJUURZfXFlKdwUVCFsPGlEPRRxeC1IDGU5dD1FXGg==","queueTime":0,"applicationTime":517,"atts":"TEdXRFsaSRw=","errorBeacon":"bam.nr-data.net","agent":""}

@@ -1,0 +1,216 @@
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-168754-3']);
+_gaq.push(['_trackPageview']);
+
+_gaq.push(['_trackPageLoadTime']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
+var gts = gts || [];
+gts.push(["id","9675"]);
+gts.push(["google_base_offer_id", ""]);
+gts.push(["google_base_subaccount_id", "6658368"]);
+gts.push(["google_base_country", "US"]);
+gts.push(["google_base_language", "EN"]);
+(function() {
+var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+  var gts = document.createElement("script");
+  gts.type = "text/javascript";
+  gts.async = true;
+  gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(gts, s);
+ })();
+
+
+        function submitForm(page) {
+            //alert(document.getElementById("MERGE0").value);
+            if (document.getElementById("MERGE0").value != "Enter your email to join our list") {
+                var theForm = this.document.forms['aspnetForm'];
+                if (!theForm) {
+                    theForm = this.document.aspnetForm;
+                }
+                theForm.action = page;
+                theForm.submit();
+                return true;
+            }
+        }
+
+        $(document).ready(function () {
+            checkResize('False', 'False');
+        });
+    
+//<![CDATA[
+        var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+        document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+        //]]>
+    
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+    function ButtonSearch() {
+        var query = isEmpty($("#ctl00_SearchBox1_WatermarkTextBox1").val()) ?
+            $("#ctl00_SearchBox_mobile_WatermarkTextBox1").val() :
+            $("#ctl00_SearchBox1_WatermarkTextBox1").val();        
+        if (!isEmpty(query) && !(query == 'Enter keyword or item #'
+            || query == 'Search for:'
+            || query == 'Search...'
+            || query == 'product or item number'
+            || query == 'product or item#'
+            || query == 'Search product or item number'))
+        {
+            var url = "/Search.aspx?q=" + query;
+            window.location.href = url;
+            //$(document).ready(function () {
+            //    var url = "/Search.aspx?q=" + query;
+            //    $(location).attr("href", url);
+            //});
+        }
+        return false;
+    }
+
+    $(function () {
+        $("#ctl00_SearchBox1_WatermarkTextBox1").bind('keypress', function (e) {
+            var id = $("input:focus").attr("id");
+            var keyCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+            if (keyCode == "13" && id == 'ctl00_SearchBox1_WatermarkTextBox1') {
+                e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+                return ButtonSearch();
+            }
+        });
+
+        $("#ctl00_SearchBox_mobile_WatermarkTextBox1").bind('keypress', function (e) {
+                var id = $("input:focus").attr("id");
+                var keyCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                if (keyCode == "13" && id == 'ctl00_SearchBox_mobile_WatermarkTextBox1') {
+                    e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+                    return ButtonSearch();
+                }
+        });
+    });
+
+ 
+    (function() { 
+        var buildResults = SearchSpring.Autocomplete.buildResults; 
+        SearchSpring.Autocomplete.buildResults = function(results) { 
+            for(var i in results.products) { 
+                var name_sku = results.products[i].name.split('~'); 
+                results.products[i].name = name_sku[0]; 
+                results.products[i].sku = name_sku[1]; 
+            } 
+            buildResults(results); 
+        } 
+   })(); 
+   SearchSpring.Autocomplete.init({ 
+        siteId: 'vrubdf',
+       queryClass : 'searchspring-query', 
+      searchTermCallback: function(term) { 
+           window.location = '//' + window.location.host + '/Search.aspx?q=' + term; return false;  
+        } 
+    }); 
+ 
+
+  function loadSearch() {
+    var searchButton = document.getElementById("ctl00$SearchBox1$ButtonSearch");
+    var id = $("input:focus").attr("id"); 
+    var searchText = document.getElementById(id);  
+    if(searchText){  
+    searchText.onkeypress = function(event) {
+      if(typeof event == 'undefined') {
+        event = window.event;
+      }
+      if (event.keyCode=='13' && id=='ctl00$SearchBox1$WatermarkTextBox1') {
+        event.returnValue = false;
+        searchButton.click();
+      }
+    };
+    searchButton.onclick = function(event) {
+        if (typeof event == 'undefined') {
+            event = window.event;
+        }
+        window.location = '//' + window.location.host + '/Search.aspx?q=' + encodeURIComponent(searchText.value).replace(/%20/g, '+');
+        return false;
+    };
+  }}
+  loadSearch();
+
+
+                        var lhnAccountN = 12014; //LiveHelpNow account #
+                        var lhnButtonN = 6756; //Button #
+                        var lhnInviteEnabled = 1; //Invite visitor to chat automatically
+                        var lhnInviteChime = 0; //1 = disable invite beep sound,0 = keep invite beep sound enabled
+                        var lhnWindowN = 13378; //Chat window #, leave 0 to open default window setup for your account
+                        var lhnDepartmentN = 13741; //Department #, leave 0 to not route by department
+                        var lhnCustomInvitation = ''; //change to 1 to use custom invitation, see this article for customization instructions: http://help.livehelpnow.net/article.aspx?cid=1&aid=1739
+                        var lhnCustom1 = ''; //Custom1 feed value please use encodeURIComponent() function to encode your values
+                        var lhnCustom2 = ''; //Custom2 feed value please use encodeURIComponent() function to encode your values
+                        var lhnCustom3 = ''; //Custom3 feed value please use encodeURIComponent() function to encode your values
+                        var lhnTrackingEnabled = 't'; //change to 'f' to disable visitor tracking
+                        var lhnVersion = 5.3; //LiveHelpNow version #
+                        var lhnJsHost = (("https:" == document.location.protocol) ? "https://" : "http://"); //to force secure chat replace this line with: var lhnJsHost = 'https://';
+                        var lhnScriptSrc = lhnJsHost + 'www.livehelpnow.net/lhn/scripts/livehelpnow.aspx?lhnid=' + lhnAccountN + '&iv=' + lhnInviteEnabled + '&d=' + lhnDepartmentN + '&ver=' + lhnVersion + '&rnd=' + Math.random();
+                        var lhnScript = document.createElement("script"); lhnScript.async = true; lhnScript.type = "text/javascript"; lhnScript.src = lhnScriptSrc;
+                        if (window.addEventListener) {
+                            window.addEventListener('load', function () { document.getElementById('lhnContainer').appendChild(lhnScript); });
+                        }
+                        else if (window.attachEvent) {
+                            window.attachEvent('onload', function () { document.getElementById('lhnContainer').appendChild(lhnScript); });
+                            alert("window.attachEvent");
+                        }
+                    
+ 
+ window.criteo_q = window.criteo_q || []; 
+ var deviceType = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(navigator.userAgent) ? "m" : "d"; 
+ window.criteo_q.push( 
+ { event: "setAccount", account: 6022}, 
+  { event: "setSiteType", type: deviceType},
+ { event: "setHashedEmail", email: [""]}, 
+{ event: "viewHome"}); 
+ 
+
+/* <![CDATA[ */
+var google_conversion_id = 1059350335;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+
+
+
+
+(function() {
+var avm = document.createElement('script'); avm.type = 'text/javascript';
+avm.async = true;
+avm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.avmws.com/1010010/';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(avm, s);
+})();
+
+
+require(["mojo/signup-forms/Loader"], function (L) {
+L.start({
+"baseUrl": "mc.us9.list-manage.com",
+"uuid": "647f0e7f56676a4c15c9d0581",
+"lid": "b12054fb70"
+})})
+
+
+        TrustLogo("https://www.myweddingfavors.com/template/mwf/images/global/comodo_secure_seal_76x26_transp.png", "CL1", "none");
+

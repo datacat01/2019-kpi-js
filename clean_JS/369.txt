@@ -1,0 +1,10 @@
+
+if(typeof quickShopDeliveryCutoffTime != 'undefined'){
+quickShopDeliveryCutoffTime=17;
+}
+fnpPageType = "home";
+var citySearchDefaultLabel = "City does not exist";
+
+
+setTimeout(function(){document.getElementById("fnpchat").style.height = "32px";}, 60 * 1000);
+

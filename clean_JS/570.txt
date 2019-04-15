@@ -1,0 +1,19 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".thewreathshop.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"2d0761ad6fe8dd5421117e273a902b4c0f9e4da5","type":"ANONYMOUS","visit_id":"939ae1bd-c8c9-4349-90f0-e44e774a5579","visitor_id":"86dd3a61-b06c-4352-8b81-054b3cdef12c"},"referer":{"url":""},"request":{"url":"https:\/\/thewreathshop.com\/"}}, '', 1374582, "other", {"customer":{"id":"anonymous"}}, '939ae1bd-c8c9-4349-90f0-e44e774a5579', '86dd3a61-b06c-4352-8b81-054b3cdef12c');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"2c8c7adedc1b9b9d133e8f4cf8b02187ed672938040d4ec9f8fc25d5d0a7f3d3"};
+
+
+window.addEventListener('DOMContentLoaded', function () { window.initDataTags([], [], window.analytics); })
+
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'https://thewreathshop.com' ;
+window.sloyalty.key = '988dc9a7-01b7-404a-a135-f65c5988be4c' ;
+window.sloyalty.customer_id = '' ;
+window.sloyalty.customer_email = '' ;
+

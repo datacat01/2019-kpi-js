@@ -1,0 +1,147 @@
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+
+    function TreeView_PopulateNodeDoCallBack(context,param) {
+        WebForm_DoCallback(context.data.treeViewID,param,TreeView_ProcessNodeData,context,TreeView_ProcessNodeData,false);
+    }
+var myMenu_tvCategories_Data = null;//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$updPanelMain','','tctl00$myMenu$updpnlCartCounter','myMenu_updpnlCartCounter','tctl00$myMenu$updpnlCart','myMenu_updpnlCart','tctl00$myMenu$updPanelcurr','myMenu_updPanelcurr','tctl00$myMenu$updPaneldest','myMenu_updPaneldest','tctl00$myMenu$updPanValues','myMenu_updPanValues','tctl00$MainContent$updpnlNewestAndTopFive','MainContent_updpnlNewestAndTopFive','tctl00$MainContent$updpnlpopup','MainContent_updpnlpopup'], ['ctl00$MainContent$rptTopProducts$ctl00$btnRolls','MainContent_rptTopProducts_btnRolls_0','ctl00$MainContent$rptTopProducts$ctl01$btnRolls','MainContent_rptTopProducts_btnRolls_1','ctl00$MainContent$rptTopProducts$ctl02$btnRolls','MainContent_rptTopProducts_btnRolls_2','ctl00$MainContent$rptTopProducts$ctl03$btnRolls','MainContent_rptTopProducts_btnRolls_3','ctl00$MainContent$rptTopProducts$ctl04$btnRolls','MainContent_rptTopProducts_btnRolls_4','ctl00$MainContent$rptNewProducts$ctl00$btnRolls','MainContent_rptNewProducts_btnRolls_0','ctl00$MainContent$rptNewProducts$ctl01$btnRolls','MainContent_rptNewProducts_btnRolls_1','ctl00$MainContent$rptNewProducts$ctl02$btnRolls','MainContent_rptNewProducts_btnRolls_2','ctl00$MainContent$rptNewProducts$ctl03$btnRolls','MainContent_rptNewProducts_btnRolls_3','ctl00$MainContent$rptNewProducts$ctl04$btnRolls','MainContent_rptNewProducts_btnRolls_4'], [], 90, 'ctl00');
+//]]>
+
+
+
+    function onEnterSubmit() {
+
+        if (event.keyCode == 13) {
+            console.log(document.getElementById("myMenu_btnSearch"))
+            console.log("Login")
+            document.getElementById("_ctl3_btnSubmit").focus();
+        }
+
+    }
+
+    function checkSearch(id, searchId) {
+
+        if (document.getElementById(searchId).value.trim().length < 2) {
+            document.getElementById(id).style.display = "block";
+            hide(id);
+            return false;
+        }
+        else
+            document.getElementById(id).style.display = "none";
+        return true;
+    }
+
+    function hide(id) {
+        setTimeout(function () {
+
+            document.getElementById(id).style.display = "none";
+        }, 5000);
+    }
+
+
+
+
+    //function onEnterSubmit() {
+    //    if (event.keyCode == 13) {
+    //        alert('2');
+    //        document.getElementById("myMenu_btnSearch").focus();
+    //    }
+    //}
+    //alert('3');
+
+    //$('#example-navbar-collapse2').on('shown.bs.collapse', function () {
+    //    alert('1');
+    //    $('#myMenu_CriterionSearch').focus();
+    //})
+    //$('#example-navbar-collapse2').on('shown.bs.modal', function () {
+    //alert('4');
+    //$('#myMenu_CriterionSearch').focus();
+    //})
+
+
+
+
+
+                (function () {
+                    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+                    se.src = '//storage.googleapis.com/code.snapengage.com/js/' + document.getElementById("ctl00_ltrText").innerHTML + '.js';
+                    var done = false;
+                    se.onload = se.onreadystatechange = function () {
+                        if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+                            done = true;
+                            /* Place your SnapEngage JS API code below */
+                            /* SnapEngage.allowChatSound(true); Example JS API: Enable sounds for Visitors. */
+                        }
+                    };
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+                })();
+            
+
+            function counterPopup(){
+
+                            setTimeout(function () {
+                                var current_time = $("#popup-countdown").text() * 1;
+                              
+                                    if (current_time == 0) {
+            
+                                        
+                                        window.location.href = 'https://www.buysnus.at/de/content/103-willkommen-auf-buysnusat';
+                                        }else{
+                                             $("#popup-countdown").text(current_time-1);
+                                        counterPopup();
+                                    }
+        
+                                    }, 1000);
+                               }
+          
+
+//<![CDATA[
+var myMenu_tvCategories_ImageArray =  new Array('/images/arrow.gif', '/images/arrow.gif', '/images/arrow.gif', '/images/arrow.gif', '/images/arrow.gif', '/images/arrow.gif');
+//]]>
+
+
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=XT5KEJgbxo0sIKo7TWCbQnPaiKSqBOq2ZLv6ismqwyGPXTFNqpy_0XIWVDr9fs1HuhkgY_ggFSgnRqXG9MlY9fly7CXYvGSc0kv6ooxQGnA1&t=635370142285126825';
+WebForm_InitCallback();var myMenu_tvCategories_Data = new Object();
+myMenu_tvCategories_Data.images = myMenu_tvCategories_ImageArray;
+myMenu_tvCategories_Data.collapseToolTip = "Collapse {0}";
+myMenu_tvCategories_Data.expandToolTip = "Expand {0}";
+myMenu_tvCategories_Data.expandState = theForm.elements['myMenu_tvCategories_ExpandState'];
+myMenu_tvCategories_Data.selectedNodeID = theForm.elements['myMenu_tvCategories_SelectedNode'];
+(function() {
+  for (var i=0;i<6;i++) {
+  var preLoad = new Image();
+  if (myMenu_tvCategories_ImageArray[i].length > 0)
+    preLoad.src = myMenu_tvCategories_ImageArray[i];
+  }
+})();
+myMenu_tvCategories_Data.lastIndex = 19;
+myMenu_tvCategories_Data.populateLog = theForm.elements['myMenu_tvCategories_PopulateLog'];
+myMenu_tvCategories_Data.treeViewID = 'ctl00$myMenu$tvCategories';
+myMenu_tvCategories_Data.name = 'myMenu_tvCategories_Data';
+Sys.WebForms.PageRequestManager.getInstance()._registerDisposeScript("ctl00_updPanelMain", "myMenu_tvCategories_ImageArray.length = 0;\r\nmyMenu_tvCategories_Data = null;");
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ctl00_updPanelMain","displayAfter":500,"dynamicLayout":true}, null, null, $get("ctl00_updProgress"));
+});
+//]]>
+

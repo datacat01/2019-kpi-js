@@ -1,0 +1,63 @@
+
+ <!--
+  window.google_analytics_uacct = "UA-3871778-1";
+  google_analytics_domain_name=".geebo.com";
+var location_domain = $.cookie('location_domain');
+var lc = document.location;
+if (location_domain != null && location_domain != lc.hostname && lc.href == 'https://geebo.com/') {
+	lc.href = 'https://' + location_domain + '/';
+}
+	var _gaq = _gaq || [];
+	var pwidget_config = { trackAddressBar: false, track : false, copypaste : false, shareQuote : false };
+window.m2hb = window.m2hb || {};
+window.m2hb.que = window.m2hb.que || [];
+window.m2hb.kvps = window.m2hb.kvps || [];
+window.m2hb.kvps['page'] = 'Detail';    
+window.m2hb.kvps['page_url'] = 'https://geebo.com/mobile//';
+
+// -->
+ 
+
+function doLoadAnalytics(i,s,o,g,r,a,m){
+i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];
+a.async=1;
+a.src=g;m.parentNode.insertBefore(a,m);
+}
+window.pgjs = window.pgjs || {};
+pgjs.gdpr = pgjs.gdpr || {};
+pgjs.publisher = pgjs.publisher || {};
+pgjs.publisher.name = 'Geebo.com';
+pgjs.publisher.privacyPolicy = 'https://geebo.com/pages/view/id/2-privacy-policy-/';
+pgjs.publisher.logo = 'https://geebo.com/images/geebo.com.png';
+pgjs.publisher.dataUses = 'customer support, technical support, analytics, advertising';
+pgjs.gdpr.consentDuration = 90; 
+pgjs.publisherCookieWrap = function() { 
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WZL59R3');
+}
+
+
+ $("div.featured table.element").click(function() {
+	 document.location.href = $(this).find('a').attr('href');
+ });
+
+
+_gaq.push(['_setAccount', 'UA-3871778-1']);
+_gaq.push(['_setDomainName', '.geebo.com']);
+_gaq.push(['_trackPageview']);
+_qoptions={qacct:"p-2dtD5Bp8hjrxw"};
+try {
+if (adblock_top!=null) {
+  _googCsa('ads', pageOptions, adblock_top, adblock_bottom);
+}
+} catch (e) {}
+

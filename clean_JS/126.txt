@@ -1,0 +1,109 @@
+
+
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement("script");
+        gads.async = true;
+        gads.type = "text/javascript";
+        var useSSL = "https:" == document.location.protocol;
+        gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+        var node = document.getElementsByTagName("script")[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+
+    
+
+    var dfpslots = [];
+            dfpslots.push({ adUnitPath: "/6560240/BFS_ROW_DoubleMPU", size: [300, 600], opt_div: "div-gpt-ad-double-mpu" });
+            dfpslots.push({ adUnitPath: "/6560240/BFS_ROW_Leaderboard", size: [728, 90], opt_div: "div-gpt-ad-leaderboard", browser_sizes: [[[0, 0], []], [[771, 0], [728, 90]]] });
+
+    $(function () {
+        googletag.cmd.push(function () {
+
+            // define slots for any gpt divs that are visible on the page
+            $(dfpslots).each(function () {
+                if ($("div#" + this.opt_div).length) {
+                    if (this.browser_sizes) {
+                        var mapping = googletag.sizeMapping();
+                        $(this.browser_sizes).each(function (i, size_pair) {
+                            mapping.addSize(size_pair[0], size_pair[1]);
+                        });
+
+                        // define slot and monitor states
+                        var mappings = mapping.build();
+                        var slot = googletag.defineSlot(this.adUnitPath, this.size, this.opt_div).defineSizeMapping(mappings).addService(googletag.pubads());
+                        var i = 0;
+                        while (i < mappings.length - 1) {
+                            var minimumWidth = mappings[i + 1][0][0];
+                            var maximumWidth = mappings[i][0][0];
+                            ssm.addState({
+                                id: this.opt_div + '-browserWidth-' + minimumWidth + '-to-' + (maximumWidth - 1),
+                                minWidth: minimumWidth,
+                                maxWidth: maximumWidth - 1,
+                                onLeave: function () { googletag.pubads().refresh([slot]); }
+                            }).ready();
+                            i++;
+
+                            if (i == mappings.length - 1) {
+                                ssm.addState({
+                                    id: this.opt_div + '-browserWidth-' + maximumWidth + '-and-above',
+                                    minWidth: maximumWidth,
+                                    onLeave: function () { googletag.pubads().refresh([slot]); }
+                                }).ready();
+                            }
+                        }
+                    }
+                    else {
+                        googletag.defineSlot(this.adUnitPath, this.size, this.opt_div).addService(googletag.pubads());
+                    }
+                }
+            });
+
+                        
+            googletag.enableServices();
+
+            // display slots for any gpt divs that are visible on the page
+            $(dfpslots).each(function () {
+                if ($("div#" + this.opt_div).length)
+                    googletag.display(this.opt_div);
+            });
+            //googletag.pubads().refresh();
+
+        });
+    });
+    
+
+        window.criteo_q = window.criteo_q || [];
+                var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+                window.criteo_q.push(
+                        { event: "setAccount", account: 50088 }, // You should never update this line
+            { event: "setSiteType", type: deviceType },
+            { event: "viewHome" }
+        );
+    
+
+
+        
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    
+
+    ga('create', 'UA-2034194-36', 'auto');
+    ga('create', 'UA-2034194-7', 'auto', { 'name': 'rollupProperty' });
+    ga('set', 'anonymizeIp', true);
+    ga('rollupProperty.set', 'anonymizeIp', true);
+    ga('require', 'linkid', 'linkid.js');
+    ga('rollupProperty.require', 'linkid', 'linkid.js');
+        ga('send', 'pageview', '/');
+        ga('rollupProperty.send', 'pageview', '/');
+
+
+            var cobrandPath = '/',
+                applicationPath = '/';
+
+    

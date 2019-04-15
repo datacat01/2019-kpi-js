@@ -1,0 +1,12 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".aimsurplus.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"2498ee799016a985cf8c5005f97dc74227dda769","type":"ANONYMOUS","visit_id":"be3b6799-a2bb-4610-927c-04808a5e04c3","visitor_id":"d48e8884-9d0b-4f63-9e45-ed050c0d9647"},"referer":{"url":""},"request":{"url":"https:\/\/aimsurplus.com\/"}}, '', 3373367, "other", {"customer":{"id":"anonymous"}}, 'be3b6799-a2bb-4610-927c-04808a5e04c3', 'd48e8884-9d0b-4f63-9e45-ed050c0d9647');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"4b71c573994fc9fdc3c1d146002631c43a9aaf2732950abbd4a31021a44e7e68"};
+
+
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/OewJ05a5qMuhAa0oAkZgzByb1vEiqS4rXtOzYNdb/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+

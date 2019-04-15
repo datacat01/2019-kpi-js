@@ -1,0 +1,451 @@
+
+
+
+  
+  if(typeof dataLayer  === 'undefined')
+  {
+    dataLayer = [];
+  }
+dataLayer.push({'google_tag_params': {"ecomm_pagetype":"home","ecomm_prodid":null,"edp_num":null,"ecomm_pcat":null,"cat_id":null,"ecomm_pname":null,"ecomm_totalvalue":null}});
+
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ScriptManager', 'aspnetForm', [], [], [], 90, 'ctl00$ctl00');
+//]]>
+
+
+$(document).ready(function()
+{
+var image=$("#triggerEmailSignup");image.click(function(){var c=TabCom.MainMaster.emailSignupAsyncRenderingEngine.isRendered;var a=TabCom.Widgets.EmailSignup;var d=function(e){if(c===false){a.initialize({serviceUrl:e.ServiceUrl,shopperId:e.ShopperId,primarySiteId:e.PrimarySiteId,primarySiteDomainName:e.PrimarySiteDomainName,additionalSignupSiteJson:e.AdditionalSignupSiteJson,viewPrivacyPolicyCallback:e.ViewPrivacyPolicyClientScriptCallback,signupSuccessClientScriptCallback:e.SignupSuccessClientScriptCallback})}a.showModal()};var b=function(){alert("Unable to launch email signup.")};if(!c){TabCom.MainMaster.emailSignupAsyncRenderingEngine.renderContent(d,b)}else{d()}});
+});
+
+  $(document).ready(function() {
+var rotator = new TabCom.UI.ImageRotator('#rotator', 5000);
+rotator.addImage({
+url: 'ContentFiles/11066/68691/01JAN27_ps_slider_fleatick.jpg',alt: 'Shop Flea and Tick Center!',
+pos: 2,
+href: '/content/flea/flea-and-tick-center/?intid=HPM319JAN27'
+});
+rotator.addImage({
+url: 'ContentFiles/11066/68691/19APR07_ps_slider_petpharmacy.png',alt: 'Shop Pet Pharmacy!',
+pos: 3,
+href: '/pet-pharmacy/see-all-pet-pharmacy/9695/?intid=HPM419APR10'
+});rotator.addImage({
+url: 'ContentFiles/11066/68691/03MAR03_ps_slider_petessentials.jpg',alt: 'Shop Pet Essentials!',
+pos: 1,
+href: '/content/seasonal/springtime-pet-supplies/?intid=HPM219MAR03'
+});
+rotator.start();
+if ($.isTouchDevice()) {
+setTimeout(function() {
+rotator.stop();
+}, 3000);
+}
+});
+
+  $(document).ready(function()
+  {
+  if ((typeof (TabCom) == 'undefined') || (TabCom === null) || (typeof (TabCom.Widgets) == 'undefined') || (TabCom.Widgets === null) || (typeof (TabCom.Widgets.ProductFilter) == 'undefined') || (TabCom.Widgets.ProductFilter === null))
+  {
+  return;
+  }
+  TabCom.Widgets.ProductFilter.initialize(3, '.tabs li', '.product-carousel', '.products-loading', '#products-message', 'div.scroller', 'No products available at this time.', '.product-filter-widget-container .map-link');
+
+  });
+
+
+  
+
+  if (3 != 0)
+  {
+    $(document).ready(function()
+    {
+      if ((typeof (TabCom) == 'undefined') || (TabCom === null) || 
+          (typeof (TabCom.Widgets) == 'undefined') || (TabCom.Widgets === null) || 
+          (typeof (TabCom.Widgets.Carousel) == 'undefined') || (TabCom.Widgets.Carousel === null))
+      {
+        return;
+      }
+      
+        
+      var productCarousel_0174fd2995d5419fa4b0154390e5e090 = $('#productCarousel_0174fd2995d5419fa4b0154390e5e090' );
+      
+      var productCarousel_0174fd2995d5419fa4b0154390e5e090_carousel = new TabCom.Widgets.Carousel();
+      productCarousel_0174fd2995d5419fa4b0154390e5e090_carousel.init(3, 
+                    productCarousel_0174fd2995d5419fa4b0154390e5e090 , 
+                    $('div.scroller ul', productCarousel_0174fd2995d5419fa4b0154390e5e090), 
+                    { 
+                      'width': 149, 
+                      'height': 180, 
+                      'outerWidth': 169, 
+                      'paddingRight': 20 
+                    }, 
+                    $('.left-arrow', productCarousel_0174fd2995d5419fa4b0154390e5e090), 
+                    $('.right-arrow', productCarousel_0174fd2995d5419fa4b0154390e5e090), 
+                    'disabled');
+    });
+  }
+
+
+     	        var widget = $('#CatPageWidget');
+
+     		    if (widget.length > 0)
+                  {
+     		        widget.show();
+     		      }
+     
+     	    
+
+            var today = new Date();
+            var year = today.getYear();
+            if (year < 1900) {
+                year = year + 1900;
+            }
+            document.write(year);
+         
+
+
+
+   
+    
+        $(function()
+        {
+            var facebookWidth = '400px';
+            var fbLike = new TabCom.SocialSharingWidget(
+            {
+                parentElement     : '#facebookLikeSite',
+                redirectUrl       : 'http://www.facebook.com/1800petsupplies',
+                showFacebookSend  : false,
+                facebookShowType  : 'standard',
+                facebookWidth     : facebookWidth,
+                fullWidget        : false,
+                facebookAppId     : '294075787318676'
+            });
+            fbLike.addFacebookScript();
+            fbLike.loadScripts();
+        });
+        
+        
+
+        var searchText =  $('.SearchBox');
+        var defaultText = 'I’m looking for…'
+        if (!Modernizr.input.placeholder)
+        {        
+          $.when(typeof(searchText.watermark) === 'function').then( function()
+          {
+            searchText.watermark({defaultText : defaultText });
+          });
+        }
+
+        var showCookie = function()
+        {
+            TabCom.MainMaster.updateCartSummary({cookie : $.cookie('CO_C')});
+        };
+
+        var addToCartFCCallback = function(params) 
+        { 
+            var totalCartCost = params.totalPrice, 
+                name = params.name, 
+                xmlFeedItemNumber = params.sku, 
+                largeImageUrl = params.largeImageUrl, 
+                price = params.price, 
+                itemPageUrl = params.itemPageUrl,
+                cartId = params.cartId,
+                numberOfItems = params.itemCount;
+
+            showCookie(numberOfItems, totalCartCost);
+        
+        }
+
+        $(document).ready(function() 
+        {    
+            if ((typeof(TabCom) === 'undefined') || (typeof(TabCom.MainMaster) === 'undefined'))
+            {
+              throw 'A dependency was not found: TabCom.MainMaster';
+            }
+            TabCom.AccountMenu.initialize(); 
+            
+              if (typeof($.isDefined) ==='function' && $.isDefined(TabCom.ResponsiveButton))
+              {
+                TabCom.ResponsiveButton.initialize();
+              }
+            
+
+            var emailSignup      = null;
+            var emailSignupAsync = null;
+
+            if ((typeof(TabCom) !== 'undefined') && (typeof(TabCom.Widgets) !== 'undefined') )
+            {
+              if (typeof(TabCom.Widgets.EmailSignup) !== 'undefined')
+              {
+                emailSignup = TabCom.Widgets.EmailSignup;
+              }
+
+              if (typeof(TabCom.Widgets.AsyncRenderingEngine) !== 'undefined')
+              {
+                var dataContext = 
+                {
+                  ServiceUrl                            : '/EmailSignup.ashx',
+                  PrimarySiteId                         : 10,
+                  PrimarySiteDomainName                 : 'petsupplies.com',
+                  AdditionalSignupSiteJson              : '[{"Id":14,"DomainName":"Horse.com","ImageUrl":"/images/com_horse.gif"}]',
+                  ViewPrivacyPolicyClientScriptCallback : TabCom.MainMaster.viewPrivacyPolicy,
+                  SignupSuccessClientScriptCallback     : TabCom.MainMaster.signupSuccessHandler,
+                  RenderSynchronous                     : false
+                }       
+
+                emailSignupAsync = new TabCom.Widgets.AsyncRenderingEngine(
+                {
+                  serviceUrl            : '/AsyncRendering.ashx',
+                  targetElementSelector : '#emailSignupPlaceHolder',
+                  widgetName            : 'Email-Signup-Widget-Sync-Chunk-Block',
+                  dataContext           : dataContext
+                });
+              }
+            }
+  
+            var emailSignupParams =           
+            {
+                emailAddressSelector                 : '#GrayBarMiddle_01 .email-widget-input', 
+                emailAddressFocusClassName           : 'textbox-focused',
+                actionElementSelector                : '#GrayBarMiddle_01 .email-widget-link',
+                resultDisplayElementSelector         : '#GrayBarMiddle_01 .result-display',
+                emailElementContainerElementSelector : '#GrayBarMiddle_01 .email-element-container',
+                signupSuccessMessage                 : 'Thank you for registering.',
+                signupFailureMessage                 : 'An error occurred.  Please try again.',
+                invalidEmailAddressMessage           : 'Your email address is not valid.',
+                emailSignupWidget                    : emailSignup,
+                fallbackSignupUrl                    : 'https://www.petsupplies.com/CS/EmailSignup.aspx' ,                
+                primarySiteId                        : 10,
+                serviceUrl                           : '/EmailSignup.ashx'
+            };
+
+            var searchSuggestionParams =           
+            {
+                searchTextSelector                   : '.SearchBox', 
+                proxyHandler                         : 'https://www.petsupplies.com/Handlers/SearchSuggestionHandler.ashx?term=',                
+                minimiumTermLength                   : 3,
+                delay                                : 200,
+                enabled                              : true,
+                siteId                               : 10,
+                searchSuggestionType                 : 0,
+                pathConstant                         : 'cPETSUPPLIESp'              
+              
+            };
+
+            TabCom.MainMaster.initialize(
+            {
+              privacyPolicyUrl               : 'https://www.petsupplies.com/CS/Privacy.aspx',
+              searchUrl                      : 'https://www.petsupplies.com/Search.aspx?query=',
+              logoutServiceUrl               : 'https://www.petsupplies.com/AccountServices.ashx?op=1',
+              resetUserServiceUrl            : 'https://www.petsupplies.com/AccountServices.ashx?op=0',
+              loginTriggerSelector           : '.login-trigger',
+              resetUserTriggerSelector       : '.notme-trigger',
+              searchTextSelector             : '.SearchBox',
+              searchTriggerSelector          : '.SearchButton',
+              searchBoxDefaultText           : 'I’m looking for…',
+              emailSignupParams              : emailSignupParams,
+              canandaShippingTriggerSelector : '.CanadaShipping',
+              canadaShippingModalSelector    : '.MasterCanadaModalOuter',
+              canadaShippingCloseLinkSelector: '.CloseCanadaShipping',
+              emailSignUpAsyncRenderingEngine : emailSignupAsync,
+              searchSuggestionParams          : searchSuggestionParams,
+              newHeaderEnabled                : false,
+              showShopAllOnTopNav               : 'True',
+              cartServiceUrl : '/VersionTestControls/Cart/Handlers/CartHandler.ashx',
+              siteId : 10,
+              modernLayout: false,
+              isMobileOrTabletDevice: false
+              });  
+
+            
+                
+            // Sys.WebForms.PageRequestManager.getInstance().add_endRequest(showCookie);
+            
+            
+
+           if ($.historyMatchesCurrentPage("/default.aspx") === false)
+           {
+            showCookie();
+           }
+
+            TabCom.ModalContest.initialize(
+            {
+                emailValidator          :   new TabCom.Validation.Account()
+                });
+
+           
+            var deferLoader = new TabCom.UI.DeferLoader();
+            deferLoader.loadStyles();
+        });
+      
+    
+
+      $(document).ready(function()
+      {
+        if ($.historyMatchesCurrentPage('/default.aspx') === false)
+        {
+          return;
+        }
+        
+        TabCom.Widgets.PromoNotifier.initialize(
+        {
+          modalSelector       : '#promoModalWrapper',
+          errorPaneSelector   : '#divPromoModal #errorPane',
+          initialPaneSelector : '#divPromoModal #divPromoModalLeftCol',
+          waitPaneSelector    : '#divPromoModal #waitPane',
+          serviceUrl          : '/PromoNotifier.ashx',
+          targetSiteId        : 10,
+          offerId             : 867,
+          couponCode          : '69664BO5UY',
+          customerHelperServiceUrl : '/Handlers/CustomerHelperHandler.ashx',
+          confirmationOnly    : true,
+          FBAppId             : 294075787318676,
+          facebookChannelUrl  : 'petsupplies.com/channel.html',
+          appType             : 0,
+          contestServiceUrl   : '/Contest.ashx'
+        });
+      });
+    
+
+
+
+
+  var gts = gts || [];
+
+  gts.push(["id", "153582"]);
+  gts.push(["google_base_subaccount_id", "7272180"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+  
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en"]);
+
+  (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+
+
+
+    
+    
+
+$(document).ready(function()
+{
+    if ($.isDefined(TabCom)) {
+        if ($.isDefined(TabCom.Util) && $.isDefined(TabCom.Util.ShopperValidation)) {
+            TabCom.Util.ShopperValidation.initialize({
+                window: window,
+                serviceUrl: '/ShopperValidation.ashx'
+            });
+
+            
+            TabCom.Util.ShopperValidation.validate({
+                validationKey: '6deefad3-e92f-4590-943c-49f21bfa6862'
+            });
+            
+        }
+        
+    }
+});
+
+ 
+  var globalErrorMsg = null;   
+  var logToServer=function(d,a,e){try{var f={};if(typeof(d)!=="undefined"){var c=d.originalEvent;if(c!=null&&c!==undefined&&typeof(c!=="undefined")){f.ErrorMessage=c.message;f.ErrorUrl=c.filename;f.LineNumber=c.lineno}else{f.ErrorMessage=d;f.ErrorUrl=a;f.LineNumber=e}}if(globalErrorMsg!=null){if(f.ErrorMessage===globalErrorMsg.ErrorMessage&&f.ErrorUrl===globalErrorMsg.ErrorUrl&&f.LineNumber===globalErrorMsg.LineNumber){return false}else{globalErrorMsg=f}}else{globalErrorMsg=f}$.ajax({cache:false,url:'/Handlers/ClientErrorLogger.ashx',type:"GET",data:f})}catch(b){return false}return true};  
+  window.onerror = logToServer;
+  
+
+   $(document).ready(function()
+   {
+     var trackInitAttempts = 50;    
+     var trackInterval = null;
+     var trackReady = function()
+     {
+        try
+        {
+            return typeof($.isDefined) === 'function'
+              && $.isDefined(TabCom)
+              && $.isDefined(TabCom.Tracking)
+              && $.isDefined(TabCom.Tracking.EventTrack)              
+            && ga !== undefined && $.isFunction(ga);
+        }
+        catch(err)
+        {
+            return false;
+        }
+     }
+     
+     var initTrack = function()
+     {
+        if (trackReady() === true)
+        {            
+            var sessionCam = window.sessionCamRecorder;
+            if ($.isDefined(sessionCam)){
+              	if (!window.sessioncamConfiguration)
+		              window.sessioncamConfiguration = new Object();
+	              if (!window.sessioncamConfiguration.customDataObjects)
+		              window.sessioncamConfiguration.customDataObjects = [];
+            }
+            TabCom.Tracking.EventTrack.initialize(
+            {
+                eventData : [{"Category":"Introductory Modal","Action":"click","Label":"Start Shopping","Selector":"#divPromoModal .button-ssn","EventId":31},{"Category":"Introductory Modal","Action":"click","Label":"Top Right Close","Selector":"#promoModalWrapper .promo-modal-exit","EventId":32},{"Category":"Header Buttons","Action":"click","Label":"checkout","Selector":"#masterCartWrapper .master-checkout","EventId":117},{"Category":"Header Buttons","Action":"click","Label":"View Cart","Selector":".pnl-master-cart \u003e a[href*=\"Cart.aspx\"]","EventId":118},{"Category":"Main Header","Action":"click","Label":"Email Signup","Selector":"div.email-element-container \u003e a","EventId":181},{"Category":"Frequently Bought Together","Action":"click","Label":"Doggie Box","Selector":".image-wrapper \u003e a[href*=\"doggie-box\"]","EventId":189},{"Category":"Reward Header","Action":"click","Label":"Learn More","Selector":"#RedeemRewardsHeaderBtn","EventId":363},{"Category":"Mobile Header","Action":"click","Label":"Tap To Call","Selector":"#phoneHeaderBtn","EventId":364},{"Category":"Offer Bar","Action":"click","Label":"Recent Orders","Selector":"#headerRow5RightContainer .account-option-sprite-icon-recentorders","EventId":387},{"Category":"Offer Bar","Action":"click","Label":"Rewards","Selector":"#headerRow5RightContainer .account-option-sprite-icon-riderrewards","EventId":388},{"Category":"Offer Bar","Action":"click","Label":"Auto Ship","Selector":"#headerRow5RightContainer .account-option-sprite-icon-autoship","EventId":389},{"Category":"TurnTo Chatter","Action":"click","Label":"Product Name","Selector":"#TT3chatter div.TT3comment \u003e a","EventId":169},{"Category":"TurnTo Chatter","Action":"click","Label":"See All","Selector":"#TT3chatterFooter \u003e a","EventId":185},{"Category":"TurnTo Chatter","Action":"click","Label":"Next Arrow","Selector":"#TT3nextBtn","EventId":186},{"Category":"Home Page Product Carousel","Action":"click","Label":"Switch Tab","Selector":"#CatPageWidget \u003e .product-filter-widget-container \u003e .tabs \u003e li \u003e a","EventId":202},{"Category":"Home Page Product Carousel","Action":"click","Label":"View Product","Selector":"#CatPageWidget \u003e div \u003e div \u003e div.carousel-wrapper \u003e div.product-carousel.clearfix \u003e div \u003e ul \u003e li a","EventId":203},{"Category":"Home Page Product Carousel","Action":"click","Label":"Scroll Right","Selector":"#CatPageWidget \u003e div \u003e div \u003e div.carousel-wrapper \u003e div.product-carousel.clearfix \u003e a.scroller.right-arrow","EventId":204},{"Category":"Home Page","Action":"click","Label":"Bargains Link","Selector":"a[href *= \"bargains\"]","EventId":211},{"Category":"Left Nav","Action":"click","Label":"Home Page Left Nav Category","Selector":"#LeftNav \u003e div.left-nav-wrapper \u003e ul \u003e li \u003e a","EventId":293},{"Category":"Left Nav","Action":"click","Label":"Home Page Left Nav Brand","Selector":"div[id *=\"LeftSideContentArea\"] \u003e table \u003e tbody \u003e tr \u003e td \u003e table \u003e tbody \u003e tr \u003e td \u003e a","EventId":294},{"Category":"Home Page Top Carousel","Action":"click","Label":"product","Selector":"#recommendedCarousel div a","EventId":391},{"Category":"Home Page Middle Carousel","Action":"click","Label":"product","Selector":"#todaysDealsFeatured div a","EventId":392},{"Category":"Home Page Bottom Carousel","Action":"click","Label":"brand","Selector":"#brandCarousel div a","EventId":393}],
+                googleEnabled : true,
+                googleTrack : ga,
+                localEnabled : true,
+                localTrack : [],
+                initCallback : null,
+                serviceUrl : '/EventTracker.ashx',
+                splitTestVersions : [{"TestName":"30 off FS 69 price test PS","Version":"Test"}],
+                    emailValidator : ($.isDefined(TabCom.Validation) ? new TabCom.Validation.Account() : null),
+                currentEmailAddress : '',
+                googleAccountId : 'UA-9808698-9',
+                pageUri : window.location.href,
+                sessionCamConfig: window.sessioncamConfiguration,
+                securityToken : 'E46ZCkDqjAND/nOP1+JnrrcFx6Z5W0ho/zgLuhB2xbDxn8Zf1GixMRsqM+M3EyIj',
+                customerServiceUrl: "/Handlers/CustomerHelperHandler.ashx",
+                version: '11.9.143.40383'
+            });            
+            clearInterval(trackInterval);
+            return;
+        }
+        
+        trackInitAttempts --;
+        if (trackInitAttempts === 0)
+        {            
+            clearInterval(trackInterval);
+            $.logToConsole('Event track did not load.');
+        }
+     };
+     
+     if (trackReady() === true)
+     {
+        initTrack();
+     }
+     else
+     {
+      trackInterval = setInterval( initTrack ,  1000);
+     }
+
+   });
+

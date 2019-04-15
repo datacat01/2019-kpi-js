@@ -1,0 +1,54 @@
+
+
+window.digitalData = {
+page : {
+pageInfo : {
+country: 'us',
+region: 'us'
+
+,
+
+pageName : 'shoplanding'
+
+}
+
+,
+category : {
+channel : ''
+}
+
+}
+
+,
+error :{
+errorType: '',
+errorMessage: ''
+}
+
+,
+user : {
+
+email : '',
+uemh : '',
+
+userId : '',
+userState : 'guest'
+,sessionId : 'gZl7EufrbDu1_!-1822550523!1555252686757'
+}
+
+,
+cart : {
+cartId : 'c11087626101',
+cartContent : 'ZN4cPIvPMbE5fgAL%2FX6Y1w%3D%3D',
+item : [
+
+]
+}
+
+// CRM-122 - commented
+//
+};
+
+
+      if (typeof _satellite !== 'undefined') { _satellite.pageBottom(); }
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/resources/891563320621645ac2584bb09b52fe']);

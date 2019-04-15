@@ -1,0 +1,641 @@
+
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+controlClientId = 'ctl01_ctl06';//]]>
+
+
+            function logToTealeaf(msgName, msg){
+                
+                    if (TLT && TLT.isInitialized())
+                    {      // check to see if Tealeaf is initalized 
+                        TLT.logCustomEvent(msgName, msg);
+                    }
+                /* Else take some other action such as queuing the message for future
+
+                after Tealeaf is initialized */
+
+            }
+        
+        
+
+//<![CDATA[
+var CurrentPageId = '813';var headerHeightValue=0;var sessionTimeOutValue=1199998;var HomepageType='Shubert.WebControls.Templates.Homepage, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var HeaderControlType='Shubert.WebControls.HeaderControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var serverSessionId = 'iy1z1vkh0bjavi1lsqhn5pbf';var UserConfirmationBoxType='Shubert.WebControls.Utility.UserConfirmationBox, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var NavigationControlType='Shubert.WebControls.NavigationControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var EventFinderControlType='Shubert.WebControls.EventFinderControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var EventListType='Shubert.WebControls.Common.EventList, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var SponsorControlType='Shubert.WebControls.SponsorControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var MediaViewerViewType='Shubert.WebControls.MediaViewerView, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var findticketsPageResource='/FindTickets.aspx?ProductId={0}';var CarouselControlType='Shubert.WebControls.CarouselControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var EventsCarouselType='Shubert.WebControls.Common.EventsCarousel, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var TwitterFeedType='Shubert.Website.WebControls.ContentControls.Home.TwitterFeed, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var OffersControlType='Shubert.WebControls.OffersControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var OfferTransactionControlType='Shubert.WebControls.OfferTransactionControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var ActiveTransactionDetectorType='Shubert.WebControls.Utility.ActiveTransactionDetector, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var FooterControlType='Shubert.WebControls.FooterControl, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';var MetaTagsType='Shubert.WebControls.MetaTags, Shubert.Website.WebControls, Version=2015.3.0.6, Culture=neutral, PublicKeyToken=null';//]]>
+
+
+//<![CDATA[
+var activeTransactionOfferId='0';var isForcedCheckRequired='False';var aciveMarketingCode ='';function ctl01_ctl08_offerTransactionControl_activeTransactionDetectorCheckForActiveTransaction(){ if((activeTransactionOfferId == 0 && aciveMarketingCode == '') || isForcedCheckRequired == 'True'){PageMethods.CheckForActiveTransaction(ActiveTransactionDetectorType, ctl01_ctl08_offerTransactionControl_activeTransactionDetectorActiveTransactionHadlerResult);}else{ctl01_ctl08_offerTransactionControl_activeTransactionDetectorActiveTransactionHadlerResult(false);}}function CheckForActiveOfferTransaction()
+                { 
+                    PageMethods.CheckForActiveTransaction(ActiveTransactionDetectorType,OfferActiveTransactionHadlerResult);}function ctl01_ctl08_offerTransactionControl_activeTransactionDetectorActiveTransactionHadlerResult(result) {  if (result) {showPopupBlock.showClsOverlay('ctl01_ctl08_offerTransactionControl_activeTransactionDetector_divActiveTransactionConfirmation'); return false;  } else {  }}function OfferActiveTransactionHadlerResult(result) { if (result) { showPopupBlock.showClsOverlay('ctl01_ctl08_offerTransactionControl_activeTransactionDetector_divOfferActiveTransactionConfirmation'); return false; } else { GetOfferLandingPageFromServer(currentOfferId, false); return false;}}function ctl01_ctl08_offerTransactionControl_activeTransactionDetectorCheckForActiveTransactionOnSingleProduct(){ PageMethods.CheckForActiveTransaction(ActiveTransactionDetectorType, ctl01_ctl08_offerTransactionControl_activeTransactionDetectorSingleProductActiveTransactionHandlerResult);}function ctl01_ctl08_offerTransactionControl_activeTransactionDetectorSingleProductActiveTransactionHandlerResult(result) {  if (result) {showPopupBlock.showClsOverlay('ctl01_ctl08_offerTransactionControl_activeTransactionDetector_divActiveTransactionConfirmation'); return false;  } else {  }}function CheckForActiveMarketingCodeTransaction()
+                { 
+                    PageMethods.CheckForActiveTransaction(ActiveTransactionDetectorType,MarketingCodeActiveTransactionHadlerResult);}function MarketingCodeActiveTransactionHadlerResult(result) { { showPopupBlock.showPreloader('findticketmainContainer'); InitiateMarketingCode(); return false; }}//]]>
+
+
+//<![CDATA[
+var PageMethods = function() {
+PageMethods.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+PageMethods.prototype = {
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return PageMethods._staticInstance.get_path();},
+CancelCurrentOrderOnTransactionExpiration:function(timerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelCurrentOrderOnTransactionExpiration',false,{timerControlType:timerControlType},succeededCallback,failedCallback,userContext); },
+RedirectOnChangeEvent:function(transactionCommandType,transactionProductType,productId,parentProductId,isBroadwayOffersSiteContext,parentProductPerformance,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RedirectOnChangeEvent',false,{transactionCommandType:transactionCommandType,transactionProductType:transactionProductType,productId:productId,parentProductId:parentProductId,isBroadwayOffersSiteContext:isBroadwayOffersSiteContext,parentProductPerformance:parentProductPerformance,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetTestPageAjaxControlHtml:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetTestPageAjaxControlHtml',false,{},succeededCallback,failedCallback,userContext); },
+GetMembershipListing:function(seasonId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetMembershipListing',false,{seasonId:seasonId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetMembershipInfo:function(clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetMembershipInfo',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetMembershipRenewalPrompt:function(clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetMembershipRenewalPrompt',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+ValidateMembershipAccounts:function(productid,membershipIdsAndPhoneNumbers,addMembershipAccountsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ValidateMembershipAccounts',false,{productid:productid,membershipIdsAndPhoneNumbers:membershipIdsAndPhoneNumbers,addMembershipAccountsControlTypeName:addMembershipAccountsControlTypeName},succeededCallback,failedCallback,userContext); },
+ValidateSpecialPopulationOffer:function(offerId,groupCode,MarketingCodeTransactionInitiatorType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ValidateSpecialPopulationOffer',false,{offerId:offerId,groupCode:groupCode,MarketingCodeTransactionInitiatorType:MarketingCodeTransactionInitiatorType},succeededCallback,failedCallback,userContext); },
+GetAddMembershipAccountsControlHTML:function(userAction,clientId,partialUpdateClientId,addMembershipAccountsControlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAddMembershipAccountsControlHTML',false,{userAction:userAction,clientId:clientId,partialUpdateClientId:partialUpdateClientId,addMembershipAccountsControlTypeName:addMembershipAccountsControlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+SetSelectedMenuInPropertyBag:function(menuId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetSelectedMenuInPropertyBag',false,{menuId:menuId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+FetchNextNavigationURL:function(productId,productTypeId,productAvailId,packageId,linktype,controlTypeName,productName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'FetchNextNavigationURL',false,{productId:productId,productTypeId:productTypeId,productAvailId:productAvailId,packageId:packageId,linktype:linktype,controlTypeName:controlTypeName,productName:productName},succeededCallback,failedCallback,userContext); },
+AddOfferToWishList:function(controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddOfferToWishList',false,{controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SaveOfferIDForMyEventList:function(controlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveOfferIDForMyEventList',false,{controlTypeName:controlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+AddMarketingCodeToWishList:function(controlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddMarketingCodeToWishList',false,{controlTypeName:controlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+SaveMarketingCodeToMyEventList:function(controlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveMarketingCodeToMyEventList',false,{controlTypeName:controlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+AddMarketingCodeToWishListFromMarketingCodeHeader:function(controlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddMarketingCodeToWishListFromMarketingCodeHeader',false,{controlTypeName:controlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+SaveMarketingCodeForMyEventListFromMarketingCodeHeader:function(controlTypeName,productId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveMarketingCodeForMyEventListFromMarketingCodeHeader',false,{controlTypeName:controlTypeName,productId:productId},succeededCallback,failedCallback,userContext); },
+RemoveProduct:function(packageId,prodAvailId,perfDateTime,perfType,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveProduct',false,{packageId:packageId,prodAvailId:prodAvailId,perfDateTime:perfDateTime,perfType:perfType,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+ChangeSelection:function(controlTypeName,productType,actionName,productId,packageId,prodAvailId,perfDateTime,perfType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangeSelection',false,{controlTypeName:controlTypeName,productType:productType,actionName:actionName,productId:productId,packageId:packageId,prodAvailId:prodAvailId,perfDateTime:perfDateTime,perfType:perfType},succeededCallback,failedCallback,userContext); },
+GetOfferWorkFlowLandingURL:function(offerId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOfferWorkFlowLandingURL',false,{offerId:offerId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+CheckForActiveTransaction:function(activeTransactionDetectorControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CheckForActiveTransaction',false,{activeTransactionDetectorControlTypeName:activeTransactionDetectorControlTypeName},succeededCallback,failedCallback,userContext); },
+CancelCurrentOrderFromSubNavigation:function(activeTransactionDetectorControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelCurrentOrderFromSubNavigation',false,{activeTransactionDetectorControlTypeName:activeTransactionDetectorControlTypeName},succeededCallback,failedCallback,userContext); },
+ReleaseInquireInOfferContext:function(activeTransactionDetectorControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ReleaseInquireInOfferContext',false,{activeTransactionDetectorControlTypeName:activeTransactionDetectorControlTypeName},succeededCallback,failedCallback,userContext); },
+CancelCurrentOrderFromNavigation:function(activeTransactionDetectorControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelCurrentOrderFromNavigation',false,{activeTransactionDetectorControlTypeName:activeTransactionDetectorControlTypeName},succeededCallback,failedCallback,userContext); },
+SendEmailLink:function(pageEmailLink,sendEmailLinkControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SendEmailLink',false,{pageEmailLink:pageEmailLink,sendEmailLinkControlType:sendEmailLinkControlType},succeededCallback,failedCallback,userContext); },
+GetTransactionId:function(currentPageId,sessionHanlderControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetTransactionId',false,{currentPageId:currentPageId,sessionHanlderControlType:sessionHanlderControlType},succeededCallback,failedCallback,userContext); },
+ClearTransaction:function(activeTransactionDetectorControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ClearTransaction',false,{activeTransactionDetectorControlType:activeTransactionDetectorControlType},succeededCallback,failedCallback,userContext); },
+GetControlHtmlNoParameters:function(clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetControlHtmlNoParameters',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+UpdateContactInformation:function(contactInfo,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateContactInformation',false,{contactInfo:contactInfo,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+PrepareCoremetricsPageViewTagWithInquiryErrorMessage:function(inquiryErrorMsg,productId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'PrepareCoremetricsPageViewTagWithInquiryErrorMessage',false,{inquiryErrorMsg:inquiryErrorMsg,productId:productId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+UpdateUserNameCookie:function(userName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateUserNameCookie',false,{userName:userName},succeededCallback,failedCallback,userContext); },
+AddRequestedURL:function(requestedUrl,headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddRequestedURL',false,{requestedUrl:requestedUrl,headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+RemoveRequestedUrlFromPropertyBag:function(headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveRequestedUrlFromPropertyBag',false,{headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+RemoveRequestedUrlAndResetWelcomeMessage:function(headerControlType,headerControlId,welcomeMessageDivId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveRequestedUrlAndResetWelcomeMessage',false,{headerControlType:headerControlType,headerControlId:headerControlId,welcomeMessageDivId:welcomeMessageDivId},succeededCallback,failedCallback,userContext); },
+FlushShowLoginInContentFlag:function(headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'FlushShowLoginInContentFlag',false,{headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+MarketingCodeLeaveOffer:function(headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'MarketingCodeLeaveOffer',false,{headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+GetEventFinderControlHtml:function(cityId,clientId,partialUpdateClientId,eventFinderControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventFinderControlHtml',false,{cityId:cityId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,eventFinderControlTypeName:eventFinderControlTypeName},succeededCallback,failedCallback,userContext); },
+SaveEventSearchCriteria:function(eventSearch,eventTypesCollection,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveEventSearchCriteria',false,{eventSearch:eventSearch,eventTypesCollection:eventTypesCollection,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+GetSelectedVendorDetails:function(parkingVendors,sourceAddress,destinationAddress,clientId,partialUpdateClientId,directionsAndParkingControlTypeName,postBackProductId,selectedDay,selectedTime,isHopStop,sourceLatitude,sourceLongitude,destLatitude,destLongitude,sourceAddressWithoutVenueNameAndAddress2,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSelectedVendorDetails',false,{parkingVendors:parkingVendors,sourceAddress:sourceAddress,destinationAddress:destinationAddress,clientId:clientId,partialUpdateClientId:partialUpdateClientId,directionsAndParkingControlTypeName:directionsAndParkingControlTypeName,postBackProductId:postBackProductId,selectedDay:selectedDay,selectedTime:selectedTime,isHopStop:isHopStop,sourceLatitude:sourceLatitude,sourceLongitude:sourceLongitude,destLatitude:destLatitude,destLongitude:destLongitude,sourceAddressWithoutVenueNameAndAddress2:sourceAddressWithoutVenueNameAndAddress2},succeededCallback,failedCallback,userContext); },
+UpdateDirectionAndParkingSearchCoremetricStatus:function(sourceAddress,destinationAddress,hopstopFlag,directionsAndParkingControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateDirectionAndParkingSearchCoremetricStatus',false,{sourceAddress:sourceAddress,destinationAddress:destinationAddress,hopstopFlag:hopstopFlag,directionsAndParkingControlTypeName:directionsAndParkingControlTypeName},succeededCallback,failedCallback,userContext); },
+GetRestaurantListControlHtml:function(cityId,cityName,clientId,partialUpdateClientId,restaurantListControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetRestaurantListControlHtml',false,{cityId:cityId,cityName:cityName,clientId:clientId,partialUpdateClientId:partialUpdateClientId,restaurantListControlTypeName:restaurantListControlTypeName},succeededCallback,failedCallback,userContext); },
+GeFeaturedItemsControlHtml:function(cityId,clientId,partialUpdateClientId,featuredItemsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GeFeaturedItemsControlHtml',false,{cityId:cityId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,featuredItemsControlTypeName:featuredItemsControlTypeName},succeededCallback,failedCallback,userContext); },
+UpdatePerformanceList:function(performanceList,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdatePerformanceList',false,{performanceList:performanceList,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+GetSpecificPerformanceDateSelectionControlHtml:function(mode,performanceDateTimes,clientId,partialUpdateClientId,performanceDateSelectionTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSpecificPerformanceDateSelectionControlHtml',false,{mode:mode,performanceDateTimes:performanceDateTimes,clientId:clientId,partialUpdateClientId:partialUpdateClientId,performanceDateSelectionTypeName:performanceDateSelectionTypeName},succeededCallback,failedCallback,userContext); },
+GetPerformancesFFAStatusForDateRange:function(strFromDate,strToDate,productId,performanceDateSelectionTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformancesFFAStatusForDateRange',false,{strFromDate:strFromDate,strToDate:strToDate,productId:productId,performanceDateSelectionTypeName:performanceDateSelectionTypeName},succeededCallback,failedCallback,userContext); },
+GetAmexWhatIsThisControlContent:function(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAmexWhatIsThisControlContent',false,{amexCode:amexCode,isTransactional:isTransactional,clientId:clientId,partialUpdateClientId:partialUpdateClientId,methodOfPaymentControlType:methodOfPaymentControlType},succeededCallback,failedCallback,userContext); },
+GetAmexSignupOptionsContent:function(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAmexSignupOptionsContent',false,{amexCode:amexCode,isTransactional:isTransactional,clientId:clientId,partialUpdateClientId:partialUpdateClientId,methodOfPaymentControlType:methodOfPaymentControlType},succeededCallback,failedCallback,userContext); },
+GetPerformanceListForMonth:function(monthYear,productId,clientId,partialUpdateClientId,monthOverLayType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformanceListForMonth',false,{monthYear:monthYear,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,monthOverLayType:monthOverLayType},succeededCallback,failedCallback,userContext); },
+GetPerformancePriceForMonth:function(startDate,endDate,productId,clientId,partialUpdateClientId,schedulesPricingControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformancePriceForMonth',false,{startDate:startDate,endDate:endDate,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,schedulesPricingControlType:schedulesPricingControlType},succeededCallback,failedCallback,userContext); },
+UpdateCalendarViewStatus:function(changeMonthOrWeek,value,scheduleAndPricingControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateCalendarViewStatus',false,{changeMonthOrWeek:changeMonthOrWeek,value:value,scheduleAndPricingControlTypeName:scheduleAndPricingControlTypeName},succeededCallback,failedCallback,userContext); },
+GetNumberOfSeatsControlHtml:function(numberOfSeatsMode,productId,clientId,partialUpdateClientId,numberOfSeatsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetNumberOfSeatsControlHtml',false,{numberOfSeatsMode:numberOfSeatsMode,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,numberOfSeatsControlTypeName:numberOfSeatsControlTypeName},succeededCallback,failedCallback,userContext); },
+GetPromotionalCodeControlHtml:function(promotionalType,promotionalCode,clientId,partialUpdateClientId,promotionalCodeTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPromotionalCodeControlHtml',false,{promotionalType:promotionalType,promotionalCode:promotionalCode,clientId:clientId,partialUpdateClientId:partialUpdateClientId,promotionalCodeTypeName:promotionalCodeTypeName},succeededCallback,failedCallback,userContext); },
+NatGeoGetOfferUrlByMarketingCode:function(marketingCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'NatGeoGetOfferUrlByMarketingCode',false,{marketingCode:marketingCode},succeededCallback,failedCallback,userContext); },
+InitiateMarketingCodeTransaction:function(productId,marketingCode,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InitiateMarketingCodeTransaction',false,{productId:productId,marketingCode:marketingCode,explicitTargetPageUrl:explicitTargetPageUrl,sourceGoPage:sourceGoPage,marketingcodeTransactionInitiatorType:marketingcodeTransactionInitiatorType},succeededCallback,failedCallback,userContext); },
+InitiateEntitlementOfferMarketingCodeTransaction:function(productId,marketingCode,offerId,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InitiateEntitlementOfferMarketingCodeTransaction',false,{productId:productId,marketingCode:marketingCode,offerId:offerId,explicitTargetPageUrl:explicitTargetPageUrl,sourceGoPage:sourceGoPage,marketingcodeTransactionInitiatorType:marketingcodeTransactionInitiatorType},succeededCallback,failedCallback,userContext); },
+MarketingCodeLeaveTheOffer:function(productId,marketingCodeHeaderControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'MarketingCodeLeaveTheOffer',false,{productId:productId,marketingCodeHeaderControlType:marketingCodeHeaderControlType},succeededCallback,failedCallback,userContext); },
+SetPropertyBagItem:function(propertyBagItemName,value,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetPropertyBagItem',false,{propertyBagItemName:propertyBagItemName,value:value},succeededCallback,failedCallback,userContext); },
+GetOtherPeopleHtml:function(additionalMembers,clientId,partialUpdateClientId,otherPeopleControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOtherPeopleHtml',false,{additionalMembers:additionalMembers,clientId:clientId,partialUpdateClientId:partialUpdateClientId,otherPeopleControlTypeName:otherPeopleControlTypeName},succeededCallback,failedCallback,userContext); },
+KillPropertyBagItem:function(propertyBagItemName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'KillPropertyBagItem',false,{propertyBagItemName:propertyBagItemName},succeededCallback,failedCallback,userContext); },
+KillSessionItem:function(sessionItemName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'KillSessionItem',false,{sessionItemName:sessionItemName},succeededCallback,failedCallback,userContext); },
+GetEncodedURLForSiteSearch:function(searchKeyWord,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEncodedURLForSiteSearch',false,{searchKeyWord:searchKeyWord,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetSiteSearchResultControlHtml:function(searchKeyWord,clientId,partialUpdateClientId,siteSearchControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSiteSearchResultControlHtml',false,{searchKeyWord:searchKeyWord,clientId:clientId,partialUpdateClientId:partialUpdateClientId,siteSearchControlTypeName:siteSearchControlTypeName},succeededCallback,failedCallback,userContext); },
+SendEmailFromAjax:function(fromEmail,toEmail,subject,pageName,lightWeightListing,confirmationEmailTypeName,clientId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SendEmailFromAjax',false,{fromEmail:fromEmail,toEmail:toEmail,subject:subject,pageName:pageName,lightWeightListing:lightWeightListing,confirmationEmailTypeName:confirmationEmailTypeName,clientId:clientId},succeededCallback,failedCallback,userContext); },
+GetCarouselControlHtml:function(eventCategoryId,clientId,partialUpdateClientId,carouselControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCarouselControlHtml',false,{eventCategoryId:eventCategoryId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,carouselControlTypeName:carouselControlTypeName},succeededCallback,failedCallback,userContext); },
+GetAdditionalMemberHTML:function(clientId,partialUpdateClientId,otherPeopleControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAdditionalMemberHTML',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,otherPeopleControlTypeName:otherPeopleControlTypeName},succeededCallback,failedCallback,userContext); },
+AddAdditionalMember:function(additionalMembers,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddAdditionalMember',false,{additionalMembers:additionalMembers,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+DeleteAdditionalMember:function(childPurchaserId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteAdditionalMember',false,{childPurchaserId:childPurchaserId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+IsAddressCityStateZipcodeValid:function(city,state,zipcode,addressControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'IsAddressCityStateZipcodeValid',false,{city:city,state:state,zipcode:zipcode,addressControlTypeName:addressControlTypeName},succeededCallback,failedCallback,userContext); },
+GetAddressControlHtml:function(addressId,addressSlNo,addressMode,isDelete,primaryAddress,additionalAddress,personPhoneInformation,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,postedFormData,addressControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAddressControlHtml',false,{addressId:addressId,addressSlNo:addressSlNo,addressMode:addressMode,isDelete:isDelete,primaryAddress:primaryAddress,additionalAddress:additionalAddress,personPhoneInformation:personPhoneInformation,addressesString:addressesString,addressSelectionMode:addressSelectionMode,addressStatusMode:addressStatusMode,clientId:clientId,partialUpdateClientId:partialUpdateClientId,postedFormData:postedFormData,addressControlTypeName:addressControlTypeName},succeededCallback,failedCallback,userContext); },
+SaveOrUpdateAddressForRegisteredUser:function(addressId,additionalAddress,defaultAddressId,addressControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveOrUpdateAddressForRegisteredUser',false,{addressId:addressId,additionalAddress:additionalAddress,defaultAddressId:defaultAddressId,addressControlTypeName:addressControlTypeName},succeededCallback,failedCallback,userContext); },
+DeleteAddresses:function(addressId,personId,addressControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteAddresses',false,{addressId:addressId,personId:personId,addressControlTypeName:addressControlTypeName},succeededCallback,failedCallback,userContext); },
+GetAdditionalAddressesHtml:function(addressId,addressSlNo,addressMode,isDelete,personId,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,addressControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAdditionalAddressesHtml',false,{addressId:addressId,addressSlNo:addressSlNo,addressMode:addressMode,isDelete:isDelete,personId:personId,addressesString:addressesString,addressSelectionMode:addressSelectionMode,addressStatusMode:addressStatusMode,clientId:clientId,partialUpdateClientId:partialUpdateClientId,addressControlTypeName:addressControlTypeName},succeededCallback,failedCallback,userContext); },
+GetShowsAndEventsDataForCity:function(ajaxEvent,cityId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetShowsAndEventsDataForCity',false,{ajaxEvent:ajaxEvent,cityId:cityId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+LoadFieldsForCategory:function(ajaxEvent,eventCategoryId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'LoadFieldsForCategory',false,{ajaxEvent:ajaxEvent,eventCategoryId:eventCategoryId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetEventSearchResults:function(eventSearch,eventTypesCollection,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventSearchResults',false,{eventSearch:eventSearch,eventTypesCollection:eventTypesCollection,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetVenueHeader:function(venueId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetVenueHeader',false,{venueId:venueId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+AddToPeformanceComparator:function(productId,eventName,packageId,prodAvailId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddToPeformanceComparator',false,{productId:productId,eventName:eventName,packageId:packageId,prodAvailId:prodAvailId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+RemoveFromPeformanceComparator:function(productId,clientId,partialUpdateClientId,controlTypeName,isCompratorSearchCriteriaPBUpdatedReqired,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveFromPeformanceComparator',false,{productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName,isCompratorSearchCriteriaPBUpdatedReqired:isCompratorSearchCriteriaPBUpdatedReqired},succeededCallback,failedCallback,userContext); },
+SetNumberOfSeatsToPropertyBag:function(numberOfseats,clientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetNumberOfSeatsToPropertyBag',false,{numberOfseats:numberOfseats,clientId:clientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+CancelOfferTransaction:function(controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelOfferTransaction',false,{controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SetToDateTimeToPropertyBag:function(datetime,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetToDateTimeToPropertyBag',false,{datetime:datetime,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SetFormDateTimeToPropertyBag:function(datetime,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetFormDateTimeToPropertyBag',false,{datetime:datetime,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetsAndProcessTheaterDataForSeatingChart:function(eventId,levelNumber,selectionMode,recommendedSeats,seatingChartControlTypeName,renderFlags,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetsAndProcessTheaterDataForSeatingChart',false,{eventId:eventId,levelNumber:levelNumber,selectionMode:selectionMode,recommendedSeats:recommendedSeats,seatingChartControlTypeName:seatingChartControlTypeName,renderFlags:renderFlags},succeededCallback,failedCallback,userContext); },
+GetSpecificSeatLocations:function(eventid,segmentName,rowName,startSeat,endSeat,venueOnly,seatingChartControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSpecificSeatLocations',false,{eventid:eventid,segmentName:segmentName,rowName:rowName,startSeat:startSeat,endSeat:endSeat,venueOnly:venueOnly,seatingChartControlTypeName:seatingChartControlTypeName},succeededCallback,failedCallback,userContext); },
+LogSeatingChartException:function(exception,seatingChartControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'LogSeatingChartException',false,{exception:exception,seatingChartControlTypeName:seatingChartControlTypeName},succeededCallback,failedCallback,userContext); },
+UpdateSeatingChartStats:function(seatingChartType,silverlightStatus,seatingChartVersion,viewChanges,sectionChanges,finalView,availableSeatCountPriceBySection,seatsSelected,findTicketAreaSelected,seatingChartControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateSeatingChartStats',false,{seatingChartType:seatingChartType,silverlightStatus:silverlightStatus,seatingChartVersion:seatingChartVersion,viewChanges:viewChanges,sectionChanges:sectionChanges,finalView:finalView,availableSeatCountPriceBySection:availableSeatCountPriceBySection,seatsSelected:seatsSelected,findTicketAreaSelected:findTicketAreaSelected,seatingChartControlTypeName:seatingChartControlTypeName},succeededCallback,failedCallback,userContext); },
+SaveUserChoiceOnSilverLightInstallation:function(userChoiceOnSilverInstallation,seatingChartControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveUserChoiceOnSilverLightInstallation',false,{userChoiceOnSilverInstallation:userChoiceOnSilverInstallation,seatingChartControlTypeName:seatingChartControlTypeName},succeededCallback,failedCallback,userContext); },
+DoMoreTimeInquiry:function(productId,inquireRefNumber,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DoMoreTimeInquiry',false,{productId:productId,inquireRefNumber:inquireRefNumber,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+ReleaseInquire:function(ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ReleaseInquire',false,{ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+CancelOrderOnTransactionOnTSRTimeOut:function(ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelOrderOnTransactionOnTSRTimeOut',false,{ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+InquireExplicitSeats:function(inquireSeatStructList,performanceDate,performanceType,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InquireExplicitSeats',false,{inquireSeatStructList:inquireSeatStructList,performanceDate:performanceDate,performanceType:performanceType,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+InquireExplicitSeatsForComparator:function(inquireSeatStructList,performanceDate,performanceType,productId,choiceNumber,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InquireExplicitSeatsForComparator',false,{inquireSeatStructList:inquireSeatStructList,performanceDate:performanceDate,performanceType:performanceType,productId:productId,choiceNumber:choiceNumber,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+SetCurrentProductIdForComparator:function(productId,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetCurrentProductIdForComparator',false,{productId:productId,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+RememberSeats:function(productId,performanceDate,performanceType,choiceNumber,ticketSearchResultsControlTypeName,seatMessage,inquireResponseId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RememberSeats',false,{productId:productId,performanceDate:performanceDate,performanceType:performanceType,choiceNumber:choiceNumber,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName,seatMessage:seatMessage,inquireResponseId:inquireResponseId},succeededCallback,failedCallback,userContext); },
+RememberSeatsForFFA:function(productId,performanceDate,performanceType,inquireSeatStructList,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RememberSeatsForFFA',false,{productId:productId,performanceDate:performanceDate,performanceType:performanceType,inquireSeatStructList:inquireSeatStructList,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+RequestMoreTime:function(eventId,choiceNumber,inquireResponseID,selectedSeatIds,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RequestMoreTime',false,{eventId:eventId,choiceNumber:choiceNumber,inquireResponseID:inquireResponseID,selectedSeatIds:selectedSeatIds,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+GetEventChangeTargetURLInOfferMode:function(ticketSearchContextControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventChangeTargetURLInOfferMode',false,{ticketSearchContextControlTypeName:ticketSearchContextControlTypeName},succeededCallback,failedCallback,userContext); },
+InquireTickets:function(inquireAction,currentPerformanceDateTime,selectedLevelIdAndStarAreaMask,is3DSeatingChartActive,currentPerformanceFFAStatus,ticketSearchResultsControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InquireTickets',false,{inquireAction:inquireAction,currentPerformanceDateTime:currentPerformanceDateTime,selectedLevelIdAndStarAreaMask:selectedLevelIdAndStarAreaMask,is3DSeatingChartActive:is3DSeatingChartActive,currentPerformanceFFAStatus:currentPerformanceFFAStatus,ticketSearchResultsControlTypeName:ticketSearchResultsControlTypeName},succeededCallback,failedCallback,userContext); },
+StarTimerDoMoreTime:function(starTimerControlName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'StarTimerDoMoreTime',false,{starTimerControlName:starTimerControlName},succeededCallback,failedCallback,userContext); },
+ReInquire:function(inquireReferenceNumber,eventId,choiceNumber,ticketSearchHistoryControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ReInquire',false,{inquireReferenceNumber:inquireReferenceNumber,eventId:eventId,choiceNumber:choiceNumber,ticketSearchHistoryControlTypeName:ticketSearchHistoryControlTypeName},succeededCallback,failedCallback,userContext); },
+GetModifySearchHTML:function(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetModifySearchHTML',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,ticketSearchHistoryControlTypeName:ticketSearchHistoryControlTypeName},succeededCallback,failedCallback,userContext); },
+GetTicketSearchHistoryHTML:function(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetTicketSearchHistoryHTML',false,{clientId:clientId,partialUpdateClientId:partialUpdateClientId,ticketSearchHistoryControlTypeName:ticketSearchHistoryControlTypeName},succeededCallback,failedCallback,userContext); },
+RemoveProductAndRedirectToOfferLanding:function(productId,modifyTicketSearchTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveProductAndRedirectToOfferLanding',false,{productId:productId,modifyTicketSearchTypeName:modifyTicketSearchTypeName},succeededCallback,failedCallback,userContext); },
+CancelOrderOnTransaction:function(ticketSearchContextTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelOrderOnTransaction',false,{ticketSearchContextTypeName:ticketSearchContextTypeName},succeededCallback,failedCallback,userContext); },
+GetAvailablePerformancesByDateRange:function(ticketSearchResultsTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAvailablePerformancesByDateRange',false,{ticketSearchResultsTypeName:ticketSearchResultsTypeName},succeededCallback,failedCallback,userContext); },
+GetGiftCardBalanceAmountHTML:function(giftCardNumber,totalCost,invalidAttemptCount,clientId,partialUpdateClientId,giftCardPaymentTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetGiftCardBalanceAmountHTML',false,{giftCardNumber:giftCardNumber,totalCost:totalCost,invalidAttemptCount:invalidAttemptCount,clientId:clientId,partialUpdateClientId:partialUpdateClientId,giftCardPaymentTypeName:giftCardPaymentTypeName},succeededCallback,failedCallback,userContext); },
+DeleteCreditCard:function(creditCardId,methodOfPaymentControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteCreditCard',false,{creditCardId:creditCardId,methodOfPaymentControlTypeName:methodOfPaymentControlTypeName},succeededCallback,failedCallback,userContext); },
+GetCreditCardList:function(isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCreditCardList',false,{isTransactional:isTransactional,clientId:clientId,partialUpdateClientId:partialUpdateClientId,methodOfPaymentControlTypeName:methodOfPaymentControlTypeName},succeededCallback,failedCallback,userContext); },
+AddCreditCard:function(creditCard,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddCreditCard',false,{creditCard:creditCard,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SaveSecurityAnswer:function(questionAnswer,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveSecurityAnswer',false,{questionAnswer:questionAnswer,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+VerifySecurityQuestion:function(questionAnswer,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'VerifySecurityQuestion',false,{questionAnswer:questionAnswer,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+IsEmailExists:function(mailId,isTransactional,urlCheckOutOn,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'IsEmailExists',false,{mailId:mailId,isTransactional:isTransactional,urlCheckOutOn:urlCheckOutOn,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SaveToDelivra:function(emailId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveToDelivra',false,{emailId:emailId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+UpdateProductIdToPropertyBag:function(productId,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateProductIdToPropertyBag',false,{productId:productId,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+GetEventListControlHtml:function(eventListPageMode,isTransactiononlySite,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventListControlHtml',false,{eventListPageMode:eventListPageMode,isTransactiononlySite:isTransactiononlySite},succeededCallback,failedCallback,userContext); },
+GetDiningDateTime:function(dateTime,clientId,partialUpdateClientId,bookRestaurantTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetDiningDateTime',false,{dateTime:dateTime,clientId:clientId,partialUpdateClientId:partialUpdateClientId,bookRestaurantTypeName:bookRestaurantTypeName},succeededCallback,failedCallback,userContext); },
+GetSneakPeekHtml:function(eventId,clientId,partialUpdateClientId,sneakPeekEventCarouselTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSneakPeekHtml',false,{eventId:eventId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,sneakPeekEventCarouselTypeName:sneakPeekEventCarouselTypeName},succeededCallback,failedCallback,userContext); },
+GetEventOverviewHtml:function(eventId,eventName,clientId,partialUpdateClientId,eventOverviewTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventOverviewHtml',false,{eventId:eventId,eventName:eventName,clientId:clientId,partialUpdateClientId:partialUpdateClientId,eventOverviewTypeName:eventOverviewTypeName},succeededCallback,failedCallback,userContext); },
+RenderMediaPlayer:function(playerMode,partialUpdateClientId,eventOverviewTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RenderMediaPlayer',false,{playerMode:playerMode,partialUpdateClientId:partialUpdateClientId,eventOverviewTypeName:eventOverviewTypeName},succeededCallback,failedCallback,userContext); },
+UpdatePlayerStats:function(playlistName,itemCount,eventMediaPlayerControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdatePlayerStats',false,{playlistName:playlistName,itemCount:itemCount,eventMediaPlayerControlTypeName:eventMediaPlayerControlTypeName},succeededCallback,failedCallback,userContext); },
+UpdateMediaViewingStatus:function(mediaListName,mediaTitle,eventMediaPlayerControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateMediaViewingStatus',false,{mediaListName:mediaListName,mediaTitle:mediaTitle,eventMediaPlayerControlTypeName:eventMediaPlayerControlTypeName},succeededCallback,failedCallback,userContext); },
+GetEventQuickFactsHtml:function(eventId,eventOnSale,clientId,partialUpdateClientId,eventQuickFactsTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEventQuickFactsHtml',false,{eventId:eventId,eventOnSale:eventOnSale,clientId:clientId,partialUpdateClientId:partialUpdateClientId,eventQuickFactsTypeName:eventQuickFactsTypeName},succeededCallback,failedCallback,userContext); },
+GetSubsequentResultsPage:function(ajaxEvent,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSubsequentResultsPage',false,{ajaxEvent:ajaxEvent,clientId:clientId,partialUpdateClientId:partialUpdateClientId,isBroadwayOfferSite:isBroadwayOfferSite,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetResultsForAlphabet:function(alphabet,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetResultsForAlphabet',false,{alphabet:alphabet,clientId:clientId,partialUpdateClientId:partialUpdateClientId,isBroadwayOfferSite:isBroadwayOfferSite,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+CheckRememberedSeatAvailability:function(purchaserWishListId,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CheckRememberedSeatAvailability',false,{purchaserWishListId:purchaserWishListId,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+CallTestAjax:function(val,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CallTestAjax',true,{val:val,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+RemoveItemFromMyList:function(wishListItemType,purchaserWishListId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveItemFromMyList',false,{wishListItemType:wishListItemType,purchaserWishListId:purchaserWishListId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+ReloadMyEventList:function(isBroadwayOffersSite,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ReloadMyEventList',false,{isBroadwayOffersSite:isBroadwayOffersSite,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+AddToMyEventList:function(productId,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddToMyEventList',false,{productId:productId,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+AddEventListProductIdInSession:function(productId,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddEventListProductIdInSession',false,{productId:productId,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+AddEventListInSneakPeek:function(productId,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddEventListInSneakPeek',false,{productId:productId,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+AddEventListInProductHeader:function(productId,promoCode,eventlistControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddEventListInProductHeader',false,{productId:productId,promoCode:promoCode,eventlistControlTypeName:eventlistControlTypeName},succeededCallback,failedCallback,userContext); },
+DisplayOfferListForEvent:function(productId,clientId,partialUpdateClientId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DisplayOfferListForEvent',false,{productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetOfferLandingPage:function(offerId,confirmation,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOfferLandingPage',false,{offerId:offerId,confirmation:confirmation,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+InitiateOfferProduct:function(offerId,packageId,prodAvailId,productId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'InitiateOfferProduct',false,{offerId:offerId,packageId:packageId,prodAvailId:prodAvailId,productId:productId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+RemoveOfferFromMyList:function(purchaserWishListId,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveOfferFromMyList',false,{purchaserWishListId:purchaserWishListId,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SelectProduct:function(packageId,prodAvailId,productId,eventName,isWorkFlowRequired,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SelectProduct',false,{packageId:packageId,prodAvailId:prodAvailId,productId:productId,eventName:eventName,isWorkFlowRequired:isWorkFlowRequired,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+SelectProductForOfferLandingInFindTickets:function(packageId,prodAvailId,productId,eventName,controlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SelectProductForOfferLandingInFindTickets',false,{packageId:packageId,prodAvailId:prodAvailId,productId:productId,eventName:eventName,controlTypeName:controlTypeName},succeededCallback,failedCallback,userContext); },
+GetAttractionDateControlHTML:function(attractionDateTime,userAction,productId,clientId,partialUpdateClientId,attractionDateTimeControlContainer,attractionDateControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAttractionDateControlHTML',false,{attractionDateTime:attractionDateTime,userAction:userAction,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,attractionDateTimeControlContainer:attractionDateTimeControlContainer,attractionDateControlTypeName:attractionDateControlTypeName},succeededCallback,failedCallback,userContext); },
+GetNatGeoDatePrices:function(SelectedDateStr,OfferId,ProdAvailId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetNatGeoDatePrices',false,{SelectedDateStr:SelectedDateStr,OfferId:OfferId,ProdAvailId:ProdAvailId},succeededCallback,failedCallback,userContext); },
+GetPerformanceFFAStatus:function(performanceSeatingModeSelectionTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformanceFFAStatus',false,{performanceSeatingModeSelectionTypeName:performanceSeatingModeSelectionTypeName},succeededCallback,failedCallback,userContext); },
+GetPerformanceDateControlHTML:function(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateTimeControlContainer,performanceDateControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformanceDateControlHTML',false,{performanceDateTime:performanceDateTime,userAction:userAction,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,performanceDateTimeControlContainer:performanceDateTimeControlContainer,performanceDateControlTypeName:performanceDateControlTypeName},succeededCallback,failedCallback,userContext); },
+GetPerformanceDateSelectionControlHTML:function(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformanceDateSelectionControlHTML',false,{performanceDateTime:performanceDateTime,userAction:userAction,productId:productId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,performanceDateControlTypeName:performanceDateControlTypeName},succeededCallback,failedCallback,userContext); },
+GetFlexiDateOptionsStatuses:function(performanceDateTime,productId,performanceDateControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetFlexiDateOptionsStatuses',false,{performanceDateTime:performanceDateTime,productId:productId,performanceDateControlTypeName:performanceDateControlTypeName},succeededCallback,failedCallback,userContext); },
+GetPerformancesFFAStatus:function(strSelectedPerformances,productId,performanceSeatingModeSelectionTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPerformancesFFAStatus',false,{strSelectedPerformances:strSelectedPerformances,productId:productId,performanceSeatingModeSelectionTypeName:performanceSeatingModeSelectionTypeName},succeededCallback,failedCallback,userContext); },
+ValidatePromoCode:function(productId,promoCode,premiumAndAmexControlTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ValidatePromoCode',false,{productId:productId,promoCode:promoCode,premiumAndAmexControlTypeName:premiumAndAmexControlTypeName},succeededCallback,failedCallback,userContext); },
+GetSelectedPerformanceDatesDisplayHTML:function(productId,strSelectedPerformanceDates,flexiDateOptionSelectionStatus,isPerformanceDateRangeMode,performanceToDate,performanceFromDate,eveningPerfTypeDayOfWeeks,matineePerfTypeDayOfWeeks,ticketSearchContextTypeName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetSelectedPerformanceDatesDisplayHTML',false,{productId:productId,strSelectedPerformanceDates:strSelectedPerformanceDates,flexiDateOptionSelectionStatus:flexiDateOptionSelectionStatus,isPerformanceDateRangeMode:isPerformanceDateRangeMode,performanceToDate:performanceToDate,performanceFromDate:performanceFromDate,eveningPerfTypeDayOfWeeks:eveningPerfTypeDayOfWeeks,matineePerfTypeDayOfWeeks:matineePerfTypeDayOfWeeks,ticketSearchContextTypeName:ticketSearchContextTypeName},succeededCallback,failedCallback,userContext); },
+GetOrderDetailForGuest:function(orderId,emailId,clientId,partialUpdateClientId,orderStatusType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOrderDetailForGuest',false,{orderId:orderId,emailId:emailId,clientId:clientId,partialUpdateClientId:partialUpdateClientId,orderStatusType:orderStatusType},succeededCallback,failedCallback,userContext); },
+CancelCurrentOrderOnHeaderLinkClick:function(headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelCurrentOrderOnHeaderLinkClick',false,{headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+CancelOrderOnEventChange:function(headerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelOrderOnEventChange',false,{headerControlType:headerControlType},succeededCallback,failedCallback,userContext); },
+CancelCurrentOrderOnFooterLinkClick:function(footerControlType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CancelCurrentOrderOnFooterLinkClick',false,{footerControlType:footerControlType},succeededCallback,failedCallback,userContext); }}
+PageMethods.registerClass('PageMethods',Sys.Net.WebServiceProxy);
+PageMethods._staticInstance = new PageMethods();
+PageMethods.set_path = function(value) { PageMethods._staticInstance.set_path(value); }
+PageMethods.get_path = function() { return PageMethods._staticInstance.get_path(); }
+PageMethods.set_timeout = function(value) { PageMethods._staticInstance.set_timeout(value); }
+PageMethods.get_timeout = function() { return PageMethods._staticInstance.get_timeout(); }
+PageMethods.set_defaultUserContext = function(value) { PageMethods._staticInstance.set_defaultUserContext(value); }
+PageMethods.get_defaultUserContext = function() { return PageMethods._staticInstance.get_defaultUserContext(); }
+PageMethods.set_defaultSucceededCallback = function(value) { PageMethods._staticInstance.set_defaultSucceededCallback(value); }
+PageMethods.get_defaultSucceededCallback = function() { return PageMethods._staticInstance.get_defaultSucceededCallback(); }
+PageMethods.set_defaultFailedCallback = function(value) { PageMethods._staticInstance.set_defaultFailedCallback(value); }
+PageMethods.get_defaultFailedCallback = function() { return PageMethods._staticInstance.get_defaultFailedCallback(); }
+PageMethods.set_enableJsonp = function(value) { PageMethods._staticInstance.set_enableJsonp(value); }
+PageMethods.get_enableJsonp = function() { return PageMethods._staticInstance.get_enableJsonp(); }
+PageMethods.set_jsonpCallbackParameter = function(value) { PageMethods._staticInstance.set_jsonpCallbackParameter(value); }
+PageMethods.get_jsonpCallbackParameter = function() { return PageMethods._staticInstance.get_jsonpCallbackParameter(); }
+PageMethods.set_path("home.aspx");
+PageMethods.CancelCurrentOrderOnTransactionExpiration= function(timerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelCurrentOrderOnTransactionExpiration(timerControlType,onSuccess,onFailed,userContext); }
+PageMethods.RedirectOnChangeEvent= function(transactionCommandType,transactionProductType,productId,parentProductId,isBroadwayOffersSiteContext,parentProductPerformance,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RedirectOnChangeEvent(transactionCommandType,transactionProductType,productId,parentProductId,isBroadwayOffersSiteContext,parentProductPerformance,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetTestPageAjaxControlHtml= function(onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetTestPageAjaxControlHtml(onSuccess,onFailed,userContext); }
+PageMethods.GetMembershipListing= function(seasonId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetMembershipListing(seasonId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetMembershipInfo= function(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetMembershipInfo(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetMembershipRenewalPrompt= function(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetMembershipRenewalPrompt(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ValidateMembershipAccounts= function(productid,membershipIdsAndPhoneNumbers,addMembershipAccountsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ValidateMembershipAccounts(productid,membershipIdsAndPhoneNumbers,addMembershipAccountsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ValidateSpecialPopulationOffer= function(offerId,groupCode,MarketingCodeTransactionInitiatorType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ValidateSpecialPopulationOffer(offerId,groupCode,MarketingCodeTransactionInitiatorType,onSuccess,onFailed,userContext); }
+PageMethods.GetAddMembershipAccountsControlHTML= function(userAction,clientId,partialUpdateClientId,addMembershipAccountsControlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAddMembershipAccountsControlHTML(userAction,clientId,partialUpdateClientId,addMembershipAccountsControlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.SetSelectedMenuInPropertyBag= function(menuId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetSelectedMenuInPropertyBag(menuId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.FetchNextNavigationURL= function(productId,productTypeId,productAvailId,packageId,linktype,controlTypeName,productName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.FetchNextNavigationURL(productId,productTypeId,productAvailId,packageId,linktype,controlTypeName,productName,onSuccess,onFailed,userContext); }
+PageMethods.AddOfferToWishList= function(controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddOfferToWishList(controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveOfferIDForMyEventList= function(controlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveOfferIDForMyEventList(controlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.AddMarketingCodeToWishList= function(controlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddMarketingCodeToWishList(controlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.SaveMarketingCodeToMyEventList= function(controlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveMarketingCodeToMyEventList(controlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.AddMarketingCodeToWishListFromMarketingCodeHeader= function(controlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddMarketingCodeToWishListFromMarketingCodeHeader(controlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.SaveMarketingCodeForMyEventListFromMarketingCodeHeader= function(controlTypeName,productId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveMarketingCodeForMyEventListFromMarketingCodeHeader(controlTypeName,productId,onSuccess,onFailed,userContext); }
+PageMethods.RemoveProduct= function(packageId,prodAvailId,perfDateTime,perfType,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveProduct(packageId,prodAvailId,perfDateTime,perfType,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ChangeSelection= function(controlTypeName,productType,actionName,productId,packageId,prodAvailId,perfDateTime,perfType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ChangeSelection(controlTypeName,productType,actionName,productId,packageId,prodAvailId,perfDateTime,perfType,onSuccess,onFailed,userContext); }
+PageMethods.GetOfferWorkFlowLandingURL= function(offerId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetOfferWorkFlowLandingURL(offerId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CheckForActiveTransaction= function(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CheckForActiveTransaction(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CancelCurrentOrderFromSubNavigation= function(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelCurrentOrderFromSubNavigation(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ReleaseInquireInOfferContext= function(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ReleaseInquireInOfferContext(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CancelCurrentOrderFromNavigation= function(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelCurrentOrderFromNavigation(activeTransactionDetectorControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SendEmailLink= function(pageEmailLink,sendEmailLinkControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SendEmailLink(pageEmailLink,sendEmailLinkControlType,onSuccess,onFailed,userContext); }
+PageMethods.GetTransactionId= function(currentPageId,sessionHanlderControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetTransactionId(currentPageId,sessionHanlderControlType,onSuccess,onFailed,userContext); }
+PageMethods.ClearTransaction= function(activeTransactionDetectorControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ClearTransaction(activeTransactionDetectorControlType,onSuccess,onFailed,userContext); }
+PageMethods.GetControlHtmlNoParameters= function(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetControlHtmlNoParameters(clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdateContactInformation= function(contactInfo,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateContactInformation(contactInfo,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.PrepareCoremetricsPageViewTagWithInquiryErrorMessage= function(inquiryErrorMsg,productId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.PrepareCoremetricsPageViewTagWithInquiryErrorMessage(inquiryErrorMsg,productId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdateUserNameCookie= function(userName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateUserNameCookie(userName,onSuccess,onFailed,userContext); }
+PageMethods.AddRequestedURL= function(requestedUrl,headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddRequestedURL(requestedUrl,headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.RemoveRequestedUrlFromPropertyBag= function(headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveRequestedUrlFromPropertyBag(headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.RemoveRequestedUrlAndResetWelcomeMessage= function(headerControlType,headerControlId,welcomeMessageDivId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveRequestedUrlAndResetWelcomeMessage(headerControlType,headerControlId,welcomeMessageDivId,onSuccess,onFailed,userContext); }
+PageMethods.FlushShowLoginInContentFlag= function(headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.FlushShowLoginInContentFlag(headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.MarketingCodeLeaveOffer= function(headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.MarketingCodeLeaveOffer(headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.GetEventFinderControlHtml= function(cityId,clientId,partialUpdateClientId,eventFinderControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventFinderControlHtml(cityId,clientId,partialUpdateClientId,eventFinderControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveEventSearchCriteria= function(eventSearch,eventTypesCollection,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveEventSearchCriteria(eventSearch,eventTypesCollection,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSelectedVendorDetails= function(parkingVendors,sourceAddress,destinationAddress,clientId,partialUpdateClientId,directionsAndParkingControlTypeName,postBackProductId,selectedDay,selectedTime,isHopStop,sourceLatitude,sourceLongitude,destLatitude,destLongitude,sourceAddressWithoutVenueNameAndAddress2,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSelectedVendorDetails(parkingVendors,sourceAddress,destinationAddress,clientId,partialUpdateClientId,directionsAndParkingControlTypeName,postBackProductId,selectedDay,selectedTime,isHopStop,sourceLatitude,sourceLongitude,destLatitude,destLongitude,sourceAddressWithoutVenueNameAndAddress2,onSuccess,onFailed,userContext); }
+PageMethods.UpdateDirectionAndParkingSearchCoremetricStatus= function(sourceAddress,destinationAddress,hopstopFlag,directionsAndParkingControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateDirectionAndParkingSearchCoremetricStatus(sourceAddress,destinationAddress,hopstopFlag,directionsAndParkingControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetRestaurantListControlHtml= function(cityId,cityName,clientId,partialUpdateClientId,restaurantListControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetRestaurantListControlHtml(cityId,cityName,clientId,partialUpdateClientId,restaurantListControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GeFeaturedItemsControlHtml= function(cityId,clientId,partialUpdateClientId,featuredItemsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GeFeaturedItemsControlHtml(cityId,clientId,partialUpdateClientId,featuredItemsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdatePerformanceList= function(performanceList,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdatePerformanceList(performanceList,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSpecificPerformanceDateSelectionControlHtml= function(mode,performanceDateTimes,clientId,partialUpdateClientId,performanceDateSelectionTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSpecificPerformanceDateSelectionControlHtml(mode,performanceDateTimes,clientId,partialUpdateClientId,performanceDateSelectionTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformancesFFAStatusForDateRange= function(strFromDate,strToDate,productId,performanceDateSelectionTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformancesFFAStatusForDateRange(strFromDate,strToDate,productId,performanceDateSelectionTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAmexWhatIsThisControlContent= function(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAmexWhatIsThisControlContent(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,onSuccess,onFailed,userContext); }
+PageMethods.GetAmexSignupOptionsContent= function(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAmexSignupOptionsContent(amexCode,isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlType,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformanceListForMonth= function(monthYear,productId,clientId,partialUpdateClientId,monthOverLayType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformanceListForMonth(monthYear,productId,clientId,partialUpdateClientId,monthOverLayType,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformancePriceForMonth= function(startDate,endDate,productId,clientId,partialUpdateClientId,schedulesPricingControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformancePriceForMonth(startDate,endDate,productId,clientId,partialUpdateClientId,schedulesPricingControlType,onSuccess,onFailed,userContext); }
+PageMethods.UpdateCalendarViewStatus= function(changeMonthOrWeek,value,scheduleAndPricingControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateCalendarViewStatus(changeMonthOrWeek,value,scheduleAndPricingControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetNumberOfSeatsControlHtml= function(numberOfSeatsMode,productId,clientId,partialUpdateClientId,numberOfSeatsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetNumberOfSeatsControlHtml(numberOfSeatsMode,productId,clientId,partialUpdateClientId,numberOfSeatsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetPromotionalCodeControlHtml= function(promotionalType,promotionalCode,clientId,partialUpdateClientId,promotionalCodeTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPromotionalCodeControlHtml(promotionalType,promotionalCode,clientId,partialUpdateClientId,promotionalCodeTypeName,onSuccess,onFailed,userContext); }
+PageMethods.NatGeoGetOfferUrlByMarketingCode= function(marketingCode,onSuccess,onFailed,userContext) {PageMethods._staticInstance.NatGeoGetOfferUrlByMarketingCode(marketingCode,onSuccess,onFailed,userContext); }
+PageMethods.InitiateMarketingCodeTransaction= function(productId,marketingCode,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InitiateMarketingCodeTransaction(productId,marketingCode,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,onSuccess,onFailed,userContext); }
+PageMethods.InitiateEntitlementOfferMarketingCodeTransaction= function(productId,marketingCode,offerId,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InitiateEntitlementOfferMarketingCodeTransaction(productId,marketingCode,offerId,explicitTargetPageUrl,sourceGoPage,marketingcodeTransactionInitiatorType,onSuccess,onFailed,userContext); }
+PageMethods.MarketingCodeLeaveTheOffer= function(productId,marketingCodeHeaderControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.MarketingCodeLeaveTheOffer(productId,marketingCodeHeaderControlType,onSuccess,onFailed,userContext); }
+PageMethods.SetPropertyBagItem= function(propertyBagItemName,value,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetPropertyBagItem(propertyBagItemName,value,onSuccess,onFailed,userContext); }
+PageMethods.GetOtherPeopleHtml= function(additionalMembers,clientId,partialUpdateClientId,otherPeopleControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetOtherPeopleHtml(additionalMembers,clientId,partialUpdateClientId,otherPeopleControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.KillPropertyBagItem= function(propertyBagItemName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.KillPropertyBagItem(propertyBagItemName,onSuccess,onFailed,userContext); }
+PageMethods.KillSessionItem= function(sessionItemName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.KillSessionItem(sessionItemName,onSuccess,onFailed,userContext); }
+PageMethods.GetEncodedURLForSiteSearch= function(searchKeyWord,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEncodedURLForSiteSearch(searchKeyWord,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSiteSearchResultControlHtml= function(searchKeyWord,clientId,partialUpdateClientId,siteSearchControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSiteSearchResultControlHtml(searchKeyWord,clientId,partialUpdateClientId,siteSearchControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SendEmailFromAjax= function(fromEmail,toEmail,subject,pageName,lightWeightListing,confirmationEmailTypeName,clientId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SendEmailFromAjax(fromEmail,toEmail,subject,pageName,lightWeightListing,confirmationEmailTypeName,clientId,onSuccess,onFailed,userContext); }
+PageMethods.GetCarouselControlHtml= function(eventCategoryId,clientId,partialUpdateClientId,carouselControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetCarouselControlHtml(eventCategoryId,clientId,partialUpdateClientId,carouselControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAdditionalMemberHTML= function(clientId,partialUpdateClientId,otherPeopleControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAdditionalMemberHTML(clientId,partialUpdateClientId,otherPeopleControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddAdditionalMember= function(additionalMembers,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddAdditionalMember(additionalMembers,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.DeleteAdditionalMember= function(childPurchaserId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.DeleteAdditionalMember(childPurchaserId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.IsAddressCityStateZipcodeValid= function(city,state,zipcode,addressControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.IsAddressCityStateZipcodeValid(city,state,zipcode,addressControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAddressControlHtml= function(addressId,addressSlNo,addressMode,isDelete,primaryAddress,additionalAddress,personPhoneInformation,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,postedFormData,addressControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAddressControlHtml(addressId,addressSlNo,addressMode,isDelete,primaryAddress,additionalAddress,personPhoneInformation,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,postedFormData,addressControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveOrUpdateAddressForRegisteredUser= function(addressId,additionalAddress,defaultAddressId,addressControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveOrUpdateAddressForRegisteredUser(addressId,additionalAddress,defaultAddressId,addressControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.DeleteAddresses= function(addressId,personId,addressControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.DeleteAddresses(addressId,personId,addressControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAdditionalAddressesHtml= function(addressId,addressSlNo,addressMode,isDelete,personId,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,addressControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAdditionalAddressesHtml(addressId,addressSlNo,addressMode,isDelete,personId,addressesString,addressSelectionMode,addressStatusMode,clientId,partialUpdateClientId,addressControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetShowsAndEventsDataForCity= function(ajaxEvent,cityId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetShowsAndEventsDataForCity(ajaxEvent,cityId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.LoadFieldsForCategory= function(ajaxEvent,eventCategoryId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.LoadFieldsForCategory(ajaxEvent,eventCategoryId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetEventSearchResults= function(eventSearch,eventTypesCollection,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventSearchResults(eventSearch,eventTypesCollection,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetVenueHeader= function(venueId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetVenueHeader(venueId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddToPeformanceComparator= function(productId,eventName,packageId,prodAvailId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddToPeformanceComparator(productId,eventName,packageId,prodAvailId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RemoveFromPeformanceComparator= function(productId,clientId,partialUpdateClientId,controlTypeName,isCompratorSearchCriteriaPBUpdatedReqired,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveFromPeformanceComparator(productId,clientId,partialUpdateClientId,controlTypeName,isCompratorSearchCriteriaPBUpdatedReqired,onSuccess,onFailed,userContext); }
+PageMethods.SetNumberOfSeatsToPropertyBag= function(numberOfseats,clientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetNumberOfSeatsToPropertyBag(numberOfseats,clientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CancelOfferTransaction= function(controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelOfferTransaction(controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SetToDateTimeToPropertyBag= function(datetime,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetToDateTimeToPropertyBag(datetime,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SetFormDateTimeToPropertyBag= function(datetime,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetFormDateTimeToPropertyBag(datetime,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetsAndProcessTheaterDataForSeatingChart= function(eventId,levelNumber,selectionMode,recommendedSeats,seatingChartControlTypeName,renderFlags,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetsAndProcessTheaterDataForSeatingChart(eventId,levelNumber,selectionMode,recommendedSeats,seatingChartControlTypeName,renderFlags,onSuccess,onFailed,userContext); }
+PageMethods.GetSpecificSeatLocations= function(eventid,segmentName,rowName,startSeat,endSeat,venueOnly,seatingChartControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSpecificSeatLocations(eventid,segmentName,rowName,startSeat,endSeat,venueOnly,seatingChartControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.LogSeatingChartException= function(exception,seatingChartControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.LogSeatingChartException(exception,seatingChartControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdateSeatingChartStats= function(seatingChartType,silverlightStatus,seatingChartVersion,viewChanges,sectionChanges,finalView,availableSeatCountPriceBySection,seatsSelected,findTicketAreaSelected,seatingChartControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateSeatingChartStats(seatingChartType,silverlightStatus,seatingChartVersion,viewChanges,sectionChanges,finalView,availableSeatCountPriceBySection,seatsSelected,findTicketAreaSelected,seatingChartControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveUserChoiceOnSilverLightInstallation= function(userChoiceOnSilverInstallation,seatingChartControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveUserChoiceOnSilverLightInstallation(userChoiceOnSilverInstallation,seatingChartControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.DoMoreTimeInquiry= function(productId,inquireRefNumber,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.DoMoreTimeInquiry(productId,inquireRefNumber,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ReleaseInquire= function(ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ReleaseInquire(ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CancelOrderOnTransactionOnTSRTimeOut= function(ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelOrderOnTransactionOnTSRTimeOut(ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.InquireExplicitSeats= function(inquireSeatStructList,performanceDate,performanceType,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InquireExplicitSeats(inquireSeatStructList,performanceDate,performanceType,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.InquireExplicitSeatsForComparator= function(inquireSeatStructList,performanceDate,performanceType,productId,choiceNumber,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InquireExplicitSeatsForComparator(inquireSeatStructList,performanceDate,performanceType,productId,choiceNumber,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SetCurrentProductIdForComparator= function(productId,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SetCurrentProductIdForComparator(productId,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RememberSeats= function(productId,performanceDate,performanceType,choiceNumber,ticketSearchResultsControlTypeName,seatMessage,inquireResponseId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RememberSeats(productId,performanceDate,performanceType,choiceNumber,ticketSearchResultsControlTypeName,seatMessage,inquireResponseId,onSuccess,onFailed,userContext); }
+PageMethods.RememberSeatsForFFA= function(productId,performanceDate,performanceType,inquireSeatStructList,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RememberSeatsForFFA(productId,performanceDate,performanceType,inquireSeatStructList,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RequestMoreTime= function(eventId,choiceNumber,inquireResponseID,selectedSeatIds,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RequestMoreTime(eventId,choiceNumber,inquireResponseID,selectedSeatIds,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetEventChangeTargetURLInOfferMode= function(ticketSearchContextControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventChangeTargetURLInOfferMode(ticketSearchContextControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.InquireTickets= function(inquireAction,currentPerformanceDateTime,selectedLevelIdAndStarAreaMask,is3DSeatingChartActive,currentPerformanceFFAStatus,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InquireTickets(inquireAction,currentPerformanceDateTime,selectedLevelIdAndStarAreaMask,is3DSeatingChartActive,currentPerformanceFFAStatus,ticketSearchResultsControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.StarTimerDoMoreTime= function(starTimerControlName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.StarTimerDoMoreTime(starTimerControlName,onSuccess,onFailed,userContext); }
+PageMethods.ReInquire= function(inquireReferenceNumber,eventId,choiceNumber,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ReInquire(inquireReferenceNumber,eventId,choiceNumber,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetModifySearchHTML= function(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetModifySearchHTML(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetTicketSearchHistoryHTML= function(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetTicketSearchHistoryHTML(clientId,partialUpdateClientId,ticketSearchHistoryControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RemoveProductAndRedirectToOfferLanding= function(productId,modifyTicketSearchTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveProductAndRedirectToOfferLanding(productId,modifyTicketSearchTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CancelOrderOnTransaction= function(ticketSearchContextTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelOrderOnTransaction(ticketSearchContextTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAvailablePerformancesByDateRange= function(ticketSearchResultsTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAvailablePerformancesByDateRange(ticketSearchResultsTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetGiftCardBalanceAmountHTML= function(giftCardNumber,totalCost,invalidAttemptCount,clientId,partialUpdateClientId,giftCardPaymentTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetGiftCardBalanceAmountHTML(giftCardNumber,totalCost,invalidAttemptCount,clientId,partialUpdateClientId,giftCardPaymentTypeName,onSuccess,onFailed,userContext); }
+PageMethods.DeleteCreditCard= function(creditCardId,methodOfPaymentControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.DeleteCreditCard(creditCardId,methodOfPaymentControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetCreditCardList= function(isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetCreditCardList(isTransactional,clientId,partialUpdateClientId,methodOfPaymentControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddCreditCard= function(creditCard,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddCreditCard(creditCard,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveSecurityAnswer= function(questionAnswer,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveSecurityAnswer(questionAnswer,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.VerifySecurityQuestion= function(questionAnswer,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.VerifySecurityQuestion(questionAnswer,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.IsEmailExists= function(mailId,isTransactional,urlCheckOutOn,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.IsEmailExists(mailId,isTransactional,urlCheckOutOn,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SaveToDelivra= function(emailId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveToDelivra(emailId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdateProductIdToPropertyBag= function(productId,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateProductIdToPropertyBag(productId,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetEventListControlHtml= function(eventListPageMode,isTransactiononlySite,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventListControlHtml(eventListPageMode,isTransactiononlySite,onSuccess,onFailed,userContext); }
+PageMethods.GetDiningDateTime= function(dateTime,clientId,partialUpdateClientId,bookRestaurantTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetDiningDateTime(dateTime,clientId,partialUpdateClientId,bookRestaurantTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSneakPeekHtml= function(eventId,clientId,partialUpdateClientId,sneakPeekEventCarouselTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSneakPeekHtml(eventId,clientId,partialUpdateClientId,sneakPeekEventCarouselTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetEventOverviewHtml= function(eventId,eventName,clientId,partialUpdateClientId,eventOverviewTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventOverviewHtml(eventId,eventName,clientId,partialUpdateClientId,eventOverviewTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RenderMediaPlayer= function(playerMode,partialUpdateClientId,eventOverviewTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RenderMediaPlayer(playerMode,partialUpdateClientId,eventOverviewTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdatePlayerStats= function(playlistName,itemCount,eventMediaPlayerControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdatePlayerStats(playlistName,itemCount,eventMediaPlayerControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.UpdateMediaViewingStatus= function(mediaListName,mediaTitle,eventMediaPlayerControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.UpdateMediaViewingStatus(mediaListName,mediaTitle,eventMediaPlayerControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetEventQuickFactsHtml= function(eventId,eventOnSale,clientId,partialUpdateClientId,eventQuickFactsTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetEventQuickFactsHtml(eventId,eventOnSale,clientId,partialUpdateClientId,eventQuickFactsTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSubsequentResultsPage= function(ajaxEvent,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSubsequentResultsPage(ajaxEvent,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetResultsForAlphabet= function(alphabet,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetResultsForAlphabet(alphabet,clientId,partialUpdateClientId,isBroadwayOfferSite,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CheckRememberedSeatAvailability= function(purchaserWishListId,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CheckRememberedSeatAvailability(purchaserWishListId,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.CallTestAjax= function(val,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CallTestAjax(val,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RemoveItemFromMyList= function(wishListItemType,purchaserWishListId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveItemFromMyList(wishListItemType,purchaserWishListId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ReloadMyEventList= function(isBroadwayOffersSite,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ReloadMyEventList(isBroadwayOffersSite,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddToMyEventList= function(productId,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddToMyEventList(productId,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddEventListProductIdInSession= function(productId,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddEventListProductIdInSession(productId,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddEventListInSneakPeek= function(productId,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddEventListInSneakPeek(productId,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.AddEventListInProductHeader= function(productId,promoCode,eventlistControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AddEventListInProductHeader(productId,promoCode,eventlistControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.DisplayOfferListForEvent= function(productId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.DisplayOfferListForEvent(productId,clientId,partialUpdateClientId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetOfferLandingPage= function(offerId,confirmation,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetOfferLandingPage(offerId,confirmation,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.InitiateOfferProduct= function(offerId,packageId,prodAvailId,productId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.InitiateOfferProduct(offerId,packageId,prodAvailId,productId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.RemoveOfferFromMyList= function(purchaserWishListId,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.RemoveOfferFromMyList(purchaserWishListId,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SelectProduct= function(packageId,prodAvailId,productId,eventName,isWorkFlowRequired,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SelectProduct(packageId,prodAvailId,productId,eventName,isWorkFlowRequired,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.SelectProductForOfferLandingInFindTickets= function(packageId,prodAvailId,productId,eventName,controlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SelectProductForOfferLandingInFindTickets(packageId,prodAvailId,productId,eventName,controlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetAttractionDateControlHTML= function(attractionDateTime,userAction,productId,clientId,partialUpdateClientId,attractionDateTimeControlContainer,attractionDateControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetAttractionDateControlHTML(attractionDateTime,userAction,productId,clientId,partialUpdateClientId,attractionDateTimeControlContainer,attractionDateControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetNatGeoDatePrices= function(SelectedDateStr,OfferId,ProdAvailId,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetNatGeoDatePrices(SelectedDateStr,OfferId,ProdAvailId,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformanceFFAStatus= function(performanceSeatingModeSelectionTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformanceFFAStatus(performanceSeatingModeSelectionTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformanceDateControlHTML= function(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateTimeControlContainer,performanceDateControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformanceDateControlHTML(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateTimeControlContainer,performanceDateControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformanceDateSelectionControlHTML= function(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformanceDateSelectionControlHTML(performanceDateTime,userAction,productId,clientId,partialUpdateClientId,performanceDateControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetFlexiDateOptionsStatuses= function(performanceDateTime,productId,performanceDateControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetFlexiDateOptionsStatuses(performanceDateTime,productId,performanceDateControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetPerformancesFFAStatus= function(strSelectedPerformances,productId,performanceSeatingModeSelectionTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetPerformancesFFAStatus(strSelectedPerformances,productId,performanceSeatingModeSelectionTypeName,onSuccess,onFailed,userContext); }
+PageMethods.ValidatePromoCode= function(productId,promoCode,premiumAndAmexControlTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ValidatePromoCode(productId,promoCode,premiumAndAmexControlTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetSelectedPerformanceDatesDisplayHTML= function(productId,strSelectedPerformanceDates,flexiDateOptionSelectionStatus,isPerformanceDateRangeMode,performanceToDate,performanceFromDate,eveningPerfTypeDayOfWeeks,matineePerfTypeDayOfWeeks,ticketSearchContextTypeName,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetSelectedPerformanceDatesDisplayHTML(productId,strSelectedPerformanceDates,flexiDateOptionSelectionStatus,isPerformanceDateRangeMode,performanceToDate,performanceFromDate,eveningPerfTypeDayOfWeeks,matineePerfTypeDayOfWeeks,ticketSearchContextTypeName,onSuccess,onFailed,userContext); }
+PageMethods.GetOrderDetailForGuest= function(orderId,emailId,clientId,partialUpdateClientId,orderStatusType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.GetOrderDetailForGuest(orderId,emailId,clientId,partialUpdateClientId,orderStatusType,onSuccess,onFailed,userContext); }
+PageMethods.CancelCurrentOrderOnHeaderLinkClick= function(headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelCurrentOrderOnHeaderLinkClick(headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.CancelOrderOnEventChange= function(headerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelOrderOnEventChange(headerControlType,onSuccess,onFailed,userContext); }
+PageMethods.CancelCurrentOrderOnFooterLinkClick= function(footerControlType,onSuccess,onFailed,userContext) {PageMethods._staticInstance.CancelCurrentOrderOnFooterLinkClick(footerControlType,onSuccess,onFailed,userContext); }
+var gtc = Sys.Net.WebServiceProxy._generateTypedConstructor;
+Type.registerNamespace('Shubert.Website.Common.Entities');
+if (typeof(Shubert.Website.Common.Entities.ContactInfo) === 'undefined') {
+Shubert.Website.Common.Entities.ContactInfo=gtc("Shubert.Website.Common.Entities.ContactInfo");
+Shubert.Website.Common.Entities.ContactInfo.registerClass('Shubert.Website.Common.Entities.ContactInfo');
+}
+if (typeof(Shubert.Website.Common.Entities.EventSearch) === 'undefined') {
+Shubert.Website.Common.Entities.EventSearch=gtc("Shubert.Website.Common.Entities.EventSearch");
+Shubert.Website.Common.Entities.EventSearch.registerClass('Shubert.Website.Common.Entities.EventSearch');
+}
+if (typeof(Shubert.Website.Common.Entities.EventType) === 'undefined') {
+Shubert.Website.Common.Entities.EventType=gtc("Shubert.Website.Common.Entities.EventType");
+Shubert.Website.Common.Entities.EventType.registerClass('Shubert.Website.Common.Entities.EventType');
+}
+if (typeof(Shubert.Website.Common.Entities.ParkingVendor) === 'undefined') {
+Shubert.Website.Common.Entities.ParkingVendor=gtc("Shubert.Website.Common.Entities.ParkingVendor");
+Shubert.Website.Common.Entities.ParkingVendor.registerClass('Shubert.Website.Common.Entities.ParkingVendor');
+}
+if (typeof(Shubert.Website.Common.Entities.AdditionalMembers) === 'undefined') {
+Shubert.Website.Common.Entities.AdditionalMembers=gtc("Shubert.Website.Common.Entities.AdditionalMembers");
+Shubert.Website.Common.Entities.AdditionalMembers.registerClass('Shubert.Website.Common.Entities.AdditionalMembers');
+}
+if (typeof(Shubert.Website.Common.Entities.Address) === 'undefined') {
+Shubert.Website.Common.Entities.Address=gtc("Shubert.Website.Common.Entities.Address");
+Shubert.Website.Common.Entities.Address.registerClass('Shubert.Website.Common.Entities.Address');
+}
+if (typeof(Shubert.Website.Common.Entities.PersonPhoneInformation) === 'undefined') {
+Shubert.Website.Common.Entities.PersonPhoneInformation=gtc("Shubert.Website.Common.Entities.PersonPhoneInformation");
+Shubert.Website.Common.Entities.PersonPhoneInformation.registerClass('Shubert.Website.Common.Entities.PersonPhoneInformation');
+}
+Type.registerNamespace('Shubert.Website.Common.Enums');
+if (typeof(Shubert.Website.Common.Enums.INQUIRE_SeatStruct) === 'undefined') {
+Shubert.Website.Common.Enums.INQUIRE_SeatStruct=gtc("Shubert.Website.Common.Enums.INQUIRE_SeatStruct");
+Shubert.Website.Common.Enums.INQUIRE_SeatStruct.registerClass('Shubert.Website.Common.Enums.INQUIRE_SeatStruct');
+}
+if (typeof(Shubert.Website.Common.Entities.CreditCardLite) === 'undefined') {
+Shubert.Website.Common.Entities.CreditCardLite=gtc("Shubert.Website.Common.Entities.CreditCardLite");
+Shubert.Website.Common.Entities.CreditCardLite.registerClass('Shubert.Website.Common.Entities.CreditCardLite');
+}
+if (typeof(Shubert.Website.Common.Entities.QuestionAnswer) === 'undefined') {
+Shubert.Website.Common.Entities.QuestionAnswer=gtc("Shubert.Website.Common.Entities.QuestionAnswer");
+Shubert.Website.Common.Entities.QuestionAnswer.registerClass('Shubert.Website.Common.Entities.QuestionAnswer');
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('radScriptManager11', 'form1', ['tctl01$ctl02$upnl',''], [], [], 90, '');
+//]]>
+
+
+(function(){var g=function(e,h,f,g){
+this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};
+this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g+ "&t=" + (new Date()).getTime();document.body&&document.body.appendChild(a)}};
+this.start=function(){var a=this;window.addEventListener?window.addEventListener("load",function(){a.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){a.go()})}};
+try{(new g(100,"r","QSI_S_ZN_6YebNP4zIqk2k9D","//zn_6yebnp4ziqk2k9d-shubertorganization.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_ZID=ZN_6YebNP4zIqk2k9D&Q_LOC="+encodeURIComponent(window.location.href))).start()}catch(i){}})();
+
+!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//www.rtb123.com/tags/92597ada-b62a-4506-831f-97a84c7a07ee/btp.js";var t=document.getElementsByTagName("head")[0];t?t.appendChild(e,t):(t=document.getElementsByTagName("script")[0]).parentNode.insertBefore(e,t)}();
+
+    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+
+
+    $(document).ready(function(){
+        setTimeout("equalHeight($('.home_col'))",800);
+    })
+
+
+                        var brandName = 'Telecharge.com';
+                        cmSetupOther({'cm_UseCookie':false,'cm_FormPageID':true});
+                        cmSetClientID('90299723', false, 'www1.telecharge.com', 'Telecharge.com');
+                    
+
+//<![CDATA[
+window.__TsmHiddenField = $get('radScriptManager11_TSM');RegisterClientId('ctl01_ctl03','ctl01_ctl03_rdoEventDateFrom','CityId',"https://www.telecharge.com/Shows-Events");TransformSpotlightEventstoClientSideJSON('[{ "EventId":"12388", "EventTitle":"The Ferryman","EventThumbNailImageSrc":"Images/Product/Ferryman-Play-Broadway-Show-Tickets-Group-Sales-112-051818.jpg", "EventDescription":"Jez Butterworth&rsquo;s &ldquo;fiercely gripping play.&rdquo;","EventMainImageSrc":"Images/Product/Ferryman-Play-Broadway-Show-Tickets-Hero-022819.jpg", "IsEventOnSale":"True","FindTicketsButtonText":"Find Tickets", "DivId":"","FTPageURL":"https://www.telecharge.com/Broadway/The-Ferryman/Ticket", "EventOverviewPageURL":"https://www.telecharge.com/Broadway/The-Ferryman/Overview", "SelectedEventURL":"https://www.telecharge.com/Broadway/The-Ferryman/Ticket", "IsProductContentAvailable":"True","eventName":"The Ferryman","EventThumbNailImage":"Ferryman Play Broadway Show Tickets","EventHeroImageAlt":"Ferryman Play Broadway Show Tickets" },{ "EventId":"12592", "EventTitle":"INK","EventThumbNailImageSrc":"Images/Product/INK-Play-Broadway-Show-Tickets-112-022119.jpg", "EventDescription":"%22An incredibly brilliant stunner.%22","EventMainImageSrc":"Images/Product/INK-Johny-Lee-Miller-Play-Broadway-Show-Tickets-HERO-041119.jpg", "IsEventOnSale":"True","FindTicketsButtonText":"Find Tickets", "DivId":"","FTPageURL":"https://www.telecharge.com/Broadway/INK/Ticket", "EventOverviewPageURL":"https://www.telecharge.com/Broadway/INK/Overview", "SelectedEventURL":"https://www.telecharge.com/Broadway/INK/Ticket", "IsProductContentAvailable":"True","eventName":"INK","EventThumbNailImage":"Ink Play Broadway Show Group Sales Tickets","EventHeroImageAlt":"INK Jonny Lee Miller Play Broadway Show Tickets" },{ "EventId":"12708", "EventTitle":"Beetlejuice","EventThumbNailImageSrc":"Images/Product/Beetljuice-Musical-Broadway-Show-Tickets-112-100918.jpg", "EventDescription":"It&rsquo;s showtime, folks!","EventMainImageSrc":"Images/Product/Beetljuice-Musical-Broadway-Show-Tickets-Hero-100918.jpg", "IsEventOnSale":"True","FindTicketsButtonText":"Find Tickets", "DivId":"","FTPageURL":"https://www.telecharge.com/Broadway/Beetlejuice/Ticket", "EventOverviewPageURL":"https://www.telecharge.com/Broadway/Beetlejuice/Overview", "SelectedEventURL":"https://www.telecharge.com/Broadway/Beetlejuice/Ticket", "IsProductContentAvailable":"True","eventName":"Beetlejuice","EventThumbNailImage":"Beetlejuice Musical Broadway Show Tickets","EventHeroImageAlt":"Beetlejuice Musical Broadway Show Tickets" }]');headerControlClientId = 'ctl01_ctl01';TextSearchPharseClientId = 'ctl01_ctl01_txtSearchPhrase';HeaderControlClientId = 'ctl01_ctl01';IsBuyTicketMode = 'False';TransformToClientSideJSON('{"CityId":20,"IsDateSelected":false,"FromDate":null,"ToDate":null,"EventTypes":null,"FacilityCode":null,"VenueId":0,"VenueName":null,"AgeAppropriateness":0,"AgeAppropriatenessText":null,"KeyWord":null,"CategoryId":0}','[{"EventTypeName":"Musical","EventTypeId":50,"Source":0,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl00_chkEventType","IsChecked":true},{"EventTypeName":"Play","EventTypeId":6003,"Source":0,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl01_chkEventType","IsChecked":true},{"EventTypeName":"Other","EventTypeId":6019,"Source":0,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl02_chkEventType","IsChecked":true},{"EventTypeName":"Dance","EventTypeId":779,"Source":0,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl03_chkEventType","IsChecked":true},{"EventTypeName":"Broadway","EventTypeId":82,"Source":1,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl04_chkEventType","IsChecked":true},{"EventTypeName":"Off-Broadway","EventTypeId":84,"Source":1,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl05_chkEventType","IsChecked":true},{"EventTypeName":"What\u0027s New","EventTypeId":0,"Source":2,"ClientId":"ctl01_ctl03_dtlEventTypes_ctl06_chkEventType","IsChecked":true}]');SetHiddenFieldClientIds('ctl01_ctl03_hdnEventSearchJSONObj','ctl01_ctl03_hdnEventTypeJSONObj');SetMediaViewerViewControlIds('ctl01_ctl05_alertMsgDivShort','ctl01_ctl05_alertMsgDivLong','ctl01_ctl05_lnkMoreInformation');//]]>
+
+cmCreatePageviewTag('home','',': ','','NY City Area-_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_--_-c89fd39591ee4fa0b28c8570a393e4f3');
+
+//<![CDATA[
+;(function() {
+                        function loadHandler() {
+                            var hf = $get('radStyleSheetManager11_TSSM');
+                            if (!hf._RSSM_init) { hf._RSSM_init = true; hf.value = ''; }
+                            hf.value += ';Telerik.Web.UI, Version=2018.3.910.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:en-US:f82d27b2-2e24-4637-ab87-c64fb8588ccb:1c2121e';
+                            Sys.Application.remove_load(loadHandler);
+                        };
+                        Sys.Application.add_load(loadHandler);
+                    })();//]]>
+
+
+            setTimeout(function(){
+            logToTealeaf('LocalPCIP', '212.90.63.178');
+logToTealeaf('InternalIP', '10.225.222.120');
+},500);
+
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=swHF8tW0tC-UcVI-rp7pNhzqL5jq68D1s4SH2xuk0XALnPX5bS9ptecBIm3N12Ul9c0iYD0dEA58iC8B9XtRqju8hbNc0qDZIYSVxUULAeQ1&t=636824988642812433';
+WebForm_InitCallback();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_height":0,"_maxHeight":220,"_postBackReference":"__doPostBack(\u0027ctl01$ctl03$ddlCity\u0027,\u0027arguments\u0027)","_skin":"MySkin","_text":"NY City Area","_uniqueId":"ctl01$ctl03$ddlCity","_value":"20","attributes":{"SelectCity":"Select City"},"clientStateFieldID":"ctl01_ctl03_ddlCity_ClientState","collapseAnimation":"{\"duration\":450}","expandAnimation":"{\"duration\":450}","itemData":[{"value":"20","selected":true},{"value":"4"},{"value":"22"}],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","selectedIndex":0}, null, null, $get("ctl01_ctl03_ddlCity"));
+});
+//]]>
+
+  
+    window.onerror = function() {
+        setTimeout("$('.pageClickBlocker').hide()", 1000);
+    }
+    $(document).ready(function() {
+        $('.pageClickBlocker').hide();
+    });
+

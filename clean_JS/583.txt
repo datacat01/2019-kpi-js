@@ -1,0 +1,28 @@
+
+    <!-- //
+    function PopUp(page, size) {
+        Npop = window_handle = window.open(page,'popupWindowName', size, 'status=no,toolbar=no,scrollbars=no');
+    }
+    //-->
+    
+
+function startGallery() {
+var myGallery = new gallery($('myGallery'), {
+embedLinks: true,
+timed: true,
+delay: 5000,
+showArrows: false,
+slideInfoZoneSlide: false,
+showCarousel: false,
+useExternalCarousel: false,
+carouselElement: "carousel",
+showCarouselLabel: false,
+thumbHeight: 45,
+thumbWidth: 60,
+thumbIdleOpacity: 0.4,
+useThumbGenerator: true
+});
+}
+window.addEvent('domready',startGallery);
+
+jQuery.noConflict();

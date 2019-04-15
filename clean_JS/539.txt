@@ -1,0 +1,52 @@
+
+	var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-5639890-1']);
+		_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+    dataLayer = [];
+
+ 
+
+	window.productList = (function() {
+		var products = [];
+
+		return {
+			add: function(details, $el) {
+			},
+
+			addPromo: function(details, $el) {
+			},
+
+			addEvent: function(details, $el) {
+			},
+
+			getAll: function() {
+				return products || [];
+			},
+			getLast: function() {
+				return products[products.length - 1];
+			},
+			deleteAllByKeyValue: function(key, value) {
+			},
+			on: function(event, callback) {
+			}
+		};
+	})();
+
+	var dataLayer = window.dataLayer || [];
+
+	dataLayer.push({
+	});
+
+
+
+well_conversion_tracking();var _clt = {};
+_clt["custId"] = "";
+_clt["siteId"] = "538cde3241";
+

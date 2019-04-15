@@ -1,0 +1,229 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.elderly.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = [];
+//]]>
+
+(function() { window.ftr__startScriptLoad = new Date().getTime(); })()
+
+//<![CDATA[
+enUS = {"m":{"wide":["January","February","March","April","May","June","July","August","September","October","November","December"],"abbr":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}}; // en_US locale reference
+Calendar._DN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; // full day names
+Calendar._SDN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; // short day names
+Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
+Calendar._MN = ["January","February","March","April","May","June","July","August","September","October","November","December"]; // full month names
+Calendar._SMN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; // short month names
+Calendar._am = "AM"; // am/pm
+Calendar._pm = "PM";
+
+// tooltips
+Calendar._TT = {};
+Calendar._TT["INFO"] = "About the calendar";
+
+Calendar._TT["ABOUT"] =
+"DHTML Date/Time Selector\n" +
+"(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
+"For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
+"Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details." +
+"\n\n" +
+"Date selection:\n" +
+"- Use the \xab, \xbb buttons to select year\n" +
+"- Use the " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " buttons to select month\n" +
+"- Hold mouse button on any of the above buttons for faster selection.";
+Calendar._TT["ABOUT_TIME"] = "\n\n" +
+"Time selection:\n" +
+"- Click on any of the time parts to increase it\n" +
+"- or Shift-click to decrease it\n" +
+"- or click and drag for faster selection.";
+
+Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
+Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
+Calendar._TT["GO_TODAY"] = "Go Today";
+Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
+Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
+Calendar._TT["SEL_DATE"] = "Select date";
+Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
+Calendar._TT["PART_TODAY"] = ' (' + "Today" + ')';
+
+// the following is to inform that "%s" is to be the first day of week
+Calendar._TT["DAY_FIRST"] = "Display %s first";
+
+// This may be locale-dependent. It specifies the week-end days, as an array
+// of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
+// means Monday, etc.
+Calendar._TT["WEEKEND"] = "0,6";
+
+Calendar._TT["CLOSE"] = "Close";
+Calendar._TT["TODAY"] = "Today";
+Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
+
+// date formats
+Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
+Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
+
+Calendar._TT["WK"] = "Week";
+Calendar._TT["TIME"] = "Time:";
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+        function bannerClicks(id_banner,slider_id){
+		var click_url = 'https://www.elderly.com/bannerslider/index/click/';
+		banner_id = id_banner;
+		new Ajax.Request(click_url,{
+			method: 'post',
+			parameters:{id_banner: banner_id,slider_id:slider_id},
+			onFailure: '',
+			onSuccess: ''
+			
+		});
+		
+	}
+    
+
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+        searchForm.initAutocomplete('https://www.elderly.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+    
+
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+        var checkedForms = [];
+        var hasFormsChanged = false;
+
+        var onSubmit = function (token) {
+            if (currentValidationForm && currentValidationForm.validator
+                && currentValidationForm.validator.validate()
+            ) {
+                currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+                if (typeof(recaptchaObject) !== 'undefined') {
+                    recaptchaObject.submit();
+                } else {
+                    currentForm.submit();
+                }
+            } else {
+                grecaptcha.reset();
+            }
+        };
+
+        function checkForms() {
+            formsToProtect = ["form[action*=\"customer\/account\/createpost\"]","form[action*=\"newsletter\/subscriber\/new\"]","form[action*=\"review\/product\/post\"]","form[action*=\"contacts\/index\/post\"]","form[action*=\"wishlist\/index\/send\"]"];
+            formsToProtect.forEach(function (item) {
+                var continueWorking = true;
+                formsSearchedBySelector = $$(item);
+                checkedForms.forEach(function(element) {
+                    if (element[0] == formsSearchedBySelector[0]) {
+                        continueWorking = false;
+                        return;
+                    }
+                })
+                if (formsSearchedBySelector.length != 0 && continueWorking) {
+                    checkedForms.push(formsSearchedBySelector);
+                    formsSearchedBySelector.forEach(function (formToProtect) {
+                        formsToProtectOnPage.push(formToProtect);
+                        hasFormsChanged = true;
+                    });
+                }
+            });
+            if (hasFormsChanged) {
+                for (var index in formsToProtectOnPage) {
+                    if (formsToProtectOnPage.hasOwnProperty(index)) {
+                        var formToProtectOnPage = formsToProtectOnPage[index];
+                        if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                            formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                            if (0 < formToProtectOnPage.length) {
+                                formToProtectOnPage = formToProtectOnPage[0];
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        var recaptchaBlock = document.createElement('div');
+                        recaptchaBlock.className = 'amasty_recaptcha';
+                        formToProtectOnPage.appendChild(recaptchaBlock);
+
+                        var tokenInput = document.createElement('input');
+                        tokenInput.type = 'hidden';
+                        tokenInput.name = 'amasty_invisible_token';
+                        tokenInput.value = '';
+                        formToProtectOnPage.appendChild(tokenInput);
+
+                        formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                            currentForm = event.target;
+                            currentValidationForm = new VarienForm(currentForm.id, false);
+                            recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                            if ('' == recaptchaBlock.innerHTML) {
+                                recaptcha = grecaptcha.render(recaptchaBlock, {
+                                    'sitekey': '6LfAo0kUAAAAAPm6e3uhp45-tcvMGL9VevntTkCl',
+                                    'callback': onSubmit,
+                                    'size': 'invisible',
+                                    'theme': 'light',
+                                    'badge': 'bottomright'
+                                });
+                            }
+                            grecaptcha.reset(recaptcha);
+                            grecaptcha.execute(recaptcha);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        jQuery(document).ready(function() {
+            var formsCount = 0;
+            setInterval(function () {
+                var formLength = $$('form').length;
+                if (formsCount != formLength) {
+                    formsCount = formLength;
+                    checkForms();
+                }
+            }, 1000);
+        });
+    
+
+(function() {
+var siteId = "de1ba8a106e0";
+function t(t,e){for(var n=t.split(""),r=0;r<n.length;++r)n[r]=String.fromCharCode(n[r].charCodeAt(0)+e);return n.join("")}function e(e){return t(e,-h).replace(/%SN%/g,siteId)}function n(t){for(var e=escape(t)+"=",n=document.cookie.split(";"),r=0;r<n.length;r++){for(var o=n[r];" "==o.charAt(0);)o=o.substring(1,o.length);if(0===o.indexOf(e))return unescape(o.substring(e.length,o.length))}return null}function r(t,e){var r=new Date;r.setTime(r.getTime()+15768e7);var o,i,a,u="; expires="+r.toGMTString();if(a=location.host,1===a.split(".").length)document.cookie=escape(t)+"="+escape(e)+u+"; path=/";else{i=a.split("."),i.shift(),o="."+i.join("."),document.cookie=escape(t)+"="+escape(e)+u+"; path=/; domain="+o;var c=n(t);null!=c&&c==e||(o="."+a,document.cookie=escape(t)+"="+escape(e)+u+"; path=/; domain="+o)}}function o(t){x.ex=t,p(x)}function i(t,e,n){var r=document.createElement("script");r.onerror=n,r.onload=e,r.type="text/javascript",r.id="ftr__script",r.async=!0,r.src="https://"+t;var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(r,o)}function a(){U(S.uAL),setTimeout(u,v,S.uAL)}function u(t){try{var e=t===S.uDF?m:g;i(e,function(){k(),x.ex=t+S.uS,p(x)},function(){try{k(),x.td=1*new Date-x.ts,x.ex=t+S.uF,p(x),t===S.uDF&&a()}catch(e){x.ex=t+S.eUoe,p(x)}})}catch(e){x.ex=t+S.eTlu,p(x)}}var c="fort",s="erTo",d="ken",f=c+s+d,l="6",h=3,m=e("(VQ(1fgq71iruwhu1frp2vq2(VQ(2vfulsw1mv"),g=e("g68x4yj4t5;e6z1forxgiurqw1qhw2vq2(VQ(2vfulsw1mv"),v=10;window.ftr__startScriptLoad=1*new Date;var p=function(t){var e=function(t){return t||""},n=e(t.id)+"_"+e(t.ts)+"_"+e(t.td)+"_"+e(t.ex)+"_"+e(l);r(f,n)},w=function(){str=n(f)||"";var t=str.split("_"),e=function(e){return t[e]||void 0};return{id:e(0),ts:e(1),td:e(2),ex:e(3),vr:e(4)}},T=function(){for(var t={},e="fgu",n=[],r=0;r<256;r++)n[r]=(r<16?"0":"")+r.toString(16);var o=function(t,e,r,o,i){var a=i?"-":"";return n[255&t]+n[t>>8&255]+n[t>>16&255]+n[t>>24&255]+a+n[255&e]+n[e>>8&255]+a+n[e>>16&15|64]+n[e>>24&255]+a+n[63&r|128]+n[r>>8&255]+a+n[r>>16&255]+n[r>>24&255]+n[255&o]+n[o>>8&255]+n[o>>16&255]+n[o>>24&255]},i=function(){if(window.Uint32Array&&window.crypto&&window.crypto.getRandomValues){var t=new window.Uint32Array(4);return window.crypto.getRandomValues(t),{d0:t[0],d1:t[1],d2:t[2],d3:t[3]}}return{d0:4294967296*Math.random()>>>0,d1:4294967296*Math.random()>>>0,d2:4294967296*Math.random()>>>0,d3:4294967296*Math.random()>>>0}},a=function(){var t="",e=function(t,e){for(var n="",r=t;r>0;--r)n+=e.charAt(1e3*Math.random()%e.length);return n};return t+=e(2,"0123456789"),t+=e(1,"123456789"),t+=e(8,"0123456789")};return t.safeGenerateNoDash=function(){try{var t=i();return o(t.d0,t.d1,t.d2,t.d3,!1)}catch(t){try{return e+a()}catch(t){}}},t.isValidNumericalToken=function(t){return t&&t.toString().length<=11&&t.length>=9&&parseInt(t,10).toString().length<=11&&parseInt(t,10).toString().length>=9},t.isValidUUIDToken=function(t){return t&&32===t.toString().length&&/^[\d\w]+$/.test(t)},t.isValidFGUToken=function(t){return 0==t.indexOf(e)&&t.length>=12},t}(),S={uDF:"UDF",uAL:"UAL",mLd:"1",eTlu:"2",eUoe:"3",uS:"4",uF:"9",tmos:["T5","T10","T15","T30","T60"],tmosSecs:[5,10,15,30,60]},y=function(t,e){for(var n=S.tmos,r=0;r<n.length;r++)if(t+n[r]===e)return!0;return!1};try{var x=w();try{x.id&&(T.isValidNumericalToken(x.id)||T.isValidUUIDToken(x.id)||T.isValidFGUToken(x.id))||(x.id=T.safeGenerateNoDash()),x.ts=window.ftr__startScriptLoad,p(x);var D=new Array(S.tmosSecs.length),U=function(t){for(var e=0;e<S.tmosSecs.length;e++)D[e]=setTimeout(o,1e3*S.tmosSecs[e],t+S.tmos[e])},k=function(){for(var t=0;t<S.tmosSecs.length;t++)clearTimeout(D[t])};y(S.uDF,x.ex)?a():(U(S.uDF),setTimeout(u,v,S.uDF))}catch(t){x.ex=S.mLd,p(x)}}catch(t){}
+})()
+
+
+  var zaius=zaius||[];zaius.methods=["initialize","onload","event","entity","identify","anonymize"];zaius.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);zaius.push(t);return zaius}};for(var i=0;i<zaius.methods.length;i++){var method=zaius.methods[i];zaius[method]=zaius.factory(method)}(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=("https:"===document.location.protocol?"https://":"http://")+"d1igp3oop3iho5.cloudfront.net/v2/XYunawH9zgrVIS5q_ayTNg/zaius-min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+  zaius.event('pageview', {"magento_website":"Main Website","magento_store":"Elderly Instruments","magento_store_view":"Elderly"});
+
+
+	var trackcmp_email = '';
+	var trackcmp = document.createElement("script");
+	trackcmp.async = true;
+	trackcmp.type = 'text/javascript';
+	trackcmp.src = '//trackcmp.net/visit?actid=798771681&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href);
+	var trackcmp_s = document.getElementsByTagName("script");
+	if (trackcmp_s.length) {
+		trackcmp_s[0].parentNode.appendChild(trackcmp);
+	} else {
+		var trackcmp_h = document.getElementsByTagName("head");
+		trackcmp_h.length && trackcmp_h[0].appendChild(trackcmp);
+	}
+
+//<![CDATA[
+var i = document.querySelector('.product-img-box img[title*="imajize"]');
+var c = document.querySelector('.product-image');
+if (i && c) {
+var width = c.offsetWidth || 100;
+var height = c.offsetHeight || width;
+var f = '<iframe id="imajize" src="' + i.title + '" frameborder="0" scrolling="no" style="background-color: #fff" allowfullscreen></iframe>';
+c.innerHTML = f;
+f = c.querySelector('iframe#imajize');
+f.width = width;
+f.height = height;
+}
+//]]>

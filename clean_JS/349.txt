@@ -1,0 +1,58 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.carrollsirishgifts.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+        //<![CDATA[
+            var _gaq = _gaq || [];
+            
+_gaq.push(['_setAccount', 'UA-42693745-5']);
+
+_gaq.push(['_trackPageview']);
+            
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        //]]>
+        
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+//<![CDATA[
+    jQuery('#header-bottom-center .fa-stack .fa-close').on('click', function() {
+        jQuery('.clear-cross.clear-query-autocomplete').click();
+    });
+//]]>
+
+
+    var amlabel_selector = '.product-image';
+    
+
+    //<![CDATA[
+    Mage.Cookies.set(
+        'FASTLY_CDN_ENV',
+            '0b14f615f1da454357007c52c8448c15',
+        new Date(new Date().getTime() + 86400000)
+        );
+    //]]>
+
+
+    if (document.cookie.length && (document.cookie.indexOf('FASTLY_CDN_FORMKEY=') == -1)) {
+        Mage.Cookies.set(
+            'FASTLY_CDN_FORMKEY',
+            'qjUtQR73oss6o0q0',
+            new Date(new Date().getTime() + 86400000)
+        );
+    }
+

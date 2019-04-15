@@ -1,0 +1,161 @@
+
+var dataLayer = [];
+dataLayer.push({"page_cat":"rugs"});
+
+
+window.utag_data = {
+tealium_event: "rugs_view",
+current_view: "rugs",
+// static right now
+brand_name: 'RugsUSA',
+country_code: 'us',
+language_code: 'en',
+};
+// copy over gtm dataLayer
+(function () {
+var i;
+for (i = 0; i < dataLayer.length; i++) {
+var obj = dataLayer[i];
+for (var key in obj){
+window.utag_data['gtm_' + key] = obj[key];
+}
+}
+})();
+(function ($) {
+var queue = [];
+var $d = $(document);
+$d.on('ajaxComplete.tealium', function () {
+queue.push(arguments);
+});
+window.tealiumLoaded = function (callback) {
+for (var i = queue.length - 1; i >= 0; i--) {
+var args = queue.pop();
+callback.apply(null, args);
+}
+$d.off('ajaxComplete.tealium');
+$d.on('ajaxComplete.tealium', callback);
+};
+})(window.jQuery);
+/** All Pages */
+//
+utag_data.variants = {};
+/*
+*/
+// TODO: Remove from optimizely on deploy
+if (typeof window.utagCleanup === 'function') {
+window.utagCleanup('v1');
+}
+if (typeof window.utagCleanupDebugging === 'function') {
+window.utagCleanupDebugging('v1');
+}
+
+
+var _mTrack = _mTrack || [];
+_mTrack.push(['trackPage']);
+(function() {
+var mClientId = '4x9u929fn0';
+var mProto = ('https:' == document.location.protocol ? 'https://' : 'http://');
+var mHost = 'tracker.marinsm.com';
+var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = mProto + mHost + '/tracker/async/' + mClientId + '.js';
+var fscr = document.getElementsByTagName('script')[0]; fscr.parentNode.insertBefore(mt, fscr);
+})();
+
+
+var DaysToLive=60;function setCookie(c,d){if(DaysToLive){var b=new Date();b.setTime(b.getTime()+(DaysToLive*24*60*60*1000));var a="; expires="+b.toGMTString()}else{var a=""}document.cookie=c+"="+d+a+"; path=/"}var DaysToLiveShort=1;function setCookieShort(c,d){if(DaysToLive){var b=new Date();b.setTime(b.getTime()+(DaysToLiveShort*24*60*60*1000));var a="; expires="+b.toGMTString()}else{var a=""}document.cookie=c+"="+d+a+"; path=/"}function readCookie(a){if(document.cookie.length>0){c_start=document.cookie.indexOf(a+"=");if(c_start!=-1){c_start=c_start+a.length+1;c_end=document.cookie.indexOf(";",c_start);if(c_end==-1){c_end=document.cookie.length}return unescape(document.cookie.substring(c_start,c_end))}}return""}function eraseCookie(a){createCookie(a,"",-1)};
+function createCookie(c,d,e){if(e){var b=new Date();b.setTime(b.getTime()+(e*24*60*60*1000));var a="; expires="+b.toGMTString()}else{var a=""}document.cookie=c+"="+d+a+"; path=/"}function readCookie(b){var e=b+"=";var a=document.cookie.split(";");for(var d=0;d<a.length;d++){var f=a[d];while(f.charAt(0)==" "){f=f.substring(1,f.length)}if(f.indexOf(e)==0){return f.substring(e.length,f.length)}}return null}function eraseCookie(a){createCookie(a,"",-1)};
+
+
+var passProd=new Array();
+var dMoore=new Array();
+var passQuantity=new Array();
+var passPrices=new Array();
+var urlPrefix = '/rugsusa/control/';
+var rootUrl = 'http://www.rugsusa.com';
+
+
+var _vwo_code=(function(){
+var account_id=358499,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+
+
+function enableScroll() {
+window.onmousewheel = document.onmousewheel = null;
+window.onwheel = null;
+window.ontouchmove = null;
+document.onkeydown = null;
+}
+function closePhoneMenu() {
+$('.mainContainerMask').removeClass('dark');
+$('.centerContainerL').removeClass('slide');
+$('#rwd-tablet-cat-links').removeClass('top');
+$('.searchspring-facets_container').removeClass('top')
+setTimeout(function() {
+$('.mainContainerMask').removeClass('top');
+$('#rwd-tablet-cat-links').addClass('mobileHide');
+$('.searchspring-facets_container').addClass('mobileHide');
+$("#homed").removeClass("lock");
+}, 500);
+enableScroll();
+}
+
+
+(function() {
+var buildResults = SearchSpring.Autocomplete.buildResults;
+SearchSpring.Autocomplete.buildResults = function(results) {
+for(var i in results.products) {
+var name_disc = results.products[i].name.split('~');
+results.products[i].name = name_disc[0];
+}
+buildResults(results);
+}
+})();
+SearchSpring.Autocomplete.init({siteId:'z9c7dl',queryClass:'searchspring-query'});
+
+
+var gts = gts || [];
+gts.push([ 'id', '231755']);
+gts.push([ 'badge_position', 'USER_DEFINED']);
+gts.push([ 'badge_container', 'GTS_COTAINER']);
+gts.push([ 'locale', 'en']);
+gts.push([ 'google_base_offer_id', '']);
+gts.push([ 'google_base_subaccount_id', '1134884']);
+gts.push([ 'google_base_country', 'US']);
+gts.push([ 'google_base_language', 'en']);
+(function() {
+var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+var gtscript = document.createElement('script'); gtscript.type = 'text/javascript'; gtscript.async = true;
+gtscript.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gtscript, s);
+})();
+
+var fieldMaps = {};
+
+$(document).ready(function() {
+var intervalIdForInstagramMiniBanner = setInterval(function() {
+intervalStep()
+}, InstagramMiniBanner.instagramInterval);
+function intervalStep() {
+InstagramMiniBanner.lookForGoogleTrustedStoreBanner(intervalIdForInstagramMiniBanner)
+}
+EmailSignup.setup({'saveUrl': '/rugsusa/control/saveEmailSignup', 'deleteUrl': '/rugsusa/control/deleteEmailSignup'});
+});
+
+
+var fieldMaps = {};
+
+
+var fieldMaps = {};
+
+
+var _bsw = _bsw || [];
+_bsw.push(['_bswId', 'c11ee3c48eaa10d2856e300e6fcdccdf87b737a3fd2a3543e0e2991d198fd771']);
+(function() {
+var bsw = document.createElement('script'); bsw.type = 'text/javascript'; bsw.async = true;
+bsw.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.bronto.com/c/8vn81c0h746zoezzv6sggx2qddmu04xdezr3zw5about473bd1/c11ee3c48eaa10d2856e300e6fcdccdf87b737a3fd2a3543e0e2991d198fd771/s/b.min.js';
+var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(bsw, t);
+})();
+

@@ -1,0 +1,26 @@
+
+var MivaVM_API = "Redirect";
+var MivaVM_Version = "5.32";
+var json_url = "https:\/\/www.soul-flower.com\/mm5\/json.mvc\u003F";
+var json_nosessionurl = "https:\/\/www.soul-flower.com\/mm5\/json.mvc\u003F";
+var Store_Code = "SOS";
+
+
+var MMSearchField_Search_URL_sep = "https:\/\/www.soul-flower.com\/mm5\/merchant.mvc\u003FSession_ID\u003Df346a1caf3470ce42a85cecc4545edde\u0026Screen\u003DSRCH\u0026Search=";
+
+
+MMSearchField.prototype.onMenuAppendHeader = function(){return null;}MMSearchField.prototype.onMenuAppendItem = function( data ){var span;span = newElement( 'span', null, null, null );span.innerHTML = data;return span;}MMSearchField.prototype.onMenuAppendStoreSearch = function( search_value ){var item;item = newElement( 'div', { 'class': 'mm_searchfield_menuitem mm_searchfield_menuitem_storesearch' }, null, null );item.element_text = newTextNode( 'Search store for product "' + search_value + '"', item );return item;}MMSearchField.prototype.onFocus = function( e ) { ; };MMSearchField.prototype.onBlur = function( e ) { ; };
+
+if (typeof nxtOptions !== 'object') {var nxtOptions = {};}nxtOptions.customOptions = {'login':'0'};
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+	var fieldMaps = {};	fieldMaps["86284"] = "first_name";fieldMaps["86285"] = "last_name"; 
+var fieldMaps = {}; fieldMaps["86284"] = "first_name";fieldMaps["86285"] = "last_name"; 
+
+TrustLogo("https://www.soul-flower.com/trusted-site-seal.png", "CL1", "none");
+
+
+var Product_Code = '';
+var Screen = 'SFNT';
+
+ $(window).load(function(){$('#email-pop-up').modal('show');});
+var fieldMaps = {};fieldMaps["86284"] = "first_name";fieldMaps["86285"] = "last_name";

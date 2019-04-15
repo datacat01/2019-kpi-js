@@ -1,0 +1,90 @@
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){
+z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?4EnRq3GfbqqORe3eAGw9ipaSv7DU5mf5';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+
+function equal_heights(group,extra) {
+  group.height("auto");
+  var maxHeight = 0;
+  group.each(function() {
+    if ($(this).height() > maxHeight) {
+      maxHeight = $(this).height();
+    }
+  });
+  maxHeight = maxHeight + extra;
+  group.height(maxHeight);
+}  
+
+function resize_divs() {
+// $(".item").display("none");
+// $(".active").display("block");
+ equal_heights($(".s14_mid"),15);
+ equal_heights($(".s14_top"),10);
+ equal_heights($(".s14_quote"),10);
+ equal_heights($(".s14_mid2"),5);
+ equal_heights($(".banner_item"),0);
+ equal_heights($(".sign_mid_div"),15);
+ equal_heights($(".sign_bot_div"),15);
+ }
+
+
+$(document).ready(function() {
+ resize_divs();
+});
+
+$(window).resize(function() {
+ resize_divs();
+});
+
+
+
+         $(function () {
+          $(".carousel").carousel({ interval: 5000 });
+         });
+        
+
+         $(function () {
+         $(".carousel2").carousel({ interval: 8000 });
+         });
+       
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-5262422-1']);
+ _gaq.push(['_trackPageview']);
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript';
+ ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+ 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0];
+ s.parentNode.insertBefore(ga, s);
+ })();
+
+
+  function update_results() {
+    xmlhttp = new XMLHttpRequest();
+    url = "/search/search_display.htm?q=" + 
+     document.getElementById("autocomplete").value +
+     "&filter=" +
+     document.getElementById("sfilter").value;
+    xmlhttp.open("GET", url, true);
+    xmlhttp.onreadystatechange=function() {
+      if (xmlhttp.readyState == 4) {
+        dresults = xmlhttp.responseText;
+        document.getElementById("sresults").innerHTML = dresults;
+      }
+    }
+    xmlhttp.send(null);
+  }
+
+(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);
+
+    var __ss_noform = __ss_noform || [];
+    __ss_noform.push(['baseURI', 'https://app-3QN3FLS7S2.marketingautomation.services/webforms/receivePostback/MzawMDGxMDIyBwA/']);
+    __ss_noform.push(['form','pu_reg_form', 'c7b0060d-7bb6-4e7b-9fb0-8d091b787498']);
+    __ss_noform.push(['submitType', 'manual']);
+

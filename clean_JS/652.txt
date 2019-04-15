@@ -1,0 +1,43 @@
+
+
+/***********************************************
+*  dynamicdrive
+***********************************************/
+
+
+
+
+
+
+var mygallery4=new fadeSlideShow({
+	wrapperid: "fadeshow4", //ID of blank DIV on page to house Slideshow
+	dimensions: ['100%','100%'], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	
+	imagearray: [
+	    //["photos/christmas-palmcontrol.jpg", "PalmControl.htm", "", "Ask Santa for a PalmControl this Christmas!"],
+	    ["photos/PCs01-3.jpg", "PalmControl.htm", "", "PalmControl®  Classic AirGravers.  One is with a santoprene ivory colored handle and the other burl wood."],
+	    ["photos/Three-burl-PalmControls.jpg", "PalmControl.htm", "", "Three burl handled PalmControl® Classic AirGravers"],
+		["photos/Lindsay-Lindsay4.jpg", "", "", "One of five Lindsay-Lindsay (Father and son, Frank Lindsay and Steve Lindsay) pieces.  The five folding knives (all slightly different) were orgianlly made, engraved and sold in the 90s for $40,000k each.  One collector put his up for sale for $110,000 and resold it. These folding knives came apart with hidden screwa pins. The inside surfaces were also engraved and have 28 diamond set in the 18k frame and one in the blade."],
+		["photos/Artisan-setup.jpg", "Artisan-AirGraver.htm", "", "The Lindsay Artisan AirGraver® hand-piece along with the foot control, dual regulator setup is $844.  Versatile and made with quality in USA."],
+		["photos/foot02-rod.jpg", "https://BrannenFlutes.com", "https://BrannenFlutes.com", "The Lindsay AirGraver® is utilized for the engraving of high end musical flute manufactures such as Brannen Brothers.  BrannenFlutes.com"],
+		["photos/Stan02.jpg", "https://www.engravingforum.com/showthread.php?t=1375", "https://www.engravingforum.com/showthread.php?t=1375", "Jeweler Feedback - I have set stones with a GRS system for almost 20 years. I then purchased a Lindsay PalmControl AirGraver abd what a difference!!!  I saved 50% of time stone settings. I'm able to remove smoothly large chuncks of metal by one pass instead of 5 or 6 passes in one place. Not to mention, less noise and vibrations. Stan Jarmolowicz - Click photo to read post on the Engraving Forum"],
+		["photos/palmcontrols-burl02-b.jpg", "PalmControl.htm", "", "Two burl handled PalmControl® Classic AirGravers"],
+		["photos/three-vises33.jpg", "vises.htm", "", "These Lindsay vises come in three sizes.  12lb, 30lb and 90lb. Stainless steel construction with hardened stainless jaws. Click image for options, other avaiable vises and accessories for them."],
+		["photos/gunsidelock01b.jpg", "", "", "Famars shotgun engraved by Steve Lindsay"],
+		["photos/hammers-b.jpg", "Manual-Engraving-Tools.htm", "", "Chasing hammers artfully designed and comforable. They are located on the manual operated engraving tools page.  Click image to visit that page."],
+		["photos/lindsayone.jpg", "", "", "First folding knife Steve Lindsay ever made in the mid 80s. The 24k gold was sawn and pierced from sheet and then inlayed and engraved.  It was sold to a customer in  Japan that became a friend to many in the high end art-knife world. The late Dr. Makoto Suzuki.  The knife was made with only the use of a jewelers saw, files, sandpaper and a bench top drill press."],
+		["photos/hoboskull1-crop.jpg", "", "", "Beautiful nickel engraving (hobo nickel carving) with the PalmControl® by engraving artist Paolo Curcio (MRTHE)."],
+		["photos/busfield08c2.jpg", "", "", "24k gold was sawn and pierced from sheet, inlayed and left high.  It was then scuptured and line engraved."],
+		["photos/hammers-straw05.jpg", "Manual-Engraving-Tools.htm", "", "More chasing hammer heads.  These are located on the manual operated engraving tools page.  Click image to visit that page."] //<--no trailing comma after very last image element!
+	],
+	
+	displaymode: {type:'auto', pause:3000, cycles:0, wraparound:true},
+	persist: false, //remember last viewed slide and recall within same session?
+	fadeduration: 1600, //transition duration (milliseconds)
+	descreveal: "ondemand",
+	togglerid: ""
+})
+
+
+
+

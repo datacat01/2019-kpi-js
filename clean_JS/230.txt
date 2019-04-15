@@ -1,0 +1,150 @@
+
+<!--
+        $("img").attr("data-pin-nopin", "true");
+
+    //Disable right mouse click Script
+        var message = "Sorry, right-click has been disabled";
+
+        function clickIE() {
+            if (document.all) {
+                (message);
+                return false;
+            }
+        }
+
+        function clickNS(e) {
+            if (document.layers || (document.getElementById && !document.all)) {
+                if (e.which == 2 || e.which == 3) {
+                    (message);
+                    return false;
+                }
+            }
+        }
+
+        if (document.layers) {
+            document.captureEvents(Event.MOUSEDOWN);
+            document.onmousedown = clickNS;
+        } else {
+            document.onmouseup = clickNS;
+            document.oncontextmenu = clickIE;
+        }
+
+        document.oncontextmenu = new Function("return false");
+    // --> 
+
+var now = new Date(2019, 3, 14, 9, 11, 7);
+
+        function hideSiteNote() { var dv = document.getElementById("siteNoteParent"); dv.classList.add('siteNoteClosed'); }
+    
+
+        /* <![CDATA[ */
+        var google_conversion_id = 1070587748;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    
+
+    
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+
+        function DoOrdHistSrch(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) { __doPostBack('ctl00$MainContent$ordHist_SearchButton', ''); e.preventDefault(); return false; };
+        }
+
+        function doSearchClick(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) { __doPostBack('ctl00$prodSearchButton', ''); e.preventDefault(); return false; };
+        }
+
+        // Popup window for pinterest
+        function newPinPopup(url) { // consider deleting this, popups are lame
+            var popupWindow = window.open(
+                url, '', 'height=296,width=668,left=10,top=10,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+        }
+
+        function ClickSubmenu(e, classname) {
+            jQuery('.drop-tab').removeClass('mnu_active');
+            if (jQuery('.' + classname).is(":visible")) {
+                jQuery('.' + classname).hide();
+            }
+            else {
+                jQuery('.submenu').hide();
+                jQuery('.' + classname).show();
+                if (jQuery(e.target)[0].tagName == "LI") {
+                    jQuery(e.target).addClass('mnu_active');
+                }
+                else { // <a> was clicked, add class to parent <LI>.
+                    jQuery(e.target).parent().addClass('mnu_active');
+                }
+            }
+        }
+
+        function OpenProjectSubmenu() {
+            jQuery('.project-categories').toggle();
+        }
+
+        function OnMasterLoad() {
+            jQuery(document).click(function (event) {
+                if (!jQuery(event.target).closest('.submenu').length && !jQuery(event.target).closest('.drop-tab').length) {
+                    if (jQuery('.submenu').is(":visible")) {
+                        jQuery('.submenu').hide();
+                    }
+                    jQuery('.drop-tab').removeClass('mnu_active');
+                }
+            })
+
+            jQuery('.link-tab').on("click", function (event) {
+                window.location.href = jQuery(this).find('a').attr('href');
+                jQuery('.primary-nav__item').removeClass('mnu_active');
+                jQuery(this).addClass('mnu_active');
+            });
+
+            var path = document.location.href.toLowerCase();
+            if (path.indexOf("default.aspx") != -1) {
+                jQuery("#homeTab").parent().addClass("mnu_active");
+            }
+            else if (path.indexOf("new.aspx?date=list") != -1 || path.indexOf("new.aspx?date=project") != -1) {
+                jQuery("#prevTab").parent().addClass("mnu_active");
+            }
+            else if (path.indexOf("new.aspx") != -1) {
+                jQuery("#newTab").parent().addClass("mnu_active");
+            }
+            else if (path.indexOf("sale.aspx") != -1) {
+                jQuery("#saleTab").parent().addClass("mnu_active");
+            }
+            else if (path.indexOf("designpacks.aspx") != -1) {
+                jQuery("#packTab").parent().addClass("mnu_active");
+            }
+            else if (path.indexOf("bestsellers.aspx") != -1) {
+                jQuery("#bestTab").parent().addClass("mnu_active");
+            }
+
+            $('#backToTop').hide();
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y > 1800) {
+                    $('#backToTop').show();
+                } else {
+                    $('#backToTop').hide();
+                }
+            });
+        }
+
+        jQuery(OnMasterLoad);
+    

@@ -1,0 +1,83 @@
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.www.globalhealingcenter.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["CW"];
+//]]>
+
+//<![CDATA[
+        var Translator = new Translate({"Add to Wishlist":"Save for Later"});
+        //]]>
+
+    Listrak_Remarketing = new function() {
+        this.updateCart = function() {
+            new Ajax.Request('https://www.globalhealingcenter.com/remarketing/ajax/cart/');        };
+
+        this.track = function() {
+            new Ajax.Request('https://www.globalhealingcenter.com/remarketing/ajax/track/');        };
+    };
+
+
+    (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+    else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+    if (e.propertyName == 'ltkAsyncProperty' && typeof _ltk !== 'undefined'){d();}});}})(function() {
+
+    	/********* Begin Custom Code ***********/
+    	if( typeof _ltkRecommendations === 'function' ) _ltkRecommendations();
+
+		_ltk.SCA.CaptureEmail('newsletter');
+        _ltk.SCA.CaptureEmail('ltkmodal-email');
+        _ltk.SCA.CaptureEmail('email');
+        _ltk.Activity.AddPageBrowse(location.href);
+        _ltk.Activity.Submit();
+        Listrak_Remarketing.track();
+		_ltk.SCA.CaptureEmail('footer-newsletter-email');
+		_ltk.SCA.CaptureEmail('email');
+		_ltk.SCA.CaptureEmail('login-email');
+		_ltk.SCA.CaptureEmail('billing:email');
+		/********* End Custom Code ***********/
+    });
+
+
+	var listrakTracking = {
+		category: 'marketing',
+		script: function(){
+			(function (d, s, id, url) {
+				var js, ljs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+				ljs.parentNode.insertBefore(js, ljs);
+			})(document, 'script', 'ltkSDK', 'https://cdn.listrakbi.com/scripts/script.js?m=HRcrCxpQJsoy&v=1');
+		}
+	};
+	tracking.scripts.push( listrakTracking );
+
+
+		var impactRadiusTracking = {
+			category: 'statistics',
+			script: function() {
+				(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]= e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A393281-873e-414a-a662-54b9c25a362c1.js','script','ire',document,window);
+			}
+		};
+		tracking.scripts.push( impactRadiusTracking );
+	
+
+        var gts = gts || [];
+        gts.push(["id", "63423"]);
+        gts.push(["locale", "en"]);
+        gts.push(["google_base_subaccount_id", "6264924"]);
+        gts.push(["google_base_country", "US"]);
+        gts.push(["google_base_language", "EN"]);
+        (function() {
+			var gts = document.createElement("script");
+			gts.type = "text/javascript";
+			gts.async = true;
+			gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(gts, s);
+		})();
+    

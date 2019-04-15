@@ -1,0 +1,166 @@
+
+$(document).ready(function(){
+	load_options('','country');
+});
+
+function load_options(id,index){
+	$("#loading").show();
+	if(index=="state"){
+		$("#city").html('<option value="">Select city</option>');
+	}
+	$.ajax({
+		url: "ajax.php?index="+index+"&id="+id,
+		complete: function(){$("#loading").hide();},
+		success: function(data) {
+			$("#"+index).html(data);
+		}
+	})
+}
+
+
+window.google_analytics_uacct = "UA-21794810-9";
+
+
+    (function () {
+        jQuery(function ($) {
+            // /////
+            // CLEARABLE INPUT
+            function tog(v) { return v ? 'addClass' : 'removeClass'; }
+            $(document).on('input', '.clearable', function () {
+                $(this)[tog(this.value)]('x');
+            }).on('mousemove', '.x', function (e) {
+                $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+            }).on('click', '.onX', function () {
+                $(this).removeClass('x onX').val('').change();
+            });
+        });
+
+
+        $(document).ready(function () {
+            var dataText = 'pagevisit=/apartments-for-rent-cg&refer=https://www.upwork.com/leaving?ref=https%3A%2F%2Fwww.shoppok.com%2Fapartments-for-rent-cg';
+            $.ajax({
+                type: "POST",                    // Using the POST method
+                url: "/engine/user_path.php",             // The file to call
+                data: dataText                  // Our data to pass
+            });
+        });
+
+
+
+
+        $(document).ready(function () {
+            $(".toggle-filter").click(function () {
+                $(".mobiletd").slideToggle(300);
+            });
+        });
+
+
+
+
+
+        $(function () {
+            var availableTags = [
+                { label: "Allentown, PA", value: "allentown" }, { label: "Amarillo, TX", value: "amarillo" }, { label: "Ashtabula, OH", value: "ashtabula" }, { label: "Athens-Clarke County, GA", value: "athensga" }, { label: "Athens, OH", value: "athensohio" }, { label: "Atlanta, GA", value: "atlanta" }, { label: "Augusta, GA", value: "augusta" }, { label: "Austin, TX", value: "austin" }, { label: "Bakersfield, CA", value: "bakersfield" }, { label: "Baltimore, MD", value: "baltimore" }, { label: "Battle Creek, MI", value: "battlecreek" }, { label: "Beaumont, TX", value: "beaumont" }, { label: "Birmingham, AL", value: "bham" }, { label: "Big Bend, TX", value: "bigbend" }, { label: "Binghamton, NY", value: "binghamton" }, { label: "Blacksburg, VA", value: "blacksburg" }, { label: "Boone, NC", value: "boone" }, { label: "Bozeman, MT", value: "bozeman" }, { label: "Brainerd, MN", value: "brainerd" }, { label: "Brownsville, TX", value: "brownsville" }, { label: "Brunswick, GA", value: "brunswick" }, { label: "Buffalo, NY", value: "buffalo" }, { label: "Butte, MT", value: "butte" }, { label: "Cape Cod, MA", value: "capecod" }, { label: "Carbondale, IL", value: "carbondale" }, { label: "Catskills, NY", value: "catskills" }, { label: "Cedar Rapids, IA", value: "cedarrapids" }, { label: "Central Louisiana, LA", value: "cenla" }, { label: "Central Michigan, MI", value: "centralmich" }, { label: "Central Florida, FL", value: "cfl" }, { label: "Champaign?Urbana, IL", value: "chambana" }, { label: "Chambersburg, PA", value: "chambersburg" }, { label: "Charlotte, NC", value: "charlotte" }, { label: "Chautauqua, NY", value: "chautauqua" }, { label: "Chicago, IL", value: "chicago" }, { label: "Chico, CA", value: "chico" }, { label: "Chillicothe, OH", value: "chillicothe" }, { label: "Cincinnati, OH", value: "cincinnati" }, { label: "Clarksville, TN", value: "clarksville" }, { label: "Cleveland, OH", value: "cleveland" }, { label: "Clovis, NM", value: "clovis" }, { label: "College Station, TX", value: "collegestation" }, { label: "Columbia, SC", value: "columbia" }, { label: "Columbus, OH", value: "columbus" }, { label: "Columbus, GA", value: "columbusga" }, { label: "Cookeville, TN", value: "cookeville" }, { label: "Corpus Christi, TX", value: "corpuschristi" }, { label: "Corvallis, OR", value: "corvallis" }, { label: "Colorado Springs, CO", value: "cosprings" }, { label: "Central and South Dakota, SD", value: "csd" }, { label: "Dallas, TX", value: "dallas" }, { label: "Danville, VA", value: "danville" }, { label: "Dayton, OH", value: "dayton" }, { label: "Decatur, IL", value: "decatur" }, { label: "Delrio, TX", value: "delrio" }, { label: "Denver, CO", value: "denver" }, { label: "Des Moines, IA", value: "desmoines" }, { label: "Detroit, MI", value: "detroit" }, { label: "Dothan, AL", value: "dothan" }, { label: "Dubuque, IA", value: "dubuque" }, { label: "Duluth, MN", value: "duluth" }, { label: "Eastern Colorado, CO", value: "eastco" }, { label: "Eastern Shore, MD", value: "easternshore" }, { label: "Eastern Idaho, ID", value: "eastidaho" }, { label: "Eastern Kentucky, KY", value: "eastky" }, { label: "Eastern North Carolina, NC", value: "eastnc" }, { label: "Eastern Oregon, OR", value: "eastoregon" }, { label: "Eastern Texas, TX", value: "easttexas" }, { label: "Eau Claire, WI", value: "eauclaire" }, { label: "Elmira, NY", value: "elmira" }, { label: "El Paso, TX", value: "elpaso" }, { label: "North West Oklahoma, OK", value: "enid" }, { label: "Erie, PA", value: "erie" }, { label: "Eugene, OR", value: "eugene" }, { label: "Evansville, IN", value: "evansville" }, { label: "Fairbanks, AK", value: "fairbanks" }, { label: "Fargo, ND", value: "fargo" }, { label: "Farmington, NM", value: "farmington" }, { label: "Fayetteville, NC", value: "fayetteville" }, { label: "Finger Lakes, NY", value: "fingerlakes" }, { label: "Flint, MI", value: "flint" }, { label: "Florence, SC", value: "florencesc" }, { label: "Fort Collins, CO", value: "fortcollins" }, { label: "Fort Dodge, IA", value: "fortdodge" }, { label: "Fort Myers, FL", value: "fortmyers" }, { label: "Fort Smith, AR", value: "fortsmith" }, { label: "Fort Wayne, IN", value: "fortwayne" }, { label: "Frederick, MD", value: "frederick" }, { label: "Fredericksburg, VA", value: "fredericksburg" }, { label: "Fresno, CA", value: "fresno" }, { label: "Gadsden, AL", value: "gadsden" }, { label: "Gainesville, FL", value: "gainesville" }, { label: "Galveston, TX", value: "galveston" }, { label: "Glens Falls, NY", value: "glensfalls" }, { label: "Gold Country, CA", value: "goldcountry" }, { label: "Grand Forks, ND", value: "grandforks" }, { label: "Grand Rapids, MI", value: "grandrapids" }, { label: "Great Falls, MT", value: "greatfalls" }, { label: "Green Bay, WI", value: "greenbay" }, { label: "Greensboro, NC", value: "greensboro" }, { label: "Greenville, SC", value: "greenville" }, { label: "Hanford, CA", value: "hanford" }, { label: "Harrisburg, PA", value: "harrisburg" }, { label: "Harrisonburg, VA", value: "harrisonburg" }, { label: "Hartford, CT", value: "hartford" }, { label: "Hattiesburg, MS", value: "hattiesburg" }, { label: "Helena, MT", value: "helena" }, { label: "Hickory, NC", value: "hickory" }, { label: "Hilton Head Island, SC", value: "hiltonhead" }, { label: "Holland, MI", value: "holland" }, { label: "Houma, LA", value: "houma" }, { label: "Houston, TX", value: "houston" }, { label: "Hudson Valley, NY", value: "hudsonvalley" }, { label: "Humboldt, CA", value: "humboldt" }, { label: "Huntington, KY", value: "huntington" }, { label: "Huntsville, AL", value: "huntsville" }, { label: "Imperial, CA", value: "imperial" }, { label: "Indianapolis, IN", value: "indianapolis" }, { label: "Inland Empire, CA", value: "inlandempire" }, { label: "Iowa City, IA", value: "iowacity" }, { label: "Ithaca, NY", value: "ithaca" }, { label: "Jackson, MS", value: "jackson" }, { label: "Jackson, TN", value: "jacksontn" }, { label: "Jacksonville, FL", value: "jacksonville" }, { label: "Janesville, WI", value: "janesville" }, { label: "Jersey Shore, NJ", value: "jerseyshore" }, { label: "Jonesboro, AR", value: "jonesboro" }, { label: "Joplin, MO", value: "joplin" }, { label: "Juneau, AK", value: "juneau" }, { label: "Jackson, MI", value: "jxn" }, { label: "Kalamazoo, MI", value: "kalamazoo" }, { label: "Kalispell, MT", value: "kalispell" }, { label: "Kansas City, MO", value: "kansascity" }, { label: "Kenai, AK", value: "kenai" }, { label: "Florida Keys, FL", value: "keys" }, { label: "Killeen, TX", value: "killeen" }, { label: "Kirksville, MO", value: "kirksville" }, { label: "Klamath falls, OR", value: "klamath" }, { label: "Knoxville, TN", value: "knoxville" }, { label: "Kokomo, IN", value: "kokomo" }, { label: "Kennewick, WA", value: "kpr" }, { label: "Manhattan, KS", value: "ksu" }, { label: "La Crosse, WI", value: "lacrosse" }, { label: "Lafayette, LA", value: "lafayette" }, { label: "Lake Charles, LA", value: "lakecharles" }, { label: "Lake City, FL", value: "lakecity" }, { label: "Lakeland, FL", value: "lakeland" }, { label: "Lancaster, PA", value: "lancaster" }, { label: "Lansing, MI", value: "lansing" }, { label: "Laredo, TX", value: "laredo" }, { label: "LaSalle, IL", value: "lasalle" }, { label: "Las Cruces, NM", value: "lascruces" }, { label: "Las Vegas, NV", value: "lasvegas" }, { label: "Lawrence, KS", value: "lawrence" }, { label: "Lawton, OK", value: "lawton" }, { label: "Lewiston, ID", value: "lewiston" }, { label: "Lexington, KY", value: "lexington" }, { label: "Lima, OH", value: "limaohio" }, { label: "Lincoln, NE", value: "lincoln" }, { label: "Little Rock, AR", value: "littlerock" }, { label: "Long Island, NY", value: "longisland" }, { label: "Los Angeles, CA", value: "losangeles" }, { label: "Louisville, KY", value: "louisville" }, { label: "Lake of the ozarks, MO", value: "loz" }, { label: "Lubbock, TX", value: "lubbock" }, { label: "Lynchburg, VA", value: "lynchburg" }, { label: "Macon, GA", value: "macon" }, { label: "Madison, WI", value: "madison" }, { label: "Mankato, MN", value: "mankato" }, { label: "Mansfield, OH", value: "mansfield" }, { label: "South West Minnesota, MN", value: "marshall" }, { label: "Martinsburg, WV", value: "martinsburg" }, { label: "Mason City, IA", value: "masoncity" }, { label: "Mattoon, IL", value: "mattoon" }, { label: "McAllen, TX", value: "mcallen" }, { label: "Meadville, PA", value: "meadville" }, { label: "Medford, OR", value: "medford" }, { label: "Memphis, TN", value: "memphis" }, { label: "Mendocino, CA", value: "mendocino" }, { label: "Merced, CA", value: "merced" }, { label: "Meridian, MS", value: "meridian" }, { label: "Miami, FL", value: "miami" }, { label: "Milwaukee, WI", value: "milwaukee" }, { label: "Minneapolis, MN", value: "minneapolis" }, { label: "Missoula, MT", value: "missoula" }, { label: "Mobile, AL", value: "mobile" }, { label: "Modesto, CA", value: "modesto" }, { label: "Mohave, AZ", value: "mohave" }, { label: "Monroe, LA", value: "monroe" }, { label: "Monroe, MI", value: "monroemi" }, { label: "Montana, MT", value: "montana" }, { label: "Monterey, CA", value: "monterey" }, { label: "Montgomery, AL", value: "montgomery" }, { label: "Morgantown, WV", value: "morgantown" }, { label: "Moses Lake, WA", value: "moseslake" }, { label: "Muncie, IN", value: "muncie" }, { label: "Muskegon, MI", value: "muskegon" }, { label: "Myrtle Beach, SC", value: "myrtlebeach" }, { label: "Nacogdoches, TX", value: "nacogdoches" }, { label: "Nashville, TN", value: "nashville" }, { label: "Natchez, MS", value: "natchez" }, { label: "North Dakota, ND", value: "nd" }, { label: "New Haven, CT", value: "newhaven" }, { label: "New Jersey, NJ", value: "newjersey" }, { label: "New Orleans, LA", value: "neworleans" }, { label: "New York, NY", value: "newyork" }, { label: "Northern Michigan, MI", value: "nmi" }, { label: "Norfolk, VA", value: "norfolk" }, { label: "Northern Wisconsin, WI", value: "northernwi" }, { label: "North Mississippi, MS", value: "northmiss" }, { label: "North Platte, NE", value: "northplatte" }, { label: "North West Connecticut, CT", value: "nwct" }, { label: "North West Georgia, GA", value: "nwga" }, { label: "North West Kansas, KS", value: "nwks" }, { label: "Ocala, FL", value: "ocala" }, { label: "Odessa, TX", value: "odessa" }, { label: "Ogden, UT", value: "ogden" }, { label: "Okaloosa, FL", value: "okaloosa" }, { label: "Oklahoma City, OK", value: "oklahomacity" }, { label: "Olympic, WA", value: "olympic" }, { label: "Omaha, NE", value: "omaha" }, { label: "Oneonta, NY", value: "oneonta" }, { label: "Jacksonville, NC", value: "onslow" }, { label: "Orange County, CA", value: "orangecounty" }, { label: "Oregon Coast, OR", value: "oregoncoast" }, { label: "Orlando, FL", value: "orlando" }, { label: "Ottumwa, IA", value: "ottumwa" }, { label: "Outer Banks, NC", value: "outerbanks" }, { label: "Owensboro, KY", value: "owensboro" }, { label: "Palm Springs, CA", value: "palmsprings" }, { label: "Panama City, FL", value: "panamacity" }, { label: "Parkersburg, WV", value: "parkersburg" }, { label: "State College, PA", value: "pennstate" }, { label: "Pensacola, FL", value: "pensacola" }, { label: "Peoria, IL", value: "peoria" }, { label: "Philadelphia, PA", value: "philadelphia" }, { label: "Phoenix, AZ", value: "phoenix" }, { label: "Pittsburgh, PA", value: "pittsburgh" }, { label: "Plattsburgh, NY", value: "plattsburgh" }, { label: "Pocono Mountains, PA", value: "poconos" }, { label: "Port Huron, MI", value: "porthuron" }, { label: "Portland, OR", value: "portland" }, { label: "Potsdam, NY", value: "potsdam" }, { label: "Prescott, AZ", value: "prescott" }, { label: "Provo, UT", value: "provo" }, { label: "Pueblo, CO", value: "pueblo" }, { label: "Pullman, WA", value: "pullman" }, { label: "Quad Cities, IL", value: "quadcities" }, { label: "Quincy, IL", value: "quincy" }, { label: "Racine, WI", value: "racine" }, { label: "Raleigh, NC", value: "raleigh" }, { label: "Rapid City, SD", value: "rapidcity" }, { label: "Reading, PA", value: "reading" }, { label: "Redding, CA", value: "redding" }, { label: "Reno, NV", value: "reno" }, { label: "Richmond, VA", value: "richmond" }, { label: "Richmond, IN", value: "richmondin" }, { label: "Rochester, MN", value: "rmn" }, { label: "Roanoke, VA", value: "roanoke" }, { label: "Rochester, NY", value: "rochester" }, { label: "Rockford, IL", value: "rockford" }, { label: "Rocky Mountains, CO", value: "rockies" }, { label: "Roseburg, OR", value: "roseburg" }, { label: "Roswell, NM", value: "roswell" }, { label: "Sacramento, CA", value: "sacramento" }, { label: "Saginaw, MI", value: "saginaw" }, { label: "Salem, OR", value: "salem" }, { label: "Salina, KS", value: "salina" }, { label: "Salt Lake City, UT", value: "saltlakecity" }, { label: "San Angelo, TX", value: "sanangelo" }, { label: "San Antonio, TX", value: "sanantonio" }, { label: "San Diego, CA", value: "sandiego" }, { label: "Sandusky, OH", value: "sandusky" }, { label: "San Marcos, TX", value: "sanmarcos" }, { label: "Santa Barbara, CA", value: "santabarbara" }, { label: "Santa Fe, NM", value: "santafe" }, { label: "Santa Maria, CA", value: "santamaria" }, { label: "Sarasota, FL", value: "sarasota" }, { label: "Savannah, GA", value: "savannah" }, { label: "Scottsbluff, NE", value: "scottsbluff" }, { label: "Scranton, PA", value: "scranton" }, { label: "South Dakota, SD", value: "sd" }, { label: "Seattle, WA", value: "seattle" }, { label: "South East Kansas, KS", value: "seks" }, { label: "South East Missouri, MO", value: "semo" }, { label: "Sheboygan, WI", value: "sheboygan" }, { label: "Shoals, AL", value: "shoals" }, { label: "Show Low, AZ", value: "showlow" }, { label: "Shreveport, LA", value: "shreveport" }, { label: "Sierra Vista, AZ", value: "sierravista" }, { label: "Sioux City, IA", value: "siouxcity" }, { label: "Sioux Falls, SD", value: "siouxfalls" }, { label: "Siskiyou County, CA", value: "siskiyou" }, { label: "Skagit, WA", value: "skagit" }, { label: "San Luis Obispo, CA", value: "slo" }, { label: "Southern Maryland, MD", value: "smd" }, { label: "South Bend, IN", value: "southbend" }, { label: "South Coast, MA", value: "southcoast" }, { label: "South Jersey, NJ", value: "southjersey" }, { label: "Space Coast, FL", value: "spacecoast" }, { label: "Spokane, WA", value: "spokane" }, { label: "Springfield, MO", value: "springfield" }, { label: "Springfield, IL", value: "springfieldil" }, { label: "Statesboro, GA", value: "statesboro" }, { label: "St. Augustine, FL", value: "staugustine" }, { label: "St. Cloud, MN", value: "stcloud" }, { label: "St. George, UT", value: "stgeorge" }, { label: "Stillwater, OK", value: "stillwater" }, { label: "St. Joseph, MI", value: "stjoseph" }, { label: "St. Louis, MO", value: "stlouis" }, { label: "Stockton, CA", value: "stockton" }, { label: "Susanville, CA", value: "susanville" }, { label: "South West Kansas, KS", value: "swks" }, { label: "South West Michigan, MI", value: "swmi" }, { label: "Southern West Virginia, WV", value: "swv" }, { label: "South West Virginia, VA", value: "swva" }, { label: "Syracuse, NY", value: "syracuse" }, { label: "Tallahassee, FL", value: "tallahassee" }, { label: "Tampa, FL", value: "tampa" }, { label: "Terre Haute, IN", value: "terrehaute" }, { label: "Texarkana, AR", value: "texarkana" }, { label: "Texoma, OK", value: "texoma" }, { label: "Thumb, MI", value: "thumb" }, { label: "Tippecanoe, IN", value: "tippecanoe" }, { label: "Toledo, OH", value: "toledo" }, { label: "Topeka, KS", value: "topeka" }, { label: "Treasure Coast, FL", value: "treasure" }, { label: "Tri-Cities, TN", value: "tricities" }, { label: "Tucson, AZ", value: "tucson" }, { label: "Tulsa, OK", value: "tulsa" }, { label: "Tuscaloosa, AL", value: "tuscaloosa" }, { label: "Tuscarawas, OH", value: "tuscarawas" }, { label: "Twin Falls, ID", value: "twinfalls" }, { label: "Twin Tiers, NY", value: "twintiers" }, { label: "Upper Peninsula, MI", value: "up" }, { label: "Utica, NY", value: "utica" }, { label: "Valdosta, GA", value: "valdosta" }, { label: "Ventura, CA", value: "ventura" }, { label: "Victoria, TX", value: "victoriatx" }, { label: "Visalia, CA", value: "visalia" }, { label: "Waco, TX", value: "waco" }, { label: "Waterloo, IA", value: "waterloo" }, { label: "Watertown, NY", value: "watertown" }, { label: "Wausau, WI", value: "wausau" }, { label: "Wenatchee, WA", value: "wenatchee" }, { label: "Westernmass, MA", value: "westernmass" }, { label: "Western Kentucky, KY", value: "westky" }, { label: "Western Maryland, MD", value: "westmd" }, { label: "Western Slope, CO", value: "westslope" }, { label: "Wheeling, OH", value: "wheeling" }, { label: "Wichita, KS", value: "wichita" }, { label: "Wichita Falls, TX", value: "wichitafalls" }, { label: "Williamsport, PA", value: "williamsport" }, { label: "Wilmington, NC", value: "wilmington" }, { label: "Winchester, VA", value: "winchester" }, { label: "Winston-Salem, NC", value: "winstonsalem" }, { label: "Worcester, MA", value: "worcester" }, { label: "West Virginia, WV", value: "wv" }, { label: "Yakima, WA", value: "yakima" }, { label: "York, PA", value: "york" }, { label: "Youngstown, OH", value: "youngstown" }, { label: "Yuba, CA", value: "yubasutter" }, { label: "Yuma, AZ", value: "yuma" }, { label: "Zanesville, OH", value: "zanesville" }];
+            $("#tags").autocomplete({
+                source: availableTags,
+                select: function (event, ui) {
+                    //Set the value
+                    $(this).val(ui.item.value);
+                    // Submit the form
+                    $('#suggest').submit();
+                }
+            });
+            $("#tags2").autocomplete({
+                source: availableTags,
+                select: function (event, ui) {
+                    //Set the value
+                    $(this).val(ui.item.value);
+                    // Submit the form
+                    $('#suggest2').submit();
+                }
+            });
+
+        });
+
+        (function ($) {
+            var map = new Array();
+            $.Watermark = {
+                ShowAll: function () {
+                    for (var i = 0; i < map.length; i++) {
+                        if (map[i].obj.val() == "") {
+                            map[i].obj.val(map[i].text);
+                            map[i].obj.css("color", map[i].WatermarkColor);
+                        } else {
+                            map[i].obj.css("color", map[i].DefaultColor);
+                        }
+                    }
+                },
+                HideAll: function () {
+                    for (var i = 0; i < map.length; i++) {
+                        if (map[i].obj.val() == map[i].text)
+                            map[i].obj.val("");
+                    }
+                }
+            }
+
+            $.fn.Watermark = function (text, color) {
+                if (!color)
+                    color = "#aaa";
+                return this.each(
+                    function () {
+                        var input = $(this);
+                        var defaultColor = input.css("color");
+                        map[map.length] = { text: text, obj: input, DefaultColor: defaultColor, WatermarkColor: color };
+                        function clearMessage() {
+                            if (input.val() == text)
+                                input.val("");
+                            input.css("color", defaultColor);
+                        }
+
+                        function insertMessage() {
+                            if (input.val().length == 0 || input.val() == text) {
+                                input.val(text);
+                                input.css("color", color);
+                            } else
+                                input.css("color", defaultColor);
+                        }
+
+                        input.focus(clearMessage);
+                        input.blur(insertMessage);
+                        input.change(insertMessage);
+
+                        insertMessage();
+                    }
+                );
+            };
+        })(jQuery);
+        jQuery(function ($) {
+            $("#from").Watermark("from");
+            $("#to").Watermark("to");
+		$("#tags2").Watermark("Type your city...");
+        });
+    })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      window.___gcfg = {
+        lang: 'en-US'
+      };
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    

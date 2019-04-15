@@ -1,0 +1,219 @@
+
+			$(document).ready(function(){
+			  if ($("[rel=tooltip]").tooltip !== undefined ) {
+				$("[rel=tooltip]").tooltip({placement: 'top'});
+			  }
+			});
+			
+
+						setTimeout(function() {
+							var a=document.createElement("script");
+							var b=document.getElementsByTagName("script")[0];
+							a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0028/5444.js?"+Math.floor(new Date().getTime()/3600000);
+							a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)
+						}, 1);
+						
+	
+//jQuery(".navitem").mouseleave(function(){ if window.globalVar3){ jQuery('.topnav li:nth-of-type('+window.globalVar3+')').removeClass('show'); delete window.globalVar3; } });
+if ($.browser.msie && $.browser.version.substr(0,1)<7) {
+	$(".collapse").collapse('hide');
+} else {
+	if ($(window).width()<767) {
+		$(".collapse").collapse('hide');
+	} else {
+		$(".collapse").collapse('show');
+	};
+};
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+	if ($(window).width()>767) {
+		$(document).ready(function() {
+			$(".topnav").superfish({
+				autoArrows:false,
+				hoverClass:    'show',
+				delay: 0,
+				dropShadows: false,
+				onInit: function() {	
+					jQuery.ajax({
+						url: '//www.knifecenter.com/kc_new/inc/pagetop_links_content.html',
+						success: function(data) {
+							jQuery('.topnav').html(data);
+							jQuery(function() {
+								$(".topnav").superfish({autoArrows:false,hoverClass: 'show',delay: 0, dropShadows: false });
+							});
+							$(".topnav").addClass("fullmenu");
+						}
+					});
+				}
+			});	
+		});
+	} else {};
+} else {
+    $(document).ready(function() {
+        jQuery(function() {
+			var config = {
+				over: function() {
+				    window.globalVar3=jQuery(this).parent().index()+1;
+					window.globalVar5=jQuery(this).parent().index();
+					jQuery.ajax({
+						url: '//www.knifecenter.com/kc_new/inc/pagetop_links_content.html',
+						success: function(data) {
+							jQuery('.topnav').html(data);
+							$('.topnav .navitem').one("mouseout",function() {
+								$('#tempstyles').empty();
+								$('.topnav li:nth-of-type('+window.globalVar3+')').removeClass('show');
+								$(this).removeClass('show');
+								console.log('inner out'+$(this).index());
+							});
+							$('.topnav .navitem').promise().done(function() {
+								$('.topnav li:nth-of-type('+window.globalVar3+')').addClass('show');
+								console.log('showing '+ jQuery(this).parent().index() + ' '+window.globalVar3);
+							});
+							
+							if ($.browser.webkit | $.browser.mozilla ) {
+								if ($('.topnav').is(':hover')) {
+									$('#tempstyles').append('<style>.navigation ul li.navitem:hover .submenu{display:block;}</style>');
+								};
+							};
+							
+							jQuery(function() {
+								var config = {
+									over: function() {
+										$('#tempstyles').empty();
+										$(this).parent().addClass('show');
+										console.log('new show'+$(this).parent().index());
+									},
+									//interval: 200,
+									timeout: 120,   
+									out: function() {
+										$('#tempstyles').empty();
+										$(this).parent().removeClass('show'); 
+										console.log('new out');
+									}					 
+								};
+								$(".topnav .navitem > a").hoverIntent( config );
+							});
+						}
+					});
+				},
+				timeout: 180,
+				out: function() {
+					$('#tempstyles').empty();
+					$(this).parent().removeClass('show');
+					$('.topnav li:nth-of-type('+window.globalVar3+')').removeClass('show');
+					console.log('old out'+window.globalVar3);
+				}				 
+			};
+			$(".topnav .navitem > a").hoverIntent( config );
+		});
+    });
+};
+
+if($.cookie('cart_number')) {
+	$('.carttotalnumberitems').html('('+$.cookie('cart_number')+')');
+	$('.cart-number-spacer').removeAttr("style");
+} else {
+	$('.carttotalnumberitems').html('(0)');
+	$('.cart-number-spacer').removeAttr("style");
+}
+
+
+
+
+
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-353946-1']);
+  _gaq.push(['_setDomainName', '.knifecenter.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_setAllowHash', false]);
+  _gaq.push(['_trackPageLoadTime']);
+  
+
+
+
+	_gaq.push(['_setCustomVar', 2, 'User Type', 'Not Logged In', 2]);
+
+
+  _gaq.push(['_trackPageview']);
+
+
+
+
+
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+		var ytdata = {
+ "items": [
+  {
+   "snippet": {
+    "resourceId": {
+     "videoId": "rgt_P31jV6g"
+    }
+   }
+  },
+  {
+   "snippet": {
+    "resourceId": {
+     "videoId": "qVkFxBvTD2k"
+    }
+   }
+  },
+  {
+   "snippet": {
+    "resourceId": {
+     "videoId": "rGnLOGQpJ9w"
+    }
+   }
+  }
+ ]
+}
+;
+		for (var i = 0; i < ytdata.items.length; i++) {
+			var ytvid = i + 1;
+			var ytvidid = ytdata.items[i].snippet.resourceId.videoId;
+			$('.featured-products .video-responsive [name="ytvid' + ytvid + '"]').prop('src', 'https://www.youtube.com/embed/'+ ytvidid +'?rel=0&showinfo=0');
+		}
+		
+
+		/**
+		* INITIALIZE ROYALSLIDER ON DOCUMENT READY
+		*/
+		jQuery(document).ready(function($) {
+			var sliderInstance = $(".royalSlider");
+			sliderInstance.royalSlider({
+				keyboardNavEnabled:    true,
+				autoScaleSlider:       true,
+				imageScalePadding:     0,
+				slidesSpacing:         0,
+				autoScaleHeight:       true,
+				loop:                  true,
+				transitionSpeed:       400,
+				autoScaleSliderWidth:  700,
+				autoScaleSliderHeight: 300,
+				imageScaleMode:        'fill',
+				numImagesToPreload:    10,
+				autoPlay:              {
+					enabled:      true,
+					stopAtAction: false,
+					pauseOnHover: true,
+					delay:        5200
+				}
+			});
+		});
+		
+
+		$('.social-home').hover(function() {
+			Socialite.load();
+			$('.social-home').css( 'backgroundImage', 'none' );
+		});
+		$(document).ready(function() {});
+		

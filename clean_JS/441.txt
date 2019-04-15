@@ -1,0 +1,16 @@
+var seo2NB=document.createElement("script");seo2NB.type="text/javascript";var seo2NBs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1samixch0fe2o1hwzcy6d71abr/safe-standard.js?ps_h=o2NB&ps_t="+new Date().getTime();setTimeout("seo2NB.src=seo2NBs;document.getElementById('sdo2NB').appendChild(seo2NB)",1)
+
+window.onAmazonLoginReady = function () {
+    amazon.Login.setClientId('amzn1.application-oa2-client.4cccac4f8ae54a078bd984d0da1c617f');
+    };
+
+
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".hotsauce.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"7b9125e7cb76c6084ba453fac929411954756ef0","type":"ANONYMOUS","visit_id":"d975831e-065a-4b2a-91b1-88cac5f542ad","visitor_id":"aaa48634-141a-4ad1-8b72-6f7c7dad4ffe"},"referer":{"url":""},"request":{"url":"https:\/\/www.hotsauce.com\/"}}, '', 3080032, "other", {"customer":{"id":"anonymous"}}, 'd975831e-065a-4b2a-91b1-88cac5f542ad', 'aaa48634-141a-4ad1-8b72-6f7c7dad4ffe');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-ebc93f1c7806a192a5c841de87111c96dd6471aa/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"5c2cded01b2890866e1ccc160a3f9cdb8fdee0a268ecaded74a0cfca34d6ad07"};
+

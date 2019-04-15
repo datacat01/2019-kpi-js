@@ -1,0 +1,107 @@
+var monetateT = new Date().getTime();
+
+            var nextDayInstallMode = 0
+
+            var ACC = { config: [] };
+
+        
+
+
+        window.data = {
+
+            
+            "customer_id": "anonymous",
+            
+            "user_device_type": "Desktop",
+            
+            "user_fitment": "None",
+            
+            "page_type": "Desktop-Homepage",
+            
+
+        }
+
+        
+
+        $.extend(data);
+
+    
+
+
+/* Fetch the redisDataStore */
+// var redisDataStore = JSON.parse(JSON.stringify());
+// Start setting page data
+
+
+
+
+
+// End setting page data
+
+/* Google Analytics */
+var googleAnalyticsTrackingId = 'your_google_analytics_tracking_id';
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', googleAnalyticsTrackingId]);
+
+
+		_gaq.push(['_trackPageview']);
+	
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
+function trackAddToCart_google(productCode, quantityAdded) {
+	_gaq.push(['_trackEvent', 'Cart', 'AddToCart', productCode, quantityAdded]);
+}
+
+function trackUpdateCart(productCode, initialQuantity, newQuantity) {
+	if (initialQuantity != newQuantity) {
+		if (initialQuantity > newQuantity) {
+			_gaq.push(['_trackEvent', 'Cart', 'RemoveFromCart', productCode, initialQuantity - newQuantity]);
+		} else {
+			_gaq.push(['_trackEvent', 'Cart', 'AddToCart', productCode, newQuantity - initialQuantity]);
+		}
+	}
+}
+
+function trackRemoveFromCart(productCode, initialQuantity) {
+	_gaq.push(['_trackEvent', 'Cart', 'RemoveFromCart', productCode, initialQuantity]);
+}
+
+window.mediator.subscribe('trackAddToCart', function(data) {
+	if (data.productCode && data.quantity)
+	{
+		trackAddToCart_google(data.productCode, data.quantity);
+	}
+});
+
+window.mediator.subscribe('trackUpdateCart', function(data) {
+	if (data.productCode && data.initialCartQuantity && data.newCartQuantity)
+	{
+		trackUpdateCart(data.productCode, data.initialCartQuantity, data.newCartQuantity);
+	}
+});
+
+window.mediator.subscribe('trackRemoveFromCart', function(data) {
+	if (data.productCode && data.initialCartQuantity)
+	{
+		trackRemoveFromCart(data.productCode, data.initialCartQuantity);
+	}
+});
+
+
+                        // Create a window object, if it doesn't already exist,
+                        // to be accessed in productlist.jsp
+                        window.visualizerData = window.visualizerData || {
+                            vehicleDescription: "",
+                            vehicleOESize: "",
+                            products: []
+                        };
+                    
+
+
+            

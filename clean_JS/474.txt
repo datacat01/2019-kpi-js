@@ -1,0 +1,630 @@
+
+var aemHostName = "";
+
+
+    // Convert the WCParam object which contains request properties into javascript object
+    var WCParamJS = {
+	"storeId" : '715838534',
+	"catalogId" : '3074457345616676768',
+	"langId" : '-1',
+	"pageView" : '',
+	"orderBy" : '',
+	"orderByContent" : '',
+	"searchTerm" : '',
+	"homePageURL" : 'https://www.basspro.com/shop/en',
+	"commandContextCurrency" : "USD"
+    };
+    var absoluteURL = "https://www.basspro.com/shop/";
+    var imageDirectoryPath = "/wcsstore/BassProSAS/";
+    var styleDirectoryPath = "images/colors/color1/";
+    var aemImageDirectoryPath = "//assetshare.basspro.com/content/dam/bps-general-assets/web/";
+    var aemStyleDirectoryPath = "site-elements/images/icons/";    
+    var supportPaymentTypePromotions = true;
+
+    var subsFulfillmentFrequencyAttrName = "fulfillmentFrequency";
+    var subsPaymentFrequencyAttrName = "paymentFrequency";
+    var subsTimePeriodAttrName = "timePeriod";
+
+    var storeNLS = null;
+    var storeUserType = "G";
+    var ios = false;
+    var android = false;
+    var multiSessionEnabled = true;
+
+    // Store the amount of time of inactivity before a re-login is required, this value is retrieved from wc-server.xml, default is 30 mins
+    var inactivityTimeout = 1800000;
+
+    // Store the amount of time the inactivity warning dialog will be displayed before it closes itself, default is 20 seconds
+    var inactivityWarningDialogDisplayTimer = 20000;
+
+    // Store the amount of time to display a inactivity warning dialog before a re-login is required, default is 30 seconds
+    var inactivityWarningDialogBuffer = 30000;
+
+    // Store the timing event to display the inactivity dialog
+    var inactivityTimeoutTracker = null;
+
+    // Store the timing event to close the inactivity dialog
+    var dialogTimeoutTracker = null;
+
+    //browse only mode for Web Call Centre integration
+    var browseOnly = false;
+
+    //Summary: Returns the absolute URL to use for prefixing any Ajax URL call.
+    //Description: Dojo does not handle the case where the parameters in the URL are delimeted by the "/" forward slash. Therefore, in order to
+    //             workaround the issue, all AJAX requests must be done using absolute URLs rather than relative.
+    //Returns: The absolute URL to use for prefixing any Ajax URL call.
+    function getAbsoluteURL() {
+	if (absoluteURL != "") {
+	    var currentURL = document.URL;
+	    var currentProtocol = "";
+
+	    if (currentURL.indexOf("://") != -1) {
+		currentProtocol = currentURL.substring(0, currentURL.indexOf("://"));
+	    }
+
+	    var savedProtocol = "";
+	    if (absoluteURL.indexOf("://") != -1) {
+		savedProtocol = absoluteURL.substring(0, absoluteURL.indexOf("://"));
+	    }
+
+	    if (currentProtocol != savedProtocol) {
+		absoluteURL = currentProtocol + absoluteURL.substring(absoluteURL.indexOf("://"));
+	    }
+	}
+
+	return absoluteURL;
+    }
+    //Summary: Returns the path pointing to the shared image directory.
+    //Description: In order to get the image directory path in any javascript file, this function can be used.
+    //Returns: The path to reference images.
+    function getImageDirectoryPath() {
+	return imageDirectoryPath;
+    }
+    //Summary: Returns the path pointing to the directory containing color-dependant image files.
+    //Description: In order to get the directory containing color-dependant image files in any javascript file, this function can be used.
+    //Returns: The path to reference color-dependant image files.
+    function getStyleDirectoryPath() {
+	return styleDirectoryPath;
+    }
+
+    
+
+
+    //Set the default NLS to use in the store.
+    if (storeNLS == null) {
+	dojo.requireLocalization("storetext", "StoreText");
+	storeNLS = dojo.i18n.getLocalization("storetext", "StoreText");
+    }
+    initializeInactivityWarning();
+    var ie6 = false;
+    var ie7 = false;
+    if (navigator != null && navigator.userAgent != null) {
+	ie6 = (navigator.userAgent.toLowerCase().indexOf("msie 6.0") > -1);
+	ie7 = (navigator.userAgent.toLowerCase().indexOf("msie 7.0") > -1);
+    }
+    if (location.href.indexOf('UnsupportedBrowserErrorView') == -1 && (ie6 || ie7)) {
+	document.write('<meta http-equiv="Refresh" content="0;URL=https://www.basspro.com/shop/UnsupportedBrowserErrorView?catalogId=10001&amp;langId=-1&amp;storeId=715838534"/>');
+    }
+
+
+    dojo.addOnLoad(function() {
+	shoppingActionsJS.setCommonParameters('-1', '715838534',
+		'3074457345616676768', 'G',
+		'$');
+
+	var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+	var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+	if (isChrome || isSafari) {
+	    var hiddenFields = dojo.query('input[type=\"hidden\"]');
+	    for (var i = 0; i < hiddenFields.length; i++) {
+		hiddenFields[i].autocomplete = "off"
+	    }
+	}
+	if (dojo.has("ios") || dojo.has("android")) {
+	    dojo.attr(dojo.body(), "data-wc-device", "mobile");
+	}
+    });
+
+
+var ICPollInterval = '10000';
+var ICPollTimeOut = '14';
+var QAS_ADDRESS_VALIDATION_TIME_OUT_SECONDS = '3';
+
+
+    dojo.addOnLoad(function() {
+	var currentCategoryId = '';
+	if (!(currentCategoryId === '')) {
+	    document.cookie = "WC_BPS_CURRENT_CATEGORY=" + currentCategoryId + ";path=/";
+	}
+
+    });
+
+
+			dojo.addOnLoad(function() { 
+				shoppingActionsJS.setCommonParameters('-1','715838534','3074457345616676768','G','$');
+				shoppingActionsServicesDeclarationJS.setCommonParameters('-1','715838534','3074457345616676768');
+				});
+			
+		
+
+			dojo.addOnLoad(function() {
+				if (715838534 == '715838534') {
+					var bpsSearchDisplayJSONURL = "https://www.basspro.com/";
+				}
+				if (715838534 == '10151') {
+					var bpsSearchDisplayJSONURL = "https://www.basspro.ca/";
+				}
+				document.getElementById("bpsSearchDisplayJSON").innerHTML = JSON.stringify(
+					{ 
+						"@context": "http://schema.org",
+		       			"@type": "WebSite",
+		       			"url": bpsSearchDisplayJSONURL,
+		       			"potentialAction": [{
+		            		"@type": "SearchAction",
+		             		"target": bpsSearchDisplayJSONURL + "shop/SearchDisplay?storeId=715838534&searchSource=SearchAction&searchTerm={search_term_string}",
+		              		"query-input": "required name=search_term_string"
+						}]
+					});
+			});
+		
+
+	var YextParamJS = {
+		"accountID" : '950642',
+		"APIKey" : '4ac210e45d403d54c9493e9898ac7b40',
+		"APIKeyKnowledge" : '8243f6a0a3658055c7ba108ce3f9d49f',
+		"radius" : '500',
+		"publisherIds" : 'GOOGLEMYBUSINESS',
+		"storeUrlCustomFieldId" : '14326',
+		"browseAllLocationsUrl" : '//stores.basspro.com',
+		"closingTimeText" : 'Open Until',
+		"closedNow" : 'Closed Now',
+		"storeHoursText" : 'Store Hours',
+		"moreStrDetText" : 'More Store Details',
+		"milesAwayText" : 'miles away',
+		"showInBPSCustomFieldId" : '24981',
+		"BPS_ENABLE_STORE_LOCATOR_AUTO_SELECTION" : 'TRUE',
+		"BPS_STORE_LOCATOR_COOKIE_EXPIRATION_TIME_MINUTES" : '30',
+		"limit" : '5'
+	};
+
+
+	require(["dojo/domReady!"], function () {
+		GlobalLoginJS.setCommonParameters('-1','715838534','3074457345616676768');																		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_controller', getAbsoluteURL() + 'GlobalLoginView?langId=-1&amp;storeId=715838534&amp;catalogId=3074457345616676768&amp;ajaxStoreImageDir=%2fwcsstore%2fBassProSAS%2f');		
+		GlobalLoginJS.initGlobalLoginUrl('GlobalLogin_SignIn_controller', getAbsoluteURL() + 'GlobalLoginSignInView?langId=-1&amp;storeId=715838534&amp;catalogId=3074457345616676768&amp;ajaxStoreImageDir=%2fwcsstore%2fBassProSAS%2f');
+		GlobalLoginShopOnBehalfJS.setBuyerSearchURL('/wcs/resources/store/715838534/person?q=usersICanAdmin');
+		GlobalLoginShopOnBehalfJS.setControllerURL('GlobalLoginShopOnBehalfDisplayView?langId=-1&storeId=715838534&catalogId=3074457345616676768&ajaxStoreImageDir=%2fwcsstore%2fBassProSAS%2f');
+	});			
+
+
+	dojo.addOnLoad(function() {
+		GlobalLoginJS.registerWidget('Header_GlobalLogin');
+		GlobalLoginShopOnBehalfJS.registerShopOnBehalfPanel('Header_GlobalLogin_WC_B2B_ShopOnBehalf', 'Header_GlobalLogin_WC_B2B_ShopForSelf');
+	});
+
+
+	dojo.addOnLoad(function(){		
+				
+		
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2000", "Type an email in the Email field.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2010", "Either the email or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2020", "Either the email or the password entered is incorrect. Enter the information again.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2030", "Either the email or the password entered is incorrect. Enter the information again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2110", "???GLOBALLOGIN_SIGN_IN_ERROR_2110???");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2300", "Wait a few seconds before attempting to sign in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2400", "Your organization is locked. You cannot sign in at this time. ");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2410", "You do not have the proper authority to sign in. Contact the store for further information.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2420", "You have not activated your account. Respond to the activation email you received.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2430", "Your password has been reset. Retrieve the temporary password from your email and try signing in again.");	
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2440", "Your account registration is not approved. Contact our store for assistance.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2450", "Your account is not activated. Check your email to active your account. If you already activated your account, contact our store for assistance.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2340", "You are not allowed to login from an external network.");
+		MessageHelper.setMessage("GLOBALLOGIN_SIGN_IN_ERROR_2570", "Your account is not activated. If you have already responded to the activation email your received, contact our store for assistance.");	
+	});
+
+
+	  dojo.addOnLoad(function() {
+	  		var miniCartContent = "false";
+	  		var enableToLoad = "true";
+			if (miniCartContent == "true" || miniCartContent == true){
+				setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838534&catalogId=3074457345616676768&langId=-1&miniCartContent=true');			
+				wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838534&catalogId=3074457345616676768&langId=-1&page_view=dropdown&miniCartContent=true';
+			}else{
+				setMiniShopCartControllerURL(getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838534&catalogId=3074457345616676768&langId=-1');
+				wc.render.getRefreshControllerById("MiniShopCartContentsController").url = getAbsoluteURL()+'MiniShopCartDisplayView?storeId=715838534&catalogId=3074457345616676768&langId=-1&page_view=dropdown';
+			}				
+			
+			// var currentUserId = getCookieName_BeginningWith("WC_USERACTIVITY_").split("WC_USERACTIVITY_")[1];
+			if(dojo.byId('MiniShoppingCart') != null && (enableToLoad == "true" || enableToLoad == true)){
+					loadMiniCart("USD","-1");
+			}
+		});
+	
+
+	dojo.addOnLoad(function() {
+	    //NS-601: commenting out csr since it will be part of userheader
+	    //onBehalfUtilitiesJS.updateCSRMenuinHeader();
+	    updateUserHeaderDetails();
+	    updateSupportIDDetails();
+	});
+    
+
+	dojo.addOnLoad(function() {
+		MonetateJS.storeId=715838534;
+		MonetateJS.catalogId=3074457345616676768;		
+		MonetateJS.registerCartView();		
+	});
+
+
+							dojo.addOnLoad(function() {
+								parseWidget("footerSupportID_tooltip");
+							});
+						
+
+
+	function pop(dualDrop,s4){
+		var dualDrop = document.getElementById(dualDrop);
+		var s4 = document.getElementById(s4);
+		s4.innerHTML = "Select a Value Above";
+		if(dualDrop.value == "AL"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Alabama/Huntsville/069.jsp|Huntsville - Cabela's",
+													 "https://stores.basspro.com/us/al/leeds/5000-bass-pro-blvd.html|Leeds - Bass Pro Shops",
+													 "https://stores.basspro.com/us/al/prattville/2553-rocky-mount-rd.html|Prattville - Bass Pro Shops",
+													 "https://stores.basspro.com/us/al/spanish-fort/20000-bass-pro-dr.html|Spanish Fort - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "AK"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Alaska/Anchorage/052.jsp|Anchorage - Cabela's",
+													 "https://stores.basspro.com/us/ak/anchorage/3046-mountain-view-dr.html|Anchorage - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "AR"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ar/little-rock/1-bass-pro-dr.html|Little Rock - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Arkansas/Rogers/038.jsp|Rogers - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "AZ"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Arizona/Glendale/015.jsp|Glendale - Cabela's",
+													 "https://stores.basspro.com/us/az/mesa/1133-north-dobson.html|Mesa - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "CA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ca/manteca/1356-bass-pro-dr.html|Manteca - Bass Pro Shops",
+													 "https://stores.basspro.com/us/ca/rancho-cucamonga/7777-victoria-gardens-lane.html|Rancho Cucamonga - Bass Pro Shops",
+													 "https://stores.basspro.com/us/ca/rocklin/5472-crossings-dr.html|Rocklin - Bass Pro Shops",
+													 "https://stores.basspro.com/us/ca/san-jose/5160-cherry-ave.html|San Jose - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "CO"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/co/colorado-springs/13012-bass-pro-dr.html|Colorado Springs - Bass Pro Shops",
+													 "https://stores.basspro.com/us/co/denver/7970-northfield-blvd.html|Denver - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Colorado/Grand_Junction/033.jsp|Grand Junction - Cabela's",
+													 "http://www.cabelas.com/stores/Colorado/Lone_Tree/047.jsp|Lone Tree - Cabela's",
+													 "http://www.cabelas.com/stores/Colorado/Thornton/046.jsp|Thornton - Cabela's",
+													];
+		} else if(dualDrop.value == "CT"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ct/bridgeport/1-bass-pro-dr.html|Bridgeport - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Connecticut/East_Hartford/023.jsp|East Hartford - Cabela's",
+													];
+		} else if(dualDrop.value == "DE"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Delaware/Newark/053.jsp|Newark - Cabela's",
+													];
+		} else if(dualDrop.value == "FL"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/fl/tampa/10501-palm-river-rd.html|Brandon - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/dania-beach/200-gulf-stream-way.html|Dania Beach - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/daytona-beach/1880-w-checkered-flag-blvd.html|Daytona Beach - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/destin/4301-legendary-dr.html|Destin - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/ft--myers/10040-gulf-center-dr.html|Ft. Myers - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/gainesville/2650-bass-pro-shops-blvd.html|Gainesville - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/islamorada/81576-overseas-highway.html|Islamorada - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/miami/11551-northwest-12th-st.html|Miami - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/orlando/5156-international-dr.html|Orlando - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/palm-bay/750-bass-pro-dr-ne.html|Palm Bay - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/port-st--lucie/2250-gatlin-blvd.html|Port St. Lucie - Bass Pro Shops",
+													 "https://stores.basspro.com/us/fl/tallahassee/4059-lagniappe-way.html|Tallahassee - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "GA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Georgia/Acworth/057.jsp|Acworth - Cabela's",
+													 "http://www.cabelas.com/stores/Georgia/Augusta/050.jsp|Augusta - Cabela's",
+													 "https://stores.basspro.com/us/ga/lawrenceville/5900-sugarloaf-pkwy.html|Lawrenceville - Bass Pro Shops",
+													 "https://stores.basspro.com/us/ga/macon/5000-bass-pro-blvd.html|Macon - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Georgia/Ringgold/067.jsp|Ringgold - Cabela's",
+													 "https://stores.basspro.com/us/ga/savannah/14045-abercorn-st.html|Savannah - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "IA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ia/altoona/1000-bass-pro-dr-nw.html|Altoona - Bass Pro Shops",
+													 "https://stores.basspro.com/us/ia/council-bluffs/2901-bass-pro-dr.html|Council Bluffs - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "ID"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Idaho/Ammon/066.jsp|Ammon - Cabela's",
+													 "http://www.cabelas.com/stores/Idaho/Boise/019.jsp|Boise - Cabela's",
+													 "http://www.cabelas.com/stores/Idaho/Post_Falls/025.jsp|Post Falls - Cabela's",
+													];
+		} else if(dualDrop.value == "IL"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/il/bolingbrook/709-janes-ave.html|Bolingbrook - Bass Pro Shops",
+													 "https://stores.basspro.com/us/il/east-peoria/1000-bass-pro-shops-dr.html|East Peoria - Bass Pro Shops",
+													 "https://stores.basspro.com/us/il/gurnee/6112-west-grand-ave.html|Gurnee - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Illinois/Hoffman_Estates/021.jsp|Hoffman Estates - Cabela's",
+													];
+		} else if(dualDrop.value == "IN"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/in/clarksville/951-e-lewis---clark-pkwy.html|Clarksville - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Indiana/Hammond/024.jsp|Hammond - Cabela's",
+													 "http://www.cabelas.com/stores/Indiana/Noblesville/068.jsp|Noblesville - Cabela's",
+													 "https://stores.basspro.com/us/in/portage/6425-daniel-burnham-dr.html|Portage - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "KS"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Kansas/Kansas_City/008.jsp|Kansas City - Cabela's",
+													 "https://stores.basspro.com/us/ks/olathe/12051-bass-pro-dr.html|Olathe - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Kansas/Wichita/036.jsp|Wichita - Cabela's",
+													];
+		} else if(dualDrop.value == "KY"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Kentucky/Bowling_Green/061.jsp|Bowling Green - Cabela's",
+													 "http://www.cabelas.com/stores/Kentucky/Lexington/073.jsp|Lexington - Cabela's",
+													 "http://www.cabelas.com/stores/Kentucky/Louisville/044.jsp|Louisville - Cabela's",
+													];
+		} else if(dualDrop.value == "LA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/la/bossier-city/100-bass-pro-dr.html|Bossier City - Bass Pro Shops",
+													 "https://stores.basspro.com/us/la/denham-springs/175-bass-pro-blvd.html|Denham Springs - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Louisiana/Gonzales/016.jsp|Gonzales - Cabela's",
+													];
+		} else if(dualDrop.value == "MA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ma/foxborough/1-bass-pro-dr.html|Foxborough - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Massachusetts/Hudson/063.jsp|Hudson - Cabela's",
+													];
+		} else if(dualDrop.value == "MD"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/md/hanover/7000-arundel-mills-circle.html|Hanover - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "ME"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Maine/Scarborough/028.jsp|Scarborough - Cabela's",
+													];
+		} else if(dualDrop.value == "MI"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/mi/auburn-hills/4500-baldwin-rd.html|Auburn Hills - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Michigan/Chesterfield/079.jsp|Chesterfield - Cabela's",
+													 "http://www.cabelas.com/stores/Michigan/Dundee/007.jsp|Dundee - Cabela's",
+													 "http://www.cabelas.com/stores/Michigan/Grandville/043.jsp|Grandville - Cabela's",
+													 "http://www.cabelas.com/stores/Michigan/Saginaw/041.jsp|Saginaw - Cabela's",
+													];
+		} else if(dualDrop.value == "MN"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Minnesota/East_Grand_Forks/005.jsp|East Grand Forks - Cabela's",
+													 "http://www.cabelas.com/stores/Minnesota/Owatonna/003.jsp|Owatonna - Cabela's",
+													 "http://www.cabelas.com/stores/Minnesota/Rogers/014.jsp|Rogers - Cabela's",
+													 "http://www.cabelas.com/stores/Minnesota/Woodbury/054.jsp|Woodbury - Cabela's",
+													];
+		} else if(dualDrop.value == "MO"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/mo/branson/1-bass-pro-dr.html|Branson - Bass Pro Shops",
+													 "https://stores.basspro.com/us/mo/columbia/3101-bass-pro-dr.html|Columbia - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Missouri/Hazelwood/020.jsp|Hazelwood - Cabela's",
+													 "https://stores.basspro.com/us/mo/independence/18001-bass-pro-dr.html|Independence - Bass Pro Shops",
+													 "https://stores.basspro.com/us/mo/springfield/1935-s-campbell-ave.html|Springfield - Bass Pro Shops",
+													 "https://stores.basspro.com/us/mo/springfield/2011-s-campbell-avenue.html|Springfield - Bass Pro Shops Outlet",
+													 "https://stores.basspro.com/us/mo/st--charles/1365-south-5th-st.html|St. Charles - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "MS"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ms/pearl/100-bass-pro-dr.html|Pearl - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "MT"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/Montana/Billings/032.jsp|Billings - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=049|Kalispell - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=055|Missoula - Cabela's",
+													];
+		} else if(dualDrop.value == "NC"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/nc/cary/801-bass-pro-lane.html|Cary - Bass Pro Shops",
+													 "https://stores.basspro.com/us/nc/concord/8181-concord-mills-blvd.html|Concord - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=064|Garner - Cabela's",
+													];
+		} else if(dualDrop.value == "NE"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=002|Kearney - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=017|La Vista - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=001|Sidney - Cabela's",
+													];
+		} else if(dualDrop.value == "NH"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/nh/hooksett/2-commerce-dr.html|Hooksett - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "NJ"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/nj/atlantic-city/30-n-christopher-columbus-blvd.html|Atlantic City - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "NM"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/New_Mexico/Albuquerque/084.jsp|Albuquerque - Cabela's",
+													];
+		} else if(dualDrop.value == "NV"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/nv/las-vegas/8200-dean-martin-dr.html|Las Vegas - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=022|Verdi - Cabela's",
+													];
+		} else if(dualDrop.value == "NY"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ny/auburn/1579-clark-st-rd.html|Auburn - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=058|Cheektowaga - Cabela's",
+													 "https://stores.basspro.com/us/ny/utica/710-horatio-st.html|Utica - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "OH"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=077|Avon - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=075|Centerville - Cabela's",
+													 "https://stores.basspro.com/us/oh/cincinnati/300-cincinnati-mills-dr.html|Cincinnati - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=042|Columbus - Cabela's",
+													 "https://stores.basspro.com/us/oh/rossford/10000-bass-pro-blvd.html|Rossford - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=070|West Chester - Cabela's",
+													];
+		} else if(dualDrop.value == "OK"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/ok/broken-arrow/101-bass-pro-dr.html|Broken Arrow - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=071|Oklahoma City - Cabela's",
+													 "https://stores.basspro.com/us/ok/oklahoma-city/200-bass-pro-dr.html|Oklahoma City - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "OR"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=034|Springfield - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=059|Tualatin - Cabela's",
+													];
+		} else if(dualDrop.value == "PA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=009|Hamburg - Cabela's",
+													 "https://stores.basspro.com/us/pa/harrisburg/3501-paxton-st.html|Harrisburg - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "SC"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=062|Fort Mill - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=051|Greenville - Cabela's",
+													 "https://stores.basspro.com/us/sc/myrtle-beach/10177-north-kings-hwy.html|Myrtle Beach - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "SD"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=006|Mitchell - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=027|Rapid City - Cabela's",
+													];
+		} else if(dualDrop.value == "TN"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/tn/bristol/1-bass-pro-dr.html|Bristol - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tn/chattanooga/1000-bass-pro-dr.html|Chattanooga - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tn/kodak/3629-outdoor-sportsmans-place.html|Kodak - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tn/memphis/6140-macon-rd.html|Memphis - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tn/memphis/1-bass-pro-dr.html|Memphis Pyramid - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tn/nashville/323-opry-mills-dr.html|Nashville - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "TX"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=035|Allen - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=012|Buda - Cabela's",
+													 "http://www.cabelas.com/stores/Texas/El_Paso/083.jsp|El Paso - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=011|Fort Worth - Cabela's",
+													 "https://stores.basspro.com/us/tx/garland/5001-bass-pro-dr.html|Garland - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tx/grapevine/2501-bass-pro-dr.html|Grapevine - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tx/harlingen/101-bass-pro-dr.html|Harlingen - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tx/katy/5000-katy-mills-circle.html|Katy - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/Texas/League_City/072.jsp|League City - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=056|Lubbock - Cabela's",
+													 "https://stores.basspro.com/us/tx/pearland/1000-bass-pro-dr.html|Pearland - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tx/round-rock/200-bass-pro-dr.html|Round Rock - Bass Pro Shops",
+													 "https://stores.basspro.com/us/tx/san-antonio/17907-ih-10-west.html|San Antonio - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=048|Waco - Cabela's",
+													];
+		} else if(dualDrop.value == "UT"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=076|Farmington - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=013|Lehi - Cabela's",
+													];
+		} else if(dualDrop.value == "VA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/us/va/ashland/11550-lakeridge-parkway.html|Ashland - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=060|Bristol - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=078|Gainesville - Cabela's",
+													 "https://stores.basspro.com/us/va/hampton/1972-power-plant-parkway.html|Hampton - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=074|Henrico - Cabela's",
+													];
+		} else if(dualDrop.value == "WA"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=026|Lacey - Cabela's",
+													 "https://stores.basspro.com/us/wa/tacoma/7905-s-hosmer-st.html|Tacoma - Bass Pro Shops",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=037|Tulalip - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=040|Union Gap - Cabela's",
+													];
+		} else if(dualDrop.value == "WI"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=045|Ashwaubenon - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=004|Prairie du Chien - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=018|Richfield - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=065|Sun Prairie - Cabela's",
+													];
+		} else if(dualDrop.value == "WV"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=039|Charleston - Cabela's",
+													 "http://www.cabelas.com/stores/store_info.jsp?pageName=010|Triadelphia - Cabela's",
+													];
+		} else if(dualDrop.value == "AB"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://www.cabelas.ca/find-a-store/calgary/14|Calgary - Cabela's",
+													 "https://www.cabelas.ca/find-a-store/edmonton/9|Edmonton (North)- Cabela's",
+													 "https://www.cabelas.ca/find-a-store/edmonton/2|Edmonton (South) - Cabela's",
+													 "https://stores.basspro.com/ca/ab/rocky-view/112-261055-cross-iron-blvd.html|Rocky View - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "BC"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://www.cabelas.ca/find-a-store/abbotsford/18|Abbotsford - Cabela's",
+													 "https://www.cabelas.ca/find-a-store/nanaimo/12|Nanaimo - Cabela's",
+													 "https://stores.basspro.com/ca/bc/tsawwassen/5000-canoe-pass-way.html|Tsawwassen - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "MB"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://www.cabelas.ca/find-a-store/winnipeg/1|Winnipeg - Cabela's",
+													];
+		} else if(dualDrop.value == "NB"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/ca/nb/dieppe/1-promenade-bass-pro-dr.html|Greater Moncton - Bass Pro Shops",                    
+													];
+		} else if(dualDrop.value == "NS"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://stores.basspro.com/ca/ns/dartmouth/50-cabela-road.html|Halifax - Bass Pro Shops",                    
+													];  
+		} else if(dualDrop.value == "ON"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://www.cabelas.ca/find-a-store/barrie/11|Barrie - Cabela's",
+													 "https://stores.basspro.com/ca/on/niagara-on-the-lake/300-taylor-rd.html|Niagara-on-the-Lake - Bass Pro Shops",
+													 "https://www.cabelas.ca/find-a-store/ottawa/16|Ottawa - Cabela's",
+													 "https://stores.basspro.com/ca/on/vaughan/1-bass-pro-mills-dr.html|Vaughan - Bass Pro Shops",
+													];
+		} else if(dualDrop.value == "SK"){
+			var dualDropArray = ["select a store|Select a Store",
+													 "https://www.cabelas.ca/find-a-store/regina/7|Regina - Cabela's",
+													 "https://www.cabelas.ca/find-a-store/saskatoon/3|Saskatoon - Cabela's",
+													];
+		}
+
+		for(var option in dualDropArray){
+			var storeDetails = dualDropArray[option].split("|");
+			var optionTwoPointO = document.createElement("option");
+			optionTwoPointO.value = storeDetails[0];
+			optionTwoPointO.innerHTML = storeDetails[1];
+			s4.options.add(optionTwoPointO);
+		}
+	}
+
+	$(function() {
+		$('select#slct4').on('change',function() {
+			window.location.href = $(this).val();
+		});
+	});
+
+
+
+	dojo.addOnLoad(function() { 
+		//Make sure page is loaded at this point
+		//Set requestedSubmitted to false
+		resetRequest();
+
+		// All div's whose id attribute contains dojoWidget subString -- dojo.query('div[id*="dojoWidget"]')
+		// All div's which contains dojoType attribute -- dojo.query(div[dojoType])
+		dojo.query('div[dojoType]').forEach(function(node, index, arr){
+			addToWidgetsList(node.id);
+		});
+		parseAllWidgets();
+	}); 	
+
+if(typeof _satellite != 'undefined'){_satellite.pageBottom();}
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/resources/159f1e7547192e33b450de1202f640']);

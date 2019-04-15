@@ -1,0 +1,160 @@
+
+//<![CDATA[
+Mage.Cookies.path = '/';
+Mage.Cookies.domain = '.www.incase.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+var AN = AN || {};
+/**
+* @param cname name of the cookie
+* @param cvalue value assigned to cookie
+* @param exdays duration of the cookie in days
+*/
+AN.setCookie = function(cname, cvalue, exdays)
+{
+console.log(cname);
+var milliseconds_in_days = 1000 * 60 * 60 * 24;
+var d = new Date();
+d.setTime(d.getTime() + (exdays * milliseconds_in_days));
+var expires = "expires="+d.toUTCString();
+document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+}
+/**
+* @param cname name of the cookie
+* @returns object | null object with the field and value or null if not found
+*/
+AN.getCookie = function(cname)
+{
+var cookies = document.cookie.split(';');
+for (var i = 0; i < cookies.length; i++) {
+var keyPair = cookies[i].split('=');
+if (keyPair.length < 2)
+continue;
+var field = keyPair[0].trim();
+var value = keyPair[1].trim();
+if (field === cname) {
+return {field: value};
+}
+}
+return null;
+}
+/**
+* @param query query string minus the '?'
+* @param field query string field to search for
+* @returns string | null value of the query string field or null if the field isn't there
+*/
+AN.findAffiliateField = function(query, field)
+{
+if (!query) {
+return null;
+}
+var fields = query.split("&");
+for (var i = 0; i < fields.length; i++) {
+var keyPair = fields[i].split("=");
+if (
+keyPair.length == 2 &&
+keyPair[0] === field
+) {
+return keyPair[1];
+}
+}
+return null;
+}
+AN.manageCookie = function (window, document, duration_in_days, key_name, cookie_name) {
+var query = location.search.substring(1);
+var source = AN.findAffiliateField(query, key_name);
+var cookie = AN.getCookie(cookie_name);
+if (source) {
+// set or update the cookie with the value from the current query string
+AN.setCookie(cookie_name, source, duration_in_days);
+}
+}
+AN.manageCookie(window, document, 365, "source", "pepperjam_network_source");
+AN.manageCookie(window, document, 365, "click", "pepperjam_network_click");
+AN.manageCookie(window, document, 365, "publisher", "pepperjam_network_publisher");
+//]]>
+
+
+if (typeof(jQuery) == 'undefined') {
+document.write("<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></scr" + "ipt>");
+}
+
+
+(function(i, s, o, g, r, a, m) {
+i["GoogleAnalyticsObject"] = r;
+i[r] = i[r] || function() {
+(i[r].q = i[r].q || []).push(arguments)
+}, i[r].l = 1 * new Date();
+a = s.createElement(o),
+m = s.getElementsByTagName(o)[0];
+a.async = 1;
+a.src = g;
+m.parentNode.insertBefore(a, m)
+})(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+ga('create', 'UA-1550540-1', 'www.incase.com');
+ga("require", "displayfeatures");
+ga('send', 'pageview');
+ga("require", "ec", "ec.js");
+ga('require', 'GTM-57HL4PX');
+var $t_jQuery = jQuery.noConflict();
+//tvc_threshold = '';
+//exec_tvc_t_sth = true;
+
+//<![CDATA[
+var Translator = new Translate([]);
+//]]>
+
+window.__lo_site_id = 128767;
+(function() {
+var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+})();
+
+
+dataLayer = dataLayer || [];
+dataLayer.push({
+'PageType':'HomePage',
+'email': 'email address of the user'
+});
+
+
+//<![CDATA[
+var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+
+
+Listrak_Remarketing = new function() {
+this.updateCart = function() {
+new Ajax.Request('https://www.incase.com/remarketing/ajax/cart/'); };
+this.track = function() {
+new Ajax.Request('https://www.incase.com/remarketing/ajax/track/'); };
+};
+
+
+(function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+if (e.propertyName == 'ltkAsyncProperty' && typeof _ltk !== 'undefined'){d();}});}})(function() {
+_ltk.Click.Submit();
+_ltk.SCA.CaptureEmail('billing:email');
+_ltk.SCA.CaptureEmail('login-email');
+_ltk.SCA.CaptureEmail('newsletter');
+_ltk.SCA.CaptureEmail('ltkmodal-email');
+_ltk.SCA.CaptureEmail('email');
+});
+
+
+(function (d, s, id, url) {
+var js, ljs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+ljs.parentNode.insertBefore(js, ljs);
+})(document, 'script', 'ltkSDK', 'https://cdn.listrakbi.com/scripts/script.js?m=G3y5uoqdfCGL&v=1');
+

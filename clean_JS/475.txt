@@ -1,0 +1,49 @@
+
+				
+	var _hrdTracking = {
+		server: "HRD76WEB02",
+		referrer : "https://www.harrods.com/en-gb",
+		userType: "non-registered user",
+		rewardsCardStatus: "not logged in",
+		country: "GB",
+		currency: "GBP",
+		pageType: "Home"
+		};
+		
+
+		dataLayer = [{
+			'pageType': _hrdTracking.pageType,
+			'country': 'GB',
+			'bloomReachViewId': 'UK'
+		}];
+
+
+		var _hrdCfg = {
+			restUrl: "https://rest.harrods.com",
+			cookieDomain: ".harrods.com"
+		};
+	
+
+		
+		
+		
+
+	<!--
+	s.server = _hrdTracking.server;
+	s.prop8 = _hrdTracking.userType;
+	s.prop9 = _hrdTracking.rewardsCardStatus;
+	s.prop11 = _hrdTracking.country;
+	s.prop12 = _hrdTracking.currency;
+	s.referrer = _hrdTracking.referrer;
+	s.prop16 = '';
+	s.eVar53 = 'True';
+
+
+	
+	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	//-->
+
+	<!--
+				if (navigator.appVersion.indexOf('MSIE') >= 0) document.write(unescape('%3C') + '\!-' + '-')
+										//-->
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/static/bf0ba8b6e78217a633e8c9ea3c549a5']);

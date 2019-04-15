@@ -1,0 +1,266 @@
+function theChampLoadEvent(e){var t=window.onload;if(typeof window.onload!="function"){window.onload=e}else{window.onload=function(){t();e()}}}
+var theChampDefaultLang = 'en_US', theChampCloseIconPath = 'https://cigarchief.com/wp-content/plugins/super-socializer/images/close.png';var heateorSsSDKBlockedMsg = `Your browser is blocking some features of this website. Please follow the instructions at <a href=\'http://support.heateor.com/browser-blocking-social-features/\' target=\'_blank\' style=\'color:#33a9d8\'>http://support.heateor.com/browser-blocking-social-features/</a> to unblock these.`
+
+		var ajaxurl = 'https://cigarchief.com/wp-admin/admin-ajax.php';
+		
+
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/cigarchief.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		
+
+/* <![CDATA[ */
+var mailchimpSF = {"ajax_url":"https:\/\/cigarchief.com\/"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wew_ajax_object = {"ajax_url":"https:\/\/cigarchief.com\/wp-admin\/admin-ajax.php","spinner":"https:\/\/cigarchief.com\/wp-admin\/images\/spinner.gif","texts":{"subscribe":"Subscribe to waitlist","insert":"Email Address","proceed":"Subscribe","pending":"WooWaitlist Activation Pending"}};
+/* ]]> */
+
+
+        jQuery(function($) {
+            $('.date-pick').each(function() {
+                var format = $(this).data('format') || 'mm/dd/yyyy';
+                format = format.replace(/yyyy/i, 'yy');
+                $(this).datepicker({
+                    autoFocusNextInput: true,
+                    constrainInput: false,
+                    changeMonth: true,
+                    changeYear: true,
+                    beforeShow: function(input, inst) { $('#ui-datepicker-div').addClass('show'); },
+                    dateFormat: format.toLowerCase(),
+                });
+            });
+            d = new Date();
+            $('.birthdate-pick').each(function() {
+                var format = $(this).data('format') || 'mm/dd';
+                format = format.replace(/yyyy/i, 'yy');
+                $(this).datepicker({
+                    autoFocusNextInput: true,
+                    constrainInput: false,
+                    changeMonth: true,
+                    changeYear: false,
+                    minDate: new Date(d.getFullYear(), 1-1, 1),
+                    maxDate: new Date(d.getFullYear(), 12-1, 31),
+                    beforeShow: function(input, inst) { $('#ui-datepicker-div').removeClass('show'); },
+                    dateFormat: format.toLowerCase(),
+                });
+
+            });
+
+        });
+    
+// <![CDATA[
+			jQuery(function($){
+
+
+				var favicon=new Favico({
+    type : 'circle',
+    animation: 'slide',
+});
+			
+
+favicon.badge(0);
+
+});
+		
+
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	
+
+/* <![CDATA[ */
+var yith_wcwl_l10n = {"ajax_url":"\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/cigarchief.com\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/cigarchief.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_11b3236d1af1f2aebfb8aeb5d9f23bb9","fragment_name":"wc_fragments_11b3236d1af1f2aebfb8aeb5d9f23bb9"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wcqv_frontend_obj = {"wcqv_nonce":"ff17822df5","ajaxurl":"https:\/\/cigarchief.com\/wp-admin\/admin-ajax.php","wcqv_plugin_dir_url":"https:\/\/cigarchief.com\/wp-content\/plugins\/woo-quick-view\/"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination."};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/cigarchief.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var mailchimp_public_data = {"site_url":"https:\/\/cigarchief.com","ajax_url":"https:\/\/cigarchief.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var themeajax = {"url":"https:\/\/cigarchief.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+/* <![CDATA[ */
+var yith_wcas_params = {"loading":"https:\/\/cigarchief.com\/wp-content\/plugins\/yith-woocommerce-ajax-search\/assets\/images\/ajax-loader.gif","ajax_url":"https:\/\/cigarchief.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+
+
+jQuery(function($) { 
+tvc_lc="CAD";
+
+homepage_json_ATC_link={"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-coronitas-en-cedro\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-coronitas-en-cedro\/"},"https:\/\/cigarchief.com\/shop\/guantanamera-decimos\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/guantanamera-decimos\/"},"https:\/\/cigarchief.com\/shop\/guantanamera-cristales\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/guantanamera-cristales\/"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-belvederes\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-belvederes\/"},"https:\/\/cigarchief.com\/shop\/montecristo-no-4\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/montecristo-no-4\/"},"https:\/\/cigarchief.com\/shop\/por-larranaga-panetelas\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/por-larranaga-panetelas\/"},"https:\/\/cigarchief.com\/shop\/montecristo-puritos\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/montecristo-puritos\/"},"https:\/\/cigarchief.com\/shop\/partagas-serie-d-no-4\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/partagas-serie-d-no-4\/"},"https:\/\/cigarchief.com\/shop\/rafael-gonzalez-panetelas-extra\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/rafael-gonzalez-panetelas-extra\/"},"https:\/\/cigarchief.com\/shop\/belinda-coronas\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/belinda-coronas\/"},"https:\/\/cigarchief.com\/shop\/bolivar-royal-coronas\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/bolivar-royal-coronas\/"},"https:\/\/cigarchief.com\/shop\/h-upmann-regalias-2\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/h-upmann-regalias-2\/"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-mille-fleurs\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-mille-fleurs\/"},"https:\/\/cigarchief.com\/shop\/partagas-aristocrats\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/partagas-aristocrats\/"},"https:\/\/cigarchief.com\/shop\/quintero-brevas\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/quintero-brevas\/"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-romeo-no-2-tubos\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-romeo-no-2-tubos\/"},"https:\/\/cigarchief.com\/shop\/guantanamera-minis\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/guantanamera-minis\/"},"https:\/\/cigarchief.com\/shop\/bolivar-coronas-junior-2\/":{"ATC-link":"https:\/\/cigarchief.com\/shop\/bolivar-coronas-junior-2\/"}};
+
+tvc_fp=[];
+
+tvc_rcp={"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-coronitas-en-cedro\/":{"tvc_id":"4233","tvc_i":"cc001509B","tvc_n":"Romeo Y Julieta Coronitas en Cedro","tvc_p":"10.863","tvc_c":"CUBAN CIGARS,Romeo Y Julieta"},"https:\/\/cigarchief.com\/shop\/guantanamera-decimos\/":{"tvc_id":"4404","tvc_i":"cc001557B","tvc_n":"Guantanamera Decimos","tvc_p":"15.56","tvc_c":"CUBAN CIGARS,Guantanamera"},"https:\/\/cigarchief.com\/shop\/guantanamera-cristales\/":{"tvc_id":"4396","tvc_i":"cc001556A","tvc_n":"Guantanamera Cristales","tvc_p":"5.32","tvc_c":"CUBAN CIGARS,Guantanamera"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-belvederes\/":{"tvc_id":"4226","tvc_i":"cc001507A","tvc_n":"Romeo Y Julieta Belvederes","tvc_p":"9.6492","tvc_c":"CUBAN CIGARS,Romeo Y Julieta"},"https:\/\/cigarchief.com\/shop\/montecristo-no-4\/":{"tvc_id":"3873","tvc_i":"cc001406A","tvc_n":"Montecristo No.4","tvc_p":"19.4106","tvc_c":"CUBAN CIGARS,Montecristo"},"https:\/\/cigarchief.com\/shop\/por-larranaga-panetelas\/":{"tvc_id":"3179","tvc_i":"cc000127A","tvc_n":"Por Larranaga Panetelas","tvc_p":"6.1506","tvc_c":"CUBAN CIGARS,Por Larranaga"},"https:\/\/cigarchief.com\/shop\/montecristo-puritos\/":{"tvc_id":"3641","tvc_i":"cc001332","tvc_n":"Montecristo Puritos","tvc_p":"15.1674","tvc_c":"CUBAN CIGARS,Montecristo,Puritos,Winter Smokes"},"https:\/\/cigarchief.com\/shop\/partagas-serie-d-no-4\/":{"tvc_id":"3999","tvc_i":"cc001439A","tvc_n":"Partagas Serie D No.4","tvc_p":"27.0504","tvc_c":"CUBAN CIGARS,Partagas"},"https:\/\/cigarchief.com\/shop\/rafael-gonzalez-panetelas-extra\/":{"tvc_id":"4206","tvc_i":"cc001500A","tvc_n":"Rafael Gonzalez Panetelas Extra","tvc_p":"6.1812","tvc_c":"CUBAN CIGARS,Rafael Gonzalez"},"https:\/\/cigarchief.com\/shop\/belinda-coronas\/":{"tvc_id":"4214","tvc_i":"cc001502C","tvc_n":"Belinda Coronas","tvc_p":"6.8034","tvc_c":"Belinda,CUBAN CIGARS"},"https:\/\/cigarchief.com\/shop\/bolivar-royal-coronas\/":{"tvc_id":"3938","tvc_i":"CC000019","tvc_n":"Bolivar Royal Coronas","tvc_p":"23.3784","tvc_c":"Bolivar,CUBAN CIGARS"},"https:\/\/cigarchief.com\/shop\/h-upmann-regalias-2\/":{"tvc_id":"4246","tvc_i":"cc001513C","tvc_n":"H. Upmann Regalias","tvc_p":"10.863","tvc_c":"CUBAN CIGARS,H. Upmann"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-mille-fleurs\/":{"tvc_id":"4264","tvc_i":"cc001517A","tvc_n":"Romeo Y Julieta Mille Fleurs","tvc_p":"11.6994","tvc_c":"CUBAN CIGARS,Romeo Y Julieta"},"https:\/\/cigarchief.com\/shop\/partagas-aristocrats\/":{"tvc_id":"4234","tvc_i":"cc001510A","tvc_n":"Partagas Aristocrats","tvc_p":"11.08026","tvc_c":"CUBAN CIGARS,Partagas"},"https:\/\/cigarchief.com\/shop\/quintero-brevas\/":{"tvc_id":"4202","tvc_i":"cc001499A","tvc_n":"Quintero Brevas","tvc_p":"5.7936","tvc_c":"CUBAN CIGARS,Quintero"},"https:\/\/cigarchief.com\/shop\/romeo-y-julieta-romeo-no-2-tubos\/":{"tvc_id":"4291","tvc_i":"cc001523A","tvc_n":"Romeo Y Julieta Romeo No.2 Tubos","tvc_p":"13.8618","tvc_c":"CUBAN CIGARS,Romeo Y Julieta,Tubos"},"https:\/\/cigarchief.com\/shop\/guantanamera-minis\/":{"tvc_id":"8337","tvc_i":"CC001902","tvc_n":"Guantanamera Minis","tvc_p":"19.42","tvc_c":"CUBAN CIGARS,Guantanamera,Minis,MINIS,CLUBS,PURITOS"},"https:\/\/cigarchief.com\/shop\/bolivar-coronas-junior-2\/":{"tvc_id":"4304","tvc_i":"CC000011","tvc_n":"Bolivar Coronas Junior","tvc_p":"15.0756","tvc_c":"Bolivar,CUBAN CIGARS"}};
+
+tvc_rdp=[];
+
+prodpage_json_ATC_link=[];
+
+tvc_pgc=[];
+
+catpage_json_ATC_link=[];
+
+
+            var items = [];
+                //set local currencies
+            gtag("set", {"currency": tvc_lc});
+        function t_products_impre_clicks(t_json_name,t_action){
+                   t_send_threshold=0;
+                   t_prod_pos=0;
+                    t_json_length=Object.keys(t_json_name).length;
+                        
+            for(var t_item in t_json_name) {
+                t_send_threshold++;
+                t_prod_pos++;
+                items.push({
+                    "id": t_json_name[t_item].tvc_i,
+                    "name": t_json_name[t_item].tvc_n,
+                    "category": t_json_name[t_item].tvc_c,
+                    "price": t_json_name[t_item].tvc_p,
+                });    
+                        
+        if(t_json_length > 6 ){
+
+                        if((t_send_threshold%6)==0){
+                            t_json_length=t_json_length-6;
+                            	gtag("event", "view_item_list", { "event_category":"Enhanced-Ecommerce",
+                                     "event_label":"product_impression_"+t_action, "items":items,"non_interaction": true});
+                                     items = [];
+                                    }
+                     }else{
+            
+                       t_json_length--;
+                       if(t_json_length==0){
+                               gtag("event", "view_item_list", { "event_category":"Enhanced-Ecommerce",
+                                    "event_label":"product_impression_"+t_action, "items":items,"non_interaction": true});
+                                    items = [];
+                                }
+        }   
+                }
+        }
+                
+        //function for comparing urls in json object
+        function prod_exists_in_JSON(t_url,t_json_name,t_action){
+                                    if(t_json_name.hasOwnProperty(t_url)){
+                                        t_call_fired=true;
+                                        gtag("event", "select_content", {
+                                            "event_category":"Enhanced-Ecommerce",
+                                            "event_label":"product_click_"+t_action,
+                                            "content_type": "product",
+                                            "items": [
+                                            {
+                                                "id":t_json_name[t_url].tvc_i,
+                                                "name": t_json_name[t_url].tvc_n,
+                                                 "category":t_json_name[t_url].tvc_c,
+                                                 "price": t_json_name[t_url].tvc_p,
+                                            }
+                                            ],
+                                            "non_interaction": true
+                                        });                    
+                                   }else{
+                                   t_call_fired=false;
+                }
+                                return t_call_fired;
+            }
+                function prod_ATC_link_exists(t_url,t_ATC_json_name,t_prod_data_json,t_qty){
+                    t_prod_url_key=t_ATC_json_name[t_url]["ATC-link"];
+                    
+                        if(t_prod_data_json.hasOwnProperty(t_prod_url_key)){
+                                t_call_fired=true;
+                            // Enhanced E-commerce Add to cart clicks
+                                gtag("event", "add_to_cart", {
+                                    "event_category":"Enhanced-Ecommerce",
+                                    "event_label":"add_to_cart_click",
+                                    "non_interaction": true,
+                                    "items": [{
+                                        "id" : t_prod_data_json[t_prod_url_key].tvc_i,
+                                        "name":t_prod_data_json[t_prod_url_key].tvc_i,
+                                        "category" : t_prod_data_json[t_prod_url_key].tvc_c,
+                                        "price": t_prod_data_json[t_prod_url_key].tvc_p,
+                                        "quantity" :t_qty
+                                    }]
+                                });
+                             
+                        }else{
+                                   t_call_fired=false;
+                        }    
+                         return t_call_fired;
+                 
+                }
+                
+                
+                if(tvc_fp.length !== 0){
+                    t_products_impre_clicks(tvc_fp,"fp");       
+                }
+                if(tvc_rcp.length !== 0){
+                    t_products_impre_clicks(tvc_rcp,"rp");    
+                }
+                jQuery("a:not([href*=add-to-cart],.product_type_variable, .product_type_grouped)").on("click",function(){
+            t_url=jQuery(this).attr("href");
+                        //home page call for click
+                        t_call_fired=prod_exists_in_JSON(t_url,tvc_fp,"fp");
+                        if(!t_call_fired){
+                            prod_exists_in_JSON(t_url,tvc_rcp,"rp");
+                        }    
+                });
+                //ATC click
+                jQuery("a[href*=add-to-cart]").on("click",function(){
+            t_url=jQuery(this).attr("href");
+                        t_qty=$(this).parent().find("input[name=quantity]").val();
+                             //default quantity 1 if quantity box is not there             
+                            if(t_qty=="" || t_qty===undefined){
+                                t_qty="1";
+                            }
+                        t_call_fired=prod_ATC_link_exists(t_url,homepage_json_ATC_link,tvc_fp,t_qty);
+                        if(!t_call_fired){
+                            prod_ATC_link_exists(t_url,homepage_json_ATC_link,tvc_rcp,t_qty);
+                        }
+                    });   
+             
+                
+
+tvc_smd={"tvc_wcv":"3.5.4","tvc_wpv":"5.1.1","tvc_eev":"2.1.6","tvc_cnf":{"t_ee":"on","t_df":false,"t_gUser":true,"t_UAen":"","t_thr":6,"t_IPA":false,"t_OptOut":false,"t_PrivacyPolicy":true}};
+ });
+

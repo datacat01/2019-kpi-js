@@ -1,0 +1,35 @@
+
+var DataLayer = {};
+(function(){
+DataLayer.data = {
+   "page":{
+      "name": "homepage",
+      "site":{
+         "environment": "production"
+      },
+      "language": "en_us",
+      "template": "landing-page",
+      "server": "21df3aad\u002Dea47\u002D4aab\u002D8078\u002Dffec49e8514e",
+      "siteSection": "",
+      "siteSubsection": "",
+      "isError": false,
+      "categoryID": "",
+      "categoryName": "",
+      "masterCategoryName": "",
+      "layout": "homepage",
+      "errors": []
+   },
+   "ecommerce":{
+       "currency": "USD"
+   }
+};
+  
+  window.dataLayer = DataLayer.data;
+
+  })();
+
+
+    if (window._satellite) {
+        window._satellite.pageBottom();
+    }
+

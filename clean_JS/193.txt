@@ -1,0 +1,120 @@
+
+var tzo = new Date().getTimezoneOffset();
+document.cookie = "ym_tzo=" + escape(tzo * (-1)) + "; path=/; domain=.youmail.com";
+
+
+var Youmail = {staticBase: 'https://ymstat.com', webRoot: 'https://www.youmail.com', mediaRoot: 'https://media.youmail.com', shardId: 0};
+window.onerror = function(msg, url, line){
+if(encodeURIComponent) {
+var params = "type=warn&msg=" + encodeURIComponent(msg) + '&url=' + encodeURIComponent(url) + "&line=" + line + "&location=" + encodeURIComponent(window.location.href);
+var xmlhttp = new XMLHttpRequest();
+if(console && console.log){
+console.log(params);
+}
+xmlhttp.open("POST", Youmail.webRoot+"/youmail/jslog", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", params.length);
+xmlhttp.setRequestHeader("Connection", "close");
+xmlhttp.send(params);
+}
+return false;
+}
+
+
+require(["jquery", "ym/page/pageBootstrapper"], function($, PageBootstrapper) {
+$(document).ready(function() {
+new PageBootstrapper({ "responsive" : true , "asyncMyAccount" : false });
+});
+});
+$(document).ready(function(){
+$(".img-lazy").lazyload({skip_invisible : false, effect : "fadeIn", "threshold" : 1});
+(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+mixpanel.init("74a309a001dff240123c30acbd61d8e1");
+mixpanel.track("Home - Index"
+);
+//Google Tag Manager
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-542D6C');
+$(".sign-up-button").click(function() {
+var $parentContainer = $(this).parents(".create-account-container");
+var areaCode = $parentContainer.find("#areacode-input").val();
+var nxx = $parentContainer.find("#nxx-input").val();
+var lastFour = $parentContainer.find("#lastfour-input").val();
+if(areaCode && areaCode.length == 3 && !isNaN(areaCode)
+&& nxx && nxx.length == 3 && !isNaN(nxx)
+&& lastFour && lastFour.length == 4 && !isNaN(lastFour)) {
+window.location.href = Youmail.webRoot+"/login/signup?src=home-index&phoneNumber="+areaCode+nxx+lastFour
+} else {
+require(["ym/dialog/dialog"], function(YMDialog){
+YMDialog.popup({
+"title" : "Invalid Phone Number",
+"show" : true,
+"body" : "Please verify the input of your phone number.",
+"size" : "small",
+"showCloseButton" : true,
+"showSaveButton" : false,
+"closeLabel" : "Close",
+});
+});
+}
+});
+});
+function nextPhonePart(obj,event,len,next_field) {
+if (event == "down") {
+phone_field_length=obj.value.length;
+}else if (event == "up") {
+if (obj.value.length != phone_field_length) {
+phone_field_length=obj.value.length;
+if (phone_field_length == len) {
+$(obj).parents(".phone-input").find(next_field).focus();
+}
+}
+}
+}
+$(document).ready(function(){
+//Reset to annually
+$("#price-modifier-annually").prop("checked", true);
+require(["https://ymstat.com/ymui2/libs/jquery/plugins/matchHeight/jquery.matchHeight-min.js"], function(matchHeight) {
+$('.plan-column').matchHeight();
+});
+var plans = { "free" : { "key" : "free" , "name" : "YouMail Free" , "nameHelper" : "<span class=\"hidden-xs\">YouMail <\/span><br class=\"visible-sm visible-md\">Free" , "plan" : "free" , "buttonType" : "primary" , "description" : "Stop Robocalls from ever ringing <br class=\"visible-lg\">your phone!" , "features" : [ "voicemail-to-text" , "voicemail-to-email" , "stored-messages" , "privacy-guard" , "second-phone-line" , "support" ] , "featuresMap" : { "robocall-blocking" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "visual-voicemail" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "free-conference-calls" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "stored-messages" : "100" } , "price" : { "monthly" : "FREE" , "annually" : "FREE" } , "signup" : "true" } , "plus" : { "key" : "plus" , "name" : "YouMail Plus" , "nameHelper" : "<span class=\"hidden-xs\">YouMail <\/span><br class=\"visible-sm visible-md\">Plus" , "plan" : "plus" , "buttonType" : "info" , "description" : "Boost productivity and protect your privacy!" , "features" : [ "voicemail-to-text" , "voicemail-to-email" , "stored-messages" , "privacy-guard" , "second-phone-line" , "support" ] , "featuresMap" : { "robocall-blocking" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "visual-voicemail" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "free-conference-calls" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "stored-messages" : "unlimited" , "voicemail-to-email" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "privacy-guard" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "voicemail-to-text" : "100/month" , "unify" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "second-phone-line" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "support" : "Phone" } , "price" : { "monthly" : 6 , "annually" : 5 } , "skus" : { "monthly" : "YMPLUSMO1810" , "annually" : "YMPLUSYR1810" } , "signup" : "false" } , "professional" : { "key" : "professional" , "name" : "YouMail Professional" , "nameHelper" : "<span class=\"hidden-xs\">YouMail <\/span><br class=\"visible-sm visible-md\"><span class=\"hidden-xs\">Professional<\/span><span class=\"visible-xs\">Pro<\/span>" , "buttonLabel" : "Professional" , "plan" : "professional" , "buttonType" : "warning" , "description" : "Make a great impression,<br>on every call!" , "features" : [ "voicemail-to-text" , "voicemail-to-email" , "stored-messages" , "privacy-guard" , "second-phone-line" , "support" , "professionally-recorded-greetings" , "live-connect" , "multiple-extensions" , "voice-message-routing" , "conference-call-recording" , "professional-auto-reply" ] , "featuresMap" : { "robocall-blocking" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "visual-voicemail" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "free-conference-calls" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "stored-messages" : "unlimited" , "voicemail-to-email" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "privacy-guard" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "voicemail-to-text" : "unlimited/month" , "unify" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "support" : "VIP" , "professionally-recorded-greetings" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "professional-auto-reply" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "live-connect" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "voice-message-routing" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "professional-call-routing" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" , "second-phone-line" : "<span class=\"glyphicons glyphicons-ok-2 text-success\"><\/span>" } , "price" : { "monthly" : 12 , "annually" : 10 } , "skus" : { "monthly" : "YMPROFMO1701" , "annually" : "YMPROFYR1701" } , "signup" : "false" } };
+$(".price-modifier").change(function(event) {
+var selectedPlanPeriod = $(this).data("period");
+var isAnnual = selectedPlanPeriod == "annually";
+var $plans = $(".plan-column");
+$plans.each(function(index, value) {
+var planKey = $(value).data("plan");
+var newSku = plans[planKey].skus[selectedPlanPeriod];
+var $link = $(value).find("a");
+var currentLink = $link.attr("href");
+var oldSkuIndex = currentLink.indexOf("ecpt_sku=");
+if(oldSkuIndex > -1) {
+var oldSkuEndIndex = currentLink.length - 1;
+var newLinkPartialIndex = currentLink.substring(oldSkuIndex).indexOf("&");
+if(newLinkPartialIndex > -1) {
+oldSkuEndIndex = oldSkuIndex + newLinkPartialIndex;
+}
+var newLink = currentLink.slice(0, oldSkuIndex) + "ecpt_sku=" + newSku + currentLink.slice(oldSkuEndIndex);
+$link.attr("href", newLink);
+}
+var newPrice = plans[planKey].price[selectedPlanPeriod];
+$(value).find(".plan-price").fadeToggle(200).html("$"+newPrice).fadeToggle(200);
+});
+});
+});
+//Start of Zopim Live Chat Script
+window.$zopim||(function(d,s){
+var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?2AsKG6MPL0wo9BVnPtnfzFkW5WioxvP4';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+$zopim(function() {
+$zopim.livechat.addTags("non_user");
+$zopim.livechat.addTags("free_user");
+});
+

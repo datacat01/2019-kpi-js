@@ -1,0 +1,63 @@
+
+function beacon_deferred(beacon_api) { beacon_api.set_cookie_domain(".alltribes.com");beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"8fd8541a535c54a662c49d607e8c0399ef64152b","type":"ANONYMOUS","visit_id":"b4dcbb0e-509b-4640-a7d9-b3b40e33d717","visitor_id":"f914e7c1-974c-43a0-bc6e-cd872a7a5328"},"referer":{"url":""},"request":{"url":"https:\/\/alltribes.com\/"}}, '', 2970473, "other", {"customer":{"id":"anonymous"}}, 'b4dcbb0e-509b-4640-a7d9-b3b40e33d717', 'f914e7c1-974c-43a0-bc6e-cd872a7a5328');}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn11.bigcommerce.com/r-279b4d206729ccdf9a4c9905b60f5f5083b42d96/javascript/jirafe/beacon_api.js';s.parentNode.insertBefore(g,s);})();
+
+
+var BCData = {"csrf_token":"695682dd114e768bba75c5343ccc17d05bfe19b38d5c9a6c3633c63bb890e713"};
+
+// <![CDATA[
+(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+// ]]>
+
+						document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+					
+
+window.renderBadge = function() {
+    if ("INLINE" === "INLINE") {
+        var ratingBadgeContainer = document.getElementById("google-customers-review-badge");
+    } else {
+        var ratingBadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingBadgeContainer);
+    }
+
+    window.gapi.load('ratingbadge', function() {
+        window.gapi.ratingbadge.render(
+            ratingBadgeContainer, {
+                "merchant_id": 114623362,
+                "position": "INLINE"
+        });
+    });
+}
+
+
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'https://alltribes.com';
+window.sloyalty.key = '1d3a254d-6bde-48e6-852e-965487c51751';
+window.sloyalty.customer_id = '';
+window.sloyalty.customer_email = '';
+
+ 
+var google_tag_params = { 
+    ecomm_pagetype: 'other', 
+    ecomm_prodid: '', 
+    ecomm_totalvalue: 0 
+}; 
+
+ 
+/* <![CDATA[ */ 
+var google_conversion_id = 1015914687; 
+var google_custom_params = window.google_tag_params; 
+var google_remarketing_only = true; 
+/* ]]> */ 
+
+ 
+

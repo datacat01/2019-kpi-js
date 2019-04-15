@@ -1,0 +1,17 @@
+
+    var Sana = Sana || {};
+    Sana.CookiesPreferences = Sana.CookiesPreferences || {};
+    Sana.CookiesPreferences.accepted = false;
+    Sana.CookiesPreferences.analyticalAllowed = false;
+    Sana.CookiesPreferences.trackingAllowed = false;
+    Sana.CookiesPreferences.socialMediaAllowed = false;
+    Sana.CookiesPreferences.targetAdvertisingAllowed = false;
+    Sana.CookiesPreferences.analyticalAndTrackingAllowed = function () { return Sana.CookiesPreferences.analyticalAllowed && Sana.CookiesPreferences.trackingAllowed };
+    Sana.CookiesPreferences.deleteCookie = function (name) {
+        if (document.cookie.indexOf(name + '=') != -1) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", '/cookiepreferences/deletecookie' + '?name=' + name + '&t=' + new Date().getTime(), true);
+            xmlhttp.send();
+        }
+    };
+

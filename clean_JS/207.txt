@@ -1,0 +1,70 @@
+
+                    //<![CDATA[
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                        var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+                        j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-53XD22K');
+
+                    var dlCurrencyCode = 'EUR';
+                                        dataLayer.push({
+                        'page_type': 'home',
+                        'currency': 'EUR'
+
+                    });
+                    //]]>
+                
+//<![CDATA[
+        /* <sl:translate_json> */
+var Translator = new Translate([]);
+/* </sl:translate_json> */
+
+        //]]>
+
+//<![CDATA[
+	Mage.Cookies.path     = '';
+	Mage.Cookies.domain   = '';
+	Mage.Settings = {
+		shop_url: 'http://eu.mophie.com/shop/',
+		shop_url_secure: 'https://eu.mophie.com/shop/',
+		cms_url: 'http://www.mophie.com/'
+	};
+
+	jQuery(function(){
+		Mage.Site = new Site();
+	});
+//]]>
+
+
+        $BV.ui( 'rr', 'inline_ratings', {
+            productIds : {
+                            'JPAC-IPXSM' : { url : 'http://eu.mophie.com/shop/juice-pack-access-iphone-xs-max' },
+                            'JPAC-IPXS' : { url : 'http://eu.mophie.com/shop/juice-pack-access-iphone-xs' },
+                            'JPAC-IPXR' : { url : 'http://eu.mophie.com/shop/juice-pack-access-iphone-xr' },
+                            'CS-WRLS-DSKSTD-EU' : { url : 'http://eu.mophie.com/shop/charge-stream-desk-stand-intl-eu' },
+                            'CS-WRLS-DSKSTD-UK' : { url : 'http://eu.mophie.com/shop/charge-stream-desk-stand-intl-uk' },
+                        },
+            containerPrefix : 'BVRRInlineRatingBS'
+        });
+    
+
+//<![CDATA[
+    var regSubscribeForm = new VarienForm('newsletter-validate-detail');
+//]]>
+
+
+    Listrak_Remarketing = new function() {
+        this.updateCart = function() {
+                    };
+
+        this.track = function() {
+                    };
+    };
+
+
+    (function (d, s, id, url) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src = url; js.type = "text/javascript";
+        ljs.parentNode.insertBefore(js, ljs);
+    })(document, 'script', 'ltkSDK', 'http://cdn.listrakbi.com/scripts/script.js?m=zNztaN38aNuB&v=1');
+

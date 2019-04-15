@@ -1,0 +1,148 @@
+//<![CDATA[
+        (function(){
+            // this happens before external dependencies (and dom ready) to reduce page flicker
+            var node, i;
+            for (i = window.document.childNodes.length; i--;) {
+                node = window.document.childNodes[i];
+                if (node.nodeName == 'HTML') {
+                    node.className += ' javascript';
+                }
+            }
+        })();
+    //]]>
+
+                                    (function() {
+                                        window.sib = { equeue: [], client_key: w67mub9w9px2e5wb61jq3 };
+                                        /* OPTIONAL: email for identify request*/
+                                        // window.sib.email_id = 'example@domain.com';
+                                        window.sendinblue = {}; for (var j = ['track', 'identify', 'trackLink', 'page'], i = 0; i < j.length; i++) { (function(k) { window.sendinblue[k] = function() { var arg = Array.prototype.slice.call(arguments); (window.sib[k] || function() { var t = {}; t[k] = arg; window.sib.equeue.push(t);})(arg[0], arg[1], arg[2]);};})(j[i]);}var n = document.createElement('script'),i = document.getElementsByTagName('script')[0]; n.type = 'text/javascript', n.id = 'sendinblue-js', n.async = !0, n.src = 'https://sibautomation.com/sa.js?key=' + window.sib.client_key, i.parentNode.insertBefore(n, i), window.sendinblue.page();
+                                    })();
+                                    
+
+    //<![CDATA[
+    config.ShopPath = 'https://www.ecblendflavors.com';
+    config.AppPath = '';
+    config.FastCart = 1;
+    var ThumbImageWidth = 120;
+    var ThumbImageHeight = 120;
+    //]]>
+    
+
+function beacon_deferred(beacon_api) { beacon_api.pageview({"isNew":1,"initiator":{"id":"","session_id":"750d08b0232bb90aae80294e3b53f7c732342bad","type":"ANONYMOUS","visit_id":"3d8442d6-430a-47a0-b549-366c03adc0b7","visitor_id":"9946d3db-1ec2-4d10-8983-0f663fb5c58f"},"referer":{"url":""},"request":{"url":"https:\/\/www.ecblendflavors.com\/"}}, []);}
+
+
+(function(){var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.src='https://cdn9.bigcommerce.com/shared/js/beacon_api-d53f0a39a11dacaa85063ca4f4aba159a609185d.js';s.parentNode.insertBefore(g,s);})();
+
+
+ShowImageZoomer = false;
+$(document).ready(function() {
+	
+	function loadQuickView() {
+		$(".QuickView").quickview({
+			buttonText: "Quick View",
+			buttonColor: "#f7f7f7",
+			gradientColor: "#dcdbdb",
+			textColor: "#000000"
+		});
+	}
+
+	$(document).on('SearchReload', function() {
+		loadQuickView();
+	});
+
+	loadQuickView();
+});
+
+
+var BCData = {"csrf_token":"cffd0da18a6240c9c455dc0e142206e20aabe68f786b4ed9dd8315fe6da108c8"};
+
+
+                var QuickSearchAlignment = 'left';
+                var QuickSearchWidth = '232px';
+                lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+            
+
+window.sloyalty = window.sloyalty || {};
+window.sloyalty.shop = 'https://www.ecblendflavors.com';
+window.sloyalty.key = '8e0949f7-882f-449a-b264-adba5b42a1d6';
+window.sloyalty.customer_id = '';
+window.sloyalty.customer_email = '';
+
+
+	$(window).load(function() {
+		$('.slide-show').flexslider({
+			slideshowSpeed: $('.slide-show').attr('data-swap-frequency') * 1000,
+			animation: "slide",
+			pauseOnHover: true,
+			controlNav: true,
+			directionNav: true
+		});
+	});
+
+
+    $(function(){
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 800,
+                dropShadows: false,
+                speed: "fast"
+            })
+            .find("ul")
+            .bgIframe();
+        }
+    })
+
+
+$(document).ready(function() {
+	// attach fast cart event to all 'add to cart' link
+	$(".ProductActionAdd a[href*='cart.php?action=add']").click(function(event) {
+		fastCartAction($(this).attr('href'));
+		return false;
+	});
+});
+
+//<![CDATA[
+$(document).ready(function() {
+
+$('.ShippingMethodList').ajaxSuccess(function(e, xhr, settings) {
+
+var i = xhr.responseText.search("Unfortunately");
+
+if (i>0)
+
+{
+    $(".ShippingMethodList p").html('<p>Unfortunately, we cannot ship to your location, or an error has occurred. Your country may not allow shipments or your order is too large to calculate shipping. Please contact us at HelpDesk@ecblend.com</p>');
+}
+});
+
+});
+//]]>
+
+$(function(){
+$('#FormField_11').html('<option value="">Choose a Country</option><option value="United States" SELECTED>United States</option><option value="Australia">Australia</option><option value="Bulgaria">Bulgaria</option><option value="Canada">Canada</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Estonia">Estonia</option><option value="Finland">Finland</option><option value="France">France</option><option value="Germany">Germany</option><option value="Greece">Greece</option><option value="Hungary">Hungary</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Japan">Japan</option><option value="Korea, Republic of">Korea, Republic of</option><option value="Latvia">Latvia</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Malta">Malta</option><option value="Mexico">Mexico</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Norway">Norway</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Puerto Rico">Puerto Rico</option><option value="Romania">Romania</option><option value="Russian Federation">Russian Federation</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="South Africa">South Africa</option><option value="Spain">Spain</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Tajikistan">Tajikistan</option><option value="Ukraine">Ukraine</option><option value="United Kingdom">United Kingdom</option><option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>');
+});
+$('#FormField_21').html('<option value="">Choose a Country</option><option value="United States" SELECTED>United States</option><option value="Australia">Australia</option><option value="Bulgaria">Bulgaria</option><option value="Canada">Canada</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Estonia">Estonia</option><option value="Finland">Finland</option><option value="France">France</option><option value="Germany">Germany</option><option value="Greece">Greece</option><option value="Hungary">Hungary</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Japan">Japan</option><option value="Korea, Republic of">Korea, Republic of</option><option value="Latvia">Latvia</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Malta">Malta</option><option value="Mexico">Mexico</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Norway">Norway</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Puerto Rico">Puerto Rico</option><option value="Romania">Romania</option><option value="Russian Federation">Russian Federation</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="South Africa">South Africa</option><option value="Spain">Spain</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Tajikistan">Tajikistan</option><option value="Ukraine">Ukraine</option><option value="United Kingdom">United Kingdom</option><option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>');
+});
+
+
+$(document).ready(function(){
+var $pageHash = window.location.hash;
+if($pageHash == "#reviews")
+{
+ActiveProductTab('ProductReviews_Tab');
+window.location.hash= $pageHash;
+}
+
+});
+
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5c00401940105007f37a45e0/1ctgmsv3u';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+

@@ -1,0 +1,307 @@
+var isMvcCartEnabled = true
+
+var monetateT = new Date().getTime();
+(function() {
+    var p = document.location.protocol;
+    if (p == "http:" || p == "https:") {
+        var m = document.createElement("script"); m.type = "text/javascript"; m.src = (p == "https:" ? "https://s" : "http://") + "e.monetate.net/js/2/a-5f97dab6/p/famousfootwear.com/entry.js";
+        var e = document.createElement("div"); e.appendChild(m); document.write(e.innerHTML);
+    }
+})();
+
+
+    //Do not remove the $.ajaxSetup(), it prevents $.getScript() from grabbing a non-cached version of scripts
+    $.ajaxSetup({cache:true});
+
+
+    $.fn.livequery = function(bind, func) {
+        if (bind == 'click') { this.click(func); }
+    };
+    var caInit = [];
+
+
+						var s_account="bshoefamous"
+					
+
+            var s = {};
+						s.linkInternalFilters="javascript:,famousfootwear.com"
+						s.pageName="Home Page"
+						s.server="www.famousfootwear.com"
+						s.channel="Home Page"
+						s.pageType=""
+						s.prop1=""
+						s.prop2=""
+						s.prop3=""
+						s.prop4=""
+						s.prop6=""
+						s.prop7=""
+						s.prop8=""
+						s.prop9=""
+						s.prop10=""
+						s.prop11=""
+						s.prop12=""
+						s.prop13=""
+						s.prop14=""
+						s.prop15=""
+						s.prop19=""
+						s.prop22=""
+						s.prop23=""
+						s.prop24=""
+						s.prop25=""
+            s.prop26=""
+            s.prop27=""
+						s.prop28=""
+						s.prop29=""
+            s.prop40=""
+						s.state=""
+						s.zip=""
+						s.events=""
+						s.products=""
+						s.purchaseID=""
+						s.eVar1=""
+						s.eVar4=""
+						s.eVar5=""
+						s.eVar6=""
+						s.eVar11=""
+						s.eVar13=""
+						s.eVar14=""
+						s.eVar15=""
+						s.eVar16=""
+						s.eVar17=""
+						s.eVar18=""
+						s.eVar19=""
+						s.eVar20=""
+            s.eVar22=""
+						s.eVar23=""
+            s.eVar24=""
+						s.eVar25=""
+						s.eVar26=""
+						s.eVar27=""
+						s.eVar28=""
+            s.eVar29=""
+            s.eVar33=""
+            s.eVar40=""
+						s.eVar41=""
+            s.eVar42=""
+            s.eVar43=""
+            s.eVar51=""
+            s.typeahead=""
+					
+
+						var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+						document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+					
+
+						try 
+						{
+							var pageTracker = _gat._getTracker("UA-1033819-1");
+							pageTracker._setDomainName(".famousfootwear.com");
+							pageTracker._trackPageview("Home Page");
+							if(s && s.campaign) {
+								pageTracker._setVar(s.campaign);
+							}
+							
+							
+							
+						} 
+							catch(err) {}
+					
+
+/* ADD TO RUN AFTER MONETATE ARRAY --- */
+try {
+	var runAfterMonetate = runAfterMonetate || [];
+	runAfterMonetate.push(function(){ $('#homeLanding').css('visibility', 'visible'); });
+} catch(e){}
+$(document).ready(function(){
+try {
+runAfterMonetate.forEach(function(runScript){
+runScript();
+});
+} catch(e){}
+});
+
+
+    var validNavigation = false;
+
+    function wireUpEvents() {
+        var dont_confirm_leave = 0; //set dont_confirm_leave to 1 when you want the user to be able to leave withou confirmation
+        var leave_message = 'WARNING: If you close the window now you will still be in Impersonation mode!  Use the STOP link instead.';
+
+        function goodbye(e) {
+            if (!validNavigation) {
+                if (dont_confirm_leave !== 1) {
+                    if (!e) e = window.event;
+                    //e.cancelBubble is supported by IE - this will kill the bubbling process.
+                    e.cancelBubble = true;
+                    e.returnValue = leave_message;
+                    //e.stopPropagation works in Firefox.
+                    if (e.stopPropagation) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }
+                    //return works for Chrome and Safari
+                    return leave_message;
+                }
+            }
+        }
+        window.onbeforeunload = goodbye;
+
+        // Attach the event keypress to exclude the F5 refresh
+        $(document).bind('keypress', function (e) {
+            if (e.keyCode == 116) {
+                validNavigation = true;
+            }
+        });
+
+        $(document).bind('keydown', function (e) {
+            if (e.keyCode == 13) {
+                validNavigation = true;
+            }
+        });
+
+        $("div").bind("click", function () {
+            validNavigation = true;
+        });
+
+        $("span").bind("click", function () {
+            validNavigation = true;
+        });
+
+        // Attach the event click for all links in the page
+        $("a").bind("click", function () {
+            validNavigation = true;
+        });
+
+        // Attach the event submit for all forms in the page
+        $("form").bind("submit", function () {
+            validNavigation = true;
+        });
+
+        // Attach the event click for all inputs in the page
+        $("input[type=submit]").bind("click", function () {
+            validNavigation = true;
+        });
+
+        $("input[type=button]").bind("click", function () {
+            validNavigation = true;
+        });
+
+        $("input[type=image]").bind("click", function () {
+            validNavigation = true;
+        });
+/* look at these later if needed
+        $(":button").live('click', function () { preventUnloadPrompt = true; });
+        $(":image").live('click', function () { preventUnloadPrompt = true; });
+        $("button").live('click', function () { preventUnloadPrompt = true; });
+        $('img').live('click', function () { preventUnloadPrompt = true; });
+        // or even just a click on the body perhaps
+        $('body').live('click', function () { preventUnloadPrompt = true; });
+*/
+    }
+
+    function fetchCookieVal(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function setIHContents(name) {
+        var tnote = '';
+        var impNotes = fetchCookieVal("ASPXFORMSIMPERSUSERB");
+        if (impNotes && (impNotes.length > 0))
+            tnote = ' - ' + impNotes;
+        $("div.ihName").text("Impersonating " + name + tnote);
+    }
+
+    (function () {
+    })();
+
+    // Wire up the events as soon as the DOM tree is ready
+    $(document).ready(function () {
+        var impval = fetchCookieVal("ASPXFORMSIMPERSUSERA");
+        if (impval && (impval.length > 0))
+        {
+            setIHContents(impval);
+            document.getElementById('botIBnr').style.display = 'block';
+            wireUpEvents();
+        }
+    });
+
+
+	var CartQuantityScript = function () {
+		var cookies = new CookieManager();
+		var qty = cookies.getValue("CART_TOTAL_QUANTITY_20000", null);
+		var link = document.getElementById("myCartActive");
+		if(link && qty && (qty > 0)){
+		 $('#topnav-service ul li#topnav-cart a').addClass('notEmpty');
+		link.innerHTML = " (" + qty + ")";
+	}
+	}
+	$(document).ready(CartQuantityScript);
+
+
+//<![CDATA[
+var freshAddressSiteToken='7c1e07001ba18249799b7f5674716bbf61335c745c93138ac537e330c052383528ebe69005f12b76e0d48ae70aa5f197';//]]>
+
+
+if (/results\.aspx/i.test(seoRoutesNativeUrl)) {
+	/* STORE NUMBERS CLEAN-UP */
+	(function(){
+		var topbar = $('[id*="_ResultsZoneSearchDetail_divPagerTop"]');
+		var topbtns = topbar.find('.ResultsPager .pageBtn');
+		topbar.find('.ResultsPager').html(topbtns);
+		topbar.find('.ResultsPager .pageBtn').has('.btn-pageNext').addClass('nextPageBtn');
+		// add divider line
+		topbar.find('.ResultsPager .pageBtn:not(:only-child)').has('.btn-pageNext').addClass('needsDivider');
+		topbar.addClass('barReady');
+
+		var btns  = $('[id$="divPagerBottom"]').find('.pageBtn');
+		var pages = $('[id$="divPagerBottom"]').find('.pagerLinks, .pagerInactive');
+		if (pages.length >= 5) {
+			var before      = [];
+			var after       = [];
+			var currPage    = false;
+			var lastPage    = false;
+			var firstPage   = false;
+			var nearbyPages = 3;
+			for (var i=0; i<pages.length;i++) {
+				if ($(pages[i]).hasClass('pagerInactive')) { currPage = i; }
+				else if (currPage !== false) { after.push(i); }
+				else { before.push(i); }
+			}
+			before = (before.length - (nearbyPages+1)) > 0 ? before.slice(before.length - nearbyPages, before.length) : before.slice(0,before.length);
+			after  = after.length <= (nearbyPages+1) ? after.slice(0,after.length) : after.slice(0,nearbyPages);
+			if (before.length == nearbyPages) firstPage = true;
+			if (after.length == nearbyPages) lastPage = true;			
+			var returnLink = function(pageEl){
+				return '<a href="' + pageEl.attr('href') + '" class="' + pageEl.attr('class') + '">' + pageEl.text() + '</a>';
+			};
+			var pMarkup = '';
+			if (btns.length > 0 && currPage !== 0) pMarkup += returnLink( $(btns[0]) );
+			if (firstPage && $(pages[0]).text() !== $(pages[before[0]]).text()) pMarkup += returnLink( $(pages[0]) ) + ' ... ';
+			for (var i=0;i<before.length;i++) {
+				pMarkup +=  returnLink($(pages[before[i]]));
+			}
+			pMarkup += '<span class="pagerInactive">' + $(pages[currPage]).text() + '</span>';
+			for (var i=0;i<after.length;i++) {
+				pMarkup +=  returnLink($(pages[after[i]]));
+			}
+			if (lastPage && $(pages[pages.length-1]).text() !== $(pages[after[after.length-1]]).text()) pMarkup += ' ... ' + returnLink($(pages[pages.length-1]));
+			if (btns.length > 1) pMarkup += returnLink( $(btns[1]) );
+			else if (btns.length > 0 && currPage == 0) pMarkup += returnLink( $(btns[0]) );
+			if (pMarkup.length > 10) $('[id$="divPagerBottom"] .ResultsPager').html( pMarkup );
+		}
+	})();
+}
+$(document).ready(function(){
+	var tipui = $('.tip-ui-outer');
+	var bcb = $('.breadCrumbBar');
+	tipui.append(bcb);
+});
+
+_satellite.pageBottom();

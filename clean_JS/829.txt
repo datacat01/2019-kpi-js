@@ -1,0 +1,12 @@
+
+    //<!--
+                var COOKIECONSENT_MESSAGE='This website uses cookies to ensure you get the best experience on our website.';
+            var COOKIECONSENT_DISMISS='I understand';
+            var COOKIECONSENT_LEARN_MORE='Learn more';
+            var COOKIECONSENT_LINK='/company/legal/#cookies';
+            var COOKIECONSENT_SCRIPT='https://s2.www.theimagingsource.com/application-1.0.90988/js/dist/cookieconsent.min.js';
+            var URI_BACKEND_CROSSOVER='/backend/crossover/';
+            var URI_BACKEND_AUTOCOMPLETE='/backend/autocomplete/';
+    
+    //-->
+

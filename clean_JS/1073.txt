@@ -1,0 +1,8 @@
+
+	var SCPB = new Object();
+  	SCPB.page="index";  
+    
+		var sc_pb_money_format = "${{amount}}";
+		var product_select_index= 0;
+
+ if (typeof jQuery != "undefined") { jQuery(function() { jQuery("img[alt*='//vimeo.com/']").css("opacity", "0"); jQuery("img[alt*='youtube.com/watch']").css("opacity", "0"); jQuery("img[alt*='youtu.be/']").css("opacity", "0"); }); } 

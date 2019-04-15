@@ -1,0 +1,65 @@
+window.q = [];window.$ = function (f) { q.push(f) }
+
+        var empathyTAG = new EmpathyBrokerTAG("espares", "liv").init();
+    
+
+        var _mTrack = _mTrack || [];
+        _mTrack.push(['trackPage']);
+
+        (function() {
+            var mClientId = '572aqx2699';
+            var mProto = 'https://';
+            var mHost = 'tracker.marinsm.com';
+            var mt = document.createElement('script');
+            mt.type = 'text/javascript';
+            mt.async = true;
+            mt.src = mProto + mHost + '/tracker/async/' + mClientId + '.js';
+            var fscr = document.getElementsByTagName('script')[0];
+            fscr.parentNode.insertBefore(mt, fscr);
+        })();
+    
+
+  var gts = gts || [];
+gts.push(["id", "53555"]);
+gts.push(["badge_position", "USER_DEFINED"]);
+gts.push(["badge_container", "GoogleCertifiedShopsContainer"]);
+gts.push(["locale", "en_GB"]);
+gts.push(["google_base_subaccount_id", "1386153"]);
+  
+  (function() {{  
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  }})();
+
+
+                sWOResponse = 'Y'
+                        if (typeof sWOTrackPage == 'function') sWOTrackPage();
+            var c = 1;
+            var pn = sWOPage;
+            window.setInterval(function () {
+
+                if (c < 10) {
+                    c += 1;
+                    sWOImageLoaded = function () { };
+                    sWOInvite = '';
+                    sWOResponse = 'N';
+                    sWOPage = pn + '?timer=' + c;
+                    sWOTrackPage(); s
+                };
+            }, 30000);
+
+            $(document).ready(function () {
+                var desktop = $(window).width() >= 992;
+                var tablet = $(window).width() >= 768;
+
+                if (!desktop && !tablet) {
+                    $("#wo_chatbox").hide();
+                }else {
+                    $("#wo_chatbox").show();
+                }
+            });
+        

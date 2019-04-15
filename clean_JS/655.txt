@@ -1,0 +1,113 @@
+
+require([
+    'jquery'
+], function ($) {
+    $(document).ready(function(){
+        $("body").addClass("layout-1170");
+        $("body").addClass("wide");
+                $(".drop-menu > a").off("click").on("click", function(){
+            if($(this).parent().children(".nav-sections").hasClass("visible"))
+                $(this).parent().children(".nav-sections").removeClass("visible");
+            else
+                $(this).parent().children(".nav-sections").addClass("visible")
+        });
+    });
+});
+
+
+//<![CDATA[
+var mbPopupParams = {"storeId":"1","previewId":0,"templateId":0,"popupPageId":1,"filterId":0,"page":"1","rootUrl":"https:\/\/www.discountwatchstore.com\/","pubDir":"","baseUrl":"https:\/\/www.discountwatchstore.com\/","doGaTracking":false,"doMousetracking":false,"customParams":""};
+//]]>
+
+
+    require([
+        'jquery',
+        'Smartwave_Megamenu/js/sw_megamenu'
+    ], function ($) {
+        $(".sw-megamenu").swMegamenu();
+    });
+
+
+  require([
+    'jquery',
+  ], function ($) {
+    $('.banner-slider-homepage').bxSlider({
+			pager: false,
+			mode: 'fade',
+                        nextSelector: '.next-slide',
+                        prevSelector: '.prev-slide',
+                        nextText: ' ',
+                        prevText: ' ',
+			auto: true,
+			pause: 555000,
+			autoHover: true
+		});
+  });
+
+
+                        require([
+                            'jquery',
+                            'owl.carousel/owl.carousel.min'
+                        ], function ($) {
+                            $("#featured_product .owl-carousel").owlCarousel({
+                                autoplay: true,
+                                autoplayTimeout: 5000,
+                                autoplayHoverPause: true,
+                                loop: true,
+                                navRewind: true,
+                                margin: 0,
+                                nav: false,
+                                navText: ["<em class='porto-icon-left-open-huge'></em>","<em class='porto-icon-right-open-huge'></em>"],
+                                dots: true,
+                                responsive: {
+                                    0: {
+                                        items:2
+                                    },
+                                    768: {
+                                        items:3
+                                    },
+                                    992: {
+                                        items:4
+                                    },
+                                    1200: {
+                                        items:5
+                                    }
+                                }
+                            });
+                        });
+                    
+
+                        require([
+                            'jquery',
+                            'owl.carousel/owl.carousel.min'
+                        ], function ($) {
+                            $("#new_product .owl-carousel").owlCarousel({
+                                autoplay: true,
+                                autoplayTimeout: 5000,
+                                autoplayHoverPause: true,
+                                loop: true,
+                                navRewind: true,
+                                margin: 0,
+                                nav: false,
+                                navText: ["<em class='porto-icon-left-open-huge'></em>","<em class='porto-icon-right-open-huge'></em>"],
+                                dots: true,
+                                responsive: {
+                                    0: {
+                                        items:2
+                                    },
+                                    640: {
+                                        items:3
+                                    },
+                                    768: {
+                                        items:3
+                                    },
+                                    992: {
+                                        items:4
+                                    },
+                                    1200: {
+                                        items:4
+                                    }
+                                }
+                            });
+                        });
+                    

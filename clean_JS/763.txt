@@ -1,0 +1,272 @@
+
+navigator.browserInfo= (function(){
+    var ua= navigator.userAgent, tem,
+    M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if(/trident/i.test(M[1])){
+        tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+        return 'IE '+(tem[1] || '');
+    }
+    if(M[1]=== 'Chrome'){
+        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+    return M.join(' ');
+})();
+
+// this fixes an issue with the old method, ambiguous values
+// with this test document.cookie.indexOf( name + "=" );
+function Get_Cookie( check_name ) {
+  // first we'll split this cookie up into name/value pairs
+  // note: document.cookie only returns name=value, not the other components
+  var a_all_cookies = document.cookie.split( ';' );
+  var a_temp_cookie = '';
+  var cookie_name = '';
+  var cookie_value = '';
+  var b_cookie_found = false; // set boolean t/f default f
+
+  for ( i = 0; i < a_all_cookies.length; i++ )
+  {
+    // now we'll split apart each name=value pair
+    a_temp_cookie = a_all_cookies[i].split( '=' );
+
+    // and trim left/right whitespace while we're at it
+    cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+
+    // if the extracted name matches passed check_name
+    if ( cookie_name == check_name )
+    {
+      b_cookie_found = true;
+      // we need to handle case where cookie has no value but exists (no = sign, that is):
+      if ( a_temp_cookie.length > 1 )
+      {
+        cookie_value = unescape( a_temp_cookie[1].replace(/^\s+|\s+$/g, '') );
+      }
+      // note that in cases where cookie is initialized but no value, null is returned
+      return cookie_value;
+      break;
+    }
+    a_temp_cookie = null;
+    cookie_name = '';
+  }
+  if ( !b_cookie_found )
+  {
+    return null;
+  }
+}
+
+function Set_Cookie( name, value, expires, path, domain, secure, httpOnly )
+{
+  // set time, it's in milliseconds
+  var today = new Date();
+  today.setTime( today.getTime() );
+
+  
+  if ( expires && (expires != -1) ) {
+    expires = expires * 1000 * 60;
+  }
+  var expires_date = new Date( today.getTime() + expires );
+
+  document.cookie = name + "=" + value +
+    ( ( expires != -1 ) ? ";expires=" + expires_date.toGMTString() : "" ) +
+    ( ( path ) ? ";path=" + path : "" ) +
+    ( ( domain ) ? ";domain=" + domain : "" ) +
+    ( ( secure ) ? ";secure" : "" ) +
+    ( ( httpOnly ) ? ";HttpOnly" : "" );
+    
+}
+
+function setSessionCookie(sessionId) {
+    if (sessionId != Get_Cookie("JSESSIONID")) {
+      // first try to delete existing, if possible
+      Set_Cookie("JSESSIONID", sessionId, -2, "/", null, true);
+      // then try setting new
+      Set_Cookie("JSESSIONID", sessionId, -1, "/", null, true, false);
+    }
+    return (sessionId == Get_Cookie("JSESSIONID"));
+}
+	
+	
+function generateSecureUrlForHttps(argUrl){
+	if(argUrl != null && argUrl.startsWith("http:") && (true == true || true == "true" ) ){		
+		argUrl = argUrl.replace(/^http:\/\//i, 'https://');	
+	}
+	
+	return argUrl;
+}
+
+
+function receiveMessage(event) {
+  
+  
+  
+      
+  
+
+  if (event.origin &&
+      (event.origin != "https://www.ataglance.com") &&
+      (event.origin != "https://www.ataglance.com:443")) {
+    alert("event origin mismatch");
+    // prevent any messages from any other source
+    return;
+  }
+  if (event.domain && (event.domain != "www.ataglance.com")) {
+    alert("event domain mismatch");
+  }
+  var txt = event.data;
+  
+
+  processFetchedSessionResponse(txt);
+}
+
+function processFetchedSessionResponse(txt) {
+  var parts = txt.split(";");
+  var sessionIdFromCanonical = parts[0];
+  var remoteCookieSetFailed = false;
+  if (parts.length > 0) {
+    remoteCookieSetFailed = (parts[1] == "failed");
+  }
+
+  if (remoteCookieSetFailed) {
+   
+   
+   var redirectUrl = "https://www.ataglance.com/ataglance/home/common/dummy.html;jsessionid=(;;;)?postSessionRedirect=https%3A//www.mead.com%3A443/mead";
+   redirectUrl = redirectUrl.replace("(;;;)", sessionIdFromCanonical);
+   var localSessionCookie = Get_Cookie("JSESSIONID");
+   if (localSessionCookie) {
+     // we know the no script URL must already have a query param.
+     setSessionCookie(sessionIdFromCanonical);
+     redirectUrl = redirectUrl + "&sessionIdFromCookie=" +
+       encodeURIComponent(localSessionCookie);
+   }
+   else {
+      // try to set the remote session cookie locally
+      if (setSessionCookie(sessionIdFromCanonical)) {
+        redirectUrl = redirectUrl + "&sessionIdFromCookie=" +
+          encodeURIComponent(sessionIdFromCanonical);
+      }            
+      else {
+        
+        redirectUrl = "https://www.ataglance.com/ataglance/home/common/dummy.html;jsessionid=(;;;)?postSessionRedirect=https%3A//www.mead.com%3A443/mead&noRedirectJavaScript=true"
+   	  .replace("(;;;)", sessionIdFromCanonical);
+        
+      }
+   }
+   window.location.href = generateSecureUrlForHttps(redirectUrl);
+   return;
+ }
+
+  handleSessionIdInfoString(parts[0]);
+}
+
+var originalUrl = window.location.href;
+
+function handleSessionIdInfoString(txt) {
+  var sessionIdFromCanonical = txt;
+
+  // go ahead and try to set our local cookie, so it will be here,
+  // regardless of anything else
+  if (setSessionCookie(sessionIdFromCanonical)) {
+    
+    if (window.location.href != originalUrl) {
+      window.location.href = generateSecureUrlForHttps(originalUrl);
+      setTimeout("window.location.reload()", 500);
+    }
+    else {
+      window.location.reload();
+    }
+  }
+  else {
+   
+    var newUrl = "https://www.mead.com:443/mead;jsessionid=(;;;)";
+    newUrl = newUrl.replace("(;;;)", sessionIdFromCanonical);
+    window.location.href = generateSecureUrlForHttps(newUrl);
+  }
+}
+
+var originalHash = document.location.hash;
+var timerId = null;
+
+function checkForChangedUrl() {
+  if (originalHash != document.location.hash) {
+    if (timerId != null) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+    
+    var txt = decodeURIComponent(document.location.hash.substring(1));
+    // reset the location, so it won't have our hash on it
+    processFetchedSessionResponse(txt); 
+  }
+  else {
+     
+  }
+}
+
+function processIframeLoad() {
+  timerId = setInterval("checkForChangedUrl();", 100);
+}  
+
+
+
+var requested = false;
+var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false; 
+var isnewIE = (navigator.browserInfo.indexOf("IE") != -1) ? true : false;
+var isSafari =  (navigator.browserInfo.indexOf("Safari") != -1) ? true : false;
+if (!isIE && !isnewIE && !isSafari) {
+  if(window["XMLHttpRequest"])
+  {
+    var url = "https://www.ataglance.com/ataglance/home/common/dummy.html?canonicalSessionRenderSessionId=true";
+    var request = new XMLHttpRequest();
+    if("withCredentials" in request)
+    {
+     // Firefox 3.5+ and Safari 4+
+     request.open('GET', url, true);
+     request.withCredentials = "true";
+     request.onabort = function(evt) {
+          
+         window.location.href = generateSecureUrlForHttps('https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead&noRedirectJavaScript=true');
+     };
+     request.onerror = function(evt) {
+      
+       window.location.href = generateSecureUrlForHttps('https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead&noRedirectJavaScript=true');
+     };
+     request.onreadystatechange = function(evt) {
+       if (request.readyState != 4) { return; }
+       
+       if (request.status != 200) {
+         window.location.href = generateSecureUrlForHttps('https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead&noRedirectJavaScript=true');
+       }
+       else {
+          handleSessionIdInfoString(request.responseText);
+       }
+     };
+     request.send();
+     requested = true;
+    }
+  
+  }
+}
+
+
+if (!requested) {
+  if (window.addEventListener) {
+    window.addEventListener("message", receiveMessage, false);
+  }
+  if (document.attachEvent) {
+     document.attachEvent("onmessage", receiveMessage);
+  }
+  if (window.attachEvent) {
+    window.attachEvent("onmessage", receiveMessage);
+  }
+
+  document.writeln('<iframe src="https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead&fromIframe=true" name="redirectIframe" style="width:0px; height:0px; border: 0px"  onload="processIframeLoad()">');
+  document.writeln('<meta http-equiv="refresh" content="0;URL=https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead" />');
+  document.writeln('</iframe>');
+}
+
+setTimeout("window.location.href = generateSecureUrlForHttps('https://www.ataglance.com/ataglance/home/common/dummy.html?postSessionRedirect=https%3A//www.mead.com%3A443/mead&noRedirectJavaScript=true')", 10000);
+
+
+

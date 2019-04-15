@@ -1,0 +1,204 @@
+
+	var Config_VCompare_MaxProducts = '3';
+	var PageText_783 = "Compare";
+	var PageText_784 = "Change Selections";
+	var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+	var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+
+
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/ajaxcart.asp?cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+
+
+	var global_Config_EnableDisplayOptionProducts = 'False';
+	var global_Config_ForceSecureShoppingCartPage = false;
+	var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+	var Config_EnableSoftAddToCart = false;
+
+
+	var Config_Search_Auto_Complete = true;
+
+
+    _4TellBoost={}; _4TellBoost.jq=jQuery.noConflict(true);
+    
+
+      /* <![CDATA[ */
+      var google_conversion_id = 1071056440;
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+    
+
+      //<![CDATA[
+      var onHomePage = (location.pathname == "/"
+      || location.pathname.indexOf("/Default.asp") != -1
+      || location.pathname.indexOf("/default.asp") != -1);
+      // HOMEPAGE
+      if (onHomePage)
+      // Add body class of "home"
+      document.body.className+='home';
+
+      // CATEGORY PAGE
+      var onCategoryPage = (location.pathname == "/SearchResults.asp"
+      || location.pathname.indexOf("-s/") != -1
+      || location.pathname.indexOf("_s/") != -1);
+      if (onCategoryPage)
+      document.body.className+=' category'
+
+      // PRODUCT PAGE
+      var onProductPage = (location.pathname == "/ProductDetails.asp" ||
+      location.pathname.indexOf("-p/") != -1 ||
+      location.pathname.indexOf("_p/") != -1);
+      if (onProductPage)
+      document.body.className+=' product'
+
+      // INFO PAGE
+      if (location.pathname == "/aboutus.asp")
+      document.body.className+=' info'
+
+      // CONTACT PAGE
+      if (location.pathname == "/contactus-s/123.htm")
+      document.body.className+=' contact'
+
+      // SEARCH RESULTS PAGE
+      if (location.pathname == "/SearchResults.asp")
+      document.body.className+=' search'
+
+      // SHOPPING CART PAGE
+      var onShoppingCartPage = (location.pathname == "/shoppingcart.asp");
+      if (onShoppingCartPage)
+      document.body.className+=' cart'
+
+      // ONE PAGE CHECKOUT
+      if (location.pathname == "/one-page-checkout.asp")
+      document.body.className+=' checkout'
+
+      // GROUP ALL MY ACCOUNT PAGES (to apply h2 font size changes)
+      if (location.pathname == "/myaccount.asp" || location.pathname == "/login.asp" || location.pathname == "/orders.asp" || location.pathname == "/returns.asp" || location.pathname == "/AccountSettings.asp" || location.pathname == "/MailingList_unsubscribe.asp" || location.pathname == "/MyAccount_GiftBalance.asp" || location.pathname == "/MyAccount_ApplyGift.asp")
+      document.body.className+=' myaccountgroup'
+
+      // MY ACCOUNT PAGE
+      if (location.pathname == "/login.asp")
+      document.body.className+=' login'
+
+      // MY ACCOUNT PAGE
+      if (location.pathname == "/myaccount.asp")
+      document.body.className+=' myaccount'
+
+      // ORDERS PAGES (Review orders/track packages, Change shipping address, Change billing address, Change quantities/cancel orders, Print invoices)
+      if (location.pathname == "/orders.asp")
+      document.body.className+=' orders'
+
+      // RETURNS PAGE
+      if (location.pathname == "/returns.asp")
+      document.body.className+=' returns'
+
+      // ACCOUNT SETTINGS PAGES (Change e-mail address or password, Manage billing addresses, Manage shipping addresses)
+      if (location.pathname == "/AccountSettings.asp")
+      document.body.className+=' accountsettings'
+
+      // MAILING LIST UNSUBSCRIBE PAGE
+      if (location.pathname == "/MailingList_unsubscribe.asp")
+      document.body.className+=' mailingunsubscribe'
+
+      // GIFT CERTIFICATE PAGES (Manage Gift Card, Apply Gift Card)
+      if (location.pathname == "/MyAccount_GiftBalance.asp" || location.pathname == "/MyAccount_ApplyGift.asp")
+      document.body.className+=' giftcertificate'
+
+      //]]>
+    
+
+			var enableNextopiaNavigation = false;
+    
+var breadCrumb="||";
+
+      <!--
+  /*
+      var pathname = window.location.pathname;
+      if (pathname == "/ProductDetails.asp" || pathname.indexOf("-p/") != -1 || pathname.indexOf("_p/") != -1)
+      {
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', 'ViewProduct', {
+        product_id: global_Current_ProductCode,
+        category: '',
+        price: $('span[itemprop="price"]').html().replace(/[^\d.,]+/,'')
+        }]);
+
+        $("input[name='btnaddtocart']").bind("click", function () {
+        window._fbq.push(["track", "AddToCart", {
+        price: $('span[itemprop="price"]').html().replace(/[^\d.,]+/,''),
+        product_id: global_Current_ProductCode,
+        product_category: ''
+        }]);
+        });
+      }
+*/
+      //<br/>
+      //-->
+    
+
+      (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+      else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+      if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+        /********** Begin Custom Code **********/
+            _ltk.SCA.CaptureEmail('email');
+            _ltk.SCA.CaptureEmail('Email');
+            _ltk.SCA.CaptureEmail('emailaddress');
+        /********** End Custom Code **********/
+      });
+    
+
+      (function(d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d);
+      else {e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) {
+      if (e.propertyName == 'ltkAsyncProperty'){d();}});}})(function() {
+        /********** Begin Custom Code **********/
+        _ltk.Click.Submit();
+        /********** End Custom Code **********/
+      });
+    
+
+      var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+      (function (d, s, id, tid, vid) {
+        var js, ljs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+        js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+        ljs.parentNode.insertBefore(js, ljs);
+      })(document, 'script', 'ltkSDK', 'k7NQeI8YYakH', '1');
+    
+
+			if (location.pathname !== "/one-page-checkout.asp") {
+				var $jQueryModern = jQuery.noConflict(true);
+			}
+    
+
+                        // ensure MobileMenu is always using the same version jquery
+                        var $MMJS = jQuery;
+
+			if (location.pathname == "/one-page-checkout.asp") {
+        var $jQueryModern = jQuery.noConflict(true);
+			}
+    
+function store_init(event){} AttachEvent(window, 'load', store_init);

@@ -1,0 +1,37 @@
+
+(function(d,e,j,h,f,c,b){d.SurveyGizmoBeacon=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)};c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,'script','//d2bnxibecyz4h5.cloudfront.net/runtimejs/intercept/intercept.js','sg_beacon');
+sg_beacon('init','MzcxNzU1LUI5MkMxQkNEODk3OTRBQUI5Mzk0N0JCOEVDMkQ0MDE2');
+
+
+	$('#openChat').click(function(e) {
+		$.fancybox.close();        
+	});
+
+
+    var google_tag_params = {
+        ecomm_prodid: '',
+        ecomm_pagetype: 'home',
+        ecomm_totalvalue: 0.00
+    };
+
+
+    /* <![CDATA[ */
+    var google_conversion_id = 1072736868;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+
+
+
+
+    var width = window.innerWidth || document.body.clientWidth;
+    var height = window.innerHeight || document.body.clientHeight;
+
+    width = Math.round(width / 100) * 100;
+    height = Math.round(height / 100) * 100;
+
+    var size = width + "x" + height;
+    
+    ga('send', 'event', 'Browser Size', 'Range', size, '0', { nonInteraction: true });
+
+

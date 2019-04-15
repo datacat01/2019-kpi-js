@@ -1,0 +1,16 @@
+
+    if (typeof dataLayer !== "undefined") {
+        for (a = 0, b = EC.length; a < b; a++) {
+            EC[a].apply(this, [dataLayer]);
+        }
+
+        /* AdWords Remarketing */
+        if (window.google_tag_params) {
+            dataLayer.push(
+                {
+                    'event': 'fireRemarketingTag',
+                    'google_tag_params': window.google_tag_params
+                });
+        }
+    }
+

@@ -1,0 +1,50 @@
+
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push(
+            { event: "setAccount", account: 20866 },
+            { event: "setEmail", email: "" },
+            { event: "setSiteType", type: "d" },
+            { event: "viewHome" }
+    );
+    
+
+
+
+//<![CDATA[
+var theForm = document.forms['formHome'];
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'formHome', [], [], [], 90, '');
+//]]>
+
+
+    $.cv.css.messageTypes = { error: 'error', warning: 'warning', info: 'info', success: 'success' };
+
+
+  (function(W,i,s,e,P,o,p){W['WisePopsObject']=P;W[P]=W[P]||function(){
+  (W[P].q=W[P].q||[]).push(arguments)},W[P].l=1*new Date();o=i.createElement(s),
+  p=i.getElementsByTagName(s)[0];o.async=1;o.src=e;p.parentNode.insertBefore(o,p)
+  })(window,document,'script','//loader.wisepops.com/get-loader.js?v=1&site=7e1DK11081','wisepops');
+
+
+    $(document).ready(function() {
+        $('table').each(function(i) {
+            $(this).addClass('cv-table-' + i);
+            $(this).find('> tbody > tr').each(function(j) {
+                $(this).addClass('cv-table-row-' + j);
+                $(this).find('> td').each(function(k) {
+                    $(this).addClass('cv-table-cell-' + k);
+                });
+            });
+        });
+    });
+

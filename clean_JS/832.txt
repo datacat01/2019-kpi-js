@@ -1,0 +1,23 @@
+
+	// 1.
+	var caConfig = {
+		apiKey: '93bbd7bde60a21d6179369e40a9b49ecbff2c203'
+	};
+	// 2.
+	!function(e,t,c,a,n){var r,o=t.getElementsByTagName(c)[0];
+	t.getElementById(a)||(e.ChargeAfter={cfg:n},(r=t.createElement(c)).id=a,
+	r.src="https://cdn.chargeafter.com/promotional-widget/v1/widget.min.js?t="+1*new Date,
+	r.async=!0,o.parentNode.insertBefore(r,o))}
+	(window,document,"script","chargeafter-promotional-widget",caConfig);
+
+
+
+var deviceType= /iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";
+
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+{ event: "setAccount", account: 20503 },
+{ event: "setSiteType", type: deviceType },
+{ event: "viewHome" }
+);
+

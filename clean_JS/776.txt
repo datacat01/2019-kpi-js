@@ -1,0 +1,5 @@
+
+var ds1 = new Spry.Data.HTMLDataSet("/content/files/SpryAssets/Trainers.html", "trainers", {sortOnLoad: "State", sortOrderOnLoad: "ascending"});
+var ds2 = new Spry.Data.HTMLDataSet("/content/files/SpryAssets/scopists.html", "scopists", {sortOnLoad: "State", sortOrderOnLoad: "ascending"});
+var ds3 = new Spry.Data.HTMLDataSet("/content/files/SpryAssets/cvnreporters.html", "cvnreporters", {sortOnLoad: "State", sortOrderOnLoad: "ascending"});
+

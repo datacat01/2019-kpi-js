@@ -1,0 +1,121 @@
+
+var pageController = "main";
+var pageMethod = "index";
+var pageMobile = false;
+var sidebartest = true;
+
+
+                    cityValue = "";
+                    stateValue = "";
+                    defaultCityValue = "(Where? City, State)";
+        
+                    /*************************************************** AJAX AUTOCOMPLETE **********************************************************/
+                    //Old prototype city autocomplete
+                    // new Ajax.Autocompleter('rglr_ctyatcmplt','rglr_ctyatcmplt_sggstn','/ajax/citystateautocomplete', {afterUpdateElement : setCityIdMini, minChars: 2});
+                    
+                    // Old prototype keyword autocomplete
+                    // new Ajax.Autocompleter('rglr_kywrd','rglr_ctyatcmplt_sggstn','/ajax/keywordcomplete', {minChars: 2});
+
+                    // jQuery City Autocompleter
+                    $( "#rglr_ctyatcmplt" ).autocomplete({
+                        appendTo: "#city_autosggstn",
+                        source: function(request, response) {
+                            $.ajax ({
+                                url: '/ajax/citystateautocomplete',
+                                type: "Get",
+                                dataType: "json",
+                                data: { citysearch: request.term },
+                                success: response,
+                                 error: function () {
+                                     response([]);
+                                 }
+                            });
+                        },
+                        minLength: 2,
+                        messages: {
+                            noResults: '',
+                            results: function() {}
+                        },
+                        select: function (event, ui) {
+                            var label = ui.item.label;
+                            var value = ui.item.value;
+                            var city_id = ui.item.city_id;
+                            var state_id = ui.item.state_id;
+                           //store in session
+                          // document.getElementById('city').value = city_id;
+                          // document.getElementById('state').value = state_id;
+                        }
+                    });
+
+                    // jQuery Keyword Autocompleter
+                    $( "#rglr_kywrd" ).autocomplete({
+                        appendTo: "#keyword_autosggstn",
+                        source: function (request, response) {
+                             $.ajax({
+                                 url: "/ajax/keywordcomplete",
+                                 type: "Get",
+                                 data: { term: request.term },
+                                 dataType: "json",
+                                 success: response,
+                                 error: function () {
+                                     response([]);
+                                 }
+                             });
+                        },
+                        minLength: 2,
+                        messages: {
+                            noResults: '',
+                            results: function() {}
+                        }
+                    });
+                    $(document).ready(function(){
+                        $('#adv_ctyatcmplt').keypress(function(e){
+                            if(e.keyCode==13)
+                                blurCityComplete(document.getElementById('adv_ctyatcmplt'));
+                        });
+                    });
+                    function blurCityComplete(that){
+                        if (that.value == ""){
+                            that.value = defaultCityValue;
+                        } else if (that.value == cityValue){
+                            that.value = cityValue + ' ' + defaultCityValue;
+                        } else if (that.value != '') {
+                            if (typeof document.getElementById('city') != "undefined") {
+                                document.getElementById('city').value = 0;
+                            }
+                            if (typeof document.getElementById('zip') != "undefined") {
+                                document.getElementById('zip').value = 0;
+                            }
+                        }
+                    }
+        
+                    function focusCityComplete(that){
+                        if (that.value == cityValue + ' ' + defaultCityValue){
+                            that.value = cityValue;
+                        }
+                        if (that.value == stateValue + ' ' + defaultCityValue){
+                            that.value = stateValue;
+                        }
+                        if (that.value == defaultCityValue){
+                            that.value = '';
+                        }
+                    }
+                    
+                    // Autocomplete now directly assigns these values through it's select function call
+                    // function setCityIdMini(text, li){
+                    //     document.getElementById('city').value = li.id;
+                    //     document.getElementById('state').value = li.value;
+                    // }
+                    function clearMiniAutoComp(){
+                            document.getElementById("rglr_ctyatcmplt").value = "City";
+                    }
+                    function clearCityR(){
+                            document.getElementById("rglr_ctyatcmplt").value = "";
+                            document.getElementById('city').value = 0;
+                            document.getElementById('state').value = 0;
+                            document.getElementById("rglr_ctyatcmplt").focus(); 
+                    }
+                    function clearKeywordR(){
+                            document.getElementById("keyword").value = "";
+                    }   
+                    

@@ -1,0 +1,180 @@
+
+    var $Y = {
+        scopes: {},
+        modules: {},
+        globalConfig: {
+            slickDelay: 500
+        }
+    };
+
+
+    var jsInit = {
+        links: {
+            IMG_PATH: "https://media.yoox.biz/",
+            IMG_PRODUCT_PATH: "https://images.yoox.com/",
+            COOKIE_DOMAIN: "yoox.com",
+            CACHED_DOMAIN: "https://www.yoox.com",
+            DYNAMIC_DOMAIN: "https://www.yoox.com",
+            DESKTOP_DOMAIN: "https://www.yoox.com",
+            MOBILE_DOMAIN: "https://mobile.yoox.com",
+            CCARE_DOMAIN: "http://help.yoox.com",
+            layoutDomain: "//media.yoox.biz",
+            performa: "/UA/Context/ClientSetupSplashPage?noredir=1&gender=D",
+            performaCrossDomain: "/ua/Context/CrossDomainClientSetup?noredir=1",
+            legal: {
+                company: "/Legal/company?isoCode=UA",
+                copyright: "/Legal/Copyright?isoCode=UA"
+            },
+            CHECK_CONSENT: "/ua/myoox/Consent/CheckConsents",
+            SET_CONSENT: "/ua/myoox/Consent/PostConsents",
+            SIZEFIT_TRACKINGAPI_ITEM: "/ua/Common/TrackingSizeFit/TraceSizeFit"
+        },
+        cookieLaw: {
+            text: "Cookie Policy: We use cookies on this website. If you continue to use this website you will be agreeing to the website General Terms and Conditions of Use, Privacy Policy and the use of cookies while using the website. To find out more about cookies and how to change your preferences please see Cookie Policy",
+        buttonLabel: "OK"
+        },
+    nav: {
+            section: "SplashPage",
+            subSection: "NoSection",
+            countryCode: "UA",
+            dept: "",
+            currency: "EUR",
+            sectionsConfig: [
+                        { sectionId: "Home", akamaiCookie: "AKAMAI_HOME" },                        { sectionId: "Item", akamaiCookie: "AKAMAI_ITEM" },                        { sectionId: "SearchResult", akamaiCookie: "AKAMAI_SEARCHRESULT" },                        { sectionId: "DesignerIndex", akamaiCookie: "AKAMAI_DESIGNERINDEX" },                        { sectionId: "CategoryIndex", akamaiCookie: "AKAMAI_CATEGORYINDEX" },                        { sectionId: "SplashPage", akamaiCookie: "AKAMAI_SPLASHPAGE" },                        { sectionId: "Project", akamaiCookie: "AKAMAI_PROJECT" }
+            ]
+    },
+    utility: {
+            isDevelopment: "False",
+            sessionTP: "",
+            isMobile: "False"
+    },
+    analytics:{},
+    social: {
+            fbAppId: "225447960817285",
+            active: ["vk","facebook","twitter","google","pinterest"],
+            cancelUrl: "/UA/Common/ShareRedirectUrl"
+    },
+    shortnerUrl: {
+            shortener_api: "/ua/GetBitlyShortUrl?longUrl="
+    },
+    config: {
+            DfpAccount: "21728559454",
+            MyooxLocalStorageName: "MYOOX_ACCOUNT_LAYERS"
+    },
+    abTestMarker: ""
+    };
+
+    if (!(Links)) {
+        var Links = jsInit.links;
+    }
+
+    jsInit.labels = {};
+    if (typeof jsInit.links.item === "undefined") {
+        jsInit.links.item = {};
+    }
+    if (!jsInit.links.item.itemDetailsUrl)
+        jsInit.links.item.itemDetailsUrl = "/UA/itemDetails";
+    if (!jsInit.links.item.itemUrl)
+        jsInit.links.item.itemUrl = "/item?isoCode=UA";
+    if (!jsInit.links.item.baynoteTrace)
+        jsInit.links.item.baynoteTrace = "/UA/Items/TraceRecommendation";
+
+
+
+        jsInit.links.HOME_MEN = "/ua/для мужчин";
+        jsInit.links.HOME_WOMEN = "/ua/для женщин";
+    
+
+    if (typeof tc_vars === "undefined") {
+        var tc_vars = new Array();
+    }
+    //Environment
+    tc_vars["env_template"] = "splashpagepage";
+    tc_vars["env_dnt"] = "disabled";
+    tc_vars["env_ftpPath"] = "https://media.yoox.biz/yoox/tagCommander/prod/";
+
+    //Navigation
+    tc_vars["nav_trackingUrl"] = "splash_/";
+    tc_vars["nav_section"] = "SplashPage";
+    tc_vars["nav_subsection"] = "";
+    tc_vars["nav_page"] = ":SplashPage";
+    tc_vars["nav_pagetype"] = "SplashPage";
+    tc_vars["nav_countryCode"] = "UA";
+    tc_vars["nav_countryId"] = "90";
+    tc_vars["nav_marketId"] = "57";
+    tc_vars["nav_languageCode"] = "RU";
+    tc_vars["nav_languageId"] = "57";
+    tc_vars["nav_currency"] = "EUR";
+    tc_vars["nav_dept"] = "";
+    tc_vars["nav_area_dept"] = "";
+    tc_vars["nav_area_kids_dept"] = "";
+    tc_vars["nav_gender"] = "D";
+    tc_vars["user_gender"] = "D";
+    tc_vars["nav_season"] = "E";
+    tc_vars["nav_releaseNo"] = "YOOX_10";
+    tc_vars["nav_abtest_advphoto"] = "Advanced photography - Old";
+
+    if (typeof jsInit.nav === "undefined") {
+        jsInit.nav = {};
+    }
+    jsInit.nav.nav_area_dept = "";
+    jsInit.nav.nav_area_kids_dept = "";
+
+
+
+    if (typeof tc_vars === "undefined") {
+        var tc_vars = new Array();
+    }
+    tc_vars.browser_notification = {
+        show_optin: function () {
+            $("#js-tc-notification-placeholder").html(
+                '<div class="padding-3x-bottom notification-border">' +
+                    '<div class="fixed-width text-center">' +
+                        '<div class="padding-double-left padding-double-right">' +
+                            '<div class="notification-bell"></div><div class="text-size-xl text-uppercase bg-highlight font-bold">' + 
+                                'УВЕДОМЛЕНИЯ ОТ YOOX' +
+                            '</div>' +
+                            '<div class="text-size-default font-medium padding-double-top padding-double-bottom line-height-normal">' + 
+                                'Активируйте эту услугу, чтобы получать в режиме реального времени обновления о Ваших любимых брендах, самых желанных для Вас товаров и не только.' +
+                            '</div>' +
+                            '<a id="js-tc-open-optin" class="text-size-l text-uppercase font-bold text-underline cursor-pointer js-track-me" data-tracking-action="web push" data-tracking-label="opt-in">' + 
+                                'АКТИВИРОВАТЬ' +
+                            '</a>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
+        },
+        show_info: function () {
+            $("#js-tc-notification-placeholder").html(
+                '<div class="padding-3x-bottom notification-border">' +
+                    '<div class="fixed-width text-center">' +
+                        '<div class="padding-double-left padding-double-right">' +
+                            '<div class="notification-bell"></div><div class="text-size-xl text-uppercase bg-highlight font-bold">' +
+                                'УВЕДОМЛЕНИЯ ОТ YOOX' +
+                            '</div>' +
+                            '<div class="text-size-default font-medium padding-double-top padding-double-bottom line-height-normal">'+
+                                'Вы активировали мгновенные уведомления о Вашем любимом бренде, любимых товарах и многом другом.' +
+                            '</div>' +
+                            '<div class="text-size-l font-italic line-height-normal">'+
+                                'Хотите отключить мгновенные уведомления?' +
+                            '</div>' +
+                            '<div class="text-size-l font-italic line-height-normal">' +
+                                '<a class="text-underline js-track-me" data-tracking-action="web push" data-tracking-label="opt-out" href="https://www.yoox.com/ua/Legal/Privacypolicy">'+
+                                    'Следуйте инструкциям в специальном разделе.' +
+                                '</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
+        }
+    };
+
+
+    var google_conversion_id = 1071896576;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "666666";
+    var google_conversion_label = "";
+    var google_conversion_value = 0;
+    
+var _cf = _cf || []; _cf.push(['_setFsp', true]); _cf.push(['_setBm', true]); _cf.push(['_setAu', '/static/2c53a777b3b181e1024538abf867d46']);

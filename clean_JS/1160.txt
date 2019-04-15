@@ -1,0 +1,193 @@
+
+	var ajaxCart = true;
+
+
+	var minicart_url = "https://jwcaketops.com/vestempcp/index/minicart/";
+
+
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.jwcaketops.com';
+//]]>
+
+
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+
+
+//<![CDATA[
+    var _gaq = _gaq || [];
+    
+_gaq.push(['_setAccount', 'UA-74082031-1']);
+
+_gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+//]]>
+
+
+	var addthis_product='mag-sp-2.1.0';
+jQuery(document).ready(function($){
+
+
+var addthis_product='mag-sp-2.1.0';
+	addthis.layers({
+		'theme' : 'transparent'
+		,'share' : {
+			'position' : 'left',
+			'numPreferredServices' : 5
+		}
+		,'follow' : {
+			'services' : [
+			]
+		}
+		,'whatsnext' : {}
+	});
+
+var w = $('.col-xs-12').width() ; 
+
+if( $('.product-shop .addthis_toolbox').length > 0  && w > 400){
+	
+	$x = '<div class="addthis_toolbox addthis_default_style addthis_32x32_style">' + $('.product-shop .addthis_toolbox').html() + '</div>';
+	$('.navbar-collapse').append( $x );
+	$('.product-shop .addthis_toolbox').remove();
+
+	$('.addthis_toolbox').css({float:'right', marginRight:'15px', marginTop:'5px'}); 
+}
+
+
+
+
+
+});
+
+jQuery.loadScript = function (url, callback) {
+    jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+    });
+}
+<!--
+		jQuery(document).ready(function() {
+			var targetWidth =  jQuery('.row .col-md-3').width();
+
+if( jQuery( window ).width()  < 700){
+
+jQuery('.row .col-md-3 img').each(function(){
+
+	if(targetWidth > jQuery(this).width()){
+		var r = targetWidth -  jQuery(this).width();
+		var nw = jQuery(this).width() + r;
+		var p = (nw - jQuery(this).width())/jQuery(this).width();
+		
+		var nh = jQuery(this).height() + (jQuery(this).height() * p);
+		
+		jQuery(this).css({height : nh +'px', width : nw +'px'});
+
+jQuery(this).attr('xg', 'tw:'+targetWidth+' oh:'+jQuery(this).height() +' ow:' + jQuery(this).width() + ' nw: '+nw+' nh:'+nh);
+	}
+	
+});
+}
+
+jQuery(function($){
+
+$('.link-wishlist').remove();
+$('.email-friend').remove();
+
+});		});
+//-->
+//<![CDATA[
+        var Translator = new Translate([]);
+        //]]>
+
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('https://jwcaketops.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        
+
+ text_confirm_delete_item = "Are you sure you would like to remove this item from the shopping cart?";
+
+
+jQuery(window).ready( function(){
+
+	/*  Fix First Click Menu */
+	jQuery(document.body).on('click', '#mainmenutop [data-toggle="dropdown"]' ,function(event){
+		event.stopImmediatePropagation();
+		jQuery(this).parent().show();
+		if(!jQuery(this).parent().hasClass('open') && this.href && this.href != '#'){
+			window.location.href = this.href;
+		}
+
+	});
+	jQuery(document.body).on('dblclick', '#mainmenutop [data-toggle="dropdown"]' ,function(event){
+		event.stopImmediatePropagation();
+		jQuery(this).parent().show();
+		if(!jQuery(this).parent().hasClass('open') && this.href && this.href != '#'){
+			window.location.href = this.href;
+		}
+
+	});
+});
+
+
+		jQuery('#vescontentslider3').carousel({interval:8000,auto:true,pause:'hover'});
+
+	
+
+jQuery(document).ready(function( $ ){
+	$(".group-file1990488093").colorbox({rel:'group1'});
+});
+
+
+    var allInputs = document.getElementsByTagName( 'input' );
+    var klevu_current_version = '1.1.21';
+        (function () {
+        // Remove Magento event observers from the search box
+        // Redirect to klevu js page
+        for( i = 0, len = allInputs.length; i < len; i++ ){
+            if( allInputs[i].type === "text" || allInputs[i].type === "search" ){
+                if( allInputs[i].name === "q" ||  allInputs[i].id === "search" ){
+                    var search_input = allInputs[i];
+                    search_input.stopObserving('click');
+                    search_input.stopObserving('keydown');
+                    search_input.form.action='https://jwcaketops.com/' + "search";//?q="+search_input.value;
+                    search_input.form.observe('submit', function (e) {
+                        //if(search_input.value.length!= 0){
+                            //Event.stop(e);
+                            //return false;
+                        //}
+                    });
+                }
+            }
+        }
+        
+    })();
+     var klevu_storeLandingPageUrl = 'https://jwcaketops.com/' + "search";
+     var klevu_showQuickSearchOnEnter=false;
+        // call store js
+    var klevu_apiKey = 'klevu-14435316550312032',
+        searchTextBoxName = 'search',
+        klevu_lang = 'en',
+        klevu_result_top_margin = '',
+        klevu_result_left_margin = '';
+    (function () { var ws = document.createElement('script'),kl_protocol =("https:"===document.location.protocol?"https://":"http://"); ws.type = 'text/javascript'; ws.async = true; ws.src = kl_protocol+'js.klevu.com/klevu-js-v1/js/klevu-webstore.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ws, s); })();
+
+
+    //<![CDATA[
+    Mage.Cookies.set(
+        'PAGECACHE_ENV',
+        '',
+        new Date(1970, 1, 1, 0, 0, 0)
+        );
+    //]]>
+

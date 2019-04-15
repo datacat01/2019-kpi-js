@@ -1,0 +1,96 @@
+
+                                require([
+                                    'jquery',
+                                    'owl-carousel'
+                                ], function ($) {
+                                    $(".owl-carousel").owlCarousel({
+                                        items: 1,
+                                        autoplay: true,
+                                        autoplayTimeout: 5000,
+                                        autoplayHoverPause: true,
+                                        dots: true,
+                                        nav: true,
+                                        navRewind: true,
+                                        animateIn: 'fadeIn',
+                                        animateOut: 'fadeOut',
+                                        loop: true,
+                                        navText: ["<em class='porto-icon-chevron-left'></em>","<em class='porto-icon-chevron-right'></em>"]
+                                    });
+                                });
+                            
+
+        require(['jquery'], function ($) {
+            var recaptcha = [],
+                formsToProtect = 'form[action*="customer/account/createpost"],form[action*="newsletter/subscriber/new"],form[action*="review/product/post"],form[action*="contact/index/post"]';
+
+            window.formToProtectOnPage = [];
+            $.each($(formsToProtect), function (index, formToProtect) {
+                window.formToProtectOnPage.push(formToProtect);
+            });
+
+            if (window.formToProtectOnPage.length) {
+                var recaptchaScript = document.createElement('script');
+                recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?onload=amInvisibleCaptchaOnloadCallback&render=explicit';
+                recaptchaScript.attributes = 'async defer';
+                document.body.appendChild(recaptchaScript);
+            }
+
+            window.amInvisibleCaptchaOnloadCallback = function () {
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var tokenInput = document.createElement('input');
+                    tokenInput.type = 'hidden';
+                    tokenInput.name = 'amasty_invisible_token';
+                    window.formToProtectOnPage[i].appendChild(tokenInput);
+                }
+
+                var id = "";
+                if (id) {
+                    var additionalForm = document.getElementById(id).form;
+                    if (additionalForm) {
+                        window.formToProtectOnPage.push(additionalForm);
+                    }
+                }
+
+                var renderCaptcha = function(event, form, id) {
+                    recaptcha[i] = grecaptcha.render(id, {
+                        'theme': 'light',
+                        'badge': 'bottomleft',
+                        'sitekey': '6Le38pgUAAAAAEvBbQnmBt3iKdV8HToGYAOjQwnk',
+                        'callback': function(token) {
+                            if ($(form).valid()) {
+                                form.querySelector("[name='amasty_invisible_token']").setAttribute('value', token);
+                                $(form).submit();
+                            }
+                            for (var j = 0; j < recaptcha.length; j++) {
+                                grecaptcha.reset(recaptcha[j]);
+                            }
+                        }
+                    });
+                };
+
+                for (var i = 0; i < window.formToProtectOnPage.length; i++) {
+                    var form = window.formToProtectOnPage[i];
+                    if (form.tagName.toLowerCase() != 'form') {
+                        continue;
+                    }
+
+                    id = form.querySelector("[type='submit']");
+                    if (null == id) {
+                        if (form.classList.contains('amform-form')) {
+                            $(window).on(form.getAttribute('id'), renderCaptcha);
+                        } else {
+                            console.log(
+                                'Amsty Google Invisible reCaptcha: can not protect form with id = '
+                                + form.id
+                                + ', please remove appropriate URL and Selector in the configuration of the extension.'
+                            );
+                        }
+                        continue;
+                    }
+
+                    renderCaptcha(null, form, id);
+                }
+            };
+        });
+    
+var $zoho= $zoho || {livedesk:{values:{},ready:function(){$zoho.livedesk.chat.floatingwindow('all');}}};var d=document;s=d.createElement("script");s.type="text/javascript";s.defer=true;s.src="https://salesiq.zoho.com/support.cigargroup/float.ls?embedname=cigargroup";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);

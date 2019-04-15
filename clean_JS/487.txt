@@ -1,0 +1,33 @@
+
+            var chatButton;
+            var disableChat = (window.location.href.indexOf("www.") === -1 && window.location.href.indexOf("au.") === -1 && window.location.href.indexOf("nz.") === -1);
+            if (window.location.href.indexOf("de.contrado") !== -1)
+                disableChat = 0;
+
+            if (!disableChat) {
+                (function (d, src, c) {
+                    var t = d.scripts[d.scripts.length - 1],
+                        s = d.createElement('script');
+                    s.id = 'la_x2s6df8d';
+                    s.async = true;
+                    s.src = src;
+                    s.onload = s.onreadystatechange = function () {
+                        var rs = this.readyState;
+                        if (rs && (rs != 'complete') && (rs != 'loaded'))
+                        { return; }
+                        c(this);
+                    };
+                    t.parentElement.insertBefore(s, t.nextSibling);
+                })
+
+                (document, 'https://contrado.ladesk.com/scripts/track.js', function (e) {
+                    chatButton = LiveAgent.createButton('ee39f397', e);
+                });
+            }
+        
+
+
+            $(document).ready(function () {
+                angular.bootstrap(document, ['contradoSearchPopupApp']);
+            });
+        
