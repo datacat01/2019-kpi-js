@@ -1,1 +1,787 @@
-var WpPwapi2=function(m){"use strict";var h=console||{log:function(){},error:function(){}},S="wpPwapi2.js",d={version000:"20180525.2",doPwapi:!0,doLocalStorage:!0,defaultCookieDomain:".washingtonpost.com",variantCookie:"wp_variant",paywallMeteringCookie:"rplm2",paywallMeteringCookieExpire:function(){return(new Date).getTime()+432e7},paywallTrackingCookie:"rplpwtrk",paywallTrackCookieExpire:function(){return(new Date).getTime()+31536e6},subscribeSubDomainIframeId:"pwapiCrsDmnLocStor_subscribe_iframe",subscribeSubDomainGetData:!1,cmdRequestGetStor:"cmdGetFromStorage",cmdRequestDeleteStor:"cmdDeleteFromStorage",cmdRequestSetStor:"cmdSetInStorage",cmdRequestGetAllStor:"cmdGetAllFromStorage",validOriginBaseDomains:["\\.washingtonpost\\.com","\\.digitalink\\.com"],validDocumentDomains:["washingtonpost.com","digitalink.com"],abTestReferrerOn:!0,abCookieName:"rplab",abRefPt:"http://pwapiptrf._pwapiptrf_.com",abTestExpire:function(){return(new Date).getTime()+864e7},abDebugCookie:"rplAbTestDebug"},b=function(e,t){return!(!e||!t)&&null!=e.match(t+"$")},f=function(e){var t,r,o,a=document.createElement("a"),i={};for(a.href=e,t=a.search.replace(/^\?/,"").split("&"),o=0;o<t.length;o++)i[(r=t[o].split("="))[0]]=r[1];return{protocol:a.protocol,host:a.host,hostname:a.hostname,port:a.port,pathname:a.pathname,search:a.search,searchObject:i,hash:a.hash}},c=[{id:"rplpwabt4",active:!0,getExpireMillis:function(){return(new Date).getTime()+864e7},results:[{id:"1",min:0,max:99}],transforms:{1:function(e,t){return t}}}],w=[{id:"rplabrfg",regex:/google.com$/i,results:[{id:"t1",min:0,max:9,act:!0,processPwapiResponse:function(e){return e},referrer:"http://pwapi.rplabrfgt1.com"},{id:"t2",min:10,max:19,act:!0,processPwapiResponse:function(e){if(!this.abObj||!this.pwapi)return h.error(S+" : abTestConfig rplabrfgoog t2 this.abObj or this.pwapi is blank"),e;if(!this.abObj.regex)return h.error(S+" : abTestConfig rplabrfgoog t2 abObj this.abObj.regex blank"),e;if(!this.pwapi.originalReferrer)return h.error(S+" : abTestConfig rplabrfgoog t2 abObj this.pwapi.originalReferrer blank"),e;var t=this.abObj.regex,r=this.pwapi.originalReferrer,o=f(r).hostname;return o&&(o=o.trim(),t.exec(o)&&(e.pwresp&&null!=e.pwresp.action&&null!=e.pwresp.url?(h.log(S+" : rplabrfg t2 orig act: "+e.pwresp.action+", url: "+e.pwresp.url),e.pwresp.action=0,e.pwresp.url="N/A",h.log(S+" : rplabrfg t2 transformed act: "+e.pwresp.action+", url: "+e.pwresp.url)):h.error(S+" : resData.pwresp blank"))),e},referrer:"http://pwapi.rplabrfgt2.com"},{id:"f",min:20,max:99,act:!1}]}],t=36e5,p=[{name:"cb_clicks",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"authdrredir",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"rplm2",expireOffsetMillis:432e7,cookiesToLocalStorage:!0,localStorageToCookies:!0,toPwapi:!0,notEncoded:!0},{name:"rplpwtrk",expireOffsetMillis:31536e6,cookiesToLocalStorage:!0,localStorageToCookies:!0,toPwapi:!0,notEncoded:!0},{name:"rplmct",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"rplsb",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!1,toPwapi:!1},{name:"rplrol",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"osfam",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"devicetype",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"de",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"client_region",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"X-WP-Split",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"rwebabt",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"wp_clicks",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"rpld1",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"rpld0",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"wapo_actmgmt",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"wpniuser",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0},{name:"wapo_login_id",expireOffsetMillis:t,cookiesToLocalStorage:!1,localStorageToCookies:!0,toPwapi:!0}],v=function(e){try{if(!e)return!1;if("string"==typeof e||e instanceof String){for(var t=f(e),r=0;r<d.validOriginBaseDomains.length;r++)if(b(t.hostname,d.validOriginBaseDomains[r]))return!0}else h.error(S+": isOriginValid: origin is not a string: "+JSON.stringify(e))}catch(e){h.error(S+": isOriginValid unable to process: "+e.message,e)}return!1},n=function(e,t,r){if(!(this instanceof n))return new n(e,t);if(!e){var o=S+": initLocStorApi: iframeId is blank/null";throw h.error(o),new Error(o)}if(!t){o=S+": initLocStorApi: callback is blank/null";throw h.error(o),new Error(o)}var a=document.getElementById(e);if(!a){o=S+": initLocStorApi: iframe id: "+e+", iframeElement is null";throw h.error(o),new Error(o)}var i=a.contentWindow;if(!i){o=S+": initLocStorApi: iframe id: "+e+", contentWindow is null";throw h.error(o),new Error(o)}if(!r){o=S+": initLocStorApi: targetOrigin is blank";throw h.error(o),new Error(o)}if(!v(r)){o=S+": initLocStorApi: targetOrigin is not valid";throw h.error(o),new Error(o)}this.targetOrigin=r,this.locStorApiIframeWindow=i,this.iframeEventListenerLocStorApiReference=this.locStorApiEventListener.bind({thiss:this,callback:t}),m.addEventListener("message",this.iframeEventListenerLocStorApiReference,!1)},k=function(e,t,r,o,a,i,n,s,l){if(!(this instanceof k))return new k(e,t,r,o,a,i,n,s,l);this.$jq=e,this.apiurl=t,this.cookieDomain=r,this.path=o,this.args=a,this.successCallback=i,this.errorCallback=n,this.doPwapi=s,this.doLocalStorage=l,this.timeoutMillis=15e3,r||(this.cookieDomain=d.defaultCookieDomain),a||(this.args={}),o||(this.path="/"),0!=this.path.indexOf("/")&&(this.path="/"+this.path),null==s&&(this.doPwapi=!0),null==l&&(this.doLocalStorage=!0)};k.prototype.setCallbacks=function(e,t){this.successCallback=e,this.errorCallback=t},k.prototype.storageAvailable=function(e){if(!e)return!1;try{var t=m[e],r="_wpPwapi1_js_stor_avail_";return t.setItem(r,r),t.removeItem(r),!0}catch(e){return!1}},k.prototype.allStorageAvailable=function(){var e=this.storageAvailable("localStorage"),t=this.storageAvailable("sessionStorage");return e&&t},k.prototype.getStorageData=function(t,r){if(null!=t&&null!=r&&this.allStorageAvailable()){for(var o=[],a=0;a<p.length;a++){var i=p[a],n=i.name;if(i.toPwapi&&n){var s=r.getItem(n);if(s){try{s=s.trim()}catch(e){h.error(S+" : getStorageData: unable to trim storageItemStr: "+s+", for key: "+n+" ::: "+e.message,e);continue}var l=null;try{var c=(l=JSON.parse(s)).e;if(r===localStorage&&c<(new Date).getTime()){o.push(n);continue}this.args[n]=l.v}catch(t){h.error(S+" : getStorageData: unable to json parse: "+s+", for key: "+n+" ::: "+e.message,t);continue}}}}for(a=0;a<o.length;a++)r.removeItem(o[a])}},k.prototype.getAllStorageData=function(){if(this.doLocalStorage&&d.doLocalStorage){if(!this.allStorageAvailable())return{};var e={};return this.getStorageData(e,localStorage),this.getStorageData(e,sessionStorage),e}h.log(S+" : getAllStorageData : Warning: not storing data: this.doLocalStorage: "+this.doLocalStorage+", config.doLocalStorage: "+d.doLocalStorage)},k.prototype.getFromLocalOrSessionStorage=function(e){if(!this.allStorageAvailable()||!e)return null;var t=localStorage.getItem(e);return null==t&&(t=sessionStorage.getItem(e)),t},k.prototype.storeDataLocalStorage=function(e,t,r){var o={};o.v=t,o.e=r;var a=JSON.stringify(o);0===r?sessionStorage.setItem(e,a):r<0||r<(new Date).getTime()?(sessionStorage.removeItem(e),localStorage.removeItem(e)):localStorage.setItem(e,a)},k.prototype.storDelete=function(e){this.doLocalStorage&&d.doLocalStorage?this.allStorageAvailable()&&e&&this.storeDataLocalStorage(e,"",-1):h.log(S+" : storDelete : Warning: not storing data: this.doLocalStorage: "+this.doLocalStorage+", config.doLocalStorage: "+d.doLocalStorage)},k.prototype.storeData=function(e){if(this.doLocalStorage&&d.doLocalStorage){if(this.allStorageAvailable()){if(!e)throw"storeData: response data is null/blank";var t=e.pwresp.locstor;if(t&&!(t.length<1))for(var r=0;r<t.length;r++){var o=t[r],a=o.k,i=o.v,n=o.e;null!=a&&null!=i&&null!=n&&("string"==typeof a&&"number"==typeof n?this.storeDataLocalStorage(a,i,n):h.error(S+" : k is not string, or ex is not number for: "+JSON.stringify(o)))}}}else h.log(S+" : storeData : Warning: not storing data: this.doLocalStorage: "+this.doLocalStorage+", config.doLocalStorage: "+d.doLocalStorage)},k.prototype.storeDataCookies=function(e,t,r,o){if(e){var a="",i="";if(r<0?a=";expires="+new Date(1e3).toUTCString:0<r&&(a=";expires="+new Date(r).toUTCString()),null!=this.cookieDomain&&(i=";domain="+this.cookieDomain),t||(t=""),o)var n=t;else n=encodeURIComponent(t);var s=e+"="+n+";path=/"+a+i;document.cookie=s}},k.prototype.setCookieDomain=function(e){this.cookieDomain=e||d.defaultCookieDomain},k.prototype.deleteCookie=function(e){null!=e&&""!==(e=e.trim())&&this.storeDataCookies(e,"",1e3)},k.prototype.getCookie=function(e,t){if(!e)return null;if(!t&&void 0!==this.cookieCache)return this.cookieCache[e];if(!document.cookie)return null;for(var r={},o=null,a=document.cookie.split(";"),i=0;i<a.length;i++)if(0<a[i].indexOf("=")){var n=a[i].split("="),s=n[0],l=n[1];s&&(s=s.trim()),s===e&&(l||(l=""),o=l.trim()),r[s]=l.trim()}return this.cookieCache=r,o},k.prototype.deleteAllStorageAndCookies=function(){for(var e=0;e<p.length;e++){var t=p[e].name;this.deleteCookie(t),this.storDelete(t)}},k.prototype.synchCookiesAndLocalStorage=function(){if(this.doLocalStorage&&d.doLocalStorage){if(this.allStorageAvailable())for(var e=0;e<p.length;e++){var t=p[e];try{var r=t.name,o=t.expireOffsetMillis,a=this.getCookie(r),i=localStorage.getItem(r),n=null;i&&(n=JSON.parse(i)).e<(new Date).getTime()&&(n=null,localStorage.removeItem(r));var s=null!=a,l=null!=n;if(s&&l)continue;if(s&&t.cookiesToLocalStorage){var c=(new Date).getTime()+o;this.storeDataLocalStorage(r,a,c)}else l&&t.localStorageToCookies&&this.storeDataCookies(r,n.v,n.e,t.notEncoded)}catch(e){h.error(S+" : Unable to synchCookiesAndLocalStorage for synchCookie item: "+JSON.stringify(t),e)}}}else h.log(S+" : synchCookiesAndLocalStorage : Warning: not storing data: this.doLocalStorage: "+this.doLocalStorage+", config.doLocalStorage: "+d.doLocalStorage)},k.prototype.procfn=function(e,t,r,o,a){if(e)try{o||a?e(o,a):e(r)}catch(e){h.error(S+" : "+t,e)}},k.prototype.setTimeout=function(e){e&&!isNaN(e)&&(this.timeoutMillis=e)},k.prototype.subDomainSubscribeLocStorCallback=function(e,t){t&&t.tag?this.locstorSubscribe?"myGetTag"===t.tag&&(h.log(S+": debug subDomainSubscribeLocStorCallback: callback myGetTag: "+JSON.stringify(t)),this.locstorSubscribe.close(),this.procInternal()):h.error(S+": subDomainSubscribeLocStorCallback: self.locstorSubscribe is null"):h.error(S+": subDomainSubscribeLocStorCallback: data or data.tag is null")},k.prototype.proc=function(){var e=this;if(d.subscribeSubDomainGetData){e.locstorSubscribe=null;try{if(e.locstorSubscribe=new n(d.subscribeSubDomainIframeId,e.subDomainSubscribeLocStorCallback.bind(e)),!e.locstorSubscribe)throw new Error("pwapi.proc: self.locstorSubscribe is null");var t={cmd:e.locstorSubscribe.cmdGet(),tag:"myGetTag",keys:["wapo_login_id","wpniUser"]};e.locstorSubscribe.proc(t)}catch(e){throw e}}else e.procInternal()},k.prototype.getAbCookie=function(){var e=this.getCookie(d.abCookieName);return e?JSON.parse(decodeURIComponent(e)):null},k.prototype.abTestResponseTemplate=function(){return{res:!1,abObj:null,result:null}},k.prototype.runGenericAbnTests=function(){for(var e=[],t=0;t<c.length;t++)try{var r=c[t];if(!r.id)continue;if(null==r.active||!r.active)continue;if(!r.getExpireMillis)continue;if(!r.results||r.results.length<1)continue;var o=this.getCookie(r.id);if(o){try{(l=r.transforms[o])&&e.push(l)}catch(e){}continue}var a=Math.floor(100*Math.random()),i=r.results;for(t=0;t<i.length;t++){var n=i[t];if(n&&null!=n.id&&null!=n.min&&null!=n.max&&(a>=n.min&&a<=n.max)){var s=null;if(s="function"==typeof n.id?n.id(this):n.id){this.storeDataCookies(r.id,s,r.getExpireMillis());try{var l;(l=r.transforms[s])&&e.push(l)}catch(e){}}break}}}catch(e){h.error(S+" :: runGenericAbnTests, unable to process idx: "+t,e)}return e},k.prototype.abTestReferrerInternal=function(e){var t=this;if(!e)return t.abTestResponseTemplate();if(!(e=e.trim()))return t.abTestResponseTemplate();var r=f(e).hostname;if(!r)return t.abTestResponseTemplate();r=r.trim();for(var o=null,a=null,i=0;i<w.length&&(a=null,!(a=(o=w[i]).regex.exec(r)));i++)o=null;if(!o||!a)return t.abTestResponseTemplate();var n=null;if(o.id&&(n=t.getCookie(o.id),(n="t2")&&o.results)){n=n.trim();for(i=0;i<o.results.length;i++){if((u=o.results[i]).id&&u.id.trim()===n)return(s=t.abTestResponseTemplate()).abObj=o,"boolean"==typeof(s.result=u).act?s.res=u.act:"function"==typeof u.act&&(s.res=u.act()),s}}n=null;var s,l=Math.floor(100*Math.random()),c=o.results,p=!1,g=!1,u=null;if(!c||c.length<1)return t.abTestResponseTemplate();for(i=0;i<c.length;i++)if(l>=(u=c[i]).min&&l<=u.max){p=!0,"boolean"==typeof u.act?g=u.act:"function"==typeof u.act&&(g=u.act());break}return p?(u&&u.id&&o.id&&(n||(n=u.id),n&&t.storeDataCookies(o.id,n.trim(),d.abTestExpire())),(s=t.abTestResponseTemplate()).abObj=o,s.result=u,s.res=g,s):t.abTestResponseTemplate()},k.prototype.abTestReferrer=function(e){try{var t=this.getCookie("devicetype"),r=!1;null!=t&&"0"==t&&(r=!0);var o=this.getCookie(d.abDebugCookie);if(d.abTestReferrerOn&&r||o){var a=this.abTestReferrerInternal(e);if(a)return a}}catch(e){h.error(S+" :: unable to abTestReferrerInternal: "+e.message,e)}return this.abTestResponseTemplate()},k.prototype.getContentSection=function(){try{var e=m.wp_section;return e||(e=m.TWP.Data.Tracking.props.section),e?""==(e=e.trim())?null:e:null}catch(e){return null}},k.prototype.getSubscriberOnlyTags=function(){try{var e=m.wp_meta_data.tags_for_paywall_subs;return e?""==(e=e.trim())?null:e:null}catch(e){return null}},k.prototype.getContentTags=function(){try{var e=m.wp_meta_data.tags_for_paywall;return e?""==(e=e.trim())?null:e:null}catch(e){return null}},k.prototype.getMaxDaysToKeep=function(){var e=this.getCookie(d.variantCookie);if(e&&((e=e.split("|"))||0<e.length)){if(!(e=parseInt(e[0]))||isNaN(e))return 50;if(10===e)return(new Date).getDate()+5;if(11===e)return 35;if(12===e)return 50}return 50},k.prototype.fixMeterCookie=function(e){if(e&&-1==e.indexOf("|")){var t=e.match(/[a-z]*:[a-z0-9]+-[0-9]{0,10}-[ag]{1,2}(,[a-z0-9]+-[0-9]{0,10}-[ag]{1,2})?/g);if(t){e="";for(var r=0;r<t.length;r++)e+=t[r]+"|"}}return e},k.prototype.cleanMeterCookie=function(){var e=this.getMaxDaysToKeep(),t=this.fixMeterCookie(this.getCookie(d.paywallMeteringCookie));if(!t)return!1;for(var r=t.split("|"),o="",a=new Date,i=0;i<r.length;i++){var n=r[i];if(0<i&&0<o.length&&!b(o,"\\|")&&(o+="|"),0<n.trim().length)if(0<n.indexOf(",")&&0<n.indexOf(":")){for(var s=n.split(":")[0],l=n.split(":")[1].split(","),c="",p=0;p<l.length;p++){var g=l[p];if(0<g.trim().length)if((m=g.split("-"))&&1<m.length){var u=m[1],f=new Date(1e3*u);Math.round(Math.abs((f.getTime()-a.getTime())/864e5))<=e&&(0<p&&0<c.length&&(c+=","),c+=g)}else 0<p&&0<c.length&&(c+=","),c+=g}0<c.length&&(o+=s+":"+c)}else{var m;if((m=n.split("-"))&&1<m.length){u=m[1],f=new Date(1e3*u);Math.round(Math.abs((f.getTime()-a.getTime())/864e5))<=e&&(o+=n)}else o+=n}}this.storeDataCookies(d.paywallMeteringCookie,o,d.paywallMeteringCookieExpire(),!0)},k.prototype.didUserHitPaywallSince=function(e){try{if(!e)return!1;var t=this.getCookie(d.paywallTrackingCookie);if(!t)return!1;t=JSON.parse(decodeURIComponent(t));var r=(new Date).getMonth();0==r&&(r=12);var o=t[r];if(null==o)return!1;if((new Date).getTime()-e<o)return!0}catch(e){}return!1},k.prototype.procInternal=function(){var a=this;if(this.doPwapi&&d.doPwapi){if(!a.apiurl){var e=S+": apiurl is null";throw h.error(e),new Error(e)}if(!v(a.apiurl)){e=S+": apiurl invalid";throw h.error(e),new Error(e)}a.args.referrer||(a.args.referrer=""),a.args.referrer=a.args.referrer.trim(),a.originalReferrer=a.args.referrer;var i=a.runGenericAbnTests(),t=a.getContentSection();t&&(a.args.pwapi_contentsection=t),function(e){if(!e)return!1;try{var t=e.getFromLocalOrSessionStorage("newsletter_history");if(!t)return!1;var r=JSON.parse(t);if(!r)return!1;var o=!0;for(var a in r)if(r.hasOwnProperty(a)){o=!1;break}if(!o)return!0}catch(e){h.error(S+" : unable to get nlHistory : "+e.message,e)}return!1}(a)&&(a.args.pwapi_is_nl_user="1");var r=a.getContentTags();r&&(a.args.pwapi_ct_tags=r);var o=a.getSubscriberOnlyTags();o&&(a.args.pwapi_sct_tags=o);try{a.didUserHitPaywallSince(6048e6)&&(a.args.pwapi_usr_ht_pw="1")}catch(e){h.error(S+" : Unable to check didUserHitPaywallSince in procInternal for setting pwapi_usr_ht_pw query param arg: "+e.message,e)}a.cleanMeterCookie(),a.getAllStorageData();try{a.synchCookiesAndLocalStorage()}catch(e){h.error(S+" :: unable to synchCookiesAndLocalStorage: "+e.message,e)}var n="pwapi"+Math.random().toString().substr(2);m[n]=function(t){clearTimeout(f),m.pwapiResponse=(new Date).getTime()-u;try{a.storeData(t)}catch(e){h.error(S+" : Unable to local storage: "+e.message,t)}var e=t;try{if(i)for(var r=0;r<i.length;r++)try{var o=i[r];o&&(e=o(a,e))}catch(e){h.log(S+" : unable to run single transform function for generic ab tests: "+e.message,e)}}catch(e){h.error(S+" : unable run transform functions for generic ab test: "+e.message,e)}a.procfn(a.successCallback,"successCallback",e,null,null)};var s,l=document.createElement("script"),c=(-1===this.path.indexOf("?")?"?":"&")+"callback="+n,p="&";for(s in this.args)p+=s+"="+encodeURIComponent(this.args[s])+"&";l.src=a.apiurl+this.path+c+p;var g=m.performance&&m.performance.timing||{},u=(new Date).getTime();m.pwapiStart=u-(g.navigationStart||0),document.getElementsByTagName("head")[0].appendChild(l);var f=setTimeout(function(){console.error("PWAPI ERROR/TIMEOUT"),a.procfn(a.errorCallback,"errorCallback",null,null,"Pwapi timeout")},a.timeoutMillis)}else h.log(S+" : Warning: not calling pwapi: this.doPwapi: "+this.doPwapi+", config.pwapi: "+d.doPwapi)},n.prototype.proc=function(e){if(!e)return h.error(S+": locStorApiCall: cmdObj is blank/null"),!1;if(!this.locStorApiIframeWindow){var t=S+": locStorApiCall: locStorApiIframeWindow is blank/null";throw h.error(t),new Error(t)}this.locStorApiIframeWindow.postMessage(JSON.stringify(e),this.targetOrigin)},n.prototype.locStorApiEventListener=function(t){if(t&&t.origin){if(!v(t.origin))return h.error(S+": locStorApiEventListener: event origin is not valid"),void h.error(t.origin);try{this.callback(this.thiss,JSON.parse(t.data))}catch(e){h.error(S+": locStorApiEventListener: uable to call callback function with data: "+t.data+" :: err.message: "+e.message,e)}}else h.error(S+": locStorApiEventListener: ev or ev.origin is blank")},n.prototype.cmdGet=function(){return d.cmdRequestGetStor},n.prototype.cmdGetAll=function(){return d.cmdRequestGetAllStor},n.prototype.cmdDelete=function(){return d.cmdRequestDeleteStor},n.prototype.cmdSet=function(){return d.cmdRequestSetStor},n.prototype.close=function(){this.iframeEventListenerLocStorApiReference&&m.removeEventListener("message",this.iframeEventListenerLocStorApiReference,!1)};var r=m.location.href,o=f(m.location.href),y=null;try{var a=!1;if(o&&o.searchObject){var i=o.searchObject,s=i.pwapisetddmn;if(s&&"1"===s){var l=i.pwapiddmn;l&&function(t){if(!t)return!1;try{for(var e=0;e<d.validDocumentDomains.length;e++)if(t===d.validDocumentDomains[e])return!0}catch(e){h.error(S+": isDocumentDomainValid: Unable to determine for dd: "+t,e)}return!1}(l)&&(document.domain=l,a=!0),a&&(a=!(!(y=i.targetorigin)||!v(y)))}}var T=null;if(a){try{T=m.parent}catch(e){}m.addEventListener("message",function(t){try{if(!t)return;if(!v(t.origin))return;var e=t.data;if(!e)return;var r=new k;if(!r.allStorageAvailable())return void h.log(S+": Warn local/session storage not available");var o=JSON.parse(e),a=o.cmd;if(!a)return;var i={cmd:a};if(o.tag&&(i.tag=o.tag),a===d.cmdRequestGetStor){if(i.stor={},l=o.keys)for(var n=0;n<l.length;n++){var s=r.getFromLocalOrSessionStorage(l[n]);i.stor[l[n]]=s}}else if(a===d.cmdRequestDeleteStor){var l;if(l=o.keys)for(n=0;n<l.length;n++)r.storDelete(l[n]);i=o}else if(a===d.cmdRequestSetStor){var c=o.stor,p=(o.type,localStorage);if(c)for(var g in c)c.hasOwnProperty(g)&&p.setItem(g,c[g]);i=o}else if(a===d.cmdRequestGetAllStor){i.local={},i.session={};var u=localStorage.length,f=sessionStorage.length;for(n=0;n<u;n++){var m=localStorage.key(n);s=localStorage.getItem(m);i.local[m]=s}for(n=0;n<f;n++){m=sessionStorage.key(n),s=sessionStorage.getItem(m);i.session[m]=s}}T&&y?T.postMessage(JSON.stringify(i),y):h.error(S+": parentWindow is null or targetOrigin is blank")}catch(e){h.error(S+": iframe message event listener unable to respond: e.origin: "+t.origin+", e.data: "+t.data+" :: err.message: "+e.message,e)}},!1)}}catch(e){h.error(S+": Unable to set document domain based on url: "+r+", err :: "+e.message,e)}return{pwapi:k,locstor:n}}(this),wpPwapi=function(e){var r=null,t=-1===(e.document.location.hostname||"subscribe.digitalink.com").indexOf("pb-dev."),o=t?"https://pwapi.washingtonpost.com":"https://testpwapi.digitalink.com",a=t?".washingtonpost.com":".digitalink.com",i={referrer:document.referrer},n=e.location.pathname+e.location.search,s=null;var l=new WpPwapi2.pwapi(null,o,a,n,i,function(e){"function"==typeof callbackSuccessFunction?callbackSuccessFunction(e):s=e},function(e,t){"function"==typeof r?r(e,t):responseError={errTextStatusStr:e,errThrownStr:t}});l.registerSucccessCallback=function(e){callbackSuccessFunction=e,"object"==typeof s&&callbackSuccessFunction(s)},l.registerErrorCallback=function(e){r=e,"object"==typeof responseError&&r(e)};try{l.proc()}catch(e){console.error("Unable to call pwapi: err message: "+e.message,e)}return l}(this),WpPwapi1=function(e,c){return{pwapi:function(e,t,r,o,a,i,n,s,l){return c.registerSucccessCallback(i),c.registerErrorCallback(n),{proc:function(){}}},locstor:e.WpPwapi2.locstor}}(this,wpPwapi);
+/*jslint browser: true */ /*global jQuery: true */
+
+/**
+ * jQuery Cookie plugin
+ *
+ * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
+// TODO JsDoc
+
+/**
+ * Create a cookie with the given key and value and other optional parameters.
+ *
+ * @example $.cookie('the_cookie', 'the_value');
+ * @desc Set the value of a cookie.
+ * @example $.cookie('the_cookie', 'the_value', { expires: 7, path: '/', domain: 'jquery.com', secure: true });
+ * @desc Create a cookie with all available options.
+ * @example $.cookie('the_cookie', 'the_value');
+ * @desc Create a session cookie.
+ * @example $.cookie('the_cookie', null);
+ * @desc Delete a cookie by passing null as value. Keep in mind that you have to use the same path and domain
+ *       used when the cookie was set.
+ *
+ * @param String key The key of the cookie.
+ * @param String value The value of the cookie.
+ * @param Object options An object literal containing key/value pairs to provide optional cookie attributes.
+ * @option Number|Date expires Either an integer specifying the expiration date from now on in days or a Date object.
+ *                             If a negative value is specified (e.g. a date in the past), the cookie will be deleted.
+ *                             If set to null or omitted, the cookie will be a session cookie and will not be retained
+ *                             when the the browser exits.
+ * @option String path The value of the path atribute of the cookie (default: path of page that created the cookie).
+ * @option String domain The value of the domain attribute of the cookie (default: domain of page that created the cookie).
+ * @option Boolean secure If true, the secure attribute of the cookie will be set and the cookie transmission will
+ *                        require a secure protocol (like HTTPS).
+ * @type undefined
+ *
+ * @name $.cookie
+ * @cat Plugins/Cookie
+ * @author Klaus Hartl/klaus.hartl@stilbuero.de
+ */
+
+/**
+ * Get the value of a cookie with the given key.
+ *
+ * @example $.cookie('the_cookie');
+ * @desc Get the value of a cookie.
+ *
+ * @param String key The key of the cookie.
+ * @return The value of the cookie.
+ * @type String
+ *
+ * @name $.cookie
+ * @cat Plugins/Cookie
+ * @author Klaus Hartl/klaus.hartl@stilbuero.de
+ */
+jQuery.cookie = function (key, value, options) {
+
+    // key and value given, set cookie...
+    if (arguments.length > 1 && (value === null || typeof value !== "object")) {
+        options = jQuery.extend({}, options);
+
+        if (value === null) {
+            options.expires = -1;
+        }
+
+        if (typeof options.expires === 'number') {
+            var days = options.expires, t = options.expires = new Date();
+            t.setDate(t.getDate() + days);
+        }
+
+        return (document.cookie = [
+            encodeURIComponent(key), '=',
+            options.raw ? String(value) : encodeURIComponent(String(value)),
+            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+            options.path ? '; path=' + options.path : '',
+            options.domain ? '; domain=' + options.domain : '',
+            options.secure ? '; secure' : ''
+        ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+};
+;
+/*!
+ * jQuery Form Plugin
+ * version: 2.69 (06-APR-2011)
+ * @requires jQuery v1.3.2 or later
+ *
+ * Examples and documentation at: http://malsup.com/jquery/form/
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ */
+(function(a){function b(){if(a.fn.ajaxSubmit.debug){var b="[jquery.form] "+Array.prototype.join.call(arguments,"");window.console&&window.console.log?window.console.log(b):window.opera&&window.opera.postError&&window.opera.postError(b)}}a.fn.ajaxSubmit=function(c){function r(){function t(){if(!j.aborted){var c=i.contentWindow?i.contentWindow.document:i.contentDocument?i.contentDocument:i.document;if(!c||c.location.href==e.iframeSrc)if(!m)return;i.detachEvent?i.detachEvent("onload",t):i.removeEventListener("load",t,!1);var d=!0;try{if(m)throw"timeout";var f=e.dataType=="xml"||c.XMLDocument||a.isXMLDoc(c);b("isXml="+f);if(!f&&window.opera&&(c.body==null||c.body.innerHTML=="")&&--s){b("requeing onLoad callback, DOM not available"),setTimeout(t,250);return}j.responseText=c.body?c.body.innerHTML:c.documentElement?c.documentElement.innerHTML:null,j.responseXML=c.XMLDocument?c.XMLDocument:c,j.getResponseHeader=function(a){var b={"content-type":e.dataType};return b[a]};var g=/(json|script)/.test(e.dataType);if(g||e.textarea){var l=c.getElementsByTagName("textarea")[0];if(l)j.responseText=l.value;else if(g){var n=c.getElementsByTagName("pre")[0],o=c.getElementsByTagName("body")[0];n?j.responseText=n.textContent:o&&(j.responseText=o.innerHTML)}}else e.dataType=="xml"&&!j.responseXML&&j.responseText!=null&&(j.responseXML=u(j.responseText));q=w(j,e.dataType,e)}catch(p){b("error caught:",p),d=!1,j.error=p,e.error&&e.error.call(e.context,j,"error",p),k&&a.event.trigger("ajaxError",[j,e,p])}j.aborted&&(b("upload aborted"),d=!1),d&&(e.success&&e.success.call(e.context,q,"success",j),k&&a.event.trigger("ajaxSuccess",[j,e])),k&&a.event.trigger("ajaxComplete",[j,e]),k&&!--a.active&&a.event.trigger("ajaxStop"),e.complete&&e.complete.call(e.context,j,d?"success":"error"),setTimeout(function(){h.removeData("form-plugin-onload"),h.remove(),j.responseXML=null},100)}}function p(){var b=l.attr("target"),c=l.attr("action");d.setAttribute("target",f),d.getAttribute("method")!="POST"&&d.setAttribute("method","POST"),d.getAttribute("action")!=e.url&&d.setAttribute("action",e.url),e.skipEncodingOverride||l.attr({encoding:"multipart/form-data",enctype:"multipart/form-data"}),e.timeout&&setTimeout(function(){m=!0,t()},e.timeout);var g=[];try{if(e.extraData)for(var j in e.extraData)g.push(a('<input type="hidden" name="'+j+'" value="'+e.extraData[j]+'" />').appendTo(d)[0]);h.appendTo("body"),i.attachEvent?i.attachEvent("onload",t):i.addEventListener("load",t,!1),d.submit()}finally{d.setAttribute("action",c),b?d.setAttribute("target",b):l.removeAttr("target"),a(g).remove()}}var d=l[0];if(a(":input[name=submit],:input[id=submit]",d).length)alert('Error: Form elements must not have name or id of "submit".');else{var e=a.extend(!0,{},a.ajaxSettings,c);e.context=e.context||e;var f="jqFormIO"+(new Date).getTime(),g="_"+f,h=a('<iframe id="'+f+'" name="'+f+'" src="'+e.iframeSrc+'" />'),i=h[0];h.css({position:"absolute",top:"-1000px",left:"-1000px"});var j={aborted:0,responseText:null,responseXML:null,status:0,statusText:"n/a",getAllResponseHeaders:function(){},getResponseHeader:function(){},setRequestHeader:function(){},abort:function(){b("aborting upload...");var c="aborted";this.aborted=1,h.attr("src",e.iframeSrc),j.error=c,e.error&&e.error.call(e.context,j,"error",c),k&&a.event.trigger("ajaxError",[j,e,c]),e.complete&&e.complete.call(e.context,j,"error")}},k=e.global;k&&!(a.active++)&&a.event.trigger("ajaxStart"),k&&a.event.trigger("ajaxSend",[j,e]);if(e.beforeSend&&e.beforeSend.call(e.context,j,e)===!1){e.global&&a.active--;return}if(j.aborted)return;var m=0,n=d.clk;if(n){var o=n.name;o&&!n.disabled&&(e.extraData=e.extraData||{},e.extraData[o]=n.value,n.type=="image"&&(e.extraData[o+".x"]=d.clk_x,e.extraData[o+".y"]=d.clk_y))}e.forceSync?p():setTimeout(p,10);var q,r,s=50,u=a.parseXML||function(a,b){window.ActiveXObject?(b=new ActiveXObject("Microsoft.XMLDOM"),b.async="false",b.loadXML(a)):b=(new DOMParser).parseFromString(a,"text/xml");return b&&b.documentElement&&b.documentElement.nodeName!="parsererror"?b:null},v=a.parseJSON||function(a){return window.eval("("+a+")")},w=function(b,c,d){var e=b.getResponseHeader("content-type")||"",f=c==="xml"||!c&&e.indexOf("xml")>=0,g=f?b.responseXML:b.responseText;f&&g.documentElement.nodeName==="parsererror"&&a.error&&a.error("parsererror"),d&&d.dataFilter&&(g=d.dataFilter(g,c)),typeof g=="string"&&(c==="json"||!c&&e.indexOf("json")>=0?g=v(g):(c==="script"||!c&&e.indexOf("javascript")>=0)&&a.globalEval(g));return g}}}if(!this.length){b("ajaxSubmit: skipping submit process - no element selected");return this}typeof c=="function"&&(c={success:c});var d=this.attr("action"),e=typeof d=="string"?a.trim(d):"";e&&(e=(e.match(/^([^#]+)/)||[])[1]),e=e||window.location.href||"",c=a.extend(!0,{url:e,success:a.ajaxSettings.success,type:this[0].getAttribute("method")||"GET",iframeSrc:/^https/i.test(window.location.href||"")?"javascript:false":"about:blank"},c);var f={};this.trigger("form-pre-serialize",[this,c,f]);if(f.veto){b("ajaxSubmit: submit vetoed via form-pre-serialize trigger");return this}if(c.beforeSerialize&&c.beforeSerialize(this,c)===!1){b("ajaxSubmit: submit aborted via beforeSerialize callback");return this}var g,h,i=this.formToArray(c.semantic);if(c.data){c.extraData=c.data;for(g in c.data)if(c.data[g]instanceof Array)for(var j in c.data[g])i.push({name:g,value:c.data[g][j]});else h=c.data[g],h=a.isFunction(h)?h():h,i.push({name:g,value:h})}if(c.beforeSubmit&&c.beforeSubmit(i,this,c)===!1){b("ajaxSubmit: submit aborted via beforeSubmit callback");return this}this.trigger("form-submit-validate",[i,this,c,f]);if(f.veto){b("ajaxSubmit: submit vetoed via form-submit-validate trigger");return this}var k=a.param(i);c.type.toUpperCase()=="GET"?(c.url+=(c.url.indexOf("?")>=0?"&":"?")+k,c.data=null):c.data=k;var l=this,m=[];c.resetForm&&m.push(function(){l.resetForm()}),c.clearForm&&m.push(function(){l.clearForm()});if(!c.dataType&&c.target){var n=c.success||function(){};m.push(function(b){var d=c.replaceTarget?"replaceWith":"html";a(c.target)[d](b).each(n,arguments)})}else c.success&&m.push(c.success);c.success=function(a,b,d){var e=c.context||c;for(var f=0,g=m.length;f<g;f++)m[f].apply(e,[a,b,d||l,l])};var o=a("input:file",this).length>0,p="multipart/form-data",q=l.attr("enctype")==p||l.attr("encoding")==p;c.iframe!==!1&&(o||c.iframe||q)?c.closeKeepAlive?a.get(c.closeKeepAlive,r):r():a.ajax(c),this.trigger("form-submit-notify",[this,c]);return this},a.fn.ajaxForm=function(c){if(this.length===0){var d={s:this.selector,c:this.context};if(!a.isReady&&d.s){b("DOM not ready, queuing ajaxForm"),a(function(){a(d.s,d.c).ajaxForm(c)});return this}b("terminating; zero elements found by selector"+(a.isReady?"":" (DOM not ready)"));return this}return this.ajaxFormUnbind().bind("submit.form-plugin",function(b){b.isDefaultPrevented()||(b.preventDefault(),a(this).ajaxSubmit(c))}).bind("click.form-plugin",function(b){var c=b.target,d=a(c);if(!d.is(":submit,input:image")){var e=d.closest(":submit");if(e.length==0)return;c=e[0]}var f=this;f.clk=c;if(c.type=="image")if(b.offsetX!=undefined)f.clk_x=b.offsetX,f.clk_y=b.offsetY;else if(typeof a.fn.offset=="function"){var g=d.offset();f.clk_x=b.pageX-g.left,f.clk_y=b.pageY-g.top}else f.clk_x=b.pageX-c.offsetLeft,f.clk_y=b.pageY-c.offsetTop;setTimeout(function(){f.clk=f.clk_x=f.clk_y=null},100)})},a.fn.ajaxFormUnbind=function(){return this.unbind("submit.form-plugin click.form-plugin")},a.fn.formToArray=function(b){var c=[];if(this.length===0)return c;var d=this[0],e=b?d.getElementsByTagName("*"):d.elements;if(!e)return c;var f,g,h,i,j,k,l;for(f=0,k=e.length;f<k;f++){j=e[f],h=j.name;if(!h)continue;if(b&&d.clk&&j.type=="image"){!j.disabled&&d.clk==j&&(c.push({name:h,value:a(j).val()}),c.push({name:h+".x",value:d.clk_x},{name:h+".y",value:d.clk_y}));continue}i=a.fieldValue(j,!0);if(i&&i.constructor==Array)for(g=0,l=i.length;g<l;g++)c.push({name:h,value:i[g]});else i!==null&&typeof i!="undefined"&&c.push({name:h,value:i})}if(!b&&d.clk){var m=a(d.clk),n=m[0];h=n.name,h&&!n.disabled&&n.type=="image"&&(c.push({name:h,value:m.val()}),c.push({name:h+".x",value:d.clk_x},{name:h+".y",value:d.clk_y}))}return c},a.fn.formSerialize=function(b){return a.param(this.formToArray(b))},a.fn.fieldSerialize=function(b){var c=[];this.each(function(){var d=this.name;if(!!d){var e=a.fieldValue(this,b);if(e&&e.constructor==Array)for(var f=0,g=e.length;f<g;f++)c.push({name:d,value:e[f]});else e!==null&&typeof e!="undefined"&&c.push({name:this.name,value:e})}});return a.param(c)},a.fn.fieldValue=function(b){for(var c=[],d=0,e=this.length;d<e;d++){var f=this[d],g=a.fieldValue(f,b);if(g===null||typeof g=="undefined"||g.constructor==Array&&!g.length)continue;g.constructor==Array?a.merge(c,g):c.push(g)}return c},a.fieldValue=function(b,c){var d=b.name,e=b.type,f=b.tagName.toLowerCase();c===undefined&&(c=!0);if(c&&(!d||b.disabled||e=="reset"||e=="button"||(e=="checkbox"||e=="radio")&&!b.checked||(e=="submit"||e=="image")&&b.form&&b.form.clk!=b||f=="select"&&b.selectedIndex==-1))return null;if(f=="select"){var g=b.selectedIndex;if(g<0)return null;var h=[],i=b.options,j=e=="select-one",k=j?g+1:i.length;for(var l=j?g:0;l<k;l++){var m=i[l];if(m.selected){var n=m.value;n||(n=m.attributes&&m.attributes.value&&!m.attributes.value.specified?m.text:m.value);if(j)return n;h.push(n)}}return h}return a(b).val()},a.fn.clearForm=function(){return this.each(function(){a("input,select,textarea",this).clearFields()})},a.fn.clearFields=a.fn.clearInputs=function(){return this.each(function(){var a=this.type,b=this.tagName.toLowerCase();a=="text"||a=="password"||b=="textarea"?this.value="":a=="checkbox"||a=="radio"?this.checked=!1:b=="select"&&(this.selectedIndex=-1)})},a.fn.resetForm=function(){return this.each(function(){(typeof this.reset=="function"||typeof this.reset=="object"&&!this.reset.nodeType)&&this.reset()})},a.fn.enable=function(a){a===undefined&&(a=!0);return this.each(function(){this.disabled=!a})},a.fn.selected=function(b){b===undefined&&(b=!0);return this.each(function(){var c=this.type;if(c=="checkbox"||c=="radio")this.checked=b;else if(this.tagName.toLowerCase()=="option"){var d=a(this).parent("select");b&&d[0]&&d[0].type=="select-one"&&d.find("option").selected(!1),this.selected=b}})}})(jQuery);
+(function ($) {
+
+/**
+ * Provides Ajax page updating via jQuery $.ajax (Asynchronous JavaScript and XML).
+ *
+ * Ajax is a method of making a request via JavaScript while viewing an HTML
+ * page. The request returns an array of commands encoded in JSON, which is
+ * then executed to make any changes that are necessary to the page.
+ *
+ * Drupal uses this file to enhance form elements with #ajax['path'] and
+ * #ajax['wrapper'] properties. If set, this file will automatically be included
+ * to provide Ajax capabilities.
+ */
+
+Drupal.ajax = Drupal.ajax || {};
+
+Drupal.settings.urlIsAjaxTrusted = Drupal.settings.urlIsAjaxTrusted || {};
+
+/**
+ * Attaches the Ajax behavior to each Ajax form element.
+ */
+Drupal.behaviors.AJAX = {
+  attach: function (context, settings) {
+    // Load all Ajax behaviors specified in the settings.
+    for (var base in settings.ajax) {
+      if (!$('#' + base + '.ajax-processed').length) {
+        var element_settings = settings.ajax[base];
+
+        if (typeof element_settings.selector == 'undefined') {
+          element_settings.selector = '#' + base;
+        }
+        $(element_settings.selector).each(function () {
+          element_settings.element = this;
+          Drupal.ajax[base] = new Drupal.ajax(base, this, element_settings);
+        });
+
+        $('#' + base).addClass('ajax-processed');
+      }
+    }
+
+    // Bind Ajax behaviors to all items showing the class.
+    $('.use-ajax:not(.ajax-processed)').addClass('ajax-processed').each(function () {
+      var element_settings = {};
+      // Clicked links look better with the throbber than the progress bar.
+      element_settings.progress = { 'type': 'throbber' };
+
+      // For anchor tags, these will go to the target of the anchor rather
+      // than the usual location.
+      if ($(this).attr('href')) {
+        element_settings.url = $(this).attr('href');
+        element_settings.event = 'click';
+      }
+      var base = $(this).attr('id');
+      Drupal.ajax[base] = new Drupal.ajax(base, this, element_settings);
+    });
+
+    // This class means to submit the form to the action using Ajax.
+    $('.use-ajax-submit:not(.ajax-processed)').addClass('ajax-processed').each(function () {
+      var element_settings = {};
+
+      // Ajax submits specified in this manner automatically submit to the
+      // normal form action.
+      element_settings.url = $(this.form).attr('action');
+      // Form submit button clicks need to tell the form what was clicked so
+      // it gets passed in the POST request.
+      element_settings.setClick = true;
+      // Form buttons use the 'click' event rather than mousedown.
+      element_settings.event = 'click';
+      // Clicked form buttons look better with the throbber than the progress bar.
+      element_settings.progress = { 'type': 'throbber' };
+
+      var base = $(this).attr('id');
+      Drupal.ajax[base] = new Drupal.ajax(base, this, element_settings);
+    });
+  }
+};
+
+/**
+ * Ajax object.
+ *
+ * All Ajax objects on a page are accessible through the global Drupal.ajax
+ * object and are keyed by the submit button's ID. You can access them from
+ * your module's JavaScript file to override properties or functions.
+ *
+ * For example, if your Ajax enabled button has the ID 'edit-submit', you can
+ * redefine the function that is called to insert the new content like this
+ * (inside a Drupal.behaviors attach block):
+ * @code
+ *    Drupal.behaviors.myCustomAJAXStuff = {
+ *      attach: function (context, settings) {
+ *        Drupal.ajax['edit-submit'].commands.insert = function (ajax, response, status) {
+ *          new_content = $(response.data);
+ *          $('#my-wrapper').append(new_content);
+ *          alert('New content was appended to #my-wrapper');
+ *        }
+ *      }
+ *    };
+ * @endcode
+ */
+Drupal.ajax = function (base, element, element_settings) {
+  var defaults = {
+    url: 'system/ajax',
+    event: 'mousedown',
+    keypress: true,
+    selector: '#' + base,
+    effect: 'none',
+    speed: 'none',
+    method: 'replaceWith',
+    progress: {
+      type: 'throbber',
+      message: Drupal.t('Please wait...')
+    },
+    submit: {
+      'js': true
+    }
+  };
+
+  $.extend(this, defaults, element_settings);
+
+  this.element = element;
+  this.element_settings = element_settings;
+
+  // Replacing 'nojs' with 'ajax' in the URL allows for an easy method to let
+  // the server detect when it needs to degrade gracefully.
+  // There are five scenarios to check for:
+  // 1. /nojs/
+  // 2. /nojs$ - The end of a URL string.
+  // 3. /nojs? - Followed by a query (with clean URLs enabled).
+  //      E.g.: path/nojs?destination=foobar
+  // 4. /nojs& - Followed by a query (without clean URLs enabled).
+  //      E.g.: ?q=path/nojs&destination=foobar
+  // 5. /nojs# - Followed by a fragment.
+  //      E.g.: path/nojs#myfragment
+  this.url = element_settings.url.replace(/\/nojs(\/|$|\?|&|#)/g, '/ajax$1');
+  // If the 'nojs' version of the URL is trusted, also trust the 'ajax' version.
+  if (Drupal.settings.urlIsAjaxTrusted[element_settings.url]) {
+    Drupal.settings.urlIsAjaxTrusted[this.url] = true;
+  }
+
+  this.wrapper = '#' + element_settings.wrapper;
+
+  // If there isn't a form, jQuery.ajax() will be used instead, allowing us to
+  // bind Ajax to links as well.
+  if (this.element.form) {
+    this.form = $(this.element.form);
+  }
+
+  // Set the options for the ajaxSubmit function.
+  // The 'this' variable will not persist inside of the options object.
+  var ajax = this;
+  ajax.options = {
+    url: ajax.url,
+    data: ajax.submit,
+    beforeSerialize: function (element_settings, options) {
+      return ajax.beforeSerialize(element_settings, options);
+    },
+    beforeSubmit: function (form_values, element_settings, options) {
+      ajax.ajaxing = true;
+      return ajax.beforeSubmit(form_values, element_settings, options);
+    },
+    beforeSend: function (xmlhttprequest, options) {
+      ajax.ajaxing = true;
+      return ajax.beforeSend(xmlhttprequest, options);
+    },
+    success: function (response, status, xmlhttprequest) {
+      // Sanity check for browser support (object expected).
+      // When using iFrame uploads, responses must be returned as a string.
+      if (typeof response == 'string') {
+        response = $.parseJSON(response);
+      }
+
+      // Prior to invoking the response's commands, verify that they can be
+      // trusted by checking for a response header. See
+      // ajax_set_verification_header() for details.
+      // - Empty responses are harmless so can bypass verification. This avoids
+      //   an alert message for server-generated no-op responses that skip Ajax
+      //   rendering.
+      // - Ajax objects with trusted URLs (e.g., ones defined server-side via
+      //   #ajax) can bypass header verification. This is especially useful for
+      //   Ajax with multipart forms. Because IFRAME transport is used, the
+      //   response headers cannot be accessed for verification.
+      if (response !== null && !Drupal.settings.urlIsAjaxTrusted[ajax.url]) {
+        if (xmlhttprequest.getResponseHeader('X-Drupal-Ajax-Token') !== '1') {
+          var customMessage = Drupal.t("The response failed verification so will not be processed.");
+          return ajax.error(xmlhttprequest, ajax.url, customMessage);
+        }
+      }
+
+      return ajax.success(response, status);
+    },
+    complete: function (xmlhttprequest, status) {
+      ajax.ajaxing = false;
+      if (status == 'error' || status == 'parsererror') {
+        return ajax.error(xmlhttprequest, ajax.url);
+      }
+    },
+    dataType: 'json',
+    type: 'POST'
+  };
+
+  // Bind the ajaxSubmit function to the element event.
+  $(ajax.element).bind(element_settings.event, function (event) {
+    if (!Drupal.settings.urlIsAjaxTrusted[ajax.url] && !Drupal.urlIsLocal(ajax.url)) {
+      throw new Error(Drupal.t('The callback URL is not local and not trusted: !url', {'!url': ajax.url}));
+    }
+    return ajax.eventResponse(this, event);
+  });
+
+  // If necessary, enable keyboard submission so that Ajax behaviors
+  // can be triggered through keyboard input as well as e.g. a mousedown
+  // action.
+  if (element_settings.keypress) {
+    $(ajax.element).keypress(function (event) {
+      return ajax.keypressResponse(this, event);
+    });
+  }
+
+  // If necessary, prevent the browser default action of an additional event.
+  // For example, prevent the browser default action of a click, even if the
+  // AJAX behavior binds to mousedown.
+  if (element_settings.prevent) {
+    $(ajax.element).bind(element_settings.prevent, false);
+  }
+};
+
+/**
+ * Handle a key press.
+ *
+ * The Ajax object will, if instructed, bind to a key press response. This
+ * will test to see if the key press is valid to trigger this event and
+ * if it is, trigger it for us and prevent other keypresses from triggering.
+ * In this case we're handling RETURN and SPACEBAR keypresses (event codes 13
+ * and 32. RETURN is often used to submit a form when in a textfield, and 
+ * SPACE is often used to activate an element without submitting. 
+ */
+Drupal.ajax.prototype.keypressResponse = function (element, event) {
+  // Create a synonym for this to reduce code confusion.
+  var ajax = this;
+
+  // Detect enter key and space bar and allow the standard response for them,
+  // except for form elements of type 'text' and 'textarea', where the 
+  // spacebar activation causes inappropriate activation if #ajax['keypress'] is 
+  // TRUE. On a text-type widget a space should always be a space.
+  if (event.which == 13 || (event.which == 32 && element.type != 'text' && element.type != 'textarea')) {
+    $(ajax.element_settings.element).trigger(ajax.element_settings.event);
+    return false;
+  }
+};
+
+/**
+ * Handle an event that triggers an Ajax response.
+ *
+ * When an event that triggers an Ajax response happens, this method will
+ * perform the actual Ajax call. It is bound to the event using
+ * bind() in the constructor, and it uses the options specified on the
+ * ajax object.
+ */
+Drupal.ajax.prototype.eventResponse = function (element, event) {
+  // Create a synonym for this to reduce code confusion.
+  var ajax = this;
+
+  // Do not perform another ajax command if one is already in progress.
+  if (ajax.ajaxing) {
+    return false;
+  }
+
+  try {
+    if (ajax.form) {
+      // If setClick is set, we must set this to ensure that the button's
+      // value is passed.
+      if (ajax.setClick) {
+        // Mark the clicked button. 'form.clk' is a special variable for
+        // ajaxSubmit that tells the system which element got clicked to
+        // trigger the submit. Without it there would be no 'op' or
+        // equivalent.
+        element.form.clk = element;
+      }
+
+      ajax.form.ajaxSubmit(ajax.options);
+    }
+    else {
+      ajax.beforeSerialize(ajax.element, ajax.options);
+      $.ajax(ajax.options);
+    }
+  }
+  catch (e) {
+    // Unset the ajax.ajaxing flag here because it won't be unset during
+    // the complete response.
+    ajax.ajaxing = false;
+    alert("An error occurred while attempting to process " + ajax.options.url + ": " + e.message);
+  }
+
+  // For radio/checkbox, allow the default event. On IE, this means letting
+  // it actually check the box.
+  if (typeof element.type != 'undefined' && (element.type == 'checkbox' || element.type == 'radio')) {
+    return true;
+  }
+  else {
+    return false;
+  }
+
+};
+
+/**
+ * Handler for the form serialization.
+ *
+ * Runs before the beforeSend() handler (see below), and unlike that one, runs
+ * before field data is collected.
+ */
+Drupal.ajax.prototype.beforeSerialize = function (element, options) {
+  // Allow detaching behaviors to update field values before collecting them.
+  // This is only needed when field values are added to the POST data, so only
+  // when there is a form such that this.form.ajaxSubmit() is used instead of
+  // $.ajax(). When there is no form and $.ajax() is used, beforeSerialize()
+  // isn't called, but don't rely on that: explicitly check this.form.
+  if (this.form) {
+    var settings = this.settings || Drupal.settings;
+    Drupal.detachBehaviors(this.form, settings, 'serialize');
+  }
+
+  // Prevent duplicate HTML ids in the returned markup.
+  // @see drupal_html_id()
+  options.data['ajax_html_ids[]'] = [];
+  $('[id]').each(function () {
+    options.data['ajax_html_ids[]'].push(this.id);
+  });
+
+  // Allow Drupal to return new JavaScript and CSS files to load without
+  // returning the ones already loaded.
+  // @see ajax_base_page_theme()
+  // @see drupal_get_css()
+  // @see drupal_get_js()
+  options.data['ajax_page_state[theme]'] = Drupal.settings.ajaxPageState.theme;
+  options.data['ajax_page_state[theme_token]'] = Drupal.settings.ajaxPageState.theme_token;
+  for (var key in Drupal.settings.ajaxPageState.css) {
+    options.data['ajax_page_state[css][' + key + ']'] = 1;
+  }
+  for (var key in Drupal.settings.ajaxPageState.js) {
+    options.data['ajax_page_state[js][' + key + ']'] = 1;
+  }
+};
+
+/**
+ * Modify form values prior to form submission.
+ */
+Drupal.ajax.prototype.beforeSubmit = function (form_values, element, options) {
+  // This function is left empty to make it simple to override for modules
+  // that wish to add functionality here.
+};
+
+/**
+ * Prepare the Ajax request before it is sent.
+ */
+Drupal.ajax.prototype.beforeSend = function (xmlhttprequest, options) {
+  // For forms without file inputs, the jQuery Form plugin serializes the form
+  // values, and then calls jQuery's $.ajax() function, which invokes this
+  // handler. In this circumstance, options.extraData is never used. For forms
+  // with file inputs, the jQuery Form plugin uses the browser's normal form
+  // submission mechanism, but captures the response in a hidden IFRAME. In this
+  // circumstance, it calls this handler first, and then appends hidden fields
+  // to the form to submit the values in options.extraData. There is no simple
+  // way to know which submission mechanism will be used, so we add to extraData
+  // regardless, and allow it to be ignored in the former case.
+  if (this.form) {
+    options.extraData = options.extraData || {};
+
+    // Let the server know when the IFRAME submission mechanism is used. The
+    // server can use this information to wrap the JSON response in a TEXTAREA,
+    // as per http://jquery.malsup.com/form/#file-upload.
+    options.extraData.ajax_iframe_upload = '1';
+
+    // The triggering element is about to be disabled (see below), but if it
+    // contains a value (e.g., a checkbox, textfield, select, etc.), ensure that
+    // value is included in the submission. As per above, submissions that use
+    // $.ajax() are already serialized prior to the element being disabled, so
+    // this is only needed for IFRAME submissions.
+    var v = $.fieldValue(this.element);
+    if (v !== null) {
+      options.extraData[this.element.name] = Drupal.checkPlain(v);
+    }
+  }
+
+  // Disable the element that received the change to prevent user interface
+  // interaction while the Ajax request is in progress. ajax.ajaxing prevents
+  // the element from triggering a new request, but does not prevent the user
+  // from changing its value.
+  $(this.element).addClass('progress-disabled').attr('disabled', true);
+
+  // Insert progressbar or throbber.
+  if (this.progress.type == 'bar') {
+    var progressBar = new Drupal.progressBar('ajax-progress-' + this.element.id, eval(this.progress.update_callback), this.progress.method, eval(this.progress.error_callback));
+    if (this.progress.message) {
+      progressBar.setProgress(-1, this.progress.message);
+    }
+    if (this.progress.url) {
+      progressBar.startMonitoring(this.progress.url, this.progress.interval || 1500);
+    }
+    this.progress.element = $(progressBar.element).addClass('ajax-progress ajax-progress-bar');
+    this.progress.object = progressBar;
+    $(this.element).after(this.progress.element);
+  }
+  else if (this.progress.type == 'throbber') {
+    this.progress.element = $('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+    if (this.progress.message) {
+      $('.throbber', this.progress.element).after('<div class="message">' + this.progress.message + '</div>');
+    }
+    $(this.element).after(this.progress.element);
+  }
+};
+
+/**
+ * Handler for the form redirection completion.
+ */
+Drupal.ajax.prototype.success = function (response, status) {
+  // Remove the progress element.
+  if (this.progress.element) {
+    $(this.progress.element).remove();
+  }
+  if (this.progress.object) {
+    this.progress.object.stopMonitoring();
+  }
+  $(this.element).removeClass('progress-disabled').removeAttr('disabled');
+
+  Drupal.freezeHeight();
+
+  for (var i in response) {
+    if (response.hasOwnProperty(i) && response[i]['command'] && this.commands[response[i]['command']]) {
+      this.commands[response[i]['command']](this, response[i], status);
+    }
+  }
+
+  // Reattach behaviors, if they were detached in beforeSerialize(). The
+  // attachBehaviors() called on the new content from processing the response
+  // commands is not sufficient, because behaviors from the entire form need
+  // to be reattached.
+  if (this.form) {
+    var settings = this.settings || Drupal.settings;
+    Drupal.attachBehaviors(this.form, settings);
+  }
+
+  Drupal.unfreezeHeight();
+
+  // Remove any response-specific settings so they don't get used on the next
+  // call by mistake.
+  this.settings = null;
+};
+
+/**
+ * Build an effect object which tells us how to apply the effect when adding new HTML.
+ */
+Drupal.ajax.prototype.getEffect = function (response) {
+  var type = response.effect || this.effect;
+  var speed = response.speed || this.speed;
+
+  var effect = {};
+  if (type == 'none') {
+    effect.showEffect = 'show';
+    effect.hideEffect = 'hide';
+    effect.showSpeed = '';
+  }
+  else if (type == 'fade') {
+    effect.showEffect = 'fadeIn';
+    effect.hideEffect = 'fadeOut';
+    effect.showSpeed = speed;
+  }
+  else {
+    effect.showEffect = type + 'Toggle';
+    effect.hideEffect = type + 'Toggle';
+    effect.showSpeed = speed;
+  }
+
+  return effect;
+};
+
+/**
+ * Handler for the form redirection error.
+ */
+Drupal.ajax.prototype.error = function (xmlhttprequest, uri, customMessage) {
+  Drupal.displayAjaxError(Drupal.ajaxError(xmlhttprequest, uri, customMessage));
+  // Remove the progress element.
+  if (this.progress.element) {
+    $(this.progress.element).remove();
+  }
+  if (this.progress.object) {
+    this.progress.object.stopMonitoring();
+  }
+  // Undo hide.
+  $(this.wrapper).show();
+  // Re-enable the element.
+  $(this.element).removeClass('progress-disabled').removeAttr('disabled');
+  // Reattach behaviors, if they were detached in beforeSerialize().
+  if (this.form) {
+    var settings = this.settings || Drupal.settings;
+    Drupal.attachBehaviors(this.form, settings);
+  }
+};
+
+/**
+ * Provide a series of commands that the server can request the client perform.
+ */
+Drupal.ajax.prototype.commands = {
+  /**
+   * Command to insert new content into the DOM.
+   */
+  insert: function (ajax, response, status) {
+    // Get information from the response. If it is not there, default to
+    // our presets.
+    var wrapper = response.selector ? $(response.selector) : $(ajax.wrapper);
+    var method = response.method || ajax.method;
+    var effect = ajax.getEffect(response);
+
+    // We don't know what response.data contains: it might be a string of text
+    // without HTML, so don't rely on jQuery correctly iterpreting
+    // $(response.data) as new HTML rather than a CSS selector. Also, if
+    // response.data contains top-level text nodes, they get lost with either
+    // $(response.data) or $('<div></div>').replaceWith(response.data).
+    var new_content_wrapped = $('<div></div>').html(response.data);
+    var new_content = new_content_wrapped.contents();
+
+    // For legacy reasons, the effects processing code assumes that new_content
+    // consists of a single top-level element. Also, it has not been
+    // sufficiently tested whether attachBehaviors() can be successfully called
+    // with a context object that includes top-level text nodes. However, to
+    // give developers full control of the HTML appearing in the page, and to
+    // enable Ajax content to be inserted in places where DIV elements are not
+    // allowed (e.g., within TABLE, TR, and SPAN parents), we check if the new
+    // content satisfies the requirement of a single top-level element, and
+    // only use the container DIV created above when it doesn't. For more
+    // information, please see http://drupal.org/node/736066.
+    if (new_content.length != 1 || new_content.get(0).nodeType != 1) {
+      new_content = new_content_wrapped;
+    }
+
+    // If removing content from the wrapper, detach behaviors first.
+    switch (method) {
+      case 'html':
+      case 'replaceWith':
+      case 'replaceAll':
+      case 'empty':
+      case 'remove':
+        var settings = response.settings || ajax.settings || Drupal.settings;
+        Drupal.detachBehaviors(wrapper, settings);
+    }
+
+    // Add the new content to the page.
+    wrapper[method](new_content);
+
+    // Immediately hide the new content if we're using any effects.
+    if (effect.showEffect != 'show') {
+      new_content.hide();
+    }
+
+    // Determine which effect to use and what content will receive the
+    // effect, then show the new content.
+    if ($('.ajax-new-content', new_content).length > 0) {
+      $('.ajax-new-content', new_content).hide();
+      new_content.show();
+      $('.ajax-new-content', new_content)[effect.showEffect](effect.showSpeed);
+    }
+    else if (effect.showEffect != 'show') {
+      new_content[effect.showEffect](effect.showSpeed);
+    }
+
+    // Attach all JavaScript behaviors to the new content, if it was successfully
+    // added to the page, this if statement allows #ajax['wrapper'] to be
+    // optional.
+    if (new_content.parents('html').length > 0) {
+      // Apply any settings from the returned JSON if available.
+      var settings = response.settings || ajax.settings || Drupal.settings;
+      Drupal.attachBehaviors(new_content, settings);
+    }
+  },
+
+  /**
+   * Command to remove a chunk from the page.
+   */
+  remove: function (ajax, response, status) {
+    var settings = response.settings || ajax.settings || Drupal.settings;
+    Drupal.detachBehaviors($(response.selector), settings);
+    $(response.selector).remove();
+  },
+
+  /**
+   * Command to mark a chunk changed.
+   */
+  changed: function (ajax, response, status) {
+    if (!$(response.selector).hasClass('ajax-changed')) {
+      $(response.selector).addClass('ajax-changed');
+      if (response.asterisk) {
+        $(response.selector).find(response.asterisk).append(' <span class="ajax-changed">*</span> ');
+      }
+    }
+  },
+
+  /**
+   * Command to provide an alert.
+   */
+  alert: function (ajax, response, status) {
+    alert(response.text, response.title);
+  },
+
+  /**
+   * Command to provide the jQuery css() function.
+   */
+  css: function (ajax, response, status) {
+    $(response.selector).css(response.argument);
+  },
+
+  /**
+   * Command to set the settings that will be used for other commands in this response.
+   */
+  settings: function (ajax, response, status) {
+    if (response.merge) {
+      $.extend(true, Drupal.settings, response.settings);
+    }
+    else {
+      ajax.settings = response.settings;
+    }
+  },
+
+  /**
+   * Command to attach data using jQuery's data API.
+   */
+  data: function (ajax, response, status) {
+    $(response.selector).data(response.name, response.value);
+  },
+
+  /**
+   * Command to apply a jQuery method.
+   */
+  invoke: function (ajax, response, status) {
+    var $element = $(response.selector);
+    $element[response.method].apply($element, response.arguments);
+  },
+
+  /**
+   * Command to restripe a table.
+   */
+  restripe: function (ajax, response, status) {
+    // :even and :odd are reversed because jQuery counts from 0 and
+    // we count from 1, so we're out of sync.
+    // Match immediate children of the parent element to allow nesting.
+    $('> tbody > tr:visible, > tr:visible', $(response.selector))
+      .removeClass('odd even')
+      .filter(':even').addClass('odd').end()
+      .filter(':odd').addClass('even');
+  },
+
+  /**
+   * Command to add css.
+   *
+   * Uses the proprietary addImport method if available as browsers which
+   * support that method ignore @import statements in dynamically added
+   * stylesheets.
+   */
+  add_css: function (ajax, response, status) {
+    // Add the styles in the normal way.
+    $('head').prepend(response.data);
+    // Add imports in the styles using the addImport method if available.
+    var match, importMatch = /^@import url\("(.*)"\);$/igm;
+    if (document.styleSheets[0].addImport && importMatch.test(response.data)) {
+      importMatch.lastIndex = 0;
+      while (match = importMatch.exec(response.data)) {
+        document.styleSheets[0].addImport(match[1]);
+      }
+    }
+  },
+
+  /**
+   * Command to update a form's build ID.
+   */
+  updateBuildId: function(ajax, response, status) {
+    $('input[name="form_build_id"][value="' + response['old'] + '"]').val(response['new']);
+  }
+};
+
+})(jQuery);
+;
+(function (D) {
+  var beforeSerialize = D.ajax.prototype.beforeSerialize;
+  D.ajax.prototype.beforeSerialize = function (element, options) {
+    beforeSerialize.call(this, element, options);
+    options.data['ajax_page_state[jquery_version]'] = D.settings.ajaxPageState.jquery_version;
+  }
+})(Drupal);
+;
