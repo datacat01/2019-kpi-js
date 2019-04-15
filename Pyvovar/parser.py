@@ -25,7 +25,8 @@ class Parser:
     def __init__(self, p, w):
         self.path_clear = p
         self.websites_to_parse = w
-                
+
+
     def is_valid(self, path):
         try:
             f = open(path)
@@ -44,24 +45,32 @@ class Parser:
             try:
                 html = urllib.request.urlopen(website)
             except (HTTPError, URLError, OSError, ValueError):
+                #print('Exception1: ' + website)
                 continue
                 
             soup = BeautifulSoup(html, features='lxml')
             
             for script in soup.find_all('script'):
+                filename = self.path_clear + '/' + str(i) + '.txt' 
+                print(filename)
+                if(os.path.exists(filename)):
+                    continue
+
                 link = script.get('src')
                 if(link!=None):
                     try:
-                        filename = self.path_clear + '/' + str(i) + '.txt' 
                         urllib.request.urlretrieve(link, filename)
                         if(self.is_valid(filename) == False):
+                            print('here')
                             os.remove(filename)
                             i -= 1
+                            continue
                     except (ValueError, HTTPError, OSError):
+                        print('Exception2')
                         continue
                     i += 1
+            
     
-
 
 def main():
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
@@ -72,6 +81,7 @@ def main():
     websites_to_parse = list(f.read().split('\n'))
     parser = Parser(path_clear, websites_to_parse)
     parser.parse_links()
+
 
 if __name__ == '__main__':
     main()
