@@ -30,6 +30,6 @@ def get_features(path_to_script):
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 paath = parent_dir + "/data/clear/264.txt"
 
-lll = os.listdir(parent_dir + "/data/clear/")
-
-print(sorted(lll))
+ss = "fsdfsd fasd fasd fasdfasdfsad3"
+aaa = dict.fromkeys(list(ss))
+print(ss.count("f"))

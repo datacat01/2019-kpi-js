@@ -43,7 +43,7 @@ def get_features(path_to_script):
     """Computes featrues for given script
 
     Arguments:
-        path_to_script {[type]} -- [path to script]
+        path_to_script {str} -- [path to script]
 
     Returns:
         numpy.ndarray<int> -- [Array containing features for given script]
@@ -98,9 +98,9 @@ def get_features(path_to_script):
 
     # character-specific characteristics
     vowel_freq = len(re.findall('[aeiou]', script, re.IGNORECASE))/script_len
-    non_read_freq = len(re.findall('[^a-zA-Z0-9]', script))/script_len
+    non_read_freq = len(re.findall('[^a-zA-Z]', script))/script_len
     scr_entropy = entropy(script)
-    str_enc_freq = script.count("0x")/script_len
+    str_enc_freq = (script.count("0x") + script.count("\x"))/script_len
 
     feature_vector = [script_len, char_per_line, if_freq,
                       false_freq, true_freq, whitesp_freq, lines_100, return_freq,
