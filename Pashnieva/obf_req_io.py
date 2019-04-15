@@ -2,11 +2,21 @@ import requests
 import json
 import codecs
 import os
+import random
 
 url = 'https://obfuscator.io/obfuscate'
 
 
 def read_code(dir, file_name):
+    """Reads js code from txt file
+    
+    Arguments:
+        dir {str} -- file directory
+        file_name {str} -- name of a file
+    
+    Returns:
+        code {str} -- contains js code from dir/file_name
+    """
 
     file_path = os.path.join(dir, file_name)
     file = codecs.open(file_path, 'r')
@@ -22,6 +32,14 @@ def read_code(dir, file_name):
 
 
 def request(code, file_name_res, path):
+    """Performs a request to obfuscator, writes down obfuscated code to path/file_name
+    
+    Arguments:
+        code {str} -- js code
+        file_name_res {str} -- filename for obuscated code
+        path {str} -- a path to a new file with obfuscated code
+    
+    """
 
     headers = {
         'content-type': 'application/json',
@@ -31,17 +49,17 @@ def request(code, file_name_res, path):
         'code':code,
         'options': {
                 'compact': True,
-                'selfDefending':False,
+                'selfDefending':random.choice([True, False]),
                 'disableConsoleOutput':False,
                 'debugProtection':True,
                 'debugProtectionInterval':False,
                 'stringArray':True,
                 'rotateStringArray':True,
                 'rotateStringArrayEnabled':True,
-                'stringArrayThreshold':0.8,
+                'stringArrayThreshold':random.random(),
                 'stringArrayThresholdEnabled':True,
-                'stringArrayEncoding':'base64',
-                'stringArrayEncodingEnabled':True,
+                'stringArrayEncoding':random.choice(['base64', 'rc4']),
+                'stringArrayEncodingEnabled':random.choice([True, False]),
                 'sourceMap':False,
                 'sourceMapMode':'off',
                 'sourceMapBaseUrl':'',
@@ -51,16 +69,16 @@ def request(code, file_name_res, path):
                 'reservedNames':[],
                 'reservedStrings':[],
                 'seed':0,
-                'controlFlowFlatteningThreshold':0.75,
-                'controlFlowFlattening':False,
-                'deadCodeInjectionThreshold':0.4,
-                'deadCodeInjection':False,
-                'unicodeEscapeSequence':False,
-                'renameGlobals':False,
+                'controlFlowFlatteningThreshold':random.random(),
+                'controlFlowFlattening':random.choice([True, False]), #False
+                'deadCodeInjectionThreshold':random.random(),
+                'deadCodeInjection':random.choice([True, False]), #False
+                'unicodeEscapeSequence':random.choice([True, False]),
+                'renameGlobals':random.choice([True, False]),
                 'target':'browser',
                 'identifierNamesGenerator':'hexadecimal',
                 'identifiersPrefix':'',
-                'transformObjectKeys':False
+                'transformObjectKeys':random.choice([True, False])
             }
     }
 
@@ -71,7 +89,9 @@ def request(code, file_name_res, path):
     )
 
     if response.status_code != 200:
-        raise IndexError(response.status_code)
+        #raise IndexError(response.status_code)
+        print(str(response.status_code) + '\n')
+        return response.status_code
 
     res_json = json.loads(response.text)
     full_path = path + file_name_res
@@ -83,7 +103,7 @@ def request(code, file_name_res, path):
 def main():
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
 
-    path1 = os.path.join(parent_dir, 'data/clear/')
+    path1 = os.path.join(parent_dir, 'data/clear_extended/')
     path2 = os.path.join(parent_dir, 'data/obfuscated/')
 
     for root, dirs, files in os.walk(path1):
