@@ -55,6 +55,10 @@ def get_features(path_to_script):
 
     # basic statistics
     script_len = len(script)
+
+    if script_len == 0:
+        raise Exception("EmptyFileError")
+    
     num_lines = script.count('\n') + 1
     char_per_line = script_len/num_lines
 
@@ -100,7 +104,7 @@ def get_features(path_to_script):
     vowel_freq = len(re.findall('[aeiou]', script, re.IGNORECASE))/script_len
     non_read_freq = len(re.findall('[^a-zA-Z]', script))/script_len
     scr_entropy = entropy(script)
-    str_enc_freq = (script.count("0x") + script.count("\x"))/script_len
+    str_enc_freq = (script.count("0x") + script.count(r"\x"))/script_len
 
     feature_vector = [script_len, char_per_line, if_freq,
                       false_freq, true_freq, whitesp_freq, lines_100, return_freq,
@@ -110,14 +114,19 @@ def get_features(path_to_script):
     return np.array(feature_vector)
 
 
-def save_feature_dataset(path_to_folder, df_name):
+def save_feature_dataset(path_to_folder, df_name, ends_with):
     counter = 0
     try:
         feature_list = []
 
         for filename in os.listdir(path_to_folder):
-            if filename.endswith(".txt"):
-                features = get_features(path_to_folder + filename)
+            if filename.endswith(ends_with):
+
+                try:
+                    features = get_features(path_to_folder + filename)
+                except Exception as ex:
+                    print(ex.args)
+
                 feature_list.append(features)
                 #print("processed {}th file: {}".format(counter +1,filename))
                 counter += 1
@@ -132,6 +141,6 @@ def save_feature_dataset(path_to_folder, df_name):
 
 if __name__ == '__main__':
 
-    save_feature_dataset(parent_dir + "/data/clear/", "features_clear")
+    save_feature_dataset(parent_dir + "/data/clear_extended/", "features_clear", ".js")
     save_feature_dataset(parent_dir + "/data/obfuscated/",
-                         "features_obfuscated")
+                         "features_obfuscated", ".txt")
