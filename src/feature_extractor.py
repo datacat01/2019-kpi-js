@@ -13,8 +13,8 @@ from comment_parser.parsers.common import UnterminatedCommentError
 column_names = ["script_len", "char_per_line", "if_freq",
                 "false_freq", "true_freq", "whitesp_freq", "lines_100", "return_freq",
                 "var_freq", "this_freq", "toString_freq", "eval_freq", "comment_amount",
-                "words_count", "vowel_freq", "non_read_freq", "scr_entropy", "str_enc_freq"
-                ]
+                "words_count", "vowel_freq", "non_read_freq", "scr_entropy", "str_enc_freq",
+                "file_name"]
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -105,12 +105,15 @@ def get_features(path_to_script):
     non_read_freq = len(re.findall('[^a-zA-Z]', script))/script_len
     scr_entropy = entropy(script)
     str_enc_freq = (script.count("0x") + script.count(r"\x"))/script_len
+    
+    path, f_name = os.path.split(path_to_script)
+
 
     feature_vector = [script_len, char_per_line, if_freq,
                       false_freq, true_freq, whitesp_freq, lines_100, return_freq,
                       var_freq, this_freq, toString_freq, eval_freq, comment_amount,
-                      words_count, vowel_freq, non_read_freq, scr_entropy, str_enc_freq
-                      ]
+                      words_count, vowel_freq, non_read_freq, scr_entropy, str_enc_freq,
+                      f_name]
     return np.array(feature_vector)
 
 
