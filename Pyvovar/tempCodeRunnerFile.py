@@ -1,0 +1,1 @@
+    print("RMSE: %f" % (rmse))
