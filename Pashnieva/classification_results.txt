@@ -1,0 +1,66 @@
+Decision tree params:
+DecisionTreeClassifier(class_weight='balanced', criterion='entropy',
+            max_depth=9, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=2,
+            splitter='best')
+Misclassified are : 
+883.js
+608.js
+Accuracy: 99.646
+F1 score: 0.996183
+    Feature importance         Feature
+0             0.014293      script_len
+1             0.000000   char_per_line
+2             0.000000         if_freq
+3             0.000000      false_freq
+4             0.000000       true_freq
+5             0.008266    whitesp_freq
+6             0.000000       lines_100
+7             0.000000     return_freq
+8             0.000000        var_freq
+9             0.000000       this_freq
+10            0.000000   toString_freq
+11            0.000000       eval_freq
+12            0.000000  comment_amount
+13            0.003071     words_count
+14            0.000000      vowel_freq
+15            0.000000   non_read_freq
+16            0.002237     scr_entropy
+17            0.972133    str_enc_freq
+
+
+
+
+
+Random forest classifier params:
+RandomForestClassifier(bootstrap=True, class_weight='balanced',
+            criterion='gini', max_depth=9, max_features='auto',
+            max_leaf_nodes=None, min_impurity_decrease=0.0,
+            min_impurity_split=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=200, n_jobs=None, oob_score=False, random_state=2,
+            verbose=0, warm_start=False)
+Misclassified are : 
+Accuracy: 100.000
+F1 score: 1.000000
+    Feature importance         Feature
+0             0.001864      script_len
+1             0.178160   char_per_line
+2             0.000322         if_freq
+3             0.002254      false_freq
+4             0.001014       true_freq
+5             0.273202    whitesp_freq
+6             0.118189       lines_100
+7             0.001318     return_freq
+8             0.001820        var_freq
+9             0.010157       this_freq
+10            0.021282   toString_freq
+11            0.000043       eval_freq
+12            0.006383  comment_amount
+13            0.002686     words_count
+14            0.071208      vowel_freq
+15            0.003238   non_read_freq
+16            0.070718     scr_entropy
+17            0.236143    str_enc_freq
