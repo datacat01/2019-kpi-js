@@ -9,6 +9,7 @@ from sklearn import tree
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import f1_score
 
 
 def load_and_split(path):
@@ -18,6 +19,7 @@ def load_and_split(path):
     
     df_clear = pd.read_csv(path_clear, index_col=[0])
     df_clear['class'] = np.zeros(len(df_clear))
+    file_names = df_clear['file_name']
     df_clear = df_clear.drop(columns='file_name')
 
     df_obfuscated = pd.read_csv(path_obfuscated, index_col=[0])
@@ -33,7 +35,7 @@ def load_and_split(path):
     scaler = StandardScaler()
     X = scaler.fit_transform(X)
 
-    return X, y, features_names
+    return X, y, features_names, file_names
 
 def plot_confusion_matrix(y_true, y_pred):
 
@@ -44,7 +46,7 @@ def plot_confusion_matrix(y_true, y_pred):
     ax.set_title('Confusion matrix')
 
 
-def classify_and_score(X_train, X_test, y_train, y_test, features_names):
+def classify_and_score(X_train, X_test, y_train, y_test, features_names, file_names):
 
     params = {'criterion':('gini', 'entropy'), 
               'min_samples_split':[2,3,4,5], 
@@ -59,7 +61,7 @@ def classify_and_score(X_train, X_test, y_train, y_test, features_names):
     gsearch = GridSearchCV(tr, params)
     gsearch.fit(X_train, y_train)
     model = gsearch.best_estimator_
-    print("Model's params:\n" + str(model))
+    print('Model params:\n' + str(model))
 
     #predict
     model.fit(X_train, y_train)
@@ -72,11 +74,17 @@ def classify_and_score(X_train, X_test, y_train, y_test, features_names):
         if label != predict: 
             misclassifiedIndexes.append(index)
         index +=1
-    print('Misclassified are : ' + str(misclassifiedIndexes))
+    
+    print('Misclassified are : ')
+    for i in misclassifiedIndexes:
+        print(file_names.loc[i])
 
     #accuracy
     accuracy = accuracy_score(y_test, y_pred)
-    print("accuracy = %.5f" % (accuracy * 100.0))
+    print('Accuracy: %.3f' % (accuracy * 100.0))
+
+    #F1 score
+    print('F1 score: %3f' % f1_score(y_test, y_pred, average='binary'))
 
     #feature importances
     df_feature_imp = pd.DataFrame({'Feature importance': model.feature_importances_})
@@ -89,15 +97,14 @@ def classify_and_score(X_train, X_test, y_train, y_test, features_names):
 
 
 
-
 def main():
 
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
     path = os.path.join(parent_dir, 'data/features/')
 
-    x, y, features_names = load_and_split(path) 
+    x, y, features_names, file_names = load_and_split(path) 
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=2)
-    classify_and_score(X_train, X_test, y_train, y_test, features_names)
+    classify_and_score(X_train, X_test, y_train, y_test, features_names, file_names)
 
 
 if __name__ == '__main__':
