@@ -1,4 +1,4 @@
-from preprocess_data import preproc
+import preprocess_data as preproc
 from sklearn import ensemble
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
@@ -6,57 +6,48 @@ import xgboost as xgb
 import numpy as np
 import pandas as pd
 import os
+from sklearn.metrics import fbeta_score, make_scorer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
-
-def preproc(data_clear, data_obfuscated):
-    y = np.zeros(data_clear.shape[0])
-    data_clear['predicted'] = y
-    y = np.ones(data_obfuscated.shape[0])
-    data_obfuscated['predicted'] = y
-
-    data = pd.concat([data_clear, data_obfuscated], axis=0, ignore_index=True)   
-    data = shuffle(data)
-    y = np.array(data["predicted"])
-    X = data.drop(columns=["predicted"])
-    scl = StandardScaler()
-    X = scl.fit_transform(X)
-    return train_test_split(X, y)  
+import model_evaluation as me
 
 
 def main():
 
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+    X_train, X_test, y_train, y_test = preproc.load_and_preprocess(parent_dir)
 
-    path_clear = os.path.join(parent_dir, 'data/features/features_clear.csv')
-    path_obfuscated = os.path.join(parent_dir, 'data/features/features_obfuscated.csv')
+    params = {
+        "objective":["reg:logistic"],
+        'colsample_bytree': [0.1, 0.2, 0.3, 0.4, 0.5],
+        'learning_rate': [0.1, 0.2, 0.3, 0.4, 0.5],
+        'max_depth': [2, 3, 5, 6, 7],
+        'alpha': [7, 8, 9, 10, 11]
+        }
 
-    data_clear = pd.read_csv(path_clear).drop(columns=["Unnamed: 0", "file_name"])
-    data_obfuscated = pd.read_csv(path_obfuscated).drop(columns=["Unnamed: 0", "file_name"])
+    model = ensemble.GradientBoostingClassifier()
+    gsearch = GridSearchCV(model, params)
+    gsearch.fit(X_train, y_train)
+    model = gsearch.best_estimator_
+    print('Model params:\n' + str(model))
 
-    #X_train, X_test, y_train, y_test = preproc(data_clear, data_obfuscated)
-    
-    y = np.zeros(data_clear.shape[0])
-    data_clear['predicted'] = y
-    y = np.ones(data_obfuscated.shape[0])
-    data_obfuscated['predicted'] = y
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    me.confusion_matrix(y_test, y_pred)
 
-    data = pd.concat([data_clear, data_obfuscated], axis=0, ignore_index=True)   
-    data = shuffle(data)
-    y = np.array(data["predicted"])
-    X = data.drop(columns=["predicted"])
-    data_dmatrix = xgb.DMatrix(data=X,label=y)
-    scl = StandardScaler()
-    X = scl.fit_transform(X)
-    X_train, X_test, y_train, y_test = train_test_split(X, y)  
+    """
+        model = xgb.XGBClassifier(objective ='reg:linear',
+            colsample_bytree = 0.3, learning_rate = 0.1,
+            max_depth = 5, alpha = 10, n_estimators = 10)
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+    """
 
-    classifier = xgb.XGBClassifier(objective ='reg:linear',
-        colsample_bytree = 0.3, learning_rate = 0.1,
-        max_depth = 5, alpha = 10, n_estimators = 10)
-    classifier.fit(X_train, y_train)
-    preds = classifier.predict(X_test)
-    
+ 
+
+    """
     params = {"silent": 1, "objective":"reg:logistic",
         'colsample_bytree': 0.3,'learning_rate': 0.1,
         'max_depth': 5, 'alpha': 10}
@@ -71,6 +62,7 @@ def main():
         seed=123)
 
     print(cv_results.head().shape)
+    """
 
     """
     original_params = {'n_estimators': 1000,
