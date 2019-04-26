@@ -12,7 +12,16 @@ import seaborn as sns
 
 import lightgbm as lgb
 
-df_dir = os.path.abspath((os.path.dirname(""))) + "/data/features"
+df_dir = os.path.abspath((os.path.dirname(""))) + "/data/features/extended_features"
+
+target_cln_obfuscatorio = pd.read_csv(df_dir + "/target_cln_obfuscatorio.csv")
+len(target_cln_obfuscatorio.columns)
+
+target_obf_javascriptobfuscator= pd.read_csv(df_dir + "/target_obf_javascriptobfuscator.csv")
+len(target_obf_javascriptobfuscator.columns)
+
+target_obf_obfuscatorio= pd.read_csv(df_dir + "/target_obf_obfuscatorio.csv")
+len(target_obf_obfuscatorio.columns)
 
 # merging tцo df to one
 clear_df = pd.read_csv(
@@ -37,6 +46,7 @@ scl = StandardScaler()
 
 file_names = df.file_name.values
 indexes = df.index.values
+
 
 X = scl.fit_transform(X)
 y = df["target"]
@@ -78,7 +88,9 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 print("F1 dcore:", f1_score(y_test, y_pred))
 print("Confusion Matrix")
 plot_confusion_matrix(y_test, y_pred)
+plt.show()
 plot_confusion_matrix(y_test, y_pred, norm=False)
+plt.show()
 
 #feature importances
 print("Feature Importances:")

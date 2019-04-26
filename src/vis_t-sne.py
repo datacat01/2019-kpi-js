@@ -22,6 +22,7 @@ target = np.ones(len(obf_df))
 obf_df["target"] = target
 
 df = pd.concat([clear_df, obf_df], axis=0, ignore_index=True)
+df.drop(columns=["file_name"], inplace=True)
 X = df.drop(columns=["target"])
 scl = StandardScaler()
 X = scl.fit_transform(X)
@@ -35,6 +36,7 @@ Z = tsne.embedding_
 plt.title("T-SNE Results")
 sns.scatterplot(x=Z[:, 0], y=Z[:, 1], hue=y, palette=["g","r"])
 plt.legend(["Clean", "Obfuscated"], loc='center left')
+plt.show()
+
 plt.savefig("tsne.jpg")
 plt.close() 
-plt.show()
